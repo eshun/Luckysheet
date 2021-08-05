@@ -27,7 +27,7 @@ import {
     filtersubmenuHTML, 
     pivottableconfigHTML,
     pivottablesumHTML,
-    luckysheetPivotTableHTML 
+    sheetPivotTableHTML 
 } from './constant';
 import sheetmanage from './sheetmanage';
 import luckysheetsizeauto from './resize';
@@ -36,7 +36,7 @@ import {checkProtectionAuthorityNormal} from './protection';
 import Store from '../store';
 import locale from '../locale/locale';
 import numeral from 'numeral';
-import { luckysheetlodingHTML } from '../controllers/constant';
+import { sheetlodingHTML } from '../controllers/constant';
 
 const pivotTable = {
     pivotDatas: null,
@@ -284,7 +284,7 @@ const pivotTable = {
         else if (byconditiontype == "1") {
             $("#luckysheet-pivotTableFilter-menu .luckysheet-pivotTableFilter-selected-input").eq(0).show().find("input").val($t.data("byconditionvalue1"));
         }
-        const loadingObj = luckysheetlodingHTML("#luckysheet-pivotTableFilter-byvalue-select",{text:locale_filter.filiterMoreDataTip});
+        const loadingObj = sheetlodingHTML("#luckysheet-pivotTableFilter-byvalue-select",{text:locale_filter.filiterMoreDataTip});
         $("#luckysheet-pivotTableFilter-byvalue-select").empty().append(loadingObj.el)
         
         let rowhiddenother = {}; //其它筛选列的隐藏行
@@ -918,7 +918,7 @@ const pivotTable = {
 
 
 
-            $("body").append(luckysheetPivotTableHTML());
+            $("body").append(sheetPivotTableHTML());
             $("#luckysheet-modal-dialog-slider-close").click(function () {
                 $("#luckysheet-modal-dialog-slider-pivot").hide();
                 luckysheetsizeauto();

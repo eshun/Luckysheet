@@ -1,4 +1,4 @@
-import { columeHeader_word, columeHeader_word_index, luckysheetdefaultFont } from '../controllers/constant';
+import { columeHeader_word, columeHeader_word_index, sheetdefaultFont } from '../controllers/constant';
 import menuButton from '../controllers/menuButton';
 import { isdatatype, isdatatypemulti } from '../global/datecontroll';
 import { hasChinaword,isRealNum } from '../global/validate';
@@ -450,7 +450,7 @@ function luckysheetfontformat(format) {
         return font;
     }
     else {
-        return luckysheetdefaultFont();
+        return sheetdefaultFont();
     }
 }
 

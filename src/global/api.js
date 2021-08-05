@@ -32,7 +32,7 @@ import sheetmanage from '../controllers/sheetmanage';
 import conditionformat from '../controllers/conditionformat';
 import { luckysheet_searcharray } from "../controllers/sheetSearch";
 import { selectHightlightShow, selectIsOverlap } from '../controllers/select';
-import { sheetHTML, luckysheetdefaultstyle } from '../controllers/constant';
+import { sheetHTML, sheetdefaultstyle } from '../controllers/constant';
 import { createFilterOptions } from '../controllers/filter';
 import controlHistory from '../controllers/controlHistory';
 import { zoomRefreshView, zoomNumberDomBind } from '../controllers/zoom';
@@ -5703,7 +5703,7 @@ export function getScreenshot(options = {}) {
         Store.devicePixelRatio * rh_height
     );
     ctx_newCanvas.lineWidth = Store.devicePixelRatio * 2;
-    ctx_newCanvas.strokeStyle = luckysheetdefaultstyle.strokeStyle;
+    ctx_newCanvas.strokeStyle = sheetdefaultstyle.strokeStyle;
     ctx_newCanvas.stroke();
     ctx_newCanvas.closePath();
 
@@ -5717,7 +5717,7 @@ export function getScreenshot(options = {}) {
         0
     );
     ctx_newCanvas.lineWidth = Store.devicePixelRatio * 2;
-    ctx_newCanvas.strokeStyle = luckysheetdefaultstyle.strokeStyle;
+    ctx_newCanvas.strokeStyle = sheetdefaultstyle.strokeStyle;
     ctx_newCanvas.stroke();
     ctx_newCanvas.closePath();
 

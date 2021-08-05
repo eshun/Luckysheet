@@ -62,7 +62,7 @@ The following are all supported setting parameters
 - Allow back to top [enableAddBackTop](#enableAddBackTop)
 - User Info [userInfo](#userInfo)
 - User Information Menu [userMenuItem](#userMenuItem)
-- Back button link [myFolderUrl](#myFolderUrl)
+- Back button link [goback](#goback)
 - Ratio [devicePixelRatio](#devicePixelRatio)
 - Function Button [functionButton](#functionButton)
 - Auto-indent interface [showConfigWindowResize](#showConfigWindowResize)
@@ -417,7 +417,7 @@ Note that you also need to configure `loadUrl` and `loadSheetUrl` to take effect
 - Usage: Click the pop-up menu of user information in the upper right corner
 
 ------------
-### myFolderUrl
+### goback
 - Type: String
 - Default: "www.baidu.com"
 - Usage: The link of the `<` back button in the upper left corner

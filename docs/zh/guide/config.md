@@ -63,7 +63,7 @@ Luckysheet开放了更细致的自定义配置选项，分别有
 - 允许回到顶部 [enableAddBackTop](#enableAddBackTop)
 - 用户信息 [userInfo](#userInfo)
 - 用户信息菜单 [userMenuItem](#userMenuItem)
-- 返回按钮链接 [myFolderUrl](#myFolderUrl)
+- 返回按钮链接 [goback](#goback)
 - 比例 [devicePixelRatio](#devicePixelRatio)
 - 功能按钮 [functionButton](#functionButton)
 - 自动缩进界面 [showConfigWindowResize](#showConfigWindowResize)
@@ -534,7 +534,7 @@ Luckysheet开放了更细致的自定义配置选项，分别有
 - 作用：点击右上角的用户信息弹出的菜单
 
 ------------
-### myFolderUrl
+### goback
 - 类型：String
 - 默认值："www.baidu.com"
 - 作用：左上角<返回按钮的链接

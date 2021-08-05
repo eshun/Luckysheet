@@ -24,7 +24,7 @@ import selection from './selection';
 import controlHistory from './controlHistory';
 import splitColumn from './splitColumn';
 import {hideMenuByCancel} from '../global/cursorPos';
-import { luckysheetdefaultstyle } from './constant';
+import { sheetdefaultstyle } from './constant';
 import {checkProtectionLockedRangeList,checkProtectionAllSelected,checkProtectionSelectLockedOrUnLockedCells,checkProtectionNotEnable,checkProtectionAuthorityNormal} from './protection';
 import { openCellFormatModel } from './cellFormat';
 
@@ -4767,7 +4767,7 @@ export default function luckysheetHandler() {
             Store.devicePixelRatio * rh_height
         );
         ctx_newCanvas.lineWidth = Store.devicePixelRatio * 2;
-        ctx_newCanvas.strokeStyle = luckysheetdefaultstyle.strokeStyle;        
+        ctx_newCanvas.strokeStyle = sheetdefaultstyle.strokeStyle;        
         ctx_newCanvas.stroke();
         ctx_newCanvas.closePath();
 
@@ -4781,7 +4781,7 @@ export default function luckysheetHandler() {
             0
         );
         ctx_newCanvas.lineWidth = Store.devicePixelRatio * 2;
-        ctx_newCanvas.strokeStyle = luckysheetdefaultstyle.strokeStyle;        
+        ctx_newCanvas.strokeStyle = sheetdefaultstyle.strokeStyle;        
         ctx_newCanvas.stroke();
         ctx_newCanvas.closePath();
 
@@ -5094,7 +5094,19 @@ export default function luckysheetHandler() {
 
     //左上角返回按钮
     $("#luckysheet_info_detail_title").click(function () {
-        window.open(luckysheetConfigsetting.myFolderUrl, "_self");
+        if(!luckysheetConfigsetting.goback) return;
+        if(typeof luckysheetConfigsetting.goback === 'function'){
+            luckysheetConfigsetting.goback();
+        } else if(typeof luckysheetConfigsetting.goback==='string') {
+            window.open(luckysheetConfigsetting.goback, "_self");
+        } else {
+            if((1 < window.history.length) && document.referrer ) {
+                window.history.back();
+            }
+            else {
+                window.close();
+            }
+        }
     });
 
     //图表选区mousedown

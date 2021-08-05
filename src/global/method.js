@@ -1,5 +1,5 @@
 import server from '../controllers/server';
-import { luckysheetlodingHTML, luckyColor } from '../controllers/constant';
+import { sheetlodingHTML, sheetColor } from '../controllers/constant';
 import sheetmanage from '../controllers/sheetmanage';
 import luckysheetformula from './formula';
 import imageCtrl from '../controllers/imageCtrl';
@@ -302,7 +302,7 @@ const method = {
             url = server.loadSheetUrl;
         }
 
-        $("#luckysheet-grid-window-1").append(luckysheetlodingHTML());
+        $("#luckysheet-grid-window-1").append(sheetlodingHTML());
         param.currentPage++;
         
         let dataType = 'application/json;charset=UTF-8';
@@ -347,7 +347,7 @@ const method = {
             url = server.loadSheetUrl;
         }
 
-        $("#luckysheet-grid-window-1").append(luckysheetlodingHTML());
+        $("#luckysheet-grid-window-1").append(sheetlodingHTML());
 
         let arg = {"gridKey" : server.gridKey, "index": index};
         param = $.extend(true, param, arg);
@@ -496,7 +496,7 @@ const method = {
         Store.asyncLoad = ['core'];
     },
     editorChart:function(c){
-        let chart_selection_color = luckyColor[0];
+        let chart_selection_color = sheetColor[0];
         let chart_id = "luckysheetEditMode-datav-chart";
         let chart_selection_id = chart_id + "_selection";
         c.chart_id = chart_id;

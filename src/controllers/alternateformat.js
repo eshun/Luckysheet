@@ -5,7 +5,7 @@ import formula from '../global/formula';
 import { isEditMode } from '../global/validate';
 import tooltip from '../global/tooltip';
 import { luckysheetrefreshgrid } from '../global/refresh';
-import { luckysheetAlternateformatHtml, modelHTML } from './constant';
+import { sheetAlternateformatHtml, modelHTML } from './constant';
 import luckysheetsizeauto from './resize';
 import server from './server';
 import { selectHightlightShow } from './select';
@@ -265,7 +265,7 @@ const alternateformat = {
         let _this = this;
 
         $("#luckysheet-modal-dialog-slider-alternateformat").remove();
-        $("body").append(luckysheetAlternateformatHtml());
+        $("body").append(sheetAlternateformatHtml());
         luckysheetsizeauto();
 
         //关闭

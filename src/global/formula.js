@@ -1,7 +1,7 @@
 import { replaceHtml, getObjType, chatatABC, ABCatNum, luckysheetfontformat } from '../utils/util';
 import { getSheetIndex, getRangetxt, getluckysheetfile } from '../methods/get';
 import { setluckysheetfile } from '../methods/set';
-import { luckyColor } from '../controllers/constant';
+import { sheetColor } from '../controllers/constant';
 import sheetmanage from '../controllers/sheetmanage';
 import menuButton from '../controllers/menuButton';
 import server from '../controllers/server';
@@ -813,13 +813,13 @@ const luckysheetformula = {
             else if (cellrange.sheetIndex == Store.currentSheetIndex || (cellrange.sheetIndex == -1 && _this.rangetosheet == Store.currentSheetIndex)) {
                 $("#" + rangeid).data("range", cellrange)
                     .find(".luckysheet-copy")
-                    .css({ "background": luckyColor[rangeindex] })
+                    .css({ "background": sheetColor[rangeindex] })
                     .end()
                     .find(".luckysheet-highlight")
-                    .css({ "background": luckyColor[rangeindex] })
+                    .css({ "background": sheetColor[rangeindex] })
                     .end()
                     .find(".luckysheet-selection-copy-hc")
-                    .css({ "background": luckyColor[rangeindex] });
+                    .css({ "background": sheetColor[rangeindex] });
 
                 seletedHighlistByindex(rangeid, cellrange.row[0], cellrange.row[1], cellrange.column[0], cellrange.column[1]);
             }
@@ -2631,7 +2631,7 @@ const luckysheetformula = {
             }
         }
         else {
-            let function_str = '<span class="luckysheet-formula-functionrange-cell" rangeindex="' + _this.functionHTMLIndex + '" dir="auto" style="color:' + luckyColor[_this.functionHTMLIndex] + ';">' + range + '</span>';
+            let function_str = '<span class="luckysheet-formula-functionrange-cell" rangeindex="' + _this.functionHTMLIndex + '" dir="auto" style="color:' + sheetColor[_this.functionHTMLIndex] + ';">' + range + '</span>';
             let $t = $(function_str).insertAfter(_this.rangeSetValueTo);
             _this.rangechangeindex = _this.functionHTMLIndex;
             $editor = $(_this.rangeSetValueTo).closest("div");
@@ -3575,7 +3575,7 @@ const luckysheetformula = {
             if (i == funcstack.length - 1) {
                 //function_str += str;
                 if (_this.iscelldata($.trim(str))) {
-                    function_str += '<span class="luckysheet-formula-functionrange-cell" rangeindex="' + _this.functionHTMLIndex + '" dir="auto" style="color:' + luckyColor[_this.functionHTMLIndex] + ';">' + str + '</span>';
+                    function_str += '<span class="luckysheet-formula-functionrange-cell" rangeindex="' + _this.functionHTMLIndex + '" dir="auto" style="color:' + sheetColor[_this.functionHTMLIndex] + ';">' + str + '</span>';
                     _this.functionHTMLIndex++;
                 }
                 else if (matchConfig.dquote > 0) {

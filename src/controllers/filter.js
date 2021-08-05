@@ -5,7 +5,7 @@ import tooltip from '../global/tooltip';
 import { rowlenByRange } from '../global/getRowlen';
 import { selectHightlightShow } from './select';
 import { luckysheetMoveEndCell } from './sheetMove';
-import { luckysheetlodingHTML } from '../controllers/constant';
+import { sheetlodingHTML } from '../controllers/constant';
 import server from './server';
 import locale from '../locale/locale';
 import Store from '../store';
@@ -481,7 +481,7 @@ function initialFilterHandler(){
             orderbydatafiler(st_r, st_c, ed_r, ed_c, cindex, false);
         });
 
-        const loadingObj = luckysheetlodingHTML("#luckysheet-filter-byvalue-select",{text:locale_filter.filiterMoreDataTip});
+        const loadingObj = sheetlodingHTML("#luckysheet-filter-byvalue-select",{text:locale_filter.filiterMoreDataTip});
         $("#luckysheet-filter-byvalue-select").empty().append(loadingObj.el);
 
         let rowhiddenother = {}; //其它筛选列的隐藏行

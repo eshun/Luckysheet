@@ -19,7 +19,7 @@ export default {
     title: "Luckysheet Demo", //表格的名称
     userInfo:false,// 右上角的用户信息展示样式，支持 1. boolean类型：false:不展示，ture:展示默认 '<i style="font-size:16px;color:#ff6a00;" class="fa fa-taxi" aria-hidden="true"></i> rabbit' ，2. HTML模板字符串或者普通字符串，如：'<i style="font-size:16px;color:#ff6a00;" class="fa fa-taxi" aria-hidden="true"></i> Lucky'或者'用户名'， 3. 对象格式，设置 userImage：用户头像地址 和 userName：用户名 4. 不设置或者设置undefined同设置false
     userMenuItem: [{url:"www.baidu.com", "icon":'<i class="fa fa-folder" aria-hidden="true"></i>', "name":"我的表格"}, {url:"www.baidu.com", "icon":'<i class="fa fa-sign-out" aria-hidden="true"></i>', "name":"退出登陆"}], //点击右上角的用户信息弹出的菜单
-    myFolderUrl: "www.baidu.com", //左上角<返回按钮的链接
+    goback: "", //左上角<返回按钮的链接 or function
     config: {}, //表格行高、列宽、合并单元格、公式等设置
     fullscreenmode: true, //是否全屏模式，非全屏模式下，标记框不会强制选中。
     devicePixelRatio: window.devicePixelRatio, //设备比例，比例越大表格分标率越高
@@ -50,7 +50,7 @@ export default {
     editMode: false, //是否为编辑模式
     beforeCreateDom: null,//表格创建之前的方法
     fireMousedown: null, //单元格数据下钻
-    lang: 'en', //language
+    lang: 'zh', //language
     plugins: [], //plugins, e.g. ['chart']
     forceCalculation:false,//强制刷新公式，公式较多会有性能问题，慎用
     rowHeaderWidth: 46,

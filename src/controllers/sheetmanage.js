@@ -11,7 +11,7 @@ import editor from '../global/editor';
 import { luckysheetextendtable, luckysheetdeletetable } from '../global/extend';
 import { isRealNum } from '../global/validate';
 import { replaceHtml, getObjType, chatatABC, arrayRemoveItem } from '../utils/util';
-import { sheetHTML,luckysheetlodingHTML } from './constant';
+import { sheetHTML,sheetlodingHTML } from './constant';
 import server from './server';
 import luckysheetConfigsetting from './luckysheetConfigsetting';
 import pivotTable from './pivotTable';
@@ -1233,7 +1233,7 @@ const sheetmanage = {
                 server.saveParam("shs", null, Store.currentSheetIndex);
             }
             else{
-                $("#luckysheet-grid-window-1").append(luckysheetlodingHTML());
+                $("#luckysheet-grid-window-1").append(sheetlodingHTML());
 
                 let sheetindex = _this.checkLoadSheetIndex(file);
                 

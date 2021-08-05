@@ -1,4 +1,4 @@
-import { modelHTML, luckysheetchartpointconfigHTML, luckysheetToolHTML } from '../controllers/constant';
+import { modelHTML, sheetchartpointconfigHTML, sheetToolHTML } from '../controllers/constant';
 import browser from './browser';
 import { replaceHtml } from '../utils/util';
 import locale from '../locale/locale';
@@ -132,7 +132,7 @@ const tooltip = {
             "id": id, 
             "addclass": "luckysheet-chart-point-config-c", 
             "title": "数据点批量设置", 
-            "content": luckysheetchartpointconfigHTML, 
+            "content": sheetchartpointconfigHTML, 
             "botton": '<button class="btn btn-danger luckysheet-model-save-btn">&nbsp;&nbsp;保存设置&nbsp;&nbsp;</button><button class="btn btn-default luckysheet-model-close-btn">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>', 
             "style": "z-index:100003;height:80%;width:80%;top:10%;left:10%;" 
         }));
@@ -191,7 +191,7 @@ const tooltip = {
                 }
 
                 if ($toolup.length == 0) {
-                    $("body").append(luckysheetToolHTML);
+                    $("body").append(sheetToolHTML);
                     $toolup = $("#luckysheet-tooltip-up");
                 }
 

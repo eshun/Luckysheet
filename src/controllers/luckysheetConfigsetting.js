@@ -14,7 +14,7 @@ const luckysheetConfigsetting = {
 
     userInfo: false,
     userMenuItem: [],
-    myFolderUrl: null,
+    goback: null,
     functionButton: null,
 
     showConfigWindowResize: true,

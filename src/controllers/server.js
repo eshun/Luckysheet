@@ -2,7 +2,7 @@ import pako from 'pako'
 import { showloading, hideloading } from '../global/loading';
 import { luckysheetrefreshgrid, jfrefreshgrid_rhcw } from '../global/refresh';
 import editor from '../global/editor'
-import { sheetHTML, luckyColor } from './constant';
+import { sheetHTML, sheetColor } from './constant';
 import sheetmanage from './sheetmanage';
 import menuButton from './menuButton';
 import { createFilterOptions } from './filter';
@@ -1013,22 +1013,22 @@ const server = {
 
 	    }
 	    else{
-	        // let itemHtml = '<div id="luckysheet-multipleRange-show-'+ id +'" data-color="'+ luckyColor[_this.multipleIndex] +'" title="'+ name +'" style="position: absolute;left: '+ (col_pre - 1) +'px;width: '+ (col - col_pre - 1) +'px;top: '+ (row_pre - 1) +'px;height: '+ (row - row_pre - 1) +'px;border: 1px solid '+ luckyColor[_this.multipleIndex] +';z-index: 15;">'+
-	        //                 '<div style="width: 100%;height: 100%;position: absolute;top: 0;right: 0;bottom: 0;left: 0;opacity: 0.03;background-color: '+ luckyColor[_this.multipleIndex] +'"></div>'+
+	        // let itemHtml = '<div id="luckysheet-multipleRange-show-'+ id +'" data-color="'+ sheetColor[_this.multipleIndex] +'" title="'+ name +'" style="position: absolute;left: '+ (col_pre - 1) +'px;width: '+ (col - col_pre - 1) +'px;top: '+ (row_pre - 1) +'px;height: '+ (row - row_pre - 1) +'px;border: 1px solid '+ sheetColor[_this.multipleIndex] +';z-index: 15;">'+
+	        //                 '<div style="width: 100%;height: 100%;position: absolute;top: 0;right: 0;bottom: 0;left: 0;opacity: 0.03;background-color: '+ sheetColor[_this.multipleIndex] +'"></div>'+
 			//                '</div>';
 
 			let itemHtml = `<div
 								id="luckysheet-multipleRange-show-${id}"
 								class="luckysheet-multipleRange-show"
-								data-color="${luckyColor[_this.multipleIndex]}"
+								data-color="${sheetColor[_this.multipleIndex]}"
 								title="${name}"
-								style="position: absolute;left: ${col_pre - 1}px;width: ${col - col_pre - 1}px;top: ${row_pre - 1}px;height: ${row - row_pre - 1}px;border: 1px solid ${luckyColor[_this.multipleIndex]};z-index: 15;">
+								style="position: absolute;left: ${col_pre - 1}px;width: ${col - col_pre - 1}px;top: ${row_pre - 1}px;height: ${row - row_pre - 1}px;border: 1px solid ${sheetColor[_this.multipleIndex]};z-index: 15;">
 
-								<div class="username" style="height: 19px;line-height:19px;width: max-content;position: absolute;bottom: ${row - row_pre - 1}px;right: 0;background-color: ${luckyColor[_this.multipleIndex]};color:#ffffff;padding:0 10px;">
+								<div class="username" style="height: 19px;line-height:19px;width: max-content;position: absolute;bottom: ${row - row_pre - 1}px;right: 0;background-color: ${sheetColor[_this.multipleIndex]};color:#ffffff;padding:0 10px;">
 								${name}
 								</div>
 
-								<div style="width: 100%;height: 100%;position: absolute;top: 0;right: 0;bottom: 0;left: 0;opacity: 0.03;background-color: ${luckyColor[_this.multipleIndex]}">
+								<div style="width: 100%;height: 100%;position: absolute;top: 0;right: 0;bottom: 0;left: 0;opacity: 0.03;background-color: ${sheetColor[_this.multipleIndex]}">
 								</div>
 
 							</div>`;

@@ -4,7 +4,7 @@ import alternateformat from '../controllers/alternateformat';
 import luckysheetSparkline from '../controllers/sparkline';
 import menuButton from '../controllers/menuButton';
 import dataVerificationCtrl from '../controllers/dataVerificationCtrl';
-import { luckysheetdefaultstyle, luckysheet_CFiconsImg,luckysheetdefaultFont } from '../controllers/constant';
+import { sheetdefaultstyle, luckysheet_CFiconsImg,sheetdefaultFont } from '../controllers/constant';
 import { luckysheet_searcharray } from '../controllers/sheetSearch';
 import { dynamicArrayCompute } from './dynamicArray';
 import browser from './browser';
@@ -44,9 +44,9 @@ function luckysheetDrawgridRowTitle(scrollHeight, drawHeight, offsetTop) {
         drawHeight
     );
 
-    luckysheetTableContent.font = luckysheetdefaultFont();
-    luckysheetTableContent.textBaseline = luckysheetdefaultstyle.textBaseline; //基准线 垂直居中
-    luckysheetTableContent.fillStyle = luckysheetdefaultstyle.fillStyle;
+    luckysheetTableContent.font = sheetdefaultFont();
+    luckysheetTableContent.textBaseline = sheetdefaultstyle.textBaseline; //基准线 垂直居中
+    luckysheetTableContent.fillStyle = sheetdefaultstyle.fillStyle;
 
     let dataset_row_st, dataset_row_ed;
     dataset_row_st = luckysheet_searcharray(Store.visibledatarow, scrollHeight);
@@ -129,7 +129,7 @@ function luckysheetDrawgridRowTitle(scrollHeight, drawHeight, offsetTop) {
         );
         luckysheetTableContent.lineWidth = 1;
 
-        luckysheetTableContent.strokeStyle = luckysheetdefaultstyle.strokeStyle;
+        luckysheetTableContent.strokeStyle = sheetdefaultstyle.strokeStyle;
         luckysheetTableContent.stroke();
         luckysheetTableContent.closePath();
 
@@ -145,7 +145,7 @@ function luckysheetDrawgridRowTitle(scrollHeight, drawHeight, offsetTop) {
                 (end_r + offsetTop - 4 + bodrder05) 
             );
             // luckysheetTableContent.lineWidth = 1;
-            // luckysheetTableContent.strokeStyle = luckysheetdefaultstyle.strokeStyle;
+            // luckysheetTableContent.strokeStyle = sheetdefaultstyle.strokeStyle;
             luckysheetTableContent.closePath();
             luckysheetTableContent.stroke();
         }
@@ -161,7 +161,7 @@ function luckysheetDrawgridRowTitle(scrollHeight, drawHeight, offsetTop) {
             );
 
             // luckysheetTableContent.lineWidth = 1;
-            // luckysheetTableContent.strokeStyle = luckysheetdefaultstyle.strokeStyle;
+            // luckysheetTableContent.strokeStyle = sheetdefaultstyle.strokeStyle;
             luckysheetTableContent.closePath();
             luckysheetTableContent.stroke();
 
@@ -204,7 +204,7 @@ function luckysheetDrawgridRowTitle(scrollHeight, drawHeight, offsetTop) {
     //     (Store.rh_height + offsetTop) 
     // );
     // luckysheetTableContent.lineWidth = 1;
-    // luckysheetTableContent.strokeStyle = luckysheetdefaultstyle.strokeStyle;
+    // luckysheetTableContent.strokeStyle = sheetdefaultstyle.strokeStyle;
     // luckysheetTableContent.closePath();
     // luckysheetTableContent.stroke();
 
@@ -242,9 +242,9 @@ function luckysheetDrawgridColumnTitle(scrollWidth, drawWidth, offsetLeft) {
     );
 
 
-    luckysheetTableContent.font = luckysheetdefaultFont();
-    luckysheetTableContent.textBaseline = luckysheetdefaultstyle.textBaseline; //基准线 垂直居中
-    luckysheetTableContent.fillStyle = luckysheetdefaultstyle.fillStyle;
+    luckysheetTableContent.font = sheetdefaultFont();
+    luckysheetTableContent.textBaseline = sheetdefaultstyle.textBaseline; //基准线 垂直居中
+    luckysheetTableContent.fillStyle = sheetdefaultstyle.fillStyle;
 
     let dataset_col_st, dataset_col_ed;
     dataset_col_st = luckysheet_searcharray(Store.visibledatacolumn, scrollWidth);
@@ -328,7 +328,7 @@ function luckysheetDrawgridColumnTitle(scrollWidth, drawWidth, offsetLeft) {
                 (Store.columnHeaderHeight - 2) 
             );
             luckysheetTableContent.lineWidth = 1;
-            luckysheetTableContent.strokeStyle = luckysheetdefaultstyle.strokeStyle;
+            luckysheetTableContent.strokeStyle = sheetdefaultstyle.strokeStyle;
             luckysheetTableContent.closePath();
             luckysheetTableContent.stroke();
         }
@@ -344,7 +344,7 @@ function luckysheetDrawgridColumnTitle(scrollWidth, drawWidth, offsetLeft) {
             );
 
             luckysheetTableContent.lineWidth = 1;
-            luckysheetTableContent.strokeStyle = luckysheetdefaultstyle.strokeStyle;
+            luckysheetTableContent.strokeStyle = sheetdefaultstyle.strokeStyle;
             luckysheetTableContent.closePath();
             luckysheetTableContent.stroke();
         }
@@ -360,7 +360,7 @@ function luckysheetDrawgridColumnTitle(scrollWidth, drawWidth, offsetLeft) {
                 (Store.columnHeaderHeight - 2) 
             );
             // luckysheetTableContent.lineWidth = 1;
-            // luckysheetTableContent.strokeStyle = luckysheetdefaultstyle.strokeStyle;
+            // luckysheetTableContent.strokeStyle = sheetdefaultstyle.strokeStyle;
             luckysheetTableContent.closePath();
             luckysheetTableContent.stroke();
         }
@@ -378,7 +378,7 @@ function luckysheetDrawgridColumnTitle(scrollWidth, drawWidth, offsetLeft) {
         );
         // luckysheetTableContent.lineWidth = 1;
 
-        // luckysheetTableContent.strokeStyle = luckysheetdefaultstyle.strokeStyle;        
+        // luckysheetTableContent.strokeStyle = sheetdefaultstyle.strokeStyle;        
         luckysheetTableContent.stroke();
         luckysheetTableContent.closePath();
 
@@ -403,7 +403,7 @@ function luckysheetDrawgridColumnTitle(scrollWidth, drawWidth, offsetLeft) {
     //     (Store.columnHeaderHeight - 2 + 0.5) 
     // );
     // luckysheetTableContent.lineWidth = 1;
-    // luckysheetTableContent.strokeStyle = luckysheetdefaultstyle.strokeStyle;
+    // luckysheetTableContent.strokeStyle = sheetdefaultstyle.strokeStyle;
     // luckysheetTableContent.closePath();
     // luckysheetTableContent.stroke();
 
@@ -561,9 +561,9 @@ function luckysheetDrawMain(scrollWidth, scrollHeight, drawWidth, drawHeight, of
         (fill_col_ed - scrollWidth) , 
         (fill_row_ed - scrollHeight)
     );
-    luckysheetTableContent.font = luckysheetdefaultFont();
+    luckysheetTableContent.font = sheetdefaultFont();
     // luckysheetTableContent.textBaseline = "top";
-    luckysheetTableContent.fillStyle = luckysheetdefaultstyle.fillStyle;
+    luckysheetTableContent.fillStyle = sheetdefaultstyle.fillStyle;
 
     //表格渲染区域 非空单元格行列 起止坐标
     let cellupdate = [];
@@ -1180,7 +1180,7 @@ let nullCellRender = function(r, c, start_r, start_c, end_r, end_c,luckysheetTab
 
         luckysheetTableContent.fillStyle = "#000000";
         //文本宽度和高度
-        let fontset = luckysheetdefaultFont();
+        let fontset = sheetdefaultFont();
         luckysheetTableContent.font = fontset;
 
         //水平对齐 (默认为1，左对齐)
@@ -1238,7 +1238,7 @@ let nullCellRender = function(r, c, start_r, start_c, end_r, end_c,luckysheetTab
             );
             luckysheetTableContent.lineWidth = 1;
 
-            luckysheetTableContent.strokeStyle = luckysheetdefaultstyle.strokeStyle;
+            luckysheetTableContent.strokeStyle = sheetdefaultstyle.strokeStyle;
             luckysheetTableContent.stroke();
             luckysheetTableContent.closePath();
         }
@@ -1257,7 +1257,7 @@ let nullCellRender = function(r, c, start_r, start_c, end_r, end_c,luckysheetTab
         );
         luckysheetTableContent.lineWidth = 1;
 
-        luckysheetTableContent.strokeStyle = luckysheetdefaultstyle.strokeStyle;        
+        luckysheetTableContent.strokeStyle = sheetdefaultstyle.strokeStyle;        
         luckysheetTableContent.stroke();
         luckysheetTableContent.closePath();
     }
@@ -1771,7 +1771,7 @@ let cellRender = function(r, c, start_r, start_c, end_r, end_c, value, luckyshee
                  (end_r + offsetTop)
             );
             luckysheetTableContent.lineWidth = 1;
-            luckysheetTableContent.strokeStyle = luckysheetdefaultstyle.strokeStyle;
+            luckysheetTableContent.strokeStyle = sheetdefaultstyle.strokeStyle;
             luckysheetTableContent.stroke();
             luckysheetTableContent.closePath();
         }
@@ -1789,7 +1789,7 @@ let cellRender = function(r, c, start_r, start_c, end_r, end_c, value, luckyshee
              (end_r + offsetTop - 2 + bodrder05)
         );
         luckysheetTableContent.lineWidth = 1;
-        luckysheetTableContent.strokeStyle = luckysheetdefaultstyle.strokeStyle;
+        luckysheetTableContent.strokeStyle = sheetdefaultstyle.strokeStyle;
         luckysheetTableContent.stroke();
         luckysheetTableContent.closePath();
     }

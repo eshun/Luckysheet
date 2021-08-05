@@ -1,5 +1,5 @@
 import { selectionCopyShow, selectIsOverlap } from './select';
-import { luckyColor, iconfontObjects } from './constant';
+import { sheetColor, iconfontObjects } from './constant';
 import luckysheetConfigsetting from './luckysheetConfigsetting';
 import luckysheetMoreFormat from './moreFormat';
 import alternateformat from './alternateformat';
@@ -4008,7 +4008,7 @@ const menuButton = {
             col_pre = colLocationByIndex(columnh[0])[0], 
             col = colLocationByIndex(columnh[1])[1];
 
-        let formulaTxt = '<span dir="auto" class="luckysheet-formula-text-color">=</span><span dir="auto" class="luckysheet-formula-text-color">'+ formula.toUpperCase() +'</span><span dir="auto" class="luckysheet-formula-text-color">(</span><span class="luckysheet-formula-functionrange-cell" rangeindex="0" dir="auto" style="color:'+ luckyColor[0] +';">'+ getRangetxt(Store.currentSheetIndex, {"row":rowh, "column":columnh }, Store.currentSheetIndex) +'</span><span dir="auto" class="luckysheet-formula-text-color">)</span>';
+        let formulaTxt = '<span dir="auto" class="luckysheet-formula-text-color">=</span><span dir="auto" class="luckysheet-formula-text-color">'+ formula.toUpperCase() +'</span><span dir="auto" class="luckysheet-formula-text-color">(</span><span class="luckysheet-formula-functionrange-cell" rangeindex="0" dir="auto" style="color:'+ sheetColor[0] +';">'+ getRangetxt(Store.currentSheetIndex, {"row":rowh, "column":columnh }, Store.currentSheetIndex) +'</span><span dir="auto" class="luckysheet-formula-text-color">)</span>';
         $("#luckysheet-rich-text-editor").html(formulaTxt);
 
         luckysheetformula.israngeseleciton();

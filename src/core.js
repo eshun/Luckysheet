@@ -25,7 +25,7 @@ import {
 } from './methods/set';
 import { luckysheetrefreshgrid, jfrefreshgrid } from './global/refresh';
 import functionlist from './function/functionlist';
-import { luckysheetlodingHTML } from './controllers/constant';
+import { sheetlodingHTML } from './controllers/constant';
 import { getcellvalue, getdatabyselection } from './global/getdata';
 import { setcellvalue } from './global/setdata';
 import { selectHightlightShow } from './controllers/select';
@@ -110,7 +110,7 @@ luckysheet.create = function (setting) {
 
     luckysheetConfigsetting.userInfo = extendsetting.userInfo;
     luckysheetConfigsetting.userMenuItem = extendsetting.userMenuItem;
-    luckysheetConfigsetting.myFolderUrl = extendsetting.myFolderUrl;
+    luckysheetConfigsetting.goback = extendsetting.goback;
     luckysheetConfigsetting.functionButton = extendsetting.functionButton;
 
     luckysheetConfigsetting.showConfigWindowResize = extendsetting.showConfigWindowResize;
@@ -163,7 +163,7 @@ luckysheet.create = function (setting) {
     Store.devicePixelRatio = Math.ceil(devicePixelRatio);
 
     //loading
-    const loadingObj=luckysheetlodingHTML("#" + container)
+    const loadingObj=sheetlodingHTML("#" + container)
     Store.loadingObj=loadingObj
 
     if (loadurl == "") {
