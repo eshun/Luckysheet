@@ -29,19 +29,17 @@ const gridHTML = function(){
     const home=luckysheetConfigsetting.goback ? `<div data-tips="${locale_info.return}" id="luckysheet_info_detail_title" class="luckysheet_info_detail_back"> 
                                                     <i style="color:#444D5A;" class="fa fa-angle-left fa-2x" aria-hidden="true"></i> 
                                                 </div>`:
-                                                `<div data-tips="\${logotitle}" class="luckysheet_info_detail_back" style="background-color: green; padding: 6px 20px 6px 20px;color:#ffffff;"> 
+                                                `<div data-tips="\${logotitle}" class="luckysheet_info_detail_back" style="background-color: green; padding: 0px 20px;color:#ffffff;"> 
                                                     <i style="color:#ffffff;" class="fa fa-university" aria-hidden="true"></i> \${logotitle}
                                                 </div>`;
+    const navTabs=`<ul class="nav-tabs"><li>`+ home +`</li><li class="active"><span>开始</span></li></ul><div class="nav-tabs-tools"> \${functionButton} </div>`;
 
     return `<div class="luckysheet">
                     <canvas id="luckysheetTableContentF" style="display:none;" class="luckysheetTableContent"></canvas> 
                     <div class="luckysheet-work-area luckysheet-noselected-text"> 
                         <div id ="luckysheet_info_detail" class="luckysheet_info_detail"> 
-                            `+ home +`
+                            `+ navTabs +`
                         
-                            
-                            
-                            
                         </div> 
                         <div id="luckysheet-wa-editor" class="luckysheet-wa-editor toolbar"> \${menu} </div> 
                         <div id="luckysheet-wa-calculate" class="luckysheet-wa-calculate"> 
@@ -367,7 +365,7 @@ function rightclickHTML(){
                             ${rightclick.to}
                             <span class="luckysheet-cols-rows-shift-left">${rightclick.left}</span>
                             ${rightclick.add}
-                            <input type="text" class="luckysheet-mousedown-cancel" placeholder="${rightclick.number}" value="1" style="width:40px;height:20px;box-sizing:border-box;text-align:center;margin-left:5px;"/>
+                            <input type="text" class="luckysheet-mousedown-cancel" placeholder="${rightclick.number}" value="${luckysheetConfigsetting.defaultAddNum}" style="width:40px;height:20px;box-sizing:border-box;text-align:center;margin-left:5px;"/>
                             <span class="luckysheet-cols-rows-shift-word luckysheet-mousedown-cancel">${rightclick.column}</span>
                         </div>
                     </div>
@@ -376,7 +374,7 @@ function rightclickHTML(){
                             ${rightclick.to}
                             <span class="luckysheet-cols-rows-shift-right">${rightclick.right}</span>
                             ${rightclick.add}
-                            <input type="text" class="luckysheet-mousedown-cancel" placeholder="${rightclick.number}" value="1" style="width:40px;height:20px;box-sizing:border-box;text-align: center;margin-left:5px;"/>
+                            <input type="text" class="luckysheet-mousedown-cancel" placeholder="${rightclick.number}" value="${luckysheetConfigsetting.defaultAddNum}" style="width:40px;height:20px;box-sizing:border-box;text-align: center;margin-left:5px;"/>
                             <span class="luckysheet-cols-rows-shift-word luckysheet-mousedown-cancel">${rightclick.column}</span>
                         </div>
                     </div>

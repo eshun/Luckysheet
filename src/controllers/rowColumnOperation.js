@@ -1078,8 +1078,10 @@ export function rowColumnOperationInitial(){
         }
 
         
+        const defaultAddNum = luckysheetConfigsetting.defaultAddNum || 1;
 
         let $t = $(this), value = $t.find("input").val();
+        $t.find("input").val(defaultAddNum);
         if (!isRealNum(value)) {
             if(isEditMode()){
                 alert(locale_info.tipInputNumber);
@@ -1125,8 +1127,6 @@ export function rowColumnOperationInitial(){
 			return; 
 		}
         luckysheetextendtable('row', st_index, 1, "lefttop");
-
-
     })
     $("#luckysheetColsRowsHandleAdd_column").click(function (event) {
         $("#luckysheet-rightclick-menu").hide();
@@ -1138,8 +1138,6 @@ export function rowColumnOperationInitial(){
 
         let st_index = Store.luckysheet_select_save[0].column[0];
         luckysheetextendtable('column', st_index, 1, "lefttop");
-
-
     })
 
     // custom right-click a cell buttton click
@@ -1311,7 +1309,10 @@ export function rowColumnOperationInitial(){
             return;
         }
 
+        const defaultAddNum = luckysheetConfigsetting.defaultAddNum || 1;
+
         let $t = $(this), value = $t.find("input").val();
+        $t.find("input").val(defaultAddNum);
         if (!isRealNum(value)) {
             if(isEditMode()){
                 alert(locale_info.tipInputNumber);
@@ -2369,5 +2370,10 @@ export function deleteRows(type, st_index, ed_index){
 
 // Delete column api
 export function deleteColumns(){
+
+}
+
+export function addRowOrCol() {
+
 
 }

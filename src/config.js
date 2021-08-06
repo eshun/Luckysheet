@@ -32,8 +32,8 @@ export default {
     allowUpdate: false, //是否允许编辑后的后台更新
     functionButton: "", //右上角功能按钮，例如'<button id="" class="btn btn-primary" style="padding:3px 6px;font-size: 12px;margin-right: 10px;">下载</button>    <button id="" class="btn btn-primary btn-danger" style="    padding:3px 6px;    font-size: 12px;    margin-right: 10px;">分享</button>    <button id="luckysheet-share-btn-title" class="btn btn-primary btn-danger" style="    padding:3px 6px;    font-size: 12px;    margin-right: 10px;">秀数据</button>'
     showConfigWindowResize: true, //图表和数据透视表的配置会在右侧弹出，设置弹出后表格是否会自动缩进
-    enableAddRow: true,//允许添加行
-    enableAddBackTop: true,//允许回到顶部
+    enableAddRow: false,//允许添加行
+    enableAddBackTop: false,//允许回到顶部
     // enablePage: false,//允许加载下一页
     autoFormatw: false,  //自动格式化超过4位数的数字为 亿万格式 例：true or "true" or "TRUE"
     accuracy: undefined,  //设置传输来的数值的精确位数，小数点后n位 传参数为数字或数字字符串，例： "0" 或 0
@@ -67,4 +67,6 @@ export default {
     cellRightClickConfig:{}, //自定义单元格右键菜单
     sheetRightClickConfig:{}, //自定义底部sheet页右击菜单
     imageUpdateMethodConfig:{}, //自定义图片同步方式
+    defaultAddNum:1,//默认添加行数
+    scrollBottomAutoAddRow: false,//滚动到底部自动添加新行
 }

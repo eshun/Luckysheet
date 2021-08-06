@@ -38,6 +38,9 @@ const luckysheetConfigsetting = {
 
     defaultTextColor: '#000',
     defaultCellColor: '#fff',
+
+    defaultAddNum:1,
+    scrollBottomAutoAddRow:false,
 }
 
 export default luckysheetConfigsetting;

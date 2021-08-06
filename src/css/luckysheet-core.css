@@ -109,13 +109,13 @@
 
 .luckysheet_info_detail {
     position: relative;
-    left: 0px;
-    top: 0px;
-    margin: 0px;
-    padding: 0 17px;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
     /* width: 100%; */
     height: 33px;
-    display: flex;
+    /* display: flex; */
     align-items: center;
     background: rgba(255, 255, 255, 1);
     box-shadow: 0px -1px 0px 0px rgba(230, 231, 232, 1);
@@ -127,11 +127,7 @@
 }
 
 .luckysheet_info_detail div.luckysheet_info_detail_back {
-    font-size: 14px;
-    padding: 0 8px;
-    margin-right: 18px;
     border-radius: 3px;
-    cursor: pointer;
 }
 
 .luckysheet_info_detail div.luckysheet_info_detail_back:hover {
@@ -165,6 +161,53 @@
     box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.1);
     color: #000;
     outline: none;
+}
+
+.luckysheet_info_detail .nav-tabs{
+    list-style-type: none;
+    list-style-image: none;
+    
+    margin: 0;
+    padding: 3px 0.2em 0;
+    float: left;
+    display: flex;
+}
+
+.luckysheet_info_detail .nav-tabs li{
+    cursor: pointer;
+    /* min-width: 100px; */
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+    font-size: 14px;
+    display: inline-block;
+    
+    list-style: none;
+    border-bottom-width: 0;
+    margin: 1px 0.2em 2px 0;
+    padding: 0px 10px;
+
+    letter-spacing: normal;
+    word-spacing: normal;
+}
+
+.luckysheet_info_detail .nav-tabs li.active{
+    margin-bottom: -1px;
+    padding-bottom: 1px;
+    font-weight: bold;
+    position: relative;
+    background-color: #fafafc;
+    top: 0px;
+    border-top: solid 1px lightgray;
+    border-left: solid 1px lightgray;
+    border-right: solid 1px lightgray;
+    border-bottom: 0;
+}
+
+.luckysheet_info_detail .nav-tabs-tools{
+    float: right;
+    height: 33px;
+    overflow: hidden;
 }
 
 .luckysheet_info_detail_update {
@@ -874,6 +917,7 @@
     height: 100%;
     margin: 0;
     outline: none;
+    text-align: center;
     cursor: text;
     -webkit-user-modify: read-write-plaintext-only;
     white-space: nowrap;
@@ -4352,15 +4396,13 @@ fieldset[disabled] .btn-danger.focus {
 }
 
 .luckysheet-modal-dialog-slider .luckysheet-modal-dialog-slider-title {
-    background: #333;
-    color: #fff;
+    background: #fafafc;
+    color: #333;
     height: 39px;
     width: 100%;
-    position: absolute;
-    top: 0px;
-    left: 0px;
     line-height: 39px;
     font-size: 13px;
+    border-bottom: 1px solid #d4d4d4;
 }
 
 .luckysheet-modal-dialog-slider .luckysheet-modal-dialog-slider-title>span:first-child {
@@ -4377,11 +4419,8 @@ fieldset[disabled] .btn-danger.focus {
 
 .luckysheet-modal-dialog-slider-content {
     background: #EFEFEF;
-    margin-top: 39px;
     width: 100%;
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
+    height: 100%;
     font-size: 12px;
 }
 

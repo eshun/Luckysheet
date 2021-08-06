@@ -2,7 +2,12 @@ import luckysheetFreezen from '../controllers/freezen';
 import { luckysheet_searcharray } from '../controllers/sheetSearch';
 import { luckysheetrefreshgrid } from '../global/refresh';
 import Store from '../store';
+import luckysheetConfigsetting from '../controllers/luckysheetConfigsetting';
 import method from '../global/method'
+import { luckysheetextendtable } from '../global/extend';
+import {
+    luckysheetContainerFocus
+} from '../utils/util';
 
 let scrollRequestAnimationFrameIni = true,scrollRequestAnimationFrame = false, scrollTimeOutCancel=null;
 
@@ -110,4 +115,16 @@ export default function luckysheetscrollevent(isadjust) {
 
     if(!method.createHookFunction("scroll", {scrollLeft, scrollTop, canvasHeight})){ return; }
 
+    const scrollBottomAutoAddRow=luckysheetConfigsetting.scrollBottomAutoAddRow || false;
+    let scrollHeight = $("#luckysheet-scrollbar-y").get(0).scrollHeight;
+    //let clientHeight = $("#luckysheet-scrollbar-y").get(0).clientHeight;
+    if(scrollBottomAutoAddRow===true && scrollHeight<(canvasHeight + scrollTop + 100)){
+        setTimeout(() => {
+            $("#luckysheet-rightclick-menu").hide();
+            luckysheetContainerFocus();            
+            luckysheetextendtable("row", Store.flowdata.length - 1, 10);
+            
+            $("#luckysheet-scrollbar-y").scrollTop(scrollTop);
+        }, 500);
+    }
 }
