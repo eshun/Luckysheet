@@ -359,7 +359,7 @@ export function menuToolBarWidth() {
                         index: index++
                     }
                 }
-                if (next === '|') {
+                if (next === '|' && obj[current] && obj[current].ele) {
                     if (getObjType(obj[current].ele) === 'array') {
                         obj[current].ele.push(`#toolbar-separator-${camel2split(current)}`);
                     } else {
@@ -409,7 +409,7 @@ export function menuToolBarWidth() {
                         index: index++
                     }
                 }
-                if (next === '|') {
+                if (next === '|' && obj[current] && obj[current].ele) {
                     if (getObjType(obj[current].ele) === 'array') {
                         obj[current].ele.push(`#toolbar-separator-${camel2split(current)}`);
                     } else {

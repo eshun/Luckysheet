@@ -1651,6 +1651,16 @@ const luckysheetFreezen = {
 
         // store frozen
         Store.luckysheetfile[order]["frozen"] = frozen[operate];
+
+        let redo = {};
+        redo["type"] = "frozen";
+        redo["operate"] = operate;
+
+        redo["order"] = order;
+        redo["range"] = range;
+
+        Store.jfundo.length  = 0;
+        Store.jfredo.push(redo);
     },
     frozenTofreezen: function() {
         // get frozen type

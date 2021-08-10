@@ -73,7 +73,17 @@
 		$(function () {
             var options = {
                     container: 'xmkysheet',
-    				title: 'XMKYsheet Demo'
+    				title: 'XMKYsheet Demo',
+					cellRightClickConfig:{
+						copyAs: false,
+						data: false,
+					},
+					showtoolbar: true,
+					showtoolbarConfig:{
+						pivotTable: false,
+						dataVerification: false,
+						protection:false,
+					},
 				};
 				
 			options.loading={
@@ -93,6 +103,9 @@
 				},
 			};
 			luckysheet.create(options);
+
+
+			///luckysheet.setCellValue(row, column, value)
 		})
 	</script>
 </body>
