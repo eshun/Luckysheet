@@ -1929,7 +1929,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     width: inherit;
 }
 
-.luckysheet-cell-selected-focus {
+.sheet-cell-selected-focus {
     position: absolute;
     pointer-events: none;
     z-index: 14;
@@ -2082,7 +2082,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     height: 6px;
 }
 
-.luckysheet-cell-selected-extend {
+.sheet-cell-selected-extend {
     position: absolute;
     pointer-events: none;
     z-index: 16;
@@ -2092,7 +2092,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     /*transition: all 0.1s;*/
 }
 
-.luckysheet-cell-selected-move {
+.sheet-cell-selected-move {
     position: absolute;
     pointer-events: none;
     z-index: 16;
@@ -2102,7 +2102,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     /*transition: all 0.1s;*/
 }
 
-.luckysheet-cell-selected {
+.sheet-cell-selected {
     position: absolute;
     pointer-events: none;
     z-index: 15;
@@ -2113,7 +2113,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     /*transition: all 0.1s;*/
 }
 
-.luckysheet-cs-inner-border {
+.sheet-cs-inner-border {
     pointer-events: none;
     border: 1px solid #fff;
     position: absolute;
@@ -2123,7 +2123,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     right: 0;
 }
 
-.luckysheet-cs-fillhandle {
+.sheet-cs-fillhandle {
     position: absolute;
     width: 6px;
     height: 6px;
@@ -2136,7 +2136,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     right: -5px;
 }
 
-.luckysheet-cs-draghandle {
+.sheet-cs-draghandle {
     position: absolute;
     cursor: move;
     background-color: #fff;
@@ -2146,35 +2146,35 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     border: 2px solid #fff;
 }
 
-.luckysheet-cs-draghandle-top {
+.sheet-cs-draghandle-top {
     top: -4px;
     left: -2px;
     right: -2px;
     height: 2px;
 }
 
-.luckysheet-cs-draghandle-bottom {
+.sheet-cs-draghandle-bottom {
     right: 0;
     left: -2px;
     bottom: -4px;
     height: 2px;
 }
 
-.luckysheet-cs-draghandle-left {
+.sheet-cs-draghandle-left {
     top: 0;
     left: -4px;
     bottom: 0;
     width: 2px;
 }
 
-.luckysheet-cs-draghandle-right {
+.sheet-cs-draghandle-right {
     top: 0;
     right: -4px;
     bottom: 0;
     width: 2px;
 }
 
-.luckysheet-cs-touchhandle {
+.sheet-cs-touchhandle {
     display: none;
     position: absolute;
     width: 16px;
@@ -2185,7 +2185,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     touch-action: auto;
 }
 
-.luckysheet-cs-touchhandle:before {
+.sheet-cs-touchhandle:before {
     content: '';
     display: block;
     width: 16px;
@@ -2196,27 +2196,27 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     border-radius: 50%;
 }
 
-.luckysheet-cs-touchhandle-lt {
+.sheet-cs-touchhandle-lt {
     left: -13px;
     top: -13px;
 }
 
-.luckysheet-cs-touchhandle-lb {
+.sheet-cs-touchhandle-lb {
     left: -13px;
     bottom: -13px;
 }
 
-.luckysheet-cs-touchhandle-rt {
+.sheet-cs-touchhandle-rt {
     right: -13px;
     top: -13px;
 }
 
-.luckysheet-cs-touchhandle-rb {
+.sheet-cs-touchhandle-rb {
     right: -13px;
     bottom: -13px;
 }
 
-.luckysheet-cs-touchhandle .luckysheet-cs-touchhandle-btn {
+.sheet-cs-touchhandle .sheet-cs-touchhandle-btn {
     position: absolute;
     width: 10px;
     height: 10px;
@@ -2227,6 +2227,29 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     box-sizing: border-box;
     border-radius: 50%;
     z-index: 11;
+}
+
+#sheet-cell-printline-boxs {
+    display: none;
+}
+
+.sheet-cell-printline {
+    position: absolute;
+    pointer-events: none;
+    z-index: 19;
+    border: 3px dotted #0188fb;
+    /* margin: -1px 0 0 -1px; */
+    margin: auto;
+    text-align: center;
+    display: flex; 
+    justify-content: center;
+    flex-direction: column;
+}
+
+.sheet-cell-printline span {
+    font-size: 38px;
+    transition: all 0.1s;
+    color: rgba(0, 0, 0, 0.15);
 }
 
 #luckysheet-dynamicArray-hightShow {

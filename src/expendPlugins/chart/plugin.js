@@ -336,8 +336,8 @@ function chart_selection() {
             }
 
             $('#luckysheet-chart-rangeShow').empty()
-            $('#luckysheet-cell-selected-boxs').hide()
-            $('#luckysheet-cell-selected-focus').hide()
+            $('#sheet-cell-selected-boxs').hide()
+            $('#sheet-cell-selected-focus').hide()
             $('#luckysheet-rows-h-selected').empty()
             $('#luckysheet-cols-h-selected').empty()
             $('#luckysheet-row-count-show').hide()

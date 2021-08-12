@@ -1,7 +1,7 @@
-.luckysheet-print-viewList{
+.sheet-print-viewList{
     position: relative;
     float: right;
-    width:126px;
+    /* width:126px; */
     /* right: 222px; */
     height: 22px;
     line-height: 22px;
@@ -13,10 +13,10 @@
     user-select: none;
 }
 
-.luckysheet-print-viewBtn {
-    position: absolute;
+.sheet-print-viewBtn {
+    /* position: absolute;
     top: 0;
-    left: 0px;
+    left: 0px; */
     width: 42px;
     height:22px;
     align-items: center;
@@ -24,32 +24,32 @@
     cursor: pointer;
 }
 
-.luckysheet-print-viewBtn .iconfont{
+.sheet-print-viewBtn .iconfont{
     font-size: 22px;
 }
 
-.luckysheet-print-viewBtn:hover{
+.sheet-print-viewBtn:hover{
     background: #E1E4E8;
 }
 
-.luckysheet-print-viewBtn-active{
+.sheet-print-viewBtn-active{
     background: #dcdcdc;
     cursor: default;
 }
 
-.luckysheet-print-viewBtn-active:hover{
+.sheet-print-viewBtn-active:hover{
     background: #dcdcdc;
 }
 
-.luckysheet-print-viewNormal{
+.sheet-print-viewNormal{
     left: 0px;
 }
 
-.luckysheet-print-viewLayout{
+.sheet-print-viewLayout{
     left: 42px;
 }
 
-.luckysheet-print-viewPage{
+.sheet-print-viewPage{
     left: 84px;
 }
 

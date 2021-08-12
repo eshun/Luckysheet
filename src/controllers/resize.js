@@ -581,7 +581,7 @@ function customStatisticBarConfig() {
                     break;
 
                 case 'view':
-                    $('.luckysheet-print-viewList').hide();
+                    $('.sheet-print-viewList').hide();
                     isHide++;
                     break;
 

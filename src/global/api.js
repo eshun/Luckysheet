@@ -584,7 +584,7 @@ export function enterEditMode(options = {}){
     if($("#luckysheet-conditionformat-dialog").is(":visible")){
         return;
     }
-    else if ($("#luckysheet-cell-selected").is(":visible")) {
+    else if ($("#sheet-cell-selected").is(":visible")) {
         let last = Store.luckysheet_select_save[Store.luckysheet_select_save.length - 1];
 
         let row_index = last["row_focus"], col_index = last["column_focus"];
@@ -2754,8 +2754,8 @@ export function setRangeShow(range, options = {}) {
         selectHightlightShow();
 
         if(!show){
-            $("#luckysheet-cell-selected-boxs").hide();
-            $("#luckysheet-cell-selected-focus").hide();
+            $("#sheet-cell-selected-boxs").hide();
+            $("#sheet-cell-selected-focus").hide();
             $("#luckysheet-row-count-show").hide();
             $("#luckysheet-column-count-show").hide();
             $("#luckysheet-rows-h-selected").empty();
@@ -6831,4 +6831,72 @@ export function checkTheStatusOfTheSelectedCells(type,status){
     })
 
     return flag;
+}
+
+export function setBorderInfo(options = {}) {
+    let {
+        range=$.extend(true, [], Store.luckysheet_select_save),
+        borderType="border-outside",
+        style,
+        color,
+        success
+    }={...options};
+
+    let subcolormenuid = "luckysheet-icon-borderColor-menuButton";
+    if(!color){
+        color = $("#"+ subcolormenuid).find(".luckysheet-color-selected").val();
+        if(color == null || color == ""){
+            color = "#000";
+        }
+    }
+    if(!style){
+        style = $("#luckysheetborderSizepreview").attr("itemvalue");
+        if(style == null || style == ""){
+            style = "1";
+        }
+    }
+
+    let cfg = $.extend(true, {}, Store.config);
+    if(cfg["borderInfo"] == null){
+        cfg["borderInfo"] = [];
+    }
+
+    let borderInfo = {
+        "rangeType": "range",
+        borderType,
+        color,
+        style,
+        range
+    };
+
+    cfg["borderInfo"].push(borderInfo);
+
+    if (Store.clearjfundo) {
+        Store.jfundo.length  = 0;
+
+        let redo = [];
+
+        redo["type"] = "borderChange";
+
+        redo["config"] = $.extend(true, {}, Store.config);
+        redo["curconfig"] = $.extend(true, {}, cfg);
+        
+        redo["sheetIndex"] = Store.currentSheetIndex;
+
+        Store.jfredo.push(redo);
+    }
+    Store.config = cfg;
+    Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].config = Store.config;
+
+    setTimeout(function () {
+        luckysheetrefreshgrid();
+        if (success && typeof success === 'function') {
+            success();
+        }
+    }, 1);
+}
+
+
+export function showPrintGridLines() {
+
 }

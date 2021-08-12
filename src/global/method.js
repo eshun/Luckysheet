@@ -143,6 +143,7 @@ const defaultConfig = {
         visibledatarow_unique:null,
     
         showGridLines:true,
+        showPrintGridLines:false,        
     
         toobarObject: {}, //toolbar constant
         inlineStringEditCache:null,
@@ -406,7 +407,7 @@ const method = {
             $("#"+ Store.container +" .luckysheet-data-visualization-chart").remove();
             $("#"+ Store.container +" .luckysheet-datavisual-selection-set").remove();
 
-            $("#luckysheet-row-count-show, #luckysheet-formula-functionrange-select, #luckysheet-row-count-show, #luckysheet-column-count-show, #luckysheet-change-size-line, #luckysheet-cell-selected-focus, #luckysheet-selection-copy, #luckysheet-cell-selected-extend, #luckysheet-cell-selected-move, #luckysheet-cell-selected").hide();
+            $("#luckysheet-row-count-show, #luckysheet-formula-functionrange-select, #luckysheet-row-count-show, #luckysheet-column-count-show, #luckysheet-change-size-line, #sheet-cell-selected-focus, #luckysheet-selection-copy, #sheet-cell-selected-extend, #sheet-cell-selected-move, #sheet-cell-selected").hide();
 
             delete sheetfile.load;
         }

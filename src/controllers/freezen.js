@@ -480,7 +480,7 @@ const luckysheetFreezen = {
     },
     removeAssistCanvas: function(){
         $("#luckysheet-grid-window-1 > canvas").not($("#luckysheetTableContent")).remove();
-        $("#luckysheet-cell-selected").css("z-index", 15);
+        $("#sheet-cell-selected").css("z-index", 15);
     },
     scrollAdapt: function(){
         let _this = this;
@@ -561,13 +561,13 @@ const luckysheetFreezen = {
                         rangeshow = false;
                     }
                     else if(top_move < freezenTop + offTop){
-                        $("#luckysheet-cell-selected-boxs").find(".luckysheet-cell-selected").eq(s).show().css({
+                        $("#sheet-cell-selected-boxs").find(".sheet-cell-selected").eq(s).show().css({
                             "top": freezenTop + offTop,
                             "height": height_move - (freezenTop + offTop - top_move)
                         });
                     }
                     else{
-                        $("#luckysheet-cell-selected-boxs").find(".luckysheet-cell-selected").eq(s).show().css({
+                        $("#sheet-cell-selected-boxs").find(".sheet-cell-selected").eq(s).show().css({
                             "top": top_move,
                             "height": height_move
                         });
@@ -575,20 +575,20 @@ const luckysheetFreezen = {
                 }
                 else if(r2 >= freezen_rowindex){//原选区有一部分在冻结区内
                     if(top_move + height_move < freezenTop + offTop){
-                        $("#luckysheet-cell-selected-boxs").find(".luckysheet-cell-selected").eq(s).show().css({
+                        $("#sheet-cell-selected-boxs").find(".sheet-cell-selected").eq(s).show().css({
                             "top": top_move + offTop,
                             "height": freezenTop - top_move
                         });
                     }
                     else{
-                        $("#luckysheet-cell-selected-boxs").find(".luckysheet-cell-selected").eq(s).show().css({
+                        $("#sheet-cell-selected-boxs").find(".sheet-cell-selected").eq(s).show().css({
                             "top": top_move + offTop,
                             "height": height_move - offTop
                         });
                     }
                 }
                 else{//原选区在冻结区内
-                    $("#luckysheet-cell-selected-boxs").find(".luckysheet-cell-selected").eq(s).show().css("top", top_move + offTop);
+                    $("#sheet-cell-selected-boxs").find(".sheet-cell-selected").eq(s).show().css("top", top_move + offTop);
                 }
 
                 let c1 = obj.column[0], 
@@ -605,13 +605,13 @@ const luckysheetFreezen = {
                         rangeshow = false;
                     }
                     else if(left_move < freezenLeft + offLeft){
-                        $("#luckysheet-cell-selected-boxs").find(".luckysheet-cell-selected").eq(s).show().css({
+                        $("#sheet-cell-selected-boxs").find(".sheet-cell-selected").eq(s).show().css({
                             "left": freezenLeft + offLeft,
                             "width": width_move - (freezenLeft + offLeft - left_move)
                         });
                     }
                     else{
-                        $("#luckysheet-cell-selected-boxs").find(".luckysheet-cell-selected").eq(s).show().css({
+                        $("#sheet-cell-selected-boxs").find(".sheet-cell-selected").eq(s).show().css({
                             "left": left_move,
                             "width": width_move
                         });
@@ -619,24 +619,24 @@ const luckysheetFreezen = {
                 }
                 else if(c2 >= freezen_colindex){//原选区有一部分在冻结区内
                     if(left_move + width_move < freezenLeft + offLeft){
-                        $("#luckysheet-cell-selected-boxs").find(".luckysheet-cell-selected").eq(s).show().css({
+                        $("#sheet-cell-selected-boxs").find(".sheet-cell-selected").eq(s).show().css({
                             "left": left_move + offLeft,
                             "width": freezenLeft - left_move
                         });
                     }
                     else{
-                        $("#luckysheet-cell-selected-boxs").find(".luckysheet-cell-selected").eq(s).show().css({
+                        $("#sheet-cell-selected-boxs").find(".sheet-cell-selected").eq(s).show().css({
                             "left": left_move + offLeft,
                             "width": width_move - offLeft
                         });
                     }
                 }
                 else{//原选区在冻结区内
-                    $("#luckysheet-cell-selected-boxs").find(".luckysheet-cell-selected").eq(s).show().css("left", left_move + offLeft);
+                    $("#sheet-cell-selected-boxs").find(".sheet-cell-selected").eq(s).show().css("left", left_move + offLeft);
                 }
 
                 if(!rangeshow){
-                    $("#luckysheet-cell-selected-boxs").find(".luckysheet-cell-selected").eq(s).hide();
+                    $("#sheet-cell-selected-boxs").find(".sheet-cell-selected").eq(s).hide();
                 }
 
                 if(s == Store.luckysheet_select_save.length - 1){
@@ -670,13 +670,13 @@ const luckysheetFreezen = {
                             focuscell = false;
                         }
                         else if(top < freezenTop + offTop){ 
-                            $("#luckysheet-cell-selected-focus").show().css({
+                            $("#sheet-cell-selected-focus").show().css({
                                 "top": freezenTop + offTop,
                                 "height": height - (freezenTop + offTop - top)
                             })
                         }
                         else{
-                            $("#luckysheet-cell-selected-focus").show().css({
+                            $("#sheet-cell-selected-focus").show().css({
                                 "top": top,
                                 "height": height
                             });
@@ -684,20 +684,20 @@ const luckysheetFreezen = {
                     }
                     else if(top + height >= freezenTop){
                         if(top + height < freezenTop + offTop){
-                            $("#luckysheet-cell-selected-focus").show().css({
+                            $("#sheet-cell-selected-focus").show().css({
                                 "top": top + offTop,
                                 "height": freezenTop - top
                             })
                         }
                         else{
-                            $("#luckysheet-cell-selected-focus").show().css({
+                            $("#sheet-cell-selected-focus").show().css({
                                 "top": top + offTop,
                                 "height": height - offTop
                             })
                         }
                     }
                     else{
-                        $("#luckysheet-cell-selected-focus").show().css("top", top + offTop);
+                        $("#sheet-cell-selected-focus").show().css("top", top + offTop);
                     }
 
                     if(left >= freezenLeft){
@@ -705,13 +705,13 @@ const luckysheetFreezen = {
                             focuscell = false;
                         }
                         else if(left < freezenLeft + offLeft){ 
-                            $("#luckysheet-cell-selected-focus").show().css({
+                            $("#sheet-cell-selected-focus").show().css({
                                 "left": freezenLeft + offLeft,
                                 "width": width - (freezenLeft + offLeft - left)
                             })
                         }
                         else{
-                            $("#luckysheet-cell-selected-focus").show().css({
+                            $("#sheet-cell-selected-focus").show().css({
                                 "left": left,
                                 "width": width
                             });
@@ -719,24 +719,24 @@ const luckysheetFreezen = {
                     }
                     else if(left + width >= freezenLeft){
                         if(left + width < freezenLeft + offLeft){
-                            $("#luckysheet-cell-selected-focus").show().css({
+                            $("#sheet-cell-selected-focus").show().css({
                                 "left": left + offLeft,
                                 "width": freezenLeft - left
                             })
                         }
                         else{
-                            $("#luckysheet-cell-selected-focus").show().css({
+                            $("#sheet-cell-selected-focus").show().css({
                                 "left": left + offLeft,
                                 "width": width - offLeft
                             })
                         }
                     }
                     else{
-                        $("#luckysheet-cell-selected-focus").show().css("left", left + offLeft);
+                        $("#sheet-cell-selected-focus").show().css("left", left + offLeft);
                     }
 
                     if(!focuscell){
-                        $("#luckysheet-cell-selected-focus").hide();
+                        $("#sheet-cell-selected-focus").hide();
                     }
                 }
             }
@@ -760,16 +760,16 @@ const luckysheetFreezen = {
 
                 if(r1 >= freezen_rowindex){//原选区在冻结区外
                     if(top_move + height_move < freezenTop + offTop){
-                        $("#luckysheet-cell-selected-boxs").find(".luckysheet-cell-selected").eq(s).hide();
+                        $("#sheet-cell-selected-boxs").find(".sheet-cell-selected").eq(s).hide();
                     }
                     else if(top_move < freezenTop + offTop){
-                        $("#luckysheet-cell-selected-boxs").find(".luckysheet-cell-selected").eq(s).show().css({
+                        $("#sheet-cell-selected-boxs").find(".sheet-cell-selected").eq(s).show().css({
                             "top": freezenTop + offTop,
                             "height": height_move - (freezenTop + offTop - top_move)
                         });
                     }
                     else{
-                        $("#luckysheet-cell-selected-boxs").find(".luckysheet-cell-selected").eq(s).show().css({
+                        $("#sheet-cell-selected-boxs").find(".sheet-cell-selected").eq(s).show().css({
                             "top": top_move,
                             "height": height_move
                         });
@@ -777,20 +777,20 @@ const luckysheetFreezen = {
                 }
                 else if(r2 >= freezen_rowindex){//原选区有一部分在冻结区内
                     if(top_move + height_move < freezenTop + offTop){
-                        $("#luckysheet-cell-selected-boxs").find(".luckysheet-cell-selected").eq(s).show().css({
+                        $("#sheet-cell-selected-boxs").find(".sheet-cell-selected").eq(s).show().css({
                             "top": top_move + offTop,
                             "height": freezenTop - top_move
                         });
                     }
                     else{
-                        $("#luckysheet-cell-selected-boxs").find(".luckysheet-cell-selected").eq(s).show().css({
+                        $("#sheet-cell-selected-boxs").find(".sheet-cell-selected").eq(s).show().css({
                             "top": top_move + offTop,
                             "height": height_move - offTop
                         });
                     }
                 }
                 else{//原选区在冻结区内
-                    $("#luckysheet-cell-selected-boxs").find(".luckysheet-cell-selected").eq(s).show().css("top", top_move + offTop);
+                    $("#sheet-cell-selected-boxs").find(".sheet-cell-selected").eq(s).show().css("top", top_move + offTop);
                 }
 
                 if(s == Store.luckysheet_select_save.length - 1){
@@ -811,16 +811,16 @@ const luckysheetFreezen = {
 
                     if(top >= freezenTop){
                         if(top + height < freezenTop + offTop){
-                            $("#luckysheet-cell-selected-focus").hide();
+                            $("#sheet-cell-selected-focus").hide();
                         }
                         else if(top < freezenTop + offTop){ 
-                            $("#luckysheet-cell-selected-focus").show().css({
+                            $("#sheet-cell-selected-focus").show().css({
                                 "top": freezenTop + offTop,
                                 "height": height - (freezenTop + offTop - top)
                             })
                         }
                         else{
-                            $("#luckysheet-cell-selected-focus").show().css({
+                            $("#sheet-cell-selected-focus").show().css({
                                 "top": top,
                                 "height": height
                             });
@@ -828,20 +828,20 @@ const luckysheetFreezen = {
                     }
                     else if(top + height >= freezenTop){
                         if(top + height < freezenTop + offTop){
-                            $("#luckysheet-cell-selected-focus").show().css({
+                            $("#sheet-cell-selected-focus").show().css({
                                 "top": top + offTop,
                                 "height": freezenTop - top
                             })
                         }
                         else{
-                            $("#luckysheet-cell-selected-focus").show().css({
+                            $("#sheet-cell-selected-focus").show().css({
                                 "top": top + offTop,
                                 "height": height - offTop
                             })
                         }
                     }
                     else{
-                        $("#luckysheet-cell-selected-focus").show().css("top", top + offTop);
+                        $("#sheet-cell-selected-focus").show().css("top", top + offTop);
                     }
                 }
             }
@@ -865,16 +865,16 @@ const luckysheetFreezen = {
 
                 if(c1 >= freezen_colindex){//原选区在冻结区外
                     if(left_move + width_move < freezenLeft + offLeft){
-                        $("#luckysheet-cell-selected-boxs").find(".luckysheet-cell-selected").eq(s).hide();
+                        $("#sheet-cell-selected-boxs").find(".sheet-cell-selected").eq(s).hide();
                     }
                     else if(left_move < freezenLeft + offLeft){
-                        $("#luckysheet-cell-selected-boxs").find(".luckysheet-cell-selected").eq(s).show().css({
+                        $("#sheet-cell-selected-boxs").find(".sheet-cell-selected").eq(s).show().css({
                             "left": freezenLeft + offLeft,
                             "width": width_move - (freezenLeft + offLeft - left_move)
                         });
                     }
                     else{
-                        $("#luckysheet-cell-selected-boxs").find(".luckysheet-cell-selected").eq(s).show().css({
+                        $("#sheet-cell-selected-boxs").find(".sheet-cell-selected").eq(s).show().css({
                             "left": left_move,
                             "width": width_move
                         });
@@ -882,20 +882,20 @@ const luckysheetFreezen = {
                 }
                 else if(c2 >= freezen_colindex){//原选区有一部分在冻结区内
                     if(left_move + width_move < freezenLeft + offLeft){
-                        $("#luckysheet-cell-selected-boxs").find(".luckysheet-cell-selected").eq(s).show().css({
+                        $("#sheet-cell-selected-boxs").find(".sheet-cell-selected").eq(s).show().css({
                             "left": left_move + offLeft,
                             "width": freezenLeft - left_move
                         });
                     }
                     else{
-                        $("#luckysheet-cell-selected-boxs").find(".luckysheet-cell-selected").eq(s).show().css({
+                        $("#sheet-cell-selected-boxs").find(".sheet-cell-selected").eq(s).show().css({
                             "left": left_move + offLeft,
                             "width": width_move - offLeft
                         });
                     }
                 }
                 else{//原选区在冻结区内
-                    $("#luckysheet-cell-selected-boxs").find(".luckysheet-cell-selected").eq(s).show().css("left", left_move + offLeft);
+                    $("#sheet-cell-selected-boxs").find(".sheet-cell-selected").eq(s).show().css("left", left_move + offLeft);
                 }
 
                 if(s == Store.luckysheet_select_save.length - 1){
@@ -916,16 +916,16 @@ const luckysheetFreezen = {
 
                     if(left >= freezenLeft){
                         if(left + width < freezenLeft + offLeft){
-                            $("#luckysheet-cell-selected-focus").hide();
+                            $("#sheet-cell-selected-focus").hide();
                         }
                         else if(left < freezenLeft + offLeft){ 
-                            $("#luckysheet-cell-selected-focus").show().css({
+                            $("#sheet-cell-selected-focus").show().css({
                                 "left": freezenLeft + offLeft,
                                 "width": width - (freezenLeft + offLeft - left)
                             })
                         }
                         else{
-                            $("#luckysheet-cell-selected-focus").show().css({
+                            $("#sheet-cell-selected-focus").show().css({
                                 "left": left,
                                 "width": width
                             });
@@ -933,20 +933,20 @@ const luckysheetFreezen = {
                     }
                     else if(left + width >= freezenLeft){
                         if(left + width < freezenLeft + offLeft){
-                            $("#luckysheet-cell-selected-focus").show().css({
+                            $("#sheet-cell-selected-focus").show().css({
                                 "left": left + offLeft,
                                 "width": freezenLeft - left
                             })
                         }
                         else{
-                            $("#luckysheet-cell-selected-focus").show().css({
+                            $("#sheet-cell-selected-focus").show().css({
                                 "left": left + offLeft,
                                 "width": width - offLeft
                             })
                         }
                     }
                     else{
-                        $("#luckysheet-cell-selected-focus").show().css("left", left + offLeft);
+                        $("#sheet-cell-selected-focus").show().css("left", left + offLeft);
                     }
                 }
             }

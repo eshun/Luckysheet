@@ -235,7 +235,7 @@ function createFilterOptions(luckysheet_filter_save, filterObj) {
     let col = Store.visibledatacolumn[c2], 
         col_pre = c1 - 1 == -1 ? 0 : Store.visibledatacolumn[c1 - 1];
     
-    let newSelectedHTML = '<div id="luckysheet-filter-selected-sheet'+ Store.currentSheetIndex +'" class="luckysheet-cell-selected luckysheet-filter-selected"  style="left:'+ col_pre +'px;width:'+ (col - col_pre - 1) +'px;top:'+ row_pre +'px;height:'+ (row - row_pre - 1) +'px;display:block;border-color:#897BFF;z-index:20;background:none;"></div>';
+    let newSelectedHTML = '<div id="luckysheet-filter-selected-sheet'+ Store.currentSheetIndex +'" class="sheet-cell-selected luckysheet-filter-selected"  style="left:'+ col_pre +'px;width:'+ (col - col_pre - 1) +'px;top:'+ row_pre +'px;height:'+ (row - row_pre - 1) +'px;display:block;border-color:#897BFF;z-index:20;background:none;"></div>';
     $("#luckysheet-cell-main").append(newSelectedHTML);
     
     let optionHTML = "";

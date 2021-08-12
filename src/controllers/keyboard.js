@@ -391,7 +391,7 @@ export function keyboardInitial(){
             if($(event.target).hasClass("formulaInputFocus") || $("#luckysheet-conditionformat-dialog").is(":visible")){
                 return;
             }
-            else if (String.fromCharCode(kcode) != null && $("#luckysheet-cell-selected").is(":visible")) {
+            else if (String.fromCharCode(kcode) != null && $("#sheet-cell-selected").is(":visible")) {
                 let last = Store.luckysheet_select_save[Store.luckysheet_select_save.length - 1];
 
                 let row_index = last["row_focus"], col_index = last["column_focus"];
@@ -847,7 +847,7 @@ export function keyboardInitial(){
                 event.preventDefault();
             }
             else if (!((kcode >= 112 && kcode <= 123) || kcode <= 46 || kcode == 144 || kcode == 108 || event.ctrlKey || event.altKey || (event.shiftKey && (kcode == 37 || kcode == 38 || kcode == 39 || kcode == 40))) || kcode == 8 || kcode == 32 || kcode == 46 || kcode == 0 || (event.ctrlKey && kcode == 86)) {
-                if (String.fromCharCode(kcode) != null && $("#luckysheet-cell-selected").is(":visible") && (kcode != keycode.CAPSLOCK && kcode != keycode.WIN && kcode != 18)) {
+                if (String.fromCharCode(kcode) != null && $("#sheet-cell-selected").is(":visible") && (kcode != keycode.CAPSLOCK && kcode != keycode.WIN && kcode != 18)) {
                     let last = Store.luckysheet_select_save[Store.luckysheet_select_save.length - 1];
 
                     let row_index = last["row_focus"], col_index = last["column_focus"];

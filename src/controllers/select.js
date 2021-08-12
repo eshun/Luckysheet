@@ -27,8 +27,8 @@ function seletedHighlistByindex(id, r1, r2, c1, c2) {
 
 //Set selection highlight
 function selectHightlightShow(isRestore = false) {
-    $("#luckysheet-cell-selected-boxs").show();
-    $("#luckysheet-cell-selected-boxs #luckysheet-cell-selected").siblings(".luckysheet-cell-selected").remove();
+    $("#sheet-cell-selected-boxs").show();
+    $("#sheet-cell-selected-boxs #sheet-cell-selected").siblings(".sheet-cell-selected").remove();
 
     if (Store.luckysheet_select_save.length > 0) {
         for (let i = 0; i < Store.luckysheet_select_save.length; i++) {
@@ -90,7 +90,7 @@ function selectHightlightShow(isRestore = false) {
             if (i == 0) {
                 if (Store.luckysheet_select_save.length == 1) {
                     if (browser.mobilecheck()) {//移动端
-                        $("#luckysheet-cell-selected-boxs #luckysheet-cell-selected").css({
+                        $("#sheet-cell-selected-boxs #sheet-cell-selected").css({
                             "left": Store.luckysheet_select_save[i]["left_move"],
                             "width": Store.luckysheet_select_save[i]["width_move"],
                             "top": Store.luckysheet_select_save[i]["top_move"],
@@ -98,17 +98,17 @@ function selectHightlightShow(isRestore = false) {
                             "display": "block",
                             "border": "1px solid #0188fb"
                         })
-                            .find(".luckysheet-cs-draghandle")
+                            .find(".sheet-cs-draghandle")
                             .css("display", "block")
                             .end()
-                            .find(".luckysheet-cs-fillhandle")
+                            .find(".sheet-cs-fillhandle")
                             .css("display", "none")
                             .end()
-                            .find(".luckysheet-cs-touchhandle")
+                            .find(".sheet-cs-touchhandle")
                             .css("display", "block");
                     }
                     else {
-                        $("#luckysheet-cell-selected-boxs #luckysheet-cell-selected").css({
+                        $("#sheet-cell-selected-boxs #sheet-cell-selected").css({
                             "left": Store.luckysheet_select_save[i]["left_move"],
                             "width": Store.luckysheet_select_save[i]["width_move"],
                             "top": Store.luckysheet_select_save[i]["top_move"],
@@ -116,18 +116,18 @@ function selectHightlightShow(isRestore = false) {
                             "display": "block",
                             "border": "1px solid #0188fb"
                         })
-                            .find(".luckysheet-cs-draghandle")
+                            .find(".sheet-cs-draghandle")
                             .css("display", "block")
                             .end()
-                            .find(".luckysheet-cs-fillhandle")
+                            .find(".sheet-cs-fillhandle")
                             .css("display", "block")
                             .end()
-                            .find(".luckysheet-cs-touchhandle")
+                            .find(".sheet-cs-touchhandle")
                             .css("display", "none");
                     }
                 }
                 else {
-                    $("#luckysheet-cell-selected-boxs #luckysheet-cell-selected").css({
+                    $("#sheet-cell-selected-boxs #sheet-cell-selected").css({
                         "left": Store.luckysheet_select_save[i]["left_move"],
                         "width": Store.luckysheet_select_save[i]["width_move"],
                         "top": Store.luckysheet_select_save[i]["top_move"],
@@ -135,20 +135,20 @@ function selectHightlightShow(isRestore = false) {
                         "display": "block",
                         "border": "1px solid rgba(1, 136, 251, 0.15)"
                     })
-                        .find(".luckysheet-cs-draghandle")
+                        .find(".sheet-cs-draghandle")
                         .css("display", "none")
                         .end()
-                        .find(".luckysheet-cs-fillhandle")
+                        .find(".sheet-cs-fillhandle")
                         .css("display", "none");
                 }
             }
             else {
-                $("#luckysheet-cell-selected-boxs").append('<div class="luckysheet-cell-selected" style="left: ' + Store.luckysheet_select_save[i]["left_move"] + 'px; width: ' + Store.luckysheet_select_save[i]["width_move"] + 'px; top: ' + Store.luckysheet_select_save[i]["top_move"] + 'px; height: ' + Store.luckysheet_select_save[i]["height_move"] + 'px; border: 1px solid rgba(1, 136, 251, 0.15); display: block;"></div>');
+                $("#sheet-cell-selected-boxs").append('<div class="sheet-cell-selected" style="left: ' + Store.luckysheet_select_save[i]["left_move"] + 'px; width: ' + Store.luckysheet_select_save[i]["width_move"] + 'px; top: ' + Store.luckysheet_select_save[i]["top_move"] + 'px; height: ' + Store.luckysheet_select_save[i]["height_move"] + 'px; border: 1px solid rgba(1, 136, 251, 0.15); display: block;"></div>');
             }
 
             if (i == Store.luckysheet_select_save.length - 1) {
                 //focus 取选区数组最后一个
-                $("#luckysheet-cell-selected-focus").css({
+                $("#sheet-cell-selected-focus").css({
                     "left": Store.luckysheet_select_save[i]["left"],
                     "width": Store.luckysheet_select_save[i]["width"],
                     "top": Store.luckysheet_select_save[i]["top"],

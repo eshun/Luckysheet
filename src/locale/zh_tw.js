@@ -10248,6 +10248,7 @@ export default {
         layoutBtn: "頁面佈局",
         pageBtn  : "分頁預覽",
 
+        menuItemGridLines: "列印網格線",
         menuItemPrint  : "列印(Ctrl+P)",
         menuItemAreas  : "列印區域",
         menuItemRows   : "列印標題行",

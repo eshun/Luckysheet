@@ -63,6 +63,10 @@
 			stroke: currentColor;
 			stroke-linecap: round;
 		}
+
+		.sheet-print-viewLayout{
+			display: none;
+		}
 	</style>
 </head>
 
@@ -78,6 +82,8 @@
 						copyAs: false,
 						data: false,
 					},
+					defaultColWidth:73,
+					defaultRowHeight:19,
 					showtoolbar: true,
 					showtoolbarConfig:{
 						pivotTable: false,
@@ -104,8 +110,27 @@
 			};
 			luckysheet.create(options);
 
+			// setTimeout(function () {
+			// 	luckysheet.setBorderInfo({
+			// 		range:[
+			// 			{column:[0,9],row:[0,20]},
+			// 			{column:[10,19],row:[0,20]},
+			// 			{column:[20,29],row:[0,20]},
+			// 			{column:[30,39],row:[0,20]},
 
+			// 			{column:[0,9],row:[21,40]},
+			// 			{column:[10,19],row:[21,40]},
+			// 			{column:[20,29],row:[21,40]},
+						
+			// 			{column:[0,9],row:[41,60]},
+			// 			{column:[10,19],row:[41,60]},
+			// 		],
+			// 		style:"9",
+        	// 		color:"#3d85c6",
+			// 	});
+			// }, 1000);
 			///luckysheet.setCellValue(row, column, value)
+			//getRangeHtml()// 获取当前选区HTML（table） 可以用于选区打印
 		})
 	</script>
 </body>

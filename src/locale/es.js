@@ -9998,6 +9998,7 @@ export default {
         layoutBtn:"Disposición de página",
         pageBtn:"Previsualización de saltos de página",
 
+        menuItemGridLines:"Imprimir líneas de cuadrícula",
         menuItemPrint:"Imprimir (Ctrl+P)",
         menuItemAreas:"Imprimir áreas",
         menuItemRows:"Imprimir títulos de filas",

@@ -128,6 +128,7 @@ const Store = {
     visibledatarow_unique:null,
 
     showGridLines:true,
+    showPrintGridLines:false,
 
     toobarObject: {}, //toolbar constant
     inlineStringEditCache:null,

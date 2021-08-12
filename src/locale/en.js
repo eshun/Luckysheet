@@ -10030,6 +10030,7 @@ export default {
         layoutBtn:"Page Layout",
         pageBtn:"Page break preview",
 
+        menuItemGridLines:"Print Grid Line",
         menuItemPrint:"Print (Ctrl+P)",
         menuItemAreas:"Print areas",
         menuItemRows:"Print title rows",

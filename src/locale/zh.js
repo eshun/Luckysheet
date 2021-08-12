@@ -10255,6 +10255,7 @@ export default {
         layoutBtn:"页面布局",
         pageBtn:"分页预览",
 
+        menuItemGridLines:"打印网格线",
         menuItemPrint:"打印(Ctrl+P)",
         menuItemAreas:"打印区域",
         menuItemRows:"打印标题行",

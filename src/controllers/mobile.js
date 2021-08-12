@@ -217,7 +217,7 @@ export default function mobileinit(){
     })
 
     //滑动选择选区
-    $(document).on("touchstart", ".luckysheet-cs-touchhandle", function(event){
+    $(document).on("touchstart", ".sheet-cs-touchhandle", function(event){
         luckysheet_touchhandle_status = true;
         luckysheet_touchmove_status = false;
         // console.log(1111111111);

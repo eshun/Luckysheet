@@ -126,24 +126,25 @@ const gridHTML = function(){
                                                     <div class="luckysheet-row-count-show luckysheet-count-show" id="luckysheet-row-count-show"></div>
                                                     <div class="luckysheet-column-count-show luckysheet-count-show" id="luckysheet-column-count-show"></div>
                                                     <div class="luckysheet-change-size-line" id="luckysheet-change-size-line"></div>  
-                                                    <div class="luckysheet-cell-selected-focus" id="luckysheet-cell-selected-focus"></div>  
+                                                    <div class="sheet-cell-selected-focus" id="sheet-cell-selected-focus"></div>  
                                                     <div id="luckysheet-selection-copy"></div>  
                                                     <div id="luckysheet-chart-rangeShow"></div>
-                                                    <div class="luckysheet-cell-selected-extend" id="luckysheet-cell-selected-extend"></div>  
-                                                    <div class="luckysheet-cell-selected-move" id="luckysheet-cell-selected-move"></div>  
-                                                    <div id="luckysheet-cell-selected-boxs">
-                                                        <div id="luckysheet-cell-selected" class="luckysheet-cell-selected">
-                                                            <div class="luckysheet-cs-inner-border"></div>
-                                                            <div class="luckysheet-cs-fillhandle"></div>
-                                                            <div class="luckysheet-cs-inner-border"></div>
-                                                            <div class="luckysheet-cs-draghandle-top luckysheet-cs-draghandle"></div>
-                                                            <div class="luckysheet-cs-draghandle-bottom luckysheet-cs-draghandle"></div>
-                                                            <div class="luckysheet-cs-draghandle-left luckysheet-cs-draghandle"></div>
-                                                            <div class="luckysheet-cs-draghandle-right luckysheet-cs-draghandle"></div>
-                                                            <div class="luckysheet-cs-touchhandle luckysheet-cs-touchhandle-lt"><div class="luckysheet-cs-touchhandle-btn"></div></div>
-                                                            <div class="luckysheet-cs-touchhandle luckysheet-cs-touchhandle-rb"><div class="luckysheet-cs-touchhandle-btn"></div></div>
+                                                    <div class="sheet-cell-selected-extend" id="sheet-cell-selected-extend"></div>  
+                                                    <div class="sheet-cell-selected-move" id="sheet-cell-selected-move"></div>  
+                                                    <div id="sheet-cell-selected-boxs">
+                                                        <div id="sheet-cell-selected" class="sheet-cell-selected">
+                                                            <div class="sheet-cs-inner-border"></div>
+                                                            <div class="sheet-cs-fillhandle"></div>
+                                                            <div class="sheet-cs-inner-border"></div>
+                                                            <div class="sheet-cs-draghandle-top sheet-cs-draghandle"></div>
+                                                            <div class="sheet-cs-draghandle-bottom sheet-cs-draghandle"></div>
+                                                            <div class="sheet-cs-draghandle-left sheet-cs-draghandle"></div>
+                                                            <div class="sheet-cs-draghandle-right sheet-cs-draghandle"></div>
+                                                            <div class="sheet-cs-touchhandle sheet-cs-touchhandle-lt"><div class="sheet-cs-touchhandle-btn"></div></div>
+                                                            <div class="sheet-cs-touchhandle sheet-cs-touchhandle-rb"><div class="sheet-cs-touchhandle-btn"></div></div>
                                                         </div>
                                                     </div>
+                                                    <div id="sheet-cell-printline-boxs"></div>
                                                     <div id="luckysheet-postil-showBoxs"></div>
                                                     <div id="luckysheet-multipleRange-show"></div>  
                                                     <div id="luckysheet-dynamicArray-hightShow"></div>  
@@ -253,10 +254,10 @@ const gridHTML = function(){
                                     </div>
                                     <div class="luckysheet-zoom-ratioText" id="luckysheet-zoom-ratioText">100%</div>
                                 </div>
-                                <div class="luckysheet-print-viewList">
-                                    <div type="viewNormal" class="luckysheet-print-viewBtn luckysheet-print-viewNormal luckysheet-print-viewBtn-active" title="${locale_print.normalBtn}"><i class="icon iconfont luckysheet-iconfont-putong"></i></div>
-                                    <div type="viewLayout" class="luckysheet-print-viewBtn luckysheet-print-viewLayout" title="${locale_print.layoutBtn}"><i class="icon iconfont luckysheet-iconfont-yemianbuju"></i></div>
-                                    <div type="viewPage" class="luckysheet-print-viewBtn luckysheet-print-viewPage" title="${locale_print.pageBtn}"><i class="icon iconfont luckysheet-iconfont-fenyeyulan"></i></div>
+                                <div class="sheet-print-viewList">
+                                    <div type="viewNormal" class="sheet-print-viewBtn sheet-print-viewNormal sheet-print-viewBtn-active" title="${locale_print.normalBtn}"><i class="icon iconfont luckysheet-iconfont-putong"></i></div>
+                                    <div type="viewLayout" class="sheet-print-viewBtn sheet-print-viewLayout" title="${locale_print.layoutBtn}"><i class="icon iconfont luckysheet-iconfont-yemianbuju"></i></div>
+                                    <div type="viewPage" class="sheet-print-viewBtn sheet-print-viewPage" title="${locale_print.pageBtn}"><i class="icon iconfont luckysheet-iconfont-fenyeyulan"></i></div>
                                 </div>
                                 <div class="luckysheet-bottom-content">
                                     <div id="luckysheet_info_detail_update" class="luckysheet_info_detail_update"> ${locale_info.detailUpdate} </div> 
@@ -267,7 +268,7 @@ const gridHTML = function(){
                         </div> 
                     </div>
                     <div id="luckysheet-copy-content" contenteditable="true"></div>
-                    <input id="luckysheet-copy-btn" type="button" data-clipboard-target="luckysheet-copy-content">
+                    <input id="luckysheet-copy-btn" type="button" data-clipboard-target="luckysheet-copy-content" />
                     <div id="testdpidiv" style="height: 1in; left: -100%; position: absolute; top: -100%; width: 1in;"></div>
                   </div>`;
 }

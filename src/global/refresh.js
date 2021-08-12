@@ -16,6 +16,7 @@ import luckysheetPostil from '../controllers/postil';
 import dataVerificationCtrl from '../controllers/dataVerificationCtrl';
 import hyperlinkCtrl from '../controllers/hyperlinkCtrl';
 import { selectHightlightShow, selectionCopyShow, collaborativeEditBox } from '../controllers/select';
+import { printLineAndNumber } from '../controllers/print';
 import { createFilterOptions } from '../controllers/filter';
 import { getSheetIndex } from '../methods/get';
 import Store from '../store';
@@ -189,6 +190,10 @@ function jfrefreshgrid(data, range, allParam, isRunExecFunction = true, isRefres
 
     /* 选区同步 */
     selectHightlightShow();
+    
+    //打印预览区同步
+    printLineAndNumber();
+    
     window.luckysheet_getcelldata_cache = null;
 }
 
@@ -1030,6 +1035,9 @@ function jfrefreshgrid_rhcw(rowheight, colwidth, isRefreshCanvas=true){
     if($("#luckysheet-dropCell-icon").is(":visible")){
         $("#luckysheet-dropCell-icon").remove();
     }
+
+    //打印预览区同步
+    printLineAndNumber();
 
     //有冻结状态时，同步行高、列宽
     if(luckysheetFreezen.freezenhorizontaldata != null && luckysheetFreezen.freezenverticaldata != null){

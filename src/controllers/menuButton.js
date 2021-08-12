@@ -5,6 +5,7 @@ import luckysheetMoreFormat from './moreFormat';
 import alternateformat from './alternateformat';
 import conditionformat from './conditionformat';
 import server from './server';
+import { printLineAndNumber } from './print';
 import { luckysheet_searcharray } from './sheetSearch';
 import luckysheetFreezen from './freezen';
 import luckysheetsizeauto from './resize';
@@ -67,6 +68,9 @@ const menuButton = {
         else{
             $obj.find(".luckysheet-cols-menuitem[itemvalue='"+ value +"']").find("span.icon").html('<i class="fa fa-check luckysheet-mousedown-cancel"></i>');
         }
+    },
+    blur: function($obj){
+        $obj.find(".luckysheet-cols-menuitem").find("span.icon").html("");
     },
     createButtonMenu: function(itemdata){
         let itemset = "";
@@ -2807,11 +2811,12 @@ const menuButton = {
             const locale_print = _locale.print;
             if($menuButton.length == 0){
                 let itemdata = [
-                    {"text": locale_print.menuItemPrint, "value": "print", "example": '<i class="iconfont luckysheet-iconfont-dayin" aria-hidden="true"></i>'},
+                    {"text": locale_print.menuItemGridLines, "value": "gridLines", "example": ''},
                     {"text": "", "value": "split", "example": ""},
+                    {"text": locale_print.menuItemPrint, "value": "print", "example": '<i class="iconfont luckysheet-iconfont-dayin" aria-hidden="true"></i>'},
                     {"text": locale_print.menuItemAreas, "value": "areas", "example": '<i class="iconfont luckysheet-iconfont-tihuan" aria-hidden="true"></i>'},
-                    {"text": locale_print.menuItemRows, "value": "rows", "example": '<i class="iconfont luckysheet-iconfont-zhuandao1" aria-hidden="true"></i>'},
-                    {"text": locale_print.menuItemColumns, "value": "columns", "example": '<i class="iconfont luckysheet-iconfont-dingwei" aria-hidden="true"></i>'},
+                    // {"text": locale_print.menuItemRows, "value": "rows", "example": '<i class="iconfont luckysheet-iconfont-zhuandao1" aria-hidden="true"></i>'},
+                    // {"text": locale_print.menuItemColumns, "value": "columns", "example": '<i class="iconfont luckysheet-iconfont-dingwei" aria-hidden="true"></i>'},
                 ];
 
                 let itemset = _this.createButtonMenu(itemdata);
@@ -2829,11 +2834,21 @@ const menuButton = {
 
                     if(itemvalue == "print"){ //Print config
                         alert("print");
+                    }else if(itemvalue == "gridLines"){
+                        Store.showPrintGridLines=!Store.showPrintGridLines;
+                        printLineAndNumber();
                     }
                     else if(itemvalue == "areas" || itemvalue == "rows" || itemvalue == "columns"){ //range
                         alert("areas");
                     }
                 });
+            }
+
+            //是否显示打印网格线
+            if(Store.showPrintGridLines===true){
+                _this.focus($menuButton, "gridLines");
+            }else{
+                _this.blur($menuButton);
             }
 
             let userlen = $(this).outerWidth();
