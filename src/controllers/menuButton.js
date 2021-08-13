@@ -2840,6 +2840,7 @@ const menuButton = {
                     }
                     else if(itemvalue == "areas"){ //range
                         const html= getRangeHtml();
+                        console.log(html);
                     }
                 });
             }
