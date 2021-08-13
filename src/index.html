@@ -110,27 +110,31 @@
 			};
 			luckysheet.create(options);
 
-			// setTimeout(function () {
-			// 	luckysheet.setBorderInfo({
-			// 		range:[
-			// 			{column:[0,9],row:[0,20]},
-			// 			{column:[10,19],row:[0,20]},
-			// 			{column:[20,29],row:[0,20]},
-			// 			{column:[30,39],row:[0,20]},
+			setTimeout(function () {
+				// luckysheet.setBorderInfo({
+				// 	range:[
+				// 		{column:[0,9],row:[0,20]},
+				// 		{column:[10,19],row:[0,20]},
+				// 		{column:[20,29],row:[0,20]},
+				// 		{column:[30,39],row:[0,20]},
 
-			// 			{column:[0,9],row:[21,40]},
-			// 			{column:[10,19],row:[21,40]},
-			// 			{column:[20,29],row:[21,40]},
+				// 		{column:[0,9],row:[21,40]},
+				// 		{column:[10,19],row:[21,40]},
+				// 		{column:[20,29],row:[21,40]},
 						
-			// 			{column:[0,9],row:[41,60]},
-			// 			{column:[10,19],row:[41,60]},
-			// 		],
-			// 		style:"9",
-        	// 		color:"#3d85c6",
-			// 	});
-			// }, 1000);
-			///luckysheet.setCellValue(row, column, value)
+				// 		{column:[0,9],row:[41,60]},
+				// 		{column:[10,19],row:[41,60]},
+				// 	],
+				// 	style:"9",
+        		// 	color:"#3d85c6",
+				// });
+			//luckysheet.setCellValue(row, column, value)
 			//getRangeHtml()// 获取当前选区HTML（table） 可以用于选区打印
+
+				//luckysheet.showPrintGridLines();
+				const pages=luckysheet.getPrintPageHtml();
+				console.log(pages);
+			}, 10000);
 		})
 	</script>
 </body>

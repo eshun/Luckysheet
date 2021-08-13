@@ -165,7 +165,8 @@ const Store = {
         vt: 1,
         m: '',
         v: ''
-    }
+    },
+    pageRange: [],
 
 }
 

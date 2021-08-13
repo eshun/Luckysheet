@@ -38,7 +38,7 @@ import { replaceHtml, getObjType, rgbTohex, mouseclickposition, luckysheetfontfo
 import {openProtectionModal,checkProtectionFormatCells,checkProtectionNotEnable} from './protection';
 import Store from '../store';
 import locale from '../locale/locale';
-import {checkTheStatusOfTheSelectedCells} from '../global/api';
+import {checkTheStatusOfTheSelectedCells,getRangeHtml,getPrintPageHtml,getPrintPages} from '../global/api';
 
 const menuButton = {
     "menu": '<div class="luckysheet-cols-menu luckysheet-rightgclick-menu luckysheet-menuButton ${subclass} luckysheet-mousedown-cancel" id="luckysheet-icon-${id}-menuButton">${item}</div>',
@@ -2838,8 +2838,8 @@ const menuButton = {
                         Store.showPrintGridLines=!Store.showPrintGridLines;
                         printLineAndNumber();
                     }
-                    else if(itemvalue == "areas" || itemvalue == "rows" || itemvalue == "columns"){ //range
-                        alert("areas");
+                    else if(itemvalue == "areas"){ //range
+                        const html= getRangeHtml();
                     }
                 });
             }

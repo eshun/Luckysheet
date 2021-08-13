@@ -554,7 +554,7 @@ const selection = {
     },
     copybyformat: function (e, txt) {//copy事件
         let clipboardData = window.clipboardData; //for IE
-        if (!clipboardData) { // for chrome
+        if (!clipboardData && e && e.originalEvent) { // for chrome
             clipboardData = e.originalEvent && e.originalEvent.clipboardData;
         }
 

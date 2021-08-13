@@ -86,51 +86,53 @@ export function viewChange(curType, preType){
     zoomChange(curZoom);
 }
 
-export function printLineAndNumber() {    
-    if(Store.showPrintGridLines===true || Store.currentSheetView=="viewPage"){
+export function printLineAndNumber(isShow = false) {    
+    if(Store.showPrintGridLines===true || Store.currentSheetView=="viewPage" || isShow===true){
         printLineAndNumberCreate();
     }else{
         printLineAndNumberDelete();
-    }    
+    }
 }
 
 function printLineAndNumberDelete(){
     $("#sheet-cell-printline-boxs").hide();
     $("#sheet-cell-printline-boxs .sheet-cell-printline").remove();
+
+    Store.pageRange=[];
 }
 
 function printLineAndNumberCreate(){
     $("#sheet-cell-printline-boxs").show();
     $("#sheet-cell-printline-boxs .sheet-cell-printline").remove();
     
+    const pageRange=[];
     const sheet = sheetmanage.getSheetByIndex();
     const luckysheetTableContent = $("#luckysheetTableContent").get(0).getContext("2d");
 
     const col_w=luckysheetConfigsetting.defaultColWidth;
     const row_h=luckysheetConfigsetting.defaultRowHeight;
-    console.log('printLineAndNumberCreate',sheet);
 
     const contentWidth = sheet.ch_width;
     const contentHeight = sheet.rh_height;
-    
+
+    const showPage= Store.showPrintGridLines===true || Store.currentSheetView=="viewPage";
     const showPageText= Store.currentSheetView=="viewPage";
     const lineWidth=Store.devicePixelRatio*Store.zoomRatio;
 
     //格式a4[595.28,841.89]
     const pageSize=PageSize["a4"];
-    const pageWidth=pageSize.width;//*Store.devicePixelRatio
-    const pageHeight=pageSize.height;
+    const pageWidth=parseInt(pageSize.width);//*Store.devicePixelRatio
+    const pageHeight=parseInt(pageSize.height);
 
     const xPage=parseInt((contentWidth+pageWidth)/pageWidth);
     const yPage=parseInt((contentHeight+pageHeight)/pageHeight);
-    console.log(xPage,yPage);
 
     for(let x=1;x<=xPage;x++){
-        const xPox_s=(x-1)*pageWidth+col_w;
+        const xPox_s=(x-1)*pageWidth;
         let xPox_e=x*pageWidth;
         if(xPox_e>contentWidth) xPox_e=contentWidth;
         for(let y=1;y<=yPage;y++){
-            const yPox_s=(y-1)*pageHeight+row_h;
+            const yPox_s=(y-1)*pageHeight;
             let yPox_e=y*pageHeight;
             if(yPox_e>contentHeight) yPox_e=contentHeight;
 
@@ -153,17 +155,31 @@ function printLineAndNumberCreate(){
                 end_col = end_col_location[1], 
                 end_col_pre = end_col_location[0], 
                 end_col_index = end_col_location[2];
-            
-            let l = start_col_pre, t= start_row_pre,w = end_col-start_col_pre-1,h = end_row-start_row_pre-1;
 
-            let pageText='';
-            if(showPageText){
-                pageText='<span>第 '+(x+(y-1))+' 页</span>';
+            let l= start_col_pre, t= start_row_pre,w= end_col_pre-start_col_pre-1,h= end_row_pre-start_row_pre-1;
+
+            if(x===xPage && end_col-start_col_pre<pageWidth) w=end_col-start_col_pre-1;
+            if(y===yPage && end_row-start_row_pre<pageHeight) h=end_row-start_row_pre-1;
+
+            const page=(x-1)*yPage+y;
+            pageRange.push({
+                column:[start_col_index,end_col_index],
+                row:[start_row_index,end_row_index]
+            });
+
+            if(showPage){
+                let pageText='';
+                if(showPageText){
+                    
+                    pageText='<span>第 '+page+' 页</span>';
+                }
+    
+                $("#sheet-cell-printline-boxs").append('<div class="sheet-cell-printline" style="left: '+l+'px; width: '+w+'px; top: '+t+'px; height: '+h+'px;border-width: '+lineWidth+'px;">'+pageText+'</div>');
             }
-
-            $("#sheet-cell-printline-boxs").append('<div class="sheet-cell-printline" style="left: '+l+'px; width: '+w+'px; top: '+t+'px; height: '+h+'px;border-width: '+lineWidth+'px;">'+pageText+'</div>');
         }
     }
+
+    Store.pageRange=pageRange;
 }
 
 function switchViewBtn($t){

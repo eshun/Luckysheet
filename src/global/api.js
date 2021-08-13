@@ -41,6 +41,7 @@ import imageCtrl from '../controllers/imageCtrl';
 import dayjs from "dayjs";
 import {getRangetxt } from '../methods/get';
 import {luckysheetupdateCell} from '../controllers/updateCell';
+import {printLineAndNumber} from '../controllers/print';
 const IDCardReg = /^\d{6}(18|19|20)?\d{2}(0[1-9]|1[12])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)$/i;
 
 /**
@@ -6833,6 +6834,28 @@ export function checkTheStatusOfTheSelectedCells(type,status){
     return flag;
 }
 
+/**
+ * 设置单元格区边框
+ * @param {Object}
+ * {
+ * 	range:[
+ * 		{column:[0,9],row:[0,20]},
+ * 		{column:[10,19],row:[0,20]},
+ * 		{column:[20,29],row:[0,20]},
+ * 		{column:[30,39],row:[0,20]},
+
+ * 		{column:[0,9],row:[21,40]},
+ * 		{column:[10,19],row:[21,40]},
+ * 		{column:[20,29],row:[21,40]},
+        
+ * 		{column:[0,9],row:[41,60]},
+ * 		{column:[10,19],row:[41,60]},
+ * 	],
+ * 	style:"9",
+ * 	color:"#3d85c6",
+ * }
+ * 
+ */
 export function setBorderInfo(options = {}) {
     let {
         range=$.extend(true, [], Store.luckysheet_select_save),
@@ -6896,7 +6919,65 @@ export function setBorderInfo(options = {}) {
     }, 1);
 }
 
-
+/**
+ * 显示分页网格线
+ * 
+ */
 export function showPrintGridLines() {
+    Store.showPrintGridLines=true;
+    printLineAndNumber();
+}
 
+/**
+ * 获取当前页码数
+ * @returns 
+ */
+export function getPrintPages() {
+    if(!Store.pageRange || Store.pageRange.length<1){
+        printLineAndNumber(true);
+    }
+    return Store.pageRange.length;
+}
+
+/**
+ * 判断区域内是否为空值
+ * @param {Object} options 
+ * @returns 
+ */
+export function RangeIsNoEmpty(options = {}) {
+    const datas=getRangeValue(options);
+    
+    if(!!datas){
+        for (let i = 0; i < datas.length; i++) {
+            let rows=datas[i];            
+            if(!!rows){
+                for (let ii = 0; ii < rows.length; ii++) {
+                    if(!!rows[ii]){
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+    return false;
+}
+
+/**
+ * 获取打印页Html
+ * @param {Number} page 页码
+ */
+export function getPrintPageHtml(page=1) {
+    if(!Store.pageRange || Store.pageRange.length<1){
+        printLineAndNumber(true);
+    }
+    if(!page || page<1) page=1;
+    if(page>Store.pageRange.length) page=Store.pageRange.length;
+
+    const range=Store.pageRange[page-1];
+
+    const oo=RangeIsNoEmpty({range});
+    if(oo===true){
+        return getRangeHtml({range})
+    }
+    return null;
 }
