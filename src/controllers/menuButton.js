@@ -40,6 +40,8 @@ import Store from '../store';
 import locale from '../locale/locale';
 import {checkTheStatusOfTheSelectedCells,getRangeHtml,getPrintPageHtml,getPrintPages} from '../global/api';
 
+import {renderPdf,printPage} from '../expendPlugins/print/plugin';
+
 const menuButton = {
     "menu": '<div class="luckysheet-cols-menu luckysheet-rightgclick-menu luckysheet-menuButton ${subclass} luckysheet-mousedown-cancel" id="luckysheet-icon-${id}-menuButton">${item}</div>',
     // "item": '<div itemvalue="${value}" itemname="${name}" class="luckysheet-cols-menuitem ${sub} luckysheet-mousedown-cancel"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel" style="padding: 3px 0px 3px 1px;"><span style="margin-right:3px;width:13px;display:inline-block;" class="icon luckysheet-mousedown-cancel"></span> ${name} <span class="luckysheet-submenu-arrow luckysheet-mousedown-cancel" style="user-select: none;">${example}</span></div></div>',
@@ -2404,7 +2406,7 @@ const menuButton = {
                                 sheetindex.push(file[i].index);
                             }
 
-                            $.post(loadSheetUrl, {"gridKey" : server.gridKey, "index": sheetindex.join(",")}, function (d) {
+                            $.post(loadSheetUrl, {"g" : server.gridKey, "index": sheetindex.join(",")}, function (d) {
                                 let dataset = new Function("return " + d)();
 
                                 setTimeout(function(){
@@ -2833,14 +2835,15 @@ const menuButton = {
                     let $t = $(this), itemvalue = $t.attr("itemvalue");
 
                     if(itemvalue == "print"){ //Print config
-                        alert("print");
+                        printPage();
                     }else if(itemvalue == "gridLines"){
                         Store.showPrintGridLines=!Store.showPrintGridLines;
                         printLineAndNumber();
                     }
                     else if(itemvalue == "areas"){ //range
                         const html= getRangeHtml();
-                        console.log(html);
+
+                        renderPdf(html);
                     }
                 });
             }
@@ -4463,7 +4466,7 @@ const menuButton = {
         return style;
     },
     fontSelectList:[],
-    defualtFont:["Times New Roman","Arial","Tahoma","Verdana","微软雅黑","宋体","黑体","楷体","仿宋","新宋体","华文新魏","华文行楷","华文隶书"],
+    defualtFont:["Times New Roman","Arial","Verdana","微软雅黑","宋体","黑体","楷体","仿宋","新宋体","华文新魏","华文行楷","华文隶书"],
     addFontTolist:function(fontName) {
         fontName = fontName.replace(/"/g, "").replace(/'/g, "");
         let isNone = true;

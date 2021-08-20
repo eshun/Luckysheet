@@ -177,7 +177,7 @@ luckysheet.create = function (setting) {
         initialWorkBook();
     }
     else {
-        $.post(loadurl, {"gridKey" : server.gridKey}, function (d) {
+        $.post(loadurl, {"g" : server.gridKey}, function (d) {
             let data = new Function("return " + d)();
             Store.luckysheetfile = data;
 
@@ -189,7 +189,15 @@ luckysheet.create = function (setting) {
             if(server.allowUpdate){
                 server.openWebSocket();
             }
-        });
+        }).fail(function() {
+            sheetmanage.initialjfFile(menu, title);
+            // luckysheetsizeauto();
+            initialWorkBook();
+            //需要更新数据给后台时，建立WebSocket连接
+            if(server.allowUpdate){
+                server.openWebSocket();
+            }
+          });
     }
 }
 

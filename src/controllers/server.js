@@ -143,6 +143,7 @@ const server = {
 	        d.k = params.k;
 	        // d.s = params.s;
 	    }
+		// 需要考虑发送服务端失败缓存记录，socket连接成功之后继续发送
 
 	    // TODO 配置自定义方式同步图片
         const customImageUpdateMethodConfig = luckysheetConfigsetting.imageUpdateMethodConfig
@@ -177,9 +178,9 @@ const server = {
         let _this = this;
 
         if('WebSocket' in window){
-			let wxUrl = _this.updateUrl + "?t=111&g=" + encodeURIComponent(_this.gridKey);
+			let wxUrl = _this.updateUrl + "?g=" + encodeURIComponent(_this.gridKey);
 			if(_this.updateUrl.indexOf('?') > -1){
-				wxUrl = _this.updateUrl + "&t=111&g=" + encodeURIComponent(_this.gridKey);
+				wxUrl = _this.updateUrl + "&g=" + encodeURIComponent(_this.gridKey);
 			}
 
 	        _this.websocket = new WebSocket(wxUrl);
@@ -192,7 +193,7 @@ const server = {
 
 	            //防止websocket长时间不发送消息导致断连
 				_this.retryTimer = setInterval(function(){
-	                _this.websocket.send("rub");
+	                _this.websocket.send("");
 	            }, 60000);
 	        }
 
@@ -200,7 +201,8 @@ const server = {
 	        _this.websocket.onmessage = function(result){
 				Store.result = result
 				let data = new Function("return " + result.data)();
-        method.createHookFunction('cooperativeMessage', data)
+        		
+				method.createHookFunction('cooperativeMessage', data)
 				console.info(data);
 				let type = data.type;
 				let {message,id} = data;
@@ -372,10 +374,11 @@ const server = {
 					clearInterval(_this.retryTimer)
 					_this.retryTimer = null
 				}else{
+					_this.websocket = null;
 					alert(locale().websocket.contact);
 				}
-	        }
-	    }
+			}
+		}
 	    else{
 	        alert(locale().websocket.support);
 	    }
@@ -1107,7 +1110,7 @@ const server = {
             //console.log(params);
             // console.log("request");
             if(_this.updateUrl != ""){
-                $.post(_this.updateUrl, { compress: iscommpress, gridKey: _this.gridKey, data: params }, function (data) {
+                $.post(_this.updateUrl, { compress: iscommpress, g: _this.gridKey, data: params }, function (data) {
 					let re = new Function("return " + data)();
                     if(re.status){
                         $("#luckysheet_info_detail_update").html("最近存档时间:"+ dayjs().format("M-D H:m:s"));
@@ -1166,8 +1169,8 @@ const server = {
             old.remove();
             //console.log("缩略图", _this.imageRequestLast,base64);
             if(_this.updateImageUrl != ""){
-                // $.post(_this.updateImageUrl, { compress: true, gridKey: _this.gridKey, data:data1  }, function (data) {
-                $.post(_this.updateImageUrl, { compress: false, gridKey: _this.gridKey, data:data1  }, function (data) {
+                // $.post(_this.updateImageUrl, { compress: true, g: _this.gridKey, data:data1  }, function (data) {
+                $.post(_this.updateImageUrl, { compress: false, g: _this.gridKey, data:data1  }, function (data) {
 					let re = new Function("return " + data)();
                     if(re.status){
                         imageRequestLast = dayjs();

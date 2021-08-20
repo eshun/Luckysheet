@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang='zh'>
 
-<head lang='zh'>
+<head>
 	<meta charset='utf-8'>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="renderer" content="webkit" />
@@ -90,6 +90,10 @@
 						dataVerification: false,
 						protection:false,
 					},
+                    allowUpdate: true,
+                    updateUrl: "ws://10.83.3.119:9080/sheet",
+                    gridKey: 'test1',
+                    loadUrl: "http://10.83.3.119:8080/api/sheet"
 				};
 				
 			options.loading={
@@ -132,8 +136,8 @@
 			//getRangeHtml()// 获取当前选区HTML（table） 可以用于选区打印
 
 				//luckysheet.showPrintGridLines();
-				const pages=luckysheet.getPrintPageHtml();
-				console.log(pages);
+				//const pages=luckysheet.getPrintPageHtml();
+				//console.log(pages);
 			}, 10000);
 		})
 	</script>
