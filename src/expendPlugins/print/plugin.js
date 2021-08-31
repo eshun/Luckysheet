@@ -10,13 +10,11 @@ import tooltip from '../../global/tooltip';
 
 // Dynamically load dependent scripts and styles
 const dependScripts = [
-    'expendPlugins/print/fonts/WeiRuanYaHei/font.js',
-    'http://localhost:8080/luckysheetPluginPrint.umd.js',
+    'assets/fonts/WeiRuanYaHei/font.js',
 ];
 
 const dependLinks = [
-    // 'expendPlugins/chart/chartmix.css',
-    'http://localhost:8080/luckysheetPluginPrint.css',
+    'expendPlugins/print/style.css',
 ];
 
 // Initialize the chart component

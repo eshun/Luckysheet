@@ -8,14 +8,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0" />
 	<title>xmkysheet</title>
 
-	<link rel='stylesheet' href='./plugins/css/pluginsCss.css' />
-	<link rel='stylesheet' href='./plugins/plugins.css' />
-	<link rel='stylesheet' href='./css/luckysheet.css' />
-	<link rel='stylesheet' href='./assets/iconfont/iconfont.css' />
-	<script src="./plugins/js/plugin.js"></script>
+	<link rel='stylesheet' href='./plugins/css/plugin.css' />
+	<link rel='stylesheet' href='./assets/css/sheet.css' />
 
-	<!-- rollup luckysheet.js -->
-	<script src="./luckysheet.umd.js"></script>
+	<script src="./plugins/js/plugin.js"></script>
+	<script src="./js/sheet.js"></script>
 
 	<style>
 		body,html,#xmkysheet{
@@ -112,7 +109,7 @@
 					console.info('cellUpdated',r,c,oldValue, newValue, isRefresh)
 				},
 			};
-			luckysheet.create(options);
+			sheet.create(options);
 
 			setTimeout(function () {
 				// luckysheet.setBorderInfo({

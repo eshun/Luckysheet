@@ -68,29 +68,29 @@ const babelConfig = {
 const paths = {
     // static resources,contains index.html, fonts and images,and extension plugins dependency
     staticHtml: ['src/*.html'],
-    staticFonts: ['src/fonts/**'],
-    staticAssets: ['src/assets/**'],
+    staticFonts: ['src/plugins/fontawesome/**'],
+    staticAssets: ['src/assets/**','!src/assets/**/*.css'],
     staticImages: ['src/plugins/images/*.png'],
     staticExpendPlugins: ['src/expendPlugins/**', '!src/expendPlugins/**/plugin.js'],
     staticDemoData: ['src/demoData/*.js'],
-    staticCssImages: ['src/css/**','!src/css/*.css'],
+    // staticCssImages: ['src/css/**','!src/css/*.css'],
 
     // static resources dest
     destStaticHtml: ['dist'],
-    destStaticFonts: ['dist/fonts'],
+    destStaticFonts: ['dist/plugins/fontawesome'],
     destStaticAssets: ['dist/assets'],
     destStaticImages: ['dist/plugins/images'],
     destStaticExpendPlugins: ['dist/expendPlugins'],
     destStaticDemoData: ['dist/demoData'],
-    destStaticCssImages: ['dist/css'],
+    destStaticCssImages: ['dist/assets/images'],
 
     //core es module
     core: ['src/**/*.js','!src/demoData/*.js','src/expendPlugins/**/plugin.js','!src/plugins/js/*.js'],
 
      //plugins src
-    pluginsCss: ['src/plugins/css/*.css'],
-    plugins: ['src/plugins/*.css'],
-    css:['src/css/*.css','node_modules/flatpickr/dist/themes/light.css'],
+    //pluginsCss: ['src/plugins/css/*.css'],
+    plugins: ['src/plugins/css/*.css','src/plugins/*.css','src/assets/iconfont/iconfont.css'],
+    css:['src/assets/css/*.css','node_modules/flatpickr/dist/themes/light.css'],
     pluginsJs:[
         'node_modules/jquery/dist/jquery.min.js',
         'node_modules/uuid/dist/umd/uuid.min.js',
@@ -108,15 +108,15 @@ const paths = {
     ],
 
     //plugins concat
-    concatPluginsCss: 'pluginsCss.css',
-    concatPlugins: 'plugins.css',
-    concatCss: 'luckysheet.css',
+    // concatPluginsCss: 'pluginsCss.css',
+    concatPlugins: 'plugin.css',
+    concatCss: 'sheet.css',
     concatPluginsJs: 'plugin.js',
 
     //plugins dest
     destPluginsCss: ['dist/plugins/css'],
     destPlugins: ['dist/plugins'],
-    destCss: ['dist/css'],
+    destCss: ['dist/assets/css'],
     destPluginsJs: ['dist/plugins/js'],
 
     // Package directory
@@ -129,7 +129,7 @@ function clean() {
 }
 
 // proxy middleware
-const apiProxy = createProxyMiddleware('/luckysheet/', {
+const apiProxy = createProxyMiddleware('/sheet/', {
     target: 'http://127.0.0.1:8080', // set your server address
     changeOrigin: true, // for vhosted sites
     ws: true, // proxy websockets
@@ -151,7 +151,7 @@ function watcher(done) {
     watch(paths.core,{ delay: 500 }, series(core, reloadBrowser));
 
     // watch plugins and css
-    watch(paths.pluginsCss,{ delay: 500 }, series(pluginsCss, reloadBrowser));
+    //watch(paths.pluginsCss,{ delay: 500 }, series(pluginsCss, reloadBrowser));
     watch(paths.plugins,{ delay: 500 }, series(plugins, reloadBrowser));
     watch(paths.css,{ delay: 500 }, series(css, reloadBrowser));
     watch(paths.pluginsJs,{ delay: 500 }, series(pluginsJs, reloadBrowser));
@@ -163,7 +163,7 @@ function watcher(done) {
     watch(paths.staticImages,{ delay: 500 }, series(copyStaticImages, reloadBrowser));
     watch(paths.staticExpendPlugins,{ delay: 500 }, series(copyStaticExpendPlugins, reloadBrowser));
     watch(paths.staticDemoData,{ delay: 500 }, series(copyStaticDemoData, reloadBrowser));
-    watch(paths.staticCssImages,{ delay: 500 }, series(copyStaticCssImages, reloadBrowser));
+    // watch(paths.staticCssImages,{ delay: 500 }, series(copyStaticCssImages, reloadBrowser));
 
     done();
 }
@@ -193,9 +193,9 @@ async function core_rollup() {
     });
 
     bundle.write({
-        file: 'dist/luckysheet.umd.js',
+        file: 'dist/js/sheet.js',
         format: 'umd',
-        name: 'luckysheet',
+        name: 'sheet',
         sourcemap: true,
         inlineDynamicImports:true,
         banner: banner
@@ -203,9 +203,9 @@ async function core_rollup() {
 
     if(production){
         bundle.write({
-            file: 'dist/luckysheet.esm.js',
+            file: 'dist/js/sheet.min.js',
             format: 'esm',
-            name: 'luckysheet',
+            name: 'sheet',
             sourcemap: true,
             inlineDynamicImports:true,
             banner: banner
@@ -218,32 +218,32 @@ async function core() {
 
     await require('esbuild').buildSync({
         format: 'iife',
-        globalName: 'luckysheet',    
+        globalName: 'sheet',    
         entryPoints: ['src/index.js'],
         bundle: true,
         minify: production,
         banner: { js: banner },
         target: ['es2015'],
         sourcemap: true,
-        outfile: 'dist/luckysheet.umd.js',
+        outfile: 'dist/js/sheet.js',
         logLevel: 'error',
       })
 }
 
 // According to the build tag in html, package js and css
-function pluginsCss() {
-    return src(paths.pluginsCss)
-        .pipe(concat(paths.concatPluginsCss))
-        .pipe(gulpif(production, cleanCSS()))
-        .pipe(dest(paths.destPluginsCss))
+// function pluginsCss() {
+//     return src(paths.pluginsCss)
+//         .pipe(concat(paths.concatPluginsCss))
+//         .pipe(gulpif(production, cleanCSS()))
+//         .pipe(dest(paths.destPluginsCss))
 
-}
+// }
 
 function plugins() {
     return src(paths.plugins)
         .pipe(concat(paths.concatPlugins))
         .pipe(gulpif(production, cleanCSS()))
-        .pipe(dest(paths.destPlugins));
+        .pipe(dest(paths.destPluginsCss));
 }
 
 function css() {
@@ -289,13 +289,15 @@ function copyStaticDemoData(){
         // }))
         // .pipe(gulp.dest('dist'));
 }
-function copyStaticCssImages(){
-    return src(paths.staticCssImages)
-        .pipe(dest(paths.destStaticCssImages));
-}
+// function copyStaticCssImages(){
+//     return src(paths.staticCssImages)
+//         .pipe(dest(paths.destStaticCssImages));
+// }
 
-const dev = series(clean, parallel(pluginsCss, plugins, css, pluginsJs, copyStaticHtml, copyStaticFonts, copyStaticAssets, copyStaticImages, copyStaticExpendPlugins, copyStaticDemoData, copyStaticCssImages, core), watcher, serve);
-const build = series(clean, parallel(pluginsCss, plugins, css, pluginsJs, copyStaticHtml, copyStaticFonts, copyStaticAssets, copyStaticImages, copyStaticExpendPlugins, copyStaticDemoData, copyStaticCssImages, core));
+// const dev = series(clean, parallel(pluginsCss, plugins, css, pluginsJs, copyStaticHtml, copyStaticFonts, copyStaticAssets, copyStaticImages, copyStaticExpendPlugins, copyStaticDemoData, copyStaticCssImages, core), watcher, serve);
+const dev = series(clean, parallel(plugins, css, pluginsJs, copyStaticHtml, copyStaticFonts, copyStaticAssets, copyStaticImages, copyStaticExpendPlugins, copyStaticDemoData, core), watcher, serve);
+
+const build = series(clean, parallel(plugins, css, pluginsJs, copyStaticHtml, copyStaticFonts, copyStaticAssets, copyStaticImages, copyStaticExpendPlugins, copyStaticDemoData, core));
 
 exports.dev = dev;
 exports.build = build;

@@ -28,8 +28,8 @@ const server = {
     updateUrl: null,
     updateImageUrl: null,
     title: null,
-		loadSheetUrl: null,
-		retryTimer:null,
+	loadSheetUrl: null,
+	retryTimer:null,
     allowUpdate: false, //共享编辑模式
     historyParam: function(data, sheetIndex, range) {
     	let _this = this;
