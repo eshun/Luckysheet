@@ -155,9 +155,9 @@ const insertFormula = {
                 }));
             }
 
-            let $t = $("#luckysheet-search-formula-parm-select").find(".luckysheet-modal-dialog-content").css("min-width", 300).end(), 
-                myh = $t.outerHeight(), 
-                myw = $t.outerWidth();
+            let _t = $("#luckysheet-search-formula-parm-select").find(".luckysheet-modal-dialog-content").css("min-width", 300).end(), 
+                myh = _t.outerHeight(), 
+                myw = _t.outerWidth();
             let winw = $(window).width(), winh = $(window).height();
             let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
             $("#luckysheet-search-formula-parm-select").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 3 }).show();
@@ -198,9 +198,9 @@ const insertFormula = {
             "botton": '<button id="luckysheet-search-formula-confirm" class="btn btn-primary">'+locale_button.confirm+'</button><button class="btn btn-default luckysheet-model-close-btn">'+locale_button.cancel+'</button>', 
             "style": "z-index:100003" 
         }));
-        let $t = $("#luckysheet-search-formula").find(".luckysheet-modal-dialog-content").css("min-width", 300).end(), 
-            myh = $t.outerHeight(), 
-            myw = $t.outerWidth();
+        let _t = $("#luckysheet-search-formula").find(".luckysheet-modal-dialog-content").css("min-width", 300).end(), 
+            myh = _t.outerHeight(), 
+            myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
         $("#luckysheet-search-formula").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 3, "user-select": "none" }).show();
@@ -284,9 +284,9 @@ const insertFormula = {
             "botton": '<button id="luckysheet-search-formula-parm-confirm" class="btn btn-primary">'+locale_button.confirm+'</button><button class="btn btn-default luckysheet-model-close-btn">'+locale_button.cancel+'</button>', 
             "style": "z-index:100003" 
         }));
-        let $t = $("#luckysheet-search-formula-parm").find(".luckysheet-modal-dialog-content").css("min-width", 300).end(), 
-            myh = $t.outerHeight(), 
-            myw = $t.outerWidth();
+        let _t = $("#luckysheet-search-formula-parm").find(".luckysheet-modal-dialog-content").css("min-width", 300).end(), 
+            myh = _t.outerHeight(), 
+            myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
         $("#luckysheet-search-formula-parm").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 3 }).show();

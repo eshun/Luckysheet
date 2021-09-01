@@ -161,11 +161,11 @@ function initialEvent(file){
 
         openSelfModel("luckysheet-protection-rangeItem-dialog");
 
-        let $rangeItem = $(e.target).closest(".luckysheet-protection-rangeItem");
+        let _rangeItem = $(e.target).closest(".luckysheet-protection-rangeItem");
 
-        let $rangeItemContainer =  $("#luckysheet-protection-rangeItem-container");
+        let _rangeItemContainer =  $("#luckysheet-protection-rangeItem-container");
 
-        let index = $rangeItemContainer.find("> div.luckysheet-protection-rangeItem").index($rangeItem);
+        let index = _rangeItemContainer.find("> div.luckysheet-protection-rangeItem").index(_rangeItem);
 
         let item = rangeItemListCache[index];
 
@@ -184,16 +184,16 @@ function initialEvent(file){
 
     //delete allow edit range
     $(document).off("click.luckysheetProtection.rangeItemDelete").on("click.luckysheetProtection.rangeItemDelete","#luckysheet-protection-rangeItem-container .luckysheet-protection-rangeItem-del", function(e){
-        let $rangeItem = $(e.target).closest(".luckysheet-protection-rangeItem");
+        let _rangeItem = $(e.target).closest(".luckysheet-protection-rangeItem");
 
-        let $rangeItemContainer =  $("#luckysheet-protection-rangeItem-container");
+        let _rangeItemContainer =  $("#luckysheet-protection-rangeItem-container");
 
-        let index = $rangeItemContainer.find("> div.luckysheet-protection-rangeItem").index($rangeItem);
+        let index = _rangeItemContainer.find("> div.luckysheet-protection-rangeItem").index(_rangeItem);
 
         let item = rangeItemListCache[index];
 
         rangeItemListCache.splice(index, 1);
-        $rangeItem.remove();
+        _rangeItem.remove();
     });
 
     //confirm allow edit range
@@ -250,22 +250,22 @@ function initialEvent(file){
                 item.algorithmName = "None";
             }
 
-            let $rangeItemContainer =  $("#luckysheet-protection-rangeItem-container");
+            let _rangeItemContainer =  $("#luckysheet-protection-rangeItem-container");
 
-            let $rangeitem = $rangeItemContainer.find("> div.luckysheet-protection-rangeItem").eq(index);
+            let _rangeitem = _rangeItemContainer.find("> div.luckysheet-protection-rangeItem").eq(index);
 
-            let $name = $rangeitem.find(".luckysheet-protection-rangeItem-name");
+            let _name = _rangeitem.find(".luckysheet-protection-rangeItem-name");
 
             let passwordTxt = "";
             if(password!=null && password.length>0){
                 passwordTxt = '<i class="icon iconfont luckysheet-iconfont-bianji2" title="'+ local_protection.rangeItemHasPassword+'"></i>';
             }
 
-            $name.html(name+passwordTxt).attr("title",name);
+            _name.html(name+passwordTxt).attr("title",name);
 
-            let $range = $rangeitem.find(".luckysheet-protection-rangeItem-range");
+            let _range = _rangeitem.find(".luckysheet-protection-rangeItem-range");
 
-            $range.html(rangeText).attr("title",rangeText);
+            _range.html(rangeText).attr("title",rangeText);
         }
 
 
@@ -278,20 +278,20 @@ function initialEvent(file){
 
     //sheet validation check passWord
     $(document).off("click.luckysheetProtection.validationConfirm").on("click.luckysheetProtection.validationConfirm","#luckysheet-protection-sheet-validation-confirm", function(e){
-        let $validation = $("#luckysheet-protection-sheet-validation");
+        let _validation = $("#luckysheet-protection-sheet-validation");
         let aut = validationAuthority;
 
         if(aut==null){
             restoreProtectionConfig(validationAuthority);
-            $validation.hide();
+            _validation.hide();
             $("#luckysheet-modal-dialog-mask").hide();
             $("#luckysheet-modal-dialog-slider-protection").show();
             luckysheetsizeauto();
             return;
         }
         
-        let $input = $validation.find("input");
-        let password = $input.val();
+        let _input = _validation.find("input");
+        let password = _input.val();
 
 
         if(password==null || password.length==0){
@@ -311,7 +311,7 @@ function initialEvent(file){
 
         if(password==aut.password){
             restoreProtectionConfig(validationAuthority);
-            $validation.hide();
+            _validation.hide();
             $("#luckysheet-modal-dialog-mask").hide();
             $("#luckysheet-modal-dialog-slider-protection").show();
             luckysheetsizeauto();
@@ -324,22 +324,22 @@ function initialEvent(file){
     });
 
     $("#luckysheet-protection-check-selectLockedCells").change(function() { 
-        let $selectLockedCells = $("#luckysheet-protection-check-selectLockedCells"), $selectunLockedCells = $("#luckysheet-protection-check-selectunLockedCells");
+        let _selectLockedCells = $("#luckysheet-protection-check-selectLockedCells"), _selectunLockedCells = $("#luckysheet-protection-check-selectunLockedCells");
 
-        let selectLockedCellsChecked = $selectLockedCells.is(":checked"), selectunLockedCellsChecked = $selectunLockedCells.is(":checked");
+        let selectLockedCellsChecked = _selectLockedCells.is(":checked"), selectunLockedCellsChecked = _selectunLockedCells.is(":checked");
 
         if(selectLockedCellsChecked){
-            $selectunLockedCells.prop('checked', true);
+            _selectunLockedCells.prop('checked', true);
         }
     });
 
     $("#luckysheet-protection-check-selectunLockedCells").change(function() { 
-        let $selectLockedCells = $("#luckysheet-protection-check-selectLockedCells"), $selectunLockedCells = $("#luckysheet-protection-check-selectunLockedCells");
+        let _selectLockedCells = $("#luckysheet-protection-check-selectLockedCells"), _selectunLockedCells = $("#luckysheet-protection-check-selectunLockedCells");
 
-        let selectLockedCellsChecked = $selectLockedCells.is(":checked"), selectunLockedCellsChecked = $selectunLockedCells.is(":checked");
+        let selectLockedCellsChecked = _selectLockedCells.is(":checked"), selectunLockedCellsChecked = _selectunLockedCells.is(":checked");
 
         if(!selectunLockedCellsChecked){
-            $selectLockedCells.prop('checked', false);
+            _selectLockedCells.prop('checked', false);
         }
     });
 
@@ -428,12 +428,12 @@ function initialEvent(file){
     $(document).off("click.luckysheetProtection.dvRangeConfirm").on("click.luckysheetProtection.dvRangeConfirm", "#luckysheet-dataVerificationRange-dialog-confirm", function(e) {
         let txt = $(this).parents("#luckysheet-dataVerificationRange-dialog").find("input").val();
 
-        let $input = $("#protection-allowRangeAdd-range input"), inputValue = $input.val();
+        let _input = $("#protection-allowRangeAdd-range input"), inputValue = _input.val();
         if(inputValue.substr(inputValue.length-1, 1)==","){
-            $input.val(inputValue + txt);
+            _input.val(inputValue + txt);
         }
         else{
-            $input.val(txt);
+            _input.val(txt);
         }
         $("#luckysheet-dataVerificationRange-dialog").hide();
         $("#luckysheet-modal-dialog-mask").show();
@@ -815,19 +815,19 @@ function openRangePasswordModal(rangeAut) {
     
     openSelfModel("luckysheet-protection-range-validation");
 
-    let $hint = $("#luckysheet-protection-range-validation-hint");
+    let _hint = $("#luckysheet-protection-range-validation-hint");
     if(rangeAut.hintText != null && rangeAut.hintText.length>0){
-        $hint.html(rangeAut.hintText);
+        _hint.html(rangeAut.hintText);
     }
     else{
-        $hint.html(local_protection.defaultRangeHintText);
+        _hint.html(local_protection.defaultRangeHintText);
     }
-    let $rangeV = $("#luckysheet-protection-range-validation");
-    let $input = $rangeV.find("input");
-    $input.val("");
+    let _rangeV = $("#luckysheet-protection-range-validation");
+    let _input = _rangeV.find("input");
+    _input.val("");
 
     $("#luckysheet-protection-range-validation-confirm").off("click").on("click", function(){
-        let password = $input.val();
+        let password = _input.val();
 
         if(password==null || password.length==0){
             alert(local_protection.checkPasswordNullalert);
@@ -847,7 +847,7 @@ function openRangePasswordModal(rangeAut) {
 
         if(password==rangeAut.password){
             inputRangeProtectionPassword[rangeAut.sqref] = 1;
-            $rangeV.hide();
+            _rangeV.hide();
             $("#luckysheet-modal-dialog-mask").hide();
             alert(local_protection.checkPasswordSucceedalert);
         }

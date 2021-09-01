@@ -225,12 +225,12 @@ const imageCtrl = {
                         <button class="btn btn-default luckysheet-model-close-btn">${locale_button.cancel}</button>`, 
             "style": "z-index:100003" 
         }));
-        let $t = $("#luckysheet-imageCtrl-colorSelect-dialog")
+        let _t = $("#luckysheet-imageCtrl-colorSelect-dialog")
                 .find(".luckysheet-modal-dialog-content")
                 .css("min-width", 300)
                 .end(), 
-            myh = $t.outerHeight(), 
-            myw = $t.outerWidth();
+            myh = _t.outerHeight(), 
+            myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
         $("#luckysheet-imageCtrl-colorSelect-dialog").css({ 
@@ -325,11 +325,11 @@ const imageCtrl = {
 
         //边框选择颜色 确定 
         $(document).off("click.selectColorConfirm").on("click.selectColorConfirm", "#luckysheet-imageCtrl-colorSelect-dialog-confirm", function(){
-            let $parent = $(this).parents("#luckysheet-imageCtrl-colorSelect-dialog");
+            let _parent = $(this).parents("#luckysheet-imageCtrl-colorSelect-dialog");
             $("#luckysheet-modal-dialog-mask").hide();
-            $parent.hide();
+            _parent.hide();
 
-            let currenColor = $parent.find(".currenColor span").attr("title");
+            let currenColor = _parent.find(".currenColor span").attr("title");
             $("#luckysheet-modal-dialog-slider-imageCtrl #imgItemBorderColor span").css("background-color", currenColor).attr("title", currenColor);
 
             _this.configChange("border-color", currenColor);            

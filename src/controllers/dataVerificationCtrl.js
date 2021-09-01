@@ -236,9 +236,9 @@ const dataVerificationCtrl = {
                         <button class="btn btn-default luckysheet-model-close-btn">${buttonText.cancel}</button>`, 
             "style": "z-index:100003" 
         }));
-        let $t = $("#luckysheet-dataVerification-dialog").find(".luckysheet-modal-dialog-content").css("min-width", 350).end(), 
-            myh = $t.outerHeight(), 
-            myw = $t.outerWidth();
+        let _t = $("#luckysheet-dataVerification-dialog").find(".luckysheet-modal-dialog-content").css("min-width", 350).end(), 
+            myh = _t.outerHeight(), 
+            myw = _t.outerWidth();
         let winw = $(window).width(), 
             winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), 
@@ -261,10 +261,10 @@ const dataVerificationCtrl = {
             e.stopPropagation();
         });
         $(document).off("click.dropdownListItem").on("click.dropdownListItem", "#luckysheet-dataVerification-dropdown-List .dropdown-List-item", function(e) {
-            var $item = $(this);
+            var _item = $(this);
             let value = e.target.innerText;
-            if ($item.hasClass('multi')) {
-                $item.toggleClass('checked');
+            if (_item.hasClass('multi')) {
+                _item.toggleClass('checked');
                 value = $.map($("#luckysheet-dataVerification-dropdown-List").children().filter('.checked'), function(el) {
                     return el.innerText;
                 }).join(',');
@@ -952,12 +952,12 @@ const dataVerificationCtrl = {
                         <button id="luckysheet-dataVerificationRange-dialog-close" class="btn btn-default">${buttonText.close}</button>`, 
             "style": "z-index:100003" 
         }));
-        let $t = $("#luckysheet-dataVerificationRange-dialog")
+        let _t = $("#luckysheet-dataVerificationRange-dialog")
                 .find(".luckysheet-modal-dialog-content")
                 .css("min-width", 300)
                 .end(), 
-            myh = $t.outerHeight(), 
-            myw = $t.outerWidth();
+            myh = _t.outerHeight(), 
+            myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
         $("#luckysheet-dataVerificationRange-dialog").css({ 

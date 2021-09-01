@@ -65,9 +65,9 @@ const luckysheetSplitColumn = {
             "botton": '<button id="luckysheet-splitColumn-dialog-confirm" class="btn btn-primary">'+ locale_button.confirm +'</button><button class="btn btn-default luckysheet-model-close-btn">'+ locale_button.cancel +'</button>', 
             "style": "z-index:100003" 
         }));
-        let $t = $("#luckysheet-splitColumn-dialog").find(".luckysheet-modal-dialog-content").css("min-width", 400).end(), 
-            myh = $t.outerHeight(), 
-            myw = $t.outerWidth();
+        let _t = $("#luckysheet-splitColumn-dialog").find(".luckysheet-modal-dialog-content").css("min-width", 400).end(), 
+            myh = _t.outerHeight(), 
+            myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
         $("#luckysheet-splitColumn-dialog").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 3 }).show();
@@ -174,13 +174,13 @@ const luckysheetSplitColumn = {
         let regStr = '', mark = 0;
 
         $("#luckysheet-splitColumn-dialog .box input[type='checkbox']:checked").each(function(i, e){
-            let $id = $(e).attr("id");
+            let _id = $(e).attr("id");
 
-            if($id == "splitColumn_type_01"){ //Tab键
+            if(_id == "splitColumn_type_01"){ //Tab键
                 regStr += "\\t";
                 mark++;
             }
-            else if($id == "splitColumn_type_02"){ //分号
+            else if(_id == "splitColumn_type_02"){ //分号
                 if(mark > 0){
                     regStr += "|";
                 }
@@ -188,7 +188,7 @@ const luckysheetSplitColumn = {
                 regStr += ";";
                 mark++;
             }
-            else if($id == "splitColumn_type_03"){ //逗号
+            else if(_id == "splitColumn_type_03"){ //逗号
                 if(mark > 0){
                     regStr += "|";
                 }
@@ -196,7 +196,7 @@ const luckysheetSplitColumn = {
                 regStr += ",";
                 mark++;
             }
-            else if($id == "splitColumn_type_04"){ //空格
+            else if(_id == "splitColumn_type_04"){ //空格
                 if(mark > 0){
                     regStr += "|";
                 }
@@ -204,7 +204,7 @@ const luckysheetSplitColumn = {
                 regStr += "\\s";
                 mark++;
             }
-            else if($id == "splitColumn_type_05"){ //其它
+            else if(_id == "splitColumn_type_05"){ //其它
                 let txt = $(e).siblings("input[type='text']").val().trim();
 
                 if(txt != ""){
@@ -215,7 +215,7 @@ const luckysheetSplitColumn = {
                     regStr += txt;
                 }
             }
-            else if($id == "splitColumn_type_06"){ //连续分隔符号视为单个处理
+            else if(_id == "splitColumn_type_06"){ //连续分隔符号视为单个处理
                 regStr = "[" + regStr + "]+";
             }
         })

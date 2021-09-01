@@ -363,12 +363,12 @@ const alternateformat = {
         //点击样式模板
         $(document).off("click.AFmodelbox").on("click.AFmodelbox", "#luckysheet-modal-dialog-slider-alternateformat .modelbox", function(){
             let index = $(this).index();
-            let $id = $(this).parents(".cf").attr("id");
+            let _id = $(this).parents(".cf").attr("id");
 
-            if($id == "luckysheet-alternateformat-modelList"){
+            if(_id == "luckysheet-alternateformat-modelList"){
                 _this.modelfocusIndex = index;
             }
-            else if($id == "luckysheet-alternateformat-modelCustom"){
+            else if(_id == "luckysheet-alternateformat-modelCustom"){
                 let len = _this.FixedModelColor.length;
                 _this.modelfocusIndex = index + len;
             }
@@ -379,30 +379,30 @@ const alternateformat = {
 
         //点击选择文本/单元格颜色
         $(document).off("click.AFselectColor").on("click.AFselectColor", "#luckysheet-modal-dialog-slider-alternateformat .luckysheet-color-menu-button-indicator", function(){
-            let $parent = $(this).closest(".toningbox");
+            let _parent = $(this).closest(".toningbox");
 
             let colorType, currenColor;
             if($(this).find(".luckysheet-icon-img").hasClass("luckysheet-icon-text-color")){
                 colorType = "fc";
-                currenColor = $parent.find(".toningShow").data("fc");
+                currenColor = _parent.find(".toningShow").data("fc");
             }
             else if($(this).find(".luckysheet-icon-img").hasClass("luckysheet-icon-cell-color")){
                 colorType = "bc";
-                currenColor = $parent.find(".toningShow").data("bc");
+                currenColor = _parent.find(".toningShow").data("bc");
             }
 
             //source
             let source;
-            if($parent.hasClass("header")){
+            if(_parent.hasClass("header")){
                 source = "0";
             }
-            else if($parent.hasClass("ctOne")){
+            else if(_parent.hasClass("ctOne")){
                 source = "1";
             }
-            else if($parent.hasClass("ctTwo")){
+            else if(_parent.hasClass("ctTwo")){
                 source = "2";
             }
-            else if($parent.hasClass("footer")){
+            else if(_parent.hasClass("footer")){
                 source = "3";
             }
 
@@ -411,24 +411,24 @@ const alternateformat = {
 
         //选择颜色 确定 添加自定义模板
         $(document).off("click.AFselectColorConfirm").on("click.AFselectColorConfirm", "#luckysheet-alternateformat-colorSelect-dialog-confirm", function(){
-            let $parent = $(this).parents("#luckysheet-alternateformat-colorSelect-dialog");
+            let _parent = $(this).parents("#luckysheet-alternateformat-colorSelect-dialog");
             const _locale = locale()
             const alternatingColors =_locale.alternatingColors;
             $("#luckysheet-modal-dialog-mask").hide();
-            $parent.hide();
+            _parent.hide();
 
             //获取currenColor colorType source
-            let currenColor = $parent.find(".currenColor span").attr("title");
+            let currenColor = _parent.find(".currenColor span").attr("title");
 
             let colorType;
-            if($parent.find(".luckysheet-modal-dialog-title-text").text() == alternatingColors.selectionTextColor){
+            if(_parent.find(".luckysheet-modal-dialog-title-text").text() == alternatingColors.selectionTextColor){
                 colorType = "fc";
             }
-            else if($parent.find(".luckysheet-modal-dialog-title-text").text() == alternatingColors.selectionCellColor){
+            else if(_parent.find(".luckysheet-modal-dialog-title-text").text() == alternatingColors.selectionCellColor){
                 colorType = "bc";
             }
 
-            let source = $parent.find(".currenColor").attr("data-source");
+            let source = _parent.find(".currenColor").attr("data-source");
             
             //赋给颜色
             if(source == "0"){
@@ -735,12 +735,12 @@ const alternateformat = {
             "botton": '<button id="luckysheet-alternateformat-colorSelect-dialog-confirm" class="btn btn-primary">'+locale_button.confirm+'</button><button class="btn btn-default luckysheet-model-close-btn">'+locale_button.cancel+'</button>', 
             "style": "z-index:100003" 
         }));
-        let $t = $("#luckysheet-alternateformat-colorSelect-dialog")
+        let _t = $("#luckysheet-alternateformat-colorSelect-dialog")
                 .find(".luckysheet-modal-dialog-content")
                 .css("min-width", 300)
                 .end(), 
-            myh = $t.outerHeight(), 
-            myw = $t.outerWidth();
+            myh = _t.outerHeight(), 
+            myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
         $("#luckysheet-alternateformat-colorSelect-dialog").css({ 
@@ -809,12 +809,12 @@ const alternateformat = {
             "botton": '<button id="luckysheet-alternateformat-rangeDialog-confirm" class="btn btn-primary">'+locale_button.confirm+'</button><button id="luckysheet-alternateformat-rangeDialog-close" class="btn btn-default">'+locale_button.cancel+'</button>', 
             "style": "z-index:100003" 
         }));
-        let $t = $("#luckysheet-alternateformat-rangeDialog")
+        let _t = $("#luckysheet-alternateformat-rangeDialog")
                 .find(".luckysheet-modal-dialog-content")
                 .css("min-width", 300)
                 .end(), 
-            myh = $t.outerHeight(), 
-            myw = $t.outerWidth();
+            myh = _t.outerHeight(), 
+            myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
         $("#luckysheet-alternateformat-rangeDialog").css({ 

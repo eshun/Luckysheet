@@ -970,22 +970,22 @@ const luckysheetFreezen = {
                 let width = $(e).width();
                 let height = $(e).height();
 
-                let $canvas_width = $(e).find("canvas").width();
-                let $canvas_height = $(e).find("canvas").height();
+                let _canvas_width = $(e).find("canvas").width();
+                let _canvas_height = $(e).find("canvas").height();
 
-                let height_diff = $canvas_height - height;
-                let width_diff = $canvas_width - width;
+                let height_diff = _canvas_height - height;
+                let width_diff = _canvas_width - width;
 
                 if((x.top - height_diff) < freezenTop){
                     let size = freezenTop - (x.top - height_diff);
 
-                    if(size > ($canvas_height + 40 + 2)){
+                    if(size > (_canvas_height + 40 + 2)){
                         $(e).css("visibility", "hidden");
                     }
                     else{
                         $(e).css({
                             "top": freezenTop + scrollTop,
-                            "height": $canvas_height - size,
+                            "height": _canvas_height - size,
                             "visibility": "visible"
                         });   
                         $(e).find("canvas").css("top", - size);
@@ -994,7 +994,7 @@ const luckysheetFreezen = {
                 else{
                     $(e).css({
                         "top": x.top - height_diff + scrollTop,
-                        "height": $canvas_height,
+                        "height": _canvas_height,
                         "visibility": "visible"
                     }); 
                     $(e).find("canvas").css("top", 0);
@@ -1003,13 +1003,13 @@ const luckysheetFreezen = {
                 if((x.left - width_diff) < freezenLeft){
                     let size = freezenLeft - (x.left - width_diff);
 
-                    if(size > ($canvas_width + 20 + 2)){
+                    if(size > (_canvas_width + 20 + 2)){
                         $(e).css("visibility", "hidden");
                     }
                     else{
                         $(e).css({
                             "left": freezenLeft + scrollLeft,
-                            "width": $canvas_width - size,
+                            "width": _canvas_width - size,
                             "visibility": "visible"
                         });   
                         $(e).find("canvas").css("left", - size);
@@ -1018,7 +1018,7 @@ const luckysheetFreezen = {
                 else{
                     $(e).css({
                         "left": x.left - width_diff + scrollLeft,
-                        "width": $canvas_width,
+                        "width": _canvas_width,
                         "visibility": "visible"
                     }); 
                     $(e).find("canvas").css("left", 0);
@@ -1032,20 +1032,20 @@ const luckysheetFreezen = {
                 let x = $(e).position();
                 let height = $(e).height();
                 
-                let $canvas_height = $(e).find("canvas").height();
+                let _canvas_height = $(e).find("canvas").height();
 
-                let height_diff = $canvas_height - height;
+                let height_diff = _canvas_height - height;
 
                 if((x.top - height_diff) < freezenTop){
                     let size = freezenTop - (x.top - height_diff);
 
-                    if(size > ($canvas_height + 40 + 2)){
+                    if(size > (_canvas_height + 40 + 2)){
                         $(e).css("visibility", "hidden");
                     }
                     else{
                         $(e).css({
                             "top": freezenTop + scrollTop,
-                            "height": $canvas_height - size,
+                            "height": _canvas_height - size,
                             "visibility": "visible"
                         });   
                         $(e).find("canvas").css("top", - size);
@@ -1054,7 +1054,7 @@ const luckysheetFreezen = {
                 else{
                     $(e).css({
                         "top": x.top - height_diff + scrollTop,
-                        "height": $canvas_height,
+                        "height": _canvas_height,
                         "visibility": "visible"
                     }); 
                     $(e).find("canvas").css("top", 0);
@@ -1068,20 +1068,20 @@ const luckysheetFreezen = {
                 let x = $(e).position();
                 let width = $(e).width();
 
-                let $canvas_width = $(e).find("canvas").width();
+                let _canvas_width = $(e).find("canvas").width();
 
-                let width_diff = $canvas_width - width;
+                let width_diff = _canvas_width - width;
 
                 if((x.left - width_diff) < freezenLeft){
                     let size = freezenLeft - (x.left - width_diff);
 
-                    if(size > ($canvas_width + 20 + 2)){
+                    if(size > (_canvas_width + 20 + 2)){
                         $(e).css("visibility", "hidden");
                     }
                     else{
                         $(e).css({
                             "left": freezenLeft + scrollLeft,
-                            "width": $canvas_width - size,
+                            "width": _canvas_width - size,
                             "visibility": "visible"
                         });   
                         $(e).find("canvas").css("left", - size);
@@ -1090,7 +1090,7 @@ const luckysheetFreezen = {
                 else{
                     $(e).css({
                         "left": x.left - width_diff + scrollLeft,
-                        "width": $canvas_width,
+                        "width": _canvas_width,
                         "visibility": "visible"
                     }); 
                     $(e).find("canvas").css("left", 0);
@@ -1103,17 +1103,17 @@ const luckysheetFreezen = {
                 let width = $(e).width();
                 let height = $(e).height();
 
-                let $canvas_width = $(e).find("canvas").width();
-                let $canvas_height = $(e).find("canvas").height();
+                let _canvas_width = $(e).find("canvas").width();
+                let _canvas_height = $(e).find("canvas").height();
 
-                let height_diff = $canvas_height - height;
-                let width_diff = $canvas_width - width;
+                let height_diff = _canvas_height - height;
+                let width_diff = _canvas_width - width;
 
                 $(e).css({
                     "top": x.top - height_diff + scrollTop,
-                    "height": $canvas_height,
+                    "height": _canvas_height,
                     "left": x.left - width_diff + scrollLeft,
-                    "width": $canvas_width,
+                    "width": _canvas_width,
                     "visibility": "visible"
                 }); 
 

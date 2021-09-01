@@ -182,13 +182,13 @@ function printLineAndNumberCreate(){
     Store.pageRange=pageRange;
 }
 
-function switchViewBtn($t){
-    let $viewList = $t.parent(), preType=$viewList.find("sheet-print-viewBtn-active").attr("type");
-    if($t.attr("type") == preType){
+function switchViewBtn(_t){
+    let _viewList = _t.parent(), preType=_viewList.find("sheet-print-viewBtn-active").attr("type");
+    if(_t.attr("type") == preType){
         return;
     }
 
-    let curType = $t.attr("type");
+    let curType = _t.attr("type");
     if(curType!=null){
         viewChange(curType, preType);
     }
@@ -196,8 +196,8 @@ function switchViewBtn($t){
         return;
     }
 
-    $t.parent().find(".sheet-print-viewBtn").removeClass("sheet-print-viewBtn-active");
-    $t.addClass("sheet-print-viewBtn-active");
+    _t.parent().find(".sheet-print-viewBtn").removeClass("sheet-print-viewBtn-active");
+    _t.addClass("sheet-print-viewBtn-active");
 }
 
 export function printInitial(){

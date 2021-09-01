@@ -65,9 +65,9 @@ const luckysheetSearchReplace = {
             "style": "z-index:100003",
             "close":locale_button.close
         }));
-        let $t = $("#luckysheet-search-replace").find(".luckysheet-modal-dialog-content").css("min-width", 500).end(), 
-            myh = $t.outerHeight(), 
-            myw = $t.outerWidth();
+        let _t = $("#luckysheet-search-replace").find(".luckysheet-modal-dialog-content").css("min-width", 500).end(), 
+            myh = _t.outerHeight(), 
+            myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
         $("#luckysheet-search-replace").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 3 }).show();
@@ -92,15 +92,15 @@ const luckysheetSearchReplace = {
         $(document).off("click.SRtabBoxspan").on("click.SRtabBoxspan", "#luckysheet-search-replace .tabBox span", function(){
             $(this).addClass("on").siblings().removeClass("on");
 
-            let $id = $(this).attr("id");
-            if($id == "searchTab"){
+            let _id = $(this).attr("id");
+            if(_id == "searchTab"){
                 $("#luckysheet-search-replace #replaceInput").hide();
                 $("#luckysheet-search-replace #replaceAllBtn").hide();
                 $("#luckysheet-search-replace #replaceBtn").hide();
 
                 $("#luckysheet-search-replace #searchInput input").focus();
             }
-            else if($id == "replaceTab"){
+            else if(_id == "replaceTab"){
                 $("#luckysheet-search-replace #replaceInput").show();
                 $("#luckysheet-search-replace #replaceAllBtn").show();
                 $("#luckysheet-search-replace #replaceBtn").show();

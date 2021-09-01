@@ -20,9 +20,9 @@ const tooltip = {
             "botton": '<button class="btn btn-default luckysheet-model-close-btn">&nbsp;&nbsp;'+locale_button.close+'&nbsp;&nbsp;</button>', 
             "style": "z-index:100003" 
         }));
-        let $t = $("#luckysheet-info").find(".luckysheet-modal-dialog-content").css("min-width", 300).end(), 
-            myh = $t.outerHeight(), 
-            myw = $t.outerWidth();
+        let _t = $("#luckysheet-info").find(".luckysheet-modal-dialog-content").css("min-width", 300).end(), 
+            myh = _t.outerHeight(), 
+            myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
         $("#luckysheet-info").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 3 }).show();
@@ -49,13 +49,13 @@ const tooltip = {
             "content": content, 
             "botton": '<button class="btn btn-primary luckysheet-model-conform-btn">&nbsp;&nbsp;'+ name1 +'&nbsp;&nbsp;</button><button class="btn btn-default luckysheet-model-cancel-btn">&nbsp;&nbsp;'+ name2 +'&nbsp;&nbsp;</button>' 
         }));
-        let $t = $("#luckysheet-confirm").find(".luckysheet-modal-dialog-content").css("min-width", 300).end(), 
-            myh = $t.outerHeight(), 
-            myw = $t.outerWidth();
+        let _t = $("#luckysheet-confirm").find(".luckysheet-modal-dialog-content").css("min-width", 300).end(), 
+            myh = _t.outerHeight(), 
+            myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
         $("#luckysheet-confirm").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 3 }).show();
-        $t.find(".luckysheet-model-conform-btn").click(function () {
+        _t.find(".luckysheet-model-conform-btn").click(function () {
             if (typeof func1 == 'function') {
                 func1();
             }
@@ -63,7 +63,7 @@ const tooltip = {
             $("#luckysheet-confirm").hide();
             $("#luckysheet-modal-dialog-mask").hide();  
         });
-        $t.find(".luckysheet-model-cancel-btn").click(function () {
+        _t.find(".luckysheet-model-cancel-btn").click(function () {
             if (typeof func2 == 'function') {
                 func2();
             }
@@ -85,13 +85,13 @@ const tooltip = {
             "content": content, 
             "botton": btn || '<a style="text-decoration:none;color:#fff;" class="download btn btn-primary luckysheet-model-conform-btn">&nbsp;&nbsp;'+ locale_screenshot.downLoadBtn +'&nbsp;&nbsp;</a>&nbsp;&nbsp;<button class="btn btn-primary luckysheet-model-copy-btn">&nbsp;&nbsp;'+ locale_screenshot.downLoadCopy +'&nbsp;&nbsp;</button><button class="btn btn-default luckysheet-model-cancel-btn">&nbsp;&nbsp;'+ locale_screenshot.downLoadClose +'&nbsp;&nbsp;</button>' 
         }));
-        let $t = $("#luckysheet-confirm").find(".luckysheet-modal-dialog-content").css("min-width", 300).end(), 
-            myh = $t.outerHeight(), 
-            myw = $t.outerWidth();
+        let _t = $("#luckysheet-confirm").find(".luckysheet-modal-dialog-content").css("min-width", 300).end(), 
+            myh = _t.outerHeight(), 
+            myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
         $("#luckysheet-confirm").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 3 }).show();
-        $t.find(".luckysheet-model-conform-btn").click(function () {
+        _t.find(".luckysheet-model-conform-btn").click(function () {
             if(browser.isIE() == "1"){
                 alert(locale_screenshot.browserNotTip);
             }
@@ -110,7 +110,7 @@ const tooltip = {
                 }  
             }
         });
-        $t.find(".luckysheet-model-cancel-btn").click(function () {
+        _t.find(".luckysheet-model-cancel-btn").click(function () {
             $("#luckysheet-confirm").hide();
             $("#luckysheet-modal-dialog-mask").hide();
         });
@@ -177,35 +177,35 @@ const tooltip = {
 
             clearTimeout(_this.hoverTipshowTimeOut);
             _this.hoverTipshowTimeOut = setTimeout(function(){
-                let $t = $(e.currentTarget), 
-                    toffset = $t.offset(), 
-                    $toolup = $("#luckysheet-tooltip-up");
+                let _t = $(e.currentTarget), 
+                    toffset = _t.offset(), 
+                    _toolup = $("#luckysheet-tooltip-up");
                 
-                let tips = $t.data("tips");
+                let tips = _t.data("tips");
                 if (tips == null || tips.length == 0) {
-                    tips = $t.prev().data("tips");
+                    tips = _t.prev().data("tips");
 
                     if (tips == null || tips.length == 0) {
                         return;
                     }
                 }
 
-                if ($toolup.length == 0) {
+                if (_toolup.length == 0) {
                     $("body").append(sheetToolHTML);
-                    $toolup = $("#luckysheet-tooltip-up");
+                    _toolup = $("#luckysheet-tooltip-up");
                 }
 
-                $toolup.removeClass("jfk-tooltip-hide").find("div.jfk-tooltip-contentId").html(tips);
-                let toolwidth = $toolup.outerWidth();
-                $toolup.find("div.jfk-tooltip-arrow").css("left", (toolwidth) / 2);
+                _toolup.removeClass("jfk-tooltip-hide").find("div.jfk-tooltip-contentId").html(tips);
+                let toolwidth = _toolup.outerWidth();
+                _toolup.find("div.jfk-tooltip-arrow").css("left", (toolwidth) / 2);
 
-                let toolleft = toffset.left + ($t.outerWidth() - toolwidth) / 2;
+                let toolleft = toffset.left + (_t.outerWidth() - toolwidth) / 2;
                 if(toolleft < 2){
                     toolleft = 2;
-                    $toolup.find("div.jfk-tooltip-arrow").css("left", $t.outerWidth() / 2);
+                    _toolup.find("div.jfk-tooltip-arrow").css("left", _t.outerWidth() / 2);
                 }
 
-                $toolup.css({ "top": toffset.top + $t.outerHeight() + 1, "left": toolleft });
+                _toolup.css({ "top": toffset.top + _t.outerHeight() + 1, "left": toolleft });
             }, 300);
 
         }).on("mouseout", to, function (e) {

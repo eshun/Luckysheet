@@ -44,7 +44,7 @@ function showsheetconfigmenu() {
             noColorSelectedText: locale_toolbar.noColorSelectedText,
             palette: [["rgb(0, 0, 0)", "rgb(67, 67, 67)", "rgb(102, 102, 102)", "rgb(204, 204, 204)", "rgb(217, 217, 217)", "rgb(255, 255, 255)"], ["rgb(152, 0, 0)", "rgb(255, 0, 0)", "rgb(255, 153, 0)", "rgb(255, 255, 0)", "rgb(0, 255, 0)", "rgb(0, 255, 255)", "rgb(74, 134, 232)", "rgb(0, 0, 255)", "rgb(153, 0, 255)", "rgb(255, 0, 255)"], ["rgb(230, 184, 175)", "rgb(244, 204, 204)", "rgb(252, 229, 205)", "rgb(255, 242, 204)", "rgb(217, 234, 211)", "rgb(208, 224, 227)", "rgb(201, 218, 248)", "rgb(207, 226, 243)", "rgb(217, 210, 233)", "rgb(234, 209, 220)"], ["rgb(221, 126, 107)", "rgb(234, 153, 153)", "rgb(249, 203, 156)", "rgb(255, 229, 153)", "rgb(182, 215, 168)", "rgb(162, 196, 201)", "rgb(164, 194, 244)", "rgb(159, 197, 232)", "rgb(180, 167, 214)", "rgb(213, 166, 189)"], ["rgb(204, 65, 37)", "rgb(224, 102, 102)", "rgb(246, 178, 107)", "rgb(255, 217, 102)", "rgb(147, 196, 125)", "rgb(118, 165, 175)", "rgb(109, 158, 235)", "rgb(111, 168, 220)", "rgb(142, 124, 195)", "rgb(194, 123, 160)"], ["rgb(166, 28, 0)", "rgb(204, 0, 0)", "rgb(230, 145, 56)", "rgb(241, 194, 50)", "rgb(106, 168, 79)", "rgb(69, 129, 142)", "rgb(60, 120, 216)", "rgb(61, 133, 198)", "rgb(103, 78, 167)", "rgb(166, 77, 121)"], ["rgb(91, 15, 0)", "rgb(102, 0, 0)", "rgb(120, 63, 4)", "rgb(127, 96, 0)", "rgb(39, 78, 19)", "rgb(12, 52, 61)", "rgb(28, 69, 135)", "rgb(7, 55, 99)", "rgb(32, 18, 77)", "rgb(76, 17, 48)"], ["#c1232b", "#27727b", "#fcce10", "#e87c25", "#b5c334", "#fe8463", "#9bca63", "#fad860", "#f3a43b", "#60c0dd", "#d7504b", "#c6e579", "#f4e001", "#f0805a", "#26c0c0", "#c12e34", "#e6b600", "#0098d9", "#2b821d", "#005eaa", "#339ca8", "#cda819", "#32a487", "#3fb1e3", "#6be6c1", "#626c91", "#a0a7e6", "#c4ebad", "#96dee8"]],
             change: function (color) {
-                let $input = $(this);
+                let _input = $(this);
                 if (color != null) {
                     color = color.toHexString();
                 }
@@ -122,9 +122,9 @@ function showsheetconfigmenu() {
     },1);
 }
 
-let luckysheetsheetrightclick = function ($t, $cur, e) {
+let luckysheetsheetrightclick = function (_t, _cur, e) {
     clearTimeout(jfdbclicklagTimeout);
-    if ($cur.hasClass("luckysheet-sheets-item-name") && $cur.attr("contenteditable") == "true") {
+    if (_cur.hasClass("luckysheet-sheets-item-name") && _cur.attr("contenteditable") == "true") {
         return;
     }
     if (formula.rangestart || formula.rangedrag_column_start || formula.rangedrag_row_start || formula.israngeseleciton()) {
@@ -146,14 +146,14 @@ let luckysheetsheetrightclick = function ($t, $cur, e) {
     }
 
     $("#luckysheet-sheet-area div.luckysheet-sheets-item").removeClass("luckysheet-sheets-item-active");
-    $t.addClass("luckysheet-sheets-item-active");
+    _t.addClass("luckysheet-sheets-item-active");
     cleargridelement(e);
-    sheetmanage.changeSheet($t.data("index"));
+    sheetmanage.changeSheet(_t.data("index"));
 
     $("#luckysheet-sheet-list, #luckysheet-rightclick-sheet-menu").hide();
 
-    if ($cur.hasClass("luckysheet-sheets-item-menu") || $cur.hasClass("fa-sort-desc") || e.which == "3") {
-        luckysheetcurrentSheetitem = $cur.closest(".luckysheet-sheets-item");
+    if (_cur.hasClass("luckysheet-sheets-item-menu") || _cur.hasClass("fa-sort-desc") || e.which == "3") {
+        luckysheetcurrentSheetitem = _cur.closest(".luckysheet-sheets-item");
         showsheetconfigmenu();
     }
 }
@@ -170,16 +170,16 @@ export function initialSheetBar(){
             return;
         }
 
-        let $t = $(this), $cur = $(e.target), $item = $cur.closest(".luckysheet-sheets-item");
+        let _t = $(this), _cur = $(e.target), _item = _cur.closest(".luckysheet-sheets-item");
 
         if (e.which == "3") {
-            luckysheetsheetrightclick($t, $cur, e);
-            luckysheetcurrentSheetitem = $item;
+            luckysheetsheetrightclick(_t, _cur, e);
+            luckysheetcurrentSheetitem = _item;
             showsheetconfigmenu();
             return;
         }
 
-        if ($item.hasClass("luckysheet-sheets-item-active") && $item.find(".luckysheet-sheets-item-name").attr("contenteditable") == "false") {
+        if (_item.hasClass("luckysheet-sheets-item-active") && _item.find(".luckysheet-sheets-item-name").attr("contenteditable") == "false") {
             jfdbclicklagTimeout = setTimeout(function () {
                 Store.luckysheet_sheet_move_status = true;
                 Store.luckysheet_sheet_move_data = {};
@@ -194,15 +194,15 @@ export function initialSheetBar(){
                     }
                 });
 
-                Store.luckysheet_sheet_move_data.curindex = $("#luckysheet-sheet-area div.luckysheet-sheets-item").index($item);
+                Store.luckysheet_sheet_move_data.curindex = $("#luckysheet-sheet-area div.luckysheet-sheets-item").index(_item);
                 let x = e.pageX;
-                Store.luckysheet_sheet_move_data.curleft = x - $item.offset().left;
+                Store.luckysheet_sheet_move_data.curleft = x - _item.offset().left;
                 Store.luckysheet_sheet_move_data.pageX = x;
-                Store.luckysheet_sheet_move_data.activeobject = $item;
-                Store.luckysheet_sheet_move_data.cursorobject = $cur;
-                let $itemclone = $item.clone().css("visibility", "hidden").attr("id", "luckysheet-sheets-item-clone");
-                $item.after($itemclone);
-                $item.css({ "position": "absolute", "opacity": 0.8, "cursor": "move", "transition": "initial", "z-index": 10 });
+                Store.luckysheet_sheet_move_data.activeobject = _item;
+                Store.luckysheet_sheet_move_data.cursorobject = _cur;
+                let _itemclone = _item.clone().css("visibility", "hidden").attr("id", "luckysheet-sheets-item-clone");
+                _item.after(_itemclone);
+                _item.css({ "position": "absolute", "opacity": 0.8, "cursor": "move", "transition": "initial", "z-index": 10 });
             }, 200);
         }
     }).on("click", "div.luckysheet-sheets-item", function (e) {
@@ -212,19 +212,19 @@ export function initialSheetBar(){
             return;
         }
 
-        let $t = $(this), $cur = $(e.target);
-        luckysheetsheetrightclick($t, $cur, e);
+        let _t = $(this), _cur = $(e.target);
+        luckysheetsheetrightclick(_t, _cur, e);
         server.keepHighLightBox()
     });
 
-    let luckysheetsheetnameeditor = function ($t) {
+    let luckysheetsheetnameeditor = function (_t) {
         if(Store.allowEdit===false){
             return;
         }
-        $t.attr("contenteditable", "true").addClass("luckysheet-mousedown-cancel").data("oldtxt", $t.text());
+        _t.attr("contenteditable", "true").addClass("luckysheet-mousedown-cancel").data("oldtxt", _t.text());
 
         setTimeout(function () {
-            selectTextDom($t.get(0));
+            selectTextDom(_t.get(0));
         }, 1);
     }
 
@@ -282,8 +282,8 @@ export function initialSheetBar(){
             return;
         }
 
-        let $t = $(this);
-        let txt = $t.text(), oldtxt = $t.data("oldtxt");
+        let _t = $(this);
+        let txt = _t.text(), oldtxt = _t.data("oldtxt");
         if(txt.length>31 || txt.charAt(0)=="'" || txt.charAt(txt.length-1)=="'" || /[：\:\\\/？\?\*\[\]]+/.test(txt)){
             alert(locale_sheetconfig.sheetNameSpecCharError);
             setTimeout(()=>{
@@ -302,7 +302,7 @@ export function initialSheetBar(){
                 else{
                     tooltip.info("", locale_sheetconfig.tipNameRepeat);
                 }
-                $t.text(oldtxt).attr("contenteditable", "false");
+                _t.text(oldtxt).attr("contenteditable", "false");
                 return;
             }
         }
@@ -312,7 +312,7 @@ export function initialSheetBar(){
         Store.luckysheetfile[index].name = txt;
         server.saveParam("all", Store.currentSheetIndex, txt, { "k": "name" });
 
-        $t.attr("contenteditable", "false").removeClass("luckysheet-mousedown-cancel");
+        _t.attr("contenteditable", "false").removeClass("luckysheet-mousedown-cancel");
 
         if (Store.clearjfundo) {
             let redo = {};
@@ -332,12 +332,12 @@ export function initialSheetBar(){
             return;
         }
         let kcode = e.keyCode;
-        let $t = $(this);
+        let _t = $(this);
         if (kcode == keycode.ENTER) {
             let index = getSheetIndex(Store.currentSheetIndex);
             oldSheetFileName = Store.luckysheetfile[index].name || oldSheetFileName;
-            Store.luckysheetfile[index].name = $t.text();
-            $t.attr("contenteditable", "false");
+            Store.luckysheetfile[index].name = _t.text();
+            _t.attr("contenteditable", "false");
         }
     });
 
@@ -428,9 +428,9 @@ export function initialSheetBar(){
 
     let sheetscrollani = null, sheetscrollstart = 0, sheetscrollend = 0, sheetscrollstep = 150;
     $("#luckysheet-sheets-leftscroll").click(function () {
-        let $c = $("#luckysheet-sheet-container-c");
-        sheetscrollstart = $c.scrollLeft();
-        sheetscrollend = $c.scrollLeft() - sheetscrollstep;
+        let _c = $("#luckysheet-sheet-container-c");
+        sheetscrollstart = _c.scrollLeft();
+        sheetscrollend = _c.scrollLeft() - sheetscrollstep;
 
         if (sheetscrollend <= 0) {
             $("#luckysheet-sheet-container .docs-sheet-fade-left").hide();
@@ -440,7 +440,7 @@ export function initialSheetBar(){
         clearInterval(sheetscrollani);
         sheetscrollani = setInterval(function () {
             sheetscrollstart -= 4;
-            $c.scrollLeft(sheetscrollstart);
+            _c.scrollLeft(sheetscrollstart);
             if (sheetscrollstart <= sheetscrollend) {
                 clearInterval(sheetscrollani);
             }
@@ -448,9 +448,9 @@ export function initialSheetBar(){
     });
 
     $("#luckysheet-sheets-rightscroll").click(function () {
-        let $c = $("#luckysheet-sheet-container-c");
-        sheetscrollstart = $c.scrollLeft();
-        sheetscrollend = $c.scrollLeft() + sheetscrollstep;
+        let _c = $("#luckysheet-sheet-container-c");
+        sheetscrollstart = _c.scrollLeft();
+        sheetscrollend = _c.scrollLeft() + sheetscrollstep;
 
         if (sheetscrollstart > 0) {
             $("#luckysheet-sheet-container .docs-sheet-fade-right").hide();
@@ -460,7 +460,7 @@ export function initialSheetBar(){
         clearInterval(sheetscrollani);
         sheetscrollani = setInterval(function () {
             sheetscrollstart += 4;
-            $c.scrollLeft(sheetscrollstart);
+            _c.scrollLeft(sheetscrollstart);
             if (sheetscrollstart >= sheetscrollend) {
                 clearInterval(sheetscrollani);
             }
@@ -504,9 +504,9 @@ export function initialSheetBar(){
                     return;
                 }
 
-                let $item = $(this), index = $item.data("index");
+                let _item = $(this), index = _item.data("index");
 
-                if ($item.data("index") != Store.currentSheetIndex) {
+                if (_item.data("index") != Store.currentSheetIndex) {
                     sheetmanage.setSheetShow(index);
                     sheetmanage.locationSheet();
                 }
@@ -519,11 +519,11 @@ export function initialSheetBar(){
             $("#luckysheet-sheet-list").html(item);
         }
 
-        let $t = $("#luckysheet-sheet-list");
+        let _t = $("#luckysheet-sheet-list");
 
         let left = $(this).offset().left - $('#' + Store.container).offset().left;
         let bottom = $(this).height() + $('#luckysheet-sta-content').height() + 12;
-        $t.css({left: left + 'px', bottom: bottom + 'px'}).show();
+        _t.css({left: left + 'px', bottom: bottom + 'px'}).show();
         $("#luckysheet-input-box").removeAttr("style");
     });
 

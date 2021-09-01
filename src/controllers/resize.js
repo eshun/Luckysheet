@@ -114,12 +114,12 @@ export default function luckysheetsizeauto(isRefreshCanvas=true) {
     // $("#luckysheet-icon-morebtn-div > div").appendTo($("#luckysheet-wa-editor"));
 
     $("#luckysheet-icon-morebtn-div > div").each(function(){
-        const $t = $(this)[0];
-        const $container =  $("#luckysheet-wa-editor")[0];
+        const _t = $(this)[0];
+        const _container =  $("#luckysheet-wa-editor")[0];
 
-        $container.appendChild(document.createTextNode(" "));
+        _container.appendChild(document.createTextNode(" "));
 
-        $container.appendChild($t);
+        _container.appendChild(_t);
     });
 
     $("#luckysheet-icon-morebtn").remove();
@@ -189,8 +189,8 @@ export default function luckysheetsizeauto(isRefreshCanvas=true) {
                 $$('#luckysheet-icon-morebtn-div').style.visibility = 'hidden';
             }
 
-            let $txt = $(this).find(".luckysheet-toolbar-menu-button-caption");
-            if($txt.text().indexOf(locale_toolbar.toolMore) > -1){
+            let _txt = $(this).find(".luckysheet-toolbar-menu-button-caption");
+            if(_txt.text().indexOf(locale_toolbar.toolMore) > -1){
 
                 const toolCloseHTML = `
                 <div class="luckysheet-toolbar-menu-button-caption luckysheet-inline-block" style="user-select: none;">

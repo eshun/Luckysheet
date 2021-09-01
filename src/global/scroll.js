@@ -20,7 +20,7 @@ function execScroll(){
 
 //全局滚动事件
 export default function luckysheetscrollevent(isadjust) {
-    let $t = $("#luckysheet-cell-main");
+    let _t = $("#luckysheet-cell-main");
     let scrollLeft = $("#luckysheet-scrollbar-x").scrollLeft(), 
         scrollTop = $("#luckysheet-scrollbar-y").scrollTop(),
         canvasHeight = $("#luckysheetTableContent").height(); // canvas高度
@@ -33,10 +33,10 @@ export default function luckysheetscrollevent(isadjust) {
     // }, 500);
 
     // if (!!isadjust) {
-    //     let scrollHeight = $t.get(0).scrollHeight;
-    //     let windowHeight = $t.height();
-    //     let scrollWidth = $t.get(0).scrollWidth;
-    //     let windowWidth = $t.width();
+    //     let scrollHeight = _t.get(0).scrollHeight;
+    //     let windowHeight = _t.height();
+    //     let scrollWidth = _t.get(0).scrollWidth;
+    //     let windowWidth = _t.width();
 
     //     let maxScrollLeft = scrollWidth - windowWidth;
     //     let maxScrollTop = scrollHeight - windowHeight;
@@ -90,7 +90,7 @@ export default function luckysheetscrollevent(isadjust) {
     $("#luckysheet-cols-h-c").scrollLeft(scrollLeft);//列标题
     $("#luckysheet-rows-h").scrollTop(scrollTop);//行标题
     
-    $t.scrollLeft(scrollLeft).scrollTop(scrollTop);
+    _t.scrollLeft(scrollLeft).scrollTop(scrollTop);
 
     $("#luckysheet-input-box-index").css({
         "left": $("#luckysheet-input-box").css("left"), 

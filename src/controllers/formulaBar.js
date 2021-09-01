@@ -33,7 +33,7 @@ export function formulaBarInitial(){
 
             let row_index = last["row_focus"], col_index = last["column_focus"];
             
-            // let $input = $("#luckysheet-rich-text-editor"),value = $input.text();
+            // let _input = $("#luckysheet-rich-text-editor"),value = _input.text();
             // if(value) {
             //     formula.updatecell(row_index, col_index);
             // }
@@ -49,9 +49,9 @@ export function formulaBarInitial(){
         let altKey = event.altKey;
         let shiftKey = event.shiftKey;
         let kcode = event.keyCode;
-        let $inputbox = $("#luckysheet-input-box");
+        let _input = $("#luckysheet-input-box");
 
-        if (kcode == keycode.ENTER && parseInt($inputbox.css("top")) > 0) {
+        if (kcode == keycode.ENTER && parseInt(_input.css("top")) > 0) {
             if ($("#luckysheet-formula-search-c").is(":visible") && formula.searchFunctionCell != null) {
                 formula.searchFunctionEnter($("#luckysheet-formula-search-c").find(".luckysheet-formula-search-item-active"));
             }
@@ -64,43 +64,43 @@ export function formulaBarInitial(){
             }
             event.preventDefault();
         }
-        else if (kcode == keycode.ESC && parseInt($inputbox.css("top")) > 0) {
+        else if (kcode == keycode.ESC && parseInt(_input.css("top")) > 0) {
             formula.dontupdate();
             luckysheetMoveHighlightCell("down", 0, "rangeOfSelect");
             //$("#luckysheet-functionbox-cell").blur();
             $("#luckysheet-rich-text-editor").focus();
             event.preventDefault();
         }
-        else if (kcode == keycode.F4 && parseInt($inputbox.css("top")) > 0) {
+        else if (kcode == keycode.F4 && parseInt(_input.css("top")) > 0) {
             formula.setfreezonFuc(event);
             event.preventDefault();
         }
-        else if (kcode == keycode.UP && parseInt($inputbox.css("top")) > 0) {
+        else if (kcode == keycode.UP && parseInt(_input.css("top")) > 0) {
             if ($("#luckysheet-formula-search-c").is(":visible")) {
-                let $up = $("#luckysheet-formula-search-c").find(".luckysheet-formula-search-item-active").prev();
-                if ($up.length == 0) {
-                    $up = $("#luckysheet-formula-search-c").find(".luckysheet-formula-search-item").last();
+                let _up = $("#luckysheet-formula-search-c").find(".luckysheet-formula-search-item-active").prev();
+                if (_up.length == 0) {
+                    _up = $("#luckysheet-formula-search-c").find(".luckysheet-formula-search-item").last();
                 }
                 $("#luckysheet-formula-search-c").find(".luckysheet-formula-search-item").removeClass("luckysheet-formula-search-item-active");
-                $up.addClass("luckysheet-formula-search-item-active");
+                _up.addClass("luckysheet-formula-search-item-active");
                 event.preventDefault();
             }
         }
-        else if (kcode == keycode.DOWN && parseInt($inputbox.css("top")) > 0) {
+        else if (kcode == keycode.DOWN && parseInt(_input.css("top")) > 0) {
             if ($("#luckysheet-formula-search-c").is(":visible")) {
-                let $up = $("#luckysheet-formula-search-c").find(".luckysheet-formula-search-item-active").next();
-                if ($up.length == 0) {
-                    $up = $("#luckysheet-formula-search-c").find(".luckysheet-formula-search-item").first();
+                let _up = $("#luckysheet-formula-search-c").find(".luckysheet-formula-search-item-active").next();
+                if (_up.length == 0) {
+                    _up = $("#luckysheet-formula-search-c").find(".luckysheet-formula-search-item").first();
                 }
                 $("#luckysheet-formula-search-c").find(".luckysheet-formula-search-item").removeClass("luckysheet-formula-search-item-active");
-                $up.addClass("luckysheet-formula-search-item-active");
+                _up.addClass("luckysheet-formula-search-item-active");
                 event.preventDefault();
             }
         }
-        else if (kcode == keycode.LEFT && parseInt($inputbox.css("top")) > 0) {
+        else if (kcode == keycode.LEFT && parseInt(_input.css("top")) > 0) {
             formula.rangeHightlightselected($("#luckysheet-functionbox-cell"));
         }
-        else if (kcode == keycode.RIGHT && parseInt($inputbox.css("top")) > 0) {
+        else if (kcode == keycode.RIGHT && parseInt(_input.css("top")) > 0) {
             formula.rangeHightlightselected($("#luckysheet-functionbox-cell"));
         }
         else if (!((kcode >= 112 && kcode <= 123) || kcode <= 46 || kcode == 144 || kcode == 108 || event.ctrlKey || event.altKey || (event.shiftKey && (kcode == 37 || kcode == 38 || kcode == 39 || kcode == 40))) || kcode == 8 || kcode == 32 || kcode == 46 || (event.ctrlKey && kcode == 86)) {

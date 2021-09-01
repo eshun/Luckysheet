@@ -235,9 +235,9 @@ const controlHistory = {
             createFilterOptions(ctr.filter_save);
 
             $("#luckysheet-filter-options-sheet" + Store.currentSheetIndex + " .luckysheet-filter-options").each(function(i){
-                let $top = $(this);
+                let top = $(this);
                 let item = ctr.optiongroups[i];
-                labelFilterOptionState($top, item.optionstate, item.rowhidden, item.caljs, false, item.st_r, item.ed_r, item.cindex, item.st_c, item.ed_c);
+                labelFilterOptionState(top, item.optionstate, item.rowhidden, item.caljs, false, item.st_r, item.ed_r, item.cindex, item.st_c, item.ed_c);
             });
 
             server.saveParam("fsr", Store.currentSheetIndex, { "filter": ctr.optiongroups, "filter_select": ctr.filter_save });
@@ -258,14 +258,14 @@ const controlHistory = {
             $("#luckysheet-filter-menu, #luckysheet-filter-submenu").hide();
         }
         else if (ctr.type == "datachangeAll_filter") {
-            let $top = $("#luckysheet-filter-options-sheet" + Store.currentSheetIndex + " .luckysheet-filter-options").eq(ctr["optionsindex"]);
-            let st_r = $top.data("str"), 
-                ed_r = $top.data("edr"), 
-                cindex = $top.data("cindex"), 
-                st_c = $top.data("stc"), 
-                ed_c = $top.data("edc");
+            let top = $("#luckysheet-filter-options-sheet" + Store.currentSheetIndex + " .luckysheet-filter-options").eq(ctr["optionsindex"]);
+            let st_r = top.data("str"), 
+                ed_r = top.data("edr"), 
+                cindex = top.data("cindex"), 
+                st_c = top.data("stc"), 
+                ed_c = top.data("edc");
 
-            labelFilterOptionState($top, json.hasKey(ctr.rowhidenPre), ctr.rowhidenPre, ctr.caljs, true, st_r, ed_r, cindex, st_c, ed_c);
+            labelFilterOptionState(top, json.hasKey(ctr.rowhidenPre), ctr.rowhidenPre, ctr.caljs, true, st_r, ed_r, cindex, st_c, ed_c);
 
             //config
             Store.config = ctr.config;
@@ -590,14 +590,14 @@ const controlHistory = {
             $("#luckysheet-filter-menu, #luckysheet-filter-submenu").hide();
         }
         else if (ctr.type == "datachangeAll_filter") {
-            let $top = $("#luckysheet-filter-options-sheet" + Store.currentSheetIndex + " .luckysheet-filter-options").eq(ctr["optionsindex"]);
-            let st_r = $top.data("str"), 
-                ed_r = $top.data("edr"), 
-                cindex = $top.data("cindex"), 
-                st_c = $top.data("stc"), 
-                ed_c = $top.data("edc");
+            let top = $("#luckysheet-filter-options-sheet" + Store.currentSheetIndex + " .luckysheet-filter-options").eq(ctr["optionsindex"]);
+            let st_r = top.data("str"), 
+                ed_r = top.data("edr"), 
+                cindex = top.data("cindex"), 
+                st_c = top.data("stc"), 
+                ed_c = top.data("edc");
 
-            labelFilterOptionState($top, json.hasKey(ctr.rowhidden), ctr.rowhidden, ctr.caljs, true, st_r, ed_r, cindex, st_c, ed_c);
+            labelFilterOptionState(top, json.hasKey(ctr.rowhidden), ctr.rowhidden, ctr.caljs, true, st_r, ed_r, cindex, st_c, ed_c);
 
             //config
             Store.config = ctr.curconfig;

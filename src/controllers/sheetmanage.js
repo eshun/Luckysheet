@@ -419,8 +419,8 @@ const sheetmanage = {
         _this.locationSheet();
     },
     locationSheet: function() {
-        let $c = $("#luckysheet-sheet-container-c"), winW = $("#"+Store.container).width();
-        let $cursheet = $("#luckysheet-sheet-container-c > div.luckysheet-sheets-item-active").eq(0);
+        let _c = $("#luckysheet-sheet-container-c"), winW = $("#"+Store.container).width();
+        let _cursheet = $("#luckysheet-sheet-container-c > div.luckysheet-sheets-item-active").eq(0);
 
         let scrollLeftpx = 0;
         let c_width = 0;
@@ -433,7 +433,7 @@ const sheetmanage = {
         });
         
         setTimeout(function(){
-            $c.scrollLeft(scrollLeftpx - 10);
+            _c.scrollLeft(scrollLeftpx - 10);
 
             if (c_width >= winW * 0.7) {
                 if(luckysheetConfigsetting.showsheetbarConfig.sheet){
@@ -1469,11 +1469,11 @@ const sheetmanage = {
     },
     changeSheetExec: function(index, isPivotInitial, isNewSheet) {
         
-        let $sheet = $("#luckysheet-sheets-item" + index);
+        let _sheet = $("#luckysheet-sheets-item" + index);
 
         window.luckysheet_getcelldata_cache = null;
         $("#luckysheet-sheet-area div.luckysheet-sheets-item").removeClass("luckysheet-sheets-item-active");
-        $sheet.addClass("luckysheet-sheets-item-active").show();
+        _sheet.addClass("luckysheet-sheets-item-active").show();
 
         cleargridelement();
         this.changeSheet(index, isPivotInitial, isNewSheet);
@@ -1507,15 +1507,15 @@ const sheetmanage = {
         }
     },
     sheetBarShowAndHide(index){
-        let $c = $("#luckysheet-sheet-container-c");
+        let _c = $("#luckysheet-sheet-container-c");
 
         if(index!=null){
-            let $sheet = $("#luckysheet-sheets-item" + index);
-            $c.scrollLeft($sheet.offset().left);
+            let _sheet = $("#luckysheet-sheets-item" + index);
+            _c.scrollLeft(_sheet.offset().left);
         }
 
 
-        let c_width = $c.width(), c_srollwidth = $c[0].scrollWidth, scrollLeft = $c.scrollLeft();
+        let c_width = _c.width(), c_srollwidth = _c[0].scrollWidth, scrollLeft = _c.scrollLeft();
 
         if (scrollLeft <= 0) {
             $("#luckysheet-sheet-container .docs-sheet-fade-left").hide();
@@ -1690,7 +1690,7 @@ const sheetmanage = {
                 return false;
             }
 
-            let $top = $(this);
+            let top = $(this);
             let item = file.filter[i];
 
             if(item == null){
@@ -1701,7 +1701,7 @@ const sheetmanage = {
                 item = JSON.parse(item);
             }
 
-            labelFilterOptionState($top, item.optionstate, item.rowhidden, item.caljs, false, item.st_r, item.ed_r, item.cindex, item.st_c, item.ed_c);
+            labelFilterOptionState(top, item.optionstate, item.rowhidden, item.caljs, false, item.st_r, item.ed_r, item.cindex, item.st_c, item.ed_c);
 
             rowhidden = $.extend(true, rowhidden, item.rowhidden);
         });

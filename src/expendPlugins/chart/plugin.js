@@ -123,7 +123,7 @@ function renderCharts(chartLists, isDemo) {
         let modelChartShowHTML =
             '<div id="${id}"class="luckysheet-modal-dialog luckysheet-modal-dialog-chart ${addclass}"tabindex="0"role="dialog"aria-labelledby=":41e"dir="ltr"><div class="luckysheet-modal-dialog-resize"><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-lt"data-type="lt"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-mt"data-type="mt"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-lm"data-type="lm"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-rm"data-type="rm"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-rt"data-type="rt"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-lb"data-type="lb"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-mb"data-type="mb"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-rb"data-type="rb"></div></div><div class="luckysheet-modal-dialog-controll"><span class="luckysheet-modal-controll-btn luckysheet-modal-controll-update"role="button"tabindex="0"aria-label="修改图表"title="修改图表"><i class="fa fa-pencil"aria-hidden="true"></i></span><span class="luckysheet-modal-controll-btn luckysheet-modal-controll-max"role="butluckysheet_chartIns_indexton"tabindex="0"aria-label="最大化"title="最大化"><i class="fa fa-window-maximize"aria-hidden="true"></i></span><span class="luckysheet-modal-controll-btn luckysheet-modal-controll-del"role="button"tabindex="0"aria-label="删除"title="删除"><i class="fa fa-trash"aria-hidden="true"></i></span></div><div class="luckysheet-modal-dialog-content">${content}</div></div>'
 
-        let $t = $(
+        let _t = $(
             replaceHtml(modelChartShowHTML, {
                 id: chart_id_c,
                 addclass: 'luckysheet-data-visualization-chart',
@@ -132,7 +132,7 @@ function renderCharts(chartLists, isDemo) {
             })
         ).appendTo($('.luckysheet-cell-main'))
 
-        setChartMoveableEffect($t);
+        setChartMoveableEffect(_t);
 
         $(`#${chart_id_c}`).children('.luckysheet-modal-dialog-content')[0].id = chart_id
 
@@ -158,14 +158,14 @@ function renderCharts(chartLists, isDemo) {
             showChartSettingComponent()
         })
 
-        $t.children('.luckysheet-modal-dialog-content').mousedown(function (e) {
+        _t.children('.luckysheet-modal-dialog-content').mousedown(function (e) {
             if (!chartInfo.chartparam.luckysheetCurrentChartMaxState) {
                 //当前图表显示区域高亮
                 showNeedRangeShow(chart_id);
             }
             e.stopPropagation()
         })
-        $t.mousedown(function (e) {  // move chart
+        _t.mousedown(function (e) {  // move chart
 
                 if (!chartInfo.chartparam.luckysheetCurrentChartMaxState) {
                     //当前图表显示区域高亮
@@ -239,12 +239,12 @@ function renderCharts(chartLists, isDemo) {
                     var x = mouse[0] + scrollLeft;
                     var y = mouse[1] + scrollTop;
                     var position = chartInfo.chartparam.luckysheetCurrentChartResizeObj.position();
-                    //参数：x,y:鼠标位置，$t.width(), $t.height(): chart框宽高， position.left + scrollLeft, position.top + scrollTop ：chart框位置 ，scrollLeft, scrollTop：滚动条位置
+                    //参数：x,y:鼠标位置，_t.width(), _t.height(): chart框宽高， position.left + scrollLeft, position.top + scrollTop ：chart框位置 ，scrollLeft, scrollTop：滚动条位置
                     chartInfo.chartparam.luckysheetCurrentChartResizeXy = [
                         x,
                         y,
-                        $t.width(),
-                        $t.height(),
+                        _t.width(),
+                        _t.height(),
                         position.left + scrollLeft,
                         position.top + scrollTop,
                         scrollLeft,
@@ -487,9 +487,9 @@ function chart_selection() {
             var visibledatarow = getvisibledatarow()
             var visibledatacolumn = getvisibledatacolumn()
 
-            var $id = chartInfo.chart_selection.rangeMoveObj.attr('id')
+            var _id = chartInfo.chart_selection.rangeMoveObj.attr('id')
 
-            if ($id == 'luckysheet-chart-rangeShow-content') {
+            if (_id == 'luckysheet-chart-rangeShow-content') {
                 //行
                 var row_s =
                     chartInfo.chart_selection.rangeMoveIndex[0] -
@@ -600,7 +600,7 @@ function chart_selection() {
                         column: [col_s, col_e]
                     }
                 }
-            } else if ($id == 'luckysheet-chart-rangeShow-rowtitle') {
+            } else if (_id == 'luckysheet-chart-rangeShow-rowtitle') {
                 //列
                 var col_s =
                     chartInfo.chart_selection.rangeMoveIndex[1] -
@@ -658,7 +658,7 @@ function chart_selection() {
                         column: [col_s, col_e]
                     }
                 }
-            } else if ($id == 'luckysheet-chart-rangeShow-coltitle') {
+            } else if (_id == 'luckysheet-chart-rangeShow-coltitle') {
                 //行
                 var row_s =
                     chartInfo.chart_selection.rangeMoveIndex[0] -
@@ -768,9 +768,9 @@ function chart_selection() {
             var visibledatarow = getvisibledatarow()
             var visibledatacolumn = getvisibledatacolumn()
 
-            var $id = chartInfo.chart_selection.rangeResizeObj.attr('id')
+            var _id = chartInfo.chart_selection.rangeResizeObj.attr('id')
 
-            if ($id == 'luckysheet-chart-rangeShow-content') {
+            if (_id == 'luckysheet-chart-rangeShow-content') {
                 var r1, r2, c1, c2
 
                 if (chartInfo.chart_selection.rangeResize == 'lt') {
@@ -891,7 +891,7 @@ function chart_selection() {
                         }
                     }
                 }
-            } else if ($id == 'luckysheet-chart-rangeShow-rowtitle') {
+            } else if (_id == 'luckysheet-chart-rangeShow-rowtitle') {
                 var c1, c2
 
                 if (
@@ -964,7 +964,7 @@ function chart_selection() {
                         column: [obj_c1 - st_c, obj_c2 - st_c]
                     }
                 }
-            } else if ($id == 'luckysheet-chart-rangeShow-coltitle') {
+            } else if (_id == 'luckysheet-chart-rangeShow-coltitle') {
                 var r1, r2
 
                 if (
@@ -1168,7 +1168,7 @@ function createLuckyChart(width, height, left, top) {
     let modelChartShowHTML =
         '<div id="${id}"class="luckysheet-modal-dialog luckysheet-modal-dialog-chart ${addclass}"tabindex="0"role="dialog"aria-labelledby=":41e"dir="ltr"><div class="luckysheet-modal-dialog-resize"><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-lt"data-type="lt"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-mt"data-type="mt"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-lm"data-type="lm"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-rm"data-type="rm"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-rt"data-type="rt"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-lb"data-type="lb"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-mb"data-type="mb"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-rb"data-type="rb"></div></div><div class="luckysheet-modal-dialog-controll"><span class="luckysheet-modal-controll-btn luckysheet-modal-controll-update"role="button"tabindex="0"aria-label="修改图表"title="修改图表"><i class="fa fa-pencil"aria-hidden="true"></i></span><span class="luckysheet-modal-controll-btn luckysheet-modal-controll-max"role="butluckysheet_chartIns_indexton"tabindex="0"aria-label="最大化"title="最大化"><i class="fa fa-window-maximize"aria-hidden="true"></i></span><span class="luckysheet-modal-controll-btn luckysheet-modal-controll-del"role="button"tabindex="0"aria-label="删除"title="删除"><i class="fa fa-trash"aria-hidden="true"></i></span></div><div class="luckysheet-modal-dialog-content">${content}</div></div>'
 
-    let $t = $(
+    let _t = $(
         replaceHtml(modelChartShowHTML, {
             id: chart_id_c,
             addclass: 'luckysheet-data-visualization-chart',
@@ -1221,21 +1221,21 @@ function createLuckyChart(width, height, left, top) {
         delChart(chart_id)
     })
 
-    setChartMoveableEffect($t);
+    setChartMoveableEffect(_t);
 
     // edit current chart
     $(`#${chart_id}_c .luckysheet-modal-controll-update`).click(function (e) {
         showChartSettingComponent()
     })
 
-    $t.children('.luckysheet-modal-dialog-content').mousedown(function (e) {
+    _t.children('.luckysheet-modal-dialog-content').mousedown(function (e) {
         if (!chartInfo.chartparam.luckysheetCurrentChartMaxState) {
             //当前图表显示区域高亮
             showNeedRangeShow(chart_id);
         }
         e.stopPropagation()
     })
-    $t.mousedown(function (e) {  //move chart
+    _t.mousedown(function (e) {  //move chart
 
         if (!chartInfo.chartparam.luckysheetCurrentChartMaxState) {
             //当前图表显示区域高亮
@@ -1309,12 +1309,12 @@ function createLuckyChart(width, height, left, top) {
                 var x = mouse[0] + scrollLeft;
                 var y = mouse[1] + scrollTop;
                 var position = chartInfo.chartparam.luckysheetCurrentChartResizeObj.position();
-                //参数：x,y:鼠标位置，$t.width(), $t.height(): chart框宽高， position.left + scrollLeft, position.top + scrollTop ：chart框位置 ，scrollLeft, scrollTop：滚动条位置
+                //参数：x,y:鼠标位置，_t.width(), _t.height(): chart框宽高， position.left + scrollLeft, position.top + scrollTop ：chart框位置 ，scrollLeft, scrollTop：滚动条位置
                 chartInfo.chartparam.luckysheetCurrentChartResizeXy = [
                     x,
                     y,
-                    $t.width(),
-                    $t.height(),
+                    _t.width(),
+                    _t.height(),
                     position.left + scrollLeft,
                     position.top + scrollTop,
                     scrollLeft,
@@ -1337,19 +1337,19 @@ function createLuckyChart(width, height, left, top) {
 
 /**
  * 设置图表可拖动区域高亮效果，鼠标经过可拖动区域时鼠标显示“十字”，不可拖动区域显示箭头
- * @param {JQuery} $container 图表的容器DIV
+ * @param {JQuery} _container 图表的容器DIV
  */
-function setChartMoveableEffect($container) {
-  $container.find('.luckysheet-modal-dialog-content').hover(function () {
-    $container.removeClass("chart-moveable");
+function setChartMoveableEffect(_container) {
+  _container.find('.luckysheet-modal-dialog-content').hover(function () {
+    _container.removeClass("chart-moveable");
   }, function () {
-    $container.addClass("chart-moveable");
+    _container.addClass("chart-moveable");
   });
 
-  $container.hover(function () {
-    $container.addClass("chart-moveable");
+  _container.hover(function () {
+    _container.addClass("chart-moveable");
   }, function () {
-    $container.removeClass("chart-moveable");
+    _container.removeClass("chart-moveable");
   });
 }
 
@@ -1408,14 +1408,14 @@ function hideAllNeedRangeShow() {
 //选择区域高亮
 function selectRangeBorderShow(chart_id) {
 
-    let $t = $('#' + chart_id + '_c')
+    let _t = $('#' + chart_id + '_c')
 
     // Highlight of data range
     chartInfo.chart_selection.create()
 
     chartInfo.chartparam.luckysheetCurrentChartActive = true
-    chartInfo.chartparam.luckysheetCurrentChartMoveObj = $t
-    chartInfo.chartparam.luckysheetCurrentChartResizeObj = $t
+    chartInfo.chartparam.luckysheetCurrentChartMoveObj = _t
+    chartInfo.chartparam.luckysheetCurrentChartResizeObj = _t
     chartInfo.chartparam.luckysheetCurrentChart = chart_id
 
     //luckysheet取cell-main，后续扩展到其他的用户自定义元素
@@ -1426,9 +1426,9 @@ function selectRangeBorderShow(chart_id) {
         .find('.luckysheet-modal-dialog-chart .luckysheet-modal-dialog-controll')
         .hide()
 
-    $t.css('z-index', chartInfo.chartparam.luckysheetCurrentChartZIndexRank++)
-    $t.find('.luckysheet-modal-dialog-resize').show()
-    $t.find('.luckysheet-modal-dialog-controll').show()
+    _t.css('z-index', chartInfo.chartparam.luckysheetCurrentChartZIndexRank++)
+    _t.find('.luckysheet-modal-dialog-resize').show()
+    _t.find('.luckysheet-modal-dialog-controll').show()
 
     if (
         ($('.chartSetting').is(':visible') || chartInfo.chartparam.luckysheet_chart_redo_click) &&

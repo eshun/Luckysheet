@@ -408,8 +408,8 @@ export default function luckysheetHandler() {
         Store.luckysheet_scroll_status = true;
 
         //公式相关
-        let $input = $("#luckysheet-input-box");
-        if (parseInt($input.css("top")) > 0) {
+        let _input = $("#luckysheet-input-box");
+        if (parseInt(_input.css("top")) > 0) {
             if (formula.rangestart || formula.rangedrag_column_start || formula.rangedrag_row_start || formula.israngeseleciton()) {
                 //公式选区
                 let rowseleted = [row_index, row_index_ed];
@@ -594,18 +594,18 @@ export default function luckysheetHandler() {
                     let currSelection = window.getSelection();
                     let anchorOffset = currSelection.anchorNode;
 
-                    let $editor;
+                    let _editor;
                     if ($("#luckysheet-search-formula-parm").is(":visible") || $("#luckysheet-search-formula-parm-select").is(":visible")) {
-                        $editor = $("#luckysheet-rich-text-editor");
+                        _editor = $("#luckysheet-rich-text-editor");
                         formula.rangechangeindex = formula.data_parm_index;
                     }
                     else {
-                        $editor = $(anchorOffset).closest("div");
+                        _editor = $(anchorOffset).closest("div");
                     }
 
-                    let $span = $editor.find("span[rangeindex='" + formula.rangechangeindex + "']");
+                    let _span = _editor.find("span[rangeindex='" + formula.rangechangeindex + "']");
 
-                    formula.setCaretPosition($span.get(0), 0, $span.html().length);
+                    formula.setCaretPosition(_span.get(0), 0, _span.html().length);
                 }, 1);
                 return;
             }
@@ -3446,8 +3446,8 @@ export default function luckysheetHandler() {
             pivotTable.movestate = false;
             $("#luckysheet-modal-dialog-pivotTable-list, #luckysheet-modal-dialog-config-filter, #luckysheet-modal-dialog-config-row, #luckysheet-modal-dialog-config-column, #luckysheet-modal-dialog-config-value").css("cursor", "default");
             if (pivotTable.movesave.containerid != "luckysheet-modal-dialog-pivotTable-list") {
-                let $cur = $(event.target).closest(".luckysheet-modal-dialog-slider-config-list");
-                if ($cur.length == 0) {
+                let _cur = $(event.target).closest(".luckysheet-modal-dialog-slider-config-list");
+                if (_cur.length == 0) {
                     if (pivotTable.movesave.containerid == "luckysheet-modal-dialog-config-value") {
                         pivotTable.resetOrderby(pivotTable.movesave.obj);
                     }
@@ -3462,9 +3462,9 @@ export default function luckysheetHandler() {
                         let index = $(this).data("index");
 
                         $("#luckysheet-modal-dialog-pivotTable-list").find(".luckysheet-modal-dialog-slider-list-item").each(function () {
-                            let $seleted = $(this).find(".luckysheet-slider-list-item-selected");
-                            if ($(this).data("index") == index && $seleted.find("i").length == 0) {
-                                $seleted.append('<i class="fa fa-check luckysheet-mousedown-cancel"></i>');
+                            let _seleted = $(this).find(".luckysheet-slider-list-item-selected");
+                            if ($(this).data("index") == index && _seleted.find("i").length == 0) {
+                                _seleted.append('<i class="fa fa-check luckysheet-mousedown-cancel"></i>');
                             }
                         });
 
@@ -4509,7 +4509,7 @@ export default function luckysheetHandler() {
         $("#luckysheet-rightclick-menu").hide();
         luckysheetContainerFocus();
 
-        let $t = $(this), value = $("#luckysheet-bottom-add-row-input").val();
+        let _t = $(this), value = $("#luckysheet-bottom-add-row-input").val();
 
         if (value == "") {
             value = 100;
@@ -5118,20 +5118,20 @@ export default function luckysheetHandler() {
 
         let chart_json = Store.currentChart
 
-        let $id = $(this).parent().attr("id");
-        if ($id == "luckysheet-chart-rangeShow-content") {
+        let _id = $(this).parent().attr("id");
+        if (_id == "luckysheet-chart-rangeShow-content") {
             let row_s = chart_json.rangeArray[0].row[0] + chart_json.rangeSplitArray.content.row[0];
             let col_s = chart_json.rangeArray[0].column[0] + chart_json.rangeSplitArray.content.column[0];
 
             Store.chart_selection.rangeMoveIndex = [row_s, col_s];
         }
-        else if ($id == "luckysheet-chart-rangeShow-rowtitle") {
+        else if (_id == "luckysheet-chart-rangeShow-rowtitle") {
             let row_s = chart_json.rangeArray[0].row[0] + chart_json.rangeSplitArray.rowtitle.row[0];
             let col_s = chart_json.rangeArray[0].column[0] + chart_json.rangeSplitArray.rowtitle.column[0];
 
             Store.chart_selection.rangeMoveIndex = [row_s, col_s];
         }
-        else if ($id == "luckysheet-chart-rangeShow-coltitle") {
+        else if (_id == "luckysheet-chart-rangeShow-coltitle") {
             let row_s = chart_json.rangeArray[0].row[0] + chart_json.rangeSplitArray.coltitle.row[0];
             let col_s = chart_json.rangeArray[0].column[0] + chart_json.rangeSplitArray.coltitle.column[0];
 
@@ -5175,8 +5175,8 @@ export default function luckysheetHandler() {
         let col_s
         let col_e
 
-        let $id = $(this).parent().attr("id");
-        if ($id == "luckysheet-chart-rangeShow-content") {
+        let _id = $(this).parent().attr("id");
+        if (_id == "luckysheet-chart-rangeShow-content") {
             if (chart_json.rangeRowCheck.exits) {
                  row_s = chart_json.rangeArray[0].row[0] + chart_json.rangeSplitArray.content.row[0];
                  row_e = chart_json.rangeArray[0].row[0] + chart_json.rangeSplitArray.content.row[1];
@@ -5197,7 +5197,7 @@ export default function luckysheetHandler() {
 
             Store.chart_selection.rangeResizeIndex = { "row": [row_s, row_e], "column": [col_s, col_e] };
         }
-        else if ($id == "luckysheet-chart-rangeShow-rowtitle") {
+        else if (_id == "luckysheet-chart-rangeShow-rowtitle") {
             let row_s = chart_json.rangeArray[0].row[0] + chart_json.rangeSplitArray.rowtitle.row[0];
             let row_e = chart_json.rangeArray[0].row[0] + chart_json.rangeSplitArray.rowtitle.row[1];
 
@@ -5206,7 +5206,7 @@ export default function luckysheetHandler() {
 
             Store.chart_selection.rangeResizeIndex = { "row": [row_s, row_e], "column": [col_s, col_e] };
         }
-        else if ($id == "luckysheet-chart-rangeShow-coltitle") {
+        else if (_id == "luckysheet-chart-rangeShow-coltitle") {
             let row_s = chart_json.rangeArray[0].row[0] + chart_json.rangeSplitArray.coltitle.row[0];
             let row_e = chart_json.rangeArray[0].row[0] + chart_json.rangeSplitArray.coltitle.row[1];
 
@@ -5425,31 +5425,31 @@ export default function luckysheetHandler() {
                     let r = 0;
                     let borderInfo = {};
                     $("#luckysheet-copy-content").find("table tr").each(function () {
-                        let $tr = $(this);
+                        let _tr = $(this);
                         let c = 0;
-                        $tr.find("td").each(function () {
-                            let $td = $(this);
+                        _tr.find("td").each(function () {
+                            let _td = $(this);
                             let cell = {};
-                            let txt = $td.text();
+                            let txt = _td.text();
                             if ($.trim(txt).length == 0) {
                                 cell.v = null;
                                 cell.m = "";
                             }
                             else {
-                                let mask = genarate($td.text());
+                                let mask = genarate(_td.text());
                                 cell.v = mask[2];
                                 cell.ct = mask[1];
                                 cell.m = mask[0];
                             }
 
-                            let bg = $td.css("background-color");
+                            let bg = _td.css("background-color");
                             if (bg == "rgba(0, 0, 0, 0)") {
                                 bg = null;
                             }
 
                             cell.bg = bg;
 
-                            let bl = $td.css("font-weight");
+                            let bl = _td.css("font-weight");
                             if (bl == 400 || bl == "normal") {
                                 cell.bl = 0;
                             }
@@ -5457,7 +5457,7 @@ export default function luckysheetHandler() {
                                 cell.bl = 1;
                             }
 
-                            let it = $td.css("font-style");
+                            let it = _td.css("font-style");
                             if (it == "normal") {
                                 cell.it = 0;
                             }
@@ -5465,7 +5465,7 @@ export default function luckysheetHandler() {
                                 cell.it = 1;
                             }
 
-                            let ff = $td.css("font-family");
+                            let ff = _td.css("font-family");
                             let ffs = ff.split(",");
                             for (let i = 0; i < ffs.length; i++) {
                                 let fa = $.trim(ffs[i].toLowerCase());
@@ -5478,13 +5478,13 @@ export default function luckysheetHandler() {
                                     break;
                                 }
                             }
-                            let fs = Math.round(parseInt($td.css("font-size")) * 72 / 96);
+                            let fs = Math.round(parseInt(_td.css("font-size")) * 72 / 96);
                             cell.fs = fs;
 
-                            let fc = $td.css("color");
+                            let fc = _td.css("color");
                             cell.fc = fc;
 
-                            let ht = $td.css("text-align");
+                            let ht = _td.css("text-align");
                             if (ht == "center") {
                                 cell.ht = 0;
                             }
@@ -5495,7 +5495,7 @@ export default function luckysheetHandler() {
                                 cell.ht = 1;
                             }
 
-                            let vt = $td.css("vertical-align");
+                            let vt = _td.css("vertical-align");
                             if (vt == "middle") {
                                 cell.vt = 0;
                             }
@@ -5516,8 +5516,8 @@ export default function luckysheetHandler() {
 
                             if (data[r][c] == null) {
                                 data[r][c] = cell;
-                                let rowspan = parseInt($td.attr("rowspan"));
-                                let colspan = parseInt($td.attr("colspan"));
+                                let rowspan = parseInt(_td.attr("rowspan"));
+                                let colspan = parseInt(_td.attr("colspan"));
 
                                 if (isNaN(rowspan)) {
                                     rowspan = 1;
@@ -5533,11 +5533,11 @@ export default function luckysheetHandler() {
                                 for (let rp = 0; rp < rowspan; rp++) {
                                     for (let cp = 0; cp < colspan; cp++) {
                                         if (rp == 0) {
-                                            let bt = $td.css("border-top");
+                                            let bt = _td.css("border-top");
                                             if (bt != null && bt.length > 0 && bt.substr(0, 3).toLowerCase() != "0px") {
-                                                let width = $td.css("border-top-width");
-                                                let type = $td.css("border-top-style");
-                                                let color = $td.css("border-top-color");
+                                                let width = _td.css("border-top-width");
+                                                let type = _td.css("border-top-style");
+                                                let color = _td.css("border-top-color");
                                                 let borderconfig = menuButton.getQKBorder(width, type, color);
 
                                                 if (borderInfo[(r + rp) + "_" + (c + cp)] == null) {
@@ -5549,11 +5549,11 @@ export default function luckysheetHandler() {
                                         }
 
                                         if (rp == rowspan - 1) {
-                                            let bb = $td.css("border-bottom");
+                                            let bb = _td.css("border-bottom");
                                             if (bb != null && bb.length > 0 && bb.substr(0, 3).toLowerCase() != "0px") {
-                                                let width = $td.css("border-bottom-width");
-                                                let type = $td.css("border-bottom-style");
-                                                let color = $td.css("border-bottom-color");
+                                                let width = _td.css("border-bottom-width");
+                                                let type = _td.css("border-bottom-style");
+                                                let color = _td.css("border-bottom-color");
                                                 let borderconfig = menuButton.getQKBorder(width, type, color);
 
                                                 if (borderInfo[(r + rp) + "_" + (c + cp)] == null) {
@@ -5565,11 +5565,11 @@ export default function luckysheetHandler() {
                                         }
 
                                         if (cp == 0) {
-                                            let bl = $td.css("border-left");
+                                            let bl = _td.css("border-left");
                                             if (bl != null && bl.length > 0 && bl.substr(0, 3).toLowerCase() != "0px") {
-                                                let width = $td.css("border-left-width");
-                                                let type = $td.css("border-left-style");
-                                                let color = $td.css("border-left-color");
+                                                let width = _td.css("border-left-width");
+                                                let type = _td.css("border-left-style");
+                                                let color = _td.css("border-left-color");
                                                 let borderconfig = menuButton.getQKBorder(width, type, color);
 
                                                 if (borderInfo[(r + rp) + "_" + (c + cp)] == null) {
@@ -5581,11 +5581,11 @@ export default function luckysheetHandler() {
                                         }
 
                                         if (cp == colspan - 1) {
-                                            let br = $td.css("border-right");
+                                            let br = _td.css("border-right");
                                             if (br != null && br.length > 0 && br.substr(0, 3).toLowerCase() != "0px") {
-                                                let width = $td.css("border-right-width");
-                                                let type = $td.css("border-right-style");
-                                                let color = $td.css("border-right-color");
+                                                let width = _td.css("border-right-width");
+                                                let type = _td.css("border-right-style");
+                                                let color = _td.css("border-right-color");
                                                 let borderconfig = menuButton.getQKBorder(width, type, color);
 
                                                 if (borderInfo[(r + rp) + "_" + (c + cp)] == null) {
@@ -5718,13 +5718,13 @@ export default function luckysheetHandler() {
 
 // 协同编辑其他用户不在操作的时候，且已经展示了用户名10秒，则用户名框隐藏
 function hideUsername(){
-    let $showEle = $$('.luckysheet-multipleRange-show');
+    let _ele = $$('.luckysheet-multipleRange-show');
 
-    if($showEle.length === undefined){
-        $showEle = [$showEle];
+    if(_ele.length === undefined){
+        _ele = [_ele];
     }
 
-    $showEle.forEach((ele)=>{
+    _ele.forEach((ele)=>{
         const id = ele.id.replace('luckysheet-multipleRange-show-','');
         
         if(Store.cooperativeEdit.usernameTimeout['user' + id] === null){

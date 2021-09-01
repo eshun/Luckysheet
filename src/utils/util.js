@@ -455,9 +455,9 @@ function luckysheetfontformat(format) {
 }
 
 //右键菜单
-function showrightclickmenu($menu, x, y) {
+function showrightclickmenu(_menu, x, y) {
     let winH = $(window).height(), winW = $(window).width();
-    let menuW = $menu.width(), menuH = $menu.height();
+    let menuW = _menu.width(), menuH = _menu.height();
     let top = y, left = x;
 
     if (x + menuW > winW) {
@@ -472,7 +472,7 @@ function showrightclickmenu($menu, x, y) {
         top = 0;
     }
 
-    $menu.css({ "top": top, "left": left }).show();
+    _menu.css({ "top": top, "left": left }).show();
 }
 
 //单元格编辑聚焦
@@ -559,9 +559,9 @@ function numfloatlen(n) {
 }
 
 //二级菜单显示位置
-function mouseclickposition($menu, x, y, p) {
+function mouseclickposition(_menu, x, y, p) {
     let winH = $(window).height(), winW = $(window).width();
-    let menuW = $menu.width(), menuH = $menu.height();
+    let menuW = _menu.width(), menuH = _menu.height();
     let top = y, left = x;
 
     if (p == null) {
@@ -569,16 +569,16 @@ function mouseclickposition($menu, x, y, p) {
     }
 
     if (p == "lefttop") {
-        $menu.css({ "top": y, "left": x }).show();
+        _menu.css({ "top": y, "left": x }).show();
     }
     else if (p == "righttop") {
-        $menu.css({ "top": y, "left": x - menuW }).show();
+        _menu.css({ "top": y, "left": x - menuW }).show();
     }
     else if (p == "leftbottom") {
-        $menu.css({ "bottom": winH - y - 12, "left": x }).show();
+        _menu.css({ "bottom": winH - y - 12, "left": x }).show();
     }
     else if (p == "rightbottom") {
-        $menu.css({ "bottom": winH - y - 12, "left": x - menuW }).show();
+        _menu.css({ "bottom": winH - y - 12, "left": x - menuW }).show();
     }
 }
 
@@ -771,15 +771,15 @@ function transformRangeToAbsolute(txt1){
 }
 
 function openSelfModel(id, isshowMask=true){
-    let $t = $("#"+id)
+    let _t = $("#"+id)
             .find(".luckysheet-modal-dialog-content")
             .css("min-width", 300)
             .end(), 
-        myh = $t.outerHeight(), 
-        myw = $t.outerWidth();
+        myh = _t.outerHeight(), 
+        myw = _t.outerWidth();
     let winw = $(window).width(), winh = $(window).height();
     let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
-    $t.css({ 
+    _t.css({ 
     "left": (winw + scrollLeft - myw) / 2, 
     "top": (winh + scrollTop - myh) / 3 
     }).show();

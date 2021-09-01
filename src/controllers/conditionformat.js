@@ -1264,9 +1264,9 @@ const conditionformat = {
             let source;
             
             if(id == "luckysheet-conditionformat-dialog"){
-                let $id = $(this).siblings("input").attr("id");
+                let _id = $(this).siblings("input").attr("id");
                 
-                if($id == "conditionVal"){
+                if(_id == "conditionVal"){
                     source = "0_1";
                 }
                 else{
@@ -1274,12 +1274,12 @@ const conditionformat = {
                 }
             }
             else if(id == "luckysheet-newConditionRule-dialog"){
-                let $id = $(this).parents(".range").attr("id");
+                let _id = $(this).parents(".range").attr("id");
 
-                if($id == "formulaConditionVal"){
+                if(_id == "formulaConditionVal"){
                     source = "1_0";
                 }
-                else if($id == "conditionVal"){
+                else if(_id == "conditionVal"){
                     source = "1_1";
                 }
                 else{
@@ -1287,12 +1287,12 @@ const conditionformat = {
                 }
             }
             else if(id == "luckysheet-editorConditionRule-dialog"){
-                let $id = $(this).parents(".range").attr("id");
+                let _id = $(this).parents(".range").attr("id");
 
-                if($id == "formulaConditionVal"){
+                if(_id == "formulaConditionVal"){
                     source = "2_0";
                 }
-                else if($id == "conditionVal"){
+                else if(_id == "conditionVal"){
                     source = "2_1";
                 }
                 else{
@@ -1440,12 +1440,12 @@ const conditionformat = {
                         <button id="luckysheet-singleRange-dialog-close" class="btn btn-default" data-source="${source}">${conditionformat_Text.cancel}</button>`,
             "style": "z-index:100003"
         }));
-        let $t = $("#luckysheet-singleRange-dialog")
+        let _t = $("#luckysheet-singleRange-dialog")
                 .find(".luckysheet-modal-dialog-content")
                 .css("min-width", 300)
                 .end(),
-            myh = $t.outerHeight(),
-            myw = $t.outerWidth();
+            myh = _t.outerHeight(),
+            myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
         $("#luckysheet-singleRange-dialog").css({
@@ -1470,12 +1470,12 @@ const conditionformat = {
                         <button id="luckysheet-multiRange-dialog-close" class="btn btn-default">${conditionformat_Text.cancel}</button>`,
             "style": "z-index:100003"
         }));
-        let $t = $("#luckysheet-multiRange-dialog")
+        let _t = $("#luckysheet-multiRange-dialog")
                 .find(".luckysheet-modal-dialog-content")
                 .css("min-width", 300)
                 .end(),
-            myh = $t.outerHeight(),
-            myw = $t.outerWidth();
+            myh = _t.outerHeight(),
+            myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
         $("#luckysheet-multiRange-dialog").css({
@@ -1580,12 +1580,12 @@ const conditionformat = {
                         <button class="btn btn-default luckysheet-model-close-btn">${conditionformat_Text.cancel}</button>`,
             "style": "z-index:9999"
         }));
-        let $t = $("#luckysheet-conditionformat-dialog")
+        let _t = $("#luckysheet-conditionformat-dialog")
                 .find(".luckysheet-modal-dialog-content")
                 .css("min-width", 300)
                 .end(),
-            myh = $t.outerHeight(),
-            myw = $t.outerWidth();
+            myh = _t.outerHeight(),
+            myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
         $("#luckysheet-conditionformat-dialog").css({
@@ -1670,12 +1670,12 @@ const conditionformat = {
             "botton": `<button class="btn btn-default luckysheet-model-close-btn">${conditionformat_Text.close}</button>`,
             "style": "z-index:100003"
         }));
-        let $t = $("#luckysheet-CFicons-dialog")
+        let _t = $("#luckysheet-CFicons-dialog")
                 .find(".luckysheet-modal-dialog-content")
                 .css("min-width", 400)
                 .end(),
-            myh = $t.outerHeight(),
-            myw = $t.outerWidth();
+            myh = _t.outerHeight(),
+            myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
         $("#luckysheet-CFicons-dialog").css({
@@ -1733,12 +1733,12 @@ const conditionformat = {
                         <button id="luckysheet-administerRule-dialog-close" class="btn btn-default">${conditionformat_Text.close}</button>`,
             "style": "z-index:100003"
         }));
-        let $t = $("#luckysheet-administerRule-dialog")
+        let _t = $("#luckysheet-administerRule-dialog")
                 .find(".luckysheet-modal-dialog-content")
                 .css("min-width", 400)
                 .end(),
-            myh = $t.outerHeight(),
-            myw = $t.outerWidth();
+            myh = _t.outerHeight(),
+            myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
         $("#luckysheet-administerRule-dialog").css({
@@ -1999,12 +1999,12 @@ const conditionformat = {
                         <button id="luckysheet-newConditionRule-dialog-close" class="btn btn-default" data-source="${source}">${conditionformat_Text.cancel}</button>`,
             "style": "z-index:100003"
         }));
-        let $t = $("#luckysheet-newConditionRule-dialog")
+        let _t = $("#luckysheet-newConditionRule-dialog")
                 .find(".luckysheet-modal-dialog-content")
                 .css("min-width", 400)
                 .end(),
-            myh = $t.outerHeight(),
-            myw = $t.outerWidth();
+            myh = _t.outerHeight(),
+            myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
         $("#luckysheet-newConditionRule-dialog").css({
@@ -2100,12 +2100,12 @@ const conditionformat = {
                         <button id="luckysheet-editorConditionRule-dialog-close" class="btn btn-default">${conditionformat_Text.cancel}</button>`,
             "style": "z-index:100003"
         }));
-        let $t = $("#luckysheet-editorConditionRule-dialog")
+        let _t = $("#luckysheet-editorConditionRule-dialog")
                 .find(".luckysheet-modal-dialog-content")
                 .css("min-width", 400)
                 .end(),
-            myh = $t.outerHeight(),
-            myw = $t.outerWidth();
+            myh = _t.outerHeight(),
+            myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
         $("#luckysheet-editorConditionRule-dialog").css({
@@ -2257,12 +2257,12 @@ const conditionformat = {
             "botton": `<button id="luckysheet-conditionformat-info-dialog-close" class="btn btn-default">${locale().conditionformat.close}</button>`,
             "style": "z-index:100003"
         }));
-        let $t = $("#luckysheet-conditionformat-info-dialog")
+        let _t = $("#luckysheet-conditionformat-info-dialog")
                 .find(".luckysheet-modal-dialog-content")
                 .css("min-width", 300)
                 .end(),
-            myh = $t.outerHeight(),
-            myw = $t.outerWidth();
+            myh = _t.outerHeight(),
+            myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
         $("#luckysheet-conditionformat-info-dialog").css({

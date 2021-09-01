@@ -83,9 +83,9 @@ const hyperlinkCtrl = {
                         <button class="btn btn-default luckysheet-model-close-btn">${buttonText.cancel}</button>`, 
             "style": "z-index:100003" 
         }));
-        let $t = $("#luckysheet-insertLink-dialog").find(".luckysheet-modal-dialog-content").css("min-width", 350).end(), 
-            myh = $t.outerHeight(), 
-            myw = $t.outerWidth();
+        let _t = $("#luckysheet-insertLink-dialog").find(".luckysheet-modal-dialog-content").css("min-width", 350).end(), 
+            myh = _t.outerHeight(), 
+            myw = _t.outerWidth();
         let winw = $(window).width(), 
             winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), 

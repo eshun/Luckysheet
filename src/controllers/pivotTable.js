@@ -213,18 +213,18 @@ const pivotTable = {
             }
         });
     },
-    luckysheetsliderlistclearfilter: function ($filter) {
+    luckysheetsliderlistclearfilter: function (_filter) {
         let _this = this;
 
-        let $t = $filter.parent();
-        let cindex = $t.data("index");
+        let _t = _filter.parent();
+        let cindex = _t.data("index");
 
         let rowhidden = {}, 
             selected = {}, 
             d = _this.origindata, 
             filterdata = {};
 
-        $t.data("rowhidden", "").find(".luckysheet-slider-list-item-filtered").hide();
+        _t.data("rowhidden", "").find(".luckysheet-slider-list-item-filtered").hide();
         _this.setDatatojsfile("selected", {}, cindex);
         _this.setDatatojsfile("rowhidden", null, cindex);
 
@@ -240,21 +240,21 @@ const pivotTable = {
         _this.refreshPivotTable();
         $("#luckysheet-pivotTableFilter-menu, #luckysheet-pivotTableFilter-submenu").hide();
     },
-    luckysheetsliderlistitemfilter: function ($filter) {
+    luckysheetsliderlistitemfilter: function (_filter) {
         let _this = this;
 
         const _locale = locale();
         const locale_filter = _locale.filter;
 
-        let $t = $filter.parent(), 
-            toffset = $t.offset(), 
-            $menu = $("#luckysheet-pivotTableFilter-menu"), 
+        let _t = _filter.parent(), 
+            toffset = _t.offset(), 
+            _menu = $("#luckysheet-pivotTableFilter-menu"), 
             winH = $(window).height(), 
             winW = $(window).width();
 
-        let cindex = $t.data("index");
+        let cindex = _t.data("index");
 
-        let rowhidden = $t.data("rowhidden");
+        let rowhidden = _t.data("rowhidden");
         if(rowhidden == null || rowhidden == ""){
             rowhidden = {};
         }
@@ -268,28 +268,28 @@ const pivotTable = {
         $("#luckysheet-pivotTableFilter-bycondition").next().hide();
         $("#luckysheet-pivotTableFilter-byvalue").next().show();
 
-        $menu.data("index", cindex);
+        _menu.data("index", cindex);
 
         $("#luckysheet-pivotTableFilter-menu .luckysheet-pivotTableFilter-selected-input").hide().find("input").val();
         $("#luckysheet-pivotTableFilter-selected span").data("type", "0").data("type", null).text(locale_filter.filiterInputNone);
 
-        let byconditiontype = $t.data("byconditiontype");
-        $("#luckysheet-pivotTableFilter-selected span").data("value", $t.data("byconditionvalue")).data("type", byconditiontype).text($t.data("byconditiontext"));
+        let byconditiontype = _t.data("byconditiontype");
+        $("#luckysheet-pivotTableFilter-selected span").data("value", _t.data("byconditionvalue")).data("type", byconditiontype).text(_t.data("byconditiontext"));
 
         if (byconditiontype == "2") {
-            let $input = $("#luckysheet-pivotTableFilter-menu .luckysheet-pivotTableFilter-selected-input2").show().find("input");
-            $input.eq(0).val($t.data("byconditionvalue1"));
-            $input.eq(1).val($t.data("byconditionvalue2"));
+            let _input = $("#luckysheet-pivotTableFilter-menu .luckysheet-pivotTableFilter-selected-input2").show().find("input");
+            _input.eq(0).val(_t.data("byconditionvalue1"));
+            _input.eq(1).val(_t.data("byconditionvalue2"));
         }
         else if (byconditiontype == "1") {
-            $("#luckysheet-pivotTableFilter-menu .luckysheet-pivotTableFilter-selected-input").eq(0).show().find("input").val($t.data("byconditionvalue1"));
+            $("#luckysheet-pivotTableFilter-menu .luckysheet-pivotTableFilter-selected-input").eq(0).show().find("input").val(_t.data("byconditionvalue1"));
         }
         const loadingObj = sheetlodingHTML("#luckysheet-pivotTableFilter-byvalue-select",{text:locale_filter.filiterMoreDataTip});
         $("#luckysheet-pivotTableFilter-byvalue-select").empty().append(loadingObj.el)
         
         let rowhiddenother = {}; //其它筛选列的隐藏行
-        $("#luckysheet-modal-dialog-pivotTable-list .luckysheet-modal-dialog-slider-list-item").not($t.get(0)).each(function () {
-            let $t = $(this), rh = $t.data("rowhidden");
+        $("#luckysheet-modal-dialog-pivotTable-list .luckysheet-modal-dialog-slider-list-item").not(_t.get(0)).each(function () {
+            let _t = $(this), rh = _t.data("rowhidden");
 
             if (rh == null || rh == "") {
                 return true;
@@ -545,7 +545,7 @@ const pivotTable = {
 
         }, 1);
 
-        showrightclickmenu($menu, toffset.left - 250, toffset.top);
+        showrightclickmenu(_menu, toffset.left - 250, toffset.top);
     },
     getSumTypeName: function (type) {
         let name = "";
@@ -990,8 +990,8 @@ const pivotTable = {
                 }
                 //月份 对应的 年份
                 let yearDayAllCheck = true;
-                let $yearDay = $(this).parents(".yearBox").find(".day");
-                $yearDay.each(function(i,e){
+                let _yearDay = $(this).parents(".yearBox").find(".day");
+                _yearDay.each(function(i,e){
                     if($(e).attr("data-check") == "true"){
                         
                     }
@@ -1019,8 +1019,8 @@ const pivotTable = {
                 }
                 //天 对应的 月份
                 let monthDayAllCheck = true;
-                let $monthDay = $(this).parents(".monthBox").find(".day");
-                $monthDay.each(function(i,e){
+                let _monthDay = $(this).parents(".monthBox").find(".day");
+                _monthDay.each(function(i,e){
                     if($(e).attr("data-check") == "true"){
                         
                     }
@@ -1038,8 +1038,8 @@ const pivotTable = {
                 }
                 //天 对应的 年份
                 let yearDayAllCheck = true;
-                let $yearDay = $(this).parents(".yearBox").find(".day");
-                $yearDay.each(function(i,e){
+                let _yearDay = $(this).parents(".yearBox").find(".day");
+                _yearDay.each(function(i,e){
                     if($(e).attr("data-check") == "true"){
                         
                     }
@@ -1059,11 +1059,11 @@ const pivotTable = {
 
             //日期 三级下拉显示
             $(document).off("click.ptFilterYearDropdown").on("click.ptFilterYearDropdown", "#luckysheet-pivotTableFilter-byvalue-select .yearBox .fa-caret-right",function(){
-                let $p = $(this).parents(".luckysheet-mousedown-cancel");
-                if($p.hasClass("year")){
+                let _p = $(this).parents(".luckysheet-mousedown-cancel");
+                if(_p.hasClass("year")){
                     $(this).parents(".yearBox").find(".monthList").slideToggle();
                 }
-                if($p.hasClass("month")){
+                if(_p.hasClass("month")){
                     $(this).parents(".monthBox").find(".dayList").slideToggle();
                 }
             });
@@ -1076,8 +1076,8 @@ const pivotTable = {
 
             //反选
             $("#luckysheet-pivotTableFilter-byvalue-btn-contra").click(function () {
-                let $input = $("#luckysheet-pivotTableFilter-byvalue-select .ListBox input[type='checkbox']");
-                $input.each(function(i, e){
+                let _input = $("#luckysheet-pivotTableFilter-byvalue-select .ListBox input[type='checkbox']");
+                _input.each(function(i, e){
                     if($(e).is(":checked")){
                         $(e).removeAttr("checked");
                         $(e).parents(".luckysheet-mousedown-cancel").attr("data-check", "false");
@@ -1088,11 +1088,11 @@ const pivotTable = {
                     }
                 });
                 //天 对应的 月份
-                let $month = $("#luckysheet-pivotTableFilter-byvalue-select .ListBox .monthBox");
-                $month.each(function(index, event){
+                let _month = $("#luckysheet-pivotTableFilter-byvalue-select .ListBox .monthBox");
+                _month.each(function(index, event){
                     let monthDayAllCheck = true;
-                    let $monthDay = $(event).find(".day input[type='checkbox']");
-                    $monthDay.each(function(i,e){
+                    let _monthDay = $(event).find(".day input[type='checkbox']");
+                    _monthDay.each(function(i,e){
                         if($(e).is(":checked")){
                             
                         }
@@ -1110,11 +1110,11 @@ const pivotTable = {
                     }
                 });
                 //天 对应的 年份
-                let $year = $("#luckysheet-pivotTableFilter-byvalue-select .ListBox .yearBox");
-                $year.each(function(index, event){
+                let _year = $("#luckysheet-pivotTableFilter-byvalue-select .ListBox .yearBox");
+                _year.each(function(index, event){
                     let yearDayAllCheck = true;
-                    let $yearDay = $(event).find(".day input[type='checkbox']");
-                    $yearDay.each(function(i,e){
+                    let _yearDay = $(event).find(".day input[type='checkbox']");
+                    _yearDay.each(function(i,e){
                         if($(e).is(":checked")){
                             
                         }
@@ -1144,10 +1144,10 @@ const pivotTable = {
                 let v = $(this).val().toString();
                 $("#luckysheet-pivotTableFilter-byvalue-select .ListBox .luckysheet-mousedown-cancel").show();
                 if(v != ""){
-                    let $check = $("#luckysheet-pivotTableFilter-byvalue-select .ListBox input[type='checkbox']");
-                    $check.each(function(i, e){
-                        let $p = $(e).parents(".luckysheet-mousedown-cancel");
-                        if($p.hasClass("day")){ //日期
+                    let _check = $("#luckysheet-pivotTableFilter-byvalue-select .ListBox input[type='checkbox']");
+                    _check.each(function(i, e){
+                        let _p = $(e).parents(".luckysheet-mousedown-cancel");
+                        if(_p.hasClass("day")){ //日期
                             let day = $(e).siblings("label").text().toString();
                             let month = $(e).parents(".monthBox").find(".month label").text().toString();
                             let year = $(e).parents(".yearBox").find(".year label").text().toString();
@@ -1156,18 +1156,18 @@ const pivotTable = {
                             if(itemV.indexOf(v) == -1){
                                 $(e).parents(".day").hide();
                                 //天 对应的 月份
-                                let $monthDay = $(e).parents(".dayList").find(".day:visible");
-                                if($monthDay.length == 0){
+                                let _monthDay = $(e).parents(".dayList").find(".day:visible");
+                                if(_monthDay.length == 0){
                                     $(e).parents(".monthBox").find(".month").hide();
                                 }
                                 //天 对应的 年份
-                                let $yearDay = $(e).parents(".monthList").find(".day:visible");
-                                if($yearDay.length == 0){
+                                let _yearDay = $(e).parents(".monthList").find(".day:visible");
+                                if(_yearDay.length == 0){
                                     $(e).parents(".yearBox").find(".year").hide();
                                 }
                             }
                         }
-                        if($p.hasClass("textBox")){ //其它
+                        if(_p.hasClass("textBox")){ //其它
                             let itemV = $(e).siblings("label").text().toString();
                             
                             if(itemV.indexOf(v) == -1){
@@ -1179,16 +1179,16 @@ const pivotTable = {
             });
 
             $("#luckysheet-pivotTableFilter-bycondition, #luckysheet-pivotTableFilter-byvalue").click(function () {
-                let $t = $(this);
-                $t.next().slideToggle(200);
+                let _t = $(this);
+                _t.next().slideToggle(200);
                 setTimeout(function () {
-                    if ($t.attr("id") == "luckysheet-pivotTableFilter-bycondition" && $("#luckysheet-pivotTableFilter-bycondition").next().is(":visible")) {
+                    if (_t.attr("id") == "luckysheet-pivotTableFilter-bycondition" && $("#luckysheet-pivotTableFilter-bycondition").next().is(":visible")) {
                         if ($("#luckysheet-pivotTableFilter-selected span").text() != locale_filter.filiterInputNone) {
                             $("#luckysheet-pivotTableFilter-byvalue").next().slideUp(200);
                         }
                     }
 
-                    if ($t.is($("#luckysheet-pivotTableFilter-bycondition"))) {
+                    if (_t.is($("#luckysheet-pivotTableFilter-bycondition"))) {
                         if ($("#luckysheet-pivotTableFilter-bycondition").next().is(":hidden") && $("#luckysheet-pivotTableFilter-byvalue").next().is(":hidden")) {
                             $("#luckysheet-pivotTableFilter-byvalue").next().slideDown(200);
                         }
@@ -1203,10 +1203,10 @@ const pivotTable = {
             });
 
             $("#luckysheet-pivotTableFilter-selected").click(function () {
-                let $t = $(this), toffset = $t.offset(), $menu = $("#luckysheet-pivotTableFilter-submenu");
-                $menu.hide();
+                let _t = $(this), toffset = _t.offset(), _menu = $("#luckysheet-pivotTableFilter-submenu");
+                _menu.hide();
                 let winH = $(window).height(), winW = $(window).width();
-                let menuW = $menu.width(), menuH = $menu.height();
+                let menuW = _menu.width(), menuH = _menu.height();
                 let top = toffset.top, left = toffset.left, mheight = winH - toffset.top - 20;
                 if (toffset.left + menuW > winW) {
                     left = toffset.left - menuW;
@@ -1221,7 +1221,7 @@ const pivotTable = {
                     mheight = toffset.top - 20;
                 }
 
-                $menu.css({ "top": top, "left": left, "height": mheight }).show();
+                _menu.css({ "top": top, "left": left, "height": mheight }).show();
                 clearTimeout(hidefilersubmenu);
             });
 
@@ -1268,9 +1268,9 @@ const pivotTable = {
             $("#luckysheet-dialog-pivotTable-range-seleted").click(function () {
                 $("#luckysheet-modal-dialog-slider-pivot").hide();
                 luckysheetsizeauto();
-                let $t = $("#luckysheet-data-pivotTable-selection"), 
-                    myh = $t.outerHeight(), 
-                    myw = $t.outerWidth();
+                let _t = $("#luckysheet-data-pivotTable-selection"), 
+                    myh = _t.outerHeight(), 
+                    myw = _t.outerWidth();
                 let winw = $(window).width(), winh = $(window).height();
                 let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
 
@@ -1296,19 +1296,19 @@ const pivotTable = {
             });
 
             $("#luckysheet-modal-dialog-config-row, #luckysheet-modal-dialog-config-column").on("click", ".luckysheet-modal-dialog-slider-config-item-icon", function (e) {
-                let $t = $(e.target), 
-                    $item = $t.closest(".luckysheet-modal-dialog-slider-config-item"), 
-                    cindex = $item.data("index"), 
-                    toffset = $item.offset();
-                let order = $item.data("order"), 
-                    orderby = $item.data("orderby"), 
-                    stastic = $item.data("stastic");
+                let _t = $(e.target), 
+                    _item = _t.closest(".luckysheet-modal-dialog-slider-config-item"), 
+                    cindex = _item.data("index"), 
+                    toffset = _item.offset();
+                let order = _item.data("order"), 
+                    orderby = _item.data("orderby"), 
+                    stastic = _item.data("stastic");
                 
                 if (order == null) {
                     order = "default";
                 }
 
-                let option = '<option value="self">' + $item.find(".luckysheet-modal-dialog-slider-config-item-txt").data("name") + '</option>';
+                let option = '<option value="self">' + _item.find(".luckysheet-modal-dialog-slider-config-item-txt").data("name") + '</option>';
 
                 $("#luckysheet-modal-dialog-config-value .luckysheet-modal-dialog-slider-config-item").each(function (i) {
                     option += '<option value="' + i + '">' + $(this).find(".luckysheet-modal-dialog-slider-config-item-txt").text() + '</option>';
@@ -1327,17 +1327,17 @@ const pivotTable = {
                 $("#luckysheet-pivotTable-config-option-orderby").val(orderby).data("index", cindex);
                 $("#luckysheet-pivotTable-config-option-stastic").val(stastic).data("index", cindex);
 
-                mouseclickposition($("#luckysheet-pivotTable-config-option"), toffset.left + $item.outerWidth(), toffset.top - 13, "rightbottom");
+                mouseclickposition($("#luckysheet-pivotTable-config-option"), toffset.left + _item.outerWidth(), toffset.top - 13, "rightbottom");
                 e.stopPropagation();
                 return false;
             });
 
             $("#luckysheet-pivotTable-config-option-order,#luckysheet-pivotTable-config-option-orderby,#luckysheet-pivotTable-config-option-stastic").change(function () {
-                let $t = $(this), cindex = $t.data("index");
+                let _t = $(this), cindex = _t.data("index");
                 
                 $("#luckysheet-modal-dialog-config-row, #luckysheet-modal-dialog-config-column").find(".luckysheet-modal-dialog-slider-config-item").each(function () {
                     if ($(this).data("index") == cindex) {
-                        $(this).data($t.attr("id").replace("luckysheet-pivotTable-config-option-", ""), $t.val());
+                        $(this).data(_t.attr("id").replace("luckysheet-pivotTable-config-option-", ""), _t.val());
                     }
                 });
 
@@ -1345,11 +1345,11 @@ const pivotTable = {
             });
 
             $("#luckysheet-modal-dialog-config-value").on("click", ".luckysheet-modal-dialog-slider-config-item-icon", function (e) {
-                let $t = $(e.target), 
-                    $item = $t.closest(".luckysheet-modal-dialog-slider-config-item"), 
-                    cindex = $item.data("index"), 
-                    toffset = $item.offset(), 
-                    sumtype = $item.data("sumtype");
+                let _t = $(e.target), 
+                    _item = _t.closest(".luckysheet-modal-dialog-slider-config-item"), 
+                    cindex = _item.data("index"), 
+                    toffset = _item.offset(), 
+                    sumtype = _item.data("sumtype");
                 
                 let type = _this.pivot_data_type[cindex.toString()];
                 if (sumtype == null) {
@@ -1361,29 +1361,29 @@ const pivotTable = {
                     }
                 }
 
-                let $menu = $("#luckysheet-pivotTable-config-option-sumtype");
-                $menu.find(".luckysheet-submenu-arrow").hide();
-                $menu.find(".luckysheet-cols-menuitem[sumtype='" + sumtype + "'] .luckysheet-submenu-arrow").css("display", "inline");
-                $menu.data("item", $item);
+                let _menu = $("#luckysheet-pivotTable-config-option-sumtype");
+                _menu.find(".luckysheet-submenu-arrow").hide();
+                _menu.find(".luckysheet-cols-menuitem[sumtype='" + sumtype + "'] .luckysheet-submenu-arrow").css("display", "inline");
+                _menu.data("item", _item);
 
-                mouseclickposition($menu, toffset.left + $item.outerWidth(), toffset.top - 13, "rightbottom");
+                mouseclickposition(_menu, toffset.left + _item.outerWidth(), toffset.top - 13, "rightbottom");
                 e.stopPropagation();
                 return false;
             });
 
             $("#luckysheet-pivotTable-config-option-sumtype .luckysheet-cols-menuitem").click(function () {
-                let $item = $("#luckysheet-pivotTable-config-option-sumtype").data("item");
+                let _item = $("#luckysheet-pivotTable-config-option-sumtype").data("item");
                 let sumtype = $(this).attr("sumtype");
-                $item.data("sumtype", $(this).attr("sumtype"));
-                let name = _this.getSumTypeName(sumtype) + ":" + $item.data("name");
-                $item.attr("title", name).find(".luckysheet-modal-dialog-slider-config-item-txt").html(name);
+                _item.data("sumtype", $(this).attr("sumtype"));
+                let name = _this.getSumTypeName(sumtype) + ":" + _item.data("name");
+                _item.attr("title", name).find(".luckysheet-modal-dialog-slider-config-item-txt").html(name);
                 $("#luckysheet-pivotTable-config-option-sumtype").hide();
                 _this.refreshPivotTable();
             });
 
             $("#luckysheet-modal-dialog-config-filter").on("click", ".luckysheet-modal-dialog-slider-config-item-icon", function (e) {
-                let $t = $(e.target), 
-                    cindex = $t.closest(".luckysheet-modal-dialog-slider-config-item").data("index");
+                let _t = $(e.target), 
+                    cindex = _t.closest(".luckysheet-modal-dialog-slider-config-item").data("index");
                 _this.luckysheetsliderlistitemfilter($("#luckysheet-modal-dialog-pivotTable-list .luckysheet-modal-dialog-slider-list-item").eq(cindex).find(".luckysheet-slider-list-item-filter"));
                 e.stopPropagation();
                 return false;
@@ -1391,14 +1391,14 @@ const pivotTable = {
 
             //确认按钮
             $("#luckysheet-pivotTableFilter-confirm").click(function () {
-                let $menu = $("#luckysheet-pivotTableFilter-menu");
-                let cindex = $menu.data("index");
+                let _menu = $("#luckysheet-pivotTableFilter-menu");
+                let cindex = _menu.data("index");
 
                 let rowhiddenother = {}; //其它筛选列的隐藏行
                 $("#luckysheet-modal-dialog-pivotTable-list .luckysheet-modal-dialog-slider-list-item").each(function () {
-                    let $t = $(this), rh = $t.data("rowhidden");
+                    let _t = $(this), rh = _t.data("rowhidden");
 
-                    if($t.data("index") != cindex){
+                    if(_t.data("index") != cindex){
                         if (rh == null || rh == "") {
                             return true;
                         }
@@ -1420,20 +1420,20 @@ const pivotTable = {
                 let caljs = {};
 
                 if ($("#luckysheet-pivotTableFilter-bycondition").next().is(":visible") && $("#luckysheet-pivotTableFilter-byvalue").next().is(":hidden") && $("#luckysheet-pivotTableFilter-selected span").data("value") != "null") {
-                    let $t = $("#luckysheet-pivotTableFilter-selected span");
-                    let type = $t.data("type"), value = $t.data("value");
+                    let _t = $("#luckysheet-pivotTableFilter-selected span");
+                    let type = _t.data("type"), value = _t.data("value");
 
                     caljs["value"] = value;
-                    caljs["text"] = $t.text();
+                    caljs["text"] = _t.text();
 
                     if (type == "0") {
                         caljs["type"] = "0";
                     }
                     else if (type == "2") {
-                        let $input = $("#luckysheet-pivotTableFilter-menu .luckysheet-pivotTableFilter-selected-input2 input");
+                        let _input = $("#luckysheet-pivotTableFilter-menu .luckysheet-pivotTableFilter-selected-input2 input");
                         caljs["type"] = "2";
-                        caljs["value1"] = $input.eq(0).val();
-                        caljs["value2"] = $input.eq(1).val();
+                        caljs["value1"] = _input.eq(0).val();
+                        caljs["value2"] = _input.eq(1).val();
                     }
                     else {
                         caljs["type"] = "1";
@@ -1768,27 +1768,27 @@ const pivotTable = {
                     }
                 }
 
-                let $top = $("#luckysheet-modal-dialog-pivotTable-list .luckysheet-modal-dialog-slider-list-item").eq(cindex);
+                let top = $("#luckysheet-modal-dialog-pivotTable-list .luckysheet-modal-dialog-slider-list-item").eq(cindex);
                 if ($("#luckysheet-pivotTableFilter-byvalue-select .ListBox input[type='checkbox']:visible:checked").length < $("#luckysheet-pivotTableFilter-byvalue-select .ListBox input[type='checkbox']:visible").length || $("#luckysheet-pivotTableFilter-byvalue-input").val().length > 0 || ($("#luckysheet-pivotTableFilter-bycondition").next().is(":visible") && $("#luckysheet-pivotTableFilter-byvalue").next().is(":hidden") && $("#luckysheet-pivotTableFilter-selected span").data("value") != "null")) {
-                    $top.data("rowhidden", JSON.stringify(rowhidden)).find(".luckysheet-slider-list-item-filtered").show();
+                    top.data("rowhidden", JSON.stringify(rowhidden)).find(".luckysheet-slider-list-item-filtered").show();
                     _this.setDatatojsfile("rowhidden", rowhidden, cindex);
 
                     if (caljs != null) {
-                        $top.data("byconditionvalue", caljs["value"]).data("byconditiontype", caljs["type"]).data("byconditiontext", caljs["text"]);
+                        top.data("byconditionvalue", caljs["value"]).data("byconditiontype", caljs["type"]).data("byconditiontext", caljs["text"]);
                         
                         if (caljs["value1"] != null) {
-                            $top.data("byconditionvalue1", caljs["value1"]);
+                            top.data("byconditionvalue1", caljs["value1"]);
                         }
 
                         if (caljs["value2"] != null) {
-                            $top.data("byconditionvalue2", caljs["value2"]);
+                            top.data("byconditionvalue2", caljs["value2"]);
                         }
 
                         _this.setDatatojsfile("caljs", caljs, cindex);
                     }
                 }
                 else {
-                    $top.data("rowhidden", "").find(".luckysheet-slider-list-item-filtered").hide();
+                    top.data("rowhidden", "").find(".luckysheet-slider-list-item-filtered").hide();
                     _this.setDatatojsfile("rowhidden", null, cindex);
                 }
 
@@ -1823,10 +1823,10 @@ const pivotTable = {
             });
 
             $("#luckysheet-pivotTable-selection-confirm").click(function () {
-                let $input = $("#luckysheet-pivotTable-range-selection-input"), val = $input.val();
+                let _input = $("#luckysheet-pivotTable-range-selection-input"), val = _input.val();
 
                 if ($.trim(val).length == 0 || $.trim(val).toUpperCase() == _this.jgridCurrentPivotInput.toUpperCase()) {
-                    $input.val(_this.jgridCurrentPivotInput);
+                    _input.val(_this.jgridCurrentPivotInput);
                     $("#luckysheet-data-pivotTable-selection .luckysheet-model-close-btn").click();
                     return;
                 }
@@ -1863,7 +1863,7 @@ const pivotTable = {
                         else{
                             tooltip.info("", locale_pivotTable.errorNotAllowPivotData);    
                         }
-                        $input.val(_this.jgridCurrentPivotInput);
+                        _input.val(_this.jgridCurrentPivotInput);
                         return;
                     }
 
@@ -1874,7 +1874,7 @@ const pivotTable = {
                         else{
                             tooltip.info("", locale_pivotTable.errorSelectionRange);    
                         }
-                        $input.val(_this.jgridCurrentPivotInput);
+                        _input.val(_this.jgridCurrentPivotInput);
                         return;
                     }
 
@@ -1891,7 +1891,7 @@ const pivotTable = {
                         else{
                             tooltip.info("", locale_pivotTable.errorSelectionRange);    
                         }
-                        $input.val(_this.jgridCurrentPivotInput);
+                        _input.val(_this.jgridCurrentPivotInput);
                         return;
                     }
 
@@ -1905,7 +1905,7 @@ const pivotTable = {
                         else{
                             tooltip.info(locale_pivotTable.errorSelectionRange);    
                         }
-                        $input.val(_this.jgridCurrentPivotInput);
+                        _input.val(_this.jgridCurrentPivotInput);
                         return;
                     }
                     sheetmanage.changeSheetExec(_this.pivotSheetIndex);
@@ -1934,12 +1934,12 @@ const pivotTable = {
             });
 
             $("#luckysheet-modal-dialog-slider-pivot").on("mousedown", ".luckysheet-slider-list-item-name, .luckysheet-modal-dialog-slider-config-item-txt", function (e) {
-                let $cur = $(e.target);
+                let _cur = $(e.target);
                 _this.movestate = true;
-                _this.movesave.obj = $cur.parent();
-                _this.movesave.name = $cur.data("name");
-                _this.movesave.containerid = $cur.parent().parent().attr("id");
-                _this.movesave.index = $cur.data("index");
+                _this.movesave.obj = _cur.parent();
+                _this.movesave.name = _cur.data("name");
+                _this.movesave.containerid = _cur.parent().parent().attr("id");
+                _this.movesave.index = _cur.data("index");
                 
                 if ($("#luckysheet-modal-dialog-slider-pivot-move").length == 0) {
                     $("body").append('<div id="luckysheet-modal-dialog-slider-pivot-move">' + _this.movesave.name + '</div>');
@@ -1957,15 +1957,15 @@ const pivotTable = {
                         _this.moveitemposition = [0];
                         
                         $(this).find(".luckysheet-modal-dialog-slider-config-item").each(function (i) {
-                            let $t = $(this), h = $t.outerHeight();
+                            let _t = $(this), h = _t.outerHeight();
                             _this.moveitemposition.push(_this.moveitemposition[i] + h + 2);
                         });
                         $(this).append('<div id="luckysheet-modal-dialog-config-order-help" style="position:absolute;height:3px;width:100%;background:#007ACC;z-index:1;pointer-events: none;user-select:none;"></div>');
                     }
 
                     $("#luckysheet-modal-dialog-slider-pivot-move").css({ "background": "#FD8585", "color": "#fff", "border": "1px solid #FD7070" });
-                    let x = event.pageX, y = event.pageY, $container = $(this);
-                    let curtop = y - $container.offset().top + $container.scrollTop();
+                    let x = event.pageX, y = event.pageY, _container = $(this);
+                    let curtop = y - _container.offset().top + _container.scrollTop();
                     let position = _this.moveitemposition;
                     let row_index = luckysheet_searcharray(position, curtop);
 
@@ -1987,10 +1987,10 @@ const pivotTable = {
                 }
             }).mouseup(function (e) {
                 if (_this.movestate) {
-                    let $t = $(this);
+                    let _t = $(this);
                     let itemHTML;
 
-                    if (_this.movesave.containerid == $t.attr("id")) {
+                    if (_this.movesave.containerid == _t.attr("id")) {
                         itemHTML = _this.movesave.obj.clone();
                     }
                     else {
@@ -1998,7 +1998,7 @@ const pivotTable = {
                             sumtype = "", 
                             nameindex = "";
                         
-                        if ($t.attr("id") == "luckysheet-modal-dialog-config-value") {
+                        if (_t.attr("id") == "luckysheet-modal-dialog-config-value") {
                             let type = _this.pivot_data_type[_this.movesave.index.toString()];
                             
                             if (type == "num") {
@@ -2025,12 +2025,12 @@ const pivotTable = {
                         itemHTML = '<div title="' + name + '" class="luckysheet-modal-dialog-slider-config-item" ' + nameindex + ' ' + sumtype + ' data-index="' + _this.movesave.index + '" data-name="' + _this.movesave.name + '"><div class="luckysheet-modal-dialog-slider-config-item-txt" ' + nameindex + ' ' + sumtype + ' data-index="' + _this.movesave.index + '" data-name="' + _this.movesave.name + '">' + name + '</div><div class="luckysheet-modal-dialog-slider-config-item-icon"><i class="fa fa-sort-desc" aria-hidden="true"></i></div></div>';
                     }
 
-                    let x = event.pageX, y = event.pageY, $container = $(this);
-                    let curtop = y - $container.offset().top + $container.scrollTop();
+                    let x = event.pageX, y = event.pageY, _container = $(this);
+                    let curtop = y - _container.offset().top + _container.scrollTop();
                     let position = _this.moveitemposition;
                     let row_index = luckysheet_searcharray(position, curtop);
 
-                    if ((_this.movesave.containerid == "luckysheet-modal-dialog-pivotTable-list") || (_this.movesave.containerid == "luckysheet-modal-dialog-config-value" && _this.movesave.containerid != $t.attr("id"))) {
+                    if ((_this.movesave.containerid == "luckysheet-modal-dialog-pivotTable-list") || (_this.movesave.containerid == "luckysheet-modal-dialog-config-value" && _this.movesave.containerid != _t.attr("id"))) {
                         $("#luckysheet-modal-dialog-config-filter, #luckysheet-modal-dialog-config-row, #luckysheet-modal-dialog-config-column").find(".luckysheet-modal-dialog-slider-config-item").each(function () {
                             if ($(this).data("index") == _this.movesave.index) {
                                 $(this).remove();
@@ -2039,25 +2039,25 @@ const pivotTable = {
                     }
 
                     if (row_index == -1) {
-                        if ($t.find(".luckysheet-modal-dialog-slider-config-item").length == 0) {
-                            $t.append(itemHTML);
+                        if (_t.find(".luckysheet-modal-dialog-slider-config-item").length == 0) {
+                            _t.append(itemHTML);
                         }
                         else {
-                            $t.find(".luckysheet-modal-dialog-slider-config-item").last().after(itemHTML);
+                            _t.find(".luckysheet-modal-dialog-slider-config-item").last().after(itemHTML);
                         }
 
                     }
                     else if ((curtop - position[row_index - 1]) > (position[row_index] - position[row_index - 1]) / 2) {
-                        $t.find(".luckysheet-modal-dialog-slider-config-item").eq(row_index - 1).after(itemHTML);
+                        _t.find(".luckysheet-modal-dialog-slider-config-item").eq(row_index - 1).after(itemHTML);
                     }
                     else {
-                        $t.find(".luckysheet-modal-dialog-slider-config-item").eq(row_index - 1).before(itemHTML);
+                        _t.find(".luckysheet-modal-dialog-slider-config-item").eq(row_index - 1).before(itemHTML);
                     }
 
                     if (_this.movesave.containerid == "luckysheet-modal-dialog-pivotTable-list") {
 
                     }
-                    else if (_this.movesave.containerid == "luckysheet-modal-dialog-config-value" && _this.movesave.containerid != $t.attr("id")) {
+                    else if (_this.movesave.containerid == "luckysheet-modal-dialog-config-value" && _this.movesave.containerid != _t.attr("id")) {
 
                     }
                     else {
@@ -2065,9 +2065,9 @@ const pivotTable = {
                     }
 
                     $("#luckysheet-modal-dialog-pivotTable-list").find(".luckysheet-modal-dialog-slider-list-item").each(function () {
-                        let $seleted = $(this).find(".luckysheet-slider-list-item-selected");
-                        if ($(this).data("index") == _this.movesave.index && $seleted.find("i").length == 0) {
-                            $seleted.append('<i class="fa fa-check luckysheet-mousedown-cancel"></i>');
+                        let _seleted = $(this).find(".luckysheet-slider-list-item-selected");
+                        if ($(this).data("index") == _this.movesave.index && _seleted.find("i").length == 0) {
+                            _seleted.append('<i class="fa fa-check luckysheet-mousedown-cancel"></i>');
                         }
                     });
 
@@ -2084,13 +2084,13 @@ const pivotTable = {
             });
 
             $("#luckysheet-modal-dialog-pivotTable-list").on("click", ".luckysheet-slider-list-item-selected", function () {
-                let $t = $(this), 
-                    $item = $t.parent(), 
-                    index = $item.data("index"), 
-                    name = $item.data("name");
+                let _t = $(this), 
+                    _item = _t.parent(), 
+                    index = _item.data("index"), 
+                    name = _item.data("name");
                 
-                if ($t.find("i").length == 0) {
-                    $t.append('<i class="fa fa-check luckysheet-mousedown-cancel"></i>');
+                if (_t.find("i").length == 0) {
+                    _t.append('<i class="fa fa-check luckysheet-mousedown-cancel"></i>');
 
                     let type = _this.pivot_data_type[index.toString()], 
                         itemHTML;
@@ -2102,24 +2102,24 @@ const pivotTable = {
                     else {
                         itemHTML = '<div title="' + name + '" class="luckysheet-modal-dialog-slider-config-item" data-index="' + index + '" data-name="' + name + '"><div class="luckysheet-modal-dialog-slider-config-item-txt" data-index="' + index + '" data-name="' + name + '">' + name + '</div><div class="luckysheet-modal-dialog-slider-config-item-icon"><i class="fa fa-sort-desc" aria-hidden="true"></i></div></div>';
                         
-                        let $column = $("#luckysheet-modal-dialog-config-column"), 
-                            $row = $("#luckysheet-modal-dialog-config-row");
-                        let columnitem = $column.find(".luckysheet-modal-dialog-slider-config-item"), 
-                            rowitem = $row.find(".luckysheet-modal-dialog-slider-config-item");
+                        let _column = $("#luckysheet-modal-dialog-config-column"), 
+                            _row = $("#luckysheet-modal-dialog-config-row");
+                        let columnitem = _column.find(".luckysheet-modal-dialog-slider-config-item"), 
+                            rowitem = _row.find(".luckysheet-modal-dialog-slider-config-item");
 
                         if (columnitem.length < 2) {
-                            $column.append(itemHTML);
+                            _column.append(itemHTML);
                         }
                         else if (rowitem.length < 2) {
-                            $row.append(itemHTML);
+                            _row.append(itemHTML);
                         }
                         else {
-                            $column.append(itemHTML);
+                            _column.append(itemHTML);
                         }
                     }
                 }
                 else {
-                    $t.find("i").remove();
+                    _t.find("i").remove();
                     $("#luckysheet-modal-dialog-config-filter, #luckysheet-modal-dialog-config-row, #luckysheet-modal-dialog-config-column, #luckysheet-modal-dialog-config-value").find(".luckysheet-modal-dialog-slider-config-item").each(function () {
                         if ($(this).data("index") == index) {
                             if ($(this).parent().attr("id") == "luckysheet-modal-dialog-config-value") {
@@ -2257,9 +2257,9 @@ const pivotTable = {
 
                     $("#luckysheet-modal-dialog-config-filter").append(itemHTML);
 
-                    let $seleted = $("#luckysheet-modal-dialog-pivotTable-list .luckysheet-modal-dialog-slider-list-item").eq(item.index).find(".luckysheet-slider-list-item-selected");
-                    if ($seleted.find("i").length == 0) {
-                        $seleted.append('<i class="fa fa-check luckysheet-mousedown-cancel"></i>');
+                    let _seleted = $("#luckysheet-modal-dialog-pivotTable-list .luckysheet-modal-dialog-slider-list-item").eq(item.index).find(".luckysheet-slider-list-item-selected");
+                    if (_seleted.find("i").length == 0) {
+                        _seleted.append('<i class="fa fa-check luckysheet-mousedown-cancel"></i>');
                     }
                 }
             }
@@ -2285,9 +2285,9 @@ const pivotTable = {
 
                     $("#luckysheet-modal-dialog-config-row").append(itemHTML);
 
-                    let $seleted = $("#luckysheet-modal-dialog-pivotTable-list .luckysheet-modal-dialog-slider-list-item").eq(item.index).find(".luckysheet-slider-list-item-selected");
-                    if ($seleted.find("i").length == 0) {
-                        $seleted.append('<i class="fa fa-check luckysheet-mousedown-cancel"></i>');
+                    let _seleted = $("#luckysheet-modal-dialog-pivotTable-list .luckysheet-modal-dialog-slider-list-item").eq(item.index).find(".luckysheet-slider-list-item-selected");
+                    if (_seleted.find("i").length == 0) {
+                        _seleted.append('<i class="fa fa-check luckysheet-mousedown-cancel"></i>');
                     }
                 }
             }
@@ -2313,9 +2313,9 @@ const pivotTable = {
 
                     $("#luckysheet-modal-dialog-config-column").append(itemHTML);
 
-                    let $seleted = $("#luckysheet-modal-dialog-pivotTable-list .luckysheet-modal-dialog-slider-list-item").eq(item.index).find(".luckysheet-slider-list-item-selected");
-                    if ($seleted.find("i").length == 0) {
-                        $seleted.append('<i class="fa fa-check luckysheet-mousedown-cancel"></i>');
+                    let _seleted = $("#luckysheet-modal-dialog-pivotTable-list .luckysheet-modal-dialog-slider-list-item").eq(item.index).find(".luckysheet-slider-list-item-selected");
+                    if (_seleted.find("i").length == 0) {
+                        _seleted.append('<i class="fa fa-check luckysheet-mousedown-cancel"></i>');
                     }
                 }
             }
@@ -2337,9 +2337,9 @@ const pivotTable = {
 
                     $("#luckysheet-modal-dialog-config-value").append(itemHTML);
 
-                    let $seleted = $("#luckysheet-modal-dialog-pivotTable-list .luckysheet-modal-dialog-slider-list-item").eq(item.index).find(".luckysheet-slider-list-item-selected");
-                    if ($seleted.find("i").length == 0) {
-                        $seleted.append('<i class="fa fa-check luckysheet-mousedown-cancel"></i>');
+                    let _seleted = $("#luckysheet-modal-dialog-pivotTable-list .luckysheet-modal-dialog-slider-list-item").eq(item.index).find(".luckysheet-slider-list-item-selected");
+                    if (_seleted.find("i").length == 0) {
+                        _seleted.append('<i class="fa fa-check luckysheet-mousedown-cancel"></i>');
                     }
                 }
 

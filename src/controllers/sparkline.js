@@ -1478,7 +1478,7 @@ const luckysheetSparkline = {
             this.valueShapes = {};
             this.regiondata = {};
             this.width = width;
-            //this.target = this.$el.simpledraw(width, height, options.get('composite'));
+            //this.target = this._el.simpledraw(width, height, options.get('composite'));
             if (!values.length) {
                 this.disabled = true;
             }

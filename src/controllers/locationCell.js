@@ -98,9 +98,9 @@ const luckysheetLocationCell = {
             "botton": '<button id="luckysheet-locationCell-dialog-confirm" class="btn btn-primary">'+locale_button.confirm+'</button><button class="btn btn-default luckysheet-model-close-btn">'+locale_button.cancel+'</button>', 
             "style": "z-index:100003" 
         }));
-        let $t = $("#luckysheet-locationCell-dialog").find(".luckysheet-modal-dialog-content").css("min-width", 400).end(), 
-            myh = $t.outerHeight(), 
-            myw = $t.outerWidth();
+        let _t = $("#luckysheet-locationCell-dialog").find(".luckysheet-modal-dialog-content").css("min-width", 400).end(), 
+            myh = _t.outerHeight(), 
+            myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
         $("#luckysheet-locationCell-dialog").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 3 }).show();
@@ -122,36 +122,36 @@ const luckysheetLocationCell = {
             $("#luckysheet-modal-dialog-mask").hide();
             $("#luckysheet-locationCell-dialog").hide();
 
-            let $radio = $("#luckysheet-locationCell-dialog .listItem input:radio:checked");
-            let id = $radio.attr("id");
+            let _radio = $("#luckysheet-locationCell-dialog .listItem input:radio:checked");
+            let id = _radio.attr("id");
 
             if(id == "locationConstant" || id == "locationFormula"){
-                let $checkbox = $radio.siblings(".subbox").find("input:checkbox:checked");
+                let _checkbox = _radio.siblings(".subbox").find("input:checkbox:checked");
 
                 let value;
-                if($checkbox.length == 0){
+                if(_checkbox.length == 0){
                     return;
                 }
-                else if($checkbox.length == 5){
+                else if(_checkbox.length == 5){
                     value = "all";
                 }
                 else{
                     let arr = [];
                     
-                    for(let i = 0; i < $checkbox.length; i++){
-                        if($($checkbox[i]).hasClass("date")){
+                    for(let i = 0; i < _checkbox.length; i++){
+                        if($(_checkbox[i]).hasClass("date")){
                             arr.push("d");
                         }
-                        else if($($checkbox[i]).hasClass("number")){
+                        else if($(_checkbox[i]).hasClass("number")){
                             arr.push("n");
                         }
-                        else if($($checkbox[i]).hasClass("string")){
+                        else if($(_checkbox[i]).hasClass("string")){
                             arr.push("s,g");
                         }
-                        else if($($checkbox[i]).hasClass("boolean")){
+                        else if($(_checkbox[i]).hasClass("boolean")){
                             arr.push("b");
                         }
-                        else if($($checkbox[i]).hasClass("error")){
+                        else if($(_checkbox[i]).hasClass("error")){
                             arr.push("e");
                         }
                     }

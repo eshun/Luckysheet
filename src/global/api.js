@@ -6645,7 +6645,7 @@ export function changLang(lang = 'zh'){
 
     let options = toJson();
     options.lang = lang;
-    luckysheet.create(options);
+    sheet.create(options);
 }
 
 

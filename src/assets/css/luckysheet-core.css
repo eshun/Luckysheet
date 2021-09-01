@@ -1712,7 +1712,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
 .luckysheet-scrollbar-ltr {
     position: absolute;
     overflow: hidden;
-    z-index: 1003;
+    z-index: 903;
 }
 
 .luckysheet-scrollbar-ltr div {
@@ -5264,7 +5264,7 @@ fieldset[disabled] .btn-danger.focus {
 }
 
 .luckysheetPaintCursor {
-    cursor: url(paint_24px.ico), auto;
+    cursor: url(../images/paint_24px.ico), auto;
 }
 
 /*        input {
@@ -5697,13 +5697,13 @@ fieldset[disabled] .btn-danger.focus {
 #luckysheet-icon-dataBar-menuButton .bgImgBox {
     width: 28px;
     height: 26px;
-    background: url(../plugins/images/CFdataBar.png)no-repeat;
+    background: url(../../plugins/images/CFdataBar.png)no-repeat;
 }
 
 #luckysheet-icon-colorGradation-menuButton .bgImgBox {
     width: 28px;
     height: 26px;
-    background: url(../plugins/images/CFcolorGradation.png)no-repeat;
+    background: url(../../plugins/images/CFcolorGradation.png)no-repeat;
 }
 
 /*条件格式规则管理器*/
@@ -5960,7 +5960,7 @@ fieldset[disabled] .btn-danger.focus {
 .luckysheet-newEditorRule-dialog .iconsBox .showbox .model {
     width: 125px;
     height: 20px;
-    background: url(../plugins/images/CFicons.png)no-repeat;
+    background: url(../../plugins/images/CFicons.png)no-repeat;
     background-size: 256px;
     float: left;
 }
@@ -5993,7 +5993,7 @@ fieldset[disabled] .btn-danger.focus {
 .luckysheet-newEditorRule-dialog .iconsBox ul li div {
     width: 125px;
     height: 20px;
-    background: url(../plugins/images/CFicons.png)no-repeat;
+    background: url(../../plugins/images/CFicons.png)no-repeat;
     background-size: 256px;
 }
 
@@ -6041,7 +6041,7 @@ fieldset[disabled] .btn-danger.focus {
 #luckysheet-CFicons-dialog .box .list .item div {
     width: 125px;
     height: 20px;
-    background: url(../plugins/images/CFicons.png)no-repeat;
+    background: url(../../plugins/images/CFicons.png)no-repeat;
     background-size: 256px;
 }
 
@@ -6397,7 +6397,7 @@ fieldset[disabled] .btn-danger.focus {
 #luckysheet-dropCell-icon #icon_dropCell {
     width: 25px;
     height: 15px;
-    background-image: url(../plugins/images/icon_dropCell.png);
+    background-image: url(../../plugins/images/icon_dropCell.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;

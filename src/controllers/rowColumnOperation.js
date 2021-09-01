@@ -93,8 +93,8 @@ export function rowColumnOperationInitial(){
         Store.luckysheet_scroll_status = true;
 
         //公式相关
-        let $input = $("#luckysheet-input-box");
-        if (parseInt($input.css("top")) > 0) {
+        let _input = $("#luckysheet-input-box");
+        if (parseInt(_input.css("top")) > 0) {
             if (formula.rangestart || formula.rangedrag_column_start || formula.rangedrag_row_start || formula.israngeseleciton() || $("#luckysheet-ifFormulaGenerator-multiRange-dialog").is(":visible")) {
                 //公式选区
                 let changeparam = menuButton.mergeMoveMain([0, col_index], rowseleted, {"row_focus": row_index, "column_focus": 0}, top, height, col_pre, col);
@@ -242,18 +242,18 @@ export function rowColumnOperationInitial(){
                     let currSelection = window.getSelection();
                     let anchorOffset = currSelection.anchorNode;
                     
-                    let $editor;
+                    let _editor;
                     if($("#luckysheet-search-formula-parm").is(":visible")||$("#luckysheet-search-formula-parm-select").is(":visible")){
-                        $editor = $("#luckysheet-rich-text-editor");
+                        _editor = $("#luckysheet-rich-text-editor");
                         formula.rangechangeindex = formula.data_parm_index;
                     }
                     else{
-                        $editor = $(anchorOffset).closest("div");
+                        _editor = $(anchorOffset).closest("div");
                     }
 
-                    let $span = $editor.find("span[rangeindex='" + formula.rangechangeindex + "']");
+                    let _span = _editor.find("span[rangeindex='" + formula.rangechangeindex + "']");
 
-                    formula.setCaretPosition($span.get(0), 0, $span.html().length);
+                    formula.setCaretPosition(_span.get(0), 0, _span.html().length);
                 }, 1);
 
                 return;
@@ -522,8 +522,8 @@ export function rowColumnOperationInitial(){
         Store.luckysheet_scroll_status = true;
 
         //公式相关
-        let $input = $("#luckysheet-input-box");
-        if (parseInt($input.css("top")) > 0) {
+        let _input = $("#luckysheet-input-box");
+        if (parseInt(_input.css("top")) > 0) {
             if (formula.rangestart || formula.rangedrag_column_start || formula.rangedrag_row_start || formula.israngeseleciton() || $("#luckysheet-ifFormulaGenerator-multiRange-dialog").is(":visible")) {
                 //公式选区
                 let changeparam = menuButton.mergeMoveMain(columnseleted, [0, row_index], {"row_focus": 0, "column_focus": col_index}, row_pre, row, left, width);
@@ -996,7 +996,7 @@ export function rowColumnOperationInitial(){
 
     // 列标题的下拉箭头
     $("#luckysheet-cols-menu-btn").click(function (event) {
-        let $menu = $("#luckysheet-rightclick-menu");
+        let _menu = $("#luckysheet-rightclick-menu");
         let offset = $(this).offset();
         $("#luckysheet-cols-rows-shift").show();
         Store.luckysheetRightHeadClickIs = "column";
@@ -1046,7 +1046,7 @@ export function rowColumnOperationInitial(){
             $$('#luckysheet-cols-rows-shift .luckysheet-menuseparator').style.display = 'none';
         }
 
-        showrightclickmenu($menu, offset.left, offset.top + 18);
+        showrightclickmenu(_menu, offset.left, offset.top + 18);
         Store.luckysheet_cols_menu_status = true;
     });
 
@@ -1080,8 +1080,8 @@ export function rowColumnOperationInitial(){
         
         const defaultAddNum = luckysheetConfigsetting.defaultAddNum || 1;
 
-        let $t = $(this), value = $t.find("input").val();
-        $t.find("input").val(defaultAddNum);
+        let _t = $(this), value = _t.find("input").val();
+        _t.find("input").val(defaultAddNum);
         if (!isRealNum(value)) {
             if(isEditMode()){
                 alert(locale_info.tipInputNumber);
@@ -1189,7 +1189,7 @@ export function rowColumnOperationInitial(){
     //         return;
     //     }
 
-    //     let $t = $(this), value = $t.find("input").val();
+    //     let _t = $(this), value = _t.find("input").val();
     //     if (!isRealNum(value)) {
     //         if(isEditMode()){
     //             alert(locale_info.tipInputNumber);
@@ -1251,7 +1251,7 @@ export function rowColumnOperationInitial(){
     //         return;
     //     }
 
-    //     let $t = $(this), value = $t.find("input").val();
+    //     let _t = $(this), value = _t.find("input").val();
     //     if (!isRealNum(value)) {
     //         if(isEditMode()){
     //             alert(locale_info.tipInputNumber);
@@ -1311,8 +1311,8 @@ export function rowColumnOperationInitial(){
 
         const defaultAddNum = luckysheetConfigsetting.defaultAddNum || 1;
 
-        let $t = $(this), value = $t.find("input").val();
-        $t.find("input").val(defaultAddNum);
+        let _t = $(this), value = _t.find("input").val();
+        _t.find("input").val(defaultAddNum);
         if (!isRealNum(value)) {
             if(isEditMode()){
                 alert(locale_info.tipInputNumber);
@@ -1370,7 +1370,7 @@ export function rowColumnOperationInitial(){
     //         return;
     //     }
 
-    //     let $t = $(this), value = $t.find("input").val();
+    //     let _t = $(this), value = _t.find("input").val();
     //     if (!isRealNum(value)) {
     //         if(isEditMode()){
     //             alert(locale_info.tipInputNumber);
@@ -1426,7 +1426,7 @@ export function rowColumnOperationInitial(){
     //         return;
     //     }
 
-    //     let $t = $(this), value = $t.find("input").val();
+    //     let _t = $(this), value = _t.find("input").val();
     //     if (!isRealNum(value)) {
     //         if(isEditMode()){
     //             alert(locale_info.tipInputNumber);
