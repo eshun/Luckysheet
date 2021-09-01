@@ -2568,7 +2568,9 @@ const luckysheetformula = {
                                 txtArr.push(null);
                             }
                             else {
-                                txtArr.push(txtdata[i][j].v);
+                                if(txtdata[i][j].v){
+                                    txtArr.push(txtdata[i][j].v);
+                                }
                             }
                         }
                     }
@@ -2577,7 +2579,7 @@ const luckysheetformula = {
                 }
                 else {
                     //参数为单个单元格选区
-                    $("#luckysheet-search-formula-parm .parmBox").eq(_this.data_parm_index).find(".val").text(" = {" + txtdata.v + "}");
+                    $("#luckysheet-search-formula-parm .parmBox").eq(_this.data_parm_index).find(".val").text(" = {" + txtdata.v ?txtdata.v:'' + "}");
                 }
 
                 //计算结果显示
