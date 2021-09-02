@@ -415,6 +415,10 @@ export function initialSheetBar(){
         $("#luckysheet-sheet-list, #luckysheet-rightclick-sheet-menu").hide();
     });
 
+    if(isEditMode()){//此模式下禁用公式栏        
+        $("#luckysheet-sheets-add").addClass("sheet-button-disable");
+    }
+
     $("#luckysheet-sheets-add").click(function (e) {
         //保存正在编辑的单元格内容
         if (parseInt($("#luckysheet-input-box").css("top")) > 0) {

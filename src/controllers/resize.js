@@ -68,7 +68,8 @@ export default function luckysheetsizeauto(isRefreshCanvas=true) {
 
     $("#" + Store.container).find(".luckysheet-grid-container").css("top", Store.toolbarHeight + Store.infobarHeight + Store.calculatebarHeight);
 
-    gridW = $("#" + Store.container).width();
+    gridW = $("#" + Store.container).parent().width();
+    gridH = $("#" + Store.container).parent().height();
 
     if(luckysheetConfigsetting.showConfigWindowResize){//数据透视表  图表  交替颜色 Protection
         if($("#luckysheet-modal-dialog-slider-pivot").is(":visible")){
@@ -250,9 +251,6 @@ export default function luckysheetsizeauto(isRefreshCanvas=true) {
     });
 
     // When adding elements to the luckysheet-icon-morebtn-div element of the toolbar, it will affect the height of the entire workbook area, so the height is obtained here
-    gridH = $("#" + Store.container).height();
-
-    $("#" + Store.container).find(".luckysheet").height(gridH - 2).width(gridW - 2);
 
     changeSheetContainerSize(gridW, gridH)
 
@@ -266,13 +264,16 @@ export default function luckysheetsizeauto(isRefreshCanvas=true) {
 
 
 export function changeSheetContainerSize(gridW, gridH){
-    if(gridW==null){
+    if(!gridW){
         gridW = $("#" + Store.container).width();
     }
 
-    if(gridH==null){
+    if(!gridH){
         gridH = $("#" + Store.container).height();
     }
+
+    $("#" + Store.container).find(".luckysheet").height(gridH - 2).width(gridW - 2);
+
     Store.cellmainHeight = gridH - (Store.infobarHeight + Store.toolbarHeight + Store.calculatebarHeight + Store.columnHeaderHeight + Store.sheetBarHeight + Store.statisticBarHeight);
     Store.cellmainWidth = gridW - Store.rowHeaderWidth;
 

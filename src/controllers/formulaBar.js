@@ -23,6 +23,10 @@ export function formulaBarInitial(){
     const _locale = locale();
     const locale_formula= _locale.formula;
 
+    if(isEditMode()){//此模式下禁用公式栏        
+        $("#luckysheet-wa-functionbox-fx").removeClass("luckysheet-wa-calculate-active");
+    }
+
     $("#luckysheet-functionbox-cell").focus(function () {
         if(isEditMode()){//此模式下禁用公式栏
             return;
@@ -152,6 +156,9 @@ export function formulaBarInitial(){
 
     //公式栏 fx按钮
     $("#luckysheet-wa-functionbox-fx").click(function () {
+        if(isEditMode()){//此模式下禁用公式栏
+            return;
+        }
         //点击函数查找弹出框
         if(Store.luckysheet_select_save.length == 0){
             if(isEditMode()){
