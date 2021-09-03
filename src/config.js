@@ -2,7 +2,7 @@
  * The default luckysheet config object.
  */
 export default {
-    container: "luckysheet", //容器的ID
+    container: "xmkysheet", //容器的ID
     loading:{}, //自定义loading
     column: 60, //空表格默认的列数量
     row: 84, //空表格默认的行数据量
