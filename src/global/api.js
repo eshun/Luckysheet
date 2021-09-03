@@ -6981,3 +6981,13 @@ export function getPrintPageHtml(page=1) {
     }
     return null;
 }
+
+export function switchView (key) {
+    
+	setTimeout(function () {
+        const container = Store.container;
+        const dom=$("#"+container).find(".sheet-print-viewBtn")[key];
+
+        dom && dom.click();
+    }, 100);
+}
