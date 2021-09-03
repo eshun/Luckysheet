@@ -438,11 +438,11 @@ export function convertCssToStyleList(cssText){
             styleList["un"] = 1;
         }
 
-        if(key=="lucky-strike"){
+        if(key=="sheet-strike"){
             styleList["cl"] = value;
         }
 
-        if(key=="lucky-underline"){
+        if(key=="sheet-underline"){
             styleList["un"] = value;
         }
 
@@ -525,7 +525,7 @@ function removeClassWidthCss(cssText, ukey){
             s = s.toLowerCase();
             let key = textTrim(s.substr(0, s.indexOf(':')));
             let value = textTrim(s.substr(s.indexOf(':') + 1));
-            if(key==ukey || (oUkey=="cl" && key=="lucky-strike") || (oUkey=="un" && key=="lucky-underline") ){
+            if(key==ukey || (oUkey=="cl" && key=="sheet-strike") || (oUkey=="un" && key=="sheet-underline") ){
                 continue;
             }
             else if(key.length>0){

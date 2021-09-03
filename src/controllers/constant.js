@@ -218,8 +218,8 @@ const gridHTML = function(){
                             </div> 
                             <div class="luckysheet-sheet-area luckysheet-noselected-text" id="luckysheet-sheet-area">
                                 <div id="luckysheet-sheet-content">
-                                    <div id="luckysheet-sheets-add" class="luckysheet-sheets-add lucky-button-custom"><i class="iconfont luckysheet-iconfont-jia1"></i></div>
-                                    <div id="luckysheet-sheets-m" class="luckysheet-sheets-m lucky-button-custom"><i class="iconfont luckysheet-iconfont-caidan2"></i></div>
+                                    <div id="luckysheet-sheets-add" class="luckysheet-sheets-add sheet-button-custom"><i class="iconfont luckysheet-iconfont-jia1"></i></div>
+                                    <div id="luckysheet-sheets-m" class="luckysheet-sheets-m sheet-button-custom"><i class="iconfont luckysheet-iconfont-caidan2"></i></div>
                                     <div class="luckysheet-sheet-container" id="luckysheet-sheet-container">
                                         <div class="docs-sheet-fade docs-sheet-fade-left" style="display: none;">
                                             <div class="docs-sheet-fade3"></div>
@@ -233,8 +233,8 @@ const gridHTML = function(){
                                         </div>
                                         <div class="luckysheet-sheet-container-c" id="luckysheet-sheet-container-c"></div>
                                     </div>
-                                    <div id="luckysheet-sheets-leftscroll" class="luckysheet-sheets-scroll lucky-button-custom"><i class="fa fa-caret-left"></i></div>
-                                    <div id="luckysheet-sheets-rightscroll" class="luckysheet-sheets-scroll lucky-button-custom"><i class="fa fa-caret-right"></i></div>
+                                    <div id="luckysheet-sheets-leftscroll" class="luckysheet-sheets-scroll sheet-button-custom"><i class="fa fa-caret-left"></i></div>
+                                    <div id="luckysheet-sheets-rightscroll" class="luckysheet-sheets-scroll sheet-button-custom"><i class="fa fa-caret-right"></i></div>
                                 </div>
                             </div> 
                         </div> 
