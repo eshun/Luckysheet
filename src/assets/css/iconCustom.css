@@ -54,7 +54,7 @@ div.sheet-button-disable{
     cursor: default;
 }
 
-div.sheet-button-disable.luckysheet-sheets-add:hover,
+div.sheet-button-disable.sheets-add:hover,
 div.sheet-button-disable.sheet-button-custom:hover {
     color: #d6d6d6;
     background-color: #fafafc;
@@ -78,15 +78,15 @@ div.sheet-button-disable.sheet-button-custom:hover {
 }
 
 /* sheet bar add/menu button */
-/* #luckysheet-sheets-add, #luckysheet-sheets-m{
+/* #sheets-add, #sheets-m{
     padding: 1px 3px;
 } */
-.luckysheet-sheets-add .iconfont, .luckysheet-sheets-m .iconfont{
+.sheets-add .iconfont, .sheets-m .iconfont{
     font-size: 21px;
 }
 
 /* sheet bar left/right scroll */
-#luckysheet-sheets-leftscroll , #luckysheet-sheets-rightscroll{
+#sheets-leftscroll , #sheets-rightscroll{
     padding:6px 10px;
 }
 

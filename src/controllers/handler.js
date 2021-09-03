@@ -104,7 +104,7 @@ export default function luckysheetHandler() {
 
     
 
-    $("#luckysheet-sheet-container-c").mousewheel(function (event, delta) {
+    $("#sheet-container-c").mousewheel(function (event, delta) {
         let scrollNum = event.deltaFactor<40?1:(event.deltaFactor<80?2:3);
         let scrollLeft = $(this).scrollLeft();
         if(event.deltaY != 0){
@@ -295,7 +295,7 @@ export default function luckysheetHandler() {
         .end()
         .find(".luckysheet-cs-draghandle")
         .css("cursor","default");
-        $("#luckysheet-cell-main, #luckysheetTableContent, #luckysheet-sheettable_0").css("cursor","default");
+        $("#luckysheet-cell-main, #luckysheetTableContent, #sheettable_0").css("cursor","default");
 
         //有批注在编辑时
         luckysheetPostil.removeActivePs();
@@ -1714,42 +1714,42 @@ export default function luckysheetHandler() {
             });
         }
         else if (Store.luckysheet_sheet_move_status) {
-            let scrollLeft = $("#luckysheet-sheet-container-c").scrollLeft();
+            let scrollLeft = $("#sheet-container-c").scrollLeft();
             let x = event.pageX + scrollLeft;
 
             if (Math.abs(event.pageX - Store.luckysheet_sheet_move_data.pageX) < 3) {
                 return;
             }
 
-            let winW = $("#luckysheet-sheet-container").width();
-            let left = x - Store.luckysheet_sheet_move_data.curleft - $("#luckysheet-sheet-container").offset().left;
+            let winW = $("#sheet-container").width();
+            let left = x - Store.luckysheet_sheet_move_data.curleft - $("#sheet-container").offset().left;
             Store.luckysheet_sheet_move_data.activeobject.css({ "left": left });
 
             let row_index = luckysheet_searcharray(Store.luckysheet_sheet_move_data.widthlist, left + Store.luckysheet_sheet_move_data.curleft);
             Store.luckysheet_sheet_move_data.cursorobject.css({ "cursor": "move" });
 
             if (left - scrollLeft <= 6) {
-                $("#luckysheet-sheets-leftscroll").click();
+                $("#sheets-leftscroll").click();
             }
 
             if (left - scrollLeft >= winW - 40) {
-                $("#luckysheet-sheets-rightscroll").click();
+                $("#sheets-rightscroll").click();
             }
 
             if (row_index != Store.luckysheet_sheet_move_data.curindex) {
                 if (row_index == -1 && left > 0) {
                     row_index = Store.luckysheet_sheet_move_data.widthlist.length - 1;
-                    $("#luckysheet-sheets-item-clone").insertAfter($("#luckysheet-sheet-area div.luckysheet-sheets-item:visible").eq(row_index));
+                    $("#sheets-item-clone").insertAfter($("#sheet-area div.sheets-item:visible").eq(row_index));
                 }
                 else if (row_index == -1 && left <= 0) {
-                    $("#luckysheet-sheets-item-clone").insertBefore($("#luckysheet-sheet-area div.luckysheet-sheets-item:visible").eq(0));
+                    $("#sheets-item-clone").insertBefore($("#sheet-area div.sheets-item:visible").eq(0));
                 }
                 else {
-                    $("#luckysheet-sheets-item-clone").insertAfter($("#luckysheet-sheet-area div.luckysheet-sheets-item:visible").eq(row_index));
+                    $("#sheets-item-clone").insertAfter($("#sheet-area div.sheets-item:visible").eq(row_index));
                 }
 
                 Store.luckysheet_sheet_move_data.widthlist = [];
-                $("#luckysheet-sheet-area div.luckysheet-sheets-item:visible").each(function (i) {
+                $("#sheet-area div.sheets-item:visible").each(function (i) {
                     if (i == 0) {
                         Store.luckysheet_sheet_move_data.widthlist.push(parseInt($(this).outerWidth()));
                     }
@@ -1758,7 +1758,7 @@ export default function luckysheetHandler() {
                     }
                 });
 
-                Store.luckysheet_sheet_move_data.curindex = $("#luckysheet-sheet-area div.luckysheet-sheets-item:visible").index($("#luckysheet-sheets-item-clone"));
+                Store.luckysheet_sheet_move_data.curindex = $("#sheet-area div.sheets-item:visible").index($("#sheets-item-clone"));
             }
         }
         else if (Store.luckysheet_model_move_state) {
@@ -3404,7 +3404,7 @@ export default function luckysheetHandler() {
         Store.luckysheet_scroll_status = false;
 
         $("#luckysheet-cell-selected").find(".luckysheet-cs-fillhandle").css("cursor", "crosshair").end().find(".luckysheet-cs-draghandle").css("cursor", "move");
-        $("#luckysheet-cell-main, #luckysheetTableContent, #luckysheet-sheettable_0").css("cursor", "default");
+        $("#luckysheet-cell-main, #luckysheetTableContent, #sheettable_0").css("cursor", "default");
 
         //行标题窗格主体
         Store.luckysheet_rows_selected_status = false;
@@ -3477,9 +3477,9 @@ export default function luckysheetHandler() {
 
         if (Store.luckysheet_sheet_move_status) {
             Store.luckysheet_sheet_move_status = false;
-            Store.luckysheet_sheet_move_data.activeobject.insertBefore($("#luckysheet-sheets-item-clone"));
+            Store.luckysheet_sheet_move_data.activeobject.insertBefore($("#sheets-item-clone"));
             Store.luckysheet_sheet_move_data.activeobject.removeAttr("style");
-            $("#luckysheet-sheets-item-clone").remove();
+            $("#sheets-item-clone").remove();
             Store.luckysheet_sheet_move_data.cursorobject.css({ "cursor": "pointer" });
             Store.luckysheet_sheet_move_data = {};
             sheetmanage.reOrderAllSheet();
@@ -3632,7 +3632,7 @@ export default function luckysheetHandler() {
 
             $("#luckysheet-change-size-line").hide();
             $("#luckysheet-rows-change-size").css("opacity", 0);
-            $("#luckysheet-sheettable, #luckysheet-rows-h, #luckysheet-rows-h canvas").css("cursor", "default");
+            $("#sheettable, #luckysheet-rows-h, #luckysheet-rows-h canvas").css("cursor", "default");
 
             let mouse = mouseposition(event.pageX, event.pageY);
             let scrollTop = $("#luckysheet-rows-h").scrollTop();
@@ -3722,7 +3722,7 @@ export default function luckysheetHandler() {
             Store.luckysheet_cols_change_size = false;
             $("#luckysheet-change-size-line").hide();
             $("#luckysheet-cols-change-size").css("opacity", 0);
-            $("#luckysheet-sheettable, #luckysheet-cols-h-c, .luckysheet-cols-h-cells, .luckysheet-cols-h-cells canvas").css("cursor", "default");
+            $("#sheettable, #luckysheet-cols-h-c, .luckysheet-cols-h-cells, .luckysheet-cols-h-cells canvas").css("cursor", "default");
             
             let mouse = mouseposition(event.pageX, event.pageY);
             let scrollLeft = $("#luckysheet-cols-h-c").scrollLeft();
@@ -4076,7 +4076,7 @@ export default function luckysheetHandler() {
 
             selectHightlightShow();
 
-            $("#luckysheet-sheettable").css("cursor", "default");
+            $("#sheettable").css("cursor", "default");
             clearTimeout(Store.countfuncTimeout);
             Store.countfuncTimeout = setTimeout(function () { countfunc() }, 500);
         }
@@ -4279,7 +4279,7 @@ export default function luckysheetHandler() {
 
             $("#luckysheet-cell-selected-move").hide();
 
-            $("#luckysheet-sheettable").css("cursor", "default");
+            $("#sheettable").css("cursor", "default");
             clearTimeout(Store.countfuncTimeout);
             Store.countfuncTimeout = setTimeout(function () { countfunc() }, 500);
         }
@@ -4306,7 +4306,7 @@ export default function luckysheetHandler() {
             .end()
             .find(".luckysheet-cs-draghandle")
             .css("cursor", "move");
-        $("#luckysheet-cell-main, #luckysheetTableContent, #luckysheet-sheettable_0").css("cursor", "move");
+        $("#luckysheet-cell-main, #luckysheetTableContent, #sheettable_0").css("cursor", "move");
 
         Store.luckysheet_cell_selected_move = true;
         Store.luckysheet_scroll_status = true;
@@ -4348,7 +4348,7 @@ export default function luckysheetHandler() {
             .end()
             .find(".luckysheet-cs-draghandle")
             .css("cursor", "crosshair");
-        $("#luckysheet-cell-main, #luckysheetTableContent, #luckysheet-sheettable_0").css("cursor", "crosshair");
+        $("#luckysheet-cell-main, #luckysheetTableContent, #sheettable_0").css("cursor", "crosshair");
 
         Store.luckysheet_cell_selected_extend_time = setTimeout(function () {
             Store.luckysheet_cell_selected_extend = true;
@@ -4492,7 +4492,7 @@ export default function luckysheetHandler() {
 
         $("#luckysheet-cell-selected-move").hide();
 
-        $("#luckysheet-sheettable").css("cursor", "default");
+        $("#sheettable").css("cursor", "default");
         clearTimeout(Store.countfuncTimeout);
         Store.countfuncTimeout = setTimeout(function () { countfunc() }, 500);
 

@@ -301,7 +301,7 @@ const controlHistory = {
             sheetmanage.deleteSheet(ctr.index);
             sheetmanage.changeSheetExec(ctr.currentSheetIndex);
             $("#luckysheet-input-box").removeAttr("style");
-            $("#luckysheet-sheet-list, #luckysheet-rightclick-sheet-menu").hide();
+            $("#sheet-list, #luckysheet-rightclick-sheet-menu").hide();
         }
         else if (ctr.type == "copySheet") {
             sheetmanage.deleteSheet(ctr.index);
@@ -319,23 +319,23 @@ const controlHistory = {
             if(!isDupName){
                 sheetmanage.createSheetbydata(ctr, "isrenew");
                 $("#luckysheet-input-box").removeAttr("style");
-                $("#luckysheet-sheet-list, #luckysheet-rightclick-sheet-menu").hide();
+                $("#sheet-list, #luckysheet-rightclick-sheet-menu").hide();
             }
         }
         else if (ctr.type == "sheetName") {
             Store.luckysheetfile[getSheetIndex(ctr.sheetIndex)].name = ctr.oldtxt;
-            $("#luckysheet-sheets-item" + ctr.sheetIndex).find(".luckysheet-sheets-item-name").html(ctr.oldtxt);
+            $("#sheets-item" + ctr.sheetIndex).find(".sheets-item-name").html(ctr.oldtxt);
 
             server.saveParam("all", ctr.sheetIndex, ctr.oldtxt, { "k": "name" });
         }
         else if (ctr.type == "sheetColor") {
             Store.luckysheetfile[getSheetIndex(ctr.sheetIndex)].color = ctr.oldcolor;
             
-            let luckysheetcurrentSheetitem = $("#luckysheet-sheets-item" + ctr.sheetIndex);
-            luckysheetcurrentSheetitem.find(".luckysheet-sheets-item-color").remove();
+            let luckysheetcurrentSheetitem = $("#sheets-item" + ctr.sheetIndex);
+            luckysheetcurrentSheetitem.find(".sheets-item-color").remove();
 
             if(ctr.oldcolor != null){
-                luckysheetcurrentSheetitem.append('<div class="luckysheet-sheets-item-color" style=" position: absolute; width: 100%; height: 3px; bottom: 0px; left: 0px; background-color: ' + ctr.oldcolor + ';"></div>');
+                luckysheetcurrentSheetitem.append('<div class="sheets-item-color" style=" position: absolute; width: 100%; height: 3px; bottom: 0px; left: 0px; background-color: ' + ctr.oldcolor + ';"></div>');
             }
 
             server.saveParam("all", ctr.sheetIndex, ctr.oldcolor, { "k": "color" });
@@ -626,7 +626,7 @@ const controlHistory = {
         else if (ctr.type == "addSheet") {
             sheetmanage.createSheetbydata(ctr.sheetconfig);
             $("#luckysheet-input-box").removeAttr("style");
-            $("#luckysheet-sheet-list, #luckysheet-rightclick-sheet-menu").hide();
+            $("#sheet-list, #luckysheet-rightclick-sheet-menu").hide();
         }
         else if (ctr.type == "copySheet") {
             sheetmanage.copySheet(ctr.copyindex);
@@ -642,22 +642,22 @@ const controlHistory = {
             }
             
             $("#luckysheet-input-box").removeAttr("style");
-            $("#luckysheet-sheet-list, #luckysheet-rightclick-sheet-menu").hide();
+            $("#sheet-list, #luckysheet-rightclick-sheet-menu").hide();
         }
         else if (ctr.type == "sheetName") {
             Store.luckysheetfile[getSheetIndex(ctr.sheetIndex)].name = ctr.txt;
-            $("#luckysheet-sheets-item" + ctr.sheetIndex).find(".luckysheet-sheets-item-name").html(ctr.txt);
+            $("#sheets-item" + ctr.sheetIndex).find(".sheets-item-name").html(ctr.txt);
             
             server.saveParam("all", ctr.sheetIndex, ctr.txt, { "k": "name" });
         }
         else if (ctr.type == "sheetColor") {
             Store.luckysheetfile[getSheetIndex(ctr.sheetIndex)].color = ctr.color;
 
-            let luckysheetcurrentSheetitem = $("#luckysheet-sheets-item" + ctr.sheetIndex);
-            luckysheetcurrentSheetitem.find(".luckysheet-sheets-item-color").remove();
+            let luckysheetcurrentSheetitem = $("#sheets-item" + ctr.sheetIndex);
+            luckysheetcurrentSheetitem.find(".sheets-item-color").remove();
             
             if(ctr.color != null){
-                luckysheetcurrentSheetitem.append('<div class="luckysheet-sheets-item-color" style=" position: absolute; width: 100%; height: 3px; bottom: 0px; left: 0px; background-color: ' + ctr.color + ';"></div>');
+                luckysheetcurrentSheetitem.append('<div class="sheets-item-color" style=" position: absolute; width: 100%; height: 3px; bottom: 0px; left: 0px; background-color: ' + ctr.color + ';"></div>');
             }
             
             server.saveParam("all", ctr.sheetIndex, ctr.color, { "k": "color" });

@@ -230,7 +230,7 @@ export function formulaBarInitial(){
         let col_index = colLocation(x)[2];
 
         formula.rangeMovexy = [row_index, col_index];
-        $("#luckysheet-sheettable").css("cursor", "move");
+        $("#sheettable").css("cursor", "move");
         event.stopPropagation();
     });
 

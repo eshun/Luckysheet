@@ -101,7 +101,7 @@ const menuButton = {
     cancelPaintModel: function(){
         let _this = this;
 
-        $("#luckysheet-sheettable_0").removeClass("luckysheetPaintCursor");
+        $("#sheettable_0").removeClass("luckysheetPaintCursor");
 
         if(Store.luckysheet_copy_save["dataSheetIndex"] == Store.currentSheetIndex){
             Store.luckysheet_selection_range = [];
@@ -151,7 +151,7 @@ const menuButton = {
             tooltip.popover("<i class='fa fa-paint-brush'></i> "+locale_paint.start+"", "topCenter", true, null, locale_paint.end,function(){
                 _this.cancelPaintModel();
             });
-            $("#luckysheet-sheettable_0").addClass("luckysheetPaintCursor");
+            $("#sheettable_0").addClass("luckysheetPaintCursor");
 
             Store.luckysheet_selection_range = [{ "row": Store.luckysheet_select_save[0].row, "column": Store.luckysheet_select_save[0].column }];
             selectionCopyShow();
@@ -204,7 +204,7 @@ const menuButton = {
             tooltip.popover("<i class='fa fa-paint-brush'></i> "+locale_paint.start, "topCenter", true, null, locale_paint.end,function(){
                 _this.cancelPaintModel();
             });
-            $("#luckysheet-sheettable_0").addClass("luckysheetPaintCursor");
+            $("#sheettable_0").addClass("luckysheetPaintCursor");
 
             Store.luckysheet_selection_range = [{ "row": Store.luckysheet_select_save[0].row, "column": Store.luckysheet_select_save[0].column }];
             selectionCopyShow();

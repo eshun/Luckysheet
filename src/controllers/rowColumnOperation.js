@@ -67,7 +67,7 @@ export function rowColumnOperationInitial(){
             col = Store.visibledatacolumn[col_index], col_pre = 0;
 
         $("#luckysheet-rightclick-menu").hide();
-        $("#luckysheet-sheet-list, #luckysheet-rightclick-sheet-menu").hide();
+        $("#sheet-list, #luckysheet-rightclick-sheet-menu").hide();
 
         //mousedown是右键
         if (event.which == "3") {
@@ -495,7 +495,7 @@ export function rowColumnOperationInitial(){
         Store.orderbyindex = col_index;//排序全局函数
 
         $("#luckysheet-rightclick-menu").hide();
-        $("#luckysheet-sheet-list, #luckysheet-rightclick-sheet-menu").hide();
+        $("#sheet-list, #luckysheet-rightclick-sheet-menu").hide();
         $("#luckysheet-filter-menu, #luckysheet-filter-submenu").hide();
 
         //mousedown是右键
@@ -938,7 +938,7 @@ export function rowColumnOperationInitial(){
             "display": "block", 
             "cursor": "ns-resize" 
         });
-        $("#luckysheet-sheettable, #luckysheet-rows-h, #luckysheet-rows-h canvas").css("cursor", "ns-resize");
+        $("#sheettable, #luckysheet-rows-h, #luckysheet-rows-h canvas").css("cursor", "ns-resize");
         Store.luckysheet_rows_change_size_start = [row_pre, row_index];
         $("#luckysheet-rightclick-menu").hide();
         $("#luckysheet-rows-h-hover").hide();
@@ -983,7 +983,7 @@ export function rowColumnOperationInitial(){
             "display": "block", 
             "cursor": "ew-resize" 
         });
-        $("#luckysheet-sheettable, #luckysheet-cols-h-c, .luckysheet-cols-h-cells, .luckysheet-cols-h-cells canvas").css("cursor", "ew-resize");
+        $("#sheettable, #luckysheet-cols-h-c, .luckysheet-cols-h-cells, .luckysheet-cols-h-cells canvas").css("cursor", "ew-resize");
         Store.luckysheet_cols_change_size_start = [col_pre, col_index];
         $("#luckysheet-rightclick-menu").hide();
         $("#luckysheet-cols-h-hover").hide();
@@ -2223,7 +2223,7 @@ function luckysheetcolsdbclick() {
 
     $("#luckysheet-change-size-line").hide();
     $("#luckysheet-cols-change-size").css("opacity", 0);
-    $("#luckysheet-sheettable, #luckysheet-cols-h-c, .luckysheet-cols-h-cells, .luckysheet-cols-h-cells canvas").css("cursor", "default");
+    $("#sheettable, #luckysheet-cols-h-c, .luckysheet-cols-h-cells, .luckysheet-cols-h-cells canvas").css("cursor", "default");
 
     let mouse = mouseposition(event.pageX, event.pageY);
     let scrollLeft = $("#luckysheet-cols-h-c").scrollLeft();

@@ -53,12 +53,12 @@ function showsheetconfigmenu() {
                 }
 
                 let oldcolor = null;
-                if(luckysheetcurrentSheetitem.find(".luckysheet-sheets-item-color").length>0){
-                    oldcolor = luckysheetcurrentSheetitem.find(".luckysheet-sheets-item-color").css("background-color");
+                if(luckysheetcurrentSheetitem.find(".sheets-item-color").length>0){
+                    oldcolor = luckysheetcurrentSheetitem.find(".sheets-item-color").css("background-color");
                 }
 
-                luckysheetcurrentSheetitem.find(".luckysheet-sheets-item-color").remove();
-                luckysheetcurrentSheetitem.append('<div class="luckysheet-sheets-item-color" style=" position: absolute; width: 100%; height: 3px; bottom: 0px; left: 0px; background-color: ' + color + ';"></div>');
+                luckysheetcurrentSheetitem.find(".sheets-item-color").remove();
+                luckysheetcurrentSheetitem.append('<div class="sheets-item-color" style=" position: absolute; width: 100%; height: 3px; bottom: 0px; left: 0px; background-color: ' + color + ';"></div>');
                 let index = getSheetIndex(Store.currentSheetIndex);
                 Store.luckysheetfile[index].color = color;
                 server.saveParam("all", Store.currentSheetIndex, color, { "k": "color" });
@@ -79,11 +79,11 @@ function showsheetconfigmenu() {
 
         $("#luckysheetsheetconfigcolorreset").click(function () {
             let oldcolor = null;
-            if(luckysheetcurrentSheetitem.find(".luckysheet-sheets-item-color").length>0){
-                oldcolor = luckysheetcurrentSheetitem.find(".luckysheet-sheets-item-color").css("background-color");
+            if(luckysheetcurrentSheetitem.find(".sheets-item-color").length>0){
+                oldcolor = luckysheetcurrentSheetitem.find(".sheets-item-color").css("background-color");
             }
 
-            luckysheetcurrentSheetitem.find(".luckysheet-sheets-item-color").remove();
+            luckysheetcurrentSheetitem.find(".sheets-item-color").remove();
             let index = getSheetIndex(Store.currentSheetIndex);
             Store.luckysheetfile[index].color = null;
             server.saveParam("all", Store.currentSheetIndex, null, { "k": "color" } );
@@ -124,7 +124,7 @@ function showsheetconfigmenu() {
 
 let luckysheetsheetrightclick = function (_t, _cur, e) {
     clearTimeout(jfdbclicklagTimeout);
-    if (_cur.hasClass("luckysheet-sheets-item-name") && _cur.attr("contenteditable") == "true") {
+    if (_cur.hasClass("sheets-item-name") && _cur.attr("contenteditable") == "true") {
         return;
     }
     if (formula.rangestart || formula.rangedrag_column_start || formula.rangedrag_row_start || formula.israngeseleciton()) {
@@ -145,15 +145,15 @@ let luckysheetsheetrightclick = function (_t, _cur, e) {
         $("#luckysheet-formula-functionrange .luckysheet-formula-functionrange-highlight").remove();
     }
 
-    $("#luckysheet-sheet-area div.luckysheet-sheets-item").removeClass("luckysheet-sheets-item-active");
-    _t.addClass("luckysheet-sheets-item-active");
+    $("#sheet-area div.sheets-item").removeClass("sheets-item-active");
+    _t.addClass("sheets-item-active");
     cleargridelement(e);
     sheetmanage.changeSheet(_t.data("index"));
 
-    $("#luckysheet-sheet-list, #luckysheet-rightclick-sheet-menu").hide();
+    $("#sheet-list, #luckysheet-rightclick-sheet-menu").hide();
 
-    if (_cur.hasClass("luckysheet-sheets-item-menu") || _cur.hasClass("fa-sort-desc") || e.which == "3") {
-        luckysheetcurrentSheetitem = _cur.closest(".luckysheet-sheets-item");
+    if (_cur.hasClass("sheets-item-menu") || _cur.hasClass("fa-sort-desc") || e.which == "3") {
+        luckysheetcurrentSheetitem = _cur.closest(".sheets-item");
         showsheetconfigmenu();
     }
 }
@@ -164,13 +164,13 @@ export function initialSheetBar(){
     const locale_sheetconfig = _locale.sheetconfig;
     isInitialSheetConfig = false
 
-    $("#luckysheet-sheet-area").on("mousedown", "div.luckysheet-sheets-item", function (e) {
+    $("#sheet-area").on("mousedown", "div.sheets-item", function (e) {
         if(isEditMode()){
             // alert("非编辑模式下不允许该操作！");
             return;
         }
 
-        let _t = $(this), _cur = $(e.target), _item = _cur.closest(".luckysheet-sheets-item");
+        let _t = $(this), _cur = $(e.target), _item = _cur.closest(".sheets-item");
 
         if (e.which == "3") {
             luckysheetsheetrightclick(_t, _cur, e);
@@ -179,13 +179,13 @@ export function initialSheetBar(){
             return;
         }
 
-        if (_item.hasClass("luckysheet-sheets-item-active") && _item.find(".luckysheet-sheets-item-name").attr("contenteditable") == "false") {
+        if (_item.hasClass("sheets-item-active") && _item.find(".sheets-item-name").attr("contenteditable") == "false") {
             jfdbclicklagTimeout = setTimeout(function () {
                 Store.luckysheet_sheet_move_status = true;
                 Store.luckysheet_sheet_move_data = {};
                 Store.luckysheet_sheet_move_data.widthlist = [];
 
-                $("#luckysheet-sheet-area div.luckysheet-sheets-item:visible").each(function (i) {
+                $("#sheet-area div.sheets-item:visible").each(function (i) {
                     if (i == 0) {
                         Store.luckysheet_sheet_move_data.widthlist.push(parseInt($(this).outerWidth()));
                     }
@@ -194,18 +194,18 @@ export function initialSheetBar(){
                     }
                 });
 
-                Store.luckysheet_sheet_move_data.curindex = $("#luckysheet-sheet-area div.luckysheet-sheets-item").index(_item);
+                Store.luckysheet_sheet_move_data.curindex = $("#sheet-area div.sheets-item").index(_item);
                 let x = e.pageX;
                 Store.luckysheet_sheet_move_data.curleft = x - _item.offset().left;
                 Store.luckysheet_sheet_move_data.pageX = x;
                 Store.luckysheet_sheet_move_data.activeobject = _item;
                 Store.luckysheet_sheet_move_data.cursorobject = _cur;
-                let _itemclone = _item.clone().css("visibility", "hidden").attr("id", "luckysheet-sheets-item-clone");
+                let _itemclone = _item.clone().css("visibility", "hidden").attr("id", "sheets-item-clone");
                 _item.after(_itemclone);
                 _item.css({ "position": "absolute", "opacity": 0.8, "cursor": "move", "transition": "initial", "z-index": 10 });
             }, 200);
         }
-    }).on("click", "div.luckysheet-sheets-item", function (e) {
+    }).on("click", "div.sheets-item", function (e) {
 
         if(isEditMode()){
             // alert("非编辑模式下不允许该操作！");
@@ -228,14 +228,14 @@ export function initialSheetBar(){
         }, 1);
     }
 
-    $("#luckysheet-sheet-area").on("dblclick", "span.luckysheet-sheets-item-name", function (e) {
+    $("#sheet-area").on("dblclick", "span.sheets-item-name", function (e) {
         luckysheetsheetnameeditor($(this));
     });
 
     let compositionFlag = true;
-    $("#luckysheet-sheet-area").on("compositionstart", "span.luckysheet-sheets-item-name",  ()=> compositionFlag = false);
-    $("#luckysheet-sheet-area").on("compositionend", "span.luckysheet-sheets-item-name", ()=> compositionFlag = true);
-    $("#luckysheet-sheet-area").on("input", "span.luckysheet-sheets-item-name", function () {
+    $("#sheet-area").on("compositionstart", "span.sheets-item-name",  ()=> compositionFlag = false);
+    $("#sheet-area").on("compositionend", "span.sheets-item-name", ()=> compositionFlag = true);
+    $("#sheet-area").on("input", "span.sheets-item-name", function () {
         if(Store.allowEdit===false){
             return;
         }
@@ -265,7 +265,7 @@ export function initialSheetBar(){
         }, 0);
     });
 
-    $("#luckysheet-sheet-area").on("blur", "span.luckysheet-sheets-item-name", function (e) {
+    $("#sheet-area").on("blur", "span.sheets-item-name", function (e) {
         if(Store.allowEdit===false){
             return;
         }
@@ -327,7 +327,7 @@ export function initialSheetBar(){
         }
     });
 
-    $("#luckysheet-sheet-area").on("keydown", "span.luckysheet-sheets-item-name", function (e) {
+    $("#sheet-area").on("keydown", "span.sheets-item-name", function (e) {
         if(Store.allowEdit===false){
             return;
         }
@@ -342,13 +342,13 @@ export function initialSheetBar(){
     });
 
     $("#luckysheetsheetconfigrename").click(function () {
-        luckysheetsheetnameeditor(luckysheetcurrentSheetitem.find("span.luckysheet-sheets-item-name"));
+        luckysheetsheetnameeditor(luckysheetcurrentSheetitem.find("span.sheets-item-name"));
         $("#luckysheet-input-box").removeAttr("style");
-        $("#luckysheet-sheet-list, #luckysheet-rightclick-sheet-menu").hide();
+        $("#sheet-list, #luckysheet-rightclick-sheet-menu").hide();
     });
 
     $("#luckysheetsheetconfigshow").click(function () {
-        $("#luckysheet-sheets-m").click();
+        $("#sheets-m").click();
         $("#luckysheet-input-box").removeAttr("style");
         $("#luckysheet-rightclick-sheet-menu").hide();
     });
@@ -359,7 +359,7 @@ export function initialSheetBar(){
             sheetmanage.reOrderAllSheet();
         }
         $("#luckysheet-input-box").removeAttr("style");
-        $("#luckysheet-sheet-list, #luckysheet-rightclick-sheet-menu").hide();
+        $("#sheet-list, #luckysheet-rightclick-sheet-menu").hide();
     });
 
     $("#luckysheetsheetconfigmoveright").click(function () {
@@ -368,13 +368,13 @@ export function initialSheetBar(){
             sheetmanage.reOrderAllSheet();
         }
         $("#luckysheet-input-box").removeAttr("style");
-        $("#luckysheet-sheet-list, #luckysheet-rightclick-sheet-menu").hide();
+        $("#sheet-list, #luckysheet-rightclick-sheet-menu").hide();
     });
 
     $("#luckysheetsheetconfigdelete").click(function (e) {
-        $("#luckysheet-sheet-list, #luckysheet-rightclick-sheet-menu").hide();
+        $("#sheet-list, #luckysheet-rightclick-sheet-menu").hide();
 
-        if($("#luckysheet-sheet-container-c .luckysheet-sheets-item:visible").length <= 1){
+        if($("#sheet-container-c .sheets-item:visible").length <= 1){
             if(isEditMode()){
                 alert(locale_sheetconfig.noMoreSheet);
             }
@@ -397,11 +397,11 @@ export function initialSheetBar(){
     $("#luckysheetsheetconfigcopy").click(function (e) {
         sheetmanage.copySheet(luckysheetcurrentSheetitem.data("index"), e);
         $("#luckysheet-input-box").removeAttr("style");
-        $("#luckysheet-sheet-list, #luckysheet-rightclick-sheet-menu").hide();
+        $("#sheet-list, #luckysheet-rightclick-sheet-menu").hide();
     });
 
     $("#luckysheetsheetconfighide").click(function () {
-        if ($("#luckysheet-sheet-area div.luckysheet-sheets-item:visible").length == 1) {
+        if ($("#sheet-area div.sheets-item:visible").length == 1) {
             if(isEditMode()){
                 alert(locale_sheetconfig.noHide);
             }
@@ -412,14 +412,14 @@ export function initialSheetBar(){
         }
         sheetmanage.setSheetHide(luckysheetcurrentSheetitem.data("index"));
         $("#luckysheet-input-box").removeAttr("style");
-        $("#luckysheet-sheet-list, #luckysheet-rightclick-sheet-menu").hide();
+        $("#sheet-list, #luckysheet-rightclick-sheet-menu").hide();
     });
 
     if(isEditMode()){//此模式下禁用公式栏        
-        $("#luckysheet-sheets-add").addClass("sheet-button-disable");
+        $("#sheets-add").addClass("sheet-button-disable");
     }
 
-    $("#luckysheet-sheets-add").click(function (e) {
+    $("#sheets-add").click(function (e) {
         //保存正在编辑的单元格内容
         if (parseInt($("#luckysheet-input-box").css("top")) > 0) {
             formula.updatecell(Store.luckysheetCellUpdate[0], Store.luckysheetCellUpdate[1]);
@@ -431,15 +431,15 @@ export function initialSheetBar(){
     });
 
     let sheetscrollani = null, sheetscrollstart = 0, sheetscrollend = 0, sheetscrollstep = 150;
-    $("#luckysheet-sheets-leftscroll").click(function () {
-        let _c = $("#luckysheet-sheet-container-c");
+    $("#sheets-leftscroll").click(function () {
+        let _c = $("#sheet-container-c");
         sheetscrollstart = _c.scrollLeft();
         sheetscrollend = _c.scrollLeft() - sheetscrollstep;
 
         if (sheetscrollend <= 0) {
-            $("#luckysheet-sheet-container .docs-sheet-fade-left").hide();
+            $("#sheet-container .docs-sheet-fade-left").hide();
         }
-        $("#luckysheet-sheet-container .docs-sheet-fade-right").show();
+        $("#sheet-container .docs-sheet-fade-right").show();
 
         clearInterval(sheetscrollani);
         sheetscrollani = setInterval(function () {
@@ -451,15 +451,15 @@ export function initialSheetBar(){
         }, 1);
     });
 
-    $("#luckysheet-sheets-rightscroll").click(function () {
-        let _c = $("#luckysheet-sheet-container-c");
+    $("#sheets-rightscroll").click(function () {
+        let _c = $("#sheet-container-c");
         sheetscrollstart = _c.scrollLeft();
         sheetscrollend = _c.scrollLeft() + sheetscrollstep;
 
         if (sheetscrollstart > 0) {
-            $("#luckysheet-sheet-container .docs-sheet-fade-right").hide();
+            $("#sheet-container .docs-sheet-fade-right").hide();
         }
-        $("#luckysheet-sheet-container .docs-sheet-fade-left").show();
+        $("#sheet-container .docs-sheet-fade-left").show();
 
         clearInterval(sheetscrollani);
         sheetscrollani = setInterval(function () {
@@ -472,13 +472,13 @@ export function initialSheetBar(){
     });
 
     let initialOpenSheet = true;
-    $("#luckysheet-sheets-m").click(function (e) {
+    $("#sheets-m").click(function (e) {
         //保存正在编辑的单元格内容
         if (parseInt($("#luckysheet-input-box").css("top")) > 0) {
             formula.updatecell(Store.luckysheetCellUpdate[0], Store.luckysheetCellUpdate[1]);
         }
 
-        $("#luckysheet-sheet-list").html("");
+        $("#sheet-list").html("");
 
         let item = "";
         for (let i = 0; i < Store.luckysheetfile.length; i++) {
@@ -501,7 +501,7 @@ export function initialSheetBar(){
 
         if (initialOpenSheet) {
             $("#" + Store.container).append(replaceHtml(sheetselectlistHTML, { "item": item }));
-            $("#luckysheet-sheet-list").on("click", ".luckysheet-cols-menuitem", function (e) {
+            $("#sheet-list").on("click", ".luckysheet-cols-menuitem", function (e) {
                 if(isEditMode()){
                     // tooltip.info("提示", "图表编辑模式下不允许该操作！");
                     alert(locale_sheetconfig.chartEditNoOpt);
@@ -520,10 +520,10 @@ export function initialSheetBar(){
             initialOpenSheet = false;
         }
         else {
-            $("#luckysheet-sheet-list").html(item);
+            $("#sheet-list").html(item);
         }
 
-        let _t = $("#luckysheet-sheet-list");
+        let _t = $("#sheet-list");
 
         let left = $(this).offset().left - $('#' + Store.container).offset().left;
         let bottom = $(this).height() + $('#luckysheet-sta-content').height() + 12;

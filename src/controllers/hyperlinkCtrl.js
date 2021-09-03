@@ -247,8 +247,8 @@ const hyperlinkCtrl = {
             }];
 
             if(sheetIndex != Store.currentSheetIndex){
-                $("#luckysheet-sheet-area div.luckysheet-sheets-item").removeClass("luckysheet-sheets-item-active");
-                $("#luckysheet-sheets-item" + sheetIndex).addClass("luckysheet-sheets-item-active");
+                $("#sheet-area div.sheets-item").removeClass("sheets-item-active");
+                $("#sheets-item" + sheetIndex).addClass("sheets-item-active");
 
                 sheetmanage.changeSheet(sheetIndex);
             }

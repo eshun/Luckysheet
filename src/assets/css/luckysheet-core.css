@@ -1075,7 +1075,7 @@
     background: #00ffff;
 }
 
-.luckysheet-sheet-area {
+.sheet-area {
     width: 100%;
     box-sizing: border-box;
     position: absolute;
@@ -1095,7 +1095,7 @@
     align-items: center;
     justify-content: space-between;
 }
-#luckysheet-sheet-content {
+#sheet-content {
     width: 0;
     flex: 3;
     display: flex;
@@ -1111,8 +1111,8 @@
     white-space: nowrap;
 }
 
-.luckysheet-sheet-area>div,
-.luckysheet-sheet-area .luckysheet-sheets-item {
+.sheet-area>div,
+.sheet-area .sheets-item {
     display: inline-block;
     /* margin-right: 6px;
     margin-top: 1px;
@@ -1120,24 +1120,24 @@
     /* padding: 6px 10px; */
 }
 
-/* .luckysheet-sheet-area .luckysheet-sheets-add {
+/* .sheet-area .sheets-add {
     margin-left: 47px;
 } */
 
-/* div.luckysheet-sheets-add,
-div.luckysheet-sheets-m,
-div.luckysheet-sheets-scroll {
+/* div.sheets-add,
+div.sheets-m,
+div.sheets-scroll {
     background: #F6F6F6;
     border: 1px solid #F6F6F6;
     color: #4E4E4E;
 } */
 
-div.luckysheet-sheets-scroll {
+div.sheets-scroll {
     display: none;
 }
 
-div.luckysheet-sheets-add:hover,
-div.luckysheet-sheets-m:hover {
+div.sheets-add:hover,
+div.sheets-m:hover {
     color: #2A2A2A;
 }
 
@@ -1182,7 +1182,7 @@ div.luckysheet-sheets-m:hover {
     filter: alpha(opacity=40);
 }
 
-.luckysheet-sheet-area div.luckysheet-sheet-container {
+.sheet-area div.sheet-container {
     padding: 0px 0px;
     margin-left: 0px;
     position: relative;
@@ -1191,7 +1191,7 @@ div.luckysheet-sheets-m:hover {
     display: inline-block;
 }
 
-.luckysheet-sheet-area div.luckysheet-sheet-container div.luckysheet-sheet-container-c {
+.sheet-area div.sheet-container div.sheet-container-c {
     padding: 0px 0px;
     margin-left: 0px;
     overflow: hidden;
@@ -1202,15 +1202,15 @@ div.luckysheet-sheets-m:hover {
     display: inline-block;
 }
 
-.luckysheet-sheet-container-menu-hide .luckysheet-sheets-item{
+.sheet-container-menu-hide .sheets-item{
     padding-right: 5px !important;
 }
 
-.luckysheet-sheet-container-menu-hide .luckysheet-sheets-item-menu{
+.sheet-container-menu-hide .sheets-item-menu{
     display: none !important;
 }
 
-.luckysheet-sheet-area div.luckysheet-sheets-item {
+.sheet-area div.sheets-item {
     padding: 2px 6px;
     height: 29px;
     line-height: 29px;
@@ -1243,16 +1243,16 @@ div.luckysheet-sheets-m:hover {
     height: 100%; */
 }
 
-.luckysheet-sheet-area div.luckysheet-sheets-item:last-child{
+.sheet-area div.sheets-item:last-child{
     margin-right: 1px;
 }
-.luckysheet-sheet-area div.luckysheet-sheets-item:hover {
+.sheet-area div.sheets-item:hover {
     background-color: #EFEFEF;
     /* border-color: #a5a5a5; */
     color: #490500;
 }
 
-.luckysheet-sheet-area div.luckysheet-sheets-item .luckysheet-sheets-item-menu {
+.sheet-area div.sheets-item .sheets-item-menu {
     margin-left: 2px;
     display: inline-block;
     top: -2px;
@@ -1265,16 +1265,16 @@ div.luckysheet-sheets-m:hover {
     text-align: center;
 }
 
-.luckysheet-sheet-area div.luckysheet-sheets-item .luckysheet-sheets-item-menu:hover {
+.sheet-area div.sheets-item .sheets-item-menu:hover {
     color: #2A2A2A;
     cursor: pointer;
 }
 
-.luckysheet-sheet-area div.luckysheet-sheets-item .luckysheet-sheets-item-name {
+.sheet-area div.sheets-item .sheets-item-name {
     padding: 0px 3px;
 }
 
-.luckysheet-sheet-area div.luckysheet-sheets-item .luckysheet-sheets-item-name[contenteditable="true"] {
+.sheet-area div.sheets-item .sheets-item-name[contenteditable="true"] {
     border: 1px solid #d9d9d9;
     display: inline-block;
     height: 18px;
@@ -1288,7 +1288,7 @@ div.luckysheet-sheets-m:hover {
     -webkit-user-select: text !important
 }
 
-.luckysheet-sheet-area div.luckysheet-sheets-item .luckysheet-sheets-item-name[contenteditable="true"]:focus {
+.sheet-area div.sheets-item .sheets-item-name[contenteditable="true"]:focus {
     -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -1296,7 +1296,7 @@ div.luckysheet-sheets-m:hover {
     outline: none
 }
 
-.luckysheet-sheet-area div.luckysheet-sheets-item-active {
+.sheet-area div.sheets-item-active {
     /* padding: 2px 8px; */
     height: 29px;
     line-height: 29px;
@@ -1311,7 +1311,7 @@ div.luckysheet-sheets-m:hover {
     /* padding-right: 20px; */
 }
 
-.luckysheet-sheet-area div.luckysheet-sheets-item-active:hover {
+.sheet-area div.sheets-item-active:hover {
     background-color: #ececec;
     /* border-color: #aaa; */
     color: #222;
@@ -2455,7 +2455,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     padding-right: 10px;
     padding-left: 12px;
 }
-#luckysheet-sheet-list .luckysheet-cols-menuitem .luckysheet-cols-menuitem-content {
+#sheet-list .luckysheet-cols-menuitem .luckysheet-cols-menuitem-content {
     padding-right: 0px;
     max-width: 430px;
     min-width: 100px;
@@ -3098,21 +3098,21 @@ fieldset[disabled] .btn-danger.focus {
     writing-mode: initial;
 }
 
-#luckysheet-sheet-list {
+#sheet-list {
     max-height: 60%;
     overflow: auto;
 }
 
-#luckysheet-sheet-list .luckysheet-cols-menuitem {
+#sheet-list .luckysheet-cols-menuitem {
     padding-left: 0px;
     padding-right: 10px;
 }
 
-#luckysheet-sheet-list .luckysheet-cols-menuitem .luckysheet-cols-menuitem-content {
+#sheet-list .luckysheet-cols-menuitem .luckysheet-cols-menuitem-content {
     padding-left: 5px;
 }
 /* 
-#luckysheet-sheet-list .luckysheet-cols-menuitem .luckysheet-cols-menuitem-content {
+#sheet-list .luckysheet-cols-menuitem .luckysheet-cols-menuitem-content {
     max-width: 420px;
     min-width: 190px;
     overflow: hidden;
@@ -3121,7 +3121,7 @@ fieldset[disabled] .btn-danger.focus {
 } */
 
 
-#luckysheet-sheet-list .icon {
+#sheet-list .icon {
     width: 15px;
     margin-left: 4px;
     display: inline-block;
