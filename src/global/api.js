@@ -2666,6 +2666,20 @@ export function getRangeBoolean(options = {}) {
     selection.copybyformat(event, JSON.stringify(arr));
 }
 
+/**
+ * 
+ * @param {*} options 
+ * @param {Number} options.sheetIndex 
+ * @param {Object | String} options.range 
+ */
+export function getRangeTxt(options = {}) {
+    let curRange = JSON.parse(JSON.stringify(Store.luckysheet_select_save));
+    let {
+        range = curRange,
+        sheetIndex = Store.currentSheetIndex
+    } = {...options};
+    return getRangetxt(sheetIndex, range);
+}
 
 /**
  * 指定工作表选中一个或多个选区为选中状态并选择是否高亮，支持多种格式设置。

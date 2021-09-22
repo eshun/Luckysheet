@@ -2061,24 +2061,24 @@ export function rowColumnOperationInitial(){
                             continue;
                         }
 
-                        if(getObjType(d[r][c]) == "object"){
-                            delete d[r][c]["m"];
-                            delete d[r][c]["v"];
+                        // if(getObjType(d[r][c]) == "object"){
+                        //     delete d[r][c]["m"];
+                        //     delete d[r][c]["v"];
 
-                            if(d[r][c]["f"] != null){
-                                delete d[r][c]["f"];
-                                formula.delFunctionGroup(r, c, Store.currentSheetIndex);
+                        //     if(d[r][c]["f"] != null){
+                        //         delete d[r][c]["f"];
+                        //         formula.delFunctionGroup(r, c, Store.currentSheetIndex);
 
-                                delete d[r][c]["spl"];
-                            }
+                        //         delete d[r][c]["spl"];
+                        //     }
 
-                            if(d[r][c]["ct"] != null && d[r][c]["ct"].t == 'inlineStr'){
-                                delete d[r][c]["ct"];
-                            }
-                        }
-                        else{
-                            d[r][c] = null;
-                        }
+                        //     if(d[r][c]["ct"] != null && d[r][c]["ct"].t == 'inlineStr'){
+                        //         delete d[r][c]["ct"];
+                        //     }
+                        // }
+                        // else{
+                             d[r][c] = null;
+                        // }
                     }
                 }
             }
