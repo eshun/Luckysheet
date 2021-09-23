@@ -1,11 +1,13 @@
 const Store = {
-    container: null, 
+    container: null,
     loadingObj:{},
-    luckysheetfile: null, 
-    defaultcolumnNum: 60, 
-    defaultrowNum: 84, 
+    luckysheetfile: null,
+    defaultcolumnNum: 60,
+    defaultrowNum: 84,
     fullscreenmode: true,
     devicePixelRatio: 1,
+    gridW: 0,
+    gridH: 0,
 
     currentSheetIndex: 0,
     calculateSheetIndex: 0,
