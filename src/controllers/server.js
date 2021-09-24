@@ -193,9 +193,13 @@ const server = {
 
 	            //防止websocket长时间不发送消息导致断连
 				_this.retryTimer = setInterval(function(){
-	                _this.websocket.send("");
+					if(_this.websocket != null){
+						_this.websocket.send("");
+					}else{
+						_this.openWebSocket();
+					}
 	            }, 60000);
-	        }
+			}
 
 	        //客户端接收服务端数据时触发
 	        _this.websocket.onmessage = function(result){

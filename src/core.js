@@ -178,9 +178,16 @@ luckysheet.create = function (setting) {
     }
     else {
         $.post(loadurl, {"g" : server.gridKey}, function (d) {
-            let data = new Function("return " + d)();
-            Store.luckysheetfile = data;
-
+            try{
+                if(!!d){
+                    let data = new Function("return " + d)();
+                    
+                    Store.luckysheetfile = data;
+                }
+            }catch(e){
+                console.log(e);
+            }
+    
             sheetmanage.initialjfFile(menu, title);
             // luckysheetsizeauto();
             initialWorkBook();
