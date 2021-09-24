@@ -854,7 +854,7 @@ const luckysheetDropCell = {
         }
 
         //条件格式
-        let cdformat = $.extend(true, [], file["luckysheet_conditionformat_save"]);
+        let cdformat = $.extend(true, [], file["conditionformat_save"]);
         if(cdformat != null && cdformat.length > 0){
             for(let i = 0; i < cdformat.length; i++){
                 let cdformat_cellrange = cdformat[i].cellrange;

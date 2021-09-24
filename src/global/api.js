@@ -1841,7 +1841,7 @@ export function getRangeHtml(options = {}) {
     }
 
     //多重选区 有条件格式时 提示
-    let cdformat = $.extend(true, [], file.luckysheet_conditionformat_save);
+    let cdformat = $.extend(true, [], file.conditionformat_save);
     if (range.length > 1 && cdformat.length > 0) {
         let hasCF = false;
         let cf_compute = conditionformat.getComputeMap(file.index);
@@ -3874,9 +3874,9 @@ export function setRangeConditionalFormatDefault(conditionName, conditionValue, 
     let historyRules = conditionformat.getHistoryRules(fileH);
 
     //保存当前的规则
-    let ruleArr = file["luckysheet_conditionformat_save"] || [];
+    let ruleArr = file["conditionformat_save"] || [];
     ruleArr.push(rule);
-    file["luckysheet_conditionformat_save"] = ruleArr;
+    file["conditionformat_save"] = ruleArr;
 
     let fileC = $.extend(true, [], Store.luckysheetfile);
     let currentRules = conditionformat.getCurrentRules(fileC);
@@ -3886,7 +3886,7 @@ export function setRangeConditionalFormatDefault(conditionName, conditionValue, 
 
     //发送给后台
     if(server.allowUpdate){
-        server.saveParam("all", file.index, ruleArr, { "k": "luckysheet_conditionformat_save" });
+        server.saveParam("all", file.index, ruleArr, { "k": "conditionformat_save" });
     }
 
     if (success && typeof success === 'function') {
@@ -4145,9 +4145,9 @@ export function setRangeConditionalFormat(type, options = {}) {
     let historyRules = conditionformat.getHistoryRules(fileH);
 
     //保存当前的规则
-    let ruleArr = file["luckysheet_conditionformat_save"] || [];
+    let ruleArr = file["conditionformat_save"] || [];
     ruleArr.push(rule);
-    file["luckysheet_conditionformat_save"] = ruleArr;
+    file["conditionformat_save"] = ruleArr;
 
     let fileC = $.extend(true, [], Store.luckysheetfile);
     let currentRules = conditionformat.getCurrentRules(fileC);
@@ -4157,7 +4157,7 @@ export function setRangeConditionalFormat(type, options = {}) {
 
     //发送给后台
     if(server.allowUpdate){
-        server.saveParam("all", file.index, ruleArr, { "k": "luckysheet_conditionformat_save" });
+        server.saveParam("all", file.index, ruleArr, { "k": "conditionformat_save" });
     }
 
     if (success && typeof success === 'function') {
@@ -4191,7 +4191,7 @@ export function deleteRangeConditionalFormat(itemIndex, options = {}) {
         return tooltip.info('The order parameter is invalid.', '');
     }
 
-    let cdformat = $.extend(true, [], file.luckysheet_conditionformat_save);
+    let cdformat = $.extend(true, [], file.conditionformat_save);
 
     if(cdformat.length == 0){
         return tooltip.info('This worksheet has no conditional format to delete', '');
@@ -4207,7 +4207,7 @@ export function deleteRangeConditionalFormat(itemIndex, options = {}) {
     let historyRules = conditionformat.getHistoryRules(fileH);
 
     //保存当前的规则
-    file["luckysheet_conditionformat_save"] = cdformat;
+    file["conditionformat_save"] = cdformat;
 
     let fileC = $.extend(true, [], Store.luckysheetfile);
     let currentRules = conditionformat.getCurrentRules(fileC);
@@ -4217,7 +4217,7 @@ export function deleteRangeConditionalFormat(itemIndex, options = {}) {
 
     //发送给后台
     if(server.allowUpdate){
-        server.saveParam("all", file.index, ruleArr, { "k": "luckysheet_conditionformat_save" });
+        server.saveParam("all", file.index, ruleArr, { "k": "conditionformat_save" });
     }
 
     setTimeout(() => {

@@ -18,7 +18,7 @@ import dayjs from 'dayjs'
 //条件格式
 const conditionformat = {
     fileClone: [],
-    editorRule: null, //{"sheetIndex": sheetIndex,"itemIndex": itemIndex,"data": luckysheetfile[sheetIndex].luckysheet_conditionformat_save[itemIndex]}
+    editorRule: null, //{"sheetIndex": sheetIndex,"itemIndex": itemIndex,"data": luckysheetfile[sheetIndex].conditionformat_save[itemIndex]}
     ruleTypeHtml: function(){
         const conditionformat_Text = locale().conditionformat;
 
@@ -128,7 +128,7 @@ const conditionformat = {
             let fileClone = $.extend(true, [], _this.fileClone);
             for(let c = 0; c < fileClone.length; c++){
                 let sheetIndex = fileClone[c]["index"];
-                Store.luckysheetfile[getSheetIndex(sheetIndex)]["luckysheet_conditionformat_save"] = fileClone[getSheetIndex(sheetIndex)]["luckysheet_conditionformat_save"];
+                Store.luckysheetfile[getSheetIndex(sheetIndex)]["conditionformat_save"] = fileClone[getSheetIndex(sheetIndex)]["conditionformat_save"];
             }
 
             let fileC = $.extend(true, [], Store.luckysheetfile);
@@ -145,7 +145,7 @@ const conditionformat = {
             if(server.allowUpdate){
                 let files = $.extend(true, [], Store.luckysheetfile);
                 for(let i = 0; i < files.length; i++){
-                    server.saveParam("all", files[i]["index"], files[i]["luckysheet_conditionformat_save"], { "k": "luckysheet_conditionformat_save" });
+                    server.saveParam("all", files[i]["index"], files[i]["conditionformat_save"], { "k": "conditionformat_save" });
                 }
             }
         });
@@ -208,7 +208,7 @@ const conditionformat = {
             $("#luckysheet-administerRule-dialog .item[data-item="+dataItem+"] input").val(v);
 
             let sheetIndex = $("#luckysheet-administerRule-dialog .chooseSheet option:selected").val();
-            _this.fileClone[getSheetIndex(sheetIndex)]["luckysheet_conditionformat_save"][dataItem].cellrange = _this.getRangeByTxt(v);
+            _this.fileClone[getSheetIndex(sheetIndex)]["conditionformat_save"][dataItem].cellrange = _this.getRangeByTxt(v);
 
             $("#luckysheet-modal-dialog-mask").show();
             $("#luckysheet-administerRule-dialog").show();
@@ -573,9 +573,9 @@ const conditionformat = {
                 let historyRules = _this.getHistoryRules(fileH);
 
                 //保存当前的规则
-                let ruleArr = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["luckysheet_conditionformat_save"] == undefined ? [] : Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["luckysheet_conditionformat_save"];
+                let ruleArr = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"] == undefined ? [] : Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"];
                 ruleArr.push(rule);
-                Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["luckysheet_conditionformat_save"] = ruleArr;
+                Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"] = ruleArr;
 
                 let fileC = $.extend(true, [], Store.luckysheetfile);
                 let currentRules = _this.getCurrentRules(fileC);
@@ -585,14 +585,14 @@ const conditionformat = {
 
                 //发送给后台
                 if(server.allowUpdate){
-                    server.saveParam("all", Store.currentSheetIndex, ruleArr, { "k": "luckysheet_conditionformat_save" });
+                    server.saveParam("all", Store.currentSheetIndex, ruleArr, { "k": "conditionformat_save" });
                 }
             }
             else if(source == 1){
                 //临时存储新规则
-                let ruleArr = !!_this.fileClone[getSheetIndex(Store.currentSheetIndex)]["luckysheet_conditionformat_save"] ? _this.fileClone[getSheetIndex(Store.currentSheetIndex)]["luckysheet_conditionformat_save"] : [];
+                let ruleArr = !!_this.fileClone[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"] ? _this.fileClone[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"] : [];
                 ruleArr.push(rule);
-                _this.fileClone[getSheetIndex(Store.currentSheetIndex)]["luckysheet_conditionformat_save"] = ruleArr;
+                _this.fileClone[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"] = ruleArr;
 
                 //新建规则隐藏，管理规则显示
                 _this.administerRuleDialog();
@@ -631,7 +631,7 @@ const conditionformat = {
             let rule = {
                 "sheetIndex": sheetIndex,
                 "itemIndex": itemIndex,
-                "data": _this.fileClone[getSheetIndex(sheetIndex)]["luckysheet_conditionformat_save"][itemIndex]
+                "data": _this.fileClone[getSheetIndex(sheetIndex)]["conditionformat_save"][itemIndex]
             };
             _this.editorRule = rule;
             _this.editorConditionRuleDialog();
@@ -948,7 +948,7 @@ const conditionformat = {
             //修改编辑的规则
             let sheetIndex = _this.editorRule["sheetIndex"];
             let itemIndex = _this.editorRule["itemIndex"];
-            _this.fileClone[getSheetIndex(sheetIndex)]["luckysheet_conditionformat_save"][itemIndex] = rule;
+            _this.fileClone[getSheetIndex(sheetIndex)]["conditionformat_save"][itemIndex] = rule;
 
             //编辑规则隐藏，管理规则显示
             $("#luckysheet-editorConditionRule-dialog").hide();
@@ -1038,7 +1038,7 @@ const conditionformat = {
             }
 
             let itemIndex = $("#luckysheet-administerRule-dialog .ruleList .listBox .item.on").attr("data-item");
-            _this.fileClone[getSheetIndex(sheetIndex)]["luckysheet_conditionformat_save"].splice(itemIndex, 1);
+            _this.fileClone[getSheetIndex(sheetIndex)]["conditionformat_save"].splice(itemIndex, 1);
             _this.administerRuleDialog();
         });
 
@@ -1219,9 +1219,9 @@ const conditionformat = {
                 "conditionRange": conditionRange,
                 "conditionValue": conditionValue
             };
-            let ruleArr = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["luckysheet_conditionformat_save"] == undefined ? [] : Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["luckysheet_conditionformat_save"];
+            let ruleArr = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"] == undefined ? [] : Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"];
             ruleArr.push(rule);
-            Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["luckysheet_conditionformat_save"] = ruleArr;
+            Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"] = ruleArr;
 
             let fileC = $.extend(true, [], Store.luckysheetfile);
             let currentRules = _this.getCurrentRules(fileC);
@@ -1235,7 +1235,7 @@ const conditionformat = {
 
             //发送给后台
             if(server.allowUpdate){
-                server.saveParam("all", Store.currentSheetIndex, ruleArr, { "k": "luckysheet_conditionformat_save" });
+                server.saveParam("all", Store.currentSheetIndex, ruleArr, { "k": "conditionformat_save" });
             }
         });
 
@@ -1756,7 +1756,7 @@ const conditionformat = {
 
         $("#luckysheet-administerRule-dialog .ruleList .listBox").empty();
 
-        let ruleArr = _this.fileClone[getSheetIndex(index)].luckysheet_conditionformat_save; //条件格式规则集合
+        let ruleArr = _this.fileClone[getSheetIndex(index)].conditionformat_save; //条件格式规则集合
         if(ruleArr != null && ruleArr.length > 0){
             const conditionformat_Text = locale().conditionformat;
 
@@ -2884,7 +2884,7 @@ const conditionformat = {
     getCFPartRange: function(sheetIndex, range1, range2){
         let ruleArr = [];
 
-        let cf = Store.luckysheetfile[getSheetIndex(sheetIndex)].luckysheet_conditionformat_save;
+        let cf = Store.luckysheetfile[getSheetIndex(sheetIndex)].conditionformat_save;
         if(cf != null && cf.length > 0){
             label:  for(let i = 0; i < cf.length; i++){
                         let cellrange = cf[i].cellrange;
@@ -2921,7 +2921,7 @@ const conditionformat = {
             index = getSheetIndex(sheetIndex);
         }
 
-        let ruleArr = Store.luckysheetfile[index]["luckysheet_conditionformat_save"];
+        let ruleArr = Store.luckysheetfile[index]["conditionformat_save"];
         let data = Store.luckysheetfile[index]["data"];
 
         if(data == null){
@@ -3793,11 +3793,11 @@ const conditionformat = {
                 "cellrange": cellrange,
                 "format": format
             };
-            ruleArr = Store.luckysheetfile[index]["luckysheet_conditionformat_save"] == null ? [] : Store.luckysheetfile[index]["luckysheet_conditionformat_save"];
+            ruleArr = Store.luckysheetfile[index]["conditionformat_save"] == null ? [] : Store.luckysheetfile[index]["conditionformat_save"];
             ruleArr.push(rule);
         }
 
-        Store.luckysheetfile[index]["luckysheet_conditionformat_save"] = ruleArr;
+        Store.luckysheetfile[index]["conditionformat_save"] = ruleArr;
 
         let fileC = $.extend(true, [], Store.luckysheetfile);
         let currentRules = _this.getCurrentRules(fileC);
@@ -3807,14 +3807,14 @@ const conditionformat = {
 
         //发送给后台
         if(server.allowUpdate){
-            server.saveParam("all", Store.currentSheetIndex, ruleArr, { "k": "luckysheet_conditionformat_save" });
+            server.saveParam("all", Store.currentSheetIndex, ruleArr, { "k": "conditionformat_save" });
         }
     },
     getHistoryRules: function(fileH){
         let historyRules = [];
 
         for(let h = 0; h < fileH.length; h++){
-            historyRules.push({"sheetIndex": fileH[h]["index"], "luckysheet_conditionformat_save": fileH[h]["luckysheet_conditionformat_save"]});
+            historyRules.push({"sheetIndex": fileH[h]["index"], "conditionformat_save": fileH[h]["conditionformat_save"]});
         }
 
         return historyRules;
@@ -3823,7 +3823,7 @@ const conditionformat = {
         let currentRules = [];
 
         for(let c = 0; c < fileC.length; c++){
-            currentRules.push({"sheetIndex": fileC[c]["index"], "luckysheet_conditionformat_save": fileC[c]["luckysheet_conditionformat_save"]});
+            currentRules.push({"sheetIndex": fileC[c]["index"], "conditionformat_save": fileC[c]["conditionformat_save"]});
         }
 
         return currentRules;

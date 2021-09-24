@@ -560,14 +560,14 @@ const server = {
 	                createFilterOptions(file.filter_select, value);
 	            }
 	        }
-	        else if(k == "luckysheet_conditionformat_save"){ //条件格式
+	        else if(k == "conditionformat_save"){ //条件格式
 	            if(index == Store.currentSheetIndex){
 	                setTimeout(function () {
 	                    luckysheetrefreshgrid();
 	                }, 1);
 	            }
 	        }
-	        else if(k == "luckysheet_alternateformat_save"){ //交替颜色
+	        else if(k == "alternateformat_save"){ //交替颜色
 	            if(index == Store.currentSheetIndex){
 	                setTimeout(function () {
 	                    luckysheetrefreshgrid();

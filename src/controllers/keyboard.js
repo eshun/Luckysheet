@@ -496,7 +496,7 @@ export function keyboardInitial(){
                     }
 
                     //多重选区 有条件格式时 提示
-                    let cdformat = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].luckysheet_conditionformat_save;
+                    let cdformat = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].conditionformat_save;
                     if(Store.luckysheet_select_save.length > 1 && cdformat != null && cdformat.length > 0){
                         let hasCF = false;
 

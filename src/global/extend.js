@@ -279,7 +279,7 @@ function luckysheetextendtable(type, index, value, direction, sheetIndex) {
     }
 
     //条件格式配置变动
-    let CFarr = file.luckysheet_conditionformat_save;
+    let CFarr = file.conditionformat_save;
     let newCFarr = [];
     if(CFarr != null && CFarr.length > 0){
         for(let i = 0; i < CFarr.length; i++){
@@ -350,7 +350,7 @@ function luckysheetextendtable(type, index, value, direction, sheetIndex) {
     }
 
     //交替颜色配置变动
-    let AFarr = file.luckysheet_alternateformat_save;
+    let AFarr = file.alternateformat_save;
     let newAFarr = [];
     if(AFarr != null && AFarr.length > 0){
         for(let i = 0; i < AFarr.length; i++){
@@ -906,8 +906,8 @@ function luckysheetextendtable(type, index, value, direction, sheetIndex) {
         file.calcChain = newCalcChain;
         file.filter = newFilterObj.filter;
         file.filter_select = newFilterObj.filter_select;
-        file.luckysheet_conditionformat_save = newCFarr;
-        file.luckysheet_alternateformat_save = newAFarr;
+        file.conditionformat_save = newCFarr;
+        file.alternateformat_save = newAFarr;
         file.dataVerification = newDataVerification;
         file.hyperlink = newHyperlink;
     }
@@ -1279,7 +1279,7 @@ function luckysheetdeletetable(type, st, ed, sheetIndex) {
     }
 
     //条件格式配置变动
-    let CFarr = file.luckysheet_conditionformat_save;
+    let CFarr = file.conditionformat_save;
     let newCFarr = [];
     if(CFarr != null && CFarr.length > 0){
         for(let i = 0; i < CFarr.length; i++){
@@ -1358,7 +1358,7 @@ function luckysheetdeletetable(type, st, ed, sheetIndex) {
     }
 
     //交替颜色配置变动
-    let AFarr = file.luckysheet_alternateformat_save;
+    let AFarr = file.alternateformat_save;
     let newAFarr = [];
     if(AFarr != null && AFarr.length > 0){
         for(let i = 0; i < AFarr.length; i++){
@@ -1822,8 +1822,8 @@ function luckysheetdeletetable(type, st, ed, sheetIndex) {
         file.calcChain = newCalcChain;
         file.filter = newFilterObj.filter;
         file.filter_select = newFilterObj.filter_select;
-        file.luckysheet_conditionformat_save = newCFarr;
-        file.luckysheet_alternateformat_save = newAFarr;
+        file.conditionformat_save = newCFarr;
+        file.alternateformat_save = newAFarr;
         file.dataVerification = newDataVerification;
         file.hyperlink = newHyperlink;
     }
@@ -2160,7 +2160,7 @@ function luckysheetDeleteCell(type, str, edr, stc, edc, sheetIndex) {
     }
 
     //条件格式配置变动
-    let CFarr = file.luckysheet_conditionformat_save;
+    let CFarr = file.conditionformat_save;
     let newCFarr = [];
     if(CFarr != null && CFarr.length > 0){
         for(let i = 0; i < CFarr.length; i++){
@@ -2368,7 +2368,7 @@ function luckysheetDeleteCell(type, str, edr, stc, edc, sheetIndex) {
         file.calcChain = newCalcChain;
         file.filter = newFilterObj.filter;
         file.filter_select = newFilterObj.filter_select;
-        file.luckysheet_conditionformat_save = newCFarr;
+        file.conditionformat_save = newCFarr;
         file.dataVerification = newDataVerification;
         file.hyperlink = newHyperlink;
     }

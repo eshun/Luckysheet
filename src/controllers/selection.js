@@ -1160,7 +1160,7 @@ const selection = {
             }
 
             //条件格式
-            let source_cdformat = $.extend(true, [], Store.luckysheetfile[getSheetIndex(copySheetIndex)]["luckysheet_conditionformat_save"]);
+            let source_cdformat = $.extend(true, [], Store.luckysheetfile[getSheetIndex(copySheetIndex)]["conditionformat_save"]);
             let source_curCdformat = $.extend(true, [], source_cdformat);
             let ruleArr = [];
             if(source_curCdformat != null && source_curCdformat.length > 0){
@@ -1201,7 +1201,7 @@ const selection = {
                 }
             }
 
-            let target_cdformat = $.extend(true, [], Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["luckysheet_conditionformat_save"]);
+            let target_cdformat = $.extend(true, [], Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"]);
             let target_curCdformat = $.extend(true, [], target_cdformat);
             if(ruleArr.length > 0){
                 target_curCdformat = target_curCdformat.concat(ruleArr);
@@ -1247,7 +1247,7 @@ const selection = {
         }
         else{
             //条件格式
-            let cdformat = $.extend(true, [], Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["luckysheet_conditionformat_save"]);
+            let cdformat = $.extend(true, [], Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"]);
             let curCdformat = $.extend(true, [], cdformat);
             if(curCdformat != null && curCdformat.length > 0){
                 for(let i = 0; i < curCdformat.length; i++){
@@ -1563,10 +1563,10 @@ const selection = {
             let c_file = Store.luckysheetfile[getSheetIndex(copySheetIndex)];
             let a_file = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)];
 
-            let ruleArr_cf = $.extend(true, [], c_file["luckysheet_conditionformat_save"]);
+            let ruleArr_cf = $.extend(true, [], c_file["conditionformat_save"]);
 
             if(ruleArr_cf != null && ruleArr_cf.length > 0){
-                cdformat = $.extend(true, [], a_file["luckysheet_conditionformat_save"]);
+                cdformat = $.extend(true, [], a_file["conditionformat_save"]);
 
                 for(let i = 0; i < ruleArr_cf.length; i++){
                     let cf_range = ruleArr_cf[i].cellrange;
@@ -1835,10 +1835,10 @@ const selection = {
 
         //复制范围 是否有 条件格式
         let cdformat = null;
-        let ruleArr = $.extend(true, [], Store.luckysheetfile[getSheetIndex(copySheetIndex)]["luckysheet_conditionformat_save"]);
+        let ruleArr = $.extend(true, [], Store.luckysheetfile[getSheetIndex(copySheetIndex)]["conditionformat_save"]);
 
         if(ruleArr != null && ruleArr.length > 0){
-            cdformat = $.extend(true, [], Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["luckysheet_conditionformat_save"]);
+            cdformat = $.extend(true, [], Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"]);
 
             for(let i = 0; i < ruleArr.length; i++){
                 let cdformat_cellrange = ruleArr[i].cellrange;

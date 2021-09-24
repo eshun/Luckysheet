@@ -102,7 +102,9 @@ export default function luckysheetHandler() {
         }
     }());
 
-    
+   if(!document.getElementById('luckysheet-cell-main')) {
+       return;
+   }
 
     $("#sheet-container-c").mousewheel(function (event, delta) {
         let scrollNum = event.deltaFactor<40?1:(event.deltaFactor<80?2:3);
@@ -4028,7 +4030,7 @@ export default function luckysheetHandler() {
             }
 
             //条件格式
-            let cdformat = $.extend(true, [], Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["luckysheet_conditionformat_save"]);
+            let cdformat = $.extend(true, [], Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"]);
             if (cdformat != null && cdformat.length > 0) {
                 for (let i = 0; i < cdformat.length; i++) {
                     let cdformat_cellrange = cdformat[i].cellrange;
@@ -4575,7 +4577,7 @@ export default function luckysheetHandler() {
         }
 
         //多重选区 有条件格式时 提示
-        let cdformat = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].luckysheet_conditionformat_save;
+        let cdformat = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].conditionformat_save;
         if (Store.luckysheet_select_save.length > 1 && cdformat != null && cdformat.length > 0) {
             let hasCF = false;
 

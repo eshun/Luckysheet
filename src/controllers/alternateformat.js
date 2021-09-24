@@ -567,7 +567,7 @@ const alternateformat = {
 
             let file = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)];
 
-            let ruleArr = file["luckysheet_alternateformat_save"];
+            let ruleArr = file["alternateformat_save"];
 
             //保存之前的规则
             let historyRules = $.extend(true, [], ruleArr);
@@ -586,7 +586,7 @@ const alternateformat = {
             _this.ref(historyRules, currentRules);
 
             if(server.allowUpdate){
-                server.saveParam("all", Store.currentSheetIndex, ruleArr, { "k": "luckysheet_alternateformat_save" });
+                server.saveParam("all", Store.currentSheetIndex, ruleArr, { "k": "alternateformat_save" });
             }
 
             //隐藏一些dom
@@ -602,7 +602,7 @@ const alternateformat = {
         let range = $.extend(true, {}, Store.luckysheet_select_save[0]);
         let existsIndex = _this.rangeIsExists(range)[1];
         
-        let obj = $.extend(true, {}, Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["luckysheet_alternateformat_save"][existsIndex]);
+        let obj = $.extend(true, {}, Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["alternateformat_save"][existsIndex]);
         
         //应用范围
         let cellrange = obj["cellrange"];
@@ -829,7 +829,7 @@ const alternateformat = {
         let existsIndex = null;
 
         //获取已有交替颜色所有应用范围
-        let AFarr = $.extend(true, [], Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["luckysheet_alternateformat_save"]);
+        let AFarr = $.extend(true, [], Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["alternateformat_save"]);
 
         if(index != undefined && index != null){
             if(AFarr.length > 1){
@@ -949,7 +949,7 @@ const alternateformat = {
         let format = _this.getFormatByIndex();
 
         let file = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)];
-        let ruleArr = file["luckysheet_alternateformat_save"];
+        let ruleArr = file["alternateformat_save"];
         
         if(ruleArr == null){
             ruleArr = [];
@@ -977,7 +977,7 @@ const alternateformat = {
         _this.ref(historyRules, currentRules);
 
         if(server.allowUpdate){
-            server.saveParam("all", Store.currentSheetIndex, ruleArr, { "k": "luckysheet_alternateformat_save" });
+            server.saveParam("all", Store.currentSheetIndex, ruleArr, { "k": "alternateformat_save" });
         }
     },
     update: function(){
@@ -1036,7 +1036,7 @@ const alternateformat = {
         let format = _this.getFormatByIndex();
         let file = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)];
         
-        let ruleArr = file["luckysheet_alternateformat_save"];
+        let ruleArr = file["alternateformat_save"];
         if(ruleArr == null){
             ruleArr = [];
         }
@@ -1063,7 +1063,7 @@ const alternateformat = {
         _this.ref(historyRules, currentRules);
 
         if(server.allowUpdate){
-            server.saveParam("all", Store.currentSheetIndex, ruleArr, { "k": "luckysheet_alternateformat_save" });
+            server.saveParam("all", Store.currentSheetIndex, ruleArr, { "k": "alternateformat_save" });
         }
     },
     checksAF: function(r, c, computeMap){
@@ -1077,7 +1077,7 @@ const alternateformat = {
     },
     getComputeMap: function(){
         let file = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)];
-        let ruleArr = file["luckysheet_alternateformat_save"];
+        let ruleArr = file["alternateformat_save"];
 
         let computeMap = this.compute(ruleArr);
 
@@ -1215,7 +1215,7 @@ const alternateformat = {
         }
 
         let index = getSheetIndex(Store.currentSheetIndex);
-        Store.luckysheetfile[index]["luckysheet_alternateformat_save"] = currentRules;
+        Store.luckysheetfile[index]["alternateformat_save"] = currentRules;
 
         setTimeout(function () {
             luckysheetrefreshgrid();

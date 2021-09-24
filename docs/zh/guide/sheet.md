@@ -38,9 +38,9 @@ options.data示例如下：
         "pivotTable":{},//数据透视表设置
         "filter_select": {},//筛选范围
         "filter": null,//筛选配置
-        "luckysheet_alternateformat_save": [], //交替颜色
+        "alternateformat_save": [], //交替颜色
         "luckysheet_alternateformat_save_modelCustom": [], //自定义交替颜色	
-        "luckysheet_conditionformat_save": {},//条件格式
+        "conditionformat_save": {},//条件格式
         "frozen": {}, //冻结行列配置
         "chart": [], //图表配置
         "zoomRatio":1, // 缩放比例
@@ -592,7 +592,7 @@ options.data示例如下：
     6. `str`是起始行，`edr`是结束行，`stc`是起始列，`edc`是结束列，四个数字代表整个筛选范围，与`filter_select`的内容保持一致即可。
 
 ------------
-### luckysheet_alternateformat_save
+### alternateformat_save
 - 类型：Array
 - 默认值：[]
 - 作用： 交替颜色配置
@@ -679,7 +679,7 @@ options.data示例如下：
     ```
 
 ------------
-### luckysheet_conditionformat_save
+### conditionformat_save
 - 类型：Array
 - 默认值：[]
 - 作用： 条件格式配置信息，包含多个条件格式配置对象的一维数组，
@@ -1425,9 +1425,9 @@ Luckysheet在初始化完成之后进行的一系列操作，会将更多本地�
         "pivotTable":{},//数据透视表设置
         "filter_select": {},//筛选范围
         "filter": null,//筛选配置
-        "luckysheet_alternateformat_save": [], //交替颜色
+        "alternateformat_save": [], //交替颜色
         "luckysheet_alternateformat_save_modelCustom": [], //自定义交替颜色	
-        "luckysheet_conditionformat_save": {},//条件格式
+        "conditionformat_save": {},//条件格式
         "frozen": {}, //冻结行列配置
         "freezen": {}, //冻结行列的渲染数据存储
         "chart": [], //图表配置

@@ -7057,10 +7057,10 @@ window.sheetSparkline = {
 		"chidren": {},
 		"times": 0
 	}],
-	"luckysheet_conditionformat_save": [],
+	"conditionformat_save": [],
 	"filter_select": null,
 	"filter": null,
-	"luckysheet_alternateformat_save": []
+	"alternateformat_save": []
 }
 
 // export default sheetSparkline;

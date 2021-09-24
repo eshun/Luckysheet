@@ -37,9 +37,9 @@ eg: options.data：
         "pivotTable":{},//Pivot table settings
         "filter_select": {},//Filter range
         "filter": null,//Filter configuration
-        "luckysheet_alternateformat_save": [], //Alternate colors
+        "alternateformat_save": [], //Alternate colors
         "luckysheet_alternateformat_save_modelCustom": [], //Customize alternate colors	
-        "luckysheet_conditionformat_save": {},//condition format
+        "conditionformat_save": {},//condition format
         "frozen": {}, //freeze row and column configuration
         "chart": [], //Chart configuration
         "zoomRatio":1, // zoom ratio
@@ -587,7 +587,7 @@ eg: options.data：
     6. `str` is the start row, `edr` is the end row, `stc` is the start column, and `edc` is the end column. The four numbers represent the entire filter range, which should be consistent with the content of `filter_select`.
 
 ------------
-### luckysheet_alternateformat_save
+### alternateformat_save
 - type：Array
 - default：[]
 - usage： Alternating color configuration
@@ -674,7 +674,7 @@ eg: options.data：
     ```
 
 ------------
-### luckysheet_conditionformat_save
+### conditionformat_save
 - type：Array
 - default：[]
 - usage： Conditional format configuration information, a one-dimensional array containing multiple conditional format configuration objects,
@@ -1362,9 +1362,9 @@ At this point, the lucky sheet file contains many local parameters that are not 
         "pivotTable":{},//Pivot table settings
         "filter_select": {},//Filter range
         "filter": null,//Filter configuration
-        "luckysheet_alternateformat_save": [], //Alternate colors
+        "alternateformat_save": [], //Alternate colors
         "luckysheet_alternateformat_save_modelCustom": [], //Customize alternate colors	
-        "luckysheet_conditionformat_save": {},//Condition format
+        "conditionformat_save": {},//Condition format
         "frozen": {}, //Freeze row and column configuration
         "freezen": {}, //Storage freeze row and column rendering data
         "chart": [], //Chart configuration

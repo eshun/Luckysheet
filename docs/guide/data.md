@@ -34,13 +34,13 @@
             "scrollLeft": 0, //Left and right scroll bar position
             "scrollTop": 315, //Up and down scroll bar position
             "luckysheet_select_save": [], //selected area
-            "luckysheet_conditionformat_save": {},//Conditional format
+            "conditionformat_save": {},//Conditional format
             "calcChain": [],//Formula chain
             "isPivotTable":false,//Whether to pivot table
             "pivotTable":{},//Pivot table configuration
             "filter_select": null,//Filter range
             "filter": null,//Filter configuration
-            "luckysheet_alternateformat_save": [], //Alternate colors
+            "alternateformat_save": [], //Alternate colors
             "luckysheet_alternateformat_save_modelCustom": [], //Customize alternate colors
             "chart": [], //Chart configuration
             "visibledatarow": [], //The position of all rows
@@ -401,7 +401,7 @@
     ```
 
     ------------
-    ## luckysheet_conditionformat_save
+    ## conditionformat_save
     - Type：Array
     - Default：[]
     - Usage： Conditional format configuration information, a one-dimensional array containing multiple conditional format configuration objects,
@@ -647,7 +647,7 @@
     ```
     
     ------------
-    ## luckysheet_alternateformat_save
+    ## alternateformat_save
     - Type：Array
     - Default：[]
     - Usage： Alternating color configuration, example:

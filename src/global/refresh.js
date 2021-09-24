@@ -75,7 +75,7 @@ function jfrefreshgrid(data, range, allParam, isRunExecFunction = true, isRefres
 
         let curCdformat;
         if(cdformat == null){
-            curCdformat = $.extend(true, [], file["luckysheet_conditionformat_save"]);
+            curCdformat = $.extend(true, [], file["conditionformat_save"]);
         }
         else{
             curCdformat = cdformat;
@@ -104,7 +104,7 @@ function jfrefreshgrid(data, range, allParam, isRunExecFunction = true, isRefres
             "sheetIndex": Store.currentSheetIndex, 
             "config": $.extend(true, {}, Store.config), 
             "curConfig": curConfig,
-            "cdformat":  $.extend(true, [], file["luckysheet_conditionformat_save"]),
+            "cdformat":  $.extend(true, [], file["conditionformat_save"]),
             "curCdformat": curCdformat,
             "RowlChange": RowlChange,
             "dataVerification": $.extend(true, [], file["dataVerification"]),
@@ -135,9 +135,9 @@ function jfrefreshgrid(data, range, allParam, isRunExecFunction = true, isRefres
 
     //condition format, null or empty array are not processed
     if(cdformat != null && cdformat.length !== 0){
-        file["luckysheet_conditionformat_save"] = cdformat;
+        file["conditionformat_save"] = cdformat;
 
-        server.saveParam("all", Store.currentSheetIndex, cdformat, { "k": "luckysheet_conditionformat_save" });
+        server.saveParam("all", Store.currentSheetIndex, cdformat, { "k": "conditionformat_save" });
     }
 
     //data Verification, null or empty object are not processed
@@ -286,7 +286,7 @@ function jfrefreshgridall(colwidth, rowheight, data, cfg, range, ctrlType, ctrlV
         redo["data"] = Store.flowdata;
         redo["curdata"] = data;
         redo["sheetIndex"] = Store.currentSheetIndex;
-        redo["cdformat"] = $.extend(true, [], Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["luckysheet_conditionformat_save"]);
+        redo["cdformat"] = $.extend(true, [], Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"]);
         redo["curCdformat"] = cdformat;
 
         Store.jfredo.push(redo);
@@ -307,9 +307,9 @@ function jfrefreshgridall(colwidth, rowheight, data, cfg, range, ctrlType, ctrlV
 
     //条件格式
     if(cdformat != null){
-        Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["luckysheet_conditionformat_save"] = cdformat;
+        Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"] = cdformat;
     
-        server.saveParam("all", Store.currentSheetIndex, cdformat, { "k": "luckysheet_conditionformat_save" });
+        server.saveParam("all", Store.currentSheetIndex, cdformat, { "k": "conditionformat_save" });
     }
 
     //选区
@@ -352,7 +352,7 @@ function jfrefreshrange(data, range, cdformat) {
             "curdata": data,
             "range": range, 
             "sheetIndex": Store.currentSheetIndex,
-            "cdformat":  $.extend(true, [],  Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["luckysheet_conditionformat_save"]),
+            "cdformat":  $.extend(true, [],  Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"]),
             "curCdformat": cdformat 
         });
     }
@@ -365,7 +365,7 @@ function jfrefreshrange(data, range, cdformat) {
 
     //条件格式
     if(cdformat != null){
-        Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["luckysheet_conditionformat_save"] = cdformat;
+        Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"] = cdformat;
     }
 
     //单元格数据更新联动
@@ -447,9 +447,9 @@ function jfrefreshgrid_adRC(data, cfg, ctrlType, ctrlValue, calc, filterObj, cf,
             "funcData": funcData,
             "filterObj": { "filter_select": $.extend(true, {}, file.filter_select), "filter": $.extend(true, {}, file.filter) },
             "curFilterObj": filterObj,
-            "cf": $.extend(true, [], file.luckysheet_conditionformat_save),
+            "cf": $.extend(true, [], file.conditionformat_save),
             "curCf": cf,
-            "af": $.extend(true, [], file.luckysheet_alternateformat_save),
+            "af": $.extend(true, [], file.alternateformat_save),
             "curAf": af,
             "freezen": { "freezenhorizontaldata": luckysheetFreezen.freezenhorizontaldata, "freezenverticaldata": luckysheetFreezen.freezenverticaldata },
             "curFreezen": freezen,
@@ -580,12 +580,12 @@ function jfrefreshgrid_adRC(data, cfg, ctrlType, ctrlValue, calc, filterObj, cf,
     server.saveParam("all", Store.currentSheetIndex, file.filter, { "k": "filter" });
 
     //条件格式配置
-    file.luckysheet_conditionformat_save = cf;
-    server.saveParam("all", Store.currentSheetIndex, file.luckysheet_conditionformat_save, { "k": "luckysheet_conditionformat_save" });
+    file.conditionformat_save = cf;
+    server.saveParam("all", Store.currentSheetIndex, file.conditionformat_save, { "k": "conditionformat_save" });
 
     //交替颜色配置
-    file.luckysheet_alternateformat_save = af;
-    server.saveParam("all", Store.currentSheetIndex, file.luckysheet_alternateformat_save, { "k": "luckysheet_alternateformat_save" });
+    file.alternateformat_save = af;
+    server.saveParam("all", Store.currentSheetIndex, file.alternateformat_save, { "k": "alternateformat_save" });
 
     //冻结配置
     if(freezen != null){
@@ -703,7 +703,7 @@ function jfrefreshgrid_deleteCell(data, cfg, ctrl, calc, filterObj, cf, dataVeri
             "funcData": funcData,
             "filterObj": { "filter_select": $.extend(true, {}, file.filter_select), "filter": $.extend(true, {}, file.filter) },
             "curFilterObj": filterObj,
-            "cf": $.extend(true, [], file.luckysheet_conditionformat_save),
+            "cf": $.extend(true, [], file.conditionformat_save),
             "curCf": cf,
             "dataVerification": $.extend(true, {}, file.dataVerification),
             "curDataVerification": dataVerification,
@@ -798,8 +798,8 @@ function jfrefreshgrid_deleteCell(data, cfg, ctrl, calc, filterObj, cf, dataVeri
     server.saveParam("all", Store.currentSheetIndex, file.filter, { "k": "filter" });
 
     //条件格式配置
-    file.luckysheet_conditionformat_save = cf;
-    server.saveParam("all", Store.currentSheetIndex, file.luckysheet_conditionformat_save, { "k": "luckysheet_conditionformat_save" });
+    file.conditionformat_save = cf;
+    server.saveParam("all", Store.currentSheetIndex, file.conditionformat_save, { "k": "conditionformat_save" });
 
     //数据验证
     dataVerificationCtrl.dataVerification = dataVerification;
@@ -930,8 +930,8 @@ function jfrefreshgrid_pastcut(source, target, RowlChange){
     }
 
     //条件格式
-    Store.luckysheetfile[getSheetIndex(source["sheetIndex"])].luckysheet_conditionformat_save = source["curCdformat"];
-    Store.luckysheetfile[getSheetIndex(target["sheetIndex"])].luckysheet_conditionformat_save = target["curCdformat"];
+    Store.luckysheetfile[getSheetIndex(source["sheetIndex"])].conditionformat_save = source["curCdformat"];
+    Store.luckysheetfile[getSheetIndex(target["sheetIndex"])].conditionformat_save = target["curCdformat"];
 
     //数据验证
     if(Store.currentSheetIndex == source["sheetIndex"]){
@@ -973,9 +973,9 @@ function jfrefreshgrid_pastcut(source, target, RowlChange){
     server.historyParam(target["curData"], target["sheetIndex"], {"row": target["range"]["row"], "column": target["range"]["column"]});
 
     //来源表
-    server.saveParam("all", source["sheetIndex"], source["curCdformat"], { "k": "luckysheet_conditionformat_save" });
+    server.saveParam("all", source["sheetIndex"], source["curCdformat"], { "k": "conditionformat_save" });
     //目的表
-    server.saveParam("all", target["sheetIndex"], target["curCdformat"], { "k": "luckysheet_conditionformat_save" });
+    server.saveParam("all", target["sheetIndex"], target["curCdformat"], { "k": "conditionformat_save" });
 
     //来源表
     server.saveParam("all", source["sheetIndex"], source["curDataVerification"], { "k": "dataVerification" });

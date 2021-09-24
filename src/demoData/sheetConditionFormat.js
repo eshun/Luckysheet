@@ -6109,7 +6109,7 @@ window.sheetConditionFormat = {
 	"luckysheet_selection_range": [],
 	"scrollLeft": 0,
 	"scrollTop": 0,
-	"luckysheet_conditionformat_save": [{
+	"conditionformat_save": [{
 		"type": "default",
 		"cellrange": [{
 			"row": [2, 7],

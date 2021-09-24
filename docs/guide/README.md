@@ -205,13 +205,13 @@ luckysheetfile[0] =
 	"scrollLeft": 0, //Left and right scroll bar position
 	"scrollTop": 315, //Up and down scroll bar position
 	"luckysheet_select_save": [], //selected area
-	"luckysheet_conditionformat_save": {},//Conditional format
+	"conditionformat_save": {},//Conditional format
 	"calcChain": [],//Formula chain
 	"isPivotTable":false,//Whether to pivot table
 	"pivotTable":{},//Pivot table settings
 	"filter_select": null,//Filter range
 	"filter": null,//Filter configuration
-	"luckysheet_alternateformat_save": [], //Alternate colors
+	"alternateformat_save": [], //Alternate colors
 	"luckysheet_alternateformat_save_modelCustom": []//Customize alternate colors
 }
 ```

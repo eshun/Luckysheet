@@ -366,12 +366,12 @@
                         "hasRowFooter": true
                     }
                 ],
-                "k": "luckysheet_alternateformat_save"
+                "k": "alternateformat_save"
             }
             ```
        - 后台更新：
             ```js
-            luckysheetfile["Sheet_4N45tpMd0ni4_1598250591760"]["luckysheet_alternateformat_save"] =   [
+            luckysheetfile["Sheet_4N45tpMd0ni4_1598250591760"]["alternateformat_save"] =   [
                     {
                         "cellrange": {
                             "row": [ 2, 6 ],
@@ -425,12 +425,12 @@
                         "conditionValue": [ "3" ]
                     }
                 ],
-                "k": "luckysheet_conditionformat_save"
+                "k": "conditionformat_save"
             }
             ```
        - 后台更新：
             ```js
-            luckysheetfile["Sheet_545W7w03kLkC_1598251927583"]["luckysheet_conditionformat_save"] =   [
+            luckysheetfile["Sheet_545W7w03kLkC_1598251927583"]["conditionformat_save"] =   [
                     {
                         "type": "default",
                         "cellrange": [

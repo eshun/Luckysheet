@@ -362,10 +362,10 @@ const controlHistory = {
             for(let i = 0; i < historyRules.length; i++){
                 //条件规则
                 let sheetIndex = historyRules[i]["sheetIndex"];
-                Store.luckysheetfile[getSheetIndex(sheetIndex)]["luckysheet_conditionformat_save"] = historyRules[i]["luckysheet_conditionformat_save"];
+                Store.luckysheetfile[getSheetIndex(sheetIndex)]["conditionformat_save"] = historyRules[i]["conditionformat_save"];
             
                 if(server.allowUpdate){
-                    server.saveParam("all", sheetIndex, historyRules[i]["luckysheet_conditionformat_save"], { "k": "luckysheet_conditionformat_save" });
+                    server.saveParam("all", sheetIndex, historyRules[i]["conditionformat_save"], { "k": "conditionformat_save" });
                 }
             }
 
@@ -377,7 +377,7 @@ const controlHistory = {
 
             let index = getSheetIndex(ctr["sheetIndex"]);
 
-            Store.luckysheetfile[index]["luckysheet_alternateformat_save"] = $.extend(true, [], historyRules);
+            Store.luckysheetfile[index]["alternateformat_save"] = $.extend(true, [], historyRules);
 
             setTimeout(function () {
                 luckysheetrefreshgrid();
@@ -684,10 +684,10 @@ const controlHistory = {
             for(let i = 0; i < currentRules.length; i++){
                 //条件规则
                 let sheetIndex = currentRules[i]["sheetIndex"];
-                Store.luckysheetfile[getSheetIndex(sheetIndex)]["luckysheet_conditionformat_save"] = currentRules[i]["luckysheet_conditionformat_save"];
+                Store.luckysheetfile[getSheetIndex(sheetIndex)]["conditionformat_save"] = currentRules[i]["conditionformat_save"];
                 
                 if(server.allowUpdate){
-                    server.saveParam("all", sheetIndex, currentRules[i]["luckysheet_conditionformat_save"], { "k": "luckysheet_conditionformat_save" });
+                    server.saveParam("all", sheetIndex, currentRules[i]["conditionformat_save"], { "k": "conditionformat_save" });
                 }
             }
 
@@ -699,7 +699,7 @@ const controlHistory = {
 
             let index = getSheetIndex(ctr["sheetIndex"]);
 
-            Store.luckysheetfile[index]["luckysheet_alternateformat_save"] = $.extend(true, [], currentRules);
+            Store.luckysheetfile[index]["alternateformat_save"] = $.extend(true, [], currentRules);
 
             setTimeout(function () {
                 luckysheetrefreshgrid();

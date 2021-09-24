@@ -894,7 +894,7 @@ window.sheetTable = {
 		"row_focus": 1,
 		"column_focus": 1
 	},
-	"luckysheet_alternateformat_save": [{
+	"alternateformat_save": [{
 		"cellrange": {
 			"row": [1, 6],
 			"column": [1, 5]

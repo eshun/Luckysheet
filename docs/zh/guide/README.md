@@ -208,13 +208,13 @@ luckysheetfile = [ {sheet1设置},  {sheet2设置},  {sheet3设置} ]`
 	"scrollLeft": 0, //左右滚动条位置
 	"scrollTop": 315, //上下滚动条位置
 	"luckysheet_select_save": [], //选中的区域
-	"luckysheet_conditionformat_save": {},//条件格式
+	"conditionformat_save": {},//条件格式
 	"calcChain": [],//公式链
 	"isPivotTable":false,//是否数据透视表
 	"pivotTable":{},//数据透视表设置
 	"filter_select": {},//筛选范围
 	"filter": null,//筛选配置
-	"luckysheet_alternateformat_save": [], //交替颜色
+	"alternateformat_save": [], //交替颜色
 	"luckysheet_alternateformat_save_modelCustom": [], //自定义交替颜色	
 	"freezen": {}, //冻结行列
 	"chart": [], //图表配置
