@@ -181,8 +181,9 @@ luckysheet.create = function (setting) {
             try{
                 if(!!d){
                     let data = new Function("return " + d)();
-                    
-                    Store.luckysheetfile = data;
+                    if(d.length>0){
+                        Store.luckysheetfile = data;
+                    }
                 }
             }catch(e){
                 console.log(e);

@@ -152,7 +152,7 @@ const server = {
                 let msg = pako.gzip(encodeURIComponent(JSON.stringify(d)), {to: "string"});
 
                 if (_this.websocket != null) {
-                    _this.websocket.send(msg);
+                    _this.wsSend(msg);
                 }
             } else {
                 customImageUpdate(customImageUpdateMethodConfig.method, customImageUpdateMethodConfig.url, d)
@@ -167,7 +167,7 @@ const server = {
         } else {
             let msg = pako.gzip(encodeURIComponent(JSON.stringify(d)), {to: "string"});
             if (_this.websocket != null) {
-                _this.websocket.send(msg);
+                _this.wsSend(msg);
             }
         }
 
@@ -194,7 +194,7 @@ const server = {
 	            //防止websocket长时间不发送消息导致断连
 				_this.retryTimer = setInterval(function(){
 					if(_this.websocket != null){
-						_this.websocket.send("");
+						_this.wsSend("");
 					}else{
 						_this.openWebSocket();
 					}
@@ -973,6 +973,16 @@ const server = {
 	    else if(type == "na"){ //表格名称
 	        $("#luckysheet_info_detail_input").val(value).css("width", getByteLen(value) * 10);
 	    }
+	},
+	wsSend:function(msg) {
+    	let _this = this;
+		if (_this.websocket && _this.websocket.readyState === 1) {
+			_this.websocket.send(msg);
+		}else{
+			setTimeout(function () {
+				_this.wsSend(msg);
+			}, 1000);
+		}
 	},
     multipleIndex: 0,
     multipleRangeShow: function(id, name, r, c, value) {

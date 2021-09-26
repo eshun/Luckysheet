@@ -791,6 +791,9 @@ const sheetmanage = {
                 $("#luckysheet-cell-main").width() + Store.rowHeaderWidth - Store.cellMainSrollBarSize, 
                 $("#luckysheet-cell-main").height() + Store.columnHeaderHeight - Store.cellMainSrollBarSize
             ];
+            if(!$("#luckysheetTableContent, #luckysheetTableContentF").get(0)){
+                return;
+            }
             $("#luckysheetTableContent, #luckysheetTableContentF").attr({ 
                 width: Math.ceil(Store.luckysheetTableContentHW[0] * Store.devicePixelRatio), 
                 height: Math.ceil(Store.luckysheetTableContentHW[1] * Store.devicePixelRatio) 
