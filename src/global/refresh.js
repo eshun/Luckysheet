@@ -1162,7 +1162,7 @@ function luckysheetrefreshgrid(scrollWidth, scrollHeight) {
     if (luckysheetFreezen.freezenverticaldata != null || luckysheetFreezen.freezenhorizontaldata != null) {
         let freezen_horizon_px, freezen_horizon_ed, freezen_horizon_scrollTop;
         let freezen_vertical_px, freezen_vertical_ed, freezen_vertical_scrollTop;
-        let drawWidth = Store.luckysheetTableContentHW[0], drawHeight = Store.luckysheetTableContentHW[1];
+        let drawWidth = Store.sheetTableContentHW[0], drawHeight = Store.sheetTableContentHW[1];
         
         if (luckysheetFreezen.freezenverticaldata != null && luckysheetFreezen.freezenhorizontaldata != null) {
             freezen_horizon_px = luckysheetFreezen.freezenhorizontaldata[0];
@@ -1212,7 +1212,7 @@ function luckysheetrefreshgrid(scrollWidth, scrollHeight) {
                 "freezen_7"
             );
 
-            //右下canvas luckysheetTableContent
+            //右下canvas sheetTableContent
             luckysheetDrawMain(
                 scrollWidth + freezen_vertical_px - freezen_vertical_scrollTop, 
                 scrollHeight + freezen_horizon_px - freezen_horizon_scrollTop, 
@@ -1310,20 +1310,20 @@ function luckysheetrefreshgrid(scrollWidth, scrollHeight) {
         }
     }
     else {
-        if($("#luckysheetTableContent").length == 0){
+        if($("#sheetTableContent").length == 0){
             return;
         }
-        let luckysheetTableContent = $("#luckysheetTableContent").get(0).getContext("2d");
+        let sheetTableContent = $("#sheetTableContent").get(0).getContext("2d");
         luckysheetDrawMain(scrollWidth, scrollHeight);
     
-        // luckysheetTableContent.clearRect(0, 0, 46, 20);
+        // sheetTableContent.clearRect(0, 0, 46, 20);
         
         luckysheetDrawgridColumnTitle(scrollWidth);
         luckysheetDrawgridRowTitle(scrollHeight);
 
         //清除canvas左上角区域 防止列标题栏序列号溢出显示
         
-        luckysheetTableContent.clearRect(0, 0, (Store.rowHeaderWidth* Store.devicePixelRatio-1) , (Store.columnHeaderHeight* Store.devicePixelRatio-1) );
+        sheetTableContent.clearRect(0, 0, (Store.rowHeaderWidth* Store.devicePixelRatio-1) , (Store.columnHeaderHeight* Store.devicePixelRatio-1) );
     }
 }
 

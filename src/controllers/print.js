@@ -107,7 +107,7 @@ function printLineAndNumberCreate(){
     
     const pageRange=[];
     const sheet = sheetmanage.getSheetByIndex();
-    const luckysheetTableContent = $("#luckysheetTableContent").get(0).getContext("2d");
+    const sheetTableContent = $("#sheetTableContent").get(0).getContext("2d");
 
     const col_w=luckysheetConfigsetting.defaultColWidth;
     const row_h=luckysheetConfigsetting.defaultRowHeight;

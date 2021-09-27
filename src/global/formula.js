@@ -1565,7 +1565,7 @@ const luckysheetformula = {
         if ((d[r][c].tb == "2" && d[r][c].v != null) || isInlineStringCell(d[r][c])) {//自动换行
             let defaultrowlen = Store.defaultrowlen;
 
-            let canvas = $("#luckysheetTableContent").get(0).getContext("2d");
+            let canvas = $("#sheetTableContent").get(0).getContext("2d");
             // offlinecanvas.textBaseline = 'top'; //textBaseline以top计算
 
             // let fontset = luckysheetfontformat(d[r][c]);

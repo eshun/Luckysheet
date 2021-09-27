@@ -29,7 +29,7 @@ const Store = {
     cellMainSrollBarSize: 12,
     sheetBarHeight: 31,
     statisticBarHeight: 23,
-    luckysheetTableContentHW: [0, 0], 
+    sheetTableContentHW: [0, 0], 
 
     defaultcollen: 73,
     defaultrowlen: 19,

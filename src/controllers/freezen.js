@@ -422,8 +422,8 @@ const luckysheetFreezen = {
         if (_this.freezenverticaldata != null || _this.freezenhorizontaldata != null) {
             let freezen_horizon_px, freezen_horizon_ed, freezen_horizon_scrollTop;
             let freezen_vertical_px, freezen_vertical_ed, freezen_vertical_scrollTop;
-            let drawWidth = Store.luckysheetTableContentHW[0], 
-                drawHeight = Store.luckysheetTableContentHW[1];
+            let drawWidth = Store.sheetTableContentHW[0], 
+                drawHeight = Store.sheetTableContentHW[1];
 
             //双向freezen
             if (_this.freezenverticaldata != null && _this.freezenhorizontaldata != null) {
@@ -479,7 +479,7 @@ const luckysheetFreezen = {
         });
     },
     removeAssistCanvas: function(){
-        $("#luckysheet-grid-window-1 > canvas").not($("#luckysheetTableContent")).remove();
+        $("#luckysheet-grid-window-1 > canvas").not($("#sheetTableContent")).remove();
         $("#sheet-cell-selected").css("z-index", 15);
     },
     scrollAdapt: function(){

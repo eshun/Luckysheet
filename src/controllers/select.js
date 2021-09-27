@@ -487,8 +487,8 @@ function selectionCopyShow(range) {
 function luckysheet_count_show(left, top, width, height, rowseleted, columnseleted) {
     let rowl = rowseleted[1] - rowseleted[0] + 1,
         coll = columnseleted[1] - columnseleted[0] + 1;
-    let drawWidth = Store.luckysheetTableContentHW[0],
-        drawHeight = Store.luckysheetTableContentHW[1];
+    let drawWidth = Store.sheetTableContentHW[0],
+        drawHeight = Store.sheetTableContentHW[1];
     let scrollWidth = $("#luckysheet-cell-main").scrollLeft(),
         scrollHeight = $("#luckysheet-cell-main").scrollTop();
 

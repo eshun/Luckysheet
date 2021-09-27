@@ -284,7 +284,7 @@ export default function luckysheetHandler() {
     });
 
     //表格mousedown
-    $("#luckysheet-cell-main, #luckysheetTableContent").mousedown(function (event) {
+    $("#luckysheet-cell-main, #sheetTableContent").mousedown(function (event) {
         if($(event.target).hasClass('luckysheet-mousedown-cancel')){
             return;
         }
@@ -297,7 +297,7 @@ export default function luckysheetHandler() {
         .end()
         .find(".luckysheet-cs-draghandle")
         .css("cursor","default");
-        $("#luckysheet-cell-main, #luckysheetTableContent, #sheettable_0").css("cursor","default");
+        $("#luckysheet-cell-main, #sheetTableContent, #sheettable_0").css("cursor","default");
 
         //有批注在编辑时
         luckysheetPostil.removeActivePs();
@@ -325,7 +325,7 @@ export default function luckysheetHandler() {
         }
 
         let sheetFile = sheetmanage.getSheetByIndex();
-        let luckysheetTableContent = $("#luckysheetTableContent").get(0).getContext("2d");
+        let sheetTableContent = $("#sheetTableContent").get(0).getContext("2d");
 
         let row_location = rowLocation(y), 
             row = row_location[1], 
@@ -360,7 +360,7 @@ export default function luckysheetHandler() {
             "start_c": col_pre, 
             "end_r": row, 
             "end_c": col 
-        }, sheetFile,luckysheetTableContent)){ return; }
+        }, sheetFile,sheetTableContent)){ return; }
 
 
         //数据验证 单元格聚焦
@@ -1120,7 +1120,7 @@ export default function luckysheetHandler() {
             "start_c": col_pre, 
             "end_r": row, 
             "end_c": col 
-        }, sheetFile,luckysheetTableContent);
+        }, sheetFile,sheetTableContent);
 
         //$("#luckysheet-cols-h-c .luckysheet-cols-h-cells-c .luckysheet-cols-h-cells-clip .luckysheet-cols-h-cell-sel").removeClass("luckysheet-cols-h-cell-sel").addClass("luckysheet-cols-h-cell-nosel");
 
@@ -1525,7 +1525,7 @@ export default function luckysheetHandler() {
 	  
 	        let sheetFile = sheetmanage.getSheetByIndex();
             	  
-	        let luckysheetTableContent = $("#luckysheetTableContent").get(0).getContext("2d");
+	        let sheetTableContent = $("#sheetTableContent").get(0).getContext("2d");
 	        method.createHookFunction("cellDragStop", Store.flowdata[row_index][col_index], {
 	            r: row_index,
 	            c: col_index,
@@ -1533,7 +1533,7 @@ export default function luckysheetHandler() {
 	            "start_c": col_pre,
 	            "end_r": row,
 	            "end_c": col
-	        }, sheetFile, luckysheetTableContent, event);
+	        }, sheetFile, sheetTableContent, event);
         }
     }
 
@@ -1593,7 +1593,7 @@ export default function luckysheetHandler() {
                     rangeMove:!!formula.rangeMove,
                 }
     
-                let luckysheetTableContent = $("#luckysheetTableContent").get(0).getContext("2d");
+                let sheetTableContent = $("#sheetTableContent").get(0).getContext("2d");
 
                 if(Store.flowdata && Store.flowdata[row_index]){
                     method.createHookFunction("sheetMousemove", Store.flowdata[row_index][col_index], {
@@ -1603,7 +1603,7 @@ export default function luckysheetHandler() {
                         "start_c": col_pre, 
                         "end_r": row, 
                         "end_c": col 
-                    }, sheetFile,moveState,luckysheetTableContent);
+                    }, sheetFile,moveState,sheetTableContent);
                 }
             // }
         }
@@ -3370,7 +3370,7 @@ export default function luckysheetHandler() {
                     rangeMove:!!formula.rangeMove,
                 }
     
-                let luckysheetTableContent = $("#luckysheetTableContent").get(0).getContext("2d");
+                let sheetTableContent = $("#sheetTableContent").get(0).getContext("2d");
                 
                 method.createHookFunction("sheetMouseup", Store.flowdata[row_index][col_index], {
                     r:row_index,
@@ -3379,7 +3379,7 @@ export default function luckysheetHandler() {
                     "start_c": col_pre, 
                     "end_r": row, 
                     "end_c": col 
-                }, sheetFile,moveState,luckysheetTableContent);
+                }, sheetFile,moveState,sheetTableContent);
             // }
         }
 
@@ -3406,7 +3406,7 @@ export default function luckysheetHandler() {
         Store.luckysheet_scroll_status = false;
 
         $("#luckysheet-cell-selected").find(".luckysheet-cs-fillhandle").css("cursor", "crosshair").end().find(".luckysheet-cs-draghandle").css("cursor", "move");
-        $("#luckysheet-cell-main, #luckysheetTableContent, #sheettable_0").css("cursor", "default");
+        $("#luckysheet-cell-main, #sheetTableContent, #sheettable_0").css("cursor", "default");
 
         //行标题窗格主体
         Store.luckysheet_rows_selected_status = false;
@@ -4308,7 +4308,7 @@ export default function luckysheetHandler() {
             .end()
             .find(".luckysheet-cs-draghandle")
             .css("cursor", "move");
-        $("#luckysheet-cell-main, #luckysheetTableContent, #sheettable_0").css("cursor", "move");
+        $("#luckysheet-cell-main, #sheetTableContent, #sheettable_0").css("cursor", "move");
 
         Store.luckysheet_cell_selected_move = true;
         Store.luckysheet_scroll_status = true;
@@ -4350,7 +4350,7 @@ export default function luckysheetHandler() {
             .end()
             .find(".luckysheet-cs-draghandle")
             .css("cursor", "crosshair");
-        $("#luckysheet-cell-main, #luckysheetTableContent, #sheettable_0").css("cursor", "crosshair");
+        $("#luckysheet-cell-main, #sheetTableContent, #sheettable_0").css("cursor", "crosshair");
 
         Store.luckysheet_cell_selected_extend_time = setTimeout(function () {
             Store.luckysheet_cell_selected_extend = true;

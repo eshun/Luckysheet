@@ -787,19 +787,19 @@ const sheetmanage = {
             tooltip.createHoverTip("#sheet_info_detail" ,".luckysheet_info_detail_back, .luckysheet_info_detail_input, .luckysheet_info_detail_update");
             tooltip.createHoverTip("#luckysheet-wa-editor" ,".luckysheet-toolbar-menu-button, .luckysheet-toolbar-button, .luckysheet-toolbar-combo-button");
 
-            Store.luckysheetTableContentHW = [
+            Store.sheetTableContentHW = [
                 $("#luckysheet-cell-main").width() + Store.rowHeaderWidth - Store.cellMainSrollBarSize, 
                 $("#luckysheet-cell-main").height() + Store.columnHeaderHeight - Store.cellMainSrollBarSize
             ];
-            if(!$("#luckysheetTableContent, #luckysheetTableContentF").get(0)){
+            if(!$("#sheetTableContent, #sheetTableContentF").get(0)){
                 return;
             }
-            $("#luckysheetTableContent, #luckysheetTableContentF").attr({ 
-                width: Math.ceil(Store.luckysheetTableContentHW[0] * Store.devicePixelRatio), 
-                height: Math.ceil(Store.luckysheetTableContentHW[1] * Store.devicePixelRatio) 
+            $("#sheetTableContent, #sheetTableContentF").attr({ 
+                width: Math.ceil(Store.sheetTableContentHW[0] * Store.devicePixelRatio), 
+                height: Math.ceil(Store.sheetTableContentHW[1] * Store.devicePixelRatio) 
             }).css({ 
-                width: Store.luckysheetTableContentHW[0], 
-                height: Store.luckysheetTableContentHW[1] 
+                width: Store.sheetTableContentHW[0], 
+                height: Store.sheetTableContentHW[1] 
             }).get(0).getContext("2d");
             let locale_info = locale().info;
             let key = server.gridKey;

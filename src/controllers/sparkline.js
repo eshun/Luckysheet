@@ -2079,10 +2079,10 @@ const luckysheetSparkline = {
         this.render();
         return this.currentTargetShapeId;
     },
-    _canvasID:"luckysheetTableContent",
+    _canvasID:"sheetTableContent",
     render: function (shapeseq, shapes, offsetX, offsetY, pixelWidth, pixelHeight,canvasid,ctx) {
         if(canvasid==null){
-            canvasid = "luckysheetTableContent";
+            canvasid = "sheetTableContent";
         }
         this._canvasID = canvasid;
 

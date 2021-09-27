@@ -23,7 +23,7 @@ export default function luckysheetscrollevent(isadjust) {
     let _t = $("#luckysheet-cell-main");
     let scrollLeft = $("#luckysheet-scrollbar-x").scrollLeft(), 
         scrollTop = $("#luckysheet-scrollbar-y").scrollTop(),
-        canvasHeight = $("#luckysheetTableContent").height(); // canvas高度
+        canvasHeight = $("#sheetTableContent").height(); // canvas高度
 
     // clearTimeout(scrollTimeOutCancel);
 

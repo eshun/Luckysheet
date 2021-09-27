@@ -296,16 +296,16 @@ export function changeSheetContainerSize(gridW, gridH){
 
     $("#luckysheet-scrollbar-x").width(Store.cellmainWidth).css("left", Store.rowHeaderWidth - 2);
 
-    Store.luckysheetTableContentHW = [
+    Store.sheetTableContentHW = [
         Store.cellmainWidth + Store.rowHeaderWidth - Store.cellMainSrollBarSize,
         Store.cellmainHeight + Store.columnHeaderHeight - Store.cellMainSrollBarSize
     ];
 
-    $("#luckysheetTableContent, #luckysheetTableContentF").attr({
-        width: Math.ceil(Store.luckysheetTableContentHW[0] * Store.devicePixelRatio),
-        height: Math.ceil(Store.luckysheetTableContentHW[1] * Store.devicePixelRatio)
+    $("#sheetTableContent, #sheetTableContentF").attr({
+        width: Math.ceil(Store.sheetTableContentHW[0] * Store.devicePixelRatio),
+        height: Math.ceil(Store.sheetTableContentHW[1] * Store.devicePixelRatio)
     })
-    .css({ width: Store.luckysheetTableContentHW[0], height: Store.luckysheetTableContentHW[1] });
+    .css({ width: Store.sheetTableContentHW[0], height: Store.sheetTableContentHW[1] });
 
     $("#" + Store.container).find("#luckysheet-grid-window-1").css("bottom", Store.sheetBarHeight);
     $("#" + Store.container).find(".luckysheet-grid-window").css("bottom", Store.statisticBarHeight);

@@ -1333,7 +1333,7 @@ div.sheets-m:hover {
     user-select: none;
 }
 
-.luckysheetTableContent {
+.sheetTableContent {
     position: absolute;
     z-index: 2;
     left: 0px;

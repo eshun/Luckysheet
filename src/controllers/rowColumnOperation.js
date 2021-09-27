@@ -2231,7 +2231,7 @@ function luckysheetcolsdbclick() {
     
     let colIndex = colLocation(x)[2];
     let d = editor.deepCopyFlowData(Store.flowdata);
-    let canvas = $("#luckysheetTableContent").get(0).getContext("2d");
+    let canvas = $("#sheetTableContent").get(0).getContext("2d");
 
     let cfg = $.extend(true, {}, Store.config);
     if (cfg["columnlen"] == null) {
@@ -2239,7 +2239,7 @@ function luckysheetcolsdbclick() {
     }
 
     let matchColumn = {};
-    let scrollTop = $("#luckysheet-cell-main").scrollTop(), drawHeight = Store.luckysheetTableContentHW[1];
+    let scrollTop = $("#luckysheet-cell-main").scrollTop(), drawHeight = Store.sheetTableContentHW[1];
     let dataset_row_st = luckysheet_searcharray(Store.visibledatarow, scrollTop);
     let dataset_row_ed = luckysheet_searcharray(Store.visibledatarow, scrollTop + drawHeight);
     dataset_row_ed += dataset_row_ed - dataset_row_st;

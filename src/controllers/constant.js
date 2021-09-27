@@ -35,7 +35,7 @@ const gridHTML = function(){
     const navTabs=`<ul class="nav-tabs"><li>`+ home +`</li><li class="active"><span>开始</span></li></ul><div class="nav-tabs-tools"> \${functionButton} </div>`;
 
     return `<div class="luckysheet">
-                    <canvas id="luckysheetTableContentF" style="display:none;" class="luckysheetTableContent"></canvas> 
+                    <canvas id="sheetTableContentF" style="display:none;" class="sheetTableContent"></canvas> 
                     <div class="luckysheet-work-area luckysheet-noselected-text"> 
                         <div id ="sheet_info_detail" class="sheet_info_detail"> 
                             `+ navTabs +`
@@ -76,7 +76,7 @@ const gridHTML = function(){
                         <div class="luckysheet-grid-window"> 
                             <div class="luckysheet-help-sub"></div> 
                             <div class="luckysheet-grid-window-1" id="luckysheet-grid-window-1">
-                                <canvas id="luckysheetTableContent" class="luckysheetTableContent"></canvas> 
+                                <canvas id="sheetTableContent" class="sheetTableContent"></canvas> 
                                 <table class="luckysheet-grid-window-2" cellspacing="0" cellpadding="0" dir="ltr" tabindex="-1" > 
                                     <tbody> 
                                         <tr> 
