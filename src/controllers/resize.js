@@ -14,12 +14,12 @@ let gridW = 0,
 export default function luckysheetsizeauto(isRefreshCanvas=true) {
     if (!luckysheetConfigsetting.showinfobar) {
         Store.infobarHeight = 0;
-        $("#luckysheet_info_detail").hide();
+        $("#sheet_info_detail").hide();
     }
     else {
-        $("#luckysheet_info_detail").show();
+        $("#sheet_info_detail").show();
         // Store.infobarHeight = 56;
-        Store.infobarHeight = document.querySelector('#luckysheet_info_detail').offsetHeight;
+        Store.infobarHeight = document.querySelector('#sheet_info_detail').offsetHeight;
     }
 
     if (!!Store.toobarObject && !!Store.toobarObject.toobarElements && Store.toobarObject.toobarElements.length === 0) {

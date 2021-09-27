@@ -107,7 +107,7 @@
     position: relative;
 }
 
-.luckysheet_info_detail {
+.sheet_info_detail {
     position: relative;
     left: 0;
     top: 0;
@@ -122,20 +122,20 @@
     border-bottom: 1px solid #d4d4d4;
 }
 
-.luckysheet_info_detail .sheet-name {
+.sheet_info_detail .sheet-name {
     margin: auto;
 }
 
-.luckysheet_info_detail div.luckysheet_info_detail_back {
+.sheet_info_detail div.luckysheet_info_detail_back {
     border-radius: 3px;
 }
 
-.luckysheet_info_detail div.luckysheet_info_detail_back:hover {
+.sheet_info_detail div.luckysheet_info_detail_back:hover {
     background: #eee;
 }
 
 
-.luckysheet_info_detail .luckysheet_info_detail_input {
+.sheet_info_detail .luckysheet_info_detail_input {
     border: 1px solid transparent;
     border-radius: 3px !important;
     color: #000000;
@@ -148,11 +148,11 @@
     visibility: hidden;
 }
 
-.luckysheet_info_detail .luckysheet_info_detail_input:hover {
+.sheet_info_detail .luckysheet_info_detail_input:hover {
     border: 1px solid #e5e5e5;
 }
 
-.luckysheet_info_detail .luckysheet_info_detail_input:focus {
+.sheet_info_detail .luckysheet_info_detail_input:focus {
     -webkit-appearance: none;
     -moz-appearance: none;
     border: 1px solid #0188fb !important;
@@ -163,7 +163,7 @@
     outline: none;
 }
 
-.luckysheet_info_detail .nav-tabs{
+.sheet_info_detail .nav-tabs{
     list-style-type: none;
     list-style-image: none;
     
@@ -173,7 +173,7 @@
     display: flex;
 }
 
-.luckysheet_info_detail .nav-tabs li{
+.sheet_info_detail .nav-tabs li{
     cursor: pointer;
     /* min-width: 100px; */
     height: 33px;
@@ -191,7 +191,7 @@
     word-spacing: normal;
 }
 
-.luckysheet_info_detail .nav-tabs li.active{
+.sheet_info_detail .nav-tabs li.active{
     margin-bottom: -1px;
     padding-bottom: 1px;
     font-weight: bold;
@@ -204,7 +204,7 @@
     border-bottom: 0;
 }
 
-.luckysheet_info_detail .nav-tabs-tools{
+.sheet_info_detail .nav-tabs-tools{
     float: right;
     height: 33px;
     overflow: hidden;

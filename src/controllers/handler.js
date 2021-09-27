@@ -4759,33 +4759,33 @@ export default function luckysheetHandler() {
         let ctx_newCanvas = newCanvas.get(0).getContext("2d");
 
         //补上 左边框和上边框
-        ctx_newCanvas.beginPath();
-        ctx_newCanvas.moveTo(
-            0, 
-            0
-        );
-        ctx_newCanvas.lineTo(
-            0, 
-            Store.devicePixelRatio * rh_height
-        );
-        ctx_newCanvas.lineWidth = Store.devicePixelRatio * 2;
-        ctx_newCanvas.strokeStyle = sheetdefaultstyle.strokeStyle;        
-        ctx_newCanvas.stroke();
-        ctx_newCanvas.closePath();
+        // ctx_newCanvas.beginPath();
+        // ctx_newCanvas.moveTo(
+        //     0, 
+        //     0
+        // );
+        // ctx_newCanvas.lineTo(
+        //     0, 
+        //     Store.devicePixelRatio * rh_height
+        // );
+        // ctx_newCanvas.lineWidth = Store.devicePixelRatio * 2;
+        // ctx_newCanvas.strokeStyle = sheetdefaultstyle.strokeStyle;        
+        // ctx_newCanvas.stroke();
+        // ctx_newCanvas.closePath();
 
-        ctx_newCanvas.beginPath();
-        ctx_newCanvas.moveTo(
-            0, 
-            0
-        );
-        ctx_newCanvas.lineTo(
-            Store.devicePixelRatio * ch_width, 
-            0
-        );
-        ctx_newCanvas.lineWidth = Store.devicePixelRatio * 2;
-        ctx_newCanvas.strokeStyle = sheetdefaultstyle.strokeStyle;        
-        ctx_newCanvas.stroke();
-        ctx_newCanvas.closePath();
+        // ctx_newCanvas.beginPath();
+        // ctx_newCanvas.moveTo(
+        //     0, 
+        //     0
+        // );
+        // ctx_newCanvas.lineTo(
+        //     Store.devicePixelRatio * ch_width, 
+        //     0
+        // );
+        // ctx_newCanvas.lineWidth = Store.devicePixelRatio * 2;
+        // ctx_newCanvas.strokeStyle = sheetdefaultstyle.strokeStyle;        
+        // ctx_newCanvas.stroke();
+        // ctx_newCanvas.closePath();
 
         let image = new Image();
         let url = newCanvas.get(0).toDataURL("image/png");
