@@ -1,4 +1,4 @@
-import luckysheetConfigsetting from './luckysheetConfigsetting';
+import sheetConfigSetting from './sheetConfigSetting';
 import menuButton from './menuButton';
 import conditionformat from './conditionformat';
 import server from './server';
@@ -639,7 +639,7 @@ export function keyboardInitial(){
                         }
 
                         if(has_PartMC){
-                            if(luckysheetConfigsetting.editMode){
+                            if(sheetConfigSetting.editMode){
                                 alert(_locale_drag.noMerge);
                             }
                             else{

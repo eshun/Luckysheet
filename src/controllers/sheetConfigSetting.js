@@ -1,4 +1,4 @@
-const luckysheetConfigsetting = {
+const sheetConfigSetting = {
     autoFormatw: false,
     accuracy: undefined,
     total: 0,
@@ -43,4 +43,4 @@ const luckysheetConfigsetting = {
     scrollBottomAutoAddRow:false,
 }
 
-export default luckysheetConfigsetting;
+export default sheetConfigSetting;

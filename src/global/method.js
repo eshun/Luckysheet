@@ -8,7 +8,7 @@ import pivotTable from '../controllers/pivotTable';
 import luckysheetFreezen from '../controllers/freezen';
 import { getSheetIndex } from '../methods/get';
 import { luckysheetextendData } from './extend';
-import luckysheetConfigsetting from '../controllers/luckysheetConfigsetting';
+import sheetConfigSetting from '../controllers/sheetConfigSetting';
 import editor from './editor';
 import luckysheetcreatesheet from './createsheet';
 import Store from '../store';
@@ -444,7 +444,7 @@ const method = {
         $(".chartSetting, .luckysheet-modal-dialog-slider").remove();
 
         //document event release
-        $(document).off(".luckysheetEvent");
+        $(document).off(".sheetEvent");
         $(document).off(".luckysheetProtection");
         
         //参数重置
@@ -515,10 +515,10 @@ const method = {
      */
     createHookFunction:function(){
         let hookName = arguments[0];
-        if(luckysheetConfigsetting.hook && luckysheetConfigsetting.hook[hookName]!=null && (typeof luckysheetConfigsetting.hook[hookName] == "function")){
+        if(sheetConfigSetting.hook && sheetConfigSetting.hook[hookName]!=null && (typeof sheetConfigSetting.hook[hookName] == "function")){
             var args = Array.prototype.slice.apply(arguments);
             args.shift();
-            let ret = luckysheetConfigsetting.hook[hookName].apply(this, args);
+            let ret = sheetConfigSetting.hook[hookName].apply(this, args);
             if(ret===false){
                 return false;
             }

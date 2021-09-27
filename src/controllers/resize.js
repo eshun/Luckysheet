@@ -1,4 +1,4 @@
-import luckysheetConfigsetting from './luckysheetConfigsetting';
+import sheetConfigSetting from './sheetConfigSetting';
 import luckysheetFreezen from './freezen';
 import { luckysheetrefreshgrid } from '../global/refresh';
 import Store from '../store';
@@ -12,7 +12,7 @@ let gridW = 0,
     gridH = 0;
 
 export default function luckysheetsizeauto(isRefreshCanvas=true) {
-    if (!luckysheetConfigsetting.showinfobar) {
+    if (!sheetConfigSetting.showinfobar) {
         Store.infobarHeight = 0;
         $("#sheet_info_detail").hide();
     }
@@ -32,7 +32,7 @@ export default function luckysheetsizeauto(isRefreshCanvas=true) {
         Store.toolbarHeight = document.querySelector('#' + Store.container +' .luckysheet-wa-editor').offsetHeight;
     }
 
-    // if (!luckysheetConfigsetting.showsheetbar) {
+    // if (!sheetConfigSetting.showsheetbar) {
     //     $("#" + Store.container).find("#sheet-area").hide();
     //     Store.sheetBarHeight = 0;
     // }
@@ -44,7 +44,7 @@ export default function luckysheetsizeauto(isRefreshCanvas=true) {
 
     customSheetbarConfig();
 
-    // if (!luckysheetConfigsetting.showstatisticBar) {
+    // if (!sheetConfigSetting.showstatisticBar) {
     //     $("#" + Store.container).find(".luckysheet-stat-area").hide();
     //     Store.statisticBarHeight = 0;
     // }
@@ -57,7 +57,7 @@ export default function luckysheetsizeauto(isRefreshCanvas=true) {
 
     // 公式栏
     const formulaEle = document.querySelector("#" + Store.container + ' .luckysheet-wa-calculate');
-    if (!luckysheetConfigsetting.sheetFormulaBar) {
+    if (!sheetConfigSetting.sheetFormulaBar) {
         formulaEle.style.display = 'none';
         Store.calculatebarHeight = 0;
     }
@@ -71,7 +71,7 @@ export default function luckysheetsizeauto(isRefreshCanvas=true) {
     gridW = $("#" + Store.container).parent().width();
     gridH = $("#" + Store.container).parent().height();
 
-    if(luckysheetConfigsetting.showConfigWindowResize){//数据透视表  图表  交替颜色 Protection
+    if(sheetConfigSetting.showConfigWindowResize){//数据透视表  图表  交替颜色 Protection
         if($("#luckysheet-modal-dialog-slider-pivot").is(":visible")){
             gridW -= $("#luckysheet-modal-dialog-slider-pivot").outerWidth();
         }
@@ -336,8 +336,8 @@ export function changeSheetContainerSize(gridW, gridH){
  * The width value of each button in the statistics toolbar is used to calculate which needs to be placed in more buttons
  */
 export function menuToolBarWidth() {
-    const showtoolbar = luckysheetConfigsetting.showtoolbar;
-    const showtoolbarConfig = luckysheetConfigsetting.showtoolbarConfig;
+    const showtoolbar = sheetConfigSetting.showtoolbar;
+    const showtoolbarConfig = sheetConfigSetting.showtoolbarConfig;
 
     const toobarWidths = Store.toobarObject.toobarWidths = [];
     const toobarElements = Store.toobarObject.toobarElements = [];
@@ -483,9 +483,9 @@ export function menuToolBarWidth() {
  */
 function customSheetbarConfig() {
 
-    if(!luckysheetConfigsetting.initShowsheetbarConfig){
+    if(!sheetConfigSetting.initShowsheetbarConfig){
 
-        luckysheetConfigsetting.initShowsheetbarConfig = true;
+        sheetConfigSetting.initShowsheetbarConfig = true;
 
         const config = {
             add: true, //Add worksheet
@@ -493,22 +493,22 @@ function customSheetbarConfig() {
             sheet: true //Worksheet display
         }
 
-        if(!luckysheetConfigsetting.showsheetbar){
+        if(!sheetConfigSetting.showsheetbar){
             for(let s in config){
                 config[s] = false;
             }
         }
 
         // showsheetbarConfig determines the final result
-        if(JSON.stringify(luckysheetConfigsetting.showsheetbarConfig) !== '{}'){
-            Object.assign(config,luckysheetConfigsetting.showsheetbarConfig);
+        if(JSON.stringify(sheetConfigSetting.showsheetbarConfig) !== '{}'){
+            Object.assign(config,sheetConfigSetting.showsheetbarConfig);
         }
 
-        luckysheetConfigsetting.showsheetbarConfig = config;
+        sheetConfigSetting.showsheetbarConfig = config;
 
     }
 
-    const config = luckysheetConfigsetting.showsheetbarConfig;
+    const config = sheetConfigSetting.showsheetbarConfig;
 
     let isHide = 0;
 
@@ -553,9 +553,9 @@ function customSheetbarConfig() {
  * Customize the bottom count bar
  */
 function customStatisticBarConfig() {
-    if(!luckysheetConfigsetting.initStatisticBarConfig){
+    if(!sheetConfigSetting.initStatisticBarConfig){
 
-        luckysheetConfigsetting.initStatisticBarConfig = true;
+        sheetConfigSetting.initStatisticBarConfig = true;
 
         const config = {
             count: true, // Count bar
@@ -563,22 +563,22 @@ function customStatisticBarConfig() {
             zoom: true // Zoom
         }
 
-        if(!luckysheetConfigsetting.showstatisticBar){
+        if(!sheetConfigSetting.showstatisticBar){
             for(let s in config){
                 config[s] = false;
             }
         }
 
         // showstatisticBarConfig determines the final result
-        if(JSON.stringify(luckysheetConfigsetting.showstatisticBarConfig) !== '{}'){
-            Object.assign(config,luckysheetConfigsetting.showstatisticBarConfig);
+        if(JSON.stringify(sheetConfigSetting.showstatisticBarConfig) !== '{}'){
+            Object.assign(config,sheetConfigSetting.showstatisticBarConfig);
         }
 
-        luckysheetConfigsetting.showstatisticBarConfig = config;
+        sheetConfigSetting.showstatisticBarConfig = config;
 
     }
 
-    const config = luckysheetConfigsetting.showstatisticBarConfig;
+    const config = sheetConfigSetting.showstatisticBarConfig;
 
     let isHide = 0;
 

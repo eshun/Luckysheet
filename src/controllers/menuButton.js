@@ -1,6 +1,6 @@
 import { selectionCopyShow, selectIsOverlap } from './select';
 import { sheetColor, iconfontObjects } from './constant';
-import luckysheetConfigsetting from './luckysheetConfigsetting';
+import sheetConfigSetting from './sheetConfigSetting';
 import luckysheetMoreFormat from './moreFormat';
 import alternateformat from './alternateformat';
 import conditionformat from './conditionformat';
@@ -38,6 +38,7 @@ import { replaceHtml, getObjType, rgbTohex, mouseclickposition, luckysheetfontfo
 import {openProtectionModal,checkProtectionFormatCells,checkProtectionNotEnable} from './protection';
 import Store from '../store';
 import locale from '../locale/locale';
+import { luckysheetDrawMain, sheetDrawFistBorder } from '../global/draw';
 import {checkTheStatusOfTheSelectedCells,getRangeHtml,getPrintPageHtml,getPrintPages} from '../global/api';
 
 import {renderPdf,printPage} from '../expendPlugins/print/plugin';
@@ -595,7 +596,7 @@ const menuButton = {
                     togglePaletteLessText: locale_toolbar.collapse,
                     togglePaletteOnly: true,
                     clearText: locale_toolbar.clearText,
-                    color: luckysheetConfigsetting.defaultTextColor,
+                    color: sheetConfigSetting.defaultTextColor,
                     noColorSelectedText: locale_toolbar.noColorSelectedText,
                     localStorageKey: "spectrum.textcolor" + server.gridKey,
                     palette: [["#000","#444","#666","#999","#ccc","#eee","#f3f3f3","#fff"],
@@ -727,7 +728,7 @@ const menuButton = {
                     showSelectionPalette: true,
                     maxPaletteSize: 8,
                     maxSelectionSize: 8,
-                    color: luckysheetConfigsetting.defaultCellColor,
+                    color: sheetConfigSetting.defaultCellColor,
                     cancelText: locale_button.cancel,
                     chooseText: locale_button.confirm,
                     togglePaletteMoreText: locale_toolbar.customColor,
@@ -4540,6 +4541,146 @@ const menuButton = {
         }
 
         this.fontSelectList = itemdata;
+    },
+    rangeScreenshot: function() {
+        console.log('rangeImage');
+        
+        let  _locale = locale();
+        const locale_screenshot = _locale.screenshot;
+        if (Store.luckysheet_select_save.length == 0) {
+            if (isEditMode()) {
+                alert(locale_screenshot.screenshotTipNoSelection);
+            }
+            else {
+                tooltip.info(locale_screenshot.screenshotTipTitle, locale_screenshot.screenshotTipNoSelection);
+            }
+            return;
+        }
+
+        if (Store.luckysheet_select_save.length > 1) {
+            if (isEditMode()) {
+                alert(locale_screenshot.screenshotTipHasMulti);
+            }
+            else {
+                tooltip.info(locale_screenshot.screenshotTipTitle, locale_screenshot.screenshotTipHasMulti);
+            }
+            return;
+        }
+        const defaultPadding=1;
+
+        //截图范围内包含部分合并单元格，提示
+        if (Store.config["merge"] != null) {
+            let has_PartMC = false;
+
+            for (let s = 0; s < Store.luckysheet_select_save.length; s++) {
+                let r1 = Store.luckysheet_select_save[s].row[0],
+                    r2 = Store.luckysheet_select_save[s].row[1];
+                let c1 = Store.luckysheet_select_save[s].column[0],
+                    c2 = Store.luckysheet_select_save[s].column[1];
+
+                has_PartMC = hasPartMC(Store.config, r1, r2, c1, c2);
+
+                if (has_PartMC) {
+                    break;
+                }
+            }
+
+            if (has_PartMC) {
+                if (isEditMode()) {
+                    alert(locale_screenshot.screenshotTipHasMerge);
+                }
+                else {
+                    tooltip.info(locale_screenshot.screenshotTipTitle, locale_screenshot.screenshotTipHasMerge);
+                }
+                return;
+            }
+        }
+
+        let st_r = Store.luckysheet_select_save[0].row[0],
+            ed_r = Store.luckysheet_select_save[0].row[1];
+        let st_c = Store.luckysheet_select_save[0].column[0],
+            ed_c = Store.luckysheet_select_save[0].column[1];
+
+        let scrollHeight, rh_height;
+        if (st_r - 1 < 0) {
+            scrollHeight = -defaultPadding;
+            rh_height = Store.visibledatarow[ed_r]+defaultPadding;
+        }
+        else {
+            scrollHeight = Store.visibledatarow[st_r - 1]-defaultPadding;
+            rh_height = Store.visibledatarow[ed_r] - Store.visibledatarow[st_r - 1]+defaultPadding;
+        }
+
+        let scrollWidth, ch_width;
+        if (st_c - 1 < 0) {
+            scrollWidth = -defaultPadding;
+            ch_width = Store.visibledatacolumn[ed_c]+defaultPadding;
+        }
+        else {
+            scrollWidth = Store.visibledatacolumn[st_c - 1]-defaultPadding;
+            ch_width = Store.visibledatacolumn[ed_c] - Store.visibledatacolumn[st_c - 1]+defaultPadding;
+        }
+
+        let newCanvas = $("<canvas>").attr({
+            width: Math.ceil(ch_width * devicePixelRatio),
+            height: Math.ceil(rh_height * devicePixelRatio)
+        }).css({ width: ch_width, height: rh_height });
+
+        let ctx_newCanvas = newCanvas.get(0).getContext("2d");
+        // ctx_newCanvas.scale(Store.devicePixelRatio, Store.devicePixelRatio);
+        
+        // ctx_newCanvas.clearRect(
+        //     0, 
+        //     0, 
+        //     Store.sheetTableContentHW[0],
+        //     Store.sheetTableContentHW[1]
+        // );
+        // ctx_newCanvas.save();
+
+        //sheetDrawFistBorder(ch_width, rh_height, 1, 1, newCanvas);
+        //补上 左边框和上边框
+        // ctx_newCanvas.beginPath();
+        // ctx_newCanvas.moveTo(
+        //     0, 
+        //     0
+        // );
+        // ctx_newCanvas.lineTo(
+        //     0, 
+        //     Store.devicePixelRatio * rh_height
+        // );
+        // ctx_newCanvas.lineWidth = Store.devicePixelRatio * 2;
+        // ctx_newCanvas.strokeStyle = sheetdefaultstyle.strokeStyle;        
+        // ctx_newCanvas.stroke();
+        // ctx_newCanvas.closePath();
+
+        // ctx_newCanvas.beginPath();
+        // ctx_newCanvas.moveTo(
+        //     0, 
+        //     0
+        // );
+        // ctx_newCanvas.lineTo(
+        //     Store.devicePixelRatio * ch_width, 
+        //     0
+        // );
+        // ctx_newCanvas.lineWidth = Store.devicePixelRatio * 2;
+        // ctx_newCanvas.strokeStyle = sheetdefaultstyle.strokeStyle;        
+        // ctx_newCanvas.stroke();
+        // ctx_newCanvas.closePath();
+
+        luckysheetDrawMain(scrollWidth, scrollHeight, ch_width, rh_height, 1, 1, null, null, newCanvas, true);
+
+
+        let url = newCanvas.get(0).toDataURL("image/png");
+        newCanvas.remove();
+        let image = new Image();
+        image.src = url;
+        if (ch_width > rh_height) {
+            image.style.width = "100%";
+        }
+        else {
+            image.style.height = "100%";
+        }
+        return {url,image};
     }
 }
 

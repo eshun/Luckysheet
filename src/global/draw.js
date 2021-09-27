@@ -416,7 +416,7 @@ function luckysheetDrawgridColumnTitle(scrollWidth, drawWidth, offsetLeft) {
 
 }
 
-function luckysheetDrawMain(scrollWidth, scrollHeight, drawWidth, drawHeight, offsetLeft, offsetTop, columnOffsetCell, rowOffsetCell, mycanvas) {
+function luckysheetDrawMain(scrollWidth, scrollHeight, drawWidth, drawHeight, offsetLeft, offsetTop, columnOffsetCell, rowOffsetCell, mycanvas, screenshot) {
 
     if(Store.flowdata == null){
         return;
@@ -940,6 +940,10 @@ function luckysheetDrawMain(scrollWidth, scrollHeight, drawWidth, drawHeight, of
         }
     }
 
+    if(screenshot){
+        sheetDrawFistBorder(drawWidth, drawHeight, offsetLeft, offsetTop, mycanvas);
+    }
+
     //边框单独渲染
     if(Store.config["borderInfo"] != null && Store.config["borderInfo"].length > 0){
         //边框渲染
@@ -1074,8 +1078,14 @@ function luckysheetDrawMain(scrollWidth, scrollHeight, drawWidth, drawHeight, of
 
 }
 
-function sheetDrawFistBorder(mycanvas) {
+function sheetDrawFistBorder(drawWidth, drawHeight, offsetLeft, offsetTop,mycanvas) {
     let sheetTableContent = null;
+    if (offsetLeft == null) {
+        offsetLeft = Store.rowHeaderWidth;
+    }
+    if (offsetTop == null) {
+        offsetTop = Store.columnHeaderHeight;
+    }
     if(mycanvas == null){
         sheetTableContent = $("#sheetTableContent").get(0).getContext("2d");
     }
@@ -1093,7 +1103,39 @@ function sheetDrawFistBorder(mycanvas) {
         }
     }
 
+    //补上 左边框和上边框 default style
+    sheetTableContent.beginPath();
+    sheetTableContent.moveTo(
+            0, 
+            0
+        );
+    sheetTableContent.lineTo(
+        0, 
+        Store.devicePixelRatio * drawHeight
+    );
+    sheetTableContent.lineWidth = Store.devicePixelRatio * 2;
+    sheetTableContent.strokeStyle = sheetdefaultstyle.strokeStyle;        
+    sheetTableContent.stroke();
+    sheetTableContent.closePath();
+
+    sheetTableContent.beginPath();
+    sheetTableContent.moveTo(
+        0, 
+        0
+    );
+    sheetTableContent.lineTo(
+        Store.devicePixelRatio * drawWidth, 
+        0
+    );
+    sheetTableContent.lineWidth = Store.devicePixelRatio * 2;
+    sheetTableContent.strokeStyle = sheetdefaultstyle.strokeStyle;        
+    sheetTableContent.stroke();
+    sheetTableContent.closePath();
     sheetTableContent.save();
+    
+    let bodrder05 = 0.5;//Default 0.5
+    let st_r = Store.luckysheet_select_save[0].row[0];
+    let st_c = Store.luckysheet_select_save[0].column[0];
 
     if(Store.config["borderInfo"] != null && Store.config["borderInfo"].length > 0){
         //边框渲染
@@ -1130,8 +1172,53 @@ function sheetDrawFistBorder(mycanvas) {
             canvas.closePath();
             canvas.restore();
         }
-    }
 
+        const borderInfo=Store.config["borderInfo"];
+
+        for(let i = 0; i < borderInfo.length; i++){
+            let rangeType = borderInfo[i].rangeType;
+
+            if(rangeType == "range"){
+                let borderType = borderInfo[i].borderType;
+                let borderColor = borderInfo[i].color;
+                let borderStyle = borderInfo[i].style;
+
+                let borderRange = borderInfo[i].range;
+                
+                for(let j = 0; j < borderRange.length; j++){
+                    let bd_r1 = borderRange[j].row[0], bd_r2 = borderRange[j].row[1];
+                    let bd_c1 = borderRange[j].column[0], bd_c2 = borderRange[j].column[1];
+
+                    if(st_r>=bd_r1 && st_r<=bd_r2){
+                        console.log('r',borderRange[j]);
+                        //top
+                        // borderTopRender(borderStyle,borderColor,bd_r1,bd_c1,bd_r2,bd_c2, offsetLeft, offsetTop, sheetTableContent)
+                    }
+                    if(st_c>=bd_c1&& st_c<=bd_c2){
+                        console.log('c',borderRange[j]);
+                        //left
+                        // borderLeftRender(borderStyle,borderColor,bd_r1,bd_c1,bd_r2,bd_c2, offsetLeft, offsetTop, sheetTableContent)
+
+                        // sheetTableContent.beginPath();
+                        // sheetTableContent.moveTo(
+                        //         0, 
+                        //         0
+                        //     );
+                        // sheetTableContent.lineTo(
+                        //     0, 
+                        //     Store.devicePixelRatio * drawHeight
+                        // );
+                        // sheetTableContent.lineWidth = Store.devicePixelRatio * 2;
+                        // sheetTableContent.strokeStyle = borderColor;        
+                        // sheetTableContent.stroke();
+                        // sheetTableContent.closePath();
+                    }
+                }
+            }else if(rangeType == "cell"){
+
+            }
+        }
+    }
 }
 
 //sparklines渲染
@@ -2303,4 +2390,5 @@ export {
     luckysheetDrawgridRowTitle,
     luckysheetDrawgridColumnTitle,
     luckysheetDrawMain,
+    sheetDrawFistBorder
 }

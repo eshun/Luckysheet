@@ -1,5 +1,5 @@
 import locale from '../locale/locale';
-import luckysheetConfigsetting from './luckysheetConfigsetting';
+import sheetConfigSetting from './sheetConfigSetting';
 
 import { getObjType, camel2split } from '../utils/util';
 
@@ -322,7 +322,7 @@ export function createToolbarHtml() {
                     style="user-select: none;">
                         <div class="luckysheet-color-menu-button-indicator" style="border-bottom-color: rgb(0, 0, 0); user-select: none;">
                             <div class="luckysheet-icon luckysheet-inline-block " style="user-select: none;">
-                                <div class="text-color-bar" style="background-color:${luckysheetConfigsetting.defaultTextColor}"></div>
+                                <div class="text-color-bar" style="background-color:${sheetConfigSetting.defaultTextColor}"></div>
                                 <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-text-color iconfont luckysheet-iconfont-wenbenyanse"
                                 style="user-select: none;">
                                 </div>
@@ -355,7 +355,7 @@ export function createToolbarHtml() {
                     style="user-select: none;">
                         <div class="luckysheet-color-menu-button-indicator" style="border-bottom-color: rgb(255, 255, 255); user-select: none;">
                             <div class="luckysheet-icon luckysheet-inline-block " style="user-select: none;">
-                                <div class="text-color-bar" style="background-color:${luckysheetConfigsetting.defaultCellColor}"></div>
+                                <div class="text-color-bar" style="background-color:${sheetConfigSetting.defaultCellColor}"></div>
                                 <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-cell-color iconfont luckysheet-iconfont-tianchong"
                                 style="user-select: none;">
                                 </div>
@@ -832,8 +832,8 @@ export function createToolbarHtml() {
         </div>` // 'print'
     };
 
-    const showtoolbar = luckysheetConfigsetting.showtoolbar;
-    const showtoolbarConfig = luckysheetConfigsetting.showtoolbarConfig;
+    const showtoolbar = sheetConfigSetting.showtoolbar;
+    const showtoolbarConfig = sheetConfigSetting.showtoolbarConfig;
 
     const buttonHTML = ['<div class="luckysheet-toolbar-left-theme"></div>'];
 

@@ -39,7 +39,7 @@ import { luckysheet_searcharray } from '../controllers/sheetSearch';
 import {isInlineStringCell} from './inlineString';
 import {checkProtectionLockedRangeList, checkProtectionAllSelected,checkProtectionAuthorityNormal  } from './protection';
 import Store from '../store';
-import luckysheetConfigsetting from './luckysheetConfigsetting';
+import sheetConfigSetting from './sheetConfigSetting';
 
 export function rowColumnOperationInitial(){
 
@@ -401,7 +401,7 @@ export function rowColumnOperationInitial(){
             $$('#luckysheet-cols-rows-data .luckysheet-menuseparator').style.display = 'block';
 
             // 自定义右键菜单：向上向下增加行，删除行，隐藏显示行，设置行高
-            const cellRightClickConfig = luckysheetConfigsetting.cellRightClickConfig;
+            const cellRightClickConfig = sheetConfigSetting.cellRightClickConfig;
 
             // 如果全部按钮都隐藏，则整个菜单容器也要隐藏
             if(!cellRightClickConfig.copy && !cellRightClickConfig.copyAs && !cellRightClickConfig.paste && !cellRightClickConfig.insertRow && !cellRightClickConfig.deleteRow && !cellRightClickConfig.hideRow && !cellRightClickConfig.rowHeight && !cellRightClickConfig.clear && !cellRightClickConfig.matrix && !cellRightClickConfig.sort && !cellRightClickConfig.filter && !cellRightClickConfig.chart && !cellRightClickConfig.image && !cellRightClickConfig.link && !cellRightClickConfig.data && !cellRightClickConfig.cellFormat){
@@ -834,7 +834,7 @@ export function rowColumnOperationInitial(){
             $$('#luckysheet-cols-rows-data .luckysheet-menuseparator').style.display = 'block';
 
             // 自定义右键菜单：向左向右增加列，删除列，隐藏显示列，设置列宽
-            const cellRightClickConfig = luckysheetConfigsetting.cellRightClickConfig;
+            const cellRightClickConfig = sheetConfigSetting.cellRightClickConfig;
 
             // 如果全部按钮都隐藏，则整个菜单容器也要隐藏
             if(!cellRightClickConfig.copy && !cellRightClickConfig.copyAs && !cellRightClickConfig.paste && !cellRightClickConfig.insertColumn && !cellRightClickConfig.deleteColumn && !cellRightClickConfig.hideColumn && !cellRightClickConfig.columnWidth && !cellRightClickConfig.clear && !cellRightClickConfig.matrix && !cellRightClickConfig.sort && !cellRightClickConfig.filter && !cellRightClickConfig.chart && !cellRightClickConfig.image && !cellRightClickConfig.link && !cellRightClickConfig.data && !cellRightClickConfig.cellFormat){
@@ -1013,7 +1013,7 @@ export function rowColumnOperationInitial(){
         $$('#luckysheet-cols-rows-shift .luckysheet-menuseparator').style.display = 'block';
 
         // 自定义右键菜单：向左向右增加列，删除列，隐藏显示列，设置列宽
-        const cellRightClickConfig = luckysheetConfigsetting.cellRightClickConfig;
+        const cellRightClickConfig = sheetConfigSetting.cellRightClickConfig;
 
         // 如果全部按钮都隐藏，则整个菜单容器也要隐藏
         if(!cellRightClickConfig.copy && !cellRightClickConfig.copyAs && !cellRightClickConfig.paste && !cellRightClickConfig.insertColumn && !cellRightClickConfig.deleteColumn && !cellRightClickConfig.hideColumn && !cellRightClickConfig.columnWidth && !cellRightClickConfig.sort){
@@ -1078,7 +1078,7 @@ export function rowColumnOperationInitial(){
         }
 
         
-        const defaultAddNum = luckysheetConfigsetting.defaultAddNum || 1;
+        const defaultAddNum = sheetConfigSetting.defaultAddNum || 1;
 
         let _t = $(this), value = _t.find("input").val();
         _t.find("input").val(defaultAddNum);
@@ -1144,7 +1144,7 @@ export function rowColumnOperationInitial(){
     $(".luckysheetColsRowsHandleAdd_custom").click(function (clickEvent) {
         $("#luckysheet-rightclick-menu").hide();
         const cellRightClickConfig =
-          luckysheetConfigsetting.cellRightClickConfig;
+          sheetConfigSetting.cellRightClickConfig;
         const rowIndex = Store.luckysheet_select_save[0].row[0];
         const columnIndex = Store.luckysheet_select_save[0].column[0];
         if (
@@ -1309,7 +1309,7 @@ export function rowColumnOperationInitial(){
             return;
         }
 
-        const defaultAddNum = luckysheetConfigsetting.defaultAddNum || 1;
+        const defaultAddNum = sheetConfigSetting.defaultAddNum || 1;
 
         let _t = $(this), value = _t.find("input").val();
         _t.find("input").val(defaultAddNum);

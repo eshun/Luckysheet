@@ -15,7 +15,7 @@ import tooltip from '../global/tooltip';
 import {selectTextDom} from '../global/cursorPos';
 import locale from '../locale/locale';
 import Store from '../store';
-import luckysheetConfigsetting from './luckysheetConfigsetting';
+import sheetConfigSetting from './sheetConfigSetting';
 import {pagerInit} from '../global/api'
 
 
@@ -111,7 +111,7 @@ function showsheetconfigmenu() {
     $("#luckysheetsheetconfigcolorur").parent().find("span, div, button, input, a").addClass("luckysheet-mousedown-cancel");
 
     // 如果全部按钮设置了隐藏，则不显示
-    const config = luckysheetConfigsetting.sheetRightClickConfig;
+    const config = sheetConfigSetting.sheetRightClickConfig;
     // if(!config.delete && !config.copy && !config.rename && !config.color && !config.hide && !config.move){
     if(Object.values(config).every(ele=> !ele)){
         return;
@@ -532,8 +532,8 @@ export function initialSheetBar(){
     });
 
     // 初始化分页器
-    if (luckysheetConfigsetting.pager) {
-        pagerInit(luckysheetConfigsetting.pager)
+    if (sheetConfigSetting.pager) {
+        pagerInit(sheetConfigSetting.pager)
     }
 
 }

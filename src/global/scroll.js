@@ -2,7 +2,7 @@ import luckysheetFreezen from '../controllers/freezen';
 import { luckysheet_searcharray } from '../controllers/sheetSearch';
 import { luckysheetrefreshgrid } from '../global/refresh';
 import Store from '../store';
-import luckysheetConfigsetting from '../controllers/luckysheetConfigsetting';
+import sheetConfigSetting from '../controllers/sheetConfigSetting';
 import method from '../global/method'
 import { luckysheetextendtable } from '../global/extend';
 import {
@@ -115,7 +115,7 @@ export default function luckysheetscrollevent(isadjust) {
 
     if(!method.createHookFunction("scroll", {scrollLeft, scrollTop, canvasHeight})){ return; }
 
-    const scrollBottomAutoAddRow=luckysheetConfigsetting.scrollBottomAutoAddRow || false;
+    const scrollBottomAutoAddRow=sheetConfigSetting.scrollBottomAutoAddRow || false;
     let scrollHeight = $("#luckysheet-scrollbar-y").get(0).scrollHeight;
     //let clientHeight = $("#luckysheet-scrollbar-y").get(0).clientHeight;
     if(scrollBottomAutoAddRow===true && scrollHeight<(canvasHeight + scrollTop + 100)){

@@ -18,7 +18,7 @@ import { collaborativeEditBox } from './select'
 import locale from '../locale/locale';
 import dayjs from "dayjs";
 import json from '../global/json';
-import luckysheetConfigsetting from './luckysheetConfigsetting';
+import sheetConfigSetting from './sheetConfigSetting';
 import {customImageUpdate} from './imageUpdateCtrl';
 import method from '../global/method';
 
@@ -146,7 +146,7 @@ const server = {
 		// 需要考虑发送服务端失败缓存记录，socket连接成功之后继续发送
 
 	    // TODO 配置自定义方式同步图片
-        const customImageUpdateMethodConfig = luckysheetConfigsetting.imageUpdateMethodConfig
+        const customImageUpdateMethodConfig = sheetConfigSetting.imageUpdateMethodConfig
 		if (JSON.stringify(customImageUpdateMethodConfig) !== "{}") {
             if ("images" != d.k) {
                 let msg = pako.gzip(encodeURIComponent(JSON.stringify(d)), {to: "string"});

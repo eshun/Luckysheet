@@ -1,6 +1,6 @@
 import locale from '../locale/locale';
 import Store from '../store';
-import luckysheetConfigsetting from './luckysheetConfigsetting';
+import sheetConfigSetting from './sheetConfigSetting';
 import { getObjType } from '../utils/util';
 import { createToolbarHtml } from './toolbar';
 //dom variable
@@ -8,7 +8,7 @@ const gridHTML = function(){
     const _locale = locale();
     const locale_info = _locale.info;
     const locale_print = _locale.print;
-    const userInfo = luckysheetConfigsetting.userInfo === true ? '<i style="font-size:16px;color:#ff6a00;" class="fa fa-taxi" aria-hidden="true"></i> Lucky' : luckysheetConfigsetting.userInfo; // When true, use the default HTML string. The rendering of userInfo below uses nested template strings. Otherwise, when display is used and the image path is not passed in, there will be an undefined request
+    const userInfo = sheetConfigSetting.userInfo === true ? '<i style="font-size:16px;color:#ff6a00;" class="fa fa-taxi" aria-hidden="true"></i> Lucky' : sheetConfigSetting.userInfo; // When true, use the default HTML string. The rendering of userInfo below uses nested template strings. Otherwise, when display is used and the image path is not passed in, there will be an undefined request
 
     
     // <div class="luckysheet-share-logo" title="\${logotitle}"></div>
@@ -26,7 +26,7 @@ const gridHTML = function(){
     // </div>` : ''}
     // 
 
-    const home=luckysheetConfigsetting.goback ? `<div data-tips="${locale_info.return}" id="luckysheet_info_detail_title" class="luckysheet_info_detail_back"> 
+    const home=sheetConfigSetting.goback ? `<div data-tips="${locale_info.return}" id="luckysheet_info_detail_title" class="luckysheet_info_detail_back"> 
                                                     <i style="color:#444D5A;" class="fa fa-angle-left fa-2x" aria-hidden="true"></i> 
                                                 </div>`:
                                                 `<div data-tips="\${logotitle}" class="luckysheet_info_detail_back" style="background-color: green; padding: 0px 20px;color:#ffffff;"> 
@@ -366,7 +366,7 @@ function rightclickHTML(){
                             ${rightclick.to}
                             <span class="luckysheet-cols-rows-shift-left">${rightclick.left}</span>
                             ${rightclick.add}
-                            <input type="text" class="luckysheet-mousedown-cancel" placeholder="${rightclick.number}" value="${luckysheetConfigsetting.defaultAddNum}" style="width:40px;height:20px;box-sizing:border-box;text-align:center;margin-left:5px;"/>
+                            <input type="text" class="luckysheet-mousedown-cancel" placeholder="${rightclick.number}" value="${sheetConfigSetting.defaultAddNum}" style="width:40px;height:20px;box-sizing:border-box;text-align:center;margin-left:5px;"/>
                             <span class="luckysheet-cols-rows-shift-word luckysheet-mousedown-cancel">${rightclick.column}</span>
                         </div>
                     </div>
@@ -375,7 +375,7 @@ function rightclickHTML(){
                             ${rightclick.to}
                             <span class="luckysheet-cols-rows-shift-right">${rightclick.right}</span>
                             ${rightclick.add}
-                            <input type="text" class="luckysheet-mousedown-cancel" placeholder="${rightclick.number}" value="${luckysheetConfigsetting.defaultAddNum}" style="width:40px;height:20px;box-sizing:border-box;text-align: center;margin-left:5px;"/>
+                            <input type="text" class="luckysheet-mousedown-cancel" placeholder="${rightclick.number}" value="${sheetConfigSetting.defaultAddNum}" style="width:40px;height:20px;box-sizing:border-box;text-align: center;margin-left:5px;"/>
                             <span class="luckysheet-cols-rows-shift-word luckysheet-mousedown-cancel">${rightclick.column}</span>
                         </div>
                     </div>
@@ -864,8 +864,8 @@ function customLoadingConfig() {
         textClass: '',
         customClass: ''
     }
-    if (JSON.stringify(luckysheetConfigsetting.loading) !== '{}') {
-        Object.assign(config, luckysheetConfigsetting.loading);
+    if (JSON.stringify(sheetConfigSetting.loading) !== '{}') {
+        Object.assign(config, sheetConfigSetting.loading);
     }
     return config;
 }
@@ -1122,10 +1122,10 @@ function customCellRightClickConfig() {
 	}
 
     // cellRightClickConfig determines the final result
-    if(JSON.stringify(luckysheetConfigsetting.cellRightClickConfig) !== '{}'){
-        Object.assign(config,luckysheetConfigsetting.cellRightClickConfig);
+    if(JSON.stringify(sheetConfigSetting.cellRightClickConfig) !== '{}'){
+        Object.assign(config,sheetConfigSetting.cellRightClickConfig);
     }
-    luckysheetConfigsetting.cellRightClickConfig = config;
+    sheetConfigSetting.cellRightClickConfig = config;
     return config;
 }
 
@@ -1144,10 +1144,10 @@ function customSheetRightClickConfig() {
 	}
 
     // sheetRightClickConfig determines the final result
-    if(JSON.stringify(luckysheetConfigsetting.sheetRightClickConfig) !== '{}'){
-        Object.assign(config,luckysheetConfigsetting.sheetRightClickConfig);
+    if(JSON.stringify(sheetConfigSetting.sheetRightClickConfig) !== '{}'){
+        Object.assign(config,sheetConfigSetting.sheetRightClickConfig);
     }
-    luckysheetConfigsetting.sheetRightClickConfig = config;
+    sheetConfigSetting.sheetRightClickConfig = config;
     return config;
 }
 

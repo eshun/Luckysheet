@@ -3,7 +3,7 @@ import defaultSetting from './config.js';
 import { common_extend } from './utils/util';
 import Store from './store';
 import server from './controllers/server';
-import luckysheetConfigsetting from './controllers/luckysheetConfigsetting';
+import sheetConfigSetting from './controllers/sheetConfigSetting';
 import sheetmanage from './controllers/sheetmanage';
 import luckysheetsizeauto from './controllers/resize';
 import luckysheetHandler from './controllers/handler';
@@ -88,72 +88,72 @@ luckysheet.create = function (setting) {
     server.loadSheetUrl = extendsetting.loadSheetUrl;
     server.allowUpdate = extendsetting.allowUpdate;
 
-    //luckysheetConfigsetting=common_extend(luckysheetConfigsetting, extendsetting);
+    //sheetConfigSetting=common_extend(sheetConfigSetting, extendsetting);
 
-    luckysheetConfigsetting.defaultAddNum = extendsetting.defaultAddNum;
-    luckysheetConfigsetting.scrollBottomAutoAddRow = extendsetting.scrollBottomAutoAddRow;
+    sheetConfigSetting.defaultAddNum = extendsetting.defaultAddNum;
+    sheetConfigSetting.scrollBottomAutoAddRow = extendsetting.scrollBottomAutoAddRow;
 
-    luckysheetConfigsetting.autoFormatw = extendsetting.autoFormatw;
-    luckysheetConfigsetting.accuracy = extendsetting.accuracy;
-    luckysheetConfigsetting.total = extendsetting.data[0].total;
+    sheetConfigSetting.autoFormatw = extendsetting.autoFormatw;
+    sheetConfigSetting.accuracy = extendsetting.accuracy;
+    sheetConfigSetting.total = extendsetting.data[0].total;
 
-    luckysheetConfigsetting.loading = extendsetting.loading;
-    luckysheetConfigsetting.allowCopy = extendsetting.allowCopy;
-    luckysheetConfigsetting.showtoolbar = extendsetting.showtoolbar;
-    luckysheetConfigsetting.showtoolbarConfig = extendsetting.showtoolbarConfig;
-    luckysheetConfigsetting.showinfobar = extendsetting.showinfobar;
-    luckysheetConfigsetting.showsheetbar = extendsetting.showsheetbar;
-    luckysheetConfigsetting.showsheetbarConfig = extendsetting.showsheetbarConfig;
-    luckysheetConfigsetting.showstatisticBar = extendsetting.showstatisticBar;
-    luckysheetConfigsetting.showstatisticBarConfig = extendsetting.showstatisticBarConfig;
-    luckysheetConfigsetting.sheetFormulaBar = extendsetting.sheetFormulaBar;
-    luckysheetConfigsetting.cellRightClickConfig = extendsetting.cellRightClickConfig;
-    luckysheetConfigsetting.sheetRightClickConfig = extendsetting.sheetRightClickConfig;
-    luckysheetConfigsetting.pointEdit = extendsetting.pointEdit;
-    luckysheetConfigsetting.pointEditUpdate = extendsetting.pointEditUpdate;
-    luckysheetConfigsetting.pointEditZoom = extendsetting.pointEditZoom;
+    sheetConfigSetting.loading = extendsetting.loading;
+    sheetConfigSetting.allowCopy = extendsetting.allowCopy;
+    sheetConfigSetting.showtoolbar = extendsetting.showtoolbar;
+    sheetConfigSetting.showtoolbarConfig = extendsetting.showtoolbarConfig;
+    sheetConfigSetting.showinfobar = extendsetting.showinfobar;
+    sheetConfigSetting.showsheetbar = extendsetting.showsheetbar;
+    sheetConfigSetting.showsheetbarConfig = extendsetting.showsheetbarConfig;
+    sheetConfigSetting.showstatisticBar = extendsetting.showstatisticBar;
+    sheetConfigSetting.showstatisticBarConfig = extendsetting.showstatisticBarConfig;
+    sheetConfigSetting.sheetFormulaBar = extendsetting.sheetFormulaBar;
+    sheetConfigSetting.cellRightClickConfig = extendsetting.cellRightClickConfig;
+    sheetConfigSetting.sheetRightClickConfig = extendsetting.sheetRightClickConfig;
+    sheetConfigSetting.pointEdit = extendsetting.pointEdit;
+    sheetConfigSetting.pointEditUpdate = extendsetting.pointEditUpdate;
+    sheetConfigSetting.pointEditZoom = extendsetting.pointEditZoom;
 
-    luckysheetConfigsetting.userInfo = extendsetting.userInfo;
-    luckysheetConfigsetting.userMenuItem = extendsetting.userMenuItem;
-    luckysheetConfigsetting.goback = extendsetting.goback;
-    luckysheetConfigsetting.functionButton = extendsetting.functionButton;
+    sheetConfigSetting.userInfo = extendsetting.userInfo;
+    sheetConfigSetting.userMenuItem = extendsetting.userMenuItem;
+    sheetConfigSetting.goback = extendsetting.goback;
+    sheetConfigSetting.functionButton = extendsetting.functionButton;
 
-    luckysheetConfigsetting.showConfigWindowResize = extendsetting.showConfigWindowResize;
-    luckysheetConfigsetting.enableAddRow = extendsetting.enableAddRow;
-    luckysheetConfigsetting.enableAddBackTop = extendsetting.enableAddBackTop;
-    luckysheetConfigsetting.enablePage = extendsetting.enablePage;
-    luckysheetConfigsetting.pageInfo = extendsetting.pageInfo;
+    sheetConfigSetting.showConfigWindowResize = extendsetting.showConfigWindowResize;
+    sheetConfigSetting.enableAddRow = extendsetting.enableAddRow;
+    sheetConfigSetting.enableAddBackTop = extendsetting.enableAddBackTop;
+    sheetConfigSetting.enablePage = extendsetting.enablePage;
+    sheetConfigSetting.pageInfo = extendsetting.pageInfo;
 
-    luckysheetConfigsetting.editMode = extendsetting.editMode;
-    luckysheetConfigsetting.beforeCreateDom = extendsetting.beforeCreateDom;
-    luckysheetConfigsetting.workbookCreateBefore = extendsetting.workbookCreateBefore;
-    luckysheetConfigsetting.workbookCreateAfter = extendsetting.workbookCreateAfter;
-    luckysheetConfigsetting.remoteFunction = extendsetting.remoteFunction;
+    sheetConfigSetting.editMode = extendsetting.editMode;
+    sheetConfigSetting.beforeCreateDom = extendsetting.beforeCreateDom;
+    sheetConfigSetting.workbookCreateBefore = extendsetting.workbookCreateBefore;
+    sheetConfigSetting.workbookCreateAfter = extendsetting.workbookCreateAfter;
+    sheetConfigSetting.remoteFunction = extendsetting.remoteFunction;
 
-    luckysheetConfigsetting.fireMousedown = extendsetting.fireMousedown;
-    luckysheetConfigsetting.forceCalculation = extendsetting.forceCalculation;
-    luckysheetConfigsetting.plugins = extendsetting.plugins;
+    sheetConfigSetting.fireMousedown = extendsetting.fireMousedown;
+    sheetConfigSetting.forceCalculation = extendsetting.forceCalculation;
+    sheetConfigSetting.plugins = extendsetting.plugins;
 
-    luckysheetConfigsetting.rowHeaderWidth = extendsetting.rowHeaderWidth;
-    luckysheetConfigsetting.columnHeaderHeight = extendsetting.columnHeaderHeight;
+    sheetConfigSetting.rowHeaderWidth = extendsetting.rowHeaderWidth;
+    sheetConfigSetting.columnHeaderHeight = extendsetting.columnHeaderHeight;
 
-    luckysheetConfigsetting.defaultColWidth = extendsetting.defaultColWidth;
-    luckysheetConfigsetting.defaultRowHeight = extendsetting.defaultRowHeight;
+    sheetConfigSetting.defaultColWidth = extendsetting.defaultColWidth;
+    sheetConfigSetting.defaultRowHeight = extendsetting.defaultRowHeight;
 
-    luckysheetConfigsetting.title = extendsetting.title;
-    luckysheetConfigsetting.container = extendsetting.container;
-    luckysheetConfigsetting.hook = extendsetting.hook;
+    sheetConfigSetting.title = extendsetting.title;
+    sheetConfigSetting.container = extendsetting.container;
+    sheetConfigSetting.hook = extendsetting.hook;
 
-    luckysheetConfigsetting.pager = extendsetting.pager;
+    sheetConfigSetting.pager = extendsetting.pager;
 
-    luckysheetConfigsetting.initShowsheetbarConfig = false;
+    sheetConfigSetting.initShowsheetbarConfig = false;
 
-    luckysheetConfigsetting.imageUpdateMethodConfig = extendsetting.imageUpdateMethodConfig;
+    sheetConfigSetting.imageUpdateMethodConfig = extendsetting.imageUpdateMethodConfig;
 
     if (Store.lang === 'zh') flatpickr.localize(Mandarin.zh);
 
     // Store the currently used plugins for monitoring asynchronous loading
-    Store.asyncLoad.push(...luckysheetConfigsetting.plugins);
+    Store.asyncLoad.push(...sheetConfigSetting.plugins);
 
     // Register plugins
     initPlugins(extendsetting.plugins , extendsetting.data);

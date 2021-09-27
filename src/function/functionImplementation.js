@@ -1,4 +1,4 @@
-import luckysheetConfigsetting from '../controllers/luckysheetConfigsetting';
+import sheetConfigSetting from '../controllers/sheetConfigSetting';
 import { luckysheet_getcelldata, luckysheet_parseData, luckysheet_getValue } from './func';
 import { inverse } from './matrix_methods';
 import { getSheetIndex, getluckysheetfile,getRangetxt } from '../methods/get';
@@ -27603,7 +27603,7 @@ const functionImplementation = {
                 return remoteFunction;
             }
 
-            luckysheetConfigsetting.remoteFunction(remoteFunction, data => {
+            sheetConfigSetting.remoteFunction(remoteFunction, data => {
                 const flowData = editor.deepCopyFlowData(Store.flowdata);
                 formula.execFunctionGroup(cellRow, cellColumn, data);
                 flowData[cellRow][cellColumn] = {

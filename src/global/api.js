@@ -25,7 +25,7 @@ import pivotTable from '../controllers/pivotTable';
 import server from "../controllers/server";
 import menuButton from '../controllers/menuButton';
 import selection from "../controllers/selection";
-import luckysheetConfigsetting from "../controllers/luckysheetConfigsetting";
+import sheetConfigSetting from "../controllers/sheetConfigSetting";
 import luckysheetFreezen from "../controllers/freezen";
 import luckysheetsizeauto from '../controllers/resize';
 import sheetmanage from '../controllers/sheetmanage';
@@ -6791,7 +6791,7 @@ export function updataSheet (options = {}) {
     setTimeout(function () {
         sheetmanage.showSheet();
         sheetmanage.restoreCache();
-        formula.execFunctionGroupForce(luckysheetConfigsetting.forceCalculation);
+        formula.execFunctionGroupForce(sheetConfigSetting.forceCalculation);
         sheetmanage.restoreSheetAll(Store.currentSheetIndex);
         luckysheetrefreshgrid();
         if (success && typeof success === 'function') {

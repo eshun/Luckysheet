@@ -13,7 +13,7 @@ import { isRealNum } from '../global/validate';
 import { replaceHtml, getObjType, chatatABC, arrayRemoveItem } from '../utils/util';
 import { sheetHTML,sheetlodingHTML } from './constant';
 import server from './server';
-import luckysheetConfigsetting from './luckysheetConfigsetting';
+import sheetConfigSetting from './sheetConfigSetting';
 import pivotTable from './pivotTable';
 import luckysheetsizeauto from './resize';
 import luckysheetPostil from './postil';
@@ -283,7 +283,7 @@ const sheetmanage = {
         $("#sheet-area div.sheets-item").removeClass("sheets-item-active");
         
         let indicator;
-        if(luckysheetConfigsetting.showsheetbarConfig.sheet){
+        if(sheetConfigSetting.showsheetbarConfig.sheet){
             indicator = luckysheetcurrentSheetitem.nextAll(":visible");
             if (luckysheetcurrentSheetitem.nextAll(":visible").length > 0) {
                 indicator = indicator.eq(0).data("index");
@@ -436,7 +436,7 @@ const sheetmanage = {
             _c.scrollLeft(scrollLeftpx - 10);
 
             if (c_width >= winW * 0.7) {
-                if(luckysheetConfigsetting.showsheetbarConfig.sheet){
+                if(sheetConfigSetting.showsheetbarConfig.sheet){
                     $("#sheet-area .sheets-scroll").css("display", "inline-block");
                     $("#sheet-container .docs-sheet-fade-left").show();
                 }
@@ -623,8 +623,8 @@ const sheetmanage = {
         }
 
         //亿万格式+精确度 恢复全局初始化
-        luckysheetConfigsetting.autoFormatw = false;  
-        luckysheetConfigsetting.accuracy = undefined;
+        sheetConfigSetting.autoFormatw = false;  
+        sheetConfigSetting.accuracy = undefined;
         return data;
     },
     cutGridData: function(d) {
@@ -702,14 +702,14 @@ const sheetmanage = {
             Store.defaultrowlen = parseFloat(file["defaultRowHeight"]);
         }
         else{
-            Store.defaultrowlen = luckysheetConfigsetting["defaultRowHeight"];
+            Store.defaultrowlen = sheetConfigSetting["defaultRowHeight"];
         }
 
         if(file["defaultColWidth"]!=null){
             Store.defaultcollen = parseFloat(file["defaultColWidth"]);
         }
         else{
-            Store.defaultcollen = luckysheetConfigsetting["defaultColWidth"];
+            Store.defaultcollen = sheetConfigSetting["defaultColWidth"];
         }
 
         if(file["showGridLines"]!=null){
@@ -771,12 +771,12 @@ const sheetmanage = {
         }
 
         //钩子函数 表格创建之前触发
-        if(typeof luckysheetConfigsetting.beforeCreateDom == "function" ){
-            luckysheetConfigsetting.beforeCreateDom(luckysheet);
+        if(typeof sheetConfigSetting.beforeCreateDom == "function" ){
+            sheetConfigSetting.beforeCreateDom(luckysheet);
         }
 
-        if(typeof luckysheetConfigsetting.workbookCreateBefore == "function"){
-            luckysheetConfigsetting.workbookCreateBefore(luckysheet);
+        if(typeof sheetConfigSetting.workbookCreateBefore == "function"){
+            sheetConfigSetting.workbookCreateBefore(luckysheet);
         }
 
         // Store.flowdata = data;
@@ -818,7 +818,7 @@ const sheetmanage = {
                     _this.restoreselect();
                     _this.CacheNotLoadControll = [];
                     _this.restoreCache();
-                    formula.execFunctionGroupForce(luckysheetConfigsetting.forceCalculation);
+                    formula.execFunctionGroupForce(sheetConfigSetting.forceCalculation);
                     _this.restoreSheetAll(Store.currentSheetIndex);
                     
                     // luckysheetrefreshgrid(0, 0);
@@ -855,17 +855,17 @@ const sheetmanage = {
 
                     // 此处已经渲染完成表格，应该挪到前面
                     // //钩子函数 表格创建之前触发
-                    // if(typeof luckysheetConfigsetting.beforeCreateDom == "function" ){
-                    //     luckysheetConfigsetting.beforeCreateDom(luckysheet);
+                    // if(typeof sheetConfigSetting.beforeCreateDom == "function" ){
+                    //     sheetConfigSetting.beforeCreateDom(luckysheet);
                     // }
 
-                    // if(typeof luckysheetConfigsetting.workbookCreateBefore == "function"){
-                    //     luckysheetConfigsetting.workbookCreateBefore(luckysheet);
+                    // if(typeof sheetConfigSetting.workbookCreateBefore == "function"){
+                    //     sheetConfigSetting.workbookCreateBefore(luckysheet);
                     // }
 
                     arrayRemoveItem(Store.asyncLoad,'core');
 
-                    if(luckysheetConfigsetting.pointEdit){
+                    if(sheetConfigSetting.pointEdit){
                         setTimeout(function(){
                             Store.loadingObj.close()
                         }, 0);
@@ -1228,7 +1228,7 @@ const sheetmanage = {
 
                 setTimeout(function () {
                     _this.restoreCache();
-                    formula.execFunctionGroupForce(luckysheetConfigsetting.forceCalculation);
+                    formula.execFunctionGroupForce(sheetConfigSetting.forceCalculation);
                     _this.restoreSheetAll(Store.currentSheetIndex);
                     luckysheetrefreshgrid();
                 }, 1);
@@ -1271,7 +1271,7 @@ const sheetmanage = {
                    
                     setTimeout(function () {
                         _this.restoreCache();
-                        formula.execFunctionGroupForce(luckysheetConfigsetting.forceCalculation);
+                        formula.execFunctionGroupForce(sheetConfigSetting.forceCalculation);
                         _this.restoreSheetAll(Store.currentSheetIndex);
                         luckysheetrefreshgrid();
                     }, 1);
@@ -1498,7 +1498,7 @@ const sheetmanage = {
         });
 
         if (c_width >= containerW) {
-            if(luckysheetConfigsetting.showsheetbarConfig.sheet){
+            if(sheetConfigSetting.showsheetbarConfig.sheet){
                 $("#sheet-area .sheets-scroll").css("display", "inline-block");
                 $("#sheet-container .docs-sheet-fade-left").show();
             }

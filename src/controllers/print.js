@@ -1,4 +1,4 @@
-import luckysheetConfigsetting from './luckysheetConfigsetting';
+import sheetConfigSetting from './sheetConfigSetting';
 import {zoomChange} from './zoom';
 import menuButton from './menuButton';
 import sheetmanage from './sheetmanage';
@@ -109,8 +109,8 @@ function printLineAndNumberCreate(){
     const sheet = sheetmanage.getSheetByIndex();
     const sheetTableContent = $("#sheetTableContent").get(0).getContext("2d");
 
-    const col_w=luckysheetConfigsetting.defaultColWidth;
-    const row_h=luckysheetConfigsetting.defaultRowHeight;
+    const col_w=sheetConfigSetting.defaultColWidth;
+    const row_h=sheetConfigSetting.defaultRowHeight;
 
     const contentWidth = sheet.ch_width;
     const contentHeight = sheet.rh_height;
@@ -201,7 +201,7 @@ function switchViewBtn(_t){
 }
 
 export function printInitial(){
-    let container = luckysheetConfigsetting.container;
+    let container = sheetConfigSetting.container;
     let _this = this;
     $("#"+container).find(".sheet-print-viewBtn").click(function(){
         switchViewBtn($(this));
