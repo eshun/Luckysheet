@@ -30,6 +30,7 @@ import tooltip from '../global/tooltip';
 import locale from '../locale/locale';
 import {enterKeyControll} from './inlineString';
 import Store from '../store';
+import {printRange} from '../expendPlugins/print/plugin';
 
 
 let luckysheet_shiftkeydown = false;
@@ -980,5 +981,17 @@ export function keyboardInitial(){
             $(element).trigger('click');
         }
 
-    })
+    });
+
+    $(document).on("keyup",function(e){
+        if(e.ctrlKey && e.keyCode == 80){
+            //console.log('print');
+            
+            printRange();
+            e.preventDefault();
+        }
+    });
+
+    //初始化默认光标
+    $("#luckysheet-rich-text-editor").focus();
 }

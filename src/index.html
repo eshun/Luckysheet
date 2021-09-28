@@ -117,8 +117,13 @@
 
 			setTimeout(function () {
 
-				sheet.switchView(2);
-				// luckysheet.setBorderInfo({
+				//const url=sheet.getScreenshot();
+
+				//sheet.print();
+				//console.log(pages);
+
+				//sheet.switchView(2);
+				// sheet.setBorderInfo({
 				// 	range:[
 				// 		{column:[0,9],row:[0,20]},
 				// 		{column:[10,19],row:[0,20]},
@@ -135,12 +140,10 @@
 				// 	style:"9",
         		// 	color:"#3d85c6",
 				// });
-			//luckysheet.setCellValue(row, column, value)
+			//sheet.setCellValue(row, column, value)
 			//getRangeHtml()// 获取当前选区HTML（table） 可以用于选区打印
 
-				//luckysheet.showPrintGridLines();
-				//const pages=luckysheet.getPrintPageHtml();
-				//console.log(pages);
+				//sheet.showPrintGridLines();
 			}, 1000);
 		})
 	</script>

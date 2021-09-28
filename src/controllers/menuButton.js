@@ -39,9 +39,9 @@ import {openProtectionModal,checkProtectionFormatCells,checkProtectionNotEnable}
 import Store from '../store';
 import locale from '../locale/locale';
 import { luckysheetDrawMain, sheetDrawFistBorder } from '../global/draw';
-import {checkTheStatusOfTheSelectedCells,getRangeHtml,getPrintPageHtml,getPrintPages} from '../global/api';
+import {checkTheStatusOfTheSelectedCells,getRangeHtml,getPrintPages} from '../global/api';
 
-import {renderPdf,printPage} from '../expendPlugins/print/plugin';
+import {printRange,printPages} from '../expendPlugins/print/plugin';
 
 const menuButton = {
     "menu": '<div class="luckysheet-cols-menu luckysheet-rightgclick-menu luckysheet-menuButton ${subclass} luckysheet-mousedown-cancel" id="luckysheet-icon-${id}-menuButton">${item}</div>',
@@ -2836,15 +2836,13 @@ const menuButton = {
                     let _t = $(this), itemvalue = _t.attr("itemvalue");
 
                     if(itemvalue == "print"){ //Print config
-                        printPage();
-                    }else if(itemvalue == "gridLines"){
+                        printPages();
+                    }else if(itemvalue == "gridLines") {
                         Store.showPrintGridLines=!Store.showPrintGridLines;
                         printLineAndNumber();
                     }
-                    else if(itemvalue == "areas"){ //range
-                        const html= getRangeHtml();
-
-                        renderPdf(html);
+                    else if(itemvalue == "areas") { //range
+                        printRange();
                     }
                 });
             }
@@ -4542,64 +4540,99 @@ const menuButton = {
 
         this.fontSelectList = itemdata;
     },
-    rangeScreenshot: function() {
-        console.log('rangeImage');
-        
+    rangeScreenshot: function(options) {
         let  _locale = locale();
         const locale_screenshot = _locale.screenshot;
-        if (Store.luckysheet_select_save.length == 0) {
-            if (isEditMode()) {
-                alert(locale_screenshot.screenshotTipNoSelection);
-            }
-            else {
-                tooltip.info(locale_screenshot.screenshotTipTitle, locale_screenshot.screenshotTipNoSelection);
-            }
-            return;
-        }
-
-        if (Store.luckysheet_select_save.length > 1) {
-            if (isEditMode()) {
-                alert(locale_screenshot.screenshotTipHasMulti);
-            }
-            else {
-                tooltip.info(locale_screenshot.screenshotTipTitle, locale_screenshot.screenshotTipHasMulti);
-            }
-            return;
-        }
         const defaultPadding=1;
 
-        //截图范围内包含部分合并单元格，提示
-        if (Store.config["merge"] != null) {
-            let has_PartMC = false;
-
-            for (let s = 0; s < Store.luckysheet_select_save.length; s++) {
-                let r1 = Store.luckysheet_select_save[s].row[0],
-                    r2 = Store.luckysheet_select_save[s].row[1];
-                let c1 = Store.luckysheet_select_save[s].column[0],
-                    c2 = Store.luckysheet_select_save[s].column[1];
-
-                has_PartMC = hasPartMC(Store.config, r1, r2, c1, c2);
-
-                if (has_PartMC) {
-                    break;
-                }
-            }
-
-            if (has_PartMC) {
+        let range={...options};
+        if(!(options&&options.row)){
+            if (Store.luckysheet_select_save.length == 0) {
                 if (isEditMode()) {
-                    alert(locale_screenshot.screenshotTipHasMerge);
+                    alert(locale_screenshot.screenshotTipNoSelection);
                 }
                 else {
-                    tooltip.info(locale_screenshot.screenshotTipTitle, locale_screenshot.screenshotTipHasMerge);
+                    tooltip.info(locale_screenshot.screenshotTipTitle, locale_screenshot.screenshotTipNoSelection);
                 }
                 return;
             }
+    
+            if (Store.luckysheet_select_save.length > 1) {
+                if (isEditMode()) {
+                    alert(locale_screenshot.screenshotTipHasMulti);
+                }
+                else {
+                    tooltip.info(locale_screenshot.screenshotTipTitle, locale_screenshot.screenshotTipHasMulti);
+                }
+                return;
+            }
+            range=Store.luckysheet_select_save[0];
+        }
+        // if(getObjType(range) == 'string'){
+        //     if(!formula.iscelldata(range)){
+        //         return tooltip.info("The range parameter is invalid.", "");
+        //     }
+    
+        //     let cellrange = formula.getcellrange(range);
+        //     range = {
+        //         "row": cellrange.row,
+        //         "column": cellrange.column
+        //     };
+        // }
+        if(getObjType(range) != 'object' || range.row == null || range.column == null){
+            if (isEditMode()) {
+                alert("The range parameter is invalid.");
+            }
+            else {
+                tooltip.info("The range parameter is invalid.", "");
+            }
+            return;
         }
 
-        let st_r = Store.luckysheet_select_save[0].row[0],
-            ed_r = Store.luckysheet_select_save[0].row[1];
-        let st_c = Store.luckysheet_select_save[0].column[0],
-            ed_c = Store.luckysheet_select_save[0].column[1];
+        let st_r = range.row[0],
+            ed_r = range.row[1];
+        let st_c = range.column[0],
+            ed_c = range.column[1];
+
+        let has_PartMC = hasPartMC(Store.config, st_r, ed_r, st_c, ed_c);
+        //截图范围内包含部分合并单元格，提示
+        if(has_PartMC){
+            if (isEditMode()) {
+                alert(locale_screenshot.screenshotTipHasMerge);
+            }
+            else {
+                tooltip.info(locale_screenshot.screenshotTipTitle, locale_screenshot.screenshotTipHasMerge);
+            }
+            return;
+        }
+        //截图范围内包含部分合并单元格，提示
+        // if (Store.config["merge"] != null) {
+        //     let has_PartMC = false;
+
+        //     for (let s = 0; s < Store.luckysheet_select_save.length; s++) {
+        //         let r1 = Store.luckysheet_select_save[s].row[0],
+        //             r2 = Store.luckysheet_select_save[s].row[1];
+        //         let c1 = Store.luckysheet_select_save[s].column[0],
+        //             c2 = Store.luckysheet_select_save[s].column[1];
+
+        //         has_PartMC = hasPartMC(Store.config, r1, r2, c1, c2);
+
+        //         if (has_PartMC) {
+        //             break;
+        //         }
+        //     }
+
+        //     if (has_PartMC) {
+        //         if (isEditMode()) {
+        //             alert(locale_screenshot.screenshotTipHasMerge);
+        //         }
+        //         else {
+        //             tooltip.info(locale_screenshot.screenshotTipTitle, locale_screenshot.screenshotTipHasMerge);
+        //         }
+        //         return;
+        //     }
+        // }
+
 
         let scrollHeight, rh_height;
         if (st_r - 1 < 0) {

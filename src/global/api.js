@@ -42,6 +42,7 @@ import dayjs from "dayjs";
 import {getRangetxt } from '../methods/get';
 import {luckysheetupdateCell} from '../controllers/updateCell';
 import {printLineAndNumber} from '../controllers/print';
+import {printPage} from "../expendPlugins/print/plugin";
 const IDCardReg = /^\d{6}(18|19|20)?\d{2}(0[1-9]|1[12])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)$/i;
 
 /**
@@ -5645,98 +5646,7 @@ export function resize(options = {}){
  * @param {Object | String} options.range 选区范围，只能为单个选区；默认为当前选区
  */
 export function getScreenshot(options = {}) {
-    let {
-        range = Store.luckysheet_select_save[Store.luckysheet_select_save.length - 1],
-    } = {...options}
-
-    if(getObjType(range) == 'string'){
-        if(!formula.iscelldata(range)){
-            return tooltip.info("The range parameter is invalid.", "");
-        }
-
-        let cellrange = formula.getcellrange(range);
-        range = {
-            "row": cellrange.row,
-            "column": cellrange.column
-        };
-    }
-
-    if(getObjType(range) != 'object' || range.row == null || range.column == null){
-        return tooltip.info("The range parameter is invalid.", "");
-    }
-
-    let str = range.row[0],
-        edr = range.row[1],
-        stc = range.column[0],
-        edc = range.column[1];
-
-    let has_PartMC = hasPartMC(Store.config, str, edr, stc, edc);
-
-    if(has_PartMC){
-        return tooltip.info('Cannot perform this operation on partially merged cells', '');
-    }
-
-    let visibledatarow = Store.visibledatarow;
-    let visibledatacolumn = Store.visibledatacolumn;
-
-    let scrollHeight, rh_height;
-    if (str - 1 < 0) {
-        scrollHeight = 0;
-        rh_height = visibledatarow[edr];
-    }
-    else {
-        scrollHeight = visibledatarow[str - 1];
-        rh_height = visibledatarow[edr] - visibledatarow[str - 1];
-    }
-
-    let scrollWidth, ch_width;
-    if (stc - 1 < 0) {
-        scrollWidth = 0;
-        ch_width = visibledatacolumn[edc];
-    }
-    else {
-        scrollWidth = visibledatacolumn[stc - 1];
-        ch_width = visibledatacolumn[edc] - visibledatacolumn[stc - 1];
-    }
-
-    let newCanvas = $("<canvas>").attr({
-        width: Math.ceil(ch_width * Store.devicePixelRatio),
-        height: Math.ceil(rh_height * Store.devicePixelRatio)
-    }).css({ width: ch_width, height: rh_height });
-
-    luckysheetDrawMain(scrollWidth, scrollHeight, ch_width, rh_height, 1, 1, null, null, newCanvas);
-    let ctx_newCanvas = newCanvas.get(0).getContext("2d");
-
-    //补上 左边框和上边框
-    ctx_newCanvas.beginPath();
-    ctx_newCanvas.moveTo(
-        0,
-        0
-    );
-    ctx_newCanvas.lineTo(
-        0,
-        Store.devicePixelRatio * rh_height
-    );
-    ctx_newCanvas.lineWidth = Store.devicePixelRatio * 2;
-    ctx_newCanvas.strokeStyle = sheetdefaultstyle.strokeStyle;
-    ctx_newCanvas.stroke();
-    ctx_newCanvas.closePath();
-
-    ctx_newCanvas.beginPath();
-    ctx_newCanvas.moveTo(
-        0,
-        0
-    );
-    ctx_newCanvas.lineTo(
-        Store.devicePixelRatio * ch_width,
-        0
-    );
-    ctx_newCanvas.lineWidth = Store.devicePixelRatio * 2;
-    ctx_newCanvas.strokeStyle = sheetdefaultstyle.strokeStyle;
-    ctx_newCanvas.stroke();
-    ctx_newCanvas.closePath();
-
-    let url = newCanvas.get(0).toDataURL("image/png");
+    let {url} = menuButton.rangeScreenshot(options);
 
     return url;
 }
@@ -6977,23 +6887,15 @@ export function RangeIsNoEmpty(options = {}) {
 }
 
 /**
- * 获取打印页Html
+ * 打印{page}页
  * @param {Number} page 页码
  */
-export function getPrintPageHtml(page=1) {
+export function print(page=1) {
     if(!Store.pageRange || Store.pageRange.length<1){
         printLineAndNumber(true);
     }
-    if(!page || page<1) page=1;
-    if(page>Store.pageRange.length) page=Store.pageRange.length;
 
-    const range=Store.pageRange[page-1];
-
-    const oo=RangeIsNoEmpty({range});
-    if(oo===true){
-        return getRangeHtml({range})
-    }
-    return null;
+    printPage(page);
 }
 
 export function switchView (key) {

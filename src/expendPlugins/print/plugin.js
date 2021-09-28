@@ -1,11 +1,13 @@
 import { seriesLoadScripts, loadLinks, $$ } from '../../utils/util';
-import { getPrintPages, RangeIsNoEmpty, getPrintPageHtml } from '../../global/api';
+import { getPrintPages,RangeIsNoEmpty } from '../../global/api';
+import menuButton from '../../controllers/menuButton';
+import tooltip from '../../global/tooltip';
+import Store from '../../store';
+
 import { jsPDF } from "jspdf";
 window.jsPDF = jsPDF;
 import html2canvas from 'html2canvas';
 window.html2canvas = html2canvas;
-
-import tooltip from '../../global/tooltip';
 
 
 // Dynamically load dependent scripts and styles
@@ -26,58 +28,120 @@ function print(data, isDemo) {
     });
 }
 
-function renderPdf(html){
+async function renderPdf(imgs) {
     const pdf = new jsPDF('p', 'pt', 'a4', false);
-    const h=pdf.getPageHeight()+30;
-    const w=pdf.getPageWidth();
-    pdf.html(html || document.body, {
-        callback: function (pdf) {
-            tooltip.screenshot('', '<div><iframe id="sheet-confirm-print-save" style="border: 0;width:' + w + 'px;height:' + h+ 'px;overflow:auto;" /></div>',null,' ');
-            $('#sheet-confirm-print-save').attr('src', pdf.output('datauristring'));
-        }
-    });
+    const padding = 10;
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = pdf.internal.pageSize.getHeight();
+    if(imgs && imgs.length>0){
+        imgs.forEach((img,i)=> {
+            const imgProps= pdf.getImageProperties(img);
+            let imgWidth = imgProps.width;
+            let imgHeight = imgProps.height;
+            if(imgWidth>pdfWidth-(2*padding)){
+                imgWidth=pdfWidth-(2*padding);
+                imgHeight = (imgProps.height/imgProps.width) * imgWidth;
+            }
+            if(imgHeight>pdfHeight-(2*padding)){
+                imgHeight=pdfHeight-(2*padding);
+                imgWidth=(imgProps.width/imgProps.height) * imgHeight;
+            }
+            pdf.addImage(img, 'PNG', 10, 10, imgWidth, imgHeight);
+            if(imgs.length>1 && i<imgs.length-1){
+                pdf.addPage();
+            }
+        });
+        let timer=setInterval(function() {
+            //let pdfUrl = pdf.output('datauristring');// 预览内容过大出现空白页
+            var pdfBlob = pdf.output("blob");
+            if(pdfBlob){
+                var pdfUrl = URL.createObjectURL(pdfBlob);
+                clearInterval(timer);
+                timer=null;
+                
+                const printFrame = document.createElement('iframe');
+                document.body.appendChild(printFrame);
+            
+                printFrame.style.display = 'none';
+                printFrame.onload = function() {
+                    var printWindow = printFrame.contentWindow;
+                    if (!printWindow) {
+                        throw new Error('Could not get content window');
+                    }
+                    if (printWindow.matchMedia) {
+                        printWindow.matchMedia('print').addListener((media) => {
+                            console.log('print event',media);
+                            
+                            // if (media.matches) {
+                            //     //beforePrint();
+                            // } else {
+                            //     //afterPrint();
+                            //     //document.body.removeChild(printFrame);
+                            // }
+                        });
+                    } else {
+                        //onbeforeprint
+                        printWindow.onafterprint = function () {
+                            printFrame.parentNode.removeChild(printFrame); 
+                        }
+                    }
+                    setTimeout(function() {
+                        printWindow.focus();
+                        printWindow.print();
+                    }, 1);
+                };
+                printFrame.src = pdfUrl;
+            }
+        },500);
+    }
 }
 
-async function printPage() {
-    const pdf = new jsPDF('p', 'pt', 'a4', false);
-    const h=pdf.getPageHeight()+30;
-    const w=pdf.getPageWidth();
+function printRange() {
+    const showGridLines=Store.showGridLines;
+    Store.showGridLines=false;
+    let {url,image} = menuButton.rangeScreenshot();
+    Store.showGridLines=showGridLines;
 
-    let p=1;
-    const page=getPrintPages();
-    for(let i=1;i<=page;i++){
-        const pageHtml=getPrintPageHtml(i);
-        if(!!pageHtml){
-            console.log(p,pageHtml)
-            if(p>1){
-               pdf.addPage();
+    renderPdf([image]);
+}
+
+function printPage(page=1) {
+    const showGridLines=Store.showGridLines;
+    Store.showGridLines=false;
+    
+    if(!page || page<1) page=1;
+    if(page>Store.pageRange.length) page=Store.pageRange.length;
+
+    const range=Store.pageRange[page-1];
+    const {url,image}=menuButton.rangeScreenshot({...range});
+
+    Store.showGridLines=showGridLines;
+    renderPdf([image]);
+}
+
+/**
+ * 
+ */
+function printPages() {
+    let imgs=[];
+    const pages=getPrintPages();
+    const showGridLines=Store.showGridLines;
+    Store.showGridLines=false;
+    for(let i=0;i<pages;i++){
+        const range=Store.pageRange[i];
+        if(i===0){
+            const {url,image}=menuButton.rangeScreenshot({...range});
+            imgs.push(image);
+        }else{
+            const oo=RangeIsNoEmpty({range});
+            if(oo===true){
+                const {url,image}=menuButton.rangeScreenshot({...range});
+                imgs.push(image);
             }
-            //pdf.setPage(p); 
-            await pdf.html(pageHtml);
-            p++;
         }
     }
-    
-    tooltip.screenshot('', '<iframe id="sheet-confirm-print-save" style="border: 0;width:' + w + 'px;height:' + h+ 'px;overflow:auto;" />',null,' ');
-    //$('#sheet-confirm-print-save').attr('src', pdf.output('datauristring'));
-
-    setTimeout(function() {
-
-        //Save PDF Doc	
-        ///pdf.save("HTML-Document.pdf");
-
-        //Generate BLOB object
-        var blob = pdf.output("blob");
-
-        //Getting URL of blob object
-        var blobURL = URL.createObjectURL(blob);
-
-        //Showing PDF generated in iFrame element
-        var iframe = document.getElementById('sheet-confirm-print-save');
-        iframe.src = blobURL;
-    }, 1000);
+    Store.showGridLines=showGridLines;
+    renderPdf(imgs);
 }
 
-
-
-export { print,renderPdf,printPage }
+export { print,printRange,printPage,printPages }

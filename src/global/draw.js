@@ -940,7 +940,7 @@ function luckysheetDrawMain(scrollWidth, scrollHeight, drawWidth, drawHeight, of
         }
     }
 
-    if(screenshot){
+    if(screenshot && Store.showGridLines){
         sheetDrawFistBorder(drawWidth, drawHeight, offsetLeft, offsetTop, mycanvas);
     }
 

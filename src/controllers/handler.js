@@ -4676,8 +4676,10 @@ export default function luckysheetHandler() {
     //菜单栏 截图按钮
     $("#luckysheet-chart-btn-screenshot").click(function () {
         const locale_screenshot = _locale.screenshot;
-
+        //const showGridLines=Store.showGridLines;
+        //Store.showGridLines=false;
         let {url,image} = menuButton.rangeScreenshot();
+        //Store.showGridLines=showGridLines;
 
         let maxHeight = $(window).height() - 200;
         tooltip.screenshot(locale_screenshot.screenshotTipSuccess, '<div id="luckysheet-confirm-screenshot-save" style="height:' + maxHeight + 'px;overflow:auto;"></div>', url);
