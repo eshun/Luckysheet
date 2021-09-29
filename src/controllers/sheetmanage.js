@@ -449,6 +449,7 @@ const sheetmanage = {
             // alert("非编辑模式下不允许该操作！");
             return;
         }
+        console.log('copySheet',copyindex, Store.luckysheetfile);
 
         let _this = this;
 
@@ -456,7 +457,8 @@ const sheetmanage = {
         let index = _this.generateRandomSheetIndex();
         
         let copyarrindex = _this.getSheetIndex(copyindex);
-        let copyjson = $.extend(true, {}, Store.luckysheetfile[copyarrindex]);
+        let file = Store.luckysheetfile[copyarrindex];
+        let copyjson = $.extend(true, {}, file);
         copyjson.order = order;
         copyjson.index = index;
         copyjson.name = _this.generateCopySheetName(Store.luckysheetfile, copyjson.name);
@@ -476,7 +478,7 @@ const sheetmanage = {
         $("#luckysheet-cell-main").append('<div id="luckysheet-datavisual-selection-set-' + index + '" class="luckysheet-datavisual-selection-set"></div>');
         cleargridelement(e);
 
-        server.saveParam("shc", index, { "copyindex": copyindex, "name": copyjson.name });
+        server.saveParam("shc", index, { "copyindex": file.index, "name": copyjson.name });
 
         _this.changeSheetExec(index);
         _this.reOrderAllSheet();
@@ -484,7 +486,7 @@ const sheetmanage = {
         if (Store.clearjfundo) {
             Store.jfredo.push({ 
                 "type": "copySheet", 
-                "copyindex": copyindex, 
+                "copyindex": file.index, 
                 "index": copyjson.index, 
                 "sheetIndex": copyjson.index 
             });
