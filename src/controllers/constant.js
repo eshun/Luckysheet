@@ -26,13 +26,11 @@ const gridHTML = function(){
     // </div>` : ''}
     // 
 
-    const home=sheetConfigSetting.goback ? `<div data-tips="${locale_info.return}" id="luckysheet_info_detail_title" class="luckysheet_info_detail_back"> 
-                                                    <i style="color:#444D5A;" class="fa fa-angle-left fa-2x" aria-hidden="true"></i> 
-                                                </div>`:
-                                                `<div data-tips="\${logotitle}" class="luckysheet_info_detail_back" style="background-color: green; padding: 0px 20px;color:#ffffff;"> 
-                                                    <i style="color:#ffffff;" class="fa fa-university" aria-hidden="true"></i> \${logotitle}
-                                                </div>`;
-    const navTabs=`<ul class="nav-tabs"><li>`+ home +`</li><li class="active"><span>开始</span></li></ul><div class="nav-tabs-tools"> \${functionButton} </div>`;
+    const home=sheetConfigSetting.goback ? `<span data-tips="${locale_info.return}" id="luckysheet_info_detail_title"><i style="color:#ffffff;" class="fa fa-angle-left fa-2x" aria-hidden="true"></i></span>` :
+    `<span><i style="color:#ffffff;" class="fa fa-university" aria-hidden="true"></i></span>`;
+    
+    const navTabs=`<ul class="nav-tabs"><li><div data-tips="\${logotitle}" class="luckysheet_info_detail">`+ home +`<span> \${logotitle} </span>
+    </div></li><li class="active"><span>开始</span></li></ul><div class="nav-tabs-tools"> \${functionButton} </div>`;
 
     return `<div class="luckysheet">
                     <canvas id="sheetTableContentF" style="display:none;" class="sheetTableContent"></canvas> 

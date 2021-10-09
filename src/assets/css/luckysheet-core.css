@@ -126,12 +126,22 @@
     margin: auto;
 }
 
-.sheet_info_detail div.luckysheet_info_detail_back {
+.sheet_info_detail .luckysheet_info_detail {
     border-radius: 3px;
+    background-color: green; 
+    display: flex;
+    color:#ffffff;
+    padding-right: 10px;
+}
+.sheet_info_detail .luckysheet_info_detail span {
+    /* padding: 0px 10px; */
+}
+.sheet_info_detail .luckysheet_info_detail>span:first-child {
+    padding: 0px 10px;
 }
 
-.sheet_info_detail div.luckysheet_info_detail_back:hover {
-    background: #eee;
+.sheet_info_detail .luckysheet_info_detail:hover {
+    
 }
 
 
