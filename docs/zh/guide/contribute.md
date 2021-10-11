@@ -14,7 +14,7 @@
 
 ## 如何参与贡献？
 
-* 贡献文档：浏览文档可以加深您对 Luckysheet 的了解，一旦发现文档写得不清晰或逻辑混乱的地方，可以订正、修改、补充，您可以通过 [中文论坛](https://support.qq.com/products/288322)或者 [谷歌论坛](https://groups.google.com/g/luckysheet)给予反馈
+* 贡献文档：浏览文档可以加深您对 Luckysheet 的了解，一旦发现文档写得不清晰或逻辑混乱的地方，可以订正、修改、补充，您可以通过 [中文论坛](https://support.qq.com/products/288322)或者 [谷歌论坛](https://groups.google.com/g/sheet)给予反馈
 * 贡献代码：欢迎大家为 Luckysheet 社区贡献代码，欢迎您认领Open状态的 [Issues](https://github.com/mengshukeji/Luckysheet/issues) 和未完成的特性，提交PR，成为贡献者之一如果您在使用过程中发现有些功能无法满足您的需求或出现问题，请在Issues中记录
 * 参与Issue讨论：您可以在任一 [Issues](https://github.com/mengshukeji/Luckysheet/issues) 下发表您的建议
 * Review代码：您可以在 [Github](https://github.com/mengshukeji/Luckysheet)上看到所有贡献者提交的PR，您可以Review他们的代码并发表您的建议

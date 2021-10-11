@@ -11,12 +11,12 @@ Of course, individual users are also welcome to buy author a glass of juice if L
 Luckysheet is an MIT-licensed open source project with its ongoing development made possible entirely by the support of these awesome [**backers**](#sponsors-list). If you'd like to join them, please consider:
 
 - [Become a backer or sponsor on Patreon](https://www.patreon.com/mengshukeji).
-- [Become a backer or sponsor on Open Collective](https://opencollective.com/luckysheet).
+- [Become a backer or sponsor on Open Collective](https://opencollective.com/sheet).
 - One-time donation via PayPal, WeChat or Alipay
 
 | PayPal |  WeChat  | Alipay |
 |---|---|---|
-| [Paypal Me](https://www.paypal.me/wbfsa) | <img src="https://minio.cnbabylon.com/public/luckysheet/wechat.jpg" width="140" />| <img src="https://minio.cnbabylon.com/public/luckysheet/alipay.jpg" width="130" /> |
+| [Paypal Me](https://www.paypal.me/wbfsa) | <img src="https://minio.cnbabylon.com/public/sheet/wechat.jpg" width="140" />| <img src="https://minio.cnbabylon.com/public/sheet/alipay.jpg" width="130" /> |
 
 ### What's the difference between Patreon and OpenCollective?
 

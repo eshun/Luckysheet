@@ -208,7 +208,7 @@ const luckysheetformula = {
             }
             else {
                 if (getObjType(value[0]) == "object") {
-                    return luckysheet.mask.getValueByFormat(value[0]);
+                    return sheet.mask.getValueByFormat(value[0]);
                 }
                 else {
                     return value[0];
@@ -216,7 +216,7 @@ const luckysheetformula = {
             }
         }
         else if (getObjType(value) == "object") {
-            return luckysheet.mask.getValueByFormat(value);
+            return sheet.mask.getValueByFormat(value);
         }
         else {
             return value;
@@ -1383,7 +1383,7 @@ const luckysheetformula = {
                         dynamicArrayItem = v[3].data;
                     }
                 }
-                // from API setCellValue,luckysheet.setCellValue(0, 0, {f: "=sum(D1)", bg:"#0188fb"}),value is an object, so get attribute f as value
+                // from API setCellValue,sheet.setCellValue(0, 0, {f: "=sum(D1)", bg:"#0188fb"}),value is an object, so get attribute f as value
                 else if (getObjType(value) == "object") {
                     let valueFunction = value.f;
 
@@ -1414,7 +1414,7 @@ const luckysheetformula = {
                             dynamicArrayItem = v[3].data;
                         }
                     }
-                    // from API setCellValue,luckysheet.setCellValue(0, 0, {f: "=sum(D1)", bg:"#0188fb"}),value is an object, so get attribute f as value
+                    // from API setCellValue,sheet.setCellValue(0, 0, {f: "=sum(D1)", bg:"#0188fb"}),value is an object, so get attribute f as value
                     else {
                         for (let attr in value) {
                             curv[attr] = value[attr];
@@ -1506,7 +1506,7 @@ const luckysheetformula = {
                     dynamicArrayItem = v[3].data;
                 }
             }
-            // from API setCellValue,luckysheet.setCellValue(0, 0, {f: "=sum(D1)", bg:"#0188fb"}),value is an object, so get attribute f as value
+            // from API setCellValue,sheet.setCellValue(0, 0, {f: "=sum(D1)", bg:"#0188fb"}),value is an object, so get attribute f as value
             else if (getObjType(value) == "object") {
                 let valueFunction = value.f;
 

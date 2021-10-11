@@ -519,7 +519,7 @@ const server = {
 	            }
 	        }
 	        else if(k == "pivotTable"){ //PivotTable
-	            // luckysheet.pivotTable.changePivotTable(index);
+	            // sheet.pivotTable.changePivotTable(index);
 	        }
 			else if(k == "frozen"){ //freezen row and column
 
@@ -934,7 +934,7 @@ const server = {
 	        if(op == "add"){ //插入
 	            file.chart.push(value);
 
-	            luckysheet.insertChartTosheet(value.sheetIndex, value.dataSheetIndex, value.option, value.chartType, value.selfOption, value.defaultOption, value.row, value.column, value.chart_selection_color, value.chart_id, value.chart_selection_id, value.chartStyle, value.rangeConfigCheck, value.rangeRowCheck, value.rangeColCheck, value.chartMarkConfig, value.chartTitleConfig, value.winWidth, value.winHeight, value.scrollLeft1, value.scrollTop1, value.chartTheme, value.myWidth, value.myHeight, value.myLeft, value.myTop, value.myindexrank1, true);
+	            sheet.insertChartTosheet(value.sheetIndex, value.dataSheetIndex, value.option, value.chartType, value.selfOption, value.defaultOption, value.row, value.column, value.chart_selection_color, value.chart_id, value.chart_selection_id, value.chartStyle, value.rangeConfigCheck, value.rangeRowCheck, value.rangeColCheck, value.chartMarkConfig, value.chartTitleConfig, value.winWidth, value.winHeight, value.scrollLeft1, value.scrollTop1, value.chartTheme, value.myWidth, value.myHeight, value.myLeft, value.myTop, value.myindexrank1, true);
 	        }
 	        else if(op == "xy" || op == "wh" || op == "update"){ //移动 缩放 更新
 	            for(let i = 0; i < file.chart.length; i++){
@@ -1176,7 +1176,7 @@ const server = {
             //console.log(base64);
             //console.log("压缩：", pako.gzip(base64, { to: "string" }));
             //console.log("imageRequest");
-            let curindex = luckysheet.sheetmanage.getCurSheetnoset();
+            let curindex = sheet.sheetmanage.getCurSheetnoset();
             _this.imageRequestLock =true;
             // let data1 = pako.gzip(encodeURIComponent(JSON.stringify({"t":"thumb", "img": base64, "curindex":curindex })), { to: "string" });
             let data1 = encodeURIComponent(JSON.stringify({"t":"thumb", "img": base64, "curindex":curindex }));

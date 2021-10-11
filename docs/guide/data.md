@@ -7,7 +7,7 @@
     Configure the address of `updateUrl`, Luckysheet will request the table data through ajax. By default, all `data` in the sheet data with status 1 is loaded, and the rest of the sheet loads all fields except the `data` field.
 
 - **Format**：
-    Through the global method `luckysheet.getluckysheetfile()`, the configuration information of all worksheets can be obtained.
+    Through the global method `sheet.getluckysheetfile()`, the configuration information of all worksheets can be obtained.
 
     The luckysheetfile example is as follows:
     ```json

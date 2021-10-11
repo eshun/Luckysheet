@@ -10,12 +10,12 @@
 
 	<link rel='stylesheet' href='./plugins/css/pluginsCss.css' />
 	<link rel='stylesheet' href='./plugins/plugins.css' />
-	<link rel='stylesheet' href='./css/luckysheet.css' />
+	<link rel='stylesheet' href='./css/sheet.css' />
 	<link rel='stylesheet' href='./assets/iconfont/iconfont.css' />
 	<script src="./plugins/js/plugin.js"></script>
 
-	<!-- rollup luckysheet.js -->
-	<script src="./luckysheet.umd.js"></script>
+	<!-- rollup sheet.js -->
+	<script src="./sheet.umd.js"></script>
 
 </head>
 
@@ -23,9 +23,9 @@
 	<!-- Non-full screen test -->
 	<!-- <div style="position: relative;width: 100%;height: 100%;">
 
-		<div id="luckysheet" style="margin:0px;padding:0px;position:absolute;width:80%;height:500px;left: 20%;top: 200px;bottom:0;right: 0;"></div>
+		<div id="sheet" style="margin:0px;padding:0px;position:absolute;width:80%;height:500px;left: 20%;top: 200px;bottom:0;right: 0;"></div>
 	</div> -->
-	<div id="luckysheet" style="margin:0px;padding:0px;position:absolute;width:100%;height:100%;left: 0px;top: 0px;"></div>
+	<div id="sheet" style="margin:0px;padding:0px;position:absolute;width:100%;height:100%;left: 0px;top: 0px;"></div>
 	<!-- demo feature, non-production use -->
 	<script src="./demoData/demoFeature.js"></script>
 	<script src="./demoData/sheetFormula.js"></script>
@@ -67,19 +67,19 @@
 					alert('If gridKey is not provided in the address bar, please add it in the source code')
 				}
                 options = {
-                    container: "luckysheet",
+                    container: "sheet",
                     lang: lang,
                     allowUpdate:true,
                     updateUrl: "ws://10.83.3.119:9090/sheet",
                     gridKey: gridKey,
-                    updateImageUrl: location.origin + "/luckysheet/api/updateImg",
-                    loadUrl: location.origin + "/luckysheet/api/load",
-                    loadSheetUrl: location.origin + "/luckysheet/api/loadsheet"
+                    updateImageUrl: location.origin + "/sheet/api/updateImg",
+                    loadUrl: location.origin + "/sheet/api/load",
+                    loadSheetUrl: location.origin + "/sheet/api/loadsheet"
                 }
 			}else{
                 // http://localhost:3000/ 
                 options = {
-                    container: 'luckysheet',
+                    container: 'sheet',
 					lang: lang,
 					// pager: {
 					// 	pageIndex: 1,
@@ -1888,7 +1888,7 @@
 					}
 				}]
 			}
-			luckysheet.create(options);
+			sheet.create(options);
 			})
 	</script>
 <style>

@@ -3,7 +3,7 @@
 ## Initial
 if you want to initial the `options`, you need to arrange every sheet data to `options.data`
 
-> when the initialization is done, you can use [`luckysheet.getAllSheets()`](/zh/guide/api.html#getAllSheets([setting])) to get all working sheet configurations.
+> when the initialization is done, you can use [`sheet.getAllSheets()`](/zh/guide/api.html#getAllSheets([setting])) to get all working sheet configurations.
 
 eg: options.data：
 ```json
@@ -134,7 +134,7 @@ eg: options.data：
 
     `r` represents the row, `c` represents the column, and `v` represents the value of the cell. value could be string, number, or object
 
-    The luckysheet creates a sheet data based on the number of `options.data[i].row` and  `options.data[i].column`, then uses `data[r][c]=v` to fullfill tables. Empty data cells are represented as null.
+    The sheet creates a sheet data based on the number of `options.data[i].row` and  `options.data[i].column`, then uses `data[r][c]=v` to fullfill tables. Empty data cells are represented as null.
 
     After initializing the table with celldata,the data is converted to the field [data](#data)in the luckyshetfile such as `luckysheetfile[i].data`. `data` stores the following update data and celldata will no longer be used.
 
@@ -527,7 +527,7 @@ eg: options.data：
 ### filter
 - type：Object
 - default：{}
-- usage：The specific settings of the filter match with the filter range of `filter_select`. When you create a filter area on the first sheet, you can also see the filter configuration information of the first sheet through `luckysheet.getLuckysheetfile()[0].filter`.
+- usage：The specific settings of the filter match with the filter range of `filter_select`. When you create a filter area on the first sheet, you can also see the filter configuration information of the first sheet through `sheet.getLuckysheetfile()[0].filter`.
 
     The following is a complete filter configuration example
     ```js
@@ -1330,7 +1330,7 @@ The parameters required for initialization will be designed as simple as possibl
 
 After initialization, Luckysheet stores more and more local data in luckysheetfile as local parameter. It means that we can realize the usage of Store data center. For example, the format of Freezen's parameters will also change.
 
-At this point, the lucky sheet file contains many local parameters that are not initialized and can be used to debug、analysis local status. you can use  `luckysheet.getluckysheetfile()` to get more information：
+At this point, the lucky sheet file contains many local parameters that are not initialized and can be used to debug、analysis local status. you can use  `sheet.getluckysheetfile()` to get more information：
 
 ::: details
 ```json

@@ -1,5 +1,5 @@
 # Table Operation
-`luckysheet` stores all operations in the history to `undo` and `redo`. If `allowupdate` is set to true and `updateURL` is available in initial, operations will be updated on the backend in real-time via webSocket. And every one can edit same sheet on the same time.
+`sheet` stores all operations in the history to `undo` and `redo`. If `allowupdate` is set to true and `updateURL` is available in initial, operations will be updated on the backend in real-time via webSocket. And every one can edit same sheet on the same time.
 
 >Source code [`src/controllers/server.js`] (https://github.com/mengshukeji/Luckysheet/blob/master/src/controllers/server.js) The module shows us the function of background saving.
 

@@ -103,7 +103,7 @@ export default function luckysheetsizeauto(isRefreshCanvas=true) {
                 </div>
             </div>
          </div>`,
-         // Add style left:$$('.luckysheet') left, when the worksheet does not fill the full screen
+         // Add style left:$$('.sheet') left, when the worksheet does not fill the full screen
         morediv = '<div id="sheet-icon-morebtn-div" class="sheet-wa-editor" style="position:absolute;top:'+ (Store.infobarHeight + Store.toolbarHeight + $("#" + Store.container).offset().top + $("body").scrollTop()) +'px;right:0px;z-index:1003;padding:5.5px;visibility:hidden;height:auto;white-space:initial;"></div>';
 
     if($("#sheet-icon-morebtn-div").length == 0){
@@ -168,7 +168,7 @@ export default function luckysheetsizeauto(isRefreshCanvas=true) {
             //When resize, change the width of the more button container in real time
             $$('#sheet-icon-morebtn-div').style.left = '';//reset
 
-            const containerLeft = $$('#luckysheet').getBoundingClientRect ? $$('#luckysheet').getBoundingClientRect().left : 0;
+            const containerLeft = $$('#sheet').getBoundingClientRect ? $$('#sheet').getBoundingClientRect().left : 0;
             const morebtnLeft = $$('#sheet-icon-morebtn-div').getBoundingClientRect().left;//get real left info
 
             if(morebtnLeft < containerLeft){
@@ -281,7 +281,7 @@ export function changeSheetContainerSize(gridW, gridH){
         }
     }
 
-    $("#" + Store.container).find(".luckysheet").height(gridH - 2).width(gridW - 2);
+    $("#" + Store.container).find(".sheet").height(gridH - 2).width(gridW - 2);
 
     Store.cellmainHeight = gridH - (Store.infobarHeight + Store.toolbarHeight + Store.calculatebarHeight + Store.columnHeaderHeight + Store.sheetBarHeight + Store.statisticBarHeight);
     Store.cellmainWidth = gridW - Store.rowHeaderWidth;

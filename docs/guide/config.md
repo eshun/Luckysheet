@@ -9,7 +9,7 @@ The following is a simple configuration example:
 ```js
 // Configuration item
 const options = {
-     container:'luckysheet', // set the id of the DOM container
+     container:'sheet', // set the id of the DOM container
      title:'Luckysheet Demo', // set the name of the table
      lang:'zh' // set language
 
@@ -17,7 +17,7 @@ const options = {
 }
 
 // Initialize the table
-luckysheet.create(options)
+sheet.create(options)
 ```
 
 The `options` configuration item here will affect the entire workbook. In particular, the configuration of a single worksheet needs to be set in the `options.data` array to set corresponding more detailed parameters. Refer to [Worksheet Configuration](/zh/guide/sheet.html)
@@ -77,7 +77,7 @@ The following are all supported setting parameters
 
 ### container
 - Type: String
-- Default: "luckysheet"
+- Default: "sheet"
 - Usage: Container ID
   
 ------------
@@ -669,7 +669,7 @@ The hook functions are uniformly configured under ʻoptions.hook`, and configura
 	A case of drawing two pictures in the upper left corner and lower right corner of cell D1
 	:::::: details
 	```js
-	luckysheet.create({
+	sheet.create({
             hook: {
                 cellRenderAfter: function (cell, position, sheetFile, ctx) {
                     var r = position.r;

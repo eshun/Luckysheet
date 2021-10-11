@@ -10,7 +10,7 @@ Luckysheet ，一款纯前端类似excel的在线表格，功能强大、配置�
 
 ## 在线案例
 
-- [协同编辑Demo](http://luckysheet.lashuju.com/demo/)
+- [协同编辑Demo](http://sheet.lashuju.com/demo/)
 
 ## 特性
 
@@ -125,17 +125,17 @@ npm run build
 
 #### CDN
 ```html
-<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/luckysheet@latest/dist/plugins/css/pluginsCss.css' />
-<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/luckysheet@latest/dist/plugins/plugins.css' />
-<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/luckysheet@latest/dist/css/luckysheet.css' />
-<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/luckysheet@latest/dist/assets/iconfont/iconfont.css' />
-<script src="https://cdn.jsdelivr.net/npm/luckysheet@latest/dist/plugins/js/plugin.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/luckysheet@latest/dist/luckysheet.umd.js"></script>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sheet@latest/dist/plugins/css/pluginsCss.css' />
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sheet@latest/dist/plugins/plugins.css' />
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sheet@latest/dist/css/sheet.css' />
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sheet@latest/dist/assets/iconfont/iconfont.css' />
+<script src="https://cdn.jsdelivr.net/npm/sheet@latest/dist/plugins/js/plugin.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sheet@latest/dist/sheet.umd.js"></script>
 ```
 
-注意，`https://cdn.jsdelivr.net/npm/luckysheet@latest/dist/luckysheet.umd.js`这个路径意思是会拉取到最新的luckysheet代码，但是如果Luckysheet刚刚发布，jsdelivr网站可能还没来得及从npm上同步过去，故而使用这个路径还是会拉到上一个版本，我们推荐您直接指定最新版本。
+注意，`https://cdn.jsdelivr.net/npm/sheet@latest/dist/sheet.umd.js`这个路径意思是会拉取到最新的luckysheet代码，但是如果Luckysheet刚刚发布，jsdelivr网站可能还没来得及从npm上同步过去，故而使用这个路径还是会拉到上一个版本，我们推荐您直接指定最新版本。
 
-想要指定Luckysheet版本，请在所有的CDN依赖文件后面加上版本号，如：`https://cdn.jsdelivr.net/npm/luckysheet@2.1.12/dist/luckysheet.umd.js`。
+想要指定Luckysheet版本，请在所有的CDN依赖文件后面加上版本号，如：`https://cdn.jsdelivr.net/npm/sheet@2.1.12/dist/sheet.umd.js`。
 
 > 如何知道最新版本是哪一版？查看最新 [release记录](https://github.com/mengshukeji/Luckysheet/releases) 或者 [package.json](https://github.com/mengshukeji/Luckysheet/blob/master/package.json) 的`version`字段。
 
@@ -148,15 +148,15 @@ npm run build
 ```html
 <link rel='stylesheet' href='./plugins/css/pluginsCss.css' />
 <link rel='stylesheet' href='./plugins/plugins.css' />
-<link rel='stylesheet' href='./css/luckysheet.css' />
+<link rel='stylesheet' href='./css/sheet.css' />
 <link rel='stylesheet' href='./assets/iconfont/iconfont.css' />
 <script src="./plugins/js/plugin.js"></script>
-<script src="./luckysheet.umd.js"></script>
+<script src="./sheet.umd.js"></script>
 ```
 ### 第二步
 指定一个表格容器
 ```html
-<div id="luckysheet" style="margin:0px;padding:0px;position:absolute;width:100%;height:100%;left: 0px;top: 0px;"></div>
+<div id="sheet" style="margin:0px;padding:0px;position:absolute;width:100%;height:100%;left: 0px;top: 0px;"></div>
 ```
 ### 第三步
 创建一个表格
@@ -165,9 +165,9 @@ npm run build
     $(function () {
         //配置项
         var options = {
-            container: 'luckysheet' //luckysheet为容器id
+            container: 'sheet' //luckysheet为容器id
         }
-        luckysheet.create(options)
+        sheet.create(options)
     })
 </script>
 ```
@@ -227,7 +227,7 @@ luckysheetfile = [ {sheet1设置},  {sheet2设置},  {sheet3设置} ]`
 ```
 ### 查看方式
 在chrome的console中查看
-`luckysheet.getluckysheetfile()`
+`sheet.getluckysheetfile()`
 可以看到完整设置
 `[{shee1}, {sheet2}, {sheet3}]`
 

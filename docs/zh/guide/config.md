@@ -9,7 +9,7 @@
 ```js
 // 配置项
 const options = {
-    container: 'luckysheet', // 设定DOM容器的id
+    container: 'sheet', // 设定DOM容器的id
     title: 'Luckysheet Demo', // 设定表格名称
     lang: 'zh' // 设定表格语言
 
@@ -17,7 +17,7 @@ const options = {
 }
 
 // 初始化表格
-luckysheet.create(options)
+sheet.create(options)
 ```
 
 这里的`options`配置项会作用于整个表格，特别的，单个sheet的配置则需要在`options.data`数组中，分别设置对应更详细的参数，参考[工作表配置](/zh/guide/sheet.html)
@@ -80,7 +80,7 @@ Luckysheet开放了更细致的自定义配置选项，分别有
 
 ### container
 - 类型：String
-- 默认值："luckysheet"
+- 默认值："sheet"
 - 作用：容器的ID
   
 ------------
@@ -799,7 +799,7 @@ Luckysheet开放了更细致的自定义配置选项，分别有
 	一个在D1单元格的左上角和右下角分别绘制两张图的案例
 	:::::: details
 	```js
-	luckysheet.create({
+	sheet.create({
             hook: {
                 cellRenderAfter: function (cell, position, sheetFile, ctx) {
                     var r = position.r;

@@ -41,18 +41,18 @@ import { initListener } from './controllers/listener';
 import { hideloading, showloading } from './global/loading.js';
 import { luckysheetextendData } from './global/extend.js';
 
-let luckysheet = {};
+let sheet = {};
 
 // mount api
-// luckysheet.api = api;
-// Object.assign(luckysheet, api);
+// sheet.api = api;
+// Object.assign(sheet, api);
 
-luckysheet = common_extend(api,luckysheet);
+sheet = common_extend(api,sheet);
 
 
 
 //创建luckysheet表格
-luckysheet.create = function (setting) {
+sheet.create = function (setting) {
     method.destroy()
     // Store original parameters for api: toJson
     Store.toJsonOptions = {}
@@ -224,55 +224,55 @@ function initialWorkBook(){
 }
 
 //获取所有表格数据
-luckysheet.getluckysheetfile = getluckysheetfile;
+sheet.getluckysheetfile = getluckysheetfile;
 
 //获取当前表格 选区
-luckysheet.getluckysheet_select_save = getluckysheet_select_save;
+sheet.getluckysheet_select_save = getluckysheet_select_save;
 
 //设置当前表格 选区
-luckysheet.setluckysheet_select_save = setluckysheet_select_save;
+sheet.setluckysheet_select_save = setluckysheet_select_save;
 
 //获取当前表格 config配置
-luckysheet.getconfig = getconfig;
+sheet.getconfig = getconfig;
 
 //二维数组数据 转化成 {r, c, v}格式 一维数组 (传入参数为二维数据data)
-luckysheet.getGridData = sheetmanage.getGridData;
+sheet.getGridData = sheetmanage.getGridData;
 
 //生成表格所需二维数组 （传入参数为表格数据对象file）
-luckysheet.buildGridData = sheetmanage.buildGridData;
+sheet.buildGridData = sheetmanage.buildGridData;
 
 // Refresh the canvas display data according to scrollHeight and scrollWidth
-luckysheet.luckysheetrefreshgrid = luckysheetrefreshgrid;
+sheet.luckysheetrefreshgrid = luckysheetrefreshgrid;
 
 // Refresh canvas
-luckysheet.jfrefreshgrid = jfrefreshgrid;
+sheet.jfrefreshgrid = jfrefreshgrid;
 
 // Get the value of the cell
-luckysheet.getcellvalue = getcellvalue;
+sheet.getcellvalue = getcellvalue;
 
 // Set cell value
-luckysheet.setcellvalue = setcellvalue;
+sheet.setcellvalue = setcellvalue;
 
 // Get selection range value
-luckysheet.getdatabyselection = getdatabyselection;
+sheet.getdatabyselection = getdatabyselection;
 
-luckysheet.sheetmanage = sheetmanage;
+sheet.sheetmanage = sheetmanage;
 
 // Data of the current table
-luckysheet.flowdata = function () {
+sheet.flowdata = function () {
     return Store.flowdata;
 }
 
 // Set selection highlight
-luckysheet.selectHightlightShow = selectHightlightShow;
+sheet.selectHightlightShow = selectHightlightShow;
 
 // Reset parameters after destroying the table
-luckysheet.destroy = method.destroy;
+sheet.destroy = method.destroy;
 
-luckysheet.showLoadingProgress = showloading;
-luckysheet.hideLoadingProgress = hideloading;
-luckysheet.luckysheetextendData = luckysheetextendData;
+sheet.showLoadingProgress = showloading;
+sheet.hideLoadingProgress = hideloading;
+sheet.luckysheetextendData = luckysheetextendData;
 
 export {
-    luckysheet
+    sheet
 }

@@ -3,7 +3,7 @@
 ## 初始化配置
 表格初始化配置`options`时，需要配置一个由每个工作表参数组成的一维数组，赋给`options.data`。
 
-> 表格初始化完成之后，通过方法[`luckysheet.getAllSheets()`](/zh/guide/api.html#getAllSheets([setting]))可以获取所有工作表的配置信息。
+> 表格初始化完成之后，通过方法[`sheet.getAllSheets()`](/zh/guide/api.html#getAllSheets([setting]))可以获取所有工作表的配置信息。
 
 options.data示例如下：
 ```json
@@ -532,7 +532,7 @@ options.data示例如下：
 ### filter
 - 类型：Object
 - 默认值：{}
-- 作用： 筛选的具体设置，跟`filter_select`筛选范围是互相搭配的。当你在第一个sheet页创建了一个筛选区域，通过`luckysheet.getLuckysheetfile()[0].filter`也可以看到第一个sheet的筛选配置信息。
+- 作用： 筛选的具体设置，跟`filter_select`筛选范围是互相搭配的。当你在第一个sheet页创建了一个筛选区域，通过`sheet.getLuckysheetfile()[0].filter`也可以看到第一个sheet的筛选配置信息。
 
     以下是一个完整的筛选配置案例
     ```js
@@ -1393,7 +1393,7 @@ options.data示例如下：
 
 Luckysheet在初始化完成之后进行的一系列操作，会将更多本地参数存储在luckysheetfile中，作为本地使用的参数，实现一些类似Store数据中心的作用。比如，freezen的参数格式也会变化。
 
-此时的luckysheetfile包含很多非初始化使用的本地参数，可用于调试代码、本地状态分析。如下展示了更丰富luckysheetfile信息，可通过方法 `luckysheet.getluckysheetfile()`获得：
+此时的luckysheetfile包含很多非初始化使用的本地参数，可用于调试代码、本地状态分析。如下展示了更丰富luckysheetfile信息，可通过方法 `sheet.getluckysheetfile()`获得：
 
 ::: details
 ```json

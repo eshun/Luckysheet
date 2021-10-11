@@ -384,7 +384,7 @@ property frozen
 
 ### ⚠ BREAKING CHANGES
 
-* **api:** 1. luckysheet.flowdata change to luckysheet.flowdata() 2.all apis list in
+* **api:** 1. sheet.flowdata change to sheet.flowdata() 2.all apis list in
 documentation
 * **gulp:** demo index.html's js and css refrence change
 * **bug:** bug

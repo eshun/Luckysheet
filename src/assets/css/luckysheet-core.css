@@ -22,7 +22,7 @@
   cursor: move;
 }
 
-.luckysheet {
+.sheet {
     position: absolute;
     /*width: 100%;
     height: 100%;*/
@@ -32,7 +32,7 @@
     background: #fff;
 }
 
-.luckysheet * {
+.sheet * {
     box-sizing: initial;
     outline: none;
 }
@@ -2357,7 +2357,7 @@ body:not(.ewa-ipad) .sheet-rows-h-cell-sel:hover {
     overflow: hidden;
 }
 
-.luckysheet canvas {
+.sheet canvas {
     position: absolute;
 }
 

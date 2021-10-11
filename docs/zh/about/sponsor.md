@@ -11,12 +11,12 @@
 Luckysheet是MIT许可的开源项目，其持续稳定的开发离不开这些优秀的 [**支持者**](#赞助者列表)。 如果您想加入他们，请考虑：
 
 - [成为Patreon的支持者或赞助商](https://www.patreon.com/mengshukeji)
-- [成为Open Collective的支持者或赞助商](https://opencollective.com/luckysheet)
+- [成为Open Collective的支持者或赞助商](https://opencollective.com/sheet)
 - 通过PayPal，微信或支付宝一次性捐赠
 
 | PayPal |  微信  | 支付宝 |
 |---|---|---|
-| [Paypal Me](https://www.paypal.me/wbfsa) | <img src="https://minio.cnbabylon.com/public/luckysheet/wechat.jpg" width="140" />| <img src="https://minio.cnbabylon.com/public/luckysheet/alipay.jpg" width="130" /> |
+| [Paypal Me](https://www.paypal.me/wbfsa) | <img src="https://minio.cnbabylon.com/public/sheet/wechat.jpg" width="140" />| <img src="https://minio.cnbabylon.com/public/sheet/alipay.jpg" width="130" /> |
 
 ### Patreon和OpenCollective有什么区别？
 

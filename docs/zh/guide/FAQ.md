@@ -12,10 +12,10 @@
 总结如下：
 ```js
 // data => celldata 二维数组数据 转化成 {r, c, v}格式 一维数组
-luckysheet.transToCellData(data)
+sheet.transToCellData(data)
 
 // celldata => data 生成表格所需二维数组
-luckysheet.transToData(celldata)
+sheet.transToData(celldata)
 ```
 
 ------------
@@ -83,7 +83,7 @@ luckysheet.transToData(celldata)
 
 **<span style="font-size:20px;">A</span>**：有两个方案：
 
-- 一是表格操作完成后，使用`luckysheet.getAllSheets()`方法获取到全部的工作表数据，全部发送到后台存储。
+- 一是表格操作完成后，使用`sheet.getAllSheets()`方法获取到全部的工作表数据，全部发送到后台存储。
 - 二是开启协同编辑功能，实时传输数据给后端。
 具体的操作步骤参考这篇文章：[Luckysheet如何把表格里的数据保存到数据库](https://www.cnblogs.com/DuShuSir/p/13857874.html)
 
@@ -147,7 +147,7 @@ Luckyexcel是excel导入导出库，项目采用了gulp作为打包工具，旧�
 
 <iframe frameborder="0" src="https://v.qq.com/txp/iframe/player.html?vid=g3162sacwn6" allowFullScreen="true"></iframe>
 
-跟着演示操作一下本地的工作表，然后打开浏览器控制台，使用`luckysheet.getLuckysheetfile()[0].config.authority`就可以获取到第一个工作表的工作表保护参数。
+跟着演示操作一下本地的工作表，然后打开浏览器控制台，使用`sheet.getLuckysheetfile()[0].config.authority`就可以获取到第一个工作表的工作表保护参数。
 
 ------------
 
@@ -181,7 +181,7 @@ Luckyexcel是excel导入导出库，项目采用了gulp作为打包工具，旧�
 
 **<span style="font-size:20px;">A</span>**：有两种方式可以获取
 
-- 一是使用`luckysheet.getLuckysheetfile()`获取到所有工作表配置后，在各个工作表的配置中直接取得默认行高`defaultRowHeight`和默认列宽`defaultColWidth`。
+- 一是使用`sheet.getLuckysheetfile()`获取到所有工作表配置后，在各个工作表的配置中直接取得默认行高`defaultRowHeight`和默认列宽`defaultColWidth`。
 - 二是开放了API可以获取到工作表默认的行高[getDefaultRowHeight](/zh/guide/api.html#getdefaultrowheight-setting)和列宽[getDefaultColWidth](/zh/guide/api.html#getdefaultcolwidth-setting)
 
 ------------
@@ -215,7 +215,7 @@ Luckyexcel是excel导入导出库，项目采用了gulp作为打包工具，旧�
 
 **<span style="font-size:20px;">A</span>**：第一步，检查下您是否使用了CDN的方式引入，
 
-Luckysheet教程里采用的CDN链接是 [jsdelivr](https://www.jsdelivr.com/package/npm/luckysheet) 提供的服务，代码是从 [npmjs.com](https://www.npmjs.com/) 自动同步过去的，不是从 [Github](https://github.com/mengshukeji/Luckysheet/) 同步过去的。因为我们新提交的代码，还需要经过一段时间的测试，所以不会立即发布到npm使用，导致了npm的代码稍滞后于Github。
+Luckysheet教程里采用的CDN链接是 [jsdelivr](https://www.jsdelivr.com/package/npm/sheet) 提供的服务，代码是从 [npmjs.com](https://www.npmjs.com/) 自动同步过去的，不是从 [Github](https://github.com/mengshukeji/Luckysheet/) 同步过去的。因为我们新提交的代码，还需要经过一段时间的测试，所以不会立即发布到npm使用，导致了npm的代码稍滞后于Github。
 
 如果需要尝试最新代码，我们强烈建议您从 [Luckysheet Github](https://github.com/mengshukeji/Luckysheet/) 主仓库拉取代码。后续我们版本稳定了，会考虑实时发布npm包。
 
@@ -274,7 +274,7 @@ Luckysheet教程里采用的CDN链接是 [jsdelivr](https://www.jsdelivr.com/pac
 
 ## create回调为什么没有效果？
 
-**<span style="font-size:20px;">A</span>**：API 方法`luckysheet.create()`这个方法没有回调，但是Luckysheet提供了钩子函数用于在指定位置执行回调方法，比如：
+**<span style="font-size:20px;">A</span>**：API 方法`sheet.create()`这个方法没有回调，但是Luckysheet提供了钩子函数用于在指定位置执行回调方法，比如：
 - 表格创建之前触发 [workbookCreateBefore](/zh/guide/config.html#workbookcreatebefore)
 - 表格创建之后触发 [workbookCreateAfter](/zh/guide/config.html#workbookcreateafter)
 
@@ -285,7 +285,7 @@ Luckysheet教程里采用的CDN链接是 [jsdelivr](https://www.jsdelivr.com/pac
 **<span style="font-size:20px;">A</span>**：选中单元格时默认是高亮，把高亮去除即可，使用API: [setRangeShow](/zh/guide/api.html#setrangeshow-range-setting)
 
 ```js
-luckysheet.setRangeShow("A2",{show:false})
+sheet.setRangeShow("A2",{show:false})
 ```
 
 ------------

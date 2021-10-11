@@ -1,5 +1,5 @@
 /**
- * The default luckysheet config object.
+ * The default sheet config object.
  */
 export default {
     container: "xmkysheet", //容器的ID

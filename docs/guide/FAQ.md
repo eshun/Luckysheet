@@ -12,10 +12,10 @@ Among them, the celldata in `{ r, c, v }` format is converted to a two-dimension
 Summarized as follows:
 ```js
 // data => celldata two-dimensional array data into {r, c, v} format one-dimensional array
-luckysheet.transToCellData(data)
+sheet.transToCellData(data)
 
 // celldata => data to generate the two-dimensional array required for the table
-luckysheet.transToData(celldata)
+sheet.transToData(celldata)
 ```
 
 ------------
@@ -68,7 +68,7 @@ Note: Initial data needs to be configured with loadUrl parameter, while for coll
 **<span style="font-size:20px;">A</span>**: The excel import and export library developed with Luckysheet-[Luckyexcel](https://github.com/mengshukeji/Luckyexcel) has realized the excel import function, and the export function is under development.You can refer to these 2 blog posts for excel export at this stage:
 
 - [Development of Excel download function based on LuckySheet online form](https://www.cnblogs.com/recode-hyh/p/13168226.html)
-- [Use exceljs to export luckysheet form](https://blog.csdn.net/csdn_lsy/article/details/107179708)
+- [Use exceljs to export sheet form](https://blog.csdn.net/csdn_lsy/article/details/107179708)
 
 ------------
 
@@ -83,7 +83,7 @@ Note: Initial data needs to be configured with loadUrl parameter, while for coll
 
 **<span style="font-size:20px;">A</span>**: There are two options:
 
-- 1. after the table operation is completed, you can use `luckysheet.getAllSheets()` to get all sheet data that stroed in the back-end.
+- 1. after the table operation is completed, you can use `sheet.getAllSheets()` to get all sheet data that stroed in the back-end.
 - 2. enable the collaborative editing function to transmit data to the back-end in real-time.
 refer this article:
 [How Luckysheet saves the data in the table to the database](https://www.cnblogs.com/DuShuSir/p/13857874.html)
@@ -121,7 +121,7 @@ if you want to remove jQuery in `Luckysheet`, you can find `jQuery` in source co
 
 ## The toolbar icon is on the loading stage all the time. 
 
-**<span style="font-size:20px;">A</span>**: The luckysheet use iconfont icon in this project, if any icon cannot be loaded ,plz check your iconfont.css. we are so sorry that we did not describe it clearly in the old version documents.
+**<span style="font-size:20px;">A</span>**: The sheet use iconfont icon in this project, if any icon cannot be loaded ,plz check your iconfont.css. we are so sorry that we did not describe it clearly in the old version documents.
 
 Now the documents have been updated.[official documents](/guide/#steps-for-usage)
 
@@ -148,7 +148,7 @@ In order to make it easier for you to understand the function of sheet protectio
 
 <iframe frameborder="0" src="https://v.qq.com/txp/iframe/player.html?vid=g3162sacwn6" allowFullScreen="true"></iframe>
 
-In you local browser, you can open the control pannel, use `luckysheet.getLuckysheetfile()[0].config.authority` to get the configuration parameters.
+In you local browser, you can open the control pannel, use `sheet.getLuckysheetfile()[0].config.authority` to get the configuration parameters.
 
 ------------
 
@@ -160,7 +160,7 @@ In you local browser, you can open the control pannel, use `luckysheet.getLuckys
 
 ## Is there a case for using Luckysheet with CDN?
 
-**<span style="font-size:20px;">A</span>**: Luckysheet supports CDN. reference: [The case of using luckysheet by CDN](https://www.cnblogs.com/DuShuSir/p/13859103.html)
+**<span style="font-size:20px;">A</span>**: Luckysheet supports CDN. reference: [The case of using sheet by CDN](https://www.cnblogs.com/DuShuSir/p/13859103.html)
 
 ------------
 
@@ -182,7 +182,7 @@ if you want to get the position of the picture, you can overlap the picture with
 
 **<span style="font-size:20px;">A</span>**: There are two ways to get it
 
-- 1. use `luckysheet.getLuckysheetfile()` to get all configuration data, so you can get the `defaultRowHeight` and `defaultColWidth` in the sheet configuration data。
+- 1. use `sheet.getLuckysheetfile()` to get all configuration data, so you can get the `defaultRowHeight` and `defaultColWidth` in the sheet configuration data。
 - 2. use API to get the default row height [getDefaultRowHeight](/guide/api.html#getdefaultrowheight-setting) and column width.[getDefaultColWidth](/guide/api.html#getdefaultcolwidth-setting)
 
 ------------
@@ -216,7 +216,7 @@ if you want to get the position of the picture, you can overlap the picture with
 
 **<span style="font-size:20px;">A</span>**: The first step is to check whether you have used CDN to import,
 
-The CDN link used in the Luckysheet tutorial is the service provided by [jsdelivr](https://www.jsdelivr.com/package/npm/luckysheet), and the code is from [npmjs.com](https://www.npmjs.com/) automatically sync the past, not from [Github](https://github.com/mengshukeji/Luckysheet/). Because our newly submitted code still needs to be tested for a period of time, it will not be released to npm immediately, causing the npm code to lag behind Github.
+The CDN link used in the Luckysheet tutorial is the service provided by [jsdelivr](https://www.jsdelivr.com/package/npm/sheet), and the code is from [npmjs.com](https://www.npmjs.com/) automatically sync the past, not from [Github](https://github.com/mengshukeji/Luckysheet/). Because our newly submitted code still needs to be tested for a period of time, it will not be released to npm immediately, causing the npm code to lag behind Github.
 
 If you need to try the latest code, we strongly recommend that you pull the code from the [Luckysheet Github](https://github.com/mengshukeji/Luckysheet/) main repository. After our version is stable, we will consider releasing the npm package in real time.
 
@@ -273,7 +273,7 @@ In this case, after Luckysheet is modified in real time, the changes can be seen
 
 ## Why does the create callback have no effect?
 
-**<span style="font-size:20px;">A</span>**: The API method `luckysheet.create()` does not have a callback, but Luckysheet provides a hook function to execute the callback method at a specified location, such as:
+**<span style="font-size:20px;">A</span>**: The API method `sheet.create()` does not have a callback, but Luckysheet provides a hook function to execute the callback method at a specified location, such as:
 - Triggered before the workbook is created [workbookCreateBefore](/guide/config.html#workbookcreatebefore)
 - Triggered after the workbook is created [workbookCreateAfter](/guide/config.html#workbookcreateafter)
 
@@ -284,7 +284,7 @@ In this case, after Luckysheet is modified in real time, the changes can be seen
 **<span style="font-size:20px;">A</span>**: When the cell is selected, it is highlighted by default, just remove the highlight, use API: [setRangeShow](/guide/api.html#setrangeshow-range-setting)
 
 ```js
-luckysheet.setRangeShow("A2",{show:false})
+sheet.setRangeShow("A2",{show:false})
 ```
 
 ------------

@@ -10,7 +10,7 @@ Luckysheet is an online spreadsheet like excel that is powerful, simple to confi
 
 ## Online Case
 
-- [Cooperative editing demo](http://luckysheet.lashuju.com/demo/)(Note: The official Java backend will also be open source after finishing,using OT algorithm. Please do not operate frequently to prevent the server from crashing)
+- [Cooperative editing demo](http://sheet.lashuju.com/demo/)(Note: The official Java backend will also be open source after finishing,using OT algorithm. Please do not operate frequently to prevent the server from crashing)
 
 ## Features
 
@@ -126,17 +126,17 @@ There are two ways to introduce dependencies
 
 #### CDN
 ```html
-<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/luckysheet@latest/dist/plugins/css/pluginsCss.css' />
-<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/luckysheet@latest/dist/plugins/plugins.css' />
-<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/luckysheet@latest/dist/css/luckysheet.css' />
-<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/luckysheet@latest/dist/assets/iconfont/iconfont.css' />
-<script src="https://cdn.jsdelivr.net/npm/luckysheet@latest/dist/plugins/js/plugin.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/luckysheet@latest/dist/luckysheet.umd.js"></script>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sheet@latest/dist/plugins/css/pluginsCss.css' />
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sheet@latest/dist/plugins/plugins.css' />
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sheet@latest/dist/css/sheet.css' />
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sheet@latest/dist/assets/iconfont/iconfont.css' />
+<script src="https://cdn.jsdelivr.net/npm/sheet@latest/dist/plugins/js/plugin.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sheet@latest/dist/sheet.umd.js"></script>
 ```
 
-Note that the path of `https://cdn.jsdelivr.net/npm/luckysheet@latest/dist/luckysheet.umd.js` means that the latest luckysheet code will be pulled, but if Luckysheet has just been released, the jsdelivr website may not have time Synchronize from npm, so using this path will still pull to the previous version. We recommend that you directly specify the latest version.
+Note that the path of `https://cdn.jsdelivr.net/npm/sheet@latest/dist/sheet.umd.js` means that the latest sheet code will be pulled, but if Luckysheet has just been released, the jsdelivr website may not have time Synchronize from npm, so using this path will still pull to the previous version. We recommend that you directly specify the latest version.
 
-To specify the Luckysheet version, please add the version number after all CDN dependent files, such as: `https://cdn.jsdelivr.net/npm/luckysheet@2.1.12/dist/luckysheet.umd.js`.
+To specify the Luckysheet version, please add the version number after all CDN dependent files, such as: `https://cdn.jsdelivr.net/npm/sheet@2.1.12/dist/sheet.umd.js`.
 
 > How do I know which version is the latest version? View the latest [release record](https://github.com/mengshukeji/Luckysheet/releases) or [package.json](https://github.com/mengshukeji/Luckysheet/blob/master/package.json)` version` field.
 
@@ -147,15 +147,15 @@ After `npm run build`, all files in the `dist` folder are copied to the project 
 ```html
 <link rel='stylesheet' href='./plugins/css/pluginsCss.css' />
 <link rel='stylesheet' href='./plugins/plugins.css' />
-<link rel='stylesheet' href='./css/luckysheet.css' />
+<link rel='stylesheet' href='./css/sheet.css' />
 <link rel='stylesheet' href='./assets/iconfont/iconfont.css' />
 <script src="./plugins/js/plugin.js"></script>
-<script src="./luckysheet.umd.js"></script>
+<script src="./sheet.umd.js"></script>
 ```
 ### Second step
 Specify a table container
 ```html
-<div id="luckysheet" style="margin:0px;padding:0px;position:absolute;width:100%;height:100%;left: 0px;top: 0px;"></div>
+<div id="sheet" style="margin:0px;padding:0px;position:absolute;width:100%;height:100%;left: 0px;top: 0px;"></div>
 ```
 ### Third step
 Create a table
@@ -164,9 +164,9 @@ Create a table
     $(function () {
         //Configuration item
         var options = {
-            container: 'luckysheet' //luckysheet is the container id
+            container: 'sheet' //sheet is the container id
         }
-        luckysheet.create(options)
+        sheet.create(options)
     })
 </script>
 ```
@@ -217,7 +217,7 @@ luckysheetfile[0] =
 ```
 ### View method
 View in chrome's console
-`luckysheet.getluckysheetfile()`
+`sheet.getluckysheetfile()`
 You can see the complete settings
 `[{shee1}, {sheet2}, {sheet3}]`
 
@@ -251,13 +251,13 @@ If you encounter problems with Luckysheet, follow the steps below to find the an
 1. Use Doge or Google to search for common technical issues
 2. For Luckysheet related issues, please view [Luckysheet Official Document](https://mengshukeji.github.io/LuckysheetDocs/)(Note that the function of marking TODO has not yet been implemented)
 3. Search [FAQ List](https://mengshukeji.github.io/LuckysheetDocs/guide/FAQ.html)
-4. Search [Official Forum](https://groups.google.com/g/luckysheet) to see if anyone has encountered it
+4. Search [Official Forum](https://groups.google.com/g/sheet) to see if anyone has encountered it
 5. Try to check or experiment by yourself to find the answer
 6. Please try to read the source code to find the answer,
 
 If none of the above methods solve your problem, you can consider:
 
-- Go to [Official Forum](https://groups.google.com/g/luckysheet) to ask questions
+- Go to [Official Forum](https://groups.google.com/g/sheet) to ask questions
 - Go to [Gitter](https://gitter.im/mengshukeji/Luckysheet) to ask questions
 - If there are obvious problems or the needs cannot be met, please submit [issues](https://github.com/mengshukeji/Luckysheet/issues)
 

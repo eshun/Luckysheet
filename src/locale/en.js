@@ -3220,14 +3220,14 @@ export default {
         "p": [{
             "name": "url",
             "detail": "The full URL of the link location enclosed in quotation marks, or a reference to a cell containing such a URL.",
-            "example": "\"http://www.luckysheet.com/\"",
+            "example": "\"http://www.sheet.com/\"",
             "require": "m",
             "repeat": "n",
             "type": "rangeall"
         }, {
             "name": "link_label",
             "detail": "The text to display in the cell as the link, enclosed in quotation marks, or a reference to a cell containing such a label.",
-            "example": "\"luckysheet\"",
+            "example": "\"sheet\"",
             "require": "m",
             "repeat": "n",
             "type": "rangeall"
@@ -9842,7 +9842,7 @@ export default {
         "Engineering":"Engineering",
         "Filter":"Filter",
         "Financial":"Financial",
-        "luckysheet":"Luckysheet",
+        "sheet":"Luckysheet",
         "other":"Other",
         "Logical":"Logical",
         "Lookup":"Lookup",

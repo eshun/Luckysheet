@@ -14,7 +14,7 @@ welcome! We are very happy that you are here and look forward to your interest i
 
 ## How to participate in contributing?
 
-* Contributed documents: Browsing the document can deepen your understanding of Luckysheet. Once you find that the document is not clearly written or the logic is confusing, you can correct, modify, and supplement. You can go to [Google Forum](https://groups.google.com/g/luckysheet) to give feedback
+* Contributed documents: Browsing the document can deepen your understanding of Luckysheet. Once you find that the document is not clearly written or the logic is confusing, you can correct, modify, and supplement. You can go to [Google Forum](https://groups.google.com/g/sheet) to give feedback
 * Contributing code: Welcome everyone to contribute code to the Luckysheet community, you are welcome to claim the Open state [Issues](https://github.com/mengshukeji/Luckysheet/issues) and unfinished features, submit a PR, and become one of the contributors If you find that some functions cannot meet your needs or have problems during use, please record in Issues
 * Participate in the issue discussion: you can post your suggestions under any [Issues](https://github.com/mengshukeji/Luckysheet/issues)
 * Review code: You can see PR submitted by all contributors on [Github](https://github.com/mengshukeji/Luckysheet), you can review their code and post your suggestions

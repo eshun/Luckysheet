@@ -334,7 +334,7 @@ export function deleteCell(move, row, column, options = {}) {
  * @param {Number} row 单元格所在行数；从0开始的整数，0表示第一行
  * @param {Number} column 单元格所在列数；从0开始的整数，0表示第一列
  * @param {String} attr
- * @param {Number | String | Object} value 具体的设置值，一个属性会对应多个值，参考 单元格属性表的值示例，特殊情况：如果属性类型attr是单元格格式ct，则设置值value应提供ct.fa，比如设置A1单元格的格式为百分比格式：luckysheet.setCellFormat(0, 0, "ct", "0.00%")
+ * @param {Number | String | Object} value 具体的设置值，一个属性会对应多个值，参考 单元格属性表的值示例，特殊情况：如果属性类型attr是单元格格式ct，则设置值value应提供ct.fa，比如设置A1单元格的格式为百分比格式：sheet.setCellFormat(0, 0, "ct", "0.00%")
  * @param {Object} options 可选参数
  * @param {Number} options.order 工作表索引；默认值为当前工作表索引
  * @param {Function} options.success 操作结束的回调函数, callback参数为改变后的cell对象
@@ -6531,7 +6531,7 @@ export function transToData(celldata, options = {}){
 }
 
 /**
- * 导出的json字符串可以直接当作`luckysheet.create(options)`初始化工作簿时的参数`options`使用
+ * 导出的json字符串可以直接当作`sheet.create(options)`初始化工作簿时的参数`options`使用
  *
  */
 export function toJson(){

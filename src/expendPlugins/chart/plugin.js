@@ -1064,7 +1064,7 @@ function chart_selection() {
 // create chart
 function createLuckyChart(width, height, left, top) {
     //如果只选中一个单元格，则自动填充选取
-    var jfgird_select_save = luckysheet.getluckysheet_select_save();
+    var jfgird_select_save = sheet.getluckysheet_select_save();
     if (
         jfgird_select_save.length == 1 &&
         jfgird_select_save[0].row[0] == jfgird_select_save[0].row[1] &&
@@ -1074,7 +1074,7 @@ function createLuckyChart(width, height, left, top) {
 
         luckysheetMoveHighlightRange2("down", "rangeOfSelect");
 
-        jfgird_select_save = luckysheet.getluckysheet_select_save();
+        jfgird_select_save = sheet.getluckysheet_select_save();
     }
     //处理右边的空白单元格，自动略过并修改选区 ---------------start
     var shiftpositon_row = -1;
@@ -1091,7 +1091,7 @@ function createLuckyChart(width, height, left, top) {
             c <= jfgird_select_save[0]["column"][1];
             c++
         ) {
-            var value = getcellvalue(r, c, luckysheet.flowdata());
+            var value = getcellvalue(r, c, sheet.flowdata());
             //console.log("value,r,c",value,r,c);
             if (value != null && value.toString().length > 0) {
                 shiftpositon_row = r;
@@ -1110,11 +1110,11 @@ function createLuckyChart(width, height, left, top) {
 
     jfgird_select_save[0]["row"] = [shiftpositon_row, shiftpositon_row];
     jfgird_select_save[0].row_focus =shiftpositon_row;
-    luckysheet.setluckysheet_select_save(jfgird_select_save);
+    sheet.setluckysheet_select_save(jfgird_select_save);
 
     chartInfo.luckysheet_shiftpositon = $.extend(true, {}, jfgird_select_save[0]);
     luckysheetMoveEndCell("down", "range", false, row_ed);
-    jfgird_select_save = luckysheet.getluckysheet_select_save();
+    jfgird_select_save = sheet.getluckysheet_select_save();
 
     var shiftpositon_col = -1;
     var column_ed =
@@ -1129,7 +1129,7 @@ function createLuckyChart(width, height, left, top) {
             r <= jfgird_select_save[0]["row"][1];
             r++
         ) {
-            var value = getcellvalue(r, c, luckysheet.flowdata());
+            var value = getcellvalue(r, c, sheet.flowdata());
             if (value != null && value.toString().length > 0) {
                 shiftpositon_col = c;
                 break;
@@ -1147,11 +1147,11 @@ function createLuckyChart(width, height, left, top) {
 
     jfgird_select_save[0]["column"] = [shiftpositon_col, shiftpositon_col];
     jfgird_select_save[0].column_focus = shiftpositon_col;
-    luckysheet.setluckysheet_select_save(jfgird_select_save);
+    sheet.setluckysheet_select_save(jfgird_select_save);
 
     chartInfo.luckysheet_shiftpositon = $.extend(true, {}, jfgird_select_save[0]);
     luckysheetMoveEndCell("right", "range", false, column_ed);
-    jfgird_select_save = luckysheet.getluckysheet_select_save()
+    jfgird_select_save = sheet.getluckysheet_select_save()
 
     var rangeArray = $.extend(true, [], jfgird_select_save);
 

@@ -774,11 +774,11 @@ const sheetmanage = {
 
         //钩子函数 表格创建之前触发
         if(typeof sheetConfigSetting.beforeCreateDom == "function" ){
-            sheetConfigSetting.beforeCreateDom(luckysheet);
+            sheetConfigSetting.beforeCreateDom(sheet);
         }
 
         if(typeof sheetConfigSetting.workbookCreateBefore == "function"){
-            sheetConfigSetting.workbookCreateBefore(luckysheet);
+            sheetConfigSetting.workbookCreateBefore(sheet);
         }
 
         // Store.flowdata = data;
@@ -858,11 +858,11 @@ const sheetmanage = {
                     // 此处已经渲染完成表格，应该挪到前面
                     // //钩子函数 表格创建之前触发
                     // if(typeof sheetConfigSetting.beforeCreateDom == "function" ){
-                    //     sheetConfigSetting.beforeCreateDom(luckysheet);
+                    //     sheetConfigSetting.beforeCreateDom(sheet);
                     // }
 
                     // if(typeof sheetConfigSetting.workbookCreateBefore == "function"){
-                    //     sheetConfigSetting.workbookCreateBefore(luckysheet);
+                    //     sheetConfigSetting.workbookCreateBefore(sheet);
                     // }
 
                     arrayRemoveItem(Store.asyncLoad,'core');

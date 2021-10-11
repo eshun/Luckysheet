@@ -984,7 +984,7 @@ function luckysheetextendData(rowlen, newData) {
         }
     }
 
-    //luckysheet.flowdata
+    //sheet.flowdata
     Store.flowdata = d;
     editor.webWorkerFlowDataCache(Store.flowdata);//worker存数据
     Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].data = d;           

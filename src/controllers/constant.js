@@ -32,7 +32,7 @@ const gridHTML = function(){
     const navTabs=`<ul class="nav-tabs"><li><div data-tips="\${logotitle}" class="luckysheet_info_detail">`+ home +`<span> \${logotitle} </span>
     </div></li><li class="active"><span>开始</span></li></ul><div class="nav-tabs-tools"> \${functionButton} </div>`;
 
-    return `<div class="luckysheet">
+    return `<div class="sheet">
                     <canvas id="sheetTableContentF" style="display:none;" class="sheetTableContent"></canvas> 
                     <div class="sheet-work-area sheet-noselected-text"> 
                         <div id ="sheet_info_detail" class="sheet_info_detail"> 

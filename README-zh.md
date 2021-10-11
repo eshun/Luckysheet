@@ -20,13 +20,13 @@
 5. 有意向可以先咨询
 6. 框架: React、Electron
 
-<img src="https://minio.cnbabylon.com/public/luckysheet/feishu_jd.jpg" width = "250" alt="微信群" align="center" />
+<img src="https://minio.cnbabylon.com/public/sheet/feishu_jd.jpg" width = "250" alt="微信群" align="center" />
 
 ## 相关链接
  | 源码   | 文档 | Demo | 插件Demo | 论坛 |
  | ------ | -------- | ------ | ------ | ------ |
- | [Github](https://github.com/mengshukeji/Luckysheet)| [在线文档](https://mengshukeji.github.io/LuckysheetDocs/zh/) | [在线Demo](https://mengshukeji.github.io/LuckysheetDemo) / [协同编辑Demo](http://luckysheet.lashuju.com/demo/) | [导入Excel Demo](https://mengshukeji.github.io/LuckyexcelDemo/) | [中文论坛](https://support.qq.com/product/288322) |
- | [Gitee镜像](https://gitee.com/mengshukeji/Luckysheet)| [Gitee在线文档](https://mengshukeji.gitee.io/LuckysheetDocs/zh/) | [Gitee在线Demo](https://mengshukeji.gitee.io/luckysheetdemo/) | [Gitee导入Excel Demo](https://mengshukeji.gitee.io/luckyexceldemo/) | [Google Group](https://groups.google.com/g/luckysheet) |
+ | [Github](https://github.com/mengshukeji/Luckysheet)| [在线文档](https://mengshukeji.github.io/LuckysheetDocs/zh/) | [在线Demo](https://mengshukeji.github.io/LuckysheetDemo) / [协同编辑Demo](http://sheet.lashuju.com/demo/) | [导入Excel Demo](https://mengshukeji.github.io/LuckyexcelDemo/) | [中文论坛](https://support.qq.com/product/288322) |
+ | [Gitee镜像](https://gitee.com/mengshukeji/Luckysheet)| [Gitee在线文档](https://mengshukeji.gitee.io/LuckysheetDocs/zh/) | [Gitee在线Demo](https://mengshukeji.gitee.io/luckysheetdemo/) | [Gitee导入Excel Demo](https://mengshukeji.gitee.io/luckyexceldemo/) | [Google Group](https://groups.google.com/g/sheet) |
 
 ![演示](/docs/.vuepress/public/img/LuckysheetDemo.gif)
 
@@ -89,17 +89,17 @@
 通过CDN引入依赖
 
 ```
-<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/luckysheet@latest/dist/plugins/css/pluginsCss.css' />
-<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/luckysheet@latest/dist/plugins/plugins.css' />
-<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/luckysheet@latest/dist/css/luckysheet.css' />
-<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/luckysheet@latest/dist/assets/iconfont/iconfont.css' />
-<script src="https://cdn.jsdelivr.net/npm/luckysheet@latest/dist/plugins/js/plugin.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/luckysheet@latest/dist/luckysheet.umd.js"></script>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sheet@latest/dist/plugins/css/pluginsCss.css' />
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sheet@latest/dist/plugins/plugins.css' />
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sheet@latest/dist/css/sheet.css' />
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sheet@latest/dist/assets/iconfont/iconfont.css' />
+<script src="https://cdn.jsdelivr.net/npm/sheet@latest/dist/plugins/js/plugin.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sheet@latest/dist/sheet.umd.js"></script>
 ```
 ### 第二步
 指定一个表格容器
 ```
-<div id="luckysheet" style="margin:0px;padding:0px;position:absolute;width:100%;height:100%;left: 0px;top: 0px;"></div>
+<div id="sheet" style="margin:0px;padding:0px;position:absolute;width:100%;height:100%;left: 0px;top: 0px;"></div>
 ```
 ### 第三步
 创建一个表格
@@ -108,9 +108,9 @@
     $(function () {
         //配置项
         var options = {
-            container: 'luckysheet' //luckysheet为容器id
+            container: 'sheet' //luckysheet为容器id
         }
-        luckysheet.create(options)
+        sheet.create(options)
     })
 </script>
 ```
@@ -146,7 +146,7 @@ npm run build
 
 | 官方微信群 |  群满则加小编微信，备注:加群  | QQ群 |
 |---|---|---|
-| <img src="https://minio.cnbabylon.com/public/luckysheet/luckysheet_wechat_group.png" width="200" /> | <img src="https://minio.cnbabylon.com/public/luckysheet/dushusir_wechat.jpg" width="200" />| <img src="https://minio.cnbabylon.com/public/luckysheet/luckysheet_qq_group.jpg" width="200" /> |
+| <img src="https://minio.cnbabylon.com/public/sheet/luckysheet_wechat_group.png" width="200" /> | <img src="https://minio.cnbabylon.com/public/sheet/dushusir_wechat.jpg" width="200" />| <img src="https://minio.cnbabylon.com/public/sheet/luckysheet_qq_group.jpg" width="200" /> |
 
 
 [英文社群](./README.md)
@@ -156,12 +156,12 @@ npm run build
 Luckysheet是MIT许可的开源项目，其持续稳定的开发离不开这些优秀的 [**支持者**](https://mengshukeji.github.io/LuckysheetDocs/zh/about/sponsor.html#%E8%B5%9E%E5%8A%A9%E8%80%85%E5%88%97%E8%A1%A8)。 如果您想加入他们，请考虑：
 
 - [成为Patreon的支持者或赞助商](https://www.patreon.com/mengshukeji)
-- [成为Open Collective的支持者或赞助商](https://opencollective.com/luckysheet)
+- [成为Open Collective的支持者或赞助商](https://opencollective.com/sheet)
 - 通过PayPal，微信或支付宝一次性捐赠
 
 | PayPal |  微信  | 支付宝 |
 |---|---|---|
-| [Paypal Me](https://www.paypal.me/wbfsa) | <img src="https://minio.cnbabylon.com/public/luckysheet/wechat.jpg" width="200" />| <img src="https://minio.cnbabylon.com/public/luckysheet/alipay.jpg" width="200" /> |
+| [Paypal Me](https://www.paypal.me/wbfsa) | <img src="https://minio.cnbabylon.com/public/sheet/wechat.jpg" width="200" />| <img src="https://minio.cnbabylon.com/public/sheet/alipay.jpg" width="200" /> |
 
 ### Patreon和OpenCollective有什么区别？
 
