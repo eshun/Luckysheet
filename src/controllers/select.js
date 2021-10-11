@@ -3,6 +3,7 @@ import formula from '../global/formula';
 import { dynamicArrayHightShow } from '../global/dynamicArray';
 import { rowLocationByIndex, colLocationByIndex } from '../global/location';
 import browser from '../global/browser';
+import { isEditMode } from '../global/validate';
 import dataVerificationCtrl from './dataVerificationCtrl';
 import { getSheetIndex, getRangetxt } from '../methods/get';
 import Store from '../store';
@@ -27,6 +28,9 @@ function seletedHighlistByindex(id, r1, r2, c1, c2) {
 
 //Set selection highlight
 function selectHightlightShow(isRestore = false) {
+    if(isEditMode() || Store.allowEdit===false){//此模式下禁用选区
+        return;
+    }
     $("#sheet-cell-selected-boxs").show();
     $("#sheet-cell-selected-boxs #sheet-cell-selected").siblings(".sheet-cell-selected").remove();
 

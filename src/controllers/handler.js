@@ -288,6 +288,9 @@ export default function luckysheetHandler() {
         if($(event.target).hasClass('sheet-mousedown-cancel')){
             return;
         }
+        if(isEditMode() || Store.allowEdit===false){//此模式下禁用选区
+            return;
+        }
 
         // 协同编辑其他用户不在操作的时候，用户名框隐藏
         hideUsername();

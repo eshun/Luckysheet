@@ -177,11 +177,11 @@ sheet.create = function (setting) {
         initialWorkBook();
     }
     else {
-        $.post(loadurl, {"g" : server.gridKey}, function (d) {
+        $.post(loadurl, {"g" : server.gridKey}, function (data) {
             try{
-                if(!!d){
-                    let data = new Function("return " + d)();
-                    if(d.length>0){
+                if(!!data){
+                    //let data = new Function("return " + d)();
+                    if(data && data.length>0){
                         Store.luckysheetfile = data;
                     }
                 }
