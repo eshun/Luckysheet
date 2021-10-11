@@ -30,8 +30,8 @@ luckysheet.transToData(celldata)
 
 **<span style="font-size:20px;">A</span>**: Check
 
-- Vue case: [luckysheet-vue](https://github.com/mengshukeji/luckysheet-vue)
-- React case: [luckysheet-react](https://github.com/mengshukeji/luckysheet-react)
+- Vue case: [sheet-vue](https://github.com/mengshukeji/sheet-vue)
+- React case: [sheet-react](https://github.com/mengshukeji/sheet-react)
 
 ------------
 
@@ -240,7 +240,7 @@ Tip: Most other npm installation problems can also be solved by trying above ste
 
 ## How to carry out secondary development of Luckysheet in Vue project?
 
-**<span style="font-size:20px;">A</span>**: The [luckysheet-vue](https://github.com/mengshukeji/luckysheet-vue) case is to provide an application integration solution.
+**<span style="font-size:20px;">A</span>**: The [sheet-vue](https://github.com/mengshukeji/sheet-vue) case is to provide an application integration solution.
 
 If directly developed locally:
 1. Start both the Luckysheet project and your own Vue project. For example, the Luckysheet project is at http://localhost:3001
@@ -298,7 +298,7 @@ luckysheet.setRangeShow("A2",{show:false})
 ## How to add a custom toolbar?
 
 **<span style="font-size:20px;">A</span>**: No configuration is currently provided, you can refer to the implementation of the print button in the toolbar to modify the source code:
-1. Search for `luckysheet-icon-print` globally to find the implementation of the print button, in [src/controllers/constant.js](https://github.com/mengshukeji/Luckysheet/blob/master/src/controllers/constant.js) add a similar template string, you need to customize a unique id
+1. Search for `sheet-icon-print` globally to find the implementation of the print button, in [src/controllers/constant.js](https://github.com/mengshukeji/Luckysheet/blob/master/src/controllers/constant.js) add a similar template string, you need to customize a unique id
 2. Modify [src/controllers/resize.js](https://github.com/mengshukeji/Luckysheet/blob/master/src/controllers/resize.js) and add a new record in the toobarConfig object
 3. Modify [src/controllers/menuButton.js](https://github.com/mengshukeji/Luckysheet/blob/master/src/controllers/menuButton.js) to add an event listener
 

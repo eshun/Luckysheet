@@ -12,17 +12,17 @@ import {
 let scrollRequestAnimationFrameIni = true,scrollRequestAnimationFrame = false, scrollTimeOutCancel=null;
 
 function execScroll(){
-    let scrollLeft = $("#luckysheet-scrollbar-x").scrollLeft(), 
-        scrollTop = $("#luckysheet-scrollbar-y").scrollTop();
+    let scrollLeft = $("#sheet-scrollbar-x").scrollLeft(), 
+        scrollTop = $("#sheet-scrollbar-y").scrollTop();
     luckysheetrefreshgrid(scrollLeft, scrollTop);
     scrollRequestAnimationFrame = window.requestAnimationFrame(execScroll);
 }
 
 //全局滚动事件
 export default function luckysheetscrollevent(isadjust) {
-    let _t = $("#luckysheet-cell-main");
-    let scrollLeft = $("#luckysheet-scrollbar-x").scrollLeft(), 
-        scrollTop = $("#luckysheet-scrollbar-y").scrollTop(),
+    let _t = $("#sheet-cell-main");
+    let scrollLeft = $("#sheet-scrollbar-x").scrollLeft(), 
+        scrollTop = $("#sheet-scrollbar-y").scrollTop(),
         canvasHeight = $("#sheetTableContent").height(); // canvas高度
 
     // clearTimeout(scrollTimeOutCancel);
@@ -74,7 +74,7 @@ export default function luckysheetscrollevent(isadjust) {
     if (luckysheetFreezen.freezenhorizontaldata != null) {
         if (scrollTop < luckysheetFreezen.freezenhorizontaldata[2]) {
             scrollTop = luckysheetFreezen.freezenhorizontaldata[2];
-            $("#luckysheet-scrollbar-y").scrollTop(scrollTop);
+            $("#sheet-scrollbar-y").scrollTop(scrollTop);
             return;
         }
     }
@@ -82,20 +82,20 @@ export default function luckysheetscrollevent(isadjust) {
     if (luckysheetFreezen.freezenverticaldata != null) {
         if (scrollLeft < luckysheetFreezen.freezenverticaldata[2]) {
             scrollLeft = luckysheetFreezen.freezenverticaldata[2];
-            $("#luckysheet-scrollbar-x").scrollLeft(scrollLeft);
+            $("#sheet-scrollbar-x").scrollLeft(scrollLeft);
             return;
         }
     }
 
-    $("#luckysheet-cols-h-c").scrollLeft(scrollLeft);//列标题
-    $("#luckysheet-rows-h").scrollTop(scrollTop);//行标题
+    $("#sheet-cols-h-c").scrollLeft(scrollLeft);//列标题
+    $("#sheet-rows-h").scrollTop(scrollTop);//行标题
     
     _t.scrollLeft(scrollLeft).scrollTop(scrollTop);
 
-    $("#luckysheet-input-box-index").css({
-        "left": $("#luckysheet-input-box").css("left"), 
-        "top": (parseInt($("#luckysheet-input-box").css("top")) - 20) + "px", 
-        "z-index": $("#luckysheet-input-box").css("z-index")
+    $("#sheet-input-box-index").css({
+        "left": $("#sheet-input-box").css("left"), 
+        "top": (parseInt($("#sheet-input-box").css("top")) - 20) + "px", 
+        "z-index": $("#sheet-input-box").css("z-index")
     }).show();
 
     // if(scrollRequestAnimationFrameIni && Store.scrollRefreshSwitch){
@@ -106,7 +106,7 @@ export default function luckysheetscrollevent(isadjust) {
     luckysheetrefreshgrid(scrollLeft, scrollTop);
     
 
-    $("#luckysheet-bottom-controll-row").css("left", scrollLeft);
+    $("#sheet-bottom-controll-row").css("left", scrollLeft);
 
     //有选区且有冻结时，滚动适应
     if(luckysheetFreezen.freezenhorizontaldata != null || luckysheetFreezen.freezenverticaldata != null){
@@ -116,15 +116,15 @@ export default function luckysheetscrollevent(isadjust) {
     if(!method.createHookFunction("scroll", {scrollLeft, scrollTop, canvasHeight})){ return; }
 
     const scrollBottomAutoAddRow=sheetConfigSetting.scrollBottomAutoAddRow || false;
-    let scrollHeight = $("#luckysheet-scrollbar-y").get(0).scrollHeight;
-    //let clientHeight = $("#luckysheet-scrollbar-y").get(0).clientHeight;
+    let scrollHeight = $("#sheet-scrollbar-y").get(0).scrollHeight;
+    //let clientHeight = $("#sheet-scrollbar-y").get(0).clientHeight;
     if(scrollBottomAutoAddRow===true && scrollHeight<(canvasHeight + scrollTop + 100)){
         setTimeout(() => {
-            $("#luckysheet-rightclick-menu").hide();
+            $("#sheet-rightclick-menu").hide();
             luckysheetContainerFocus();            
             luckysheetextendtable("row", Store.flowdata.length - 1, 10);
             
-            $("#luckysheet-scrollbar-y").scrollTop(scrollTop);
+            $("#sheet-scrollbar-y").scrollTop(scrollTop);
         }, 500);
     }
 }

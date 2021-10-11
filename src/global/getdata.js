@@ -401,7 +401,7 @@ export function checkstatusByCell(cell, a){
             // if(w.type!="None"){
             //     var range = w.getRangeAt(0);
             //     let startContainer = range.startContainer;
-            //     if (parseInt($("#luckysheet-input-box").css("top")) > 0 && startContainer.parentNode.tagName=="SPAN" && !range.collapsed) {
+            //     if (parseInt($("#sheet-input-box").css("top")) > 0 && startContainer.parentNode.tagName=="SPAN" && !range.collapsed) {
             //         let span = startContainer.parentNode;
             //         let styleList = convertCssToStyleList(span.style.cssText);
             //         foucsStatus = styleList[a];

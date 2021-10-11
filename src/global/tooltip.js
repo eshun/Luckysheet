@@ -6,30 +6,30 @@ import server from '../controllers/server';
 
 const tooltip = {
     info: function (title, content) {
-        $("#luckysheet-modal-dialog-mask").show();
-        $("#luckysheet-info").remove();
+        $("#sheet-modal-dialog-mask").show();
+        $("#sheet-info").remove();
 
         let _locale = locale();
         let locale_button = _locale.button;
 
         $("body").append(replaceHtml(modelHTML, { 
-            "id": "luckysheet-info", 
+            "id": "sheet-info", 
             "addclass": "", 
             "title": title, 
             "content": content, 
-            "botton": '<button class="btn btn-default luckysheet-model-close-btn">&nbsp;&nbsp;'+locale_button.close+'&nbsp;&nbsp;</button>', 
+            "botton": '<button class="btn btn-default sheet-model-close-btn">&nbsp;&nbsp;'+locale_button.close+'&nbsp;&nbsp;</button>', 
             "style": "z-index:100003" 
         }));
-        let _t = $("#luckysheet-info").find(".luckysheet-modal-dialog-content").css("min-width", 300).end(), 
+        let _t = $("#sheet-info").find(".sheet-modal-dialog-content").css("min-width", 300).end(), 
             myh = _t.outerHeight(), 
             myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
-        $("#luckysheet-info").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 3 }).show();
+        $("#sheet-info").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 3 }).show();
     },
     confirm: function (title, content, func1, func2, name1, name2) {
-        $("#luckysheet-modal-dialog-mask").show();
-        $("#luckysheet-confirm").remove();
+        $("#sheet-modal-dialog-mask").show();
+        $("#sheet-confirm").remove();
 
         const _locale = locale();
         const locale_button = _locale.button;
@@ -42,56 +42,56 @@ const tooltip = {
         }
 
         $("body").append(replaceHtml(modelHTML, { 
-            "id": "luckysheet-confirm", 
+            "id": "sheet-confirm", 
             "addclass": "", 
             "style": "z-index:100003", 
             "title": title, 
             "content": content, 
-            "botton": '<button class="btn btn-primary luckysheet-model-conform-btn">&nbsp;&nbsp;'+ name1 +'&nbsp;&nbsp;</button><button class="btn btn-default luckysheet-model-cancel-btn">&nbsp;&nbsp;'+ name2 +'&nbsp;&nbsp;</button>' 
+            "botton": '<button class="btn btn-primary sheet-model-conform-btn">&nbsp;&nbsp;'+ name1 +'&nbsp;&nbsp;</button><button class="btn btn-default sheet-model-cancel-btn">&nbsp;&nbsp;'+ name2 +'&nbsp;&nbsp;</button>' 
         }));
-        let _t = $("#luckysheet-confirm").find(".luckysheet-modal-dialog-content").css("min-width", 300).end(), 
+        let _t = $("#sheet-confirm").find(".sheet-modal-dialog-content").css("min-width", 300).end(), 
             myh = _t.outerHeight(), 
             myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
-        $("#luckysheet-confirm").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 3 }).show();
-        _t.find(".luckysheet-model-conform-btn").click(function () {
+        $("#sheet-confirm").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 3 }).show();
+        _t.find(".sheet-model-conform-btn").click(function () {
             if (typeof func1 == 'function') {
                 func1();
             }
             server.keepHighLightBox();
-            $("#luckysheet-confirm").hide();
-            $("#luckysheet-modal-dialog-mask").hide();  
+            $("#sheet-confirm").hide();
+            $("#sheet-modal-dialog-mask").hide();  
         });
-        _t.find(".luckysheet-model-cancel-btn").click(function () {
+        _t.find(".sheet-model-cancel-btn").click(function () {
             if (typeof func2 == 'function') {
                 func2();
             }
-            $("#luckysheet-confirm").hide();
-            $("#luckysheet-modal-dialog-mask").hide();
+            $("#sheet-confirm").hide();
+            $("#sheet-modal-dialog-mask").hide();
         });
     },
     screenshot: function (title, content, imgurl, btn, id) {
 
         const _locale = locale();
         const locale_screenshot = _locale.screenshot;
-        $("#luckysheet-modal-dialog-mask").show();
-        $("#luckysheet-confirm").remove();
+        $("#sheet-modal-dialog-mask").show();
+        $("#sheet-confirm").remove();
         $("body").append(replaceHtml(modelHTML, { 
-            "id": "luckysheet-confirm", 
+            "id": "sheet-confirm", 
             "addclass": "", 
             "style": "z-index:100003", 
             "title": title, 
             "content": content, 
-            "botton": btn || '<a style="text-decoration:none;color:#fff;" class="download btn btn-primary luckysheet-model-conform-btn">&nbsp;&nbsp;'+ locale_screenshot.downLoadBtn +'&nbsp;&nbsp;</a>&nbsp;&nbsp;<button class="btn btn-primary luckysheet-model-copy-btn">&nbsp;&nbsp;'+ locale_screenshot.downLoadCopy +'&nbsp;&nbsp;</button><button class="btn btn-default luckysheet-model-cancel-btn">&nbsp;&nbsp;'+ locale_screenshot.downLoadClose +'&nbsp;&nbsp;</button>' 
+            "botton": btn || '<a style="text-decoration:none;color:#fff;" class="download btn btn-primary sheet-model-conform-btn">&nbsp;&nbsp;'+ locale_screenshot.downLoadBtn +'&nbsp;&nbsp;</a>&nbsp;&nbsp;<button class="btn btn-primary sheet-model-copy-btn">&nbsp;&nbsp;'+ locale_screenshot.downLoadCopy +'&nbsp;&nbsp;</button><button class="btn btn-default sheet-model-cancel-btn">&nbsp;&nbsp;'+ locale_screenshot.downLoadClose +'&nbsp;&nbsp;</button>' 
         }));
-        let _t = $("#luckysheet-confirm").find(".luckysheet-modal-dialog-content").css("min-width", 300).end(), 
+        let _t = $("#sheet-confirm").find(".sheet-modal-dialog-content").css("min-width", 300).end(), 
             myh = _t.outerHeight(), 
             myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
-        $("#luckysheet-confirm").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 3 }).show();
-        _t.find(".luckysheet-model-conform-btn").click(function () {
+        $("#sheet-confirm").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 3 }).show();
+        _t.find(".sheet-model-conform-btn").click(function () {
             if(browser.isIE() == "1"){
                 alert(locale_screenshot.browserNotTip);
             }
@@ -110,12 +110,12 @@ const tooltip = {
                 }  
             }
         });
-        _t.find(".luckysheet-model-cancel-btn").click(function () {
-            $("#luckysheet-confirm").hide();
-            $("#luckysheet-modal-dialog-mask").hide();
+        _t.find(".sheet-model-cancel-btn").click(function () {
+            $("#sheet-confirm").hide();
+            $("#sheet-modal-dialog-mask").hide();
         });
 
-        $('#luckysheet-confirm .luckysheet-model-copy-btn').click(function(){
+        $('#sheet-confirm .sheet-model-copy-btn').click(function(){
             let dt = new clipboard.DT();
             dt.setData("text/html", "<img src='"+ imgurl +"'>");
             if(browser.isIE() == "1"){
@@ -130,36 +130,36 @@ const tooltip = {
     chartPointConfig: function (id, savefunc1, closefunc2) {
         $("body").append(replaceHtml(modelHTML, { 
             "id": id, 
-            "addclass": "luckysheet-chart-point-config-c", 
+            "addclass": "sheet-chart-point-config-c", 
             "title": "数据点批量设置", 
             "content": sheetchartpointconfigHTML, 
-            "botton": '<button class="btn btn-danger luckysheet-model-save-btn">&nbsp;&nbsp;保存设置&nbsp;&nbsp;</button><button class="btn btn-default luckysheet-model-close-btn">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>', 
+            "botton": '<button class="btn btn-danger sheet-model-save-btn">&nbsp;&nbsp;保存设置&nbsp;&nbsp;</button><button class="btn btn-default sheet-model-close-btn">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>', 
             "style": "z-index:100003;height:80%;width:80%;top:10%;left:10%;" 
         }));
-        $("#luckysheet-modal-dialog-mask").show();
+        $("#sheet-modal-dialog-mask").show();
         let winw = $(window).width(), winh = $(window).height();
-        $("#" + id).find(".luckysheet-chart-point-config").css("height", winh - 160);
+        $("#" + id).find(".sheet-chart-point-config").css("height", winh - 160);
         $("#" + id).css({ 
             "height": winh - 90, 
             "width": winw - 100, 
             "left": 7, 
             "top": 14 
-        }).show().find(".luckysheet-model-save-btn").click(function () {
+        }).show().find(".sheet-model-save-btn").click(function () {
             if (typeof savefunc1 == 'function') {
                 savefunc1();
             }
 
             $("#" + id).hide();
-            $("#luckysheet-modal-dialog-mask").hide();
+            $("#sheet-modal-dialog-mask").hide();
         });
 
-        $("#" + id).find(".luckysheet-model-save-btn").click(function () {
+        $("#" + id).find(".sheet-model-save-btn").click(function () {
             if (typeof closefunc2 == 'function') {
                 closefunc2();
             }
 
             $("#" + id).hide();
-            $("#luckysheet-modal-dialog-mask").hide();
+            $("#sheet-modal-dialog-mask").hide();
         });
     },
     sheetConfig: function () {
@@ -179,7 +179,7 @@ const tooltip = {
             _this.hoverTipshowTimeOut = setTimeout(function(){
                 let _t = $(e.currentTarget), 
                     toffset = _t.offset(), 
-                    _toolup = $("#luckysheet-tooltip-up");
+                    _toolup = $("#sheet-tooltip-up");
                 
                 let tips = _t.data("tips");
                 if (tips == null || tips.length == 0) {
@@ -192,7 +192,7 @@ const tooltip = {
 
                 if (_toolup.length == 0) {
                     $("body").append(sheetToolHTML);
-                    _toolup = $("#luckysheet-tooltip-up");
+                    _toolup = $("#sheet-tooltip-up");
                 }
 
                 _toolup.removeClass("jfk-tooltip-hide").find("div.jfk-tooltip-contentId").html(tips);
@@ -211,11 +211,11 @@ const tooltip = {
         }).on("mouseout", to, function (e) {
             _this.hoverTipshowState = false;
             clearTimeout(_this.hoverTipshowTimeOut);
-            $("#luckysheet-tooltip-up").addClass("jfk-tooltip-hide");
+            $("#sheet-tooltip-up").addClass("jfk-tooltip-hide");
         }).on("click", to, function (e) {
             _this.hoverTipshowState = true;
             clearTimeout(_this.hoverTipshowTimeOut);
-            $("#luckysheet-tooltip-up").addClass("jfk-tooltip-hide");
+            $("#sheet-tooltip-up").addClass("jfk-tooltip-hide");
         });
     },
     popover: function(content, position, close, style, btntxt, exitsFuc){

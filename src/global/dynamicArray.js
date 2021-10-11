@@ -117,7 +117,7 @@ function dynamicArrayHightShow(r, c) {
         let col = Store.visibledatacolumn[d_col_end], 
             col_pre = d_col - 1 == -1 ? 0 : Store.visibledatacolumn[d_col - 1];
 
-        $("#luckysheet-dynamicArray-hightShow").css({ 
+        $("#sheet-dynamicArray-hightShow").css({ 
             "left": col_pre, 
             "width": col - col_pre - 1, 
             "top": row_pre, 
@@ -126,7 +126,7 @@ function dynamicArrayHightShow(r, c) {
         });
     }
     else{
-        $("#luckysheet-dynamicArray-hightShow").hide();
+        $("#sheet-dynamicArray-hightShow").hide();
     }
 }
 

@@ -41,24 +41,24 @@ export function updateInlineStringFormat(cell, attr, value, _input){
 
     let cac = range.commonAncestorContainer;
     let _textEditor;
-    if(cac.id=="luckysheet-rich-text-editor"){
+    if(cac.id=="sheet-rich-text-editor"){
         _textEditor = $(cac);
     }
     else{
-        _textEditor = $(cac).closest("#luckysheet-rich-text-editor");
+        _textEditor = $(cac).closest("#sheet-rich-text-editor");
     }
-    let _functionbox = $(cac).closest("#luckysheet-functionbox-cell");
+    let _functionbox = $(cac).closest("#sheet-functionbox-cell");
 
     if(_textEditor.length==0 && _functionbox.length==0 && Store.inlineStringEditRange!=null){
         range = Store.inlineStringEditRange;
         cac = range.commonAncestorContainer;
-        if(cac.id=="luckysheet-rich-text-editor"){
+        if(cac.id=="sheet-rich-text-editor"){
             _textEditor = $(cac);
         }
         else{
-            _textEditor = $(cac).closest("#luckysheet-rich-text-editor");
+            _textEditor = $(cac).closest("#sheet-rich-text-editor");
         }
-        _functionbox = $(cac).closest("#luckysheet-functionbox-cell");
+        _functionbox = $(cac).closest("#sheet-functionbox-cell");
     }
 
     if(range.collapsed===true){
@@ -89,7 +89,7 @@ export function updateInlineStringFormat(cell, attr, value, _input){
             if(left!=""){
                 let cssText = span.style.cssText;
                 if(inherit){
-                    let box = $(span).closest("#luckysheet-input-box").get(0);
+                    let box = $(span).closest("#sheet-input-box").get(0);
                     if(box!=null){
                         cssText = extendCssText(box.style.cssText, cssText);
                     }
@@ -110,7 +110,7 @@ export function updateInlineStringFormat(cell, attr, value, _input){
                 let cssText = getCssText(span.style.cssText, attr, value);
 
                 if(inherit){
-                    let box = $(span).closest("#luckysheet-input-box").get(0);
+                    let box = $(span).closest("#sheet-input-box").get(0);
                     if(box!=null){
                         cssText = extendCssText(box.style.cssText, cssText);
                     }
@@ -122,7 +122,7 @@ export function updateInlineStringFormat(cell, attr, value, _input){
             if(right!=""){
                 let cssText = span.style.cssText;
                 if(inherit){
-                    let box = $(span).closest("#luckysheet-input-box").get(0);
+                    let box = $(span).closest("#sheet-input-box").get(0);
                     if(box!=null){
                         cssText = extendCssText(box.style.cssText, cssText);
                     }
@@ -239,13 +239,13 @@ export function enterKeyControll(cell){
     var range = w.getRangeAt(0);
     let cac = range.commonAncestorContainer;
     let _textEditor;
-    if(cac.id=="luckysheet-rich-text-editor"){
+    if(cac.id=="sheet-rich-text-editor"){
         _textEditor = $(cac);
     }
     else{
-        _textEditor = $(cac).closest("#luckysheet-rich-text-editor");
+        _textEditor = $(cac).closest("#sheet-rich-text-editor");
     }
-    let _functionbox = $(cac).closest("#luckysheet-functionbox-cell");
+    let _functionbox = $(cac).closest("#sheet-functionbox-cell");
 
     // if(range.collapsed===true){
     //     return;
@@ -256,7 +256,7 @@ export function enterKeyControll(cell){
     
     if(_textEditor.length>0){
         let startSpan = startContainer.parentNode;
-        if(startContainer.id=="luckysheet-rich-text-editor"){
+        if(startContainer.id=="sheet-rich-text-editor"){
             startSpan = $(startContainer).find("span");
             if(startSpan.length==0){
                 // 在末尾换行操作会导致数据丢失(覆盖)
@@ -311,7 +311,7 @@ export function enterKeyControll(cell){
                 cont = "<span style='"+ cssText +"'>" + sleft + "\n" + sright + "</span>";
             }
             
-            if(startContainer.id=="luckysheet-rich-text-editor"){
+            if(startContainer.id=="sheet-rich-text-editor"){
                 $(startSpan).replaceWith(cont);
                 let textSpan = _textEditor.find("span");
                 spanIndex = textSpan.length-1;

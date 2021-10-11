@@ -30,8 +30,8 @@ luckysheet.transToData(celldata)
 
 **<span style="font-size:20px;">A</span>**：参考
 
-- Vue案例：[luckysheet-vue](https://github.com/mengshukeji/luckysheet-vue)
-- React案例：[luckysheet-react](https://github.com/mengshukeji/luckysheet-react)
+- Vue案例：[sheet-vue](https://github.com/mengshukeji/sheet-vue)
+- React案例：[sheet-react](https://github.com/mengshukeji/sheet-react)
 
 ------------
 
@@ -239,7 +239,7 @@ Luckysheet教程里采用的CDN链接是 [jsdelivr](https://www.jsdelivr.com/pac
 
 ## 怎样在vue工程里对Luckysheet进行二次开发？
 
-**<span style="font-size:20px;">A</span>**：[luckysheet-vue](https://github.com/mengshukeji/luckysheet-vue) 案例是提供一个应用集成的方案。
+**<span style="font-size:20px;">A</span>**：[sheet-vue](https://github.com/mengshukeji/sheet-vue) 案例是提供一个应用集成的方案。
 
 如果本地直接开发的话：
 1. 把Luckysheet的工程和自己的Vue工程都启动起来，比如Luckysheet的工程在 `http://localhost:3001`
@@ -299,7 +299,7 @@ luckysheet.setRangeShow("A2",{show:false})
 ## 如何添加自定义工具栏？
 
 **<span style="font-size:20px;">A</span>**：暂未提供配置，可以参照工具栏打印按钮的实现来修改源码：
-1. 全局搜索 `luckysheet-icon-print`即可找到打印按钮的实现，在 [src/controllers/constant.js](https://github.com/mengshukeji/Luckysheet/blob/master/src/controllers/constant.js) 中增加一个类似的模板字符串，需要自定义一个唯一id
+1. 全局搜索 `sheet-icon-print`即可找到打印按钮的实现，在 [src/controllers/constant.js](https://github.com/mengshukeji/Luckysheet/blob/master/src/controllers/constant.js) 中增加一个类似的模板字符串，需要自定义一个唯一id
 2. 修改 [src/controllers/resize.js](https://github.com/mengshukeji/Luckysheet/blob/master/src/controllers/resize.js) ，在toobarConfig对象中新增一条记录
 3. 修改 [src/controllers/menuButton.js](https://github.com/mengshukeji/Luckysheet/blob/master/src/controllers/menuButton.js) ，新增一个事件监听
 

@@ -937,24 +937,24 @@ function luckysheetextendtable(type, index, value, direction, sheetIndex) {
     }
 
     if (type == "row"){
-        let scrollLeft = $("#luckysheet-cell-main").scrollLeft(), 
-            scrollTop = $("#luckysheet-cell-main").scrollTop();
-        let winH = $("#luckysheet-cell-main").height(), 
-            winW = $("#luckysheet-cell-main").width();
+        let scrollLeft = $("#sheet-cell-main").scrollLeft(), 
+            scrollTop = $("#sheet-cell-main").scrollTop();
+        let winH = $("#sheet-cell-main").height(), 
+            winW = $("#sheet-cell-main").width();
 
         let row = Store.visibledatarow[range[0].row[1]], 
             row_pre = range[0].row[0] - 1 == -1 ? 0 : Store.visibledatarow[range[0].row[0] - 1];
 
         if (row - scrollTop - winH + 20 > 0) {
-            $("#luckysheet-scrollbar-y").scrollTop(row - winH + 20);
+            $("#sheet-scrollbar-y").scrollTop(row - winH + 20);
         }
         else if (row_pre - scrollTop - 20 < 0) {
-            $("#luckysheet-scrollbar-y").scrollTop(row_pre - 20);
+            $("#sheet-scrollbar-y").scrollTop(row_pre - 20);
         }
 
         if(value > 30){
-            $("#luckysheet-row-count-show").hide();
-            $("#luckysheet-column-count-show").hide();
+            $("#sheet-row-count-show").hide();
+            $("#sheet-column-count-show").hide();
         }
     }
 }

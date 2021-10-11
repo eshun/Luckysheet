@@ -32,7 +32,7 @@ const selection = {
         // Store.luckysheet_copy_save = {};
 
         if (!clipboardData) {
-            let textarea = $("#luckysheet-copy-content").css("visibility", "hidden");
+            let textarea = $("#sheet-copy-content").css("visibility", "hidden");
             textarea.val(cpdata);
             textarea.focus();
             textarea.select();
@@ -526,7 +526,7 @@ const selection = {
         Store.iscopyself = true;
 
         if (!clipboardData) {
-            let textarea = $("#luckysheet-copy-content");
+            let textarea = $("#sheet-copy-content");
             textarea.html(cpdata);
             textarea.focus();
             textarea.select();
@@ -535,7 +535,7 @@ const selection = {
 
             // 等50毫秒，keyPress事件发生了再去处理数据
             setTimeout(function () {
-                $("#luckysheet-copy-content").blur();
+                $("#sheet-copy-content").blur();
             }, 10);
 
             // var oInput = document.createElement('input');
@@ -565,7 +565,7 @@ const selection = {
         Store.iscopyself = true;
 
         if (!clipboardData) {
-            let textarea = $("#luckysheet-copy-content");
+            let textarea = $("#sheet-copy-content");
             textarea.text(cpdata);
             textarea.focus();
             textarea.select();
@@ -590,7 +590,7 @@ const selection = {
         const _locale = locale();
         const local_drag = _locale.drag;
 
-        let textarea = $("#luckysheet-copy-content");
+        let textarea = $("#sheet-copy-content");
         textarea.focus();
         textarea.select();
 

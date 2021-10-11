@@ -580,7 +580,7 @@ function luckysheetMoveHighlightCell(postion, index, type, isScroll) {
             "moveXY": {"x": moveX, "y": moveY}
         };
 
-        $("#luckysheet-formula-functionrange-select").css({
+        $("#sheet-formula-functionrange-select").css({
             "left": col_pre,
             "width": col - col_pre - 1,
             "top": row_pre,
@@ -593,34 +593,34 @@ function luckysheetMoveHighlightCell(postion, index, type, isScroll) {
         });
     }
 
-    let scrollLeft = $("#luckysheet-cell-main").scrollLeft();
-    let scrollTop = $("#luckysheet-cell-main").scrollTop();
-    let winH = $("#luckysheet-cell-main").height(), winW = $("#luckysheet-cell-main").width();
+    let scrollLeft = $("#sheet-cell-main").scrollLeft();
+    let scrollTop = $("#sheet-cell-main").scrollTop();
+    let winH = $("#sheet-cell-main").height(), winW = $("#sheet-cell-main").width();
 
     let sleft = 0, stop = 0;
     if (col - scrollLeft - winW + 20 > 0) {
         sleft = col - winW + 20;
         if (isScroll) {
-            $("#luckysheet-scrollbar-x").scrollLeft(sleft);
+            $("#sheet-scrollbar-x").scrollLeft(sleft);
         }
     }
     else if (col_pre - scrollLeft - 20 < 0) {
         sleft = col_pre - 20;
         if (isScroll) {
-            $("#luckysheet-scrollbar-x").scrollLeft(sleft);
+            $("#sheet-scrollbar-x").scrollLeft(sleft);
         }
     }
 
     if (row - scrollTop - winH + 20 > 0) {
         stop = row - winH + 20;
         if (isScroll) {
-            $("#luckysheet-scrollbar-y").scrollTop(stop);
+            $("#sheet-scrollbar-y").scrollTop(stop);
         }
     }
     else if (row_pre - scrollTop - 20 < 0) {
         stop = row_pre - 20;
         if (isScroll) {
-            $("#luckysheet-scrollbar-y").scrollTop(stop);
+            $("#sheet-scrollbar-y").scrollTop(stop);
         }
     }
 
@@ -817,7 +817,7 @@ function luckysheetMoveHighlightCell2(postion, type, isScroll) {
             "column_focus": cf
         };
 
-        $("#luckysheet-formula-functionrange-select").css({
+        $("#sheet-formula-functionrange-select").css({
             "left": left,
             "width": width,
             "top": top,
@@ -830,34 +830,34 @@ function luckysheetMoveHighlightCell2(postion, type, isScroll) {
         });
     }
 
-    let scrollLeft = $("#luckysheet-cell-main").scrollLeft();
-    let scrollTop = $("#luckysheet-cell-main").scrollTop();
-    let winH = $("#luckysheet-cell-main").height(), winW = $("#luckysheet-cell-main").width();
+    let scrollLeft = $("#sheet-cell-main").scrollLeft();
+    let scrollTop = $("#sheet-cell-main").scrollTop();
+    let winH = $("#sheet-cell-main").height(), winW = $("#sheet-cell-main").width();
 
     let sleft = 0, stop = 0;
     if (col - scrollLeft - winW + 20 > 0) {
         sleft = col - winW + 20;
         if (isScroll) {
-            $("#luckysheet-scrollbar-x").scrollLeft(sleft);
+            $("#sheet-scrollbar-x").scrollLeft(sleft);
         }
     }
     else if (col_pre - scrollLeft - 20 < 0) {
         sleft = col_pre - 20;
         if (isScroll) {
-            $("#luckysheet-scrollbar-x").scrollLeft(sleft);
+            $("#sheet-scrollbar-x").scrollLeft(sleft);
         }
     }
 
     if (row - scrollTop - winH + 20 > 0) {
         stop = row - winH + 20;
         if (isScroll) {
-            $("#luckysheet-scrollbar-y").scrollTop(stop);
+            $("#sheet-scrollbar-y").scrollTop(stop);
         }
     }
     else if (row_pre - scrollTop - 20 < 0) {
         stop = row_pre - 20;
         if (isScroll) {
-            $("#luckysheet-scrollbar-y").scrollTop(stop);
+            $("#sheet-scrollbar-y").scrollTop(stop);
         }
     }
 
@@ -1235,7 +1235,7 @@ function luckysheetMoveHighlightRange(postion, index, type, isScroll) {
             "column_focus": cf
         };
 
-        $("#luckysheet-formula-functionrange-select").css({
+        $("#sheet-formula-functionrange-select").css({
             "left": left,
             "width": width,
             "top": top,
@@ -1248,34 +1248,34 @@ function luckysheetMoveHighlightRange(postion, index, type, isScroll) {
         });
     }
 
-    let scrollLeft = $("#luckysheet-cell-main").scrollLeft();
-    let scrollTop = $("#luckysheet-cell-main").scrollTop();
-    let winH = $("#luckysheet-cell-main").height(), winW = $("#luckysheet-cell-main").width();
+    let scrollLeft = $("#sheet-cell-main").scrollLeft();
+    let scrollTop = $("#sheet-cell-main").scrollTop();
+    let winH = $("#sheet-cell-main").height(), winW = $("#sheet-cell-main").width();
 
     let sleft = 0, stop = 0;
     if (col - scrollLeft - winW + 20 > 0) {
         sleft = col - winW + 20;
         if (isScroll) {
-            $("#luckysheet-scrollbar-x").scrollLeft(sleft);
+            $("#sheet-scrollbar-x").scrollLeft(sleft);
         }
     }
     else if (col_pre - scrollLeft - 20 < 0) {
         sleft = col_pre - 20;
         if (isScroll) {
-            $("#luckysheet-scrollbar-x").scrollLeft(sleft);
+            $("#sheet-scrollbar-x").scrollLeft(sleft);
         }
     }
 
     if (row - scrollTop - winH + 20 > 0) {
         stop = row - winH + 20;
         if (isScroll) {
-            $("#luckysheet-scrollbar-y").scrollTop(stop);
+            $("#sheet-scrollbar-y").scrollTop(stop);
         }
     }
     else if (row_pre - scrollTop - 20 < 0) {
         stop = row_pre - 20;
         if (isScroll) {
-            $("#luckysheet-scrollbar-y").scrollTop(stop);
+            $("#sheet-scrollbar-y").scrollTop(stop);
         }
     }
 
@@ -1567,7 +1567,7 @@ function luckysheetMoveHighlightRange2(postion, type, isScroll) {
             "column_focus": cf
         };
 
-        $("#luckysheet-formula-functionrange-select").css({
+        $("#sheet-formula-functionrange-select").css({
             "left": left,
             "width": width,
             "top": top,
@@ -1580,34 +1580,34 @@ function luckysheetMoveHighlightRange2(postion, type, isScroll) {
         });
     }
 
-    let scrollLeft = $("#luckysheet-cell-main").scrollLeft();
-    let scrollTop = $("#luckysheet-cell-main").scrollTop();
-    let winH = $("#luckysheet-cell-main").height(), winW = $("#luckysheet-cell-main").width();
+    let scrollLeft = $("#sheet-cell-main").scrollLeft();
+    let scrollTop = $("#sheet-cell-main").scrollTop();
+    let winH = $("#sheet-cell-main").height(), winW = $("#sheet-cell-main").width();
 
     let sleft = 0, stop = 0;
     if (col - scrollLeft - winW + 20 > 0) {
         sleft = col - winW + 20;
         if (isScroll) {
-            $("#luckysheet-scrollbar-x").scrollLeft(sleft);
+            $("#sheet-scrollbar-x").scrollLeft(sleft);
         }
     }
     else if (col_pre - scrollLeft - 20 < 0) {
         sleft = col_pre - 20;
         if (isScroll) {
-            $("#luckysheet-scrollbar-x").scrollLeft(sleft);
+            $("#sheet-scrollbar-x").scrollLeft(sleft);
         }
     }
 
     if (row - scrollTop - winH + 20 > 0) {
         stop = row - winH + 20;
         if (isScroll) {
-            $("#luckysheet-scrollbar-y").scrollTop(stop);
+            $("#sheet-scrollbar-y").scrollTop(stop);
         }
     }
     else if (row_pre - scrollTop - 20 < 0) {
         stop = row_pre - 20;
         if (isScroll) {
-            $("#luckysheet-scrollbar-y").scrollTop(stop);
+            $("#sheet-scrollbar-y").scrollTop(stop);
         }
     }
 

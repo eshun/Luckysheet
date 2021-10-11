@@ -22,7 +22,7 @@ import sheetmanage from '../controllers/sheetmanage';
 
 function luckysheetDrawgridRowTitle(scrollHeight, drawHeight, offsetTop) {
     if (scrollHeight == null) {
-        scrollHeight = $("#luckysheet-cell-main").scrollTop();
+        scrollHeight = $("#sheet-cell-main").scrollTop();
     }
 
     if (drawHeight == null) {
@@ -220,7 +220,7 @@ function luckysheetDrawgridRowTitle(scrollHeight, drawHeight, offsetTop) {
 
 function luckysheetDrawgridColumnTitle(scrollWidth, drawWidth, offsetLeft) {
     if (scrollWidth == null) {
-        scrollWidth = $("#luckysheet-cell-main").scrollLeft();
+        scrollWidth = $("#sheet-cell-main").scrollLeft();
     }
 
     if (drawWidth == null) {
@@ -429,10 +429,10 @@ function luckysheetDrawMain(scrollWidth, scrollHeight, drawWidth, drawHeight, of
     
     //参数未定义处理
     if (scrollWidth == null) {
-        scrollWidth = $("#luckysheet-cell-main").scrollLeft();
+        scrollWidth = $("#sheet-cell-main").scrollLeft();
     }
     if (scrollHeight == null) {
-        scrollHeight = $("#luckysheet-cell-main").scrollTop();
+        scrollHeight = $("#sheet-cell-main").scrollTop();
     }
 
     if (drawWidth == null) {

@@ -61,16 +61,16 @@ export default function luckysheetcreatedom(colwidth, rowheight, data, menu, tit
     const _locale = locale();
     const locale_info = _locale.info;
 
-    let addControll = '<button id="luckysheet-bottom-add-row" class="btn btn-default">'+locale_info.add+'</button><input id="luckysheet-bottom-add-row-input" type="text" class="luckysheet-datavisual-config-input luckysheet-mousedown-cancel" placeholder="100"><span style="font-size: 14px;">'+ locale_info.row +'</span><span style="font-size: 14px;color: #9c9c9c;">('+locale_info.addLast+')</span>';
-    let backControll = ' <button id="luckysheet-bottom-bottom-top" class="btn btn-default" style="">'+ locale_info.backTop +'</button>';
-    // let pageControll = ' <span id="luckysheet-bottom-page-info" style="font-size: 14px;color: #f34141;">共'+ sheetConfigSetting.pageInfo.totalPage +'页，当前已显示'+ (sheetConfigSetting.pageInfo.currentPage) +'页，每页'+ sheetConfigSetting.pageInfo.pageSize +'条</span> <button id="luckysheet-bottom-page-next" class="btn btn-danger" style="">下一页</button>';
+    let addControll = '<button id="sheet-bottom-add-row" class="btn btn-default">'+locale_info.add+'</button><input id="sheet-bottom-add-row-input" type="text" class="sheet-datavisual-config-input sheet-mousedown-cancel" placeholder="100"><span style="font-size: 14px;">'+ locale_info.row +'</span><span style="font-size: 14px;color: #9c9c9c;">('+locale_info.addLast+')</span>';
+    let backControll = ' <button id="sheet-bottom-bottom-top" class="btn btn-default" style="">'+ locale_info.backTop +'</button>';
+    // let pageControll = ' <span id="sheet-bottom-page-info" style="font-size: 14px;color: #f34141;">共'+ sheetConfigSetting.pageInfo.totalPage +'页，当前已显示'+ (sheetConfigSetting.pageInfo.currentPage) +'页，每页'+ sheetConfigSetting.pageInfo.pageSize +'条</span> <button id="sheet-bottom-page-next" class="btn btn-danger" style="">下一页</button>';
     let pageInfo = replaceHtml(locale_info.pageInfo,{
         total:sheetConfigSetting.total?sheetConfigSetting.total:"",
         totalPage:sheetConfigSetting.pageInfo.totalPage?sheetConfigSetting.pageInfo.totalPage:"",
         currentPage:sheetConfigSetting.pageInfo.currentPage?sheetConfigSetting.pageInfo.currentPage:"",
     });
-    let pageControll = ' <span id="luckysheet-bottom-page-info" style="font-size: 14px;color: #f34141;">'+ pageInfo +'</span> <button id="luckysheet-bottom-page-next" class="btn btn-danger" style="">下一页</button>';
-    let pageControll2 = ' <span id="luckysheet-bottom-page-info" style="font-size: 14px;color: #f34141;">'+pageInfo+'</span>';
+    let pageControll = ' <span id="sheet-bottom-page-info" style="font-size: 14px;color: #f34141;">'+ pageInfo +'</span> <button id="sheet-bottom-page-next" class="btn btn-danger" style="">下一页</button>';
+    let pageControll2 = ' <span id="sheet-bottom-page-info" style="font-size: 14px;color: #f34141;">'+pageInfo+'</span>';
 
     let bottomControll = "";
     if(sheetConfigSetting.enableAddRow){
@@ -90,7 +90,7 @@ export default function luckysheetcreatedom(colwidth, rowheight, data, menu, tit
         bottomControll += backControll;
     }
 
-    let flowstr = replaceHtml('<div id="luckysheetcoltable_0" class="luckysheet-cell-flow-col"> <div id ="sheettable_0" class="luckysheet-cell-sheettable" style="height:${height}px;width:${width}px;"></div><div id="luckysheet-bottom-controll-row" class="luckysheet-bottom-controll-row"> '+ bottomControll +' </div> </div>', { "height": Store.rh_height, "width": Store.ch_width - 1 });
+    let flowstr = replaceHtml('<div id="luckysheetcoltable_0" class="sheet-cell-flow-col"> <div id ="sheettable_0" class="sheet-cell-sheettable" style="height:${height}px;width:${width}px;"></div><div id="sheet-bottom-controll-row" class="sheet-bottom-controll-row"> '+ bottomControll +' </div> </div>', { "height": Store.rh_height, "width": Store.ch_width - 1 });
 
     let colsheader = replaceHtml(columnHeaderHTML, { "width": Store.ch_width, "index": 0, "column": "" });
 
@@ -100,8 +100,8 @@ export default function luckysheetcreatedom(colwidth, rowheight, data, menu, tit
 
     $("#" + Store.container).append(gh);
 
-    $("#luckysheet-scrollbar-x div").width(Store.ch_width);
-    $("#luckysheet-scrollbar-y div").height(Store.rh_height + Store.columnHeaderHeight - Store.cellMainSrollBarSize - 3);
+    $("#sheet-scrollbar-x div").width(Store.ch_width);
+    $("#sheet-scrollbar-y div").height(Store.rh_height + Store.columnHeaderHeight - Store.cellMainSrollBarSize - 3);
 
     //新建行菜单
     $("body").append(maskHTML);
@@ -112,9 +112,9 @@ export default function luckysheetcreatedom(colwidth, rowheight, data, menu, tit
     $("body").append(replaceHtml(filtersubmenuHTML(), { "menuid": "filter" }));
     $("body").append(sheetconfigHTML());
 
-    $("#luckysheet-rows-h").width((Store.rowHeaderWidth-1.5));
-    $("#luckysheet-cols-h-c").height((Store.columnHeaderHeight-1.5));
-    $("#luckysheet-left-top").css({width:Store.rowHeaderWidth-1.5, height:Store.columnHeaderHeight-1.5});
+    $("#sheet-rows-h").width((Store.rowHeaderWidth-1.5));
+    $("#sheet-cols-h-c").height((Store.columnHeaderHeight-1.5));
+    $("#sheet-left-top").css({width:Store.rowHeaderWidth-1.5, height:Store.columnHeaderHeight-1.5});
 
     // //批注
     // luckysheetPostil.buildAllPs(Store.flowdata);

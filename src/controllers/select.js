@@ -222,25 +222,25 @@ function selectTitlesShow(rangeArr, isRestore = false) {
     }
 
     //行标题
-    $("#luckysheet-rows-h-selected").empty();
+    $("#sheet-rows-h-selected").empty();
 
     let rowTitleRange = selectTitlesRange(rowTitleMap);
     for (let i = 0; i < rowTitleRange.length; i++) {
         let r1 = rowTitleRange[i][0], r2 = rowTitleRange[i][rowTitleRange[i].length - 1];
         let row = rowLocationByIndex(r2)[1], row_pre = rowLocationByIndex(r1)[0];
 
-        $("#luckysheet-rows-h-selected").append('<div class="luckysheet-rows-h-selected" style="top: ' + row_pre + 'px; height: ' + (row - row_pre - 1) + 'px; display: block; background-color: rgba(76, 76, 76, 0.1);"></div>');
+        $("#sheet-rows-h-selected").append('<div class="sheet-rows-h-selected" style="top: ' + row_pre + 'px; height: ' + (row - row_pre - 1) + 'px; display: block; background-color: rgba(76, 76, 76, 0.1);"></div>');
     }
 
     //列标题
-    $("#luckysheet-cols-h-selected").empty();
+    $("#sheet-cols-h-selected").empty();
 
     let columnTitleRange = selectTitlesRange(columnTitleMap);
     for (let j = 0; j < columnTitleRange.length; j++) {
         let c1 = columnTitleRange[j][0], c2 = columnTitleRange[j][columnTitleRange[j].length - 1];
         let col = colLocationByIndex(c2)[1], col_pre = colLocationByIndex(c1)[0];
 
-        $("#luckysheet-cols-h-selected").append('<div class="luckysheet-cols-h-selected" style="left: ' + col_pre + 'px; width: ' + (col - col_pre - 1) + 'px; display: block; background-color: rgba(76, 76, 76, 0.1);"></div>');
+        $("#sheet-cols-h-selected").append('<div class="sheet-cols-h-selected" style="left: ' + col_pre + 'px; width: ' + (col - col_pre - 1) + 'px; display: block; background-color: rgba(76, 76, 76, 0.1);"></div>');
 
     }
 }
@@ -446,15 +446,15 @@ function collaborativeEditBox() {
                     }
                 }
             }
-            $("#luckysheet-multipleRange-show-" + value.id).css({ "height": change_height, "width": change_width, "top": change_top + 'px', "left": change_left + 'px' })
-            let change_bottom = $("#luckysheet-multipleRange-show-" + value.id)[0].offsetHeight - 1
-            $("#luckysheet-multipleRange-show-" + value.id + ">.username").css({ "bottom": change_bottom + 'px' })
+            $("#sheet-multipleRange-show-" + value.id).css({ "height": change_height, "width": change_width, "top": change_top + 'px', "left": change_left + 'px' })
+            let change_bottom = $("#sheet-multipleRange-show-" + value.id)[0].offsetHeight - 1
+            $("#sheet-multipleRange-show-" + value.id + ">.username").css({ "bottom": change_bottom + 'px' })
         }
     })
 }
 //复制选区虚线框
 function selectionCopyShow(range) {
-    $("#luckysheet-selection-copy").empty();
+    $("#sheet-selection-copy").empty();
 
     if (range == null) {
         range = Store.luckysheet_selection_range;
@@ -471,14 +471,14 @@ function selectionCopyShow(range) {
             let col = Store.visibledatacolumn[c2],
                 col_pre = c1 - 1 == -1 ? 0 : Store.visibledatacolumn[c1 - 1];
 
-            let copyDomHtml = '<div class="luckysheet-selection-copy" style="display: block; left: ' + col_pre + 'px; width: ' + (col - col_pre - 1) + 'px; top: ' + row_pre + 'px; height: ' + (row - row_pre - 1) + 'px;">' +
-                '<div class="luckysheet-selection-copy-top luckysheet-copy"></div>' +
-                '<div class="luckysheet-selection-copy-right luckysheet-copy"></div>' +
-                '<div class="luckysheet-selection-copy-bottom luckysheet-copy"></div>' +
-                '<div class="luckysheet-selection-copy-left luckysheet-copy"></div>' +
-                '<div class="luckysheet-selection-copy-hc"></div>' +
+            let copyDomHtml = '<div class="sheet-selection-copy" style="display: block; left: ' + col_pre + 'px; width: ' + (col - col_pre - 1) + 'px; top: ' + row_pre + 'px; height: ' + (row - row_pre - 1) + 'px;">' +
+                '<div class="sheet-selection-copy-top sheet-copy"></div>' +
+                '<div class="sheet-selection-copy-right sheet-copy"></div>' +
+                '<div class="sheet-selection-copy-bottom sheet-copy"></div>' +
+                '<div class="sheet-selection-copy-left sheet-copy"></div>' +
+                '<div class="sheet-selection-copy-hc"></div>' +
                 '</div>';
-            $("#luckysheet-selection-copy").append(copyDomHtml);
+            $("#sheet-selection-copy").append(copyDomHtml);
         }
     }
 }
@@ -489,8 +489,8 @@ function luckysheet_count_show(left, top, width, height, rowseleted, columnselet
         coll = columnseleted[1] - columnseleted[0] + 1;
     let drawWidth = Store.sheetTableContentHW[0],
         drawHeight = Store.sheetTableContentHW[1];
-    let scrollWidth = $("#luckysheet-cell-main").scrollLeft(),
-        scrollHeight = $("#luckysheet-cell-main").scrollTop();
+    let scrollWidth = $("#sheet-cell-main").scrollLeft(),
+        scrollHeight = $("#sheet-cell-main").scrollTop();
 
     const _locale = locale();
     const locale_info = _locale.info;
@@ -510,10 +510,10 @@ function luckysheet_count_show(left, top, width, height, rowseleted, columnselet
             topv = scrollHeight + drawHeight / 2;
         }
 
-        $("#luckysheet-row-count-show").css({ "left": leftv, "top": topv, "display": "block", "width": "11px" }).html("<div>" + rowl.toString().split("").join("</div><div>") + "</div><div>" + locale_info.row + "</div>");
+        $("#sheet-row-count-show").css({ "left": leftv, "top": topv, "display": "block", "width": "11px" }).html("<div>" + rowl.toString().split("").join("</div><div>") + "</div><div>" + locale_info.row + "</div>");
     }
     else {
-        $("#luckysheet-row-count-show").hide();
+        $("#sheet-row-count-show").hide();
     }
 
     if (coll >= 4) {
@@ -531,10 +531,10 @@ function luckysheet_count_show(left, top, width, height, rowseleted, columnselet
             leftv = scrollWidth + drawWidth / 2;
         }
 
-        $("#luckysheet-column-count-show").css({ "left": leftv, "top": topv, "display": "block" }).text(coll + locale_info.column);
+        $("#sheet-column-count-show").css({ "left": leftv, "top": topv, "display": "block" }).text(coll + locale_info.column);
     }
     else {
-        $("#luckysheet-column-count-show").hide();
+        $("#sheet-column-count-show").hide();
     }
 }
 
@@ -542,13 +542,13 @@ function selectHelpboxFill() {
     let range = Store.luckysheet_select_save[Store.luckysheet_select_save.length - 1];
     let rf = range["row_focus"], cf = range["column_focus"];
     if (Store.config["merge"] != null && (rf + "_" + cf) in Store.config["merge"]) {
-        $("#luckysheet-helpbox-cell").text(getRangetxt(Store.currentSheetIndex, {
+        $("#sheet-helpbox-cell").text(getRangetxt(Store.currentSheetIndex, {
             column: [cf, cf],
             row: [rf, rf],
         }));
     }
     else {
-        $("#luckysheet-helpbox-cell").text(getRangetxt(Store.currentSheetIndex, range));
+        $("#sheet-helpbox-cell").text(getRangetxt(Store.currentSheetIndex, range));
     }
 
 }

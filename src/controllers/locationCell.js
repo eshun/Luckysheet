@@ -12,8 +12,8 @@ import locale from '../locale/locale';
 //定位
 const luckysheetLocationCell = {
     createDialog: function(){
-        $("#luckysheet-modal-dialog-mask").show();
-        $("#luckysheet-locationCell-dialog").remove();
+        $("#sheet-modal-dialog-mask").show();
+        $("#sheet-locationCell-dialog").remove();
 
         const _locale = locale();
         const locale_location = _locale.findAndReplace;
@@ -91,38 +91,38 @@ const luckysheetLocationCell = {
                       '</div>';
 
         $("body").append(replaceHtml(modelHTML, { 
-            "id": "luckysheet-locationCell-dialog", 
-            "addclass": "luckysheet-locationCell-dialog", 
+            "id": "sheet-locationCell-dialog", 
+            "addclass": "sheet-locationCell-dialog", 
             "title": locale_location.location, 
             "content": content, 
-            "botton": '<button id="luckysheet-locationCell-dialog-confirm" class="btn btn-primary">'+locale_button.confirm+'</button><button class="btn btn-default luckysheet-model-close-btn">'+locale_button.cancel+'</button>', 
+            "botton": '<button id="sheet-locationCell-dialog-confirm" class="btn btn-primary">'+locale_button.confirm+'</button><button class="btn btn-default sheet-model-close-btn">'+locale_button.cancel+'</button>', 
             "style": "z-index:100003" 
         }));
-        let _t = $("#luckysheet-locationCell-dialog").find(".luckysheet-modal-dialog-content").css("min-width", 400).end(), 
+        let _t = $("#sheet-locationCell-dialog").find(".sheet-modal-dialog-content").css("min-width", 400).end(), 
             myh = _t.outerHeight(), 
             myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
-        $("#luckysheet-locationCell-dialog").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 3 }).show();
+        $("#sheet-locationCell-dialog").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 3 }).show();
     },
     init: function(){
         let _this = this;
 
         const locale_location = locale().findAndReplace;
 
-        $(document).on("click", "#luckysheet-locationCell-dialog .listItem input:radio", function(e){
-            $("#luckysheet-locationCell-dialog .listItem input:checkbox").prop("disabled", true);
-            $("#luckysheet-locationCell-dialog .listItem .subbox label").css("color", "#666");
+        $(document).on("click", "#sheet-locationCell-dialog .listItem input:radio", function(e){
+            $("#sheet-locationCell-dialog .listItem input:checkbox").prop("disabled", true);
+            $("#sheet-locationCell-dialog .listItem .subbox label").css("color", "#666");
 
             $(this).siblings(".subbox").find("input:checkbox").removeAttr("disabled");
             $(this).siblings(".subbox").find("label").css("color", "#000");
         });
 
-        $(document).off("click.locationCellConfirm").on("click.locationCellConfirm", "#luckysheet-locationCell-dialog #luckysheet-locationCell-dialog-confirm", function(){
-            $("#luckysheet-modal-dialog-mask").hide();
-            $("#luckysheet-locationCell-dialog").hide();
+        $(document).off("click.locationCellConfirm").on("click.locationCellConfirm", "#sheet-locationCell-dialog #sheet-locationCell-dialog-confirm", function(){
+            $("#sheet-modal-dialog-mask").hide();
+            $("#sheet-locationCell-dialog").hide();
 
-            let _radio = $("#luckysheet-locationCell-dialog .listItem input:radio:checked");
+            let _radio = $("#sheet-locationCell-dialog .listItem input:radio:checked");
             let id = _radio.attr("id");
 
             if(id == "locationConstant" || id == "locationFormula"){
@@ -369,10 +369,10 @@ const luckysheetLocationCell = {
             Store.luckysheet_select_save = rangeArr;
             selectHightlightShow(); 
 
-            let scrollLeft = $("#luckysheet-cell-main").scrollLeft(), 
-                scrollTop = $("#luckysheet-cell-main").scrollTop();
-            let winH = $("#luckysheet-cell-main").height(), 
-                winW = $("#luckysheet-cell-main").width();
+            let scrollLeft = $("#sheet-cell-main").scrollLeft(), 
+                scrollTop = $("#sheet-cell-main").scrollTop();
+            let winH = $("#sheet-cell-main").height(), 
+                winW = $("#sheet-cell-main").width();
 
             let r1 = Store.luckysheet_select_save[0]["row"][0],
                 r2 = Store.luckysheet_select_save[0]["row"][1],
@@ -385,17 +385,17 @@ const luckysheetLocationCell = {
                 col_pre = c1 - 1 == -1 ? 0 : Store.visibledatacolumn[c1 - 1];
 
             if (col - scrollLeft - winW + 20 > 0) {
-                $("#luckysheet-scrollbar-x").scrollLeft(col - winW + 20);
+                $("#sheet-scrollbar-x").scrollLeft(col - winW + 20);
             }
             else if (col_pre - scrollLeft - 20 < 0) {
-                $("#luckysheet-scrollbar-x").scrollLeft(col_pre - 20);
+                $("#sheet-scrollbar-x").scrollLeft(col_pre - 20);
             }
 
             if (row - scrollTop - winH + 20 > 0) {
-                $("#luckysheet-scrollbar-y").scrollTop(row - winH + 20);
+                $("#sheet-scrollbar-y").scrollTop(row - winH + 20);
             }
             else if (row_pre - scrollTop - 20 < 0) {
-                $("#luckysheet-scrollbar-y").scrollTop(row_pre - 20);
+                $("#sheet-scrollbar-y").scrollTop(row_pre - 20);
             }
         }
     },

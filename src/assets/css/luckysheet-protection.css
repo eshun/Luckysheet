@@ -1,97 +1,97 @@
 
-#luckysheet-modal-dialog-slider-protection .luckysheet-modal-dialog-slider-content{
+#sheet-modal-dialog-slider-protection .sheet-modal-dialog-slider-content{
     background: #fff;
 }
 
-.luckysheet-slider-protection-config{
+.sheet-slider-protection-config{
     width: 100%;
 }
 
-.luckysheet-slider-protection-row{
+.sheet-slider-protection-row{
     position: relative;
     width: 98%;
     height: 35px;
     left: 1%;
 }
 
-.luckysheet-slider-protection-column{
+.sheet-slider-protection-column{
     position: absolute;
     height: 100%;
 }
 
 
-.luckysheet-slider-protection-config input, .luckysheet-slider-protection-config textarea, .luckysheet-protection-rangeItem-dialog input, .luckysheet-protection-rangeItem-dialog textarea, .luckysheet-protection-sheet-validation input{
+.sheet-slider-protection-config input, .sheet-slider-protection-config textarea, .sheet-protection-rangeItem-dialog input, .sheet-protection-rangeItem-dialog textarea, .sheet-protection-sheet-validation input{
     border: 1px solid #d4d4d4;
     outline: none;
 }
 
-.luckysheet-slider-protection-config input:focus, .luckysheet-slider-protection-config textarea:focus, .luckysheet-protection-rangeItem-dialog input:focus, .luckysheet-protection-rangeItem-dialog textarea:focus,.luckysheet-protection-sheet-validation input:focus{
+.sheet-slider-protection-config input:focus, .sheet-slider-protection-config textarea:focus, .sheet-protection-rangeItem-dialog input:focus, .sheet-protection-rangeItem-dialog textarea:focus,.sheet-protection-sheet-validation input:focus{
     border: 1px solid #0389FB;
     outline: none;
 }
 
-.luckysheet-protection-input{
+.sheet-protection-input{
     width: 100%;
     height: 19px;
     position: relative;
 }
 
-.luckysheet-protection-textarea{
+.sheet-protection-textarea{
     width: 100%;
     height: 47px;
     position: relative;
     resize:none;
 }
 
-.luckysheet-protection-column-2x{
+.sheet-protection-column-2x{
     width: 20%;
 }
 
-.luckysheet-protection-column-3x{
+.sheet-protection-column-3x{
     width: 30%;
 }
 
-.luckysheet-protection-column-4x{
+.sheet-protection-column-4x{
     width: 40%;
 }
 
-.luckysheet-protection-column-5x{
+.sheet-protection-column-5x{
     width: 50%;
 }
 
-.luckysheet-protection-column-6x{
+.sheet-protection-column-6x{
     width: 60%;
 }
 
-.luckysheet-protection-column-7x{
+.sheet-protection-column-7x{
     width: 70%;
 }
 
-.luckysheet-protection-column-8x{
+.sheet-protection-column-8x{
     width: 80%;
 }
 
-.luckysheet-protection-column-9x{
+.sheet-protection-column-9x{
     width: 90%;
 }
 
-.luckysheet-protection-column-10x{
+.sheet-protection-column-10x{
     width: 100%;
 }
 
-.luckysheet-protection-column-left{
+.sheet-protection-column-left{
     text-align: left;
 }
 
-.luckysheet-protection-column-center{
+.sheet-protection-column-center{
     text-align: center;
 }
 
-.luckysheet-protection-column-right{
+.sheet-protection-column-right{
     text-align: right;
 }
 
-.luckysheet-slider-protection-ok{
+.sheet-slider-protection-ok{
     position: absolute;
     width: 100%;
     height: 100%;
@@ -103,15 +103,15 @@
     cursor: pointer;
 }
 
-.luckysheet-slider-protection-ok:hover{
+.sheet-slider-protection-ok:hover{
     background: #0181EE;
 }
 
-.luckysheet-slider-protection-ok:active{
+.sheet-slider-protection-ok:active{
     background: #0074da;
 }
 
-.luckysheet-slider-protection-cancel{
+.sheet-slider-protection-cancel{
     position: absolute;
     width: 100%;
     height: 100%;
@@ -123,15 +123,15 @@
     cursor: pointer;
 }
 
-.luckysheet-slider-protection-cancel:hover{
+.sheet-slider-protection-cancel:hover{
     background: #d6d6d6;
 }
 
-.luckysheet-slider-protection-cancel:active{
+.sheet-slider-protection-cancel:active{
     background: #c7c7c7;
 }
 
-.luckysheet-slider-protection-addRange{
+.sheet-slider-protection-addRange{
     line-height: 23px;
     font-size: 12px;
     top: 2px;
@@ -139,7 +139,7 @@
 }
 
 
-.luckysheet-protection-rangeItem{
+.sheet-protection-rangeItem{
     position: relative;
     width: 100%;
     height: 30px;
@@ -148,18 +148,18 @@
     overflow: hidden;
 }
 
-.luckysheet-protection-rangeItem:hover{
+.sheet-protection-rangeItem:hover{
     background: #D5D5D5;
 }
 
-.luckysheet-protection-rangeItem > div{
+.sheet-protection-rangeItem > div{
     position: absolute;
     height: 100%;
     text-align: center;
     overflow: hidden;
 }
 
-.luckysheet-protection-rangeItem .luckysheet-protection-rangeItem-del{
+.sheet-protection-rangeItem .sheet-protection-rangeItem-del{
     left: 5px;
     top:5px;
     height: 20px;
@@ -169,18 +169,18 @@
     cursor: pointer;
 }
 
-.luckysheet-protection-rangeItem .luckysheet-protection-rangeItem-name{
+.sheet-protection-rangeItem .sheet-protection-rangeItem-name{
     left: 30px;
     width: 80px;
     text-align: left;
 }
 
-.luckysheet-protection-rangeItem .luckysheet-protection-rangeItem-range{
+.sheet-protection-rangeItem .sheet-protection-rangeItem-range{
     left: 110px;
     width: 120px;
 }
 
-.luckysheet-protection-rangeItem .luckysheet-protection-rangeItem-update{
+.sheet-protection-rangeItem .sheet-protection-rangeItem-update{
     left: 230px;
     width: 30px;
     font-size: 14px;
@@ -191,31 +191,31 @@
     cursor: pointer;
 }
 
-.luckysheet-protection-rangeItem .luckysheet-protection-rangeItem-del:hover, .luckysheet-protection-rangeItem .luckysheet-protection-rangeItem-update:hover{
+.sheet-protection-rangeItem .sheet-protection-rangeItem-del:hover, .sheet-protection-rangeItem .sheet-protection-rangeItem-update:hover{
     background: #0181EE;
     color: #fff;
 }
 
-.luckysheet-protection-rangeItem .luckysheet-protection-rangeItem-del:active, .luckysheet-protection-rangeItem .luckysheet-protection-rangeItem-update:active{
+.sheet-protection-rangeItem .sheet-protection-rangeItem-del:active, .sheet-protection-rangeItem .sheet-protection-rangeItem-update:active{
     background: #0074da;
     color: #fff;
 }
 
 
-.luckysheet-protection-rangeItem-content{
+.sheet-protection-rangeItem-content{
     position: relative;
     width: 350px;
     height: 270px;
 }
 
 
-#luckysheet-protection-rangeItem-dialog .luckysheet-slider-protection-column .range {
+#sheet-protection-rangeItem-dialog .sheet-slider-protection-column .range {
     width: 100%;
     height: 30px;
     border: 1px solid #d4d4d4;
 }
 
-#luckysheet-protection-rangeItem-dialog .luckysheet-slider-protection-column .range input {
+#sheet-protection-rangeItem-dialog .sheet-slider-protection-column .range input {
     width: calc(100% - 30px);
     height: 30px;
     padding: 0 10px;
@@ -225,7 +225,7 @@
     box-sizing: border-box;
 }
 
-#luckysheet-protection-rangeItem-dialog .luckysheet-slider-protection-column .range i.fa-table {
+#sheet-protection-rangeItem-dialog .sheet-slider-protection-column .range i.fa-table {
     float: right;
     margin-top: 9px;
     margin-right: 5px;
@@ -233,21 +233,21 @@
     color: #6598F3;
 }
 
-.luckysheet-protection-rangeItemTextarea{
+.sheet-protection-rangeItemTextarea{
     width: 100%;
     height: 120px;
     position: relative;
     resize:none;
 }
 
-.luckysheet-protection-rangeItemiInput{
+.sheet-protection-rangeItemiInput{
     width: 100%;
     height: 23px;
     position: relative;
 }
 
 
-.luckysheet-protection-sheet-validation{
+.sheet-protection-sheet-validation{
     width: 390px;
     height: 180px;
     display: none;

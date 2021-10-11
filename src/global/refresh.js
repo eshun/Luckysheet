@@ -950,8 +950,8 @@ function jfrefreshgrid_pastcut(source, target, RowlChange){
 
     let index = getSheetIndex(Store.currentSheetIndex);
     let file = Store.luckysheetfile[index];
-    file.scrollTop  = $("#luckysheet-cell-main").scrollTop();
-    file.scrollLeft = $("#luckysheet-cell-main").scrollLeft()
+    file.scrollTop  = $("#sheet-cell-main").scrollTop();
+    file.scrollLeft = $("#sheet-cell-main").scrollLeft()
     
     sheetmanage.showSheet();
 
@@ -1027,13 +1027,13 @@ function jfrefreshgrid_rhcw(rowheight, colwidth, isRefreshCanvas=true){
     // 协同提示框同步
     collaborativeEditBox();
     //改变单元格行高，复制虚线框同步
-    if($(".luckysheet-selection-copy").is(":visible")){
+    if($(".sheet-selection-copy").is(":visible")){
         selectionCopyShow();
     }
 
     //改变单元格行高，选区下拉icon隐藏
-    if($("#luckysheet-dropCell-icon").is(":visible")){
-        $("#luckysheet-dropCell-icon").remove();
+    if($("#sheet-dropCell-icon").is(":visible")){
+        $("#sheet-dropCell-icon").remove();
     }
 
     //打印预览区同步
@@ -1105,8 +1105,8 @@ function jfrefreshgrid_rhcw(rowheight, colwidth, isRefreshCanvas=true){
     }
     else{
         //有筛选标志时，同步筛选按钮和筛选范围位置
-        if($("#luckysheet-filter-options-sheet" + Store.currentSheetIndex + " .luckysheet-filter-options").length > 0){
-            $("#luckysheet-filter-options-sheet" + Store.currentSheetIndex + " .luckysheet-filter-options").each(function(i, e){
+        if($("#sheet-filter-options-sheet" + Store.currentSheetIndex + " .sheet-filter-options").length > 0){
+            $("#sheet-filter-options-sheet" + Store.currentSheetIndex + " .sheet-filter-options").each(function(i, e){
                 let str = $(e).data("str"), cindex = $(e).data("cindex");
 
                 let left = Store.visibledatacolumn[cindex] - 20;
@@ -1117,7 +1117,7 @@ function jfrefreshgrid_rhcw(rowheight, colwidth, isRefreshCanvas=true){
         }
     }
 
-    if($("#luckysheet-filter-selected-sheet" + Store.currentSheetIndex).length > 0){
+    if($("#sheet-filter-selected-sheet" + Store.currentSheetIndex).length > 0){
         let luckysheet_filter_save = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].filter_select;
 
         let r1 = luckysheet_filter_save.row[0], 
@@ -1130,7 +1130,7 @@ function jfrefreshgrid_rhcw(rowheight, colwidth, isRefreshCanvas=true){
         let col = Store.visibledatacolumn[c2], 
             col_pre = c1 - 1 == -1 ? 0 : Store.visibledatacolumn[c1 - 1];
 
-        $("#luckysheet-filter-selected-sheet" + Store.currentSheetIndex).css({
+        $("#sheet-filter-selected-sheet" + Store.currentSheetIndex).css({
             "left": col_pre,
             "width": col - col_pre - 1,
             "top": row_pre,
@@ -1153,10 +1153,10 @@ function luckysheetrefreshgrid(scrollWidth, scrollHeight) {
     formula.groupValuesRefresh();
     
     if (scrollWidth == null) {
-        scrollWidth = $("#luckysheet-cell-main").scrollLeft();
+        scrollWidth = $("#sheet-cell-main").scrollLeft();
     }
     if (scrollHeight == null) {
-        scrollHeight = $("#luckysheet-cell-main").scrollTop();
+        scrollHeight = $("#sheet-cell-main").scrollTop();
     }
 
     if (luckysheetFreezen.freezenverticaldata != null || luckysheetFreezen.freezenhorizontaldata != null) {

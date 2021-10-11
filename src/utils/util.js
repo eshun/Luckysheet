@@ -479,7 +479,7 @@ function showrightclickmenu(_menu, x, y) {
 function luckysheetactiveCell() {
     if (!!Store.fullscreenmode) {
         setTimeout(function () {
-            $("#luckysheet-rich-text-editor").focus().select();
+            $("#sheet-rich-text-editor").focus().select();
         }, 50);
     }
 }
@@ -772,7 +772,7 @@ function transformRangeToAbsolute(txt1){
 
 function openSelfModel(id, isshowMask=true){
     let _t = $("#"+id)
-            .find(".luckysheet-modal-dialog-content")
+            .find(".sheet-modal-dialog-content")
             .css("min-width", 300)
             .end(), 
         myh = _t.outerHeight(), 
@@ -785,7 +785,7 @@ function openSelfModel(id, isshowMask=true){
     }).show();
 
     if(isshowMask){
-        $("#luckysheet-modal-dialog-mask").show();
+        $("#sheet-modal-dialog-mask").show();
     }
 }
 

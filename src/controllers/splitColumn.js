@@ -19,8 +19,8 @@ const luckysheetSplitColumn = {
         const locale_punctuation = _locale.punctuation;
         const locale_button = _locale.button;
 
-        $("#luckysheet-modal-dialog-mask").show();
-        $("#luckysheet-splitColumn-dialog").remove();
+        $("#sheet-modal-dialog-mask").show();
+        $("#sheet-splitColumn-dialog").remove();
 
         let content = '<div class="box">' +
                         '<div class="boxTitle">'+locale_splitText.splitDelimiters+'</div>' +
@@ -58,19 +58,19 @@ const luckysheetSplitColumn = {
                       '</div>';
 
         $("body").append(replaceHtml(modelHTML, { 
-            "id": "luckysheet-splitColumn-dialog", 
-            "addclass": "luckysheet-splitColumn-dialog", 
+            "id": "sheet-splitColumn-dialog", 
+            "addclass": "sheet-splitColumn-dialog", 
             "title": locale_splitText.splitTextTitle, 
             "content": content, 
-            "botton": '<button id="luckysheet-splitColumn-dialog-confirm" class="btn btn-primary">'+ locale_button.confirm +'</button><button class="btn btn-default luckysheet-model-close-btn">'+ locale_button.cancel +'</button>', 
+            "botton": '<button id="sheet-splitColumn-dialog-confirm" class="btn btn-primary">'+ locale_button.confirm +'</button><button class="btn btn-default sheet-model-close-btn">'+ locale_button.cancel +'</button>', 
             "style": "z-index:100003" 
         }));
-        let _t = $("#luckysheet-splitColumn-dialog").find(".luckysheet-modal-dialog-content").css("min-width", 400).end(), 
+        let _t = $("#sheet-splitColumn-dialog").find(".sheet-modal-dialog-content").css("min-width", 400).end(), 
             myh = _t.outerHeight(), 
             myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
-        $("#luckysheet-splitColumn-dialog").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 3 }).show();
+        $("#sheet-splitColumn-dialog").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 3 }).show();
 
         let dataArr = _this.getDataArr();
         _this.dataPreview(dataArr);
@@ -81,12 +81,12 @@ const luckysheetSplitColumn = {
         const locale_splitText = _locale.splitText;
 
         //数据预览
-        $(document).off("change.SPCinpcheckbox").on("change.SPCcheckbox", "#luckysheet-splitColumn-dialog .box input[type='checkbox']", function(){
+        $(document).off("change.SPCinpcheckbox").on("change.SPCcheckbox", "#sheet-splitColumn-dialog .box input[type='checkbox']", function(){
             let regStr = _this.getRegStr();
             let dataArr = _this.getDataArr(regStr);
             _this.dataPreview(dataArr);
         });
-        $(document).off("keyup.SPCinptext").on("keyup.SPCinptext", "#luckysheet-splitColumn-dialog .box input[type='text']", function(){
+        $(document).off("keyup.SPCinptext").on("keyup.SPCinptext", "#sheet-splitColumn-dialog .box input[type='text']", function(){
             if($(this).siblings("input[type='checkbox']").is(":checked")){
                 let regStr = _this.getRegStr();
                 let dataArr = _this.getDataArr(regStr);
@@ -95,9 +95,9 @@ const luckysheetSplitColumn = {
         })
 
         //确定按钮
-        $(document).off("click.SPCconfirm").on("click.SPCconfirm", "#luckysheet-splitColumn-dialog #luckysheet-splitColumn-dialog-confirm", function(){
-            $("#luckysheet-modal-dialog-mask").hide();
-            $("#luckysheet-splitColumn-dialog").hide();
+        $(document).off("click.SPCconfirm").on("click.SPCconfirm", "#sheet-splitColumn-dialog #sheet-splitColumn-dialog-confirm", function(){
+            $("#sheet-modal-dialog-mask").hide();
+            $("#sheet-splitColumn-dialog").hide();
 
             let regStr = _this.getRegStr();
             let dataArr = _this.getDataArr(regStr);
@@ -152,7 +152,7 @@ const luckysheetSplitColumn = {
         selectHightlightShow();
     },
     dataPreview: function(dataArr){
-        $("#luckysheet-splitColumn-dialog #splitColumnData").empty();
+        $("#sheet-splitColumn-dialog #splitColumnData").empty();
 
         let trHtml = '';
 
@@ -168,12 +168,12 @@ const luckysheetSplitColumn = {
 
         let tableHtml = '<table>' + trHtml + '</table>';
 
-        $("#luckysheet-splitColumn-dialog #splitColumnData").append(tableHtml);
+        $("#sheet-splitColumn-dialog #splitColumnData").append(tableHtml);
     },
     getRegStr: function(){
         let regStr = '', mark = 0;
 
-        $("#luckysheet-splitColumn-dialog .box input[type='checkbox']:checked").each(function(i, e){
+        $("#sheet-splitColumn-dialog .box input[type='checkbox']:checked").each(function(i, e){
             let _id = $(e).attr("id");
 
             if(_id == "splitColumn_type_01"){ //Tab键

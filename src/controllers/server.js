@@ -212,7 +212,7 @@ const server = {
 				let {message,id} = data;
 				// 用户退出时，关闭协同编辑时其提示框
 				if(message === '用户退出') {
-					$("#luckysheet-multipleRange-show-" + id).hide();
+					$("#sheet-multipleRange-show-" + id).hide();
 					Store.cooperativeEdit.changeCollaborationSize = Store.cooperativeEdit.changeCollaborationSize.filter(value => {
 						return value.id != id
 					})
@@ -231,7 +231,7 @@ const server = {
 
                     $(`#sheets-item${oldIndex}`).attr('data-index', index);
                     $(`#sheets-item${oldIndex}`).prop('id', `sheets-item${index}`);
-                    $(`#luckysheet-datavisual-selection-set-${oldIndex}`).prop('id', `luckysheet-datavisual-selection-set-${index}`);
+                    $(`#sheet-datavisual-selection-set-${oldIndex}`).prop('id', `sheet-datavisual-selection-set-${index}`);
                   }, 1);
                 }
 	            }
@@ -332,14 +332,14 @@ const server = {
 					//其他客户端切换页面时
 					Store.cooperativeEdit.checkoutData.forEach(item => {
 						if(item.index != Store.currentSheetIndex) {
-							$("#luckysheet-multipleRange-show-" + item.id).hide();
+							$("#sheet-multipleRange-show-" + item.id).hide();
 							item.op == ''
 						}
 					})
 
-					if($("#luckysheet-multipleRange-show-" + id)[0]) {
-						let change_bottom = $("#luckysheet-multipleRange-show-" + id)[0].offsetHeight - 1
-						$("#luckysheet-multipleRange-show-" + id + ">.username").css({"bottom":change_bottom + 'px'})
+					if($("#sheet-multipleRange-show-" + id)[0]) {
+						let change_bottom = $("#sheet-multipleRange-show-" + id)[0].offsetHeight - 1
+						$("#sheet-multipleRange-show-" + id + ">.username").css({"bottom":change_bottom + 'px'})
 					}
 	            }
 	            else if(type == 4){ //批量指令更新
@@ -530,18 +530,18 @@ const server = {
 					const _locale = locale();
 					const locale_freezen = _locale.freezen;
 	                if(file["freezen"].horizontal == null){
-	                    $("#luckysheet-freezen-btn-horizontal").html('<i class="fa fa-list-alt"></i> '+locale_freezen.freezenRow);
+	                    $("#sheet-freezen-btn-horizontal").html('<i class="fa fa-list-alt"></i> '+locale_freezen.freezenRow);
 	                    luckysheetFreezen.freezenhorizontaldata = null;
-	                    $("#luckysheet-freezebar-horizontal").hide();
+	                    $("#sheet-freezebar-horizontal").hide();
 	                }
 	                else{
 	                    luckysheetFreezen.createFreezenHorizontal(file["freezen"].horizontal.freezenhorizontaldata, file["freezen"].horizontal.top);
 	                }
 
 	                if(file["freezen"].vertical == null){
-	                    $("#luckysheet-freezen-btn-vertical").html('<i class="fa fa-indent"></i> '+locale_freezen.freezenColumn);
+	                    $("#sheet-freezen-btn-vertical").html('<i class="fa fa-indent"></i> '+locale_freezen.freezenColumn);
 	                    luckysheetFreezen.freezenverticaldata = null;
-	                    $("#luckysheet-freezebar-vertical").hide();
+	                    $("#sheet-freezebar-vertical").hide();
 	                }
 	                else{
 	                    luckysheetFreezen.createFreezenVertical(file["freezen"].vertical.freezenverticaldata, file["freezen"].vertical.left);
@@ -810,8 +810,8 @@ const server = {
 	        file.filter_select = null;
 
 	        if(index == Store.currentSheetIndex){
-	            $('#luckysheet-filter-selected-sheet' + Store.currentSheetIndex + ', #luckysheet-filter-options-sheet' + Store.currentSheetIndex).remove();
-	            $("#luckysheet-filter-menu, #luckysheet-filter-submenu").hide();
+	            $('#sheet-filter-selected-sheet' + Store.currentSheetIndex + ', #sheet-filter-options-sheet' + Store.currentSheetIndex).remove();
+	            $("#sheet-filter-menu, #sheet-filter-submenu").hide();
 	        }
 	    }
 	    else if(type == "fsr"){ //恢复筛选
@@ -831,7 +831,7 @@ const server = {
 	        }
 
 	        $("#sheet-container-c").append(replaceHtml(sheetHTML, { "index": value.index, "active": "", "name": value.name, "style": "", "colorset": colorset }));
-	        $("#luckysheet-cell-main").append('<div id="luckysheet-datavisual-selection-set-' + value.index + '" class="luckysheet-datavisual-selection-set"></div>');
+	        $("#sheet-cell-main").append('<div id="sheet-datavisual-selection-set-' + value.index + '" class="sheet-datavisual-selection-set"></div>');
 	    }
 	    else if(type == "shc"){ //复制sheet
 	        let copyindex = value.copyindex, name = value.name;
@@ -847,7 +847,7 @@ const server = {
 	        let copyobject = $("#sheets-item" + copyindex);
 	        $("#sheet-container-c").append(replaceHtml(sheetHTML, { "index": copyjson.index, "active": "", "name": copyjson.name, "style": "", "colorset": "" }));
 	        $("#sheets-item" + copyjson.index).insertAfter(copyobject);
-	        $("#luckysheet-cell-main").append('<div id="luckysheet-datavisual-selection-set-' + copyjson.index + '" class="luckysheet-datavisual-selection-set"></div>');
+	        $("#sheet-cell-main").append('<div id="sheet-datavisual-selection-set-' + copyjson.index + '" class="sheet-datavisual-selection-set"></div>');
 	    }
 	    else if(type == "shd"){ //删除sheet
 	        for(let i = 0; i < Store.luckysheetfile.length; i++){
@@ -885,7 +885,7 @@ const server = {
 	        }
 
 	        $("#sheets-item" + value.deleIndex).remove();
-			$("#luckysheet-datavisual-selection-set-" + value.deleIndex).remove();
+			$("#sheet-datavisual-selection-set-" + value.deleIndex).remove();
 
 	    }
 	    else if(type == "shr"){ //sheet位置
@@ -906,7 +906,7 @@ const server = {
 	                }
 
 	                $("#sheet-container-c").append(replaceHtml(sheetHTML, { "index": datav.index, "active": "", "name": datav.name, "style": "", "colorset": colorset }));
-	                $("#luckysheet-cell-main").append('<div id="luckysheet-datavisual-selection-set-' + datav.index + '" class="luckysheet-datavisual-selection-set"></div>');
+	                $("#sheet-cell-main").append('<div id="sheet-datavisual-selection-set-' + datav.index + '" class="sheet-datavisual-selection-set"></div>');
 	                break;
 	            }
 	        }
@@ -1012,11 +1012,11 @@ const server = {
 			name += " " + locale().edit.typing;
 		}
 
-	    if($("#luckysheet-multipleRange-show-" + id).length > 0){
-			$("#luckysheet-multipleRange-show-" + id).css({ "position": "absolute", "left": col_pre - 1, "width": col - col_pre - 1, "top": row_pre - 1, "height": row - row_pre - 1 });
+	    if($("#sheet-multipleRange-show-" + id).length > 0){
+			$("#sheet-multipleRange-show-" + id).css({ "position": "absolute", "left": col_pre - 1, "width": col - col_pre - 1, "top": row_pre - 1, "height": row - row_pre - 1 });
 
-			$("#luckysheet-multipleRange-show-" + id + " .username").text(name);
-			$("#luckysheet-multipleRange-show-" + id + " .username").show();
+			$("#sheet-multipleRange-show-" + id + " .username").text(name);
+			$("#sheet-multipleRange-show-" + id + " .username").show();
 
 			if(Store.cooperativeEdit.usernameTimeout['user' + id] != null){
 				clearTimeout(Store.cooperativeEdit.usernameTimeout['user' + id])
@@ -1030,13 +1030,13 @@ const server = {
 
 	    }
 	    else{
-	        // let itemHtml = '<div id="luckysheet-multipleRange-show-'+ id +'" data-color="'+ sheetColor[_this.multipleIndex] +'" title="'+ name +'" style="position: absolute;left: '+ (col_pre - 1) +'px;width: '+ (col - col_pre - 1) +'px;top: '+ (row_pre - 1) +'px;height: '+ (row - row_pre - 1) +'px;border: 1px solid '+ sheetColor[_this.multipleIndex] +';z-index: 15;">'+
+	        // let itemHtml = '<div id="sheet-multipleRange-show-'+ id +'" data-color="'+ sheetColor[_this.multipleIndex] +'" title="'+ name +'" style="position: absolute;left: '+ (col_pre - 1) +'px;width: '+ (col - col_pre - 1) +'px;top: '+ (row_pre - 1) +'px;height: '+ (row - row_pre - 1) +'px;border: 1px solid '+ sheetColor[_this.multipleIndex] +';z-index: 15;">'+
 	        //                 '<div style="width: 100%;height: 100%;position: absolute;top: 0;right: 0;bottom: 0;left: 0;opacity: 0.03;background-color: '+ sheetColor[_this.multipleIndex] +'"></div>'+
 			//                '</div>';
 
 			let itemHtml = `<div
-								id="luckysheet-multipleRange-show-${id}"
-								class="luckysheet-multipleRange-show"
+								id="sheet-multipleRange-show-${id}"
+								class="sheet-multipleRange-show"
 								data-color="${sheetColor[_this.multipleIndex]}"
 								title="${name}"
 								style="position: absolute;left: ${col_pre - 1}px;width: ${col - col_pre - 1}px;top: ${row_pre - 1}px;height: ${row - row_pre - 1}px;border: 1px solid ${sheetColor[_this.multipleIndex]};z-index: 15;">
@@ -1051,7 +1051,7 @@ const server = {
 							</div>`;
 							// 正在输入
 
-	        $(itemHtml).appendTo($("#luckysheet-cell-main #luckysheet-multipleRange-show"));
+	        $(itemHtml).appendTo($("#sheet-cell-main #sheet-multipleRange-show"));
 
 			_this.multipleIndex++;
 
@@ -1147,9 +1147,9 @@ const server = {
     imageRequest: function(){
         let _this = this;
 
-        html2canvas($("#" + container).find(".luckysheet-grid-window").get(0), {
+        html2canvas($("#" + container).find(".sheet-grid-window").get(0), {
           onrendered: function(canvas) {
-            //let imgcut = $("#luckysheet-cell-main").find(".luckysheet-grid-window");
+            //let imgcut = $("#sheet-cell-main").find(".sheet-grid-window");
             //document.body.appendChild(canvas);
             let old = $(canvas).appendTo("body");
             old.hide();

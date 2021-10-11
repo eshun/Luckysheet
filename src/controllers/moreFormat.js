@@ -1058,8 +1058,8 @@ const luckysheetMoreFormat = {
             },
         ]    
 
-        $("#luckysheet-modal-dialog-mask").show();
-        $("#luckysheet-moreFormat-dialog").remove();
+        $("#sheet-modal-dialog-mask").show();
+        $("#sheet-moreFormat-dialog").remove();
 
         let title = "", content = '';
 
@@ -1128,46 +1128,46 @@ const luckysheetMoreFormat = {
         }
 
         $("body").append(replaceHtml(modelHTML, { 
-            "id": "luckysheet-moreFormat-dialog", 
-            "addclass": "luckysheet-moreFormat-dialog", 
+            "id": "sheet-moreFormat-dialog", 
+            "addclass": "sheet-moreFormat-dialog", 
             "title": title, 
             "content": content, 
-            "botton": '<button id="luckysheet-moreFormat-dialog-confirm" class="btn btn-primary">'+ locale_button.confirm +'</button><button class="btn btn-default luckysheet-model-close-btn">'+ locale_button.cancel +'</button>', 
+            "botton": '<button id="sheet-moreFormat-dialog-confirm" class="btn btn-primary">'+ locale_button.confirm +'</button><button class="btn btn-default sheet-model-close-btn">'+ locale_button.cancel +'</button>', 
             "style": "z-index:100003" 
         }));
-        let _t = $("#luckysheet-moreFormat-dialog").find(".luckysheet-modal-dialog-content").css("min-width", 400).end(), 
+        let _t = $("#sheet-moreFormat-dialog").find(".sheet-modal-dialog-content").css("min-width", 400).end(), 
             myh = _t.outerHeight(), 
             myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
-        $("#luckysheet-moreFormat-dialog").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 3 }).show();
+        $("#sheet-moreFormat-dialog").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 3 }).show();
         
-        $("#luckysheet-moreFormat-dialog .listbox .listItem").eq(0).addClass("on");
+        $("#sheet-moreFormat-dialog .listbox .listItem").eq(0).addClass("on");
     },
     init: function(){
         let _this = this;
 
         //选择格式
-        $(document).on("click", "#luckysheet-moreFormat-dialog .listbox .listItem", function(){
+        $(document).on("click", "#sheet-moreFormat-dialog .listbox .listItem", function(){
             $(this).addClass("on").siblings().removeClass("on");
         });
 
         //确定
-        $(document).off("click.moreFormatConfirm").on("click.moreFormatConfirm", "#luckysheet-moreFormat-dialog #luckysheet-moreFormat-dialog-confirm", function(){
-            $("#luckysheet-moreFormat-dialog").hide();
-            $("#luckysheet-modal-dialog-mask").hide();
+        $(document).off("click.moreFormatConfirm").on("click.moreFormatConfirm", "#sheet-moreFormat-dialog #sheet-moreFormat-dialog-confirm", function(){
+            $("#sheet-moreFormat-dialog").hide();
+            $("#sheet-modal-dialog-mask").hide();
 
             let d = editor.deepCopyFlowData(Store.flowdata);
 
-            let value = $("#luckysheet-moreFormat-dialog .listbox .listItem.on .value").text();
-            let id = $(this).parents("#luckysheet-moreFormat-dialog").find(".box").attr("id");
+            let value = $("#sheet-moreFormat-dialog .listbox .listItem.on .value").text();
+            let id = $(this).parents("#sheet-moreFormat-dialog").find(".box").attr("id");
 
             if(id == "morecurrency"){ //货币
                 if(value.indexOf("?") != -1){
                     return;
                 }
 
-                let decimal = parseInt($("#luckysheet-moreFormat-dialog .decimal input").val().trim());
+                let decimal = parseInt($("#sheet-moreFormat-dialog .decimal input").val().trim());
 
                 if(decimal.toString() == "NaN" || decimal < 0 || decimal > 9){
                     if(isEditMode()){
@@ -1193,7 +1193,7 @@ const luckysheetMoreFormat = {
                     str = "#";
                 }
 
-                let pos = $("#luckysheet-moreFormat-dialog .listbox .listItem.on input:hidden").val();
+                let pos = $("#sheet-moreFormat-dialog .listbox .listItem.on input:hidden").val();
 
                 if(pos == "before"){
                     str = '"' + value + '" ' + str;

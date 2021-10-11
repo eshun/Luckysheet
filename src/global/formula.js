@@ -315,7 +315,7 @@ const luckysheetformula = {
     dontupdate: function () {
         let _this = this;
         Store.luckysheetCellUpdate.length = 0; //clear array
-        $("#luckysheet-functionbox-cell, #luckysheet-rich-text-editor").html(_this.oldvalue);
+        $("#sheet-functionbox-cell, #sheet-rich-text-editor").html(_this.oldvalue);
         _this.cancelNormalSelected();
         if (_this.rangetosheet != Store.currentSheetIndex) {
             sheetmanage.changeSheetExec(_this.rangetosheet);
@@ -328,7 +328,7 @@ const luckysheetformula = {
     fucntionboxshow: function(r, c) {
 
         if (!checkProtectionCellHidden(r, c, Store.currentSheetIndex)) {
-            $("#luckysheet-functionbox-cell").html("");
+            $("#sheet-functionbox-cell").html("");
             return;
         }
 
@@ -352,7 +352,7 @@ const luckysheetformula = {
         }
         value = this.xssDeal(value);
         _this.oldvalue = value;
-        $("#luckysheet-functionbox-cell").html(value);
+        $("#sheet-functionbox-cell").html(value);
     },
     //获得某个单元格或区域的偏移一定距离后的单元格( Sheet1!B6:C8 格式)
     cellOffset: function (range, rows, cols, height, width) {// 参数：range or cell , rows,cols,height,width
@@ -789,46 +789,46 @@ const luckysheetformula = {
             return item;
         }
     },
-    rangeHightlightHTML: '<div id="luckysheet-formula-functionrange-highlight-${id}" rangeindex="${id}"  class="luckysheet-selection-highlight luckysheet-formula-functionrange-highlight"><div data-type="top" class="luckysheet-selection-copy-top luckysheet-copy"></div><div data-type="right" class="luckysheet-selection-copy-right luckysheet-copy"></div><div data-type="bottom" class="luckysheet-selection-copy-bottom luckysheet-copy"></div><div data-type="left" class="luckysheet-selection-copy-left luckysheet-copy"></div><div class="luckysheet-selection-copy-hc"></div><div data-type="lt" class="luckysheet-selection-highlight-topleft luckysheet-highlight"></div><div data-type="rt" class="luckysheet-selection-highlight-topright luckysheet-highlight"></div><div data-type="lb" class="luckysheet-selection-highlight-bottomleft luckysheet-highlight"></div><div data-type="rb" class="luckysheet-selection-highlight-bottomright luckysheet-highlight"></div></div>',
+    rangeHightlightHTML: '<div id="sheet-formula-functionrange-highlight-${id}" rangeindex="${id}"  class="sheet-selection-highlight sheet-formula-functionrange-highlight"><div data-type="top" class="sheet-selection-copy-top sheet-copy"></div><div data-type="right" class="sheet-selection-copy-right sheet-copy"></div><div data-type="bottom" class="sheet-selection-copy-bottom sheet-copy"></div><div data-type="left" class="sheet-selection-copy-left sheet-copy"></div><div class="sheet-selection-copy-hc"></div><div data-type="lt" class="sheet-selection-highlight-topleft sheet-highlight"></div><div data-type="rt" class="sheet-selection-highlight-topright sheet-highlight"></div><div data-type="lb" class="sheet-selection-highlight-bottomleft sheet-highlight"></div><div data-type="rb" class="sheet-selection-highlight-bottomright sheet-highlight"></div></div>',
     createRangeHightlight: function () {
         let _this = this;
 
-        let _span = $("#luckysheet-rich-text-editor").find("span.luckysheet-formula-functionrange-cell");
-        $("#luckysheet-formula-functionrange .luckysheet-formula-functionrange-highlight").remove();
+        let _span = $("#sheet-rich-text-editor").find("span.sheet-formula-functionrange-cell");
+        $("#sheet-formula-functionrange .sheet-formula-functionrange-highlight").remove();
 
         _span.each(function () {
             let rangeindex = $(this).attr("rangeindex"),
                 range = $(this).text();
 
-            $("#luckysheet-formula-functionrange").append(replaceHtml(_this.rangeHightlightHTML, {
+            $("#sheet-formula-functionrange").append(replaceHtml(_this.rangeHightlightHTML, {
                 "id": rangeindex
             }));
 
             let cellrange = _this.getcellrange(range);
-            let rangeid = "luckysheet-formula-functionrange-highlight-" + rangeindex;
+            let rangeid = "sheet-formula-functionrange-highlight-" + rangeindex;
 
             if (cellrange == null) {
 
             }
             else if (cellrange.sheetIndex == Store.currentSheetIndex || (cellrange.sheetIndex == -1 && _this.rangetosheet == Store.currentSheetIndex)) {
                 $("#" + rangeid).data("range", cellrange)
-                    .find(".luckysheet-copy")
+                    .find(".sheet-copy")
                     .css({ "background": sheetColor[rangeindex] })
                     .end()
-                    .find(".luckysheet-highlight")
+                    .find(".sheet-highlight")
                     .css({ "background": sheetColor[rangeindex] })
                     .end()
-                    .find(".luckysheet-selection-copy-hc")
+                    .find(".sheet-selection-copy-hc")
                     .css({ "background": sheetColor[rangeindex] });
 
                 seletedHighlistByindex(rangeid, cellrange.row[0], cellrange.row[1], cellrange.column[0], cellrange.column[1]);
             }
         });
 
-        $("#luckysheet-formula-functionrange .luckysheet-formula-functionrange-highlight").show();
+        $("#sheet-formula-functionrange .sheet-formula-functionrange-highlight").show();
     },
-    searchHTML: '<div id="luckysheet-formula-search-c" class="luckysheet-formula-search-c"></div>',
-    helpHTML: '<div id="luckysheet-formula-help-c" class="luckysheet-formula-help-c"> <div class="luckysheet-formula-help-close" title="${helpClose}"><i class="fa fa-times" aria-hidden="true"></i></div> <div class="luckysheet-formula-help-collapse" title="${helpCollapse}"><i class="fa fa-angle-up" aria-hidden="true"></i></div> <div class="luckysheet-formula-help-title"><div class="luckysheet-formula-help-title-formula"> <span class="luckysheet-arguments-help-function-name">SUM</span> <span class="luckysheet-arguments-paren">(</span> <span class="luckysheet-arguments-parameter-holder"> <span class="luckysheet-arguments-help-parameter luckysheet-arguments-help-parameter-active" dir="auto">A2:A100</span>, <span class="luckysheet-arguments-help-parameter" dir="auto">101</span> </span> <span class="luckysheet-arguments-paren">)</span> </div></div> <div class="luckysheet-formula-help-content"> <div class="luckysheet-formula-help-content-example"> <div class="luckysheet-arguments-help-section-title">${helpExample}</div> <div class="luckysheet-arguments-help-formula"> <span class="luckysheet-arguments-help-function-name">SUM</span> <span class="luckysheet-arguments-paren">(</span> <span class="luckysheet-arguments-parameter-holder"> <span class="luckysheet-arguments-help-parameter luckysheet-arguments-help-parameter-active" dir="auto">A2:A100</span>, <span class="luckysheet-arguments-help-parameter" dir="auto">101</span> </span> <span class="luckysheet-arguments-paren">)</span> </div> </div> <div class="luckysheet-formula-help-content-detail"> <div class="luckysheet-arguments-help-section"> <div class="luckysheet-arguments-help-section-title luckysheet-arguments-help-parameter-name">${helpAbstract}</div> <span class="luckysheet-arguments-help-parameter-content">${helpAbstract}</span> </div> </div> <div class="luckysheet-formula-help-content-param"> ${param} </div> </div> <div class="luckysheet-formula-help-foot"></div></div>',
+    searchHTML: '<div id="sheet-formula-search-c" class="sheet-formula-search-c"></div>',
+    helpHTML: '<div id="sheet-formula-help-c" class="sheet-formula-help-c"> <div class="sheet-formula-help-close" title="${helpClose}"><i class="fa fa-times" aria-hidden="true"></i></div> <div class="sheet-formula-help-collapse" title="${helpCollapse}"><i class="fa fa-angle-up" aria-hidden="true"></i></div> <div class="sheet-formula-help-title"><div class="sheet-formula-help-title-formula"> <span class="sheet-arguments-help-function-name">SUM</span> <span class="sheet-arguments-paren">(</span> <span class="sheet-arguments-parameter-holder"> <span class="sheet-arguments-help-parameter sheet-arguments-help-parameter-active" dir="auto">A2:A100</span>, <span class="sheet-arguments-help-parameter" dir="auto">101</span> </span> <span class="sheet-arguments-paren">)</span> </div></div> <div class="sheet-formula-help-content"> <div class="sheet-formula-help-content-example"> <div class="sheet-arguments-help-section-title">${helpExample}</div> <div class="sheet-arguments-help-formula"> <span class="sheet-arguments-help-function-name">SUM</span> <span class="sheet-arguments-paren">(</span> <span class="sheet-arguments-parameter-holder"> <span class="sheet-arguments-help-parameter sheet-arguments-help-parameter-active" dir="auto">A2:A100</span>, <span class="sheet-arguments-help-parameter" dir="auto">101</span> </span> <span class="sheet-arguments-paren">)</span> </div> </div> <div class="sheet-formula-help-content-detail"> <div class="sheet-arguments-help-section"> <div class="sheet-arguments-help-section-title sheet-arguments-help-parameter-name">${helpAbstract}</div> <span class="sheet-arguments-help-parameter-content">${helpAbstract}</span> </div> </div> <div class="sheet-formula-help-content-param"> ${param} </div> </div> <div class="sheet-formula-help-foot"></div></div>',
     getrangeseleciton: function () {
         let currSelection = window.getSelection();
         let anchor = $(currSelection.anchorNode);
@@ -849,7 +849,7 @@ const luckysheetformula = {
                 return anchor.parent();
             }
         }
-        else if (anchor.is("#luckysheet-rich-text-editor") || anchor.is("#luckysheet-functionbox-cell")) {
+        else if (anchor.is("#sheet-rich-text-editor") || anchor.is("#sheet-functionbox-cell")) {
             let txt = $.trim(anchor.find("span").last().text());
 
             if (txt.length == 0 && anchor.find("span").length > 1) {
@@ -861,7 +861,7 @@ const luckysheetformula = {
                 return anchor.find("span").last();
             }
         }
-        else if (anchor.parent().is("#luckysheet-rich-text-editor") || anchor.parent().is("#luckysheet-functionbox-cell") || anchorOffset == 0) {
+        else if (anchor.parent().is("#sheet-rich-text-editor") || anchor.parent().is("#sheet-functionbox-cell") || anchorOffset == 0) {
             if (anchorOffset == 0) {
                 anchor = anchor.parent();
             }
@@ -900,7 +900,7 @@ const luckysheetformula = {
         else {
             top = y + _editor.outerHeight();
             if (!isparam) {
-                _menu.html(_menu.find(".luckysheet-formula-search-item").get().reverse());
+                _menu.html(_menu.find(".sheet-formula-search-item").get().reverse());
             }
         }
 
@@ -972,33 +972,33 @@ const luckysheetformula = {
         }
 
         let listHTML = _this.searchFunctionHTML(list);
-        $("#luckysheet-formula-search-c").html(listHTML).show();
-        $("#luckysheet-formula-help-c").hide();
+        $("#sheet-formula-search-c").html(listHTML).show();
+        $("#sheet-formula-help-c").hide();
 
         let _c = _editer.parent(),
             offset = _c.offset();
-        _this.searchFunctionPosition($("#luckysheet-formula-search-c"), _c, offset.left, offset.top);
+        _this.searchFunctionPosition($("#sheet-formula-search-c"), _c, offset.left, offset.top);
     },
     searchFunctionEnter: function (_obj) {
         let _this = this;
 
         let functxt = _obj.data("func");
-        _this.searchFunctionCell.text(functxt).after('<span dir="auto" class="luckysheet-formula-text-color">(</span>');
+        _this.searchFunctionCell.text(functxt).after('<span dir="auto" class="sheet-formula-text-color">(</span>');
         _this.setCaretPosition(_this.searchFunctionCell.next().get(0), 0, 1);
-        $("#luckysheet-formula-search-c").hide();
+        $("#sheet-formula-search-c").hide();
         _this.helpFunctionExe(_this.searchFunctionCell.closest("div"), _this.searchFunctionCell.next());
     },
     searchFunctionHTML: function (list) {
         let _this = this;
 
-        if ($("#luckysheet-formula-search-c").length == 0) {
+        if ($("#sheet-formula-search-c").length == 0) {
             $("body").append(_this.searchHTML);
-            $("#luckysheet-formula-search-c").on("mouseover", ".luckysheet-formula-search-item", function () {
-                $("#luckysheet-formula-search-c").find(".luckysheet-formula-search-item").removeClass("luckysheet-formula-search-item-active");
-                $(this).addClass("luckysheet-formula-search-item-active");
-            }).on("mouseout", ".luckysheet-formula-search-item", function () {
+            $("#sheet-formula-search-c").on("mouseover", ".sheet-formula-search-item", function () {
+                $("#sheet-formula-search-c").find(".sheet-formula-search-item").removeClass("sheet-formula-search-item-active");
+                $(this).addClass("sheet-formula-search-item-active");
+            }).on("mouseout", ".sheet-formula-search-item", function () {
 
-            }).on("click", ".luckysheet-formula-search-item", function () {
+            }).on("click", ".sheet-formula-search-item", function () {
                 if (_this.searchFunctionCell == null) {
                     return;
                 }
@@ -1006,7 +1006,7 @@ const luckysheetformula = {
             });
         }
 
-        let itemHTML = '<div data-func="${n}" class="luckysheet-formula-search-item ${class}"><div class="luckysheet-formula-search-func">${n}</div><div class="luckysheet-formula-search-detail">${a}</div></div>';
+        let itemHTML = '<div data-func="${n}" class="sheet-formula-search-item ${class}"><div class="sheet-formula-search-func">${n}</div><div class="sheet-formula-search-detail">${a}</div></div>';
         let retHTML = "";
 
         for (let i = 0; i < list.length; i++) {
@@ -1014,7 +1014,7 @@ const luckysheetformula = {
 
             if (i == list.length - 1) {
                 retHTML += replaceHtml(itemHTML, {
-                    "class": "luckysheet-formula-search-item-active",
+                    "class": "sheet-formula-search-item-active",
                     "n": item.n,
                     "a": item.a
                 });
@@ -1043,12 +1043,12 @@ const luckysheetformula = {
         let _locale = locale();
         let locale_formulaMore = _locale.formulaMore;
 
-        $("#luckysheet-formula-help-c .luckysheet-arguments-help-function-name").html(_func.n);
-        $("#luckysheet-formula-help-c .luckysheet-arguments-help-parameter-content").html(_func.d);
+        $("#sheet-formula-help-c .sheet-arguments-help-function-name").html(_func.n);
+        $("#sheet-formula-help-c .sheet-arguments-help-parameter-content").html(_func.d);
 
-        let helpformula = '<span class="luckysheet-arguments-help-function-name">${name}</span> <span class="luckysheet-arguments-paren">(</span> <span class="luckysheet-arguments-parameter-holder"> ${param} </span> <span class="luckysheet-arguments-paren">)</span>';
-        let helpformulaItem = '<span class="luckysheet-arguments-help-parameter" dir="auto">${param}</span>';
-        let helpformulaArg = '<div class="luckysheet-arguments-help-section"><div class="luckysheet-arguments-help-section-title">${param}</div><span class="luckysheet-arguments-help-parameter-content">${content}</span></div>';
+        let helpformula = '<span class="sheet-arguments-help-function-name">${name}</span> <span class="sheet-arguments-paren">(</span> <span class="sheet-arguments-parameter-holder"> ${param} </span> <span class="sheet-arguments-paren">)</span>';
+        let helpformulaItem = '<span class="sheet-arguments-help-parameter" dir="auto">${param}</span>';
+        let helpformulaArg = '<div class="sheet-arguments-help-section"><div class="sheet-arguments-help-section-title">${param}</div><span class="sheet-arguments-help-parameter-content">${content}</span></div>';
 
         //"n": "AVERAGE",
         //"t": "1",
@@ -1068,15 +1068,15 @@ const luckysheetformula = {
 
             if (paramitem.repeat == "y") {
                 name += ", ...";
-                nameli += '<span class="luckysheet-arguments-help-argument-info">...-' + locale_formulaMore.allowRepeatText + '</span>';
+                nameli += '<span class="sheet-arguments-help-argument-info">...-' + locale_formulaMore.allowRepeatText + '</span>';
             }
             if (paramitem.require == "o") {
                 name = "[" + name + "]";
-                nameli += '<span class="luckysheet-arguments-help-argument-info">-[' + locale_formulaMore.allowOptionText + ']</span>';
+                nameli += '<span class="sheet-arguments-help-argument-info">-[' + locale_formulaMore.allowOptionText + ']</span>';
             }
 
-            fht += '<span class="luckysheet-arguments-help-parameter" dir="auto">' + name + '</span>, ';
-            ahf += '<span class="luckysheet-arguments-help-parameter" dir="auto">' + paramitem.example + '</span>, ';
+            fht += '<span class="sheet-arguments-help-parameter" dir="auto">' + name + '</span>, ';
+            ahf += '<span class="sheet-arguments-help-parameter" dir="auto">' + paramitem.example + '</span>, ';
             fhcp += replaceHtml(helpformulaArg, {
                 "param": nameli,
                 "content": paramitem.detail
@@ -1086,49 +1086,49 @@ const luckysheetformula = {
         fht = fht.substr(0, fht.length - 2);
         ahf = ahf.substr(0, ahf.length - 2);
 
-        $("#luckysheet-formula-help-c .luckysheet-formula-help-title .luckysheet-arguments-parameter-holder").html(fht); //介绍
-        $("#luckysheet-formula-help-c .luckysheet-arguments-help-formula .luckysheet-arguments-parameter-holder").html(ahf); //示例
-        $("#luckysheet-formula-help-c .luckysheet-formula-help-content-param").html(fhcp); //参数
+        $("#sheet-formula-help-c .sheet-formula-help-title .sheet-arguments-parameter-holder").html(fht); //介绍
+        $("#sheet-formula-help-c .sheet-arguments-help-formula .sheet-arguments-parameter-holder").html(ahf); //示例
+        $("#sheet-formula-help-c .sheet-formula-help-content-param").html(fhcp); //参数
 
         if (paramIndex == null) {
-            $("#luckysheet-formula-help-c .luckysheet-formula-help-title-formula .luckysheet-arguments-help-function-name").css("font-weight", "bold");
+            $("#sheet-formula-help-c .sheet-formula-help-title-formula .sheet-arguments-help-function-name").css("font-weight", "bold");
         }
         else {
-            $("#luckysheet-formula-help-c .luckysheet-formula-help-title-formula .luckysheet-arguments-help-function-name").css("font-weight", "normal");
+            $("#sheet-formula-help-c .sheet-formula-help-title-formula .sheet-arguments-help-function-name").css("font-weight", "normal");
             let index = paramIndex >= _func.p.length ? _func.p.length - 1 : paramIndex;
-            $("#luckysheet-formula-help-c .luckysheet-formula-help-title .luckysheet-arguments-parameter-holder .luckysheet-arguments-help-parameter").removeClass("luckysheet-arguments-help-parameter-active");
-            $("#luckysheet-formula-help-c .luckysheet-formula-help-title .luckysheet-arguments-parameter-holder .luckysheet-arguments-help-parameter").eq(index).addClass("luckysheet-arguments-help-parameter-active");
-            $("#luckysheet-formula-help-c .luckysheet-arguments-help-formula .luckysheet-arguments-parameter-holder .luckysheet-arguments-help-parameter").removeClass("luckysheet-arguments-help-parameter-active");
-            $("#luckysheet-formula-help-c .luckysheet-arguments-help-formula .luckysheet-arguments-parameter-holder .luckysheet-arguments-help-parameter").eq(index).addClass("luckysheet-arguments-help-parameter-active");
-            $("#luckysheet-formula-help-c .luckysheet-formula-help-content-param .luckysheet-arguments-help-section").removeClass("luckysheet-arguments-help-parameter-active");
-            $("#luckysheet-formula-help-c .luckysheet-formula-help-content-param .luckysheet-arguments-help-section").eq(index).addClass("luckysheet-arguments-help-parameter-active");
+            $("#sheet-formula-help-c .sheet-formula-help-title .sheet-arguments-parameter-holder .sheet-arguments-help-parameter").removeClass("sheet-arguments-help-parameter-active");
+            $("#sheet-formula-help-c .sheet-formula-help-title .sheet-arguments-parameter-holder .sheet-arguments-help-parameter").eq(index).addClass("sheet-arguments-help-parameter-active");
+            $("#sheet-formula-help-c .sheet-arguments-help-formula .sheet-arguments-parameter-holder .sheet-arguments-help-parameter").removeClass("sheet-arguments-help-parameter-active");
+            $("#sheet-formula-help-c .sheet-arguments-help-formula .sheet-arguments-parameter-holder .sheet-arguments-help-parameter").eq(index).addClass("sheet-arguments-help-parameter-active");
+            $("#sheet-formula-help-c .sheet-formula-help-content-param .sheet-arguments-help-section").removeClass("sheet-arguments-help-parameter-active");
+            $("#sheet-formula-help-c .sheet-formula-help-content-param .sheet-arguments-help-section").eq(index).addClass("sheet-arguments-help-parameter-active");
         }
 
         let _c = _editer.parent(),
             offset = _c.offset();
-        _this.searchFunctionPosition($("#luckysheet-formula-help-c"), _c, offset.left, offset.top, true);
+        _this.searchFunctionPosition($("#sheet-formula-help-c"), _c, offset.left, offset.top, true);
     },
     helpFunctionExe: function (_editer, currSelection) {
         let _this = this;
         let functionlist = Store.functionlist;
         let _locale = locale();
         let locale_formulaMore = _locale.formulaMore;
-        if ($("#luckysheet-formula-help-c").length == 0) {
+        if ($("#sheet-formula-help-c").length == 0) {
             $("body").after(replaceHtml(_this.helpHTML, {
                 helpClose: locale_formulaMore.helpClose,
                 helpCollapse: locale_formulaMore.helpCollapse,
                 helpExample: locale_formulaMore.helpExample,
                 helpAbstract: locale_formulaMore.helpAbstract,
             }));
-            $("#luckysheet-formula-help-c .luckysheet-formula-help-close").click(function () {
-                $("#luckysheet-formula-help-c").hide();
+            $("#sheet-formula-help-c .sheet-formula-help-close").click(function () {
+                $("#sheet-formula-help-c").hide();
             });
-            $("#luckysheet-formula-help-c .luckysheet-formula-help-collapse").click(function () {
-                let _content = $("#luckysheet-formula-help-c .luckysheet-formula-help-content");
+            $("#sheet-formula-help-c .sheet-formula-help-collapse").click(function () {
+                let _content = $("#sheet-formula-help-c .sheet-formula-help-content");
                 _content.slideToggle(100, function () {
                     let _c = _this.rangeResizeTo.parent(),
                         offset = _c.offset();
-                    _this.searchFunctionPosition($("#luckysheet-formula-help-c"), _c, offset.left, offset.top, true);
+                    _this.searchFunctionPosition($("#sheet-formula-help-c"), _c, offset.left, offset.top, true);
                 });
 
                 if (_content.is(":hidden")) {
@@ -1160,7 +1160,7 @@ const luckysheetformula = {
 
         let funcName = null, paramindex = null;
 
-        if (_span.eq(i).is(".luckysheet-formula-text-func")) {
+        if (_span.eq(i).is(".sheet-formula-text-func")) {
             funcName = _span.eq(i).text();
         }
         else {
@@ -1169,7 +1169,7 @@ const luckysheetformula = {
             while (--i > 0) {
                 _cur = _span.eq(i);
 
-                if (_cur.is(".luckysheet-formula-text-func") || $.trim(_cur.text()).toUpperCase() in _this.functionlistPosition) {
+                if (_cur.is(".sheet-formula-text-func") || $.trim(_cur.text()).toUpperCase() in _this.functionlistPosition) {
                     funcName = _cur.text();
                     paramindex = null;
                     let endstate = true;
@@ -1184,14 +1184,14 @@ const luckysheetformula = {
                         }
 
                         _cur = _span.eq(a);
-                        if (_cur.is(".luckysheet-formula-text-rpar")) {
+                        if (_cur.is(".sheet-formula-text-rpar")) {
                             exceptIndex = [i, a];
                             funcName = null;
                             endstate = false;
                             break;
                         }
 
-                        if (_cur.is(".luckysheet-formula-text-comma")) {
+                        if (_cur.is(".sheet-formula-text-comma")) {
                             paramindex++;
                         }
                     }
@@ -1213,22 +1213,22 @@ const luckysheetformula = {
         let _this = this;
 
         let currSelection = _this.getrangeseleciton();
-        $("#luckysheet-formula-search-c, #luckysheet-formula-help-c").hide();
-        $("#luckysheet-formula-functionrange .luckysheet-formula-functionrange-highlight .luckysheet-selection-copy-hc").css("opacity", "0.03");
-        $("#luckysheet-formula-search-c, #luckysheet-formula-help-c").hide();
+        $("#sheet-formula-search-c, #sheet-formula-help-c").hide();
+        $("#sheet-formula-functionrange .sheet-formula-functionrange-highlight .sheet-selection-copy-hc").css("opacity", "0.03");
+        $("#sheet-formula-search-c, #sheet-formula-help-c").hide();
         _this.helpFunctionExe(_editer, currSelection);
 
-        // console.log(currSelection, $(currSelection).closest(".luckysheet-formula-functionrange-cell").length);
-        if ($(currSelection).closest(".luckysheet-formula-functionrange-cell").length == 0) {
+        // console.log(currSelection, $(currSelection).closest(".sheet-formula-functionrange-cell").length);
+        if ($(currSelection).closest(".sheet-formula-functionrange-cell").length == 0) {
             _this.searchFunction(_editer);
             return;
         }
 
-        let _anchorOffset = $(currSelection).closest(".luckysheet-formula-functionrange-cell");
+        let _anchorOffset = $(currSelection).closest(".sheet-formula-functionrange-cell");
         let rangeindex = _anchorOffset.attr("rangeindex");
-        let rangeid = "luckysheet-formula-functionrange-highlight-" + rangeindex;
+        let rangeid = "sheet-formula-functionrange-highlight-" + rangeindex;
 
-        $("#" + rangeid).find(".luckysheet-selection-copy-hc").css({
+        $("#" + rangeid).find(".sheet-selection-copy-hc").css({
             "opacity": "0.13"
         });
     },
@@ -1236,7 +1236,7 @@ const luckysheetformula = {
 
         let _this = this;
 
-        let _input = $("#luckysheet-rich-text-editor");
+        let _input = $("#sheet-rich-text-editor");
         let inputText = _input.text(), inputHtml = _input.html();
 
 
@@ -1663,20 +1663,20 @@ const luckysheetformula = {
 
         _this.canceFunctionrangeSelected();
 
-        $("#luckysheet-formula-functionrange .luckysheet-formula-functionrange-highlight").remove();
-        $("#luckysheet-input-box").removeAttr("style");
-        $("#luckysheet-input-box-index").hide();
-        $("#luckysheet-wa-functionbox-cancel, #luckysheet-wa-functionbox-confirm").removeClass("luckysheet-wa-calculate-active");
+        $("#sheet-formula-functionrange .sheet-formula-functionrange-highlight").remove();
+        $("#sheet-input-box").removeAttr("style");
+        $("#sheet-input-box-index").hide();
+        $("#sheet-wa-functionbox-cancel, #sheet-wa-functionbox-confirm").removeClass("sheet-wa-calculate-active");
 
         _this.rangestart = false;
         _this.rangedrag_column_start = false;
         _this.rangedrag_row_start = false;
     },
     canceFunctionrangeSelected: function () {
-        $("#luckysheet-formula-functionrange-select").hide();
-        $("#luckysheet-row-count-show, #luckysheet-column-count-show").hide();
-        // $("#luckysheet-cols-h-selected, #luckysheet-rows-h-selected").hide();
-        $("#luckysheet-formula-search-c, #luckysheet-formula-help-c").hide();
+        $("#sheet-formula-functionrange-select").hide();
+        $("#sheet-row-count-show, #sheet-column-count-show").hide();
+        // $("#sheet-cols-h-selected, #sheet-rows-h-selected").hide();
+        $("#sheet-formula-search-c, #sheet-formula-help-c").hide();
     },
     iscellformat: function (txt) {
         let re_abc = /[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ][123456789]/;
@@ -2491,7 +2491,7 @@ const luckysheetformula = {
                 return true;
             }
         }
-        else if (anchor.is("#luckysheet-rich-text-editor") || anchor.is("#luckysheet-functionbox-cell")) {
+        else if (anchor.is("#sheet-rich-text-editor") || anchor.is("#sheet-functionbox-cell")) {
             let txt = $.trim(anchor.find("span").last().text()),
                 lasttxt;
 
@@ -2509,7 +2509,7 @@ const luckysheetformula = {
                 return true;
             }
         }
-        else if (anchor.parent().is("#luckysheet-rich-text-editor") || anchor.parent().is("#luckysheet-functionbox-cell") || anchorOffset == 0) {
+        else if (anchor.parent().is("#sheet-rich-text-editor") || anchor.parent().is("#sheet-functionbox-cell") || anchorOffset == 0) {
             if (anchorOffset == 0) {
                 anchor = anchor.parent();
             }
@@ -2550,11 +2550,11 @@ const luckysheetformula = {
         let _editor;
 
         if (_this.rangestart || _this.rangedrag_column_start || _this.rangedrag_row_start) {
-            if ($("#luckysheet-search-formula-parm").is(":visible") || $("#luckysheet-search-formula-parm-select").is(":visible")) {
+            if ($("#sheet-search-formula-parm").is(":visible") || $("#sheet-search-formula-parm-select").is(":visible")) {
                 //公式参数框选取范围
-                _editor = $("#luckysheet-rich-text-editor");
-                $("#luckysheet-search-formula-parm-select-input").val(range);
-                $("#luckysheet-search-formula-parm .parmBox").eq(_this.data_parm_index).find(".txt input").val(range);
+                _editor = $("#sheet-rich-text-editor");
+                $("#sheet-search-formula-parm-select-input").val(range);
+                $("#sheet-search-formula-parm .parmBox").eq(_this.data_parm_index).find(".txt input").val(range);
 
                 //参数对应值显示
                 let txtdata = luckysheet_getcelldata(range).data;
@@ -2575,18 +2575,18 @@ const luckysheetformula = {
                         }
                     }
 
-                    $("#luckysheet-search-formula-parm .parmBox").eq(_this.data_parm_index).find(".val").text(" = {" + txtArr.join(",") + "}");
+                    $("#sheet-search-formula-parm .parmBox").eq(_this.data_parm_index).find(".val").text(" = {" + txtArr.join(",") + "}");
                 }
                 else {
                     //参数为单个单元格选区
-                    $("#luckysheet-search-formula-parm .parmBox").eq(_this.data_parm_index).find(".val").text(" = {" + txtdata.v ?txtdata.v:'' + "}");
+                    $("#sheet-search-formula-parm .parmBox").eq(_this.data_parm_index).find(".val").text(" = {" + txtdata.v ?txtdata.v:'' + "}");
                 }
 
                 //计算结果显示
                 let isVal = true; //参数不为空
                 let parmValArr = []; //参数值集合
                 let lvi = -1; //最后一个有值的参数索引
-                $("#luckysheet-search-formula-parm .parmBox").each(function (i, e) {
+                $("#sheet-search-formula-parm .parmBox").each(function (i, e) {
                     let parmtxt = $(e).find(".txt input").val();
                     if (parmtxt == "" && $(e).find(".txt input").attr("data_parm_require") == "m") {
                         isVal = false;
@@ -2599,27 +2599,27 @@ const luckysheetformula = {
                 //单元格显示
                 let functionHtmlTxt;
                 if (lvi == -1) {
-                    functionHtmlTxt = "=" + $("#luckysheet-search-formula-parm .luckysheet-modal-dialog-title-text").text() + "()";
+                    functionHtmlTxt = "=" + $("#sheet-search-formula-parm .sheet-modal-dialog-title-text").text() + "()";
                 }
                 else if (lvi == 0) {
-                    functionHtmlTxt = "=" + $("#luckysheet-search-formula-parm .luckysheet-modal-dialog-title-text").text() + "(" + $("#luckysheet-search-formula-parm .parmBox").eq(0).find(".txt input").val() + ")";
+                    functionHtmlTxt = "=" + $("#sheet-search-formula-parm .sheet-modal-dialog-title-text").text() + "(" + $("#sheet-search-formula-parm .parmBox").eq(0).find(".txt input").val() + ")";
                 }
                 else {
                     for (let j = 0; j <= lvi; j++) {
-                        parmValArr.push($("#luckysheet-search-formula-parm .parmBox").eq(j).find(".txt input").val());
+                        parmValArr.push($("#sheet-search-formula-parm .parmBox").eq(j).find(".txt input").val());
                     }
-                    functionHtmlTxt = "=" + $("#luckysheet-search-formula-parm .luckysheet-modal-dialog-title-text").text() + "(" + parmValArr.join(",") + ")";
+                    functionHtmlTxt = "=" + $("#sheet-search-formula-parm .sheet-modal-dialog-title-text").text() + "(" + parmValArr.join(",") + ")";
                 }
 
                 let function_str = _this.functionHTMLGenerate(functionHtmlTxt);
-                $("#luckysheet-rich-text-editor").html(function_str);
-                $("#luckysheet-functionbox-cell").html($("#luckysheet-rich-text-editor").html());
+                $("#sheet-rich-text-editor").html(function_str);
+                $("#sheet-functionbox-cell").html($("#sheet-rich-text-editor").html());
 
                 if (isVal) {
                     //公式计算
-                    let fp = $.trim(_this.functionParserExe($("#luckysheet-rich-text-editor").text()));
+                    let fp = $.trim(_this.functionParserExe($("#sheet-rich-text-editor").text()));
                     let result = new Function("return " + fp)();
-                    $("#luckysheet-search-formula-parm .result span").text(result);
+                    $("#sheet-search-formula-parm .result span").text(result);
                 }
             }
             else {
@@ -2633,7 +2633,7 @@ const luckysheetformula = {
             }
         }
         else {
-            let function_str = '<span class="luckysheet-formula-functionrange-cell" rangeindex="' + _this.functionHTMLIndex + '" dir="auto" style="color:' + sheetColor[_this.functionHTMLIndex] + ';">' + range + '</span>';
+            let function_str = '<span class="sheet-formula-functionrange-cell" rangeindex="' + _this.functionHTMLIndex + '" dir="auto" style="color:' + sheetColor[_this.functionHTMLIndex] + ';">' + range + '</span>';
             let _t = $(function_str).insertAfter(_this.rangeSetValueTo);
             _this.rangechangeindex = _this.functionHTMLIndex;
             _editor = $(_this.rangeSetValueTo).closest("div");
@@ -2642,19 +2642,19 @@ const luckysheetformula = {
             _this.functionHTMLIndex++;
         }
 
-        if (_editor.attr("id") == "luckysheet-rich-text-editor") {
-            $("#luckysheet-functionbox-cell").html($("#luckysheet-rich-text-editor").html());
+        if (_editor.attr("id") == "sheet-rich-text-editor") {
+            $("#sheet-functionbox-cell").html($("#sheet-rich-text-editor").html());
         }
         else {
-            $("#luckysheet-rich-text-editor").html($("#luckysheet-functionbox-cell").html());
+            $("#sheet-rich-text-editor").html($("#sheet-functionbox-cell").html());
         }
     },
     rangedrag: function (event) {
         let _this = this;
 
         let mouse = mouseposition(event.pageX, event.pageY);
-        let x = mouse[0] + $("#luckysheet-cell-main").scrollLeft();
-        let y = mouse[1] + $("#luckysheet-cell-main").scrollTop();
+        let x = mouse[0] + $("#sheet-cell-main").scrollLeft();
+        let y = mouse[1] + $("#sheet-cell-main").scrollTop();
 
         let row_location = rowLocation(y),
             row = row_location[1],
@@ -2731,17 +2731,17 @@ const luckysheetformula = {
 
         luckysheet_count_show(left, top, width, height, rowseleted, columnseleted);
 
-        $("#luckysheet-formula-functionrange-select").css({
+        $("#sheet-formula-functionrange-select").css({
             "left": left,
             "width": width,
             "top": top,
             "height": height
         }).show();
 
-        if ($("#luckysheet-ifFormulaGenerator-multiRange-dialog").is(":visible")) {
+        if ($("#sheet-ifFormulaGenerator-multiRange-dialog").is(":visible")) {
             //if公式生成器 选择范围
             let range = getRangetxt(Store.currentSheetIndex, { "row": rowseleted, "column": columnseleted }, Store.currentSheetIndex);
-            $("#luckysheet-ifFormulaGenerator-multiRange-dialog input").val(range);
+            $("#sheet-ifFormulaGenerator-multiRange-dialog input").val(range);
         }
         else {
             _this.rangeSetValue({
@@ -2758,8 +2758,8 @@ const luckysheetformula = {
         let _this = this;
 
         let mouse = mouseposition(event.pageX, event.pageY);
-        let x = mouse[0] + $("#luckysheet-cell-main").scrollLeft();
-        let y = mouse[1] + $("#luckysheet-cell-main").scrollTop();
+        let x = mouse[0] + $("#sheet-cell-main").scrollLeft();
+        let y = mouse[1] + $("#sheet-cell-main").scrollTop();
 
         let visibledatarow = Store.visibledatarow;
         let row_index = visibledatarow.length - 1,
@@ -2817,7 +2817,7 @@ const luckysheetformula = {
             "column": columnseleted
         });
 
-        $("#luckysheet-formula-functionrange-select").css({
+        $("#sheet-formula-functionrange-select").css({
             "left": left,
             "width": width,
             "top": row_pre,
@@ -2830,8 +2830,8 @@ const luckysheetformula = {
         let _this = this;
 
         let mouse = mouseposition(event.pageX, event.pageY);
-        let x = mouse[0] + $("#luckysheet-cell-main").scrollLeft();
-        let y = mouse[1] + $("#luckysheet-cell-main").scrollTop();
+        let x = mouse[0] + $("#sheet-cell-main").scrollLeft();
+        let y = mouse[1] + $("#sheet-cell-main").scrollTop();
 
         let row_location = rowLocation(y),
             row = row_location[1],
@@ -2889,7 +2889,7 @@ const luckysheetformula = {
             "column": [null, null]
         });
 
-        $("#luckysheet-formula-functionrange-select").css({
+        $("#sheet-formula-functionrange-select").css({
             "left": col_pre,
             "width": col - col_pre - 1,
             "top": top,
@@ -2909,8 +2909,8 @@ const luckysheetformula = {
     rangeResizeDraging: function (event, luckysheetCurrentChartResizeObj, luckysheetCurrentChartResizeXy, luckysheetCurrentChartResize, luckysheetCurrentChartResizeWinW, luckysheetCurrentChartResizeWinH, ch_width, rh_height) {
         let _this = this;
 
-        let scrollTop = $("#luckysheet-scrollbar-y").scrollTop(),
-            scrollLeft = $("#luckysheet-scrollbar-x").scrollLeft();
+        let scrollTop = $("#sheet-scrollbar-y").scrollTop(),
+            scrollLeft = $("#sheet-scrollbar-x").scrollLeft();
         let mouse = mouseposition(event.pageX, event.pageY);
         let x = mouse[0] + scrollLeft;
         let y = mouse[1] + scrollTop;
@@ -3037,7 +3037,7 @@ const luckysheetformula = {
         let _this = this;
 
         _this.rangeResize = null;
-        $("#luckysheet-formula-functionrange-highlight-" + _this.rangeResizeIndex).find(".luckysheet-selection-copy-hc").css("opacity", 0.03);
+        $("#sheet-formula-functionrange-highlight-" + _this.rangeResizeIndex).find(".sheet-selection-copy-hc").css("opacity", 0.03);
     },
     rangeMovexy: null,
     rangeMove: false,
@@ -3048,8 +3048,8 @@ const luckysheetformula = {
         let _this = this;
 
         let mouse = mouseposition(event.pageX, event.pageY);
-        let scrollLeft = $("#luckysheet-scrollbar-x").scrollLeft();
-        let scrollTop = $("#luckysheet-scrollbar-y").scrollTop();
+        let scrollLeft = $("#sheet-scrollbar-x").scrollLeft();
+        let scrollTop = $("#sheet-scrollbar-y").scrollTop();
         let x = mouse[0] + scrollLeft;
         let y = mouse[1] + scrollTop;
 
@@ -3106,7 +3106,7 @@ const luckysheetformula = {
         let _this = this;
 
         _this.rangeMove = false;
-        $("#luckysheet-formula-functionrange-highlight-" + _this.rangeMoveIndex).data("range", _this.rangeMoveRangedata).find(".luckysheet-selection-copy-hc").css("opacity", 0.03);
+        $("#sheet-formula-functionrange-highlight-" + _this.rangeMoveIndex).data("range", _this.rangeMoveRangedata).find(".sheet-selection-copy-hc").css("opacity", 0.03);
     },
     functionHTMLIndex: 0,
     functionRangeIndex: null,
@@ -3349,8 +3349,8 @@ const luckysheetformula = {
                 if (window.getSelection) { // all browsers, except IE before version 9
                     let currSelection = window.getSelection();
                     if ($(currSelection.anchorNode).is("div")) {
-                        let editorlen = $("#luckysheet-rich-text-editor span").length;
-                        _this.functionRangeIndex = [editorlen - 1, $("#luckysheet-rich-text-editor").find("span").eq(editorlen - 1).text().length];
+                        let editorlen = $("#sheet-rich-text-editor span").length;
+                        _this.functionRangeIndex = [editorlen - 1, $("#sheet-rich-text-editor").find("span").eq(editorlen - 1).text().length];
                     }
                     else {
                         _this.functionRangeIndex = [$(currSelection.anchorNode).parent().index(), currSelection.anchorOffset];
@@ -3386,10 +3386,10 @@ const luckysheetformula = {
                 //     let range = w.getRangeAt(0);
                 //     let c = range.startContainer;
 
-                //     if(c.id=="luckysheet-rich-text-editor" || $(c).closest("#luckysheet-rich-text-editor")){
+                //     if(c.id=="sheet-rich-text-editor" || $(c).closest("#sheet-rich-text-editor")){
                 //         _functionbox.html(value);
                 //     }
-                //     else if(c.id=="luckysheet-functionbox-cell" || $(c).closest("#luckysheet-functionbox-cell")){
+                //     else if(c.id=="sheet-functionbox-cell" || $(c).closest("#sheet-functionbox-cell")){
                 //         if(value1.indexOf("span")>-1){
 
                 //         }
@@ -3402,7 +3402,7 @@ const luckysheetformula = {
                 // console.trace();
                 // console.log(value, _copy.attr("id"));
 
-                if (_copy.attr("id") == "luckysheet-rich-text-editor") {
+                if (_copy.attr("id") == "sheet-rich-text-editor") {
                     if (_copy.html().substr(0, 5) == "<span") {
 
                     }
@@ -3427,7 +3427,7 @@ const luckysheetformula = {
 
         _this.functionHTMLIndex = 0;
 
-        return '<span dir="auto" class="luckysheet-formula-text-color">=</span>' + _this.functionHTML(txt);
+        return '<span dir="auto" class="sheet-formula-text-color">=</span>' + _this.functionHTML(txt);
     },
     functionHTML: function (txt) {
         let _this = this;
@@ -3467,17 +3467,17 @@ const luckysheetformula = {
                 matchConfig.bracket += 1;
 
                 if (str.length > 0) {
-                    function_str += '<span dir="auto" class="luckysheet-formula-text-func">' + str + '</span><span dir="auto" class="luckysheet-formula-text-lpar">(</span>';
+                    function_str += '<span dir="auto" class="sheet-formula-text-func">' + str + '</span><span dir="auto" class="sheet-formula-text-lpar">(</span>';
                 }
                 else {
-                    function_str += '<span dir="auto" class="luckysheet-formula-text-lpar">(</span>';
+                    function_str += '<span dir="auto" class="sheet-formula-text-lpar">(</span>';
                 }
 
                 str = "";
             }
             else if (s == ")" && matchConfig.squote == 0 && matchConfig.dquote == 0 && matchConfig.braces == 0) {
                 matchConfig.bracket -= 1;
-                function_str += _this.functionHTML(str) + '<span dir="auto" class="luckysheet-formula-text-rpar">)</span>';
+                function_str += _this.functionHTML(str) + '<span dir="auto" class="sheet-formula-text-rpar">)</span>';
                 str = "";
             }
             else if (s == "{" && matchConfig.squote == 0 && matchConfig.dquote == 0) {
@@ -3504,10 +3504,10 @@ const luckysheetformula = {
                     matchConfig.dquote += 1;
 
                     if (str.length > 0) {
-                        function_str += _this.functionHTML(str) + '<span dir="auto" class="luckysheet-formula-text-string">"';
+                        function_str += _this.functionHTML(str) + '<span dir="auto" class="sheet-formula-text-string">"';
                     }
                     else {
-                        function_str += '<span dir="auto" class="luckysheet-formula-text-string">"';
+                        function_str += '<span dir="auto" class="sheet-formula-text-string">"';
                     }
 
                     str = "";
@@ -3520,16 +3520,16 @@ const luckysheetformula = {
             }
             else if (s == ',' && matchConfig.squote == 0 && matchConfig.dquote == 0 && matchConfig.braces == 0) {
                 //matchConfig.comma += 1;
-                function_str += _this.functionHTML(str) + '<span dir="auto" class="luckysheet-formula-text-comma">,</span>';
+                function_str += _this.functionHTML(str) + '<span dir="auto" class="sheet-formula-text-comma">,</span>';
                 str = "";
             }
             else if (s == '&' && matchConfig.squote == 0 && matchConfig.dquote == 0 && matchConfig.braces == 0) {
                 if (str.length > 0) {
-                    function_str += _this.functionHTML(str) + '<span dir="auto" class="luckysheet-formula-text-calc">' + '&' + '</span>';
+                    function_str += _this.functionHTML(str) + '<span dir="auto" class="sheet-formula-text-calc">' + '&' + '</span>';
                     str = "";
                 }
                 else {
-                    function_str += '<span dir="auto" class="luckysheet-formula-text-calc">' + '&' + '</span>';
+                    function_str += '<span dir="auto" class="sheet-formula-text-calc">' + '&' + '</span>';
                 }
             }
             else if (s in _this.operatorjson && matchConfig.squote == 0 && matchConfig.dquote == 0 && matchConfig.braces == 0) {
@@ -3548,11 +3548,11 @@ const luckysheetformula = {
 
                 if ((s + s_next) in _this.operatorjson) {
                     if (str.length > 0) {
-                        function_str += _this.functionHTML(str) + '<span dir="auto" class="luckysheet-formula-text-calc">' + s + s_next + '</span>';
+                        function_str += _this.functionHTML(str) + '<span dir="auto" class="sheet-formula-text-calc">' + s + s_next + '</span>';
                         str = "";
                     }
                     else {
-                        function_str += '<span dir="auto" class="luckysheet-formula-text-calc">' + s + s_next + '</span>';
+                        function_str += '<span dir="auto" class="sheet-formula-text-calc">' + s + s_next + '</span>';
                     }
 
                     i++;
@@ -3562,11 +3562,11 @@ const luckysheetformula = {
                 }
                 else {
                     if (str.length > 0) {
-                        function_str += _this.functionHTML(str) + '<span dir="auto" class="luckysheet-formula-text-calc">' + s + '</span>';
+                        function_str += _this.functionHTML(str) + '<span dir="auto" class="sheet-formula-text-calc">' + s + '</span>';
                         str = "";
                     }
                     else {
-                        function_str += '<span dir="auto" class="luckysheet-formula-text-calc">' + s + '</span>';
+                        function_str += '<span dir="auto" class="sheet-formula-text-calc">' + s + '</span>';
                     }
                 }
             }
@@ -3577,7 +3577,7 @@ const luckysheetformula = {
             if (i == funcstack.length - 1) {
                 //function_str += str;
                 if (_this.iscelldata($.trim(str))) {
-                    function_str += '<span class="luckysheet-formula-functionrange-cell" rangeindex="' + _this.functionHTMLIndex + '" dir="auto" style="color:' + sheetColor[_this.functionHTMLIndex] + ';">' + str + '</span>';
+                    function_str += '<span class="sheet-formula-functionrange-cell" rangeindex="' + _this.functionHTMLIndex + '" dir="auto" style="color:' + sheetColor[_this.functionHTMLIndex] + ';">' + str + '</span>';
                     _this.functionHTMLIndex++;
                 }
                 else if (matchConfig.dquote > 0) {
@@ -3592,19 +3592,19 @@ const luckysheetformula = {
                         let alltxt = "";
 
                         if (arraystart > 0) {
-                            alltxt += '<span dir="auto" class="luckysheet-formula-text-color">' + str.substr(0, arraystart) + '</span>';
+                            alltxt += '<span dir="auto" class="sheet-formula-text-color">' + str.substr(0, arraystart) + '</span>';
                         }
 
-                        alltxt += '<span dir="auto" style="color:#959a05" class="luckysheet-formula-text-array">' + arraytxt + '</span>';
+                        alltxt += '<span dir="auto" style="color:#959a05" class="sheet-formula-text-array">' + arraytxt + '</span>';
 
                         if (arraystart + arraytxt.length < str.length) {
-                            alltxt += '<span dir="auto" class="luckysheet-formula-text-color">' + str.substr(arraystart + arraytxt.length, str.length) + '</span>';
+                            alltxt += '<span dir="auto" class="sheet-formula-text-color">' + str.substr(arraystart + arraytxt.length, str.length) + '</span>';
                         }
 
                         function_str += alltxt;
                     }
                     else {
-                        function_str += '<span dir="auto" class="luckysheet-formula-text-color">' + str + '</span>';
+                        function_str += '<span dir="auto" class="sheet-formula-text-color">' + str + '</span>';
                     }
                 }
             }

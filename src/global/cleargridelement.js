@@ -2,18 +2,18 @@ import selection from '../controllers/selection';
 import menuButton from '../controllers/menuButton';
 
 export default function cleargridelement(event) {
-    $("#luckysheet-cols-h-hover").hide();
-    $("#luckysheet-rightclick-menu").hide();
+    $("#sheet-cols-h-hover").hide();
+    $("#sheet-rightclick-menu").hide();
 
     $("#sheet-cell-selected-boxs .sheet-cell-selected").hide();
-    $("#luckysheet-cols-h-selected .luckysheet-cols-h-selected").hide();
-    $("#luckysheet-rows-h-selected .luckysheet-rows-h-selected").hide();
+    $("#sheet-cols-h-selected .sheet-cols-h-selected").hide();
+    $("#sheet-rows-h-selected .sheet-rows-h-selected").hide();
 
     $("#sheet-cell-selected-focus").hide();
-    $("#luckysheet-rows-h-hover").hide();
-    $("#luckysheet-selection-copy .luckysheet-selection-copy").hide();
-    $("#luckysheet-cols-menu-btn").hide();
-    $("#luckysheet-row-count-show, #luckysheet-column-count-show").hide();
+    $("#sheet-rows-h-hover").hide();
+    $("#sheet-selection-copy .sheet-selection-copy").hide();
+    $("#sheet-cols-menu-btn").hide();
+    $("#sheet-row-count-show, #sheet-column-count-show").hide();
     if (!event) {
         selection.clearcopy(event);
     }
@@ -22,9 +22,9 @@ export default function cleargridelement(event) {
     //}
 
     //选区下拉icon隐藏
-    if($("#luckysheet-dropCell-icon").is(":visible")){
+    if($("#sheet-dropCell-icon").is(":visible")){
         if(event){
-            $("#luckysheet-dropCell-icon").remove();
+            $("#sheet-dropCell-icon").remove();
         }
     }
     //格式刷

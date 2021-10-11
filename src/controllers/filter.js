@@ -29,7 +29,7 @@ import { update, genarate } from '../global/format';
 //筛选配置状态
 function labelFilterOptionState(top, optionstate, rowhidden, caljs, notSave, str, edr, cindex, stc, edc) {
     if (optionstate) {
-        top.addClass("luckysheet-filter-options-active").data("rowhidden", JSON.stringify(rowhidden)).data("caljs", JSON.stringify(caljs)).html('<i class="fa fa-filter luckysheet-mousedown-cancel" aria-hidden="true"></i>');
+        top.addClass("sheet-filter-options-active").data("rowhidden", JSON.stringify(rowhidden)).data("caljs", JSON.stringify(caljs)).html('<i class="fa fa-filter sheet-mousedown-cancel" aria-hidden="true"></i>');
 
         if (caljs != null) {
             top.data("byconditionvalue", caljs["value"]).data("byconditiontype", caljs["type"]).data("byconditiontext", caljs["text"]);
@@ -44,7 +44,7 @@ function labelFilterOptionState(top, optionstate, rowhidden, caljs, notSave, str
         }
     }
     else {
-        top.removeClass("luckysheet-filter-options-active").data("rowhidden", "").data("caljs", "").html('<i class="fa fa-caret-down luckysheet-mousedown-cancel" aria-hidden="true"></i>');
+        top.removeClass("sheet-filter-options-active").data("rowhidden", "").data("caljs", "").html('<i class="fa fa-caret-down sheet-mousedown-cancel" aria-hidden="true"></i>');
 
         top.data("byconditionvalue", "null").data("byconditiontype", "0").data("byconditiontext", "无").data("byconditionvalue1", "").data("byconditionvalue2", "");
     }
@@ -144,8 +144,8 @@ function createFilter() {
     }
 
     if(Store.luckysheet_select_save.length > 1){
-        $("#luckysheet-rightclick-menu").hide();
-        $("#luckysheet-filter-menu, #luckysheet-filter-submenu").hide();
+        $("#sheet-rightclick-menu").hide();
+        $("#sheet-filter-menu, #sheet-filter-submenu").hide();
         $("#" + Store.container).attr("tabindex", 0).focus();
 
         const locale_splitText = locale().splitText;
@@ -164,7 +164,7 @@ function createFilter() {
         return;
     }
 
-    $('#luckysheet-filter-selected-sheet' + Store.currentSheetIndex + ', #luckysheet-filter-options-sheet' + Store.currentSheetIndex).remove();
+    $('#sheet-filter-selected-sheet' + Store.currentSheetIndex + ', #sheet-filter-options-sheet' + Store.currentSheetIndex).remove();
 
     let last = Store.luckysheet_select_save[0];
     if (last["row"][0] == last["row"][1] && last["column"][0] == last["column"][1]) {
@@ -218,8 +218,8 @@ function createFilter() {
 
 //创建筛选配置
 function createFilterOptions(luckysheet_filter_save, filterObj) {
-    $("#luckysheet-filter-selected-sheet" + Store.currentSheetIndex).remove();
-    $("#luckysheet-filter-options-sheet" + Store.currentSheetIndex).remove();
+    $("#sheet-filter-selected-sheet" + Store.currentSheetIndex).remove();
+    $("#sheet-filter-options-sheet" + Store.currentSheetIndex).remove();
     
     if(luckysheet_filter_save == null || JSON.stringify(luckysheet_filter_save) == "{}"){
         return;
@@ -235,14 +235,14 @@ function createFilterOptions(luckysheet_filter_save, filterObj) {
     let col = Store.visibledatacolumn[c2], 
         col_pre = c1 - 1 == -1 ? 0 : Store.visibledatacolumn[c1 - 1];
     
-    let newSelectedHTML = '<div id="luckysheet-filter-selected-sheet'+ Store.currentSheetIndex +'" class="sheet-cell-selected luckysheet-filter-selected"  style="left:'+ col_pre +'px;width:'+ (col - col_pre - 1) +'px;top:'+ row_pre +'px;height:'+ (row - row_pre - 1) +'px;display:block;border-color:#897BFF;z-index:20;background:none;"></div>';
-    $("#luckysheet-cell-main").append(newSelectedHTML);
+    let newSelectedHTML = '<div id="sheet-filter-selected-sheet'+ Store.currentSheetIndex +'" class="sheet-cell-selected sheet-filter-selected"  style="left:'+ col_pre +'px;width:'+ (col - col_pre - 1) +'px;top:'+ row_pre +'px;height:'+ (row - row_pre - 1) +'px;display:block;border-color:#897BFF;z-index:20;background:none;"></div>';
+    $("#sheet-cell-main").append(newSelectedHTML);
     
     let optionHTML = "";
 
     for (let c = c1; c <= c2; c++) {
         if(filterObj == null || filterObj[c - c1] == null){
-            optionHTML += '<div data-rowhidden="" data-str="'+ r1 +'" data-edr="'+ r2 +'" data-cindex="'+ c +'" data-stc="'+ c1 +'" data-edc="'+ c2 +'" class="luckysheet-filter-options" style="left:'+ (Store.visibledatacolumn[c] - 20) +'px;top:'+ row_pre +'px;display:block;"><i class="fa fa-caret-down" aria-hidden="true"></i></div>';
+            optionHTML += '<div data-rowhidden="" data-str="'+ r1 +'" data-edr="'+ r2 +'" data-cindex="'+ c +'" data-stc="'+ c1 +'" data-edc="'+ c2 +'" class="sheet-filter-options" style="left:'+ (Store.visibledatacolumn[c] - 20) +'px;top:'+ row_pre +'px;display:block;"><i class="fa fa-caret-down" aria-hidden="true"></i></div>';
         }
         else{
             let caljs_data;
@@ -274,16 +274,16 @@ function createFilterOptions(luckysheet_filter_save, filterObj) {
                 caljs_data = '';
             }
 
-            optionHTML += '<div data-rowhidden="'+ JSON.stringify(filterObj[c - c1].rowhidden).replace(/\"/g, "'") +'" '+ caljs_data +' data-str="'+ r1 +'" data-edr="'+ r2 +'" data-cindex="'+ c +'" data-stc="'+ c1 +'" data-edc="'+ c2 +'" class="luckysheet-filter-options luckysheet-filter-options-active" style="left:'+ (Store.visibledatacolumn[c] - 20) +'px;top:'+ row_pre +'px;display:block;"><i class="fa fa-filter luckysheet-mousedown-cancel" aria-hidden="true"></i></div>';
+            optionHTML += '<div data-rowhidden="'+ JSON.stringify(filterObj[c - c1].rowhidden).replace(/\"/g, "'") +'" '+ caljs_data +' data-str="'+ r1 +'" data-edr="'+ r2 +'" data-cindex="'+ c +'" data-stc="'+ c1 +'" data-edc="'+ c2 +'" class="sheet-filter-options sheet-filter-options-active" style="left:'+ (Store.visibledatacolumn[c] - 20) +'px;top:'+ row_pre +'px;display:block;"><i class="fa fa-filter sheet-mousedown-cancel" aria-hidden="true"></i></div>';
         }
     }
 
-    $("#luckysheet-cell-main").append('<div id="luckysheet-filter-options-sheet'+ Store.currentSheetIndex +'" class="luckysheet-filter-options-c">' + optionHTML + '</div>');
-    $("#luckysheet-rightclick-menu").hide();
-    $("#luckysheet-filter-menu, #luckysheet-filter-submenu").hide();
+    $("#sheet-cell-main").append('<div id="sheet-filter-options-sheet'+ Store.currentSheetIndex +'" class="sheet-filter-options-c">' + optionHTML + '</div>');
+    $("#sheet-rightclick-menu").hide();
+    $("#sheet-filter-menu, #sheet-filter-submenu").hide();
 
-    if ($("#luckysheet-cell-main").scrollTop() > luckysheet_filter_save["top_move"]) {
-        $("#luckysheet-scrollbar-y").scrollTop(luckysheet_filter_save["top_move"]);
+    if ($("#sheet-cell-main").scrollTop() > luckysheet_filter_save["top_move"]) {
+        $("#sheet-scrollbar-y").scrollTop(luckysheet_filter_save["top_move"]);
     }
 
     let file = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)];
@@ -301,7 +301,7 @@ function initialFilterHandler(){
 
     //右键菜单 菜单项hover
     let submenuhide = null, rightclickmenu = null;
-    $(".luckysheet-cols-menu .luckysheet-cols-submenu").hover(
+    $(".sheet-cols-menu .sheet-cols-submenu").hover(
         function () {
             let _t = $(this), attrid = _t.attr("id"), _attr = $("#" + attrid + "_sub"), _con = _t.parent();
             let winW = $(window).width(), winH = $(window).height();
@@ -326,84 +326,84 @@ function initialFilterHandler(){
         }
     );
 
-    $(".luckysheet-rightgclick-menu-sub").hover(
+    $(".sheet-rightgclick-menu-sub").hover(
         function () {
-            rightclickmenu.addClass("luckysheet-cols-menuitem-hover");
+            rightclickmenu.addClass("sheet-cols-menuitem-hover");
             clearTimeout(submenuhide);
         },
         function () {
-            rightclickmenu.removeClass("luckysheet-cols-menuitem-hover");
+            rightclickmenu.removeClass("sheet-cols-menuitem-hover");
             $(this).hide();
         }
     );
 
-    $("#luckysheet-filter-menu").mouseover(function () {
+    $("#sheet-filter-menu").mouseover(function () {
         clearTimeout(hidefilersubmenu);
         
         hidefilersubmenu = setTimeout(function () {
-            $("#luckysheet-filter-submenu").hide();
+            $("#sheet-filter-submenu").hide();
         }, 500);
     });
     
 
-    $("#luckysheet-filter-submenu").mouseover(function () {
+    $("#sheet-filter-submenu").mouseover(function () {
         clearTimeout(hidefilersubmenu);
-    }).find(".luckysheet-cols-menuitem").click(function (e) {
-        $("#luckysheet-filter-selected span").html($(this).find(".luckysheet-cols-menuitem-content").text()).data("value", $(this).data("value"));
-        $("#luckysheet-filter-menu .luckysheet-filter-selected-input").hide();
+    }).find(".sheet-cols-menuitem").click(function (e) {
+        $("#sheet-filter-selected span").html($(this).find(".sheet-cols-menuitem-content").text()).data("value", $(this).data("value"));
+        $("#sheet-filter-menu .sheet-filter-selected-input").hide();
 
         let _type = $(this).data("type");
         let _value = $(this).attr("data-value");
         
         if (_type == "2") {
-            $("#luckysheet-filter-selected span").data("type", "2");
-            $("#luckysheet-filter-menu .luckysheet-filter-selected-input2").show();
-            $("#luckysheet-filter-menu .luckysheet-filter-selected-input input").prop("type", "number");
+            $("#sheet-filter-selected span").data("type", "2");
+            $("#sheet-filter-menu .sheet-filter-selected-input2").show();
+            $("#sheet-filter-menu .sheet-filter-selected-input input").prop("type", "number");
         }
         else if (_type == "0") {
-            $("#luckysheet-filter-selected span").data("type", "0");
+            $("#sheet-filter-selected span").data("type", "0");
         }
         else {
-            $("#luckysheet-filter-selected span").data("type", "1");
-            $("#luckysheet-filter-menu .luckysheet-filter-selected-input").eq(0).show();
+            $("#sheet-filter-selected span").data("type", "1");
+            $("#sheet-filter-menu .sheet-filter-selected-input").eq(0).show();
             
             //若是日期 改变input type类型为date
             if(_value == "dateequal" || _value == "datelessthan" || _value == "datemorethan"){
-                $("#luckysheet-filter-menu .luckysheet-filter-selected-input input").prop("type", "date");
+                $("#sheet-filter-menu .sheet-filter-selected-input input").prop("type", "date");
             }
             else if(_value == "morethan" || _value == "moreequalthan" || _value == "lessthan" || _value == "lessequalthan" || _value == "equal" || _value == "noequal"){
-                $("#luckysheet-filter-menu .luckysheet-filter-selected-input input").prop("type", "number");
+                $("#sheet-filter-menu .sheet-filter-selected-input input").prop("type", "number");
             }
             else{
-                $("#luckysheet-filter-menu .luckysheet-filter-selected-input input").prop("type", "text");
+                $("#sheet-filter-menu .sheet-filter-selected-input input").prop("type", "text");
             }
         }
 
-        $("#luckysheet-filter-byvalue").next().slideUp();
-        $("#luckysheet-filter-submenu").hide();
+        $("#sheet-filter-byvalue").next().slideUp();
+        $("#sheet-filter-submenu").hide();
     });
 
-    $("#luckysheet-filter-bycondition, #luckysheet-filter-byvalue").click(function () {
+    $("#sheet-filter-bycondition, #sheet-filter-byvalue").click(function () {
         let _t = $(this);
         _t.next().slideToggle(200);
 
         setTimeout(function () {
-            if (_t.attr("id") == "luckysheet-filter-bycondition" && $("#luckysheet-filter-bycondition").next().is(":visible")) {
-                if ($("#luckysheet-filter-selected span").text() != locale_filter.filiterInputNone) {
-                    $("#luckysheet-filter-byvalue").next().slideUp(200);
+            if (_t.attr("id") == "sheet-filter-bycondition" && $("#sheet-filter-bycondition").next().is(":visible")) {
+                if ($("#sheet-filter-selected span").text() != locale_filter.filiterInputNone) {
+                    $("#sheet-filter-byvalue").next().slideUp(200);
                 }
             }
 
-            if (_t.is($("#luckysheet-filter-bycondition"))) {
-                if ($("#luckysheet-filter-bycondition").next().is(":hidden") && $("#luckysheet-filter-byvalue").next().is(":hidden")) {
-                    $("#luckysheet-filter-byvalue").next().slideDown(200);
+            if (_t.is($("#sheet-filter-bycondition"))) {
+                if ($("#sheet-filter-bycondition").next().is(":hidden") && $("#sheet-filter-byvalue").next().is(":hidden")) {
+                    $("#sheet-filter-byvalue").next().slideDown(200);
                 }
             }
         }, 300);
     });
 
-    $("#luckysheet-filter-selected").click(function () {
-        let _t = $(this), toffset = _t.offset(), _menu = $("#luckysheet-filter-submenu");
+    $("#sheet-filter-selected").click(function () {
+        let _t = $(this), toffset = _t.offset(), _menu = $("#sheet-filter-submenu");
         _menu.hide();
     
         let winH = $(window).height(), winW = $(window).width();
@@ -429,13 +429,13 @@ function initialFilterHandler(){
     });
 
     //筛选按钮点击事件
-    $("#luckysheet-cell-main").on("click", ".luckysheet-filter-options", function (e) {
+    $("#sheet-cell-main").on("click", ".sheet-filter-options", function (e) {
         if(!checkProtectionAuthorityNormal(Store.currentSheetIndex, "filter")){
             return;
         }
         let _t = $(e.currentTarget), 
             toffset = _t.offset(), 
-            _menu = $("#luckysheet-filter-menu"), 
+            _menu = $("#sheet-filter-menu"), 
             winH = $(window).height(), 
             winW = $(window).width();
 
@@ -446,11 +446,11 @@ function initialFilterHandler(){
             ed_c = _t.data("edc"), 
             rowhidden = _t.data("rowhidden") == "" ? {} : JSON.parse(_t.data("rowhidden").replace(/\'/g, '"'));
 
-        $("body .luckysheet-cols-menu").hide();
-        $("#luckysheet-filter-menu, #luckysheet-filter-submenu").hide();
-        $("#luckysheet-filter-byvalue-input").val("");
-        $("#luckysheet-filter-bycondition").next().hide();
-        $("#luckysheet-filter-byvalue").next().show();
+        $("body .sheet-cols-menu").hide();
+        $("#sheet-filter-menu, #sheet-filter-submenu").hide();
+        $("#sheet-filter-byvalue-input").val("");
+        $("#sheet-filter-bycondition").next().hide();
+        $("#sheet-filter-byvalue").next().show();
         
         _menu.data("str", st_r);
         _menu.data("edr", ed_r);
@@ -458,34 +458,34 @@ function initialFilterHandler(){
         _menu.data("stc", st_c);
         _menu.data("edc", ed_c);
 
-        $("#luckysheet-filter-menu .luckysheet-filter-selected-input").hide().find("input").val();
-        $("#luckysheet-filter-selected span").data("type", "0").data("type", null).text(locale_filter.filiterInputNone);
+        $("#sheet-filter-menu .sheet-filter-selected-input").hide().find("input").val();
+        $("#sheet-filter-selected span").data("type", "0").data("type", null).text(locale_filter.filiterInputNone);
 
         let byconditiontype = _t.data("byconditiontype");
-        $("#luckysheet-filter-selected span").data("value", _t.data("byconditionvalue")).data("type", byconditiontype).text(_t.data("byconditiontext"));
+        $("#sheet-filter-selected span").data("value", _t.data("byconditionvalue")).data("type", byconditiontype).text(_t.data("byconditiontext"));
 
         if (byconditiontype == "2") {
-            let _input = $("#luckysheet-filter-menu .luckysheet-filter-selected-input2").show().find("input");
+            let _input = $("#sheet-filter-menu .sheet-filter-selected-input2").show().find("input");
             _input.eq(0).val(_t.data("byconditionvalue1"));
             _input.eq(1).val(_t.data("byconditionvalue2"));
         }
         else if (byconditiontype == "1") {
-            $("#luckysheet-filter-menu .luckysheet-filter-selected-input").eq(0).show().find("input").val(_t.data("byconditionvalue1"));
+            $("#sheet-filter-menu .sheet-filter-selected-input").eq(0).show().find("input").val(_t.data("byconditionvalue1"));
         }
 
-        $("#luckysheet-filter-orderby-asc").off("click").on("click", function () {
+        $("#sheet-filter-orderby-asc").off("click").on("click", function () {
             orderbydatafiler(st_r, st_c, ed_r, ed_c, cindex, true);
         });
 
-        $("#luckysheet-filter-orderby-desc").off("click").on("click", function () {
+        $("#sheet-filter-orderby-desc").off("click").on("click", function () {
             orderbydatafiler(st_r, st_c, ed_r, ed_c, cindex, false);
         });
 
-        const loadingObj = sheetlodingHTML("#luckysheet-filter-byvalue-select",{text:locale_filter.filiterMoreDataTip});
-        $("#luckysheet-filter-byvalue-select").empty().append(loadingObj.el);
+        const loadingObj = sheetlodingHTML("#sheet-filter-byvalue-select",{text:locale_filter.filiterMoreDataTip});
+        $("#sheet-filter-byvalue-select").empty().append(loadingObj.el);
 
         let rowhiddenother = {}; //其它筛选列的隐藏行
-        $("#luckysheet-filter-options-sheet" + Store.currentSheetIndex + " .luckysheet-filter-options").not(this).each(function () {
+        $("#sheet-filter-options-sheet" + Store.currentSheetIndex + " .sheet-filter-options").not(this).each(function () {
             let _t = $(this), rh = _t.data("rowhidden");
             
             if (rh == "") {
@@ -611,17 +611,17 @@ function initialFilterHandler(){
 
                             //日是否选中状态
                             if((y in dvmap_uncheck) && (m in dvmap_uncheck) && (d in dvmap_uncheck)){
-                                dayHtml +=  '<div class="day luckysheet-mousedown-cancel cf" data-check="false" title="'+ y +'-'+ mT +'-'+ dT +'">' +
-                                                '<input class="luckysheet-mousedown-cancel" type="checkbox"/>' +
-                                                '<label class="luckysheet-mousedown-cancel">' + d + '</label>' +
-                                                '<span class="count luckysheet-mousedown-cancel">( ' + dayL + ' )</span>' +
+                                dayHtml +=  '<div class="day sheet-mousedown-cancel cf" data-check="false" title="'+ y +'-'+ mT +'-'+ dT +'">' +
+                                                '<input class="sheet-mousedown-cancel" type="checkbox"/>' +
+                                                '<label class="sheet-mousedown-cancel">' + d + '</label>' +
+                                                '<span class="count sheet-mousedown-cancel">( ' + dayL + ' )</span>' +
                                             '</div>';
                             }
                             else{
-                                dayHtml +=  '<div class="day luckysheet-mousedown-cancel cf" data-check="true" title="'+ y +'-'+ mT +'-'+ dT +'">' +
-                                                '<input class="luckysheet-mousedown-cancel" type="checkbox" checked="checked"/>' +
-                                                '<label class="luckysheet-mousedown-cancel">' + d + '</label>' +
-                                                '<span class="count luckysheet-mousedown-cancel">( ' + dayL + ' )</span>' +
+                                dayHtml +=  '<div class="day sheet-mousedown-cancel cf" data-check="true" title="'+ y +'-'+ mT +'-'+ dT +'">' +
+                                                '<input class="sheet-mousedown-cancel" type="checkbox" checked="checked"/>' +
+                                                '<label class="sheet-mousedown-cancel">' + d + '</label>' +
+                                                '<span class="count sheet-mousedown-cancel">( ' + dayL + ' )</span>' +
                                             '</div>';
                             }
                         }
@@ -639,25 +639,25 @@ function initialFilterHandler(){
 
                         //月是否选中状态
                         if((y in dvmap_uncheck) && (m in dvmap_uncheck)){
-                            monthHtml += '<div class="monthBox luckysheet-mousedown-cancel">' +
-                                            '<div class="month luckysheet-mousedown-cancel cf" data-check="false" title="'+ y +'-'+ mT2 +'">' +
-                                                '<i class="fa fa-caret-right luckysheet-mousedown-cancel" aria-hidden="true"></i>' +
-                                                '<input class="luckysheet-mousedown-cancel" type="checkbox"/>' +
-                                                '<label class="luckysheet-mousedown-cancel">' + m + ''+ locale_filter.filiterMonthText +'</label>' +
-                                                '<span class="count luckysheet-mousedown-cancel">( ' + msum + ' )</span>' +
+                            monthHtml += '<div class="monthBox sheet-mousedown-cancel">' +
+                                            '<div class="month sheet-mousedown-cancel cf" data-check="false" title="'+ y +'-'+ mT2 +'">' +
+                                                '<i class="fa fa-caret-right sheet-mousedown-cancel" aria-hidden="true"></i>' +
+                                                '<input class="sheet-mousedown-cancel" type="checkbox"/>' +
+                                                '<label class="sheet-mousedown-cancel">' + m + ''+ locale_filter.filiterMonthText +'</label>' +
+                                                '<span class="count sheet-mousedown-cancel">( ' + msum + ' )</span>' +
                                             '</div>' +
-                                            '<div class="dayList luckysheet-mousedown-cancel">' + dayHtml + '</div>' +
+                                            '<div class="dayList sheet-mousedown-cancel">' + dayHtml + '</div>' +
                                         '</div>';
                         }
                         else{
-                            monthHtml += '<div class="monthBox luckysheet-mousedown-cancel">' +
-                                            '<div class="month luckysheet-mousedown-cancel cf" data-check="true" title="'+ y +'-'+ mT2 +'">' +
-                                                '<i class="fa fa-caret-right luckysheet-mousedown-cancel" aria-hidden="true"></i>' +
-                                                '<input class="luckysheet-mousedown-cancel" type="checkbox" checked="checked"/>' +
-                                                '<label class="luckysheet-mousedown-cancel">' + m + ''+ locale_filter.filiterMonthText +'</label>' +
-                                                '<span class="count luckysheet-mousedown-cancel">( ' + msum + ' )</span>' +
+                            monthHtml += '<div class="monthBox sheet-mousedown-cancel">' +
+                                            '<div class="month sheet-mousedown-cancel cf" data-check="true" title="'+ y +'-'+ mT2 +'">' +
+                                                '<i class="fa fa-caret-right sheet-mousedown-cancel" aria-hidden="true"></i>' +
+                                                '<input class="sheet-mousedown-cancel" type="checkbox" checked="checked"/>' +
+                                                '<label class="sheet-mousedown-cancel">' + m + ''+ locale_filter.filiterMonthText +'</label>' +
+                                                '<span class="count sheet-mousedown-cancel">( ' + msum + ' )</span>' +
                                             '</div>' +
-                                            '<div class="dayList luckysheet-mousedown-cancel">' + dayHtml + '</div>' +
+                                            '<div class="dayList sheet-mousedown-cancel">' + dayHtml + '</div>' +
                                         '</div>';
                         }
                     }
@@ -665,25 +665,25 @@ function initialFilterHandler(){
                     //年是否选中状态
                     let yearHtml;
                     if(y in dvmap_uncheck){
-                        yearHtml =  '<div class="yearBox luckysheet-mousedown-cancel">' +
-                                            '<div class="year luckysheet-mousedown-cancel cf" data-check="false" title="'+ y +'">' +
-                                                '<i class="fa fa-caret-right luckysheet-mousedown-cancel" aria-hidden="true"></i>' +
-                                                '<input class="luckysheet-mousedown-cancel" type="checkbox"/>' +
-                                                '<label class="luckysheet-mousedown-cancel">' + y + ''+ locale_filter.filiterYearText +'</label>' +
-                                                '<span class="count luckysheet-mousedown-cancel">( ' + ysum + ' )</span>' +
+                        yearHtml =  '<div class="yearBox sheet-mousedown-cancel">' +
+                                            '<div class="year sheet-mousedown-cancel cf" data-check="false" title="'+ y +'">' +
+                                                '<i class="fa fa-caret-right sheet-mousedown-cancel" aria-hidden="true"></i>' +
+                                                '<input class="sheet-mousedown-cancel" type="checkbox"/>' +
+                                                '<label class="sheet-mousedown-cancel">' + y + ''+ locale_filter.filiterYearText +'</label>' +
+                                                '<span class="count sheet-mousedown-cancel">( ' + ysum + ' )</span>' +
                                             '</div>' +
-                                            '<div class="monthList luckysheet-mousedown-cancel">' + monthHtml + '</div>' +
+                                            '<div class="monthList sheet-mousedown-cancel">' + monthHtml + '</div>' +
                                         '</div>';
                     }
                     else{
-                        yearHtml =  '<div class="yearBox luckysheet-mousedown-cancel">' +
-                                            '<div class="year luckysheet-mousedown-cancel cf" data-check="true" title="'+ y +'">' +
-                                                '<i class="fa fa-caret-right luckysheet-mousedown-cancel" aria-hidden="true"></i>' +
-                                                '<input class="luckysheet-mousedown-cancel" type="checkbox" checked="checked"/>' +
-                                                '<label class="luckysheet-mousedown-cancel">' + y + ''+ locale_filter.filiterYearText +'</label>' +
-                                                '<span class="count luckysheet-mousedown-cancel">( ' + ysum + ' )</span>' +
+                        yearHtml =  '<div class="yearBox sheet-mousedown-cancel">' +
+                                            '<div class="year sheet-mousedown-cancel cf" data-check="true" title="'+ y +'">' +
+                                                '<i class="fa fa-caret-right sheet-mousedown-cancel" aria-hidden="true"></i>' +
+                                                '<input class="sheet-mousedown-cancel" type="checkbox" checked="checked"/>' +
+                                                '<label class="sheet-mousedown-cancel">' + y + ''+ locale_filter.filiterYearText +'</label>' +
+                                                '<span class="count sheet-mousedown-cancel">( ' + ysum + ' )</span>' +
                                             '</div>' +
-                                            '<div class="monthList luckysheet-mousedown-cancel">' + monthHtml + '</div>' +
+                                            '<div class="monthList sheet-mousedown-cancel">' + monthHtml + '</div>' +
                                         '</div>';
                     }
 
@@ -710,17 +710,17 @@ function initialFilterHandler(){
                         //是否选中状态
                         let dataHtml;
                         if((v + "#$$$#" + x) in vmap_uncheck){
-                            dataHtml =  '<div class="textBox luckysheet-mousedown-cancel cf" data-check="false" data-filter="'+ (v + "#$$$#" + x) +'" title="'+ text +'">' +
-                                                '<input class="luckysheet-mousedown-cancel" type="checkbox"/>' +
-                                                '<label class="luckysheet-mousedown-cancel">' + text + '</label>' +
-                                                '<span class="luckysheet-mousedown-cancel count">( ' + vmap[v][x] + ' )</span>' +
+                            dataHtml =  '<div class="textBox sheet-mousedown-cancel cf" data-check="false" data-filter="'+ (v + "#$$$#" + x) +'" title="'+ text +'">' +
+                                                '<input class="sheet-mousedown-cancel" type="checkbox"/>' +
+                                                '<label class="sheet-mousedown-cancel">' + text + '</label>' +
+                                                '<span class="sheet-mousedown-cancel count">( ' + vmap[v][x] + ' )</span>' +
                                             '</div>';
                         }
                         else{
-                            dataHtml =  '<div class="textBox luckysheet-mousedown-cancel cf" data-check="true" data-filter="'+ (v + "#$$$#" + x) +'" title="'+ text +'">' +
-                                                '<input class="luckysheet-mousedown-cancel" type="checkbox" checked="checked"/>' +
-                                                '<label class="luckysheet-mousedown-cancel">' + text + '</label>' +
-                                                '<span class="luckysheet-mousedown-cancel count">( ' + vmap[v][x] + ' )</span>' +
+                            dataHtml =  '<div class="textBox sheet-mousedown-cancel cf" data-check="true" data-filter="'+ (v + "#$$$#" + x) +'" title="'+ text +'">' +
+                                                '<input class="sheet-mousedown-cancel" type="checkbox" checked="checked"/>' +
+                                                '<label class="sheet-mousedown-cancel">' + text + '</label>' +
+                                                '<span class="sheet-mousedown-cancel count">( ' + vmap[v][x] + ' )</span>' +
                                             '</div>';
                         }
 
@@ -732,9 +732,9 @@ function initialFilterHandler(){
             // 适配小屏设备
             let containerH = winH - toffset.top - 350
             if (containerH < 0) containerH = 100
-            //$("#luckysheet-filter-byvalue-select").html("<div class='ListBox luckysheet-mousedown-cancel' style='min-height: 100px; max-height: " + containerH + "px; overflow-y: auto; overflow-x: hidden;'><table cellspacing='0' style='width:100%;' class='luckysheet-mousedown-cancel'>" + item.join("") + "</table></div>");
+            //$("#sheet-filter-byvalue-select").html("<div class='ListBox sheet-mousedown-cancel' style='min-height: 100px; max-height: " + containerH + "px; overflow-y: auto; overflow-x: hidden;'><table cellspacing='0' style='width:100%;' class='sheet-mousedown-cancel'>" + item.join("") + "</table></div>");
 
-            $("#luckysheet-filter-byvalue-select").append("<div class='ListBox luckysheet-mousedown-cancel' style='min-height: 100px; max-height: " + containerH + "px; overflow-y: auto; overflow-x: hidden;'><table cellspacing='0' style='width:100%;' class='luckysheet-mousedown-cancel'>" + item.join("") + "</table></div>");
+            $("#sheet-filter-byvalue-select").append("<div class='ListBox sheet-mousedown-cancel' style='min-height: 100px; max-height: " + containerH + "px; overflow-y: auto; overflow-x: hidden;'><table cellspacing='0' style='width:100%;' class='sheet-mousedown-cancel'>" + item.join("") + "</table></div>");
             loadingObj.close();
         }, 1);
 
@@ -745,10 +745,10 @@ function initialFilterHandler(){
     });
 
     //按颜色筛选
-    $("#luckysheet-filter-orderby-color").hover(
+    $("#sheet-filter-orderby-color").hover(
         function(){
             //遍历筛选列颜色
-            let _menu = $("#luckysheet-filter-menu");
+            let _menu = $("#sheet-filter-menu");
             let st_r = _menu.data("str"), 
                 ed_r = _menu.data("edr"), 
                 cindex = _menu.data("cindex"), 
@@ -828,13 +828,13 @@ function initialFilterHandler(){
                 let bgColorItemHtml = '';
                 for(let b in bgMap){
                     if(bgMap[b] == 0){
-                        bgColorItemHtml += '<div class="item luckysheet-mousedown-cancel"><label class="luckysheet-mousedown-cancel" style="background-color: ' + b + '" title="' + b + '"></label><input class="luckysheet-mousedown-cancel" type="checkbox" checked="checked"/></div>';
+                        bgColorItemHtml += '<div class="item sheet-mousedown-cancel"><label class="sheet-mousedown-cancel" style="background-color: ' + b + '" title="' + b + '"></label><input class="sheet-mousedown-cancel" type="checkbox" checked="checked"/></div>';
                     }
                     else{
-                        bgColorItemHtml += '<div class="item luckysheet-mousedown-cancel"><label class="luckysheet-mousedown-cancel" style="background-color: ' + b + '" title="' + b + '"></label><input class="luckysheet-mousedown-cancel" type="checkbox"/></div>';
+                        bgColorItemHtml += '<div class="item sheet-mousedown-cancel"><label class="sheet-mousedown-cancel" style="background-color: ' + b + '" title="' + b + '"></label><input class="sheet-mousedown-cancel" type="checkbox"/></div>';
                     }
                 }
-                filterBgColorHtml = '<div id="filterBgColor" class="box luckysheet-mousedown-cancel"><div class="title luckysheet-mousedown-cancel">'+locale_filter.filiterByColorTip+'</div><div style="max-height:128px;overflow:auto;" class="luckysheet-mousedown-cancel">' + bgColorItemHtml + '</div></div>';
+                filterBgColorHtml = '<div id="filterBgColor" class="box sheet-mousedown-cancel"><div class="title sheet-mousedown-cancel">'+locale_filter.filiterByColorTip+'</div><div style="max-height:128px;overflow:auto;" class="sheet-mousedown-cancel">' + bgColorItemHtml + '</div></div>';
             }
     
             let filterFcColorHtml = '';
@@ -842,26 +842,26 @@ function initialFilterHandler(){
                 let fcColorItemHtml = '';
                 for(let f in fcMap){
                     if(fcMap[f] == 0){
-                        fcColorItemHtml += '<div class="item luckysheet-mousedown-cancel"><label class="luckysheet-mousedown-cancel" style="background-color: ' + f + '" title="' + f + '"></label><input class="luckysheet-mousedown-cancel" type="checkbox" checked="checked"/></div>';
+                        fcColorItemHtml += '<div class="item sheet-mousedown-cancel"><label class="sheet-mousedown-cancel" style="background-color: ' + f + '" title="' + f + '"></label><input class="sheet-mousedown-cancel" type="checkbox" checked="checked"/></div>';
                     }
                     else{
-                        fcColorItemHtml += '<div class="item luckysheet-mousedown-cancel"><label class="luckysheet-mousedown-cancel" style="background-color: ' + f + '" title="' + f + '"></label><input class="luckysheet-mousedown-cancel" type="checkbox"/></div>';
+                        fcColorItemHtml += '<div class="item sheet-mousedown-cancel"><label class="sheet-mousedown-cancel" style="background-color: ' + f + '" title="' + f + '"></label><input class="sheet-mousedown-cancel" type="checkbox"/></div>';
                     }
                 }
-                filterFcColorHtml = '<div id="filterFcColor" class="box luckysheet-mousedown-cancel"><div class="title luckysheet-mousedown-cancel">'+locale_filter.filiterByTextColorTip+'</div><div style="max-height:128px;overflow:auto;" class="luckysheet-mousedown-cancel">' + fcColorItemHtml + '</div></div>';
+                filterFcColorHtml = '<div id="filterFcColor" class="box sheet-mousedown-cancel"><div class="title sheet-mousedown-cancel">'+locale_filter.filiterByTextColorTip+'</div><div style="max-height:128px;overflow:auto;" class="sheet-mousedown-cancel">' + fcColorItemHtml + '</div></div>';
             }
             //
             let content;
             if(filterBgColorHtml == '' && filterFcColorHtml == ''){
-                content = '<div class="luckysheet-mousedown-cancel" style="padding: 10px 30px;text-align: center;">'+locale_filter.filterContainerOneColorTip+'</div>';
+                content = '<div class="sheet-mousedown-cancel" style="padding: 10px 30px;text-align: center;">'+locale_filter.filterContainerOneColorTip+'</div>';
             }
             else{
-                content = filterBgColorHtml + filterFcColorHtml + '<div class="luckysheet-mousedown-cancel"><button id="luckysheet-filter-orderby-color-confirm" class="btn btn-primary luckysheet-mousedown-cancel" style="margin: 5px 20px;width: 70px;">'+locale_button.confirm+'</button></div>';
+                content = filterBgColorHtml + filterFcColorHtml + '<div class="sheet-mousedown-cancel"><button id="sheet-filter-orderby-color-confirm" class="btn btn-primary sheet-mousedown-cancel" style="margin: 5px 20px;width: 70px;">'+locale_button.confirm+'</button></div>';
             }
             //颜色筛选子菜单
-            $("#luckysheet-filter-orderby-color-submenu").remove();
-            $("body").append('<div id="luckysheet-filter-orderby-color-submenu" class="luckysheet-cols-menu luckysheet-mousedown-cancel">'+content+'</div>');
-            let _t = $("#luckysheet-filter-orderby-color-submenu").end();
+            $("#sheet-filter-orderby-color-submenu").remove();
+            $("body").append('<div id="sheet-filter-orderby-color-submenu" class="sheet-cols-menu sheet-mousedown-cancel">'+content+'</div>');
+            let _t = $("#sheet-filter-orderby-color-submenu").end();
             let _con = $(this).parent();
             let winW = $(window).width(), winH = $(window).height();
             let menuW = _con.width(), 
@@ -878,14 +878,14 @@ function initialFilterHandler(){
                 top = winH - myh;
             }
     
-            $("#luckysheet-filter-orderby-color-submenu").css({ "top": top, "left": left }).show();
+            $("#sheet-filter-orderby-color-submenu").css({ "top": top, "left": left }).show();
         },
         function(){
-            submenuhide = setTimeout(function () { $("#luckysheet-filter-orderby-color-submenu").hide(); }, 200);
+            submenuhide = setTimeout(function () { $("#sheet-filter-orderby-color-submenu").hide(); }, 200);
         }
     );
 
-    $(document).on("mouseover mouseleave", "#luckysheet-filter-orderby-color-submenu", function(e){
+    $(document).on("mouseover mouseleave", "#sheet-filter-orderby-color-submenu", function(e){
         if (e.type === "mouseover") {
             clearTimeout(submenuhide);
         } 
@@ -893,14 +893,14 @@ function initialFilterHandler(){
             $(this).hide();
         }
     });
-    $(document).on("click", "#luckysheet-filter-orderby-color-submenu .item label", function(){
+    $(document).on("click", "#sheet-filter-orderby-color-submenu .item label", function(){
         $(this).siblings("input[type='checkbox']").click();
     });
-    $(document).off("click.orderbyColorConfirm").on("click.orderbyColorConfirm", "#luckysheet-filter-orderby-color-submenu #luckysheet-filter-orderby-color-confirm", function(){
+    $(document).off("click.orderbyColorConfirm").on("click.orderbyColorConfirm", "#sheet-filter-orderby-color-submenu #sheet-filter-orderby-color-confirm", function(){
         let bg_colorMap = {};
         let fc_colorMap = {};
         
-        $("#luckysheet-filter-orderby-color-submenu .item").each(function(i, e){
+        $("#sheet-filter-orderby-color-submenu .item").each(function(i, e){
             if($(e).find("input[type='checkbox']").is(":checked")){
                 let color = $(this).find("label").attr("title");
                 let _id = $(this).closest(".box").attr("id");
@@ -915,7 +915,7 @@ function initialFilterHandler(){
         });
         
         let bg_filter;
-        if($("#luckysheet-filter-orderby-color-submenu #filterBgColor").length > 0){
+        if($("#sheet-filter-orderby-color-submenu #filterBgColor").length > 0){
             bg_filter = true;
         }
         else{
@@ -923,14 +923,14 @@ function initialFilterHandler(){
         }
         
         let fc_filter;
-        if($("#luckysheet-filter-orderby-color-submenu #filterFcColor").length > 0){
+        if($("#sheet-filter-orderby-color-submenu #filterFcColor").length > 0){
             fc_filter = true;
         }
         else{
             fc_filter = false;
         }
     
-        let _menu = $("#luckysheet-filter-menu");
+        let _menu = $("#sheet-filter-menu");
         let st_r = _menu.data("str"), 
             ed_r = _menu.data("edr"), 
             cindex = _menu.data("cindex"), 
@@ -938,7 +938,7 @@ function initialFilterHandler(){
             ed_c = _menu.data("edc");
     
         let rowhiddenother = {}; //其它筛选列的隐藏行
-        $("#luckysheet-filter-options-sheet" + Store.currentSheetIndex + " .luckysheet-filter-options").not($("#luckysheet-filter-options-sheet" + Store.currentSheetIndex + " .luckysheet-filter-options").eq(cindex - st_c).get(0)).each(function () {
+        $("#sheet-filter-options-sheet" + Store.currentSheetIndex + " .sheet-filter-options").not($("#sheet-filter-options-sheet" + Store.currentSheetIndex + " .sheet-filter-options").eq(cindex - st_c).get(0)).each(function () {
             let _t = $(this), rh = _t.data("rowhidden");
     
             if (rh == "") {
@@ -1030,7 +1030,7 @@ function initialFilterHandler(){
             }
         }
     
-        let top = $("#luckysheet-filter-options-sheet" + Store.currentSheetIndex + " .luckysheet-filter-options").eq(cindex - st_c);
+        let top = $("#sheet-filter-options-sheet" + Store.currentSheetIndex + " .sheet-filter-options").eq(cindex - st_c);
     
         let optionstate = Object.keys(rowhidden).length > 0;
     
@@ -1074,12 +1074,12 @@ function initialFilterHandler(){
         //行高、列宽 刷新  
         jfrefreshgrid_rhcw(Store.flowdata.length, Store.flowdata[0].length);
     
-        $("#luckysheet-filter-menu, #luckysheet-filter-submenu, #luckysheet-filter-orderby-color-submenu").hide();
+        $("#sheet-filter-menu, #sheet-filter-submenu, #sheet-filter-orderby-color-submenu").hide();
         cleargridelement();
     });
 
     //点击复选框
-    $(document).off("click.filterCheckbox1").on("click.filterCheckbox1", "#luckysheet-filter-byvalue-select .textBox",function(){
+    $(document).off("click.filterCheckbox1").on("click.filterCheckbox1", "#sheet-filter-byvalue-select .textBox",function(){
         if($(this).attr("data-check") == "true"){
             $(this).attr("data-check", "false");
             $(this).find("input[type='checkbox']").removeAttr("checked");
@@ -1089,7 +1089,7 @@ function initialFilterHandler(){
             $(this).find("input[type='checkbox']").prop("checked", true);
         }
     })
-    $(document).off("click.filterCheckbox2").on("click.filterCheckbox2", "#luckysheet-filter-byvalue-select .year",function(){
+    $(document).off("click.filterCheckbox2").on("click.filterCheckbox2", "#sheet-filter-byvalue-select .year",function(){
         if($(this).attr("data-check") == "true"){
             $(this).attr("data-check", "false");
             $(this).parents(".yearBox").find(".month").attr("data-check", "false");
@@ -1103,7 +1103,7 @@ function initialFilterHandler(){
             $(this).parents(".yearBox").find("input[type='checkbox']").prop("checked", true);
         }
     })
-    $(document).off("click.filterCheckbox3").on("click.filterCheckbox3", "#luckysheet-filter-byvalue-select .month",function(){
+    $(document).off("click.filterCheckbox3").on("click.filterCheckbox3", "#sheet-filter-byvalue-select .month",function(){
         //月份 对应的 天
         if($(this).attr("data-check") == "true"){
             $(this).attr("data-check", "false");
@@ -1135,7 +1135,7 @@ function initialFilterHandler(){
             $(this).parents(".yearBox").find(".year input[type='checkbox']").removeAttr("checked");
         }
     })
-    $(document).off("click.filterCheckbox4").on("click.filterCheckbox4", "#luckysheet-filter-byvalue-select .day",function(){
+    $(document).off("click.filterCheckbox4").on("click.filterCheckbox4", "#sheet-filter-byvalue-select .day",function(){
         if($(this).attr("data-check") == "true"){
             $(this).attr("data-check", "false");
             $(this).find("input[type='checkbox']").removeAttr("checked");
@@ -1185,8 +1185,8 @@ function initialFilterHandler(){
     })
 
     //日期 三级下拉显示
-    $(document).off("click.filterYearDropdown").on("click.filterYearDropdown", "#luckysheet-filter-byvalue-select .yearBox .fa-caret-right",function(event){
-        let _p = $(this).parents(".luckysheet-mousedown-cancel");
+    $(document).off("click.filterYearDropdown").on("click.filterYearDropdown", "#sheet-filter-byvalue-select .yearBox .fa-caret-right",function(event){
+        let _p = $(this).parents(".sheet-mousedown-cancel");
         if(_p.hasClass("year")){
             $(this).parents(".yearBox").find(".monthList").slideToggle();
         }
@@ -1198,32 +1198,32 @@ function initialFilterHandler(){
     });
 
     //全选
-    $("#luckysheet-filter-byvalue-btn-all").click(function () {
-        $("#luckysheet-filter-byvalue-select .ListBox input[type='checkbox']").prop("checked", true);
-        $("#luckysheet-filter-byvalue-select .ListBox input[type='checkbox']").parents(".luckysheet-mousedown-cancel").attr("data-check", "true");
+    $("#sheet-filter-byvalue-btn-all").click(function () {
+        $("#sheet-filter-byvalue-select .ListBox input[type='checkbox']").prop("checked", true);
+        $("#sheet-filter-byvalue-select .ListBox input[type='checkbox']").parents(".sheet-mousedown-cancel").attr("data-check", "true");
     });
 
     //清除
-    $("#luckysheet-filter-byvalue-btn-clear").click(function () {
-        $("#luckysheet-filter-byvalue-select .ListBox input[type='checkbox']").removeAttr("checked");
-        $("#luckysheet-filter-byvalue-select .ListBox input[type='checkbox']").parents(".luckysheet-mousedown-cancel").attr("data-check", "false");
+    $("#sheet-filter-byvalue-btn-clear").click(function () {
+        $("#sheet-filter-byvalue-select .ListBox input[type='checkbox']").removeAttr("checked");
+        $("#sheet-filter-byvalue-select .ListBox input[type='checkbox']").parents(".sheet-mousedown-cancel").attr("data-check", "false");
     });
 
     //反选
-    $("#luckysheet-filter-byvalue-btn-contra").click(function () {
-        let _input = $("#luckysheet-filter-byvalue-select .ListBox input[type='checkbox']");
+    $("#sheet-filter-byvalue-btn-contra").click(function () {
+        let _input = $("#sheet-filter-byvalue-select .ListBox input[type='checkbox']");
         _input.each(function(i, e){
             if($(e).is(":checked")){
                 $(e).removeAttr("checked");
-                $(e).parents(".luckysheet-mousedown-cancel").attr("data-check", "false");
+                $(e).parents(".sheet-mousedown-cancel").attr("data-check", "false");
             }
             else{
                 $(e).prop("checked", true);
-                $(e).parents(".luckysheet-mousedown-cancel").attr("data-check", "true");
+                $(e).parents(".sheet-mousedown-cancel").attr("data-check", "true");
             }
         });
         //天 对应的 月份
-        let _month = $("#luckysheet-filter-byvalue-select .ListBox .monthBox");
+        let _month = $("#sheet-filter-byvalue-select .ListBox .monthBox");
         _month.each(function(index, event){
             let monthDayAllCheck = true;
             let _monthDay = $(event).find(".day input[type='checkbox']");
@@ -1245,7 +1245,7 @@ function initialFilterHandler(){
             }
         });
         //天 对应的 年份
-        let _year = $("#luckysheet-filter-byvalue-select .ListBox .yearBox");
+        let _year = $("#sheet-filter-byvalue-select .ListBox .yearBox");
         _year.each(function(index, event){
             let yearDayAllCheck = true;
             let _yearDay = $(event).find(".day input[type='checkbox']");
@@ -1269,13 +1269,13 @@ function initialFilterHandler(){
     });
 
     //清除筛选
-    $("#luckysheet-filter-initial").click(function () {
+    $("#sheet-filter-initial").click(function () {
         if(!checkProtectionAuthorityNormal(Store.currentSheetIndex, "filter")){
             return;
         }
 
-        $("#luckysheet-filter-menu .luckysheet-filter-selected-input").hide().find("input").val();
-        $("#luckysheet-filter-selected span").data("type", "0").data("type", null).text(locale_filter.conditionNone);
+        $("#sheet-filter-menu .sheet-filter-selected-input").hide().find("input").val();
+        $("#sheet-filter-selected span").data("type", "0").data("type", null).text(locale_filter.conditionNone);
 
         let redo = {};
         redo["type"] = "datachangeAll_filter_clear";
@@ -1288,10 +1288,10 @@ function initialFilterHandler(){
         redo["filter_save"] = $.extend(true, {}, Store.luckysheet_filter_save);
 
         let optiongroups = [];
-        $("#luckysheet-filter-options-sheet" + Store.currentSheetIndex + " .luckysheet-filter-options").each(function () {
+        $("#sheet-filter-options-sheet" + Store.currentSheetIndex + " .sheet-filter-options").each(function () {
             let _t = $(this);
 
-            let optionstate = _t.hasClass("luckysheet-filter-options-active");
+            let optionstate = _t.hasClass("sheet-filter-options-active");
             let rowhidden = json.parseJsonParm(_t.data("rowhidden"));
             let caljs = json.parseJsonParm(_t.data("caljs"));
 
@@ -1311,8 +1311,8 @@ function initialFilterHandler(){
         Store.jfundo.length  = 0;
         Store.jfredo.push(redo);
 
-        $('#luckysheet-filter-selected-sheet' + Store.currentSheetIndex + ', #luckysheet-filter-options-sheet' + Store.currentSheetIndex).remove();
-        $("#luckysheet-filter-menu, #luckysheet-filter-submenu").hide();
+        $('#sheet-filter-selected-sheet' + Store.currentSheetIndex + ', #sheet-filter-options-sheet' + Store.currentSheetIndex).remove();
+        $("#sheet-filter-menu, #sheet-filter-submenu").hide();
 
         //清除筛选发送给后台
         Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].filter = null;
@@ -1330,12 +1330,12 @@ function initialFilterHandler(){
     });
 
     //按照值进行筛选
-    $("#luckysheet-filter-byvalue-input").on('input propertychange', function () {
+    $("#sheet-filter-byvalue-input").on('input propertychange', function () {
         let v = $(this).val().toString();
-        $("#luckysheet-filter-byvalue-select .ListBox .luckysheet-mousedown-cancel").show();
+        $("#sheet-filter-byvalue-select .ListBox .sheet-mousedown-cancel").show();
         
         if(v != ""){
-            $("#luckysheet-filter-byvalue-select .ListBox input[type='checkbox']").each(function(i, e){
+            $("#sheet-filter-byvalue-select .ListBox input[type='checkbox']").each(function(i, e){
                 if($(e).closest(".day").length > 0){
                     let day = $(e).siblings("label").text().toString();
                     let month = $(e).closest(".monthBox").find(".month label").text().toString();
@@ -1371,13 +1371,13 @@ function initialFilterHandler(){
     });
 
     //筛选取消
-    $("#luckysheet-filter-cancel").click(function () {
-        $("#luckysheet-filter-menu, #luckysheet-filter-submenu").hide();
+    $("#sheet-filter-cancel").click(function () {
+        $("#sheet-filter-menu, #sheet-filter-submenu").hide();
     });
 
     //筛选 确认
-    $("#luckysheet-filter-confirm").click(function () {
-        let _menu = $("#luckysheet-filter-menu");
+    $("#sheet-filter-confirm").click(function () {
+        let _menu = $("#sheet-filter-menu");
         let st_r = _menu.data("str"), 
             ed_r = _menu.data("edr"), 
             cindex = _menu.data("cindex"), 
@@ -1385,7 +1385,7 @@ function initialFilterHandler(){
             ed_c = _menu.data("edc");
 
         let rowhiddenother = {}; //其它筛选列的隐藏行
-        $("#luckysheet-filter-options-sheet" + Store.currentSheetIndex + " .luckysheet-filter-options").not($("#luckysheet-filter-options-sheet" + Store.currentSheetIndex + " .luckysheet-filter-options").eq(cindex - st_c).get(0)).each(function () {
+        $("#sheet-filter-options-sheet" + Store.currentSheetIndex + " .sheet-filter-options").not($("#sheet-filter-options-sheet" + Store.currentSheetIndex + " .sheet-filter-options").eq(cindex - st_c).get(0)).each(function () {
             let _t = $(this), rh = _t.data("rowhidden");
 
             if (rh == "") {
@@ -1403,8 +1403,8 @@ function initialFilterHandler(){
         let rowhidden = {};
         let caljs = {};
 
-        if ($("#luckysheet-filter-bycondition").next().is(":visible") && $("#luckysheet-filter-byvalue").next().is(":hidden") && $("#luckysheet-filter-selected span").data("value") != "null") {
-            let _t = $("#luckysheet-filter-selected span");
+        if ($("#sheet-filter-bycondition").next().is(":visible") && $("#sheet-filter-byvalue").next().is(":hidden") && $("#sheet-filter-selected span").data("value") != "null") {
+            let _t = $("#sheet-filter-selected span");
             let type = _t.data("type"), value = _t.data("value");
 
             caljs["value"] = value;
@@ -1414,14 +1414,14 @@ function initialFilterHandler(){
                 caljs["type"] = "0";
             }
             else if (type == "2") {
-                let _input = $("#luckysheet-filter-menu .luckysheet-filter-selected-input2 input");
+                let _input = $("#sheet-filter-menu .sheet-filter-selected-input2 input");
                 caljs["type"] = "2";
                 caljs["value1"] = _input.eq(0).val();
                 caljs["value2"] = _input.eq(1).val();
             }
             else {
                 caljs["type"] = "1";
-                caljs["value1"] = $("#luckysheet-filter-menu .luckysheet-filter-selected-input").eq(0).find("input").val();
+                caljs["value1"] = $("#sheet-filter-menu .sheet-filter-selected-input").eq(0).find("input").val();
             }
 
             for (let r = st_r + 1; r <= ed_r; r++) {
@@ -1693,7 +1693,7 @@ function initialFilterHandler(){
             }
         }
         else {
-            $("#luckysheet-filter-byvalue-select .ListBox input[type='checkbox']").each(function(i, e){
+            $("#sheet-filter-byvalue-select .ListBox input[type='checkbox']").each(function(i, e){
                 if($(e).is(":visible") && $(e).is(":checked")){
                     return true;
                 }
@@ -1752,9 +1752,9 @@ function initialFilterHandler(){
             }
         }
 
-        let top = $("#luckysheet-filter-options-sheet" + Store.currentSheetIndex + " .luckysheet-filter-options").eq(cindex - st_c);
+        let top = $("#sheet-filter-options-sheet" + Store.currentSheetIndex + " .sheet-filter-options").eq(cindex - st_c);
 
-        let optionstate = $("#luckysheet-filter-byvalue-select .ListBox input[type='checkbox']:visible:checked").length < $("#luckysheet-filter-byvalue-select .ListBox input[type='checkbox']:visible").length || $("#luckysheet-filter-byvalue-input").val().length > 0 || ($("#luckysheet-filter-bycondition").next().is(":visible") && $("#luckysheet-filter-byvalue").next().is(":hidden") && $("#luckysheet-filter-selected span").data("value") != "null");
+        let optionstate = $("#sheet-filter-byvalue-select .ListBox input[type='checkbox']:visible:checked").length < $("#sheet-filter-byvalue-select .ListBox input[type='checkbox']:visible").length || $("#sheet-filter-byvalue-input").val().length > 0 || ($("#sheet-filter-bycondition").next().is(":visible") && $("#sheet-filter-byvalue").next().is(":hidden") && $("#sheet-filter-selected span").data("value") != "null");
 
         let rowhiddenall = $.extend(true, rowhiddenother, rowhidden), 
             rowhidenPre = json.parseJsonParm(top.data("rowhidden"));
@@ -1796,7 +1796,7 @@ function initialFilterHandler(){
         //行高、列宽 刷新  
         jfrefreshgrid_rhcw(Store.flowdata.length, Store.flowdata[0].length);
 
-        $("#luckysheet-filter-menu, #luckysheet-filter-submenu").hide();
+        $("#sheet-filter-menu, #sheet-filter-submenu").hide();
         cleargridelement();
     });
 }

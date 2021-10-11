@@ -44,8 +44,8 @@
 | [Luckysheet Server]          | Java后台Luckysheet Server |
 | [Luckysheet Server Starter]          | LuckysheetServer 一键docker部署 |
 
-[Luckysheet Vue]: https://gitee.com/mengshukeji/luckysheet-vue
-[Luckysheet React]: https://gitee.com/mengshukeji/luckysheet-react
+[Luckysheet Vue]: https://gitee.com/mengshukeji/sheet-vue
+[Luckysheet React]: https://gitee.com/mengshukeji/sheet-react
 [Luckyexcel Node]: https://gitee.com/mengshukeji/Luckyexcel-node
 [Luckysheet Server]: https://gitee.com/mengshukeji/LuckysheetServer
 [Luckysheet Server Starter]: https://gitee.com/mengshukeji/LuckysheetServerStarter

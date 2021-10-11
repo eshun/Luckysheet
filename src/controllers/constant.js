@@ -11,9 +11,9 @@ const gridHTML = function(){
     const userInfo = sheetConfigSetting.userInfo === true ? '<i style="font-size:16px;color:#ff6a00;" class="fa fa-taxi" aria-hidden="true"></i> Lucky' : sheetConfigSetting.userInfo; // When true, use the default HTML string. The rendering of userInfo below uses nested template strings. Otherwise, when display is used and the image path is not passed in, there will be an undefined request
 
     
-    // <div class="luckysheet-share-logo" title="\${logotitle}"></div>
+    // <div class="sheet-share-logo" title="\${logotitle}"></div>
     // <div class="sheet-name"> 
-    //     <input data-tips="${locale_info.tips}" id="luckysheet_info_detail_input" class="luckysheet_info_detail_input luckysheet-mousedown-cancel" value="${locale_info.noName}" tabindex="0" dir="ltr" aria-label="${locale_info.rename}" style="visibility: visible; width: 149px;" data-tooltip="${locale_info.rename}"> 
+    //     <input data-tips="${locale_info.tips}" id="luckysheet_info_detail_input" class="luckysheet_info_detail_input sheet-mousedown-cancel" value="${locale_info.noName}" tabindex="0" dir="ltr" aria-label="${locale_info.rename}" style="visibility: visible; width: 149px;" data-tooltip="${locale_info.rename}"> 
     // </div> 
     // \${functionButton}
                             
@@ -34,99 +34,99 @@ const gridHTML = function(){
 
     return `<div class="luckysheet">
                     <canvas id="sheetTableContentF" style="display:none;" class="sheetTableContent"></canvas> 
-                    <div class="luckysheet-work-area luckysheet-noselected-text"> 
+                    <div class="sheet-work-area sheet-noselected-text"> 
                         <div id ="sheet_info_detail" class="sheet_info_detail"> 
                             `+ navTabs +`
                         
                         </div> 
-                        <div id="luckysheet-wa-editor" class="luckysheet-wa-editor toolbar"> \${menu} </div> 
-                        <div id="luckysheet-wa-calculate" class="luckysheet-wa-calculate"> 
-                            <div class="luckysheet-wa-calculate-size" id="luckysheet-wa-calculate-size"></div> 
-                            <div class="luckysheet-wa-calculate-help"> 
-                                <div class="luckysheet-wa-calculate-help-box"> 
-                                    <div spellcheck="false" aria-hidden="false" id="luckysheet-helpbox">
-                                        <div id="luckysheet-helpbox-cell" class="luckysheet-helpbox-cell-input luckysheet-mousedown-cancel" tabindex="0" contenteditable="true" dir="ltr" aria-autocomplete="list"></div>
+                        <div id="sheet-wa-editor" class="sheet-wa-editor toolbar"> \${menu} </div> 
+                        <div id="sheet-wa-calculate" class="sheet-wa-calculate"> 
+                            <div class="sheet-wa-calculate-size" id="sheet-wa-calculate-size"></div> 
+                            <div class="sheet-wa-calculate-help"> 
+                                <div class="sheet-wa-calculate-help-box"> 
+                                    <div spellcheck="false" aria-hidden="false" id="sheet-helpbox">
+                                        <div id="sheet-helpbox-cell" class="sheet-helpbox-cell-input sheet-mousedown-cancel" tabindex="0" contenteditable="true" dir="ltr" aria-autocomplete="list"></div>
                                     </div> 
                                 </div>  
-                                <div class="luckysheet-wa-calculate-help-tool">
+                                <div class="sheet-wa-calculate-help-tool">
                                     <i class="fa fa-caret-down" aria-hidden="true"></i>
                                 </div> 
                             </div> 
-                            <div id="luckysheet-wa-functionbox-cancel" class="luckysheet-wa-functionbox">
-                                <span><i class="iconfont luckysheet-iconfont-qingchu" aria-hidden="true"></i></span>
+                            <div id="sheet-wa-functionbox-cancel" class="sheet-wa-functionbox">
+                                <span><i class="iconfont sheet-iconfont-qingchu" aria-hidden="true"></i></span>
                             </div> 
-                            <div id="luckysheet-wa-functionbox-confirm" class="luckysheet-wa-functionbox">
-                                <span><i class="iconfont luckysheet-iconfont-yunhang" aria-hidden="true"></i></span>
+                            <div id="sheet-wa-functionbox-confirm" class="sheet-wa-functionbox">
+                                <span><i class="iconfont sheet-iconfont-yunhang" aria-hidden="true"></i></span>
                             </div> 
-                            <div id="luckysheet-wa-functionbox-fx" class="luckysheet-wa-functionbox luckysheet-wa-calculate-active">
-                                <span><i class="iconfont luckysheet-iconfont-hanshu" aria-hidden="true"></i></span> 
+                            <div id="sheet-wa-functionbox-fx" class="sheet-wa-functionbox sheet-wa-calculate-active">
+                                <span><i class="iconfont sheet-iconfont-hanshu" aria-hidden="true"></i></span> 
                             </div> 
-                            <div id="luckysheet-functionbox-container" class="luckysheet-mousedown-cancel">
-                                <div class="luckysheet-mousedown-cancel" dir="ltr">
-                                    <div spellcheck="false" aria-hidden="false" id="luckysheet-functionbox">
-                                        <div id="luckysheet-functionbox-cell" class="luckysheet-functionbox-cell-input luckysheet-mousedown-cancel" tabindex="0" contenteditable="true" dir="ltr" aria-autocomplete="list" aria-label="D4"></div>
+                            <div id="sheet-functionbox-container" class="sheet-mousedown-cancel">
+                                <div class="sheet-mousedown-cancel" dir="ltr">
+                                    <div spellcheck="false" aria-hidden="false" id="sheet-functionbox">
+                                        <div id="sheet-functionbox-cell" class="sheet-functionbox-cell-input sheet-mousedown-cancel" tabindex="0" contenteditable="true" dir="ltr" aria-autocomplete="list" aria-label="D4"></div>
                                     </div>
                                 </div>
                             </div>   
                         </div> 
                     </div> 
-                    <div class="luckysheet-grid-container luckysheet-scrollbars-enabled"> 
-                        <div class="luckysheet-grid-window"> 
-                            <div class="luckysheet-help-sub"></div> 
-                            <div class="luckysheet-grid-window-1" id="luckysheet-grid-window-1">
+                    <div class="sheet-grid-container sheet-scrollbars-enabled"> 
+                        <div class="sheet-grid-window"> 
+                            <div class="sheet-help-sub"></div> 
+                            <div class="sheet-grid-window-1" id="sheet-grid-window-1">
                                 <canvas id="sheetTableContent" class="sheetTableContent"></canvas> 
-                                <table class="luckysheet-grid-window-2" cellspacing="0" cellpadding="0" dir="ltr" tabindex="-1" > 
+                                <table class="sheet-grid-window-2" cellspacing="0" cellpadding="0" dir="ltr" tabindex="-1" > 
                                     <tbody> 
                                         <tr> 
-                                            <td valign="top" class="luckysheet-paneswrapper"> 
-                                                <div class="luckysheet-left-top" id="luckysheet-left-top"> </div> 
+                                            <td valign="top" class="sheet-paneswrapper"> 
+                                                <div class="sheet-left-top" id="sheet-left-top"> </div> 
                                             </td> 
-                                            <td valign="top" class="luckysheet-paneswrapper"> 
-                                                <div id="luckysheet-cols-h-c" class="luckysheet-cols-h-c">
-                                                    <div class="luckysheet-cols-change-size" id="luckysheet-cols-change-size"></div>  
-                                                    <div class="luckysheet-cols-menu-btn luckysheet-mousedown-cancel" id="luckysheet-cols-menu-btn"><i class="fa fa-caret-down luckysheet-mousedown-cancel" aria-hidden="true"></i></div>  
-                                                    <div class="luckysheet-cols-h-hover" id="luckysheet-cols-h-hover"></div>  
-                                                    <div id="luckysheet-cols-h-selected"></div>  
-                                                    <div class="luckysheet-grdusedrange"></div>  
-                                                    <div class="luckysheet-grdblkflowpush"></div>  \${columnHeader}
+                                            <td valign="top" class="sheet-paneswrapper"> 
+                                                <div id="sheet-cols-h-c" class="sheet-cols-h-c">
+                                                    <div class="sheet-cols-change-size" id="sheet-cols-change-size"></div>  
+                                                    <div class="sheet-cols-menu-btn sheet-mousedown-cancel" id="sheet-cols-menu-btn"><i class="fa fa-caret-down sheet-mousedown-cancel" aria-hidden="true"></i></div>  
+                                                    <div class="sheet-cols-h-hover" id="sheet-cols-h-hover"></div>  
+                                                    <div id="sheet-cols-h-selected"></div>  
+                                                    <div class="sheet-grdusedrange"></div>  
+                                                    <div class="sheet-grdblkflowpush"></div>  \${columnHeader}
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td valign="top" class="luckysheet-paneswrapper"> 
-                                                <div class="luckysheet-rows-h" id="luckysheet-rows-h"> 
-                                                    <div class="luckysheet-rows-change-size" id="luckysheet-rows-change-size"></div> 
-                                                    <div class="luckysheet-rows-h-hover" id="luckysheet-rows-h-hover"></div> 
-                                                    <div id="luckysheet-rows-h-selected"></div>  
-                                                    <div class="luckysheet-grdusedrange"></div>  
-                                                    <div class="luckysheet-grdblkflowpush"></div> \${rowHeader}
+                                            <td valign="top" class="sheet-paneswrapper"> 
+                                                <div class="sheet-rows-h" id="sheet-rows-h"> 
+                                                    <div class="sheet-rows-change-size" id="sheet-rows-change-size"></div> 
+                                                    <div class="sheet-rows-h-hover" id="sheet-rows-h-hover"></div> 
+                                                    <div id="sheet-rows-h-selected"></div>  
+                                                    <div class="sheet-grdusedrange"></div>  
+                                                    <div class="sheet-grdblkflowpush"></div> \${rowHeader}
                                                 </div> 
                                             </td>  
-                                            <td valign="top" class="luckysheet-paneswrapper">
-                                                <div class="luckysheet-cell-loading" id="luckysheet-cell-loading">
-                                                    <div class="luckysheet-cell-loading-inner">
+                                            <td valign="top" class="sheet-paneswrapper">
+                                                <div class="sheet-cell-loading" id="sheet-cell-loading">
+                                                    <div class="sheet-cell-loading-inner">
                                                         <i class="fa fa-circle-o-notch fa-spin"></i>
                                                         <span></span>
                                                     </div>
                                                 </div> 
-                                                <div class="luckysheet-cell-freezen"></div> 
-                                                <div class="luckysheet-scrollbars luckysheet-scrollbar-ltr luckysheet-scrollbar-x" id="luckysheet-scrollbar-x"><div></div></div> 
-                                                <div class="luckysheet-scrollbars luckysheet-scrollbar-ltr luckysheet-scrollbar-y" id="luckysheet-scrollbar-y"><div></div></div> 
-                                                <div class="luckysheet-cell-main " id="luckysheet-cell-main">
-                                                    <div id="luckysheet-formula-functionrange"></div>  
-                                                    <div id="luckysheet-formula-functionrange-select" class="luckysheet-selection-copy luckysheet-formula-functionrange-select">
-                                                        <div class="luckysheet-selection-copy-top luckysheet-copy"></div>
-                                                        <div class="luckysheet-selection-copy-right luckysheet-copy"></div>
-                                                        <div class="luckysheet-selection-copy-bottom luckysheet-copy"></div>
-                                                        <div class="luckysheet-selection-copy-left luckysheet-copy"></div>
-                                                        <div class="luckysheet-selection-copy-hc"></div>
+                                                <div class="sheet-cell-freezen"></div> 
+                                                <div class="sheet-scrollbars sheet-scrollbar-ltr sheet-scrollbar-x" id="sheet-scrollbar-x"><div></div></div> 
+                                                <div class="sheet-scrollbars sheet-scrollbar-ltr sheet-scrollbar-y" id="sheet-scrollbar-y"><div></div></div> 
+                                                <div class="sheet-cell-main " id="sheet-cell-main">
+                                                    <div id="sheet-formula-functionrange"></div>  
+                                                    <div id="sheet-formula-functionrange-select" class="sheet-selection-copy sheet-formula-functionrange-select">
+                                                        <div class="sheet-selection-copy-top sheet-copy"></div>
+                                                        <div class="sheet-selection-copy-right sheet-copy"></div>
+                                                        <div class="sheet-selection-copy-bottom sheet-copy"></div>
+                                                        <div class="sheet-selection-copy-left sheet-copy"></div>
+                                                        <div class="sheet-selection-copy-hc"></div>
                                                     </div>  
-                                                    <div class="luckysheet-row-count-show luckysheet-count-show" id="luckysheet-row-count-show"></div>
-                                                    <div class="luckysheet-column-count-show luckysheet-count-show" id="luckysheet-column-count-show"></div>
-                                                    <div class="luckysheet-change-size-line" id="luckysheet-change-size-line"></div>  
+                                                    <div class="sheet-row-count-show sheet-count-show" id="sheet-row-count-show"></div>
+                                                    <div class="sheet-column-count-show sheet-count-show" id="sheet-column-count-show"></div>
+                                                    <div class="sheet-change-size-line" id="sheet-change-size-line"></div>  
                                                     <div class="sheet-cell-selected-focus" id="sheet-cell-selected-focus"></div>  
-                                                    <div id="luckysheet-selection-copy"></div>  
-                                                    <div id="luckysheet-chart-rangeShow"></div>
+                                                    <div id="sheet-selection-copy"></div>  
+                                                    <div id="sheet-chart-rangeShow"></div>
                                                     <div class="sheet-cell-selected-extend" id="sheet-cell-selected-extend"></div>  
                                                     <div class="sheet-cell-selected-move" id="sheet-cell-selected-move"></div>  
                                                     <div id="sheet-cell-selected-boxs">
@@ -143,40 +143,40 @@ const gridHTML = function(){
                                                         </div>
                                                     </div>
                                                     <div id="sheet-cell-printline-boxs"></div>
-                                                    <div id="luckysheet-postil-showBoxs"></div>
-                                                    <div id="luckysheet-multipleRange-show"></div>  
-                                                    <div id="luckysheet-dynamicArray-hightShow"></div>  
-                                                    <div id="luckysheet-image-showBoxs">
-                                                        <div id="luckysheet-modal-dialog-activeImage" class="luckysheet-modal-dialog" style="display:none;padding:0;position:absolute;z-index:300;">
-                                                            <div class="luckysheet-modal-dialog-border" style="position:absolute;"></div> 
-                                                            <div class="luckysheet-modal-dialog-content"></div>  
-                                                            <div class="luckysheet-modal-dialog-resize">
-                                                                <div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-lt" data-type="lt"></div>
-                                                                <div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-mt" data-type="mt"></div>
-                                                                <div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-lm" data-type="lm"></div>
-                                                                <div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-rm" data-type="rm"></div>
-                                                                <div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-rt" data-type="rt"></div>
-                                                                <div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-lb" data-type="lb"></div>
-                                                                <div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-mb" data-type="mb"></div>
-                                                                <div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-rb" data-type="rb"></div>
+                                                    <div id="sheet-postil-showBoxs"></div>
+                                                    <div id="sheet-multipleRange-show"></div>  
+                                                    <div id="sheet-dynamicArray-hightShow"></div>  
+                                                    <div id="sheet-image-showBoxs">
+                                                        <div id="sheet-modal-dialog-activeImage" class="sheet-modal-dialog" style="display:none;padding:0;position:absolute;z-index:300;">
+                                                            <div class="sheet-modal-dialog-border" style="position:absolute;"></div> 
+                                                            <div class="sheet-modal-dialog-content"></div>  
+                                                            <div class="sheet-modal-dialog-resize">
+                                                                <div class="sheet-modal-dialog-resize-item sheet-modal-dialog-resize-item-lt" data-type="lt"></div>
+                                                                <div class="sheet-modal-dialog-resize-item sheet-modal-dialog-resize-item-mt" data-type="mt"></div>
+                                                                <div class="sheet-modal-dialog-resize-item sheet-modal-dialog-resize-item-lm" data-type="lm"></div>
+                                                                <div class="sheet-modal-dialog-resize-item sheet-modal-dialog-resize-item-rm" data-type="rm"></div>
+                                                                <div class="sheet-modal-dialog-resize-item sheet-modal-dialog-resize-item-rt" data-type="rt"></div>
+                                                                <div class="sheet-modal-dialog-resize-item sheet-modal-dialog-resize-item-lb" data-type="lb"></div>
+                                                                <div class="sheet-modal-dialog-resize-item sheet-modal-dialog-resize-item-mb" data-type="mb"></div>
+                                                                <div class="sheet-modal-dialog-resize-item sheet-modal-dialog-resize-item-rb" data-type="rb"></div>
                                                             </div>
-                                                            <div class="luckysheet-modal-dialog-controll">
-                                                                <span class="luckysheet-modal-controll-btn luckysheet-modal-controll-crop" role="button" tabindex="0" aria-label="裁剪" title="裁剪">
+                                                            <div class="sheet-modal-dialog-controll">
+                                                                <span class="sheet-modal-controll-btn sheet-modal-controll-crop" role="button" tabindex="0" aria-label="裁剪" title="裁剪">
                                                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                                                 </span>
-                                                                <span class="luckysheet-modal-controll-btn luckysheet-modal-controll-restore" role="button" tabindex="0" aria-label="恢复原图" title="恢复原图">
+                                                                <span class="sheet-modal-controll-btn sheet-modal-controll-restore" role="button" tabindex="0" aria-label="恢复原图" title="恢复原图">
                                                                     <i class="fa fa-window-maximize" aria-hidden="true"></i>
                                                                 </span>
-                                                                <span class="luckysheet-modal-controll-btn luckysheet-modal-controll-del" role="button" tabindex="0" aria-label="删除" title="删除">
+                                                                <span class="sheet-modal-controll-btn sheet-modal-controll-del" role="button" tabindex="0" aria-label="删除" title="删除">
                                                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                                                 </span>
                                                             </div>
                                                         </div>
-                                                        <div id="luckysheet-modal-dialog-cropping" class="luckysheet-modal-dialog" style="display:none;padding:0;position:absolute;z-index:300;">
+                                                        <div id="sheet-modal-dialog-cropping" class="sheet-modal-dialog" style="display:none;padding:0;position:absolute;z-index:300;">
                                                             <div class="cropping-mask"></div>
                                                             <div class="cropping-content"></div>
-                                                            <div class="luckysheet-modal-dialog-border" style="position:absolute;"></div>
-                                                            <div class="luckysheet-modal-dialog-resize">
+                                                            <div class="sheet-modal-dialog-border" style="position:absolute;"></div>
+                                                            <div class="sheet-modal-dialog-resize">
                                                                 <div class="resize-item lt" data-type="lt"></div> 
                                                                 <div class="resize-item mt" data-type="mt"></div> 
                                                                 <div class="resize-item lm" data-type="lm"></div> 
@@ -186,14 +186,14 @@ const gridHTML = function(){
                                                                 <div class="resize-item mb" data-type="mb"></div> 
                                                                 <div class="resize-item rb" data-type="rb"></div>
                                                             </div>
-                                                            <div class="luckysheet-modal-dialog-controll">
-                                                                <span class="luckysheet-modal-controll-btn luckysheet-modal-controll-crop" role="button" tabindex="0" aria-label="裁剪" title="裁剪">
+                                                            <div class="sheet-modal-dialog-controll">
+                                                                <span class="sheet-modal-controll-btn sheet-modal-controll-crop" role="button" tabindex="0" aria-label="裁剪" title="裁剪">
                                                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                                                 </span>
-                                                                <span class="luckysheet-modal-controll-btn luckysheet-modal-controll-restore" role="button" tabindex="0" aria-label="恢复原图" title="恢复原图">
+                                                                <span class="sheet-modal-controll-btn sheet-modal-controll-restore" role="button" tabindex="0" aria-label="恢复原图" title="恢复原图">
                                                                     <i class="fa fa-window-maximize" aria-hidden="true"></i>
                                                                 </span>
-                                                                <span class="luckysheet-modal-controll-btn luckysheet-modal-controll-del" role="button" tabindex="0" aria-label="删除" title="删除">
+                                                                <span class="sheet-modal-controll-btn sheet-modal-controll-del" role="button" tabindex="0" aria-label="删除" title="删除">
                                                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                                                 </span>
                                                             </div>
@@ -203,21 +203,21 @@ const gridHTML = function(){
                                                             <input id="cellDatePickerBtn" class="formulaInputFocus" readonly="readonly"/>
                                                         </div>
                                                     </div>
-                                                    <div id="luckysheet-dataVerification-dropdown-btn"></div>
-                                                    <div id="luckysheet-dataVerification-dropdown-List" class="luckysheet-mousedown-cancel"></div>
-                                                    <div id="luckysheet-dataVerification-showHintBox" class="luckysheet-mousedown-cancel"></div>
-                                                    <div class="luckysheet-cell-copy"></div>  
-                                                    <div class="luckysheet-grdblkflowpush"></div>  \${flow} 
+                                                    <div id="sheet-dataVerification-dropdown-btn"></div>
+                                                    <div id="sheet-dataVerification-dropdown-List" class="sheet-mousedown-cancel"></div>
+                                                    <div id="sheet-dataVerification-showHintBox" class="sheet-mousedown-cancel"></div>
+                                                    <div class="sheet-cell-copy"></div>  
+                                                    <div class="sheet-grdblkflowpush"></div>  \${flow} 
                                                 </div> 
                                             </td> 
                                         </tr> 
                                     </tbody> 
                                 </table> 
                             </div> 
-                            <div class="sheet-area luckysheet-noselected-text" id="sheet-area">
+                            <div class="sheet-area sheet-noselected-text" id="sheet-area">
                                 <div id="sheet-content">
-                                    <div id="sheets-add" class="sheets-add sheet-button-custom"><i class="iconfont luckysheet-iconfont-jia1"></i></div>
-                                    <div id="sheets-m" class="sheets-m sheet-button-custom"><i class="iconfont luckysheet-iconfont-caidan2"></i></div>
+                                    <div id="sheets-add" class="sheets-add sheet-button-custom"><i class="iconfont sheet-iconfont-jia1"></i></div>
+                                    <div id="sheets-m" class="sheets-m sheet-button-custom"><i class="iconfont sheet-iconfont-caidan2"></i></div>
                                     <div class="sheet-container" id="sheet-container">
                                         <div class="docs-sheet-fade docs-sheet-fade-left" style="display: none;">
                                             <div class="docs-sheet-fade3"></div>
@@ -236,37 +236,37 @@ const gridHTML = function(){
                                 </div>
                             </div> 
                         </div> 
-                        <div class="luckysheet-stat-area"> 
-                            <div class="luckysheet-sta-c">
-                                <div class="luckysheet-zoom-content" id="luckysheet-zoom-content">
-                                    <div class="luckysheet-zoom-minus" id="luckysheet-zoom-minus">
-                                        <div class="luckysheet-zoom-minus-icon"></div>
+                        <div class="sheet-stat-area"> 
+                            <div class="sheet-sta-c">
+                                <div class="sheet-zoom-content" id="sheet-zoom-content">
+                                    <div class="sheet-zoom-minus" id="sheet-zoom-minus">
+                                        <div class="sheet-zoom-minus-icon"></div>
                                     </div>
-                                    <div class="luckysheet-zoom-slider" id="luckysheet-zoom-slider">
-                                        <div class="luckysheet-zoom-line"></div>
-                                        <div class="luckysheet-zoom-cursor" id="luckysheet-zoom-cursor"></div>
-                                        <div class="luckysheet-zoom-hundred"></div>
+                                    <div class="sheet-zoom-slider" id="sheet-zoom-slider">
+                                        <div class="sheet-zoom-line"></div>
+                                        <div class="sheet-zoom-cursor" id="sheet-zoom-cursor"></div>
+                                        <div class="sheet-zoom-hundred"></div>
                                     </div>
-                                    <div class="luckysheet-zoom-plus" id="luckysheet-zoom-plus">
-                                        <div class="luckysheet-zoom-plus-icon"></div>
+                                    <div class="sheet-zoom-plus" id="sheet-zoom-plus">
+                                        <div class="sheet-zoom-plus-icon"></div>
                                     </div>
-                                    <div class="luckysheet-zoom-ratioText" id="luckysheet-zoom-ratioText">100%</div>
+                                    <div class="sheet-zoom-ratioText" id="sheet-zoom-ratioText">100%</div>
                                 </div>
                                 <div class="sheet-print-viewList">
-                                    <div type="viewNormal" class="sheet-print-viewBtn sheet-print-viewNormal sheet-print-viewBtn-active" title="${locale_print.normalBtn}"><i class="icon iconfont luckysheet-iconfont-putong"></i></div>
-                                    <div type="viewLayout" class="sheet-print-viewBtn sheet-print-viewLayout" title="${locale_print.layoutBtn}"><i class="icon iconfont luckysheet-iconfont-yemianbuju"></i></div>
-                                    <div type="viewPage" class="sheet-print-viewBtn sheet-print-viewPage" title="${locale_print.pageBtn}"><i class="icon iconfont luckysheet-iconfont-fenyeyulan"></i></div>
+                                    <div type="viewNormal" class="sheet-print-viewBtn sheet-print-viewNormal sheet-print-viewBtn-active" title="${locale_print.normalBtn}"><i class="icon iconfont sheet-iconfont-putong"></i></div>
+                                    <div type="viewLayout" class="sheet-print-viewBtn sheet-print-viewLayout" title="${locale_print.layoutBtn}"><i class="icon iconfont sheet-iconfont-yemianbuju"></i></div>
+                                    <div type="viewPage" class="sheet-print-viewBtn sheet-print-viewPage" title="${locale_print.pageBtn}"><i class="icon iconfont sheet-iconfont-fenyeyulan"></i></div>
                                 </div>
-                                <div class="luckysheet-bottom-content">
+                                <div class="sheet-bottom-content">
                                     <div id="luckysheet_info_detail_update" class="luckysheet_info_detail_update"> ${locale_info.detailUpdate} </div> 
                                     <div id="luckysheet_info_detail_save" class="luckysheet_info_detail_save"> ${locale_info.wait} </div>   
-                                    <div class="luckysheet-sta-content" id="luckysheet-sta-content"></div>  
+                                    <div class="sheet-sta-content" id="sheet-sta-content"></div>  
                                 </div>
                             </div> 
                         </div> 
                     </div>
-                    <div id="luckysheet-copy-content" contenteditable="true"></div>
-                    <input id="luckysheet-copy-btn" type="button" data-clipboard-target="luckysheet-copy-content" />
+                    <div id="sheet-copy-content" contenteditable="true"></div>
+                    <input id="sheet-copy-btn" type="button" data-clipboard-target="sheet-copy-content" />
                     <div id="testdpidiv" style="height: 1in; left: -100%; position: absolute; top: -100%; width: 1in;"></div>
                   </div>`;
 }
@@ -278,7 +278,7 @@ function backOrHome() {
 
 const columeHeader_word = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
     columeHeader_word_index = { 'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9, 'K': 10, 'L': 11, 'M': 12, 'N': 13, 'O': 14, 'P': 15, 'Q': 16, 'R': 17, 'S': 18, 'T': 19, 'U': 20, 'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25 },
-    flow = '<div id="luckysheet-cell-flow_${index}" class="luckysheet-cell-flow luckysheetsheetchange" style="width:${width}px;"><div class="luckysheet-cell-flow-clip"><div class="luckysheet-grdblkpush"></div>${flow}</div></div>',
+    flow = '<div id="sheet-cell-flow_${index}" class="sheet-cell-flow luckysheetsheetchange" style="width:${width}px;"><div class="sheet-cell-flow-clip"><div class="sheet-grdblkpush"></div>${flow}</div></div>',
     colsmenuHTML = '';
 
 //右键菜单dom
@@ -303,219 +303,219 @@ function rightclickHTML(){
     }
 
     const customsButtons = (config.customs || []).map((item, index) => `
-            <div data-index="${index}" class="luckysheetColsRowsHandleAdd_custom luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
+            <div data-index="${index}" class="luckysheetColsRowsHandleAdd_custom sheet-cols-menuitem sheet-mousedown-cancel">
+                <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
                 ${item.title}
                 </div>
             </div>`
         ).join("");
 
-    const rightclickContainer =  `<div id="luckysheet-rightclick-menu" class="luckysheet-cols-menu luckysheet-rightgclick-menu luckysheet-mousedown-cancel">
-                <div id="luckysheet-copy-btn" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel luckysheet-copy-btn" data-clipboard-action="copy" data-clipboard-target="#luckysheet-copy-content" style="display:${config.copy ? 'block' : 'none'};">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${rightclick.copy}</div>
+    const rightclickContainer =  `<div id="sheet-rightclick-menu" class="sheet-cols-menu sheet-rightgclick-menu sheet-mousedown-cancel">
+                <div id="sheet-copy-btn" class="sheet-cols-menuitem sheet-mousedown-cancel sheet-copy-btn" data-clipboard-action="copy" data-clipboard-target="#sheet-copy-content" style="display:${config.copy ? 'block' : 'none'};">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${rightclick.copy}</div>
                 </div>
-                <div id="luckysheetcopyfor" class="luckysheet-cols-menuitem luckysheet-cols-submenu luckysheet-mousedown-cancel"  style="display:${config.copyAs ? 'block' : 'none'};">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
-                        ${rightclick.copyAs}<span class="luckysheet-submenu-arrow iconfont luckysheet-iconfont-youjiantou" style="user-select: none;"></span>
+                <div id="luckysheetcopyfor" class="sheet-cols-menuitem sheet-cols-submenu sheet-mousedown-cancel"  style="display:${config.copyAs ? 'block' : 'none'};">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
+                        ${rightclick.copyAs}<span class="sheet-submenu-arrow iconfont sheet-iconfont-youjiantou" style="user-select: none;"></span>
                     </div>
                 </div>
-                <div id="luckysheet-copy-paste" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" style="display:${config.paste ? 'block' : 'none'};">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${rightclick.paste}</div>
+                <div id="sheet-copy-paste" class="sheet-cols-menuitem sheet-mousedown-cancel" style="display:${config.paste ? 'block' : 'none'};">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${rightclick.paste}</div>
                 </div>
-                <div id="luckysheet-cols-rows-handleincell">
-                    <div class="luckysheet-menuseparator luckysheet-mousedown-cancel" role="separator" style="display:${handleincellMenuseparator ? 'block' : 'none'};"></div>
-                    <div id="luckysheetColsRowsHandleAdd_row" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" style="display:${config.insertRow ? 'block' : 'none'};">
-                        <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
-                            ${rightclick.insert}${rightclick.row}<span class="luckysheet-submenu-arrow" style="user-select: none;"></span>
+                <div id="sheet-cols-rows-handleincell">
+                    <div class="sheet-menuseparator sheet-mousedown-cancel" role="separator" style="display:${handleincellMenuseparator ? 'block' : 'none'};"></div>
+                    <div id="luckysheetColsRowsHandleAdd_row" class="sheet-cols-menuitem sheet-mousedown-cancel" style="display:${config.insertRow ? 'block' : 'none'};">
+                        <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
+                            ${rightclick.insert}${rightclick.row}<span class="sheet-submenu-arrow" style="user-select: none;"></span>
                         </div>
                     </div>
-                    <div id="luckysheetColsRowsHandleAdd_column" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" style="display:${config.insertColumn ? 'block' : 'none'};">
-                        <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
-                            ${rightclick.insert}${rightclick.column}<span class="luckysheet-submenu-arrow" style="user-select: none;"></span>
+                    <div id="luckysheetColsRowsHandleAdd_column" class="sheet-cols-menuitem sheet-mousedown-cancel" style="display:${config.insertColumn ? 'block' : 'none'};">
+                        <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
+                            ${rightclick.insert}${rightclick.column}<span class="sheet-submenu-arrow" style="user-select: none;"></span>
                         </div>
                     </div>
-                    <div id="luckysheet-delRows" class="luckysheet-cols-menuitem luckysheet-cols-submenu luckysheet-mousedown-cancel" style="display:${config.deleteRow ? 'block' : 'none'};">
-                        <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
-                        ${rightclick.deleteSelected}${rightclick.row}<span class="luckysheet-submenu-arrow" style="user-select: none;"></span>
+                    <div id="sheet-delRows" class="sheet-cols-menuitem sheet-cols-submenu sheet-mousedown-cancel" style="display:${config.deleteRow ? 'block' : 'none'};">
+                        <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
+                        ${rightclick.deleteSelected}${rightclick.row}<span class="sheet-submenu-arrow" style="user-select: none;"></span>
                         </div>
                     </div>
-                    <div id="luckysheet-delCols" class="luckysheet-cols-menuitem luckysheet-cols-submenu luckysheet-mousedown-cancel" style="display:${config.deleteColumn ? 'block' : 'none'};">
-                        <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
-                        ${rightclick.deleteSelected}${rightclick.column}<span class="luckysheet-submenu-arrow" style="user-select: none;"></span>
+                    <div id="sheet-delCols" class="sheet-cols-menuitem sheet-cols-submenu sheet-mousedown-cancel" style="display:${config.deleteColumn ? 'block' : 'none'};">
+                        <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
+                        ${rightclick.deleteSelected}${rightclick.column}<span class="sheet-submenu-arrow" style="user-select: none;"></span>
                         </div>
                     </div>
                     <!-- cell right click remove hide button
-                    <div id="luckysheetColsRowsHandleHid" class="luckysheet-cols-menuitem luckysheet-cols-submenu luckysheet-mousedown-cancel">
-                        <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
-                            ${rightclick.hide}<span class="luckysheet-submenu-arrow iconfont luckysheet-iconfont-youjiantou" style="user-select: none;"></span>
+                    <div id="luckysheetColsRowsHandleHid" class="sheet-cols-menuitem sheet-cols-submenu sheet-mousedown-cancel">
+                        <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
+                            ${rightclick.hide}<span class="sheet-submenu-arrow iconfont sheet-iconfont-youjiantou" style="user-select: none;"></span>
                         </div>
                     </div>
                     -->
-                    <div id="luckysheetCellsHandleDel" class="luckysheet-cols-menuitem luckysheet-cols-submenu luckysheet-mousedown-cancel" style="display:${config.deleteCell ? 'block' : 'none'};">
-                        <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
-                            ${rightclick.deleteCell}<span class="luckysheet-submenu-arrow iconfont luckysheet-iconfont-youjiantou" style="user-select: none;"></span>
+                    <div id="luckysheetCellsHandleDel" class="sheet-cols-menuitem sheet-cols-submenu sheet-mousedown-cancel" style="display:${config.deleteCell ? 'block' : 'none'};">
+                        <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
+                            ${rightclick.deleteCell}<span class="sheet-submenu-arrow iconfont sheet-iconfont-youjiantou" style="user-select: none;"></span>
                         </div>
                     </div>
                 </div>
-                <div id="luckysheet-cols-rows-add">
-                    <div class="luckysheet-menuseparator luckysheet-mousedown-cancel" role="separator"></div>
-                    <div id="luckysheet-top-left-add-selected" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                        <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
+                <div id="sheet-cols-rows-add">
+                    <div class="sheet-menuseparator sheet-mousedown-cancel" role="separator"></div>
+                    <div id="sheet-top-left-add-selected" class="sheet-cols-menuitem sheet-mousedown-cancel">
+                        <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
                             ${rightclick.to}
-                            <span class="luckysheet-cols-rows-shift-left">${rightclick.left}</span>
+                            <span class="sheet-cols-rows-shift-left">${rightclick.left}</span>
                             ${rightclick.add}
-                            <input type="text" class="luckysheet-mousedown-cancel" placeholder="${rightclick.number}" value="${sheetConfigSetting.defaultAddNum}" style="width:40px;height:20px;box-sizing:border-box;text-align:center;margin-left:5px;"/>
-                            <span class="luckysheet-cols-rows-shift-word luckysheet-mousedown-cancel">${rightclick.column}</span>
+                            <input type="text" class="sheet-mousedown-cancel" placeholder="${rightclick.number}" value="${sheetConfigSetting.defaultAddNum}" style="width:40px;height:20px;box-sizing:border-box;text-align:center;margin-left:5px;"/>
+                            <span class="sheet-cols-rows-shift-word sheet-mousedown-cancel">${rightclick.column}</span>
                         </div>
                     </div>
-                    <div id="luckysheet-bottom-right-add-selected" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                        <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
+                    <div id="sheet-bottom-right-add-selected" class="sheet-cols-menuitem sheet-mousedown-cancel">
+                        <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
                             ${rightclick.to}
-                            <span class="luckysheet-cols-rows-shift-right">${rightclick.right}</span>
+                            <span class="sheet-cols-rows-shift-right">${rightclick.right}</span>
                             ${rightclick.add}
-                            <input type="text" class="luckysheet-mousedown-cancel" placeholder="${rightclick.number}" value="${sheetConfigSetting.defaultAddNum}" style="width:40px;height:20px;box-sizing:border-box;text-align: center;margin-left:5px;"/>
-                            <span class="luckysheet-cols-rows-shift-word luckysheet-mousedown-cancel">${rightclick.column}</span>
+                            <input type="text" class="sheet-mousedown-cancel" placeholder="${rightclick.number}" value="${sheetConfigSetting.defaultAddNum}" style="width:40px;height:20px;box-sizing:border-box;text-align: center;margin-left:5px;"/>
+                            <span class="sheet-cols-rows-shift-word sheet-mousedown-cancel">${rightclick.column}</span>
                         </div>
                     </div>
-                    <div id="luckysheet-del-selected" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                        <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
+                    <div id="sheet-del-selected" class="sheet-cols-menuitem sheet-mousedown-cancel">
+                        <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
                             ${rightclick.deleteSelected}
-                            <span class="luckysheet-cols-rows-shift-word luckysheet-mousedown-cancel">${rightclick.column}</span>
+                            <span class="sheet-cols-rows-shift-word sheet-mousedown-cancel">${rightclick.column}</span>
                         </div>
                     </div>
-                    <div id="luckysheet-hide-selected" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                        <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
+                    <div id="sheet-hide-selected" class="sheet-cols-menuitem sheet-mousedown-cancel">
+                        <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
                         ${rightclick.hideSelected}
-                        <span class="luckysheet-cols-rows-shift-word luckysheet-mousedown-cancel">${rightclick.column}</span>
+                        <span class="sheet-cols-rows-shift-word sheet-mousedown-cancel">${rightclick.column}</span>
                         </div>
                     </div>
-                    <div id="luckysheet-show-selected" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                        <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
+                    <div id="sheet-show-selected" class="sheet-cols-menuitem sheet-mousedown-cancel">
+                        <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
                             ${rightclick.showHide}
-                            <span class="luckysheet-cols-rows-shift-word luckysheet-mousedown-cancel">${rightclick.column}</span>
+                            <span class="sheet-cols-rows-shift-word sheet-mousedown-cancel">${rightclick.column}</span>
                         </div>
                     </div>
-                    <div id="luckysheet-column-row-width-selected" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                        <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
-                            <span class="luckysheet-cols-rows-shift-word luckysheet-mousedown-cancel">${rightclick.column}</span>
-                            <span class="luckysheet-cols-rows-shift-size luckysheet-mousedown-cancel">${rightclick.width}</span>
-                            <input type="number" class="luckysheet-mousedown-cancel rcsize" min="0" max="255" placeholder="${rightclick.number}" value="" style="width:50px;height:20px;box-sizing:border-box;text-align: center;margin-left:5px;">
+                    <div id="sheet-column-row-width-selected" class="sheet-cols-menuitem sheet-mousedown-cancel">
+                        <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
+                            <span class="sheet-cols-rows-shift-word sheet-mousedown-cancel">${rightclick.column}</span>
+                            <span class="sheet-cols-rows-shift-size sheet-mousedown-cancel">${rightclick.width}</span>
+                            <input type="number" class="sheet-mousedown-cancel rcsize" min="0" max="255" placeholder="${rightclick.number}" value="" style="width:50px;height:20px;box-sizing:border-box;text-align: center;margin-left:5px;">
                             px
                         </div>
                     </div>
                 </div>
-                <div id="luckysheet-cols-rows-shift">
-                    <div class="luckysheet-menuseparator luckysheet-mousedown-cancel" role="separator" style="display:${config.sort ? 'block' : 'none'};"></div>
-                    <div id="luckysheetorderbyasc" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" style="display:${config.sort ? 'block' : 'none'};">
-                        <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${rightclick.orderAZ}</div>
+                <div id="sheet-cols-rows-shift">
+                    <div class="sheet-menuseparator sheet-mousedown-cancel" role="separator" style="display:${config.sort ? 'block' : 'none'};"></div>
+                    <div id="luckysheetorderbyasc" class="sheet-cols-menuitem sheet-mousedown-cancel" style="display:${config.sort ? 'block' : 'none'};">
+                        <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${rightclick.orderAZ}</div>
                     </div>
-                    <div id="luckysheetorderbydesc" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" style="display:${config.sort ? 'block' : 'none'};">
-                        <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${rightclick.orderZA}</div>
+                    <div id="luckysheetorderbydesc" class="sheet-cols-menuitem sheet-mousedown-cancel" style="display:${config.sort ? 'block' : 'none'};">
+                        <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${rightclick.orderZA}</div>
                     </div>
                 </div>
-                <div id="luckysheet-cols-rows-data">
-                    <div class="luckysheet-menuseparator luckysheet-mousedown-cancel" role="separator" style="display:${dataMenuseparator ? 'block' : 'none'};"></div>
-                    <div id="luckysheet-delete-text" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" style="display:${config.clear ? 'block' : 'none'};">
-                        <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${rightclick.clearContent}</div>
+                <div id="sheet-cols-rows-data">
+                    <div class="sheet-menuseparator sheet-mousedown-cancel" role="separator" style="display:${dataMenuseparator ? 'block' : 'none'};"></div>
+                    <div id="sheet-delete-text" class="sheet-cols-menuitem sheet-mousedown-cancel" style="display:${config.clear ? 'block' : 'none'};">
+                        <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${rightclick.clearContent}</div>
                     </div>
-                    <div id="luckysheetmatrix" class="luckysheet-cols-menuitem luckysheet-cols-submenu luckysheet-mousedown-cancel" style="display:${config.matrix ? 'block' : 'none'};">
-                        <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
-                            ${rightclick.matrix}<span class="luckysheet-submenu-arrow iconfont luckysheet-iconfont-youjiantou" style="user-select: none;"></span>
+                    <div id="luckysheetmatrix" class="sheet-cols-menuitem sheet-cols-submenu sheet-mousedown-cancel" style="display:${config.matrix ? 'block' : 'none'};">
+                        <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
+                            ${rightclick.matrix}<span class="sheet-submenu-arrow iconfont sheet-iconfont-youjiantou" style="user-select: none;"></span>
                         </div>
                     </div>
-                    <div id="luckysheetorderby" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" style="display:${config.sort ? 'block' : 'none'};">
-                        <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${rightclick.sortSelection}</div>
+                    <div id="luckysheetorderby" class="sheet-cols-menuitem sheet-mousedown-cancel" style="display:${config.sort ? 'block' : 'none'};">
+                        <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${rightclick.sortSelection}</div>
                     </div>
-                    <div id="luckysheetfilter" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" style="display:${config.filter ? 'block' : 'none'};">
-                        <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${rightclick.filterSelection}</div>
+                    <div id="luckysheetfilter" class="sheet-cols-menuitem sheet-mousedown-cancel" style="display:${config.filter ? 'block' : 'none'};">
+                        <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${rightclick.filterSelection}</div>
                     </div>
-                    <div id="luckysheetdatavisual" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" style="display:${config.chart ? 'block' : 'none'};">
-                        <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${rightclick.chartGeneration}</div>
+                    <div id="luckysheetdatavisual" class="sheet-cols-menuitem sheet-mousedown-cancel" style="display:${config.chart ? 'block' : 'none'};">
+                        <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${rightclick.chartGeneration}</div>
                     </div>
-                    <div id="luckysheetInsertImage" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" style="display:${config.image ? 'block' : 'none'};">
-                        <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${toolbar.insertImage}</div>
+                    <div id="luckysheetInsertImage" class="sheet-cols-menuitem sheet-mousedown-cancel" style="display:${config.image ? 'block' : 'none'};">
+                        <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${toolbar.insertImage}</div>
                     </div>
-                    <div id="luckysheetInsertLink" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" style="display:${config.link ? 'block' : 'none'};">
-                        <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${toolbar.insertLink}</div>
+                    <div id="luckysheetInsertLink" class="sheet-cols-menuitem sheet-mousedown-cancel" style="display:${config.link ? 'block' : 'none'};">
+                        <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${toolbar.insertLink}</div>
                     </div>
-                    <div id="luckysheetDataVerification" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" style="display:${config.data ? 'block' : 'none'};">
-                        <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${toolbar.dataVerification}</div>
+                    <div id="luckysheetDataVerification" class="sheet-cols-menuitem sheet-mousedown-cancel" style="display:${config.data ? 'block' : 'none'};">
+                        <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${toolbar.dataVerification}</div>
                     </div>
-                    <div id="luckysheetCellFormatRightClickMenu" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" style="display:${config.cellFormat ? 'block' : 'none'};">
-                        <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${toolbar.cellFormat}</div>
+                    <div id="luckysheetCellFormatRightClickMenu" class="sheet-cols-menuitem sheet-mousedown-cancel" style="display:${config.cellFormat ? 'block' : 'none'};">
+                        <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${toolbar.cellFormat}</div>
                     </div>
                     ${customsButtons}
                 </div>
             </div>
-            <div id="luckysheetcopyfor_sub" class="luckysheet-cols-menu luckysheet-rightgclick-menu luckysheet-rightgclick-menu-sub luckysheet-mousedown-cancel">
-                <div id="luckysheet-copy-json-head" data-clipboard-action="copy" data-clipboard-target="#luckysheet-copy-content" class="luckysheet-cols-menuitem luckysheet-copy-btn luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">Json ${rightclick.firstLineTitle}</div>
+            <div id="luckysheetcopyfor_sub" class="sheet-cols-menu sheet-rightgclick-menu sheet-rightgclick-menu-sub sheet-mousedown-cancel">
+                <div id="sheet-copy-json-head" data-clipboard-action="copy" data-clipboard-target="#sheet-copy-content" class="sheet-cols-menuitem sheet-copy-btn sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">Json ${rightclick.firstLineTitle}</div>
                 </div>
-                <div id="luckysheet-copy-json-nohead" data-clipboard-action="copy" data-clipboard-target="#luckysheet-copy-content" class="luckysheet-cols-menuitem luckysheet-copy-btn luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">Json ${rightclick.untitled}</div>
+                <div id="sheet-copy-json-nohead" data-clipboard-action="copy" data-clipboard-target="#sheet-copy-content" class="sheet-cols-menuitem sheet-copy-btn sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">Json ${rightclick.untitled}</div>
                 </div>
-                <div id="luckysheet-copy-array1" data-clipboard-action="copy" data-clipboard-target="#luckysheet-copy-content" class="luckysheet-cols-menuitem luckysheet-copy-btn luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${rightclick.array1}</div>
+                <div id="sheet-copy-array1" data-clipboard-action="copy" data-clipboard-target="#sheet-copy-content" class="sheet-cols-menuitem sheet-copy-btn sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${rightclick.array1}</div>
                 </div>
-                <div id="luckysheet-copy-array2" data-clipboard-action="copy" data-clipboard-target="#luckysheet-copy-content" class="luckysheet-cols-menuitem luckysheet-copy-btn luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${rightclick.array2}</div>
+                <div id="sheet-copy-array2" data-clipboard-action="copy" data-clipboard-target="#sheet-copy-content" class="sheet-cols-menuitem sheet-copy-btn sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${rightclick.array2}</div>
                 </div>
-                <div id="luckysheet-copy-arraymore-confirm" data-clipboard-action="copy" data-clipboard-target="#luckysheet-copy-content" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
-                        <span class="luckysheet-mousedown-cancel">${rightclick.array3}</span>
-                        <input type="number" id="luckysheet-copy-arraymore-row" min="1" class="luckysheet-mousedown-cancel" placeholder="${rightclick.row}" style="width:40px;height:20px;box-sizing:border-box;text-align: center;"/>
+                <div id="sheet-copy-arraymore-confirm" data-clipboard-action="copy" data-clipboard-target="#sheet-copy-content" class="sheet-cols-menuitem sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
+                        <span class="sheet-mousedown-cancel">${rightclick.array3}</span>
+                        <input type="number" id="sheet-copy-arraymore-row" min="1" class="sheet-mousedown-cancel" placeholder="${rightclick.row}" style="width:40px;height:20px;box-sizing:border-box;text-align: center;"/>
                             ×
-                            <input type="number" id="luckysheet-copy-arraymore-col" min="1" class="luckysheet-mousedown-cancel" placeholder="${rightclick.column}" style="width:40px;height:20px;box-sizing:border-box;text-align: center;"/>
+                            <input type="number" id="sheet-copy-arraymore-col" min="1" class="sheet-mousedown-cancel" placeholder="${rightclick.column}" style="width:40px;height:20px;box-sizing:border-box;text-align: center;"/>
                     </div>
                 </div>
-                <div class="luckysheet-menuseparator luckysheet-mousedown-cancel" role="separator"></div>
-                <div id="luckysheet-copy-diagonal" data-clipboard-action="copy" data-clipboard-target="#luckysheet-copy-content" class="luckysheet-cols-menuitem luckysheet-copy-btn luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${rightclick.diagonal}</div>
+                <div class="sheet-menuseparator sheet-mousedown-cancel" role="separator"></div>
+                <div id="sheet-copy-diagonal" data-clipboard-action="copy" data-clipboard-target="#sheet-copy-content" class="sheet-cols-menuitem sheet-copy-btn sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${rightclick.diagonal}</div>
                 </div>
-                <div id="luckysheet-copy-antidiagonal" data-clipboard-action="copy" data-clipboard-target="#luckysheet-copy-content" class="luckysheet-cols-menuitem luckysheet-copy-btn luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${rightclick.antiDiagonal}</div>
+                <div id="sheet-copy-antidiagonal" data-clipboard-action="copy" data-clipboard-target="#sheet-copy-content" class="sheet-cols-menuitem sheet-copy-btn sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${rightclick.antiDiagonal}</div>
                 </div>
-                <div id="luckysheet-copy-diagonaloffset" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
+                <div id="sheet-copy-diagonaloffset" class="sheet-cols-menuitem sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
                         ${rightclick.diagonalOffset}
-                        <input type="number" id="luckysheet-copy-diagonaloffset-value" class="luckysheet-mousedown-cancel" placeholder="${rightclick.offset}" value="1" style="width:40px;height:20px;box-sizing:border-box;text-align: center;margin-left:5px;"/>
+                        <input type="number" id="sheet-copy-diagonaloffset-value" class="sheet-mousedown-cancel" placeholder="${rightclick.offset}" value="1" style="width:40px;height:20px;box-sizing:border-box;text-align: center;margin-left:5px;"/>
                         ${rightclick.column}
                     </div>
                 </div>
-                <div id="luckysheet-copy-boolvalue" data-clipboard-action="copy" data-clipboard-target="#luckysheet-copy-content" class="luckysheet-cols-menuitem luckysheet-copy-btn luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${rightclick.boolean}</div>
+                <div id="sheet-copy-boolvalue" data-clipboard-action="copy" data-clipboard-target="#sheet-copy-content" class="sheet-cols-menuitem sheet-copy-btn sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${rightclick.boolean}</div>
                 </div>
             </div>
             
             <!-- Revision: modeled on google sheet
             
-            <div id="luckysheetColsRowsHandleAdd_sub" class="luckysheet-cols-menu luckysheet-rightgclick-menu luckysheet-rightgclick-menu-sub luckysheet-mousedown-cancel">
-                <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
+            <div id="luckysheetColsRowsHandleAdd_sub" class="sheet-cols-menu sheet-rightgclick-menu sheet-rightgclick-menu-sub sheet-mousedown-cancel">
+                <div class="sheet-cols-menuitem sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
                         ${rightclick.to}${rightclick.top}${rightclick.add}
-                        <input type="text" class="luckysheet-mousedown-cancel" placeholder="${rightclick.number}" value="1" style="width:40px;height:20px;box-sizing:border-box;text-align: center;margin-left:5px;"/>
-                        <span class="luckysheet-mousedown-cancel">${rightclick.row}</span>
+                        <input type="text" class="sheet-mousedown-cancel" placeholder="${rightclick.number}" value="1" style="width:40px;height:20px;box-sizing:border-box;text-align: center;margin-left:5px;"/>
+                        <span class="sheet-mousedown-cancel">${rightclick.row}</span>
                     </div>
                 </div>
-                <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
+                <div class="sheet-cols-menuitem sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
                         ${rightclick.to}${rightclick.bottom}${rightclick.add}
-                        <input type="text" class="luckysheet-mousedown-cancel" placeholder="${rightclick.number}" value="1" style="width:40px;height:20px;box-sizing:border-box;text-align: center;margin-left:5px;"/>
-                        <span class="luckysheet-mousedown-cancel">${rightclick.row}</span>
+                        <input type="text" class="sheet-mousedown-cancel" placeholder="${rightclick.number}" value="1" style="width:40px;height:20px;box-sizing:border-box;text-align: center;margin-left:5px;"/>
+                        <span class="sheet-mousedown-cancel">${rightclick.row}</span>
                     </div>
                 </div>
-                <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
+                <div class="sheet-cols-menuitem sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
                         ${rightclick.to}${rightclick.left}${rightclick.add}
-                        <input type="text" class="luckysheet-mousedown-cancel" placeholder="${rightclick.number}" value="1" style="width:40px;height:20px;box-sizing:border-box;text-align: center;margin-left:5px;"/>
-                        <span class="luckysheet-mousedown-cancel">${rightclick.column}</span>
+                        <input type="text" class="sheet-mousedown-cancel" placeholder="${rightclick.number}" value="1" style="width:40px;height:20px;box-sizing:border-box;text-align: center;margin-left:5px;"/>
+                        <span class="sheet-mousedown-cancel">${rightclick.column}</span>
                     </div>
                 </div>
-                <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
+                <div class="sheet-cols-menuitem sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
                         ${rightclick.to}${rightclick.right}${rightclick.add}
-                        <input type="text" class="luckysheet-mousedown-cancel" placeholder="${rightclick.number}" value="1" style="width:40px;height:20px;box-sizing:border-box;text-align: center;margin-left:5px;"/>
-                        <span class="luckysheet-mousedown-cancel">${rightclick.column}</span>
+                        <input type="text" class="sheet-mousedown-cancel" placeholder="${rightclick.number}" value="1" style="width:40px;height:20px;box-sizing:border-box;text-align: center;margin-left:5px;"/>
+                        <span class="sheet-mousedown-cancel">${rightclick.column}</span>
                     </div>
                 </div>
             </div>
@@ -524,14 +524,14 @@ function rightclickHTML(){
 
             <!-- delete row or column
             
-            <div id="luckysheetColsRowsHandleDel_sub" class="luckysheet-cols-menu luckysheet-rightgclick-menu luckysheet-rightgclick-menu-sub luckysheet-mousedown-cancel">
-                <div id="luckysheet-delRows" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
+            <div id="luckysheetColsRowsHandleDel_sub" class="sheet-cols-menu sheet-rightgclick-menu sheet-rightgclick-menu-sub sheet-mousedown-cancel">
+                <div id="sheet-delRows" class="sheet-cols-menuitem sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
                         ${rightclick.deleteSelected}${rightclick.row}
                     </div>
                 </div>
-                <div id="luckysheet-delCols" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
+                <div id="sheet-delCols" class="sheet-cols-menuitem sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
                         ${rightclick.deleteSelected}${rightclick.column}
                     </div>
                 </div>
@@ -540,24 +540,24 @@ function rightclickHTML(){
             -->
 
             <!--
-            <div id="luckysheetColsRowsHandleHid_sub" class="luckysheet-cols-menu luckysheet-rightgclick-menu luckysheet-rightgclick-menu-sub luckysheet-mousedown-cancel">
-                <div id="luckysheet-hidRows" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
+            <div id="luckysheetColsRowsHandleHid_sub" class="sheet-cols-menu sheet-rightgclick-menu sheet-rightgclick-menu-sub sheet-mousedown-cancel">
+                <div id="sheet-hidRows" class="sheet-cols-menuitem sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
                         ${rightclick.hideSelected}${rightclick.row}
                     </div>
                 </div>
-                <div id="luckysheet-showHidRows" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
+                <div id="sheet-showHidRows" class="sheet-cols-menuitem sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
                         ${rightclick.showHide}${rightclick.row}
                     </div>
                 </div>
-                <div id="luckysheet-hidCols" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
+                <div id="sheet-hidCols" class="sheet-cols-menuitem sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
                         ${rightclick.hideSelected}${rightclick.column}
                     </div>
                 </div>
-                <div id="luckysheet-showHidCols" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
+                <div id="sheet-showHidCols" class="sheet-cols-menuitem sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
                         ${rightclick.showHide}${rightclick.column}
                     </div>
                 </div>
@@ -565,42 +565,42 @@ function rightclickHTML(){
 
             -->
 
-            <div id="luckysheetCellsHandleDel_sub" class="luckysheet-cols-menu luckysheet-rightgclick-menu luckysheet-rightgclick-menu-sub luckysheet-mousedown-cancel">
-                <div id="luckysheet-delCellsMoveLeft" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
+            <div id="luckysheetCellsHandleDel_sub" class="sheet-cols-menu sheet-rightgclick-menu sheet-rightgclick-menu-sub sheet-mousedown-cancel">
+                <div id="sheet-delCellsMoveLeft" class="sheet-cols-menuitem sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
                         ${rightclick.moveLeft}
                     </div>
                 </div>
-                <div id="luckysheet-delCellsMoveUp" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
+                <div id="sheet-delCellsMoveUp" class="sheet-cols-menuitem sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
                         ${rightclick.moveUp}
                     </div>
                 </div>
             </div>
-            <div id="luckysheetmatrix_sub" class="luckysheet-cols-menu luckysheet-rightgclick-menu luckysheet-rightgclick-menu-sub luckysheet-mousedown-cancel">
-                <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
+            <div id="luckysheetmatrix_sub" class="sheet-cols-menu sheet-rightgclick-menu sheet-rightgclick-menu-sub sheet-mousedown-cancel">
+                <div class="sheet-cols-menuitem sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
                         ${rightclick.flip}
-                        <button id="luckysheet-matrix-turn-up" class="btn btn-primary luckysheet-mousedown-cancel" style="margin-left:5px;padding:2px 3px;line-height:12px;font-size:12px;">${rightclick.upAndDown}</button>
-                        <button id="luckysheet-matrix-turn-left" class="btn btn-primary luckysheet-mousedown-cancel" style="margin-left:5px;padding:2px 3px;line-height:12px;font-size:12px;">${rightclick.leftAndRight}</button>
+                        <button id="sheet-matrix-turn-up" class="btn btn-primary sheet-mousedown-cancel" style="margin-left:5px;padding:2px 3px;line-height:12px;font-size:12px;">${rightclick.upAndDown}</button>
+                        <button id="sheet-matrix-turn-left" class="btn btn-primary sheet-mousedown-cancel" style="margin-left:5px;padding:2px 3px;line-height:12px;font-size:12px;">${rightclick.leftAndRight}</button>
                     </div>
                 </div>
-                <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
+                <div class="sheet-cols-menuitem sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
                         ${rightclick.flip}
-                        <button id="luckysheet-matrix-turn-cw" class="btn btn-primary luckysheet-mousedown-cancel" style="margin-left:5px;padding:2px 3px;line-height:12px;font-size:12px;">${rightclick.clockwise}</button>
-                        <button id="luckysheet-matrix-turn-anticw" class="btn btn-primary luckysheet-mousedown-cancel" style="margin-left:5px;padding:2px 3px;line-height:12px;font-size:12px;">${rightclick.counterclockwise}</button>
+                        <button id="sheet-matrix-turn-cw" class="btn btn-primary sheet-mousedown-cancel" style="margin-left:5px;padding:2px 3px;line-height:12px;font-size:12px;">${rightclick.clockwise}</button>
+                        <button id="sheet-matrix-turn-anticw" class="btn btn-primary sheet-mousedown-cancel" style="margin-left:5px;padding:2px 3px;line-height:12px;font-size:12px;">${rightclick.counterclockwise}</button>
                     </div>
                 </div>
-                <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                    <div id="luckysheet-matrix-turn-trans" class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${rightclick.transpose}</div>
+                <div class="sheet-cols-menuitem sheet-mousedown-cancel">
+                    <div id="sheet-matrix-turn-trans" class="sheet-cols-menuitem-content sheet-mousedown-cancel">${rightclick.transpose}</div>
                 </div>
-                <div class="luckysheet-menuseparator luckysheet-mousedown-cancel" role="separator"></div>
-                <div id="luckysheet-matrix-cal-confirm" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
-                        <div class="luckysheet-mousedown-cancel">${rightclick.matrixCalculation}</div>
-                        <div class="luckysheet-mousedown-cancel">
-                            <select id="luckysheet-matrix-cal-type" class="luckysheet-mousedown-cancel" style="height:20px;">
+                <div class="sheet-menuseparator sheet-mousedown-cancel" role="separator"></div>
+                <div id="sheet-matrix-cal-confirm" class="sheet-cols-menuitem sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
+                        <div class="sheet-mousedown-cancel">${rightclick.matrixCalculation}</div>
+                        <div class="sheet-mousedown-cancel">
+                            <select id="sheet-matrix-cal-type" class="sheet-mousedown-cancel" style="height:20px;">
                                 <option value="plus">${rightclick.plus}</option>
                                 <option value="minus">${rightclick.minus}</option>
                                 <option value="multiply">${rightclick.multiply}</option>
@@ -609,22 +609,22 @@ function rightclickHTML(){
                                 <option value="root">${rightclick.root}</option>
                                 <option value="log">${rightclick.log}</option>
                             </select>
-                            <input type="number" id="luckysheet-matrix-cal-value" class="luckysheet-mousedown-cancel" placeholder="${rightclick.number}" value="2" style="width:40px;height:20px;box-sizing:border-box;text-align: center;margin-left:5px;"/>
+                            <input type="number" id="sheet-matrix-cal-value" class="sheet-mousedown-cancel" placeholder="${rightclick.number}" value="2" style="width:40px;height:20px;box-sizing:border-box;text-align: center;margin-left:5px;"/>
                         </div>
                     </div>
                 </div>
-                <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
+                <div class="sheet-cols-menuitem sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
                         ${rightclick.delete0}
-                        <button id="luckysheet-matrix-delezero-row" class="btn btn-primary luckysheet-mousedown-cancel" style="margin-left:5px;padding:2px 3px;line-height:12px;font-size:12px;">${rightclick.byRow}</button>
-                        <button id="luckysheet-matrix-delezero-column" class="btn btn-primary luckysheet-mousedown-cancel" style="margin-left:5px;padding:2px 3px;line-height:12px;font-size:12px;">${rightclick.byCol}</button>
+                        <button id="sheet-matrix-delezero-row" class="btn btn-primary sheet-mousedown-cancel" style="margin-left:5px;padding:2px 3px;line-height:12px;font-size:12px;">${rightclick.byRow}</button>
+                        <button id="sheet-matrix-delezero-column" class="btn btn-primary sheet-mousedown-cancel" style="margin-left:5px;padding:2px 3px;line-height:12px;font-size:12px;">${rightclick.byCol}</button>
                     </div>
                 </div>
-                <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">
+                <div class="sheet-cols-menuitem sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">
                         ${rightclick.removeDuplicate}
-                        <button id="luckysheet-matrix-delerpt-row" class="btn btn-primary luckysheet-mousedown-cancel" style="margin-left:5px;padding:2px 3px;line-height:12px;font-size:12px;">${rightclick.byRow}</button>
-                        <button id="luckysheet-matrix-delerpt-column" class="btn btn-primary luckysheet-mousedown-cancel" style="margin-left:5px;padding:2px 3px;line-height:12px;font-size:12px;">${rightclick.byCol}</button>
+                        <button id="sheet-matrix-delerpt-row" class="btn btn-primary sheet-mousedown-cancel" style="margin-left:5px;padding:2px 3px;line-height:12px;font-size:12px;">${rightclick.byRow}</button>
+                        <button id="sheet-matrix-delerpt-column" class="btn btn-primary sheet-mousedown-cancel" style="margin-left:5px;padding:2px 3px;line-height:12px;font-size:12px;">${rightclick.byCol}</button>
                     </div>
                 </div>
             </div>`;
@@ -636,24 +636,24 @@ const pivottableconfigHTML = function(){
     const _locale = locale();
     const locale_pivotTable = _locale.pivotTable;
 
-    return '<div class="luckysheet-cols-menu luckysheet-rightgclick-menu luckysheet-mousedown-cancel" id="luckysheet-pivotTable-config-option"> <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel"> <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel"> <div class="luckysheet-mousedown-cancel"> <span class="luckysheet-mousedown-cancel">'+locale_pivotTable.titleSort+'</span> <select class="luckysheet-mousedown-cancel" style="height:24px;" id="luckysheet-pivotTable-config-option-order"> <option selected="selected" value="default">'+locale_pivotTable.titleNoSort+'</option> <option value="asc">'+locale_pivotTable.titleSortAsc+'</option> <option value="desc">'+locale_pivotTable.titleSortDesc+'</option> </select> </div> </div> </div> <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel"> <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel"> <div class="luckysheet-mousedown-cancel"> <span class="luckysheet-mousedown-cancel">'+locale_pivotTable.titleSortBy+'</span> <select class="luckysheet-mousedown-cancel" style="height:24px;" id="luckysheet-pivotTable-config-option-orderby"> </select> </div> </div> </div> <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel"> <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel"> <div class="luckysheet-mousedown-cancel"> <span class="luckysheet-mousedown-cancel">'+locale_pivotTable.titleShowSum+'</span> <select class="luckysheet-mousedown-cancel" style="height:24px;" id="luckysheet-pivotTable-config-option-stastic"> <option  value="0">'+locale_pivotTable.titleStasticFalse+'</option> <option value="1" selected="selected">'+locale_pivotTable.titleStasticTrue+'</option> </select> </div> </div> </div> </div>';
+    return '<div class="sheet-cols-menu sheet-rightgclick-menu sheet-mousedown-cancel" id="sheet-pivotTable-config-option"> <div class="sheet-cols-menuitem sheet-mousedown-cancel"> <div class="sheet-cols-menuitem-content sheet-mousedown-cancel"> <div class="sheet-mousedown-cancel"> <span class="sheet-mousedown-cancel">'+locale_pivotTable.titleSort+'</span> <select class="sheet-mousedown-cancel" style="height:24px;" id="sheet-pivotTable-config-option-order"> <option selected="selected" value="default">'+locale_pivotTable.titleNoSort+'</option> <option value="asc">'+locale_pivotTable.titleSortAsc+'</option> <option value="desc">'+locale_pivotTable.titleSortDesc+'</option> </select> </div> </div> </div> <div class="sheet-cols-menuitem sheet-mousedown-cancel"> <div class="sheet-cols-menuitem-content sheet-mousedown-cancel"> <div class="sheet-mousedown-cancel"> <span class="sheet-mousedown-cancel">'+locale_pivotTable.titleSortBy+'</span> <select class="sheet-mousedown-cancel" style="height:24px;" id="sheet-pivotTable-config-option-orderby"> </select> </div> </div> </div> <div class="sheet-cols-menuitem sheet-mousedown-cancel"> <div class="sheet-cols-menuitem-content sheet-mousedown-cancel"> <div class="sheet-mousedown-cancel"> <span class="sheet-mousedown-cancel">'+locale_pivotTable.titleShowSum+'</span> <select class="sheet-mousedown-cancel" style="height:24px;" id="sheet-pivotTable-config-option-stastic"> <option  value="0">'+locale_pivotTable.titleStasticFalse+'</option> <option value="1" selected="selected">'+locale_pivotTable.titleStasticTrue+'</option> </select> </div> </div> </div> </div>';
 } 
 
 const pivottablesumHTML = function(){
     const _locale = locale();
     const locale_pivotTable = _locale.pivotTable;
 
-    return '<div class="luckysheet-cols-menu luckysheet-rightgclick-menu luckysheet-mousedown-cancel" id="luckysheet-pivotTable-config-option-sumtype"> <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" sumtype="SUM"> <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel"> <span class="luckysheet-mousedown-cancel">'+locale_pivotTable.valueStatisticsSUM+'</span> <span class="luckysheet-submenu-arrow luckysheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check luckysheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" sumtype="COUNT"> <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel"> <span class="luckysheet-mousedown-cancel">'+locale_pivotTable.valueStatisticsCOUNT+'</span> <span class="luckysheet-submenu-arrow luckysheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check luckysheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" sumtype="COUNTA"> <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel"> <span class="luckysheet-mousedown-cancel">'+locale_pivotTable.valueStatisticsCOUNTA+'</span> <span class="luckysheet-submenu-arrow luckysheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check luckysheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" sumtype="COUNTUNIQUE"> <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel"> <span class="luckysheet-mousedown-cancel">'+locale_pivotTable.valueStatisticsCOUNTUNIQUE+'</span> <span class="luckysheet-submenu-arrow luckysheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check luckysheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" sumtype="AVERAGE"> <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel"> <span class="luckysheet-mousedown-cancel">'+locale_pivotTable.valueStatisticsAVERAGE+'</span> <span class="luckysheet-submenu-arrow luckysheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check luckysheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" sumtype="MAX"> <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel"> <span class="luckysheet-mousedown-cancel">'+locale_pivotTable.valueStatisticsMAX+'</span> <span class="luckysheet-submenu-arrow luckysheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check luckysheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" sumtype="MIN"> <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel"> <span class="luckysheet-mousedown-cancel">'+locale_pivotTable.valueStatisticsMIN+'</span> <span class="luckysheet-submenu-arrow luckysheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check luckysheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" sumtype="MEDIAN"> <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel"> <span class="luckysheet-mousedown-cancel">'+locale_pivotTable.valueStatisticsMEDIAN+'</span> <span class="luckysheet-submenu-arrow luckysheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check luckysheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" sumtype="PRODUCT"> <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel"> <span class="luckysheet-mousedown-cancel">'+locale_pivotTable.valueStatisticsPRODUCT+'</span> <span class="luckysheet-submenu-arrow luckysheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check luckysheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" sumtype="STDEV"> <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel"> <span class="luckysheet-mousedown-cancel">'+locale_pivotTable.valueStatisticsSTDEV+'</span> <span class="luckysheet-submenu-arrow luckysheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check luckysheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" sumtype="STDEVP"> <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel"> <span class="luckysheet-mousedown-cancel">'+locale_pivotTable.valueStatisticsSTDEVP+'</span> <span class="luckysheet-submenu-arrow luckysheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check luckysheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" sumtype="VAR"> <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel"> <span class="luckysheet-mousedown-cancel">'+locale_pivotTable.valueStatisticslet+'</span> <span class="luckysheet-submenu-arrow luckysheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check luckysheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" sumtype="VARP"> <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel"> <span class="luckysheet-mousedown-cancel">'+locale_pivotTable.valueStatisticsVARP+'</span> <span class="luckysheet-submenu-arrow luckysheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check luckysheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> </div>';
+    return '<div class="sheet-cols-menu sheet-rightgclick-menu sheet-mousedown-cancel" id="sheet-pivotTable-config-option-sumtype"> <div class="sheet-cols-menuitem sheet-mousedown-cancel" sumtype="SUM"> <div class="sheet-cols-menuitem-content sheet-mousedown-cancel"> <span class="sheet-mousedown-cancel">'+locale_pivotTable.valueStatisticsSUM+'</span> <span class="sheet-submenu-arrow sheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check sheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> <div class="sheet-cols-menuitem sheet-mousedown-cancel" sumtype="COUNT"> <div class="sheet-cols-menuitem-content sheet-mousedown-cancel"> <span class="sheet-mousedown-cancel">'+locale_pivotTable.valueStatisticsCOUNT+'</span> <span class="sheet-submenu-arrow sheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check sheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> <div class="sheet-cols-menuitem sheet-mousedown-cancel" sumtype="COUNTA"> <div class="sheet-cols-menuitem-content sheet-mousedown-cancel"> <span class="sheet-mousedown-cancel">'+locale_pivotTable.valueStatisticsCOUNTA+'</span> <span class="sheet-submenu-arrow sheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check sheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> <div class="sheet-cols-menuitem sheet-mousedown-cancel" sumtype="COUNTUNIQUE"> <div class="sheet-cols-menuitem-content sheet-mousedown-cancel"> <span class="sheet-mousedown-cancel">'+locale_pivotTable.valueStatisticsCOUNTUNIQUE+'</span> <span class="sheet-submenu-arrow sheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check sheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> <div class="sheet-cols-menuitem sheet-mousedown-cancel" sumtype="AVERAGE"> <div class="sheet-cols-menuitem-content sheet-mousedown-cancel"> <span class="sheet-mousedown-cancel">'+locale_pivotTable.valueStatisticsAVERAGE+'</span> <span class="sheet-submenu-arrow sheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check sheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> <div class="sheet-cols-menuitem sheet-mousedown-cancel" sumtype="MAX"> <div class="sheet-cols-menuitem-content sheet-mousedown-cancel"> <span class="sheet-mousedown-cancel">'+locale_pivotTable.valueStatisticsMAX+'</span> <span class="sheet-submenu-arrow sheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check sheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> <div class="sheet-cols-menuitem sheet-mousedown-cancel" sumtype="MIN"> <div class="sheet-cols-menuitem-content sheet-mousedown-cancel"> <span class="sheet-mousedown-cancel">'+locale_pivotTable.valueStatisticsMIN+'</span> <span class="sheet-submenu-arrow sheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check sheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> <div class="sheet-cols-menuitem sheet-mousedown-cancel" sumtype="MEDIAN"> <div class="sheet-cols-menuitem-content sheet-mousedown-cancel"> <span class="sheet-mousedown-cancel">'+locale_pivotTable.valueStatisticsMEDIAN+'</span> <span class="sheet-submenu-arrow sheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check sheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> <div class="sheet-cols-menuitem sheet-mousedown-cancel" sumtype="PRODUCT"> <div class="sheet-cols-menuitem-content sheet-mousedown-cancel"> <span class="sheet-mousedown-cancel">'+locale_pivotTable.valueStatisticsPRODUCT+'</span> <span class="sheet-submenu-arrow sheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check sheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> <div class="sheet-cols-menuitem sheet-mousedown-cancel" sumtype="STDEV"> <div class="sheet-cols-menuitem-content sheet-mousedown-cancel"> <span class="sheet-mousedown-cancel">'+locale_pivotTable.valueStatisticsSTDEV+'</span> <span class="sheet-submenu-arrow sheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check sheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> <div class="sheet-cols-menuitem sheet-mousedown-cancel" sumtype="STDEVP"> <div class="sheet-cols-menuitem-content sheet-mousedown-cancel"> <span class="sheet-mousedown-cancel">'+locale_pivotTable.valueStatisticsSTDEVP+'</span> <span class="sheet-submenu-arrow sheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check sheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> <div class="sheet-cols-menuitem sheet-mousedown-cancel" sumtype="VAR"> <div class="sheet-cols-menuitem-content sheet-mousedown-cancel"> <span class="sheet-mousedown-cancel">'+locale_pivotTable.valueStatisticslet+'</span> <span class="sheet-submenu-arrow sheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check sheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> <div class="sheet-cols-menuitem sheet-mousedown-cancel" sumtype="VARP"> <div class="sheet-cols-menuitem-content sheet-mousedown-cancel"> <span class="sheet-mousedown-cancel">'+locale_pivotTable.valueStatisticsVARP+'</span> <span class="sheet-submenu-arrow sheet-mousedown-cancel" style="user-select: none;"><i class="fa fa-check sheet-mousedown-cancel" aria-hidden="true"></i></span> </div> </div> </div>';
 } 
 
-const sheetHTML = '<div style="${style}" id="sheets-item${index}" data-index="${index}" class="sheets-item ${active}"><span class="sheets-item-name" spellcheck ="false" contenteditable="false">${name}</span> <span class="sheets-item-menu luckysheet-mousedown-cancel"><i class="fa fa-sort-desc luckysheet-mousedown-cancel"></i></span>${colorset}</div>',
-    columnHeaderHTML = '<div class="luckysheet-cols-h-cells luckysheetsheetchange"  id="luckysheet-cols-h-cells_${index}" style="width:${width}px;"> <div class="luckysheet-cols-h-cells-c"> <div class="luckysheet-grdblkpush"></div>${column}</div></div>',
-    sheetselectlistHTML = '<div class="luckysheet-cols-menu luckysheet-rightgclick-menu luckysheet-mousedown-cancel" id="sheet-list">${item}</div>',
-    sheetselectlistitemHTML = '<div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel"  id="sheet-btn${index}" data-index="${index}"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel" style="${style}" ><span class="icon luckysheet-mousedown-cancel">${icon}</span>${name}</div></div>',
-    inputHTML = '<div dir="ltr"><div class="luckysheet-input-box-index" id="luckysheet-input-box-index"></div><div id="luckysheet-input-box" spellcheck="false" aria-hidden="false" class="luckysheet-input-box"><div class="luckysheet-cell-input editable" tabindex="0" role="combobox" contenteditable="true" id="luckysheet-rich-text-editor" dir="ltr" g_editable="true" aria-autocomplete="list"></div></div></div>',
-    modelHTML = '<div id="${id}" style="${style}" class="luckysheet-modal-dialog ${addclass}" tabindex="0" role="dialog" aria-labelledby=":41e" dir="ltr"> <div class="luckysheet-modal-dialog-title luckysheet-modal-dialog-title-draggable"> <span class="luckysheet-modal-dialog-title-text" role="heading">${title}</span>	 <span class="luckysheet-modal-dialog-title-close" role="button" tabindex="0" aria-label="${close}"><i class="fa fa-times" aria-hidden="true"></i></span> </div> <div class="luckysheet-modal-dialog-content">${content}</div> <div class="luckysheet-modal-dialog-buttons">	 ${botton} </div></div>',
+const sheetHTML = '<div style="${style}" id="sheets-item${index}" data-index="${index}" class="sheets-item ${active}"><span class="sheets-item-name" spellcheck ="false" contenteditable="false">${name}</span> <span class="sheets-item-menu sheet-mousedown-cancel"><i class="fa fa-sort-desc sheet-mousedown-cancel"></i></span>${colorset}</div>',
+    columnHeaderHTML = '<div class="sheet-cols-h-cells luckysheetsheetchange"  id="sheet-cols-h-cells_${index}" style="width:${width}px;"> <div class="sheet-cols-h-cells-c"> <div class="sheet-grdblkpush"></div>${column}</div></div>',
+    sheetselectlistHTML = '<div class="sheet-cols-menu sheet-rightgclick-menu sheet-mousedown-cancel" id="sheet-list">${item}</div>',
+    sheetselectlistitemHTML = '<div class="sheet-cols-menuitem sheet-mousedown-cancel"  id="sheet-btn${index}" data-index="${index}"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel" style="${style}" ><span class="icon sheet-mousedown-cancel">${icon}</span>${name}</div></div>',
+    inputHTML = '<div dir="ltr"><div class="sheet-input-box-index" id="sheet-input-box-index"></div><div id="sheet-input-box" spellcheck="false" aria-hidden="false" class="sheet-input-box"><div class="sheet-cell-input editable" tabindex="0" role="combobox" contenteditable="true" id="sheet-rich-text-editor" dir="ltr" g_editable="true" aria-autocomplete="list"></div></div></div>',
+    modelHTML = '<div id="${id}" style="${style}" class="sheet-modal-dialog ${addclass}" tabindex="0" role="dialog" aria-labelledby=":41e" dir="ltr"> <div class="sheet-modal-dialog-title sheet-modal-dialog-title-draggable"> <span class="sheet-modal-dialog-title-text" role="heading">${title}</span>	 <span class="sheet-modal-dialog-title-close" role="button" tabindex="0" aria-label="${close}"><i class="fa fa-times" aria-hidden="true"></i></span> </div> <div class="sheet-modal-dialog-content">${content}</div> <div class="sheet-modal-dialog-buttons">	 ${botton} </div></div>',
 
-    maskHTML = '<div class="luckysheet-modal-dialog-mask" id="luckysheet-modal-dialog-mask"></div>';
+    maskHTML = '<div class="sheet-modal-dialog-mask" id="sheet-modal-dialog-mask"></div>';
 
 //底部 表格标签操作dom
 function sheetconfigHTML(){
@@ -687,42 +687,42 @@ function sheetconfigHTML(){
     }
 
 
-    const sheetconfigModel = `<div id="luckysheet-rightclick-sheet-menu" class="luckysheet-cols-menu luckysheet-rightgclick-menu luckysheet-mousedown-cancel"> 
-                <div id="luckysheetsheetconfigdelete" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" style="display:${config.delete ? 'block' : 'none'};"> 
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${sheetconfig.delete}</div>
+    const sheetconfigModel = `<div id="sheet-rightclick-sheet-menu" class="sheet-cols-menu sheet-rightgclick-menu sheet-mousedown-cancel"> 
+                <div id="luckysheetsheetconfigdelete" class="sheet-cols-menuitem sheet-mousedown-cancel" style="display:${config.delete ? 'block' : 'none'};"> 
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${sheetconfig.delete}</div>
                 </div> 
-                <div id="luckysheetsheetconfigcopy" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" style="display:${config.copy ? 'block' : 'none'};"> 
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${sheetconfig.copy}</div> 
+                <div id="luckysheetsheetconfigcopy" class="sheet-cols-menuitem sheet-mousedown-cancel" style="display:${config.copy ? 'block' : 'none'};"> 
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${sheetconfig.copy}</div> 
                 </div> 
-                <div id="luckysheetsheetconfigrename" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" style="display:${config.rename ? 'block' : 'none'};"> 
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${sheetconfig.rename}</div> 
+                <div id="luckysheetsheetconfigrename" class="sheet-cols-menuitem sheet-mousedown-cancel" style="display:${config.rename ? 'block' : 'none'};"> 
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${sheetconfig.rename}</div> 
                 </div> 
-                <div id="luckysheetsheetconfigcolor" class="luckysheet-cols-menuitem luckysheet-cols-submenu luckysheet-mousedown-cancel" style="display:${config.color ? 'block' : 'none'};"> 
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel"> 
-                        ${sheetconfig.changeColor} <span class="luckysheet-submenu-arrow iconfont luckysheet-iconfont-youjiantou" style="user-select: none;"></span> 
+                <div id="luckysheetsheetconfigcolor" class="sheet-cols-menuitem sheet-cols-submenu sheet-mousedown-cancel" style="display:${config.color ? 'block' : 'none'};"> 
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel"> 
+                        ${sheetconfig.changeColor} <span class="sheet-submenu-arrow iconfont sheet-iconfont-youjiantou" style="user-select: none;"></span> 
                     </div> 
                 </div> 
-                <div class="luckysheet-menuseparator luckysheet-mousedown-cancel" role="separator" style="display:${hideTopMenuseparator ? 'block' : 'none'};"></div> 
-                <div id="luckysheetsheetconfighide" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" style="display:${config.hide ? 'block' : 'none'};"> 
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${sheetconfig.hide}</div> 
+                <div class="sheet-menuseparator sheet-mousedown-cancel" role="separator" style="display:${hideTopMenuseparator ? 'block' : 'none'};"></div> 
+                <div id="luckysheetsheetconfighide" class="sheet-cols-menuitem sheet-mousedown-cancel" style="display:${config.hide ? 'block' : 'none'};"> 
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${sheetconfig.hide}</div> 
                 </div> 
-                <div id="luckysheetsheetconfigshow" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" style="display:${config.hide ? 'block' : 'none'};"> 
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${sheetconfig.unhide}</div> 
+                <div id="luckysheetsheetconfigshow" class="sheet-cols-menuitem sheet-mousedown-cancel" style="display:${config.hide ? 'block' : 'none'};"> 
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${sheetconfig.unhide}</div> 
                 </div> 
-                <div class="luckysheet-menuseparator luckysheet-mousedown-cancel" role="separator" style="display:${moveTopMenuseparator ? 'block' : 'none'};"></div> 
-                <div id="luckysheetsheetconfigmoveleft" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" style="display:${config.move ? 'block' : 'none'};"> 
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${sheetconfig.moveLeft}</div> 
+                <div class="sheet-menuseparator sheet-mousedown-cancel" role="separator" style="display:${moveTopMenuseparator ? 'block' : 'none'};"></div> 
+                <div id="luckysheetsheetconfigmoveleft" class="sheet-cols-menuitem sheet-mousedown-cancel" style="display:${config.move ? 'block' : 'none'};"> 
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${sheetconfig.moveLeft}</div> 
                 </div> 
-                <div id="luckysheetsheetconfigmoveright" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" style="display:${config.move ? 'block' : 'none'};"> 
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${sheetconfig.moveRight}</div> 
+                <div id="luckysheetsheetconfigmoveright" class="sheet-cols-menuitem sheet-mousedown-cancel" style="display:${config.move ? 'block' : 'none'};"> 
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${sheetconfig.moveRight}</div> 
                 </div> 
             </div> 
-            <div id="luckysheetsheetconfigcolor_sub" class="luckysheet-cols-menu luckysheet-rightgclick-menu luckysheet-rightgclick-menu-sub luckysheet-mousedown-cancel">
-                <div id="luckysheetsheetconfigcolorreset" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel">
-                    <div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${sheetconfig.resetColor}</div>
+            <div id="luckysheetsheetconfigcolor_sub" class="sheet-cols-menu sheet-rightgclick-menu sheet-rightgclick-menu-sub sheet-mousedown-cancel">
+                <div id="luckysheetsheetconfigcolorreset" class="sheet-cols-menuitem sheet-mousedown-cancel">
+                    <div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${sheetconfig.resetColor}</div>
                 </div> 
-                <div class="luckysheet-mousedown-cancel"> 
-                    <div class="luckysheet-mousedown-cancel"> 
+                <div class="sheet-mousedown-cancel"> 
+                    <div class="sheet-mousedown-cancel"> 
                         <input type="text" id="luckysheetsheetconfigcolorur" /> 
                     </div> 
                 </div> 
@@ -734,33 +734,33 @@ function sheetconfigHTML(){
 const sheetPivotTableHTML = function(){
     const _locale = locale();
     const locale_pivotTable = _locale.pivotTable;
-    // return '<div id="luckysheet-modal-dialog-slider-pivot" class="luckysheet-modal-dialog-slider luckysheet-modal-dialog-slider-pivot"> <div class="luckysheet-modal-dialog-slider-title"> <span>'+locale_pivotTable.title+'</span> <span id="luckysheet-modal-dialog-slider-close" title="'+locale_pivotTable.closePannel+'"><i class="fa fa-times" aria-hidden="true"></i></span> </div> <div class="luckysheet-modal-dialog-slider-content"> <div class="luckysheet-modal-dialog-slider-range"> <div id="luckysheet-dialog-pivotTable-range"></div> <div id="luckysheet-dialog-pivotTable-range-seleted">'+locale_pivotTable.editRange+'</div> </div> <div class="luckysheet-modal-dialog-slider-list-title"> '+locale_pivotTable.tipPivotFieldSelected+' <span title="'+locale_pivotTable.tipClearSelectedField+'" id="luckysheet-dialog-pivotTable-clearitem">'+locale_pivotTable.btnClearSelectedField+'</span></div> <div id="luckysheet-modal-dialog-pivotTable-list" class="luckysheet-modal-dialog-slider-list luckysheet-scrollbars"> </div> <div class="luckysheet-modal-dialog-slider-config-c"> <div class="luckysheet-modal-dialog-slider-config luckysheet-modal-dialog-config-filter"> <div> <span><i class="fa fa-filter luckysheet-mousedown-cancel" aria-hidden="true"></i> '+locale_pivotTable.btnFilter+'</span> </div> <div id="luckysheet-modal-dialog-config-filter" class="luckysheet-modal-dialog-slider-config-list luckysheet-scrollbars"> </div> </div> <div class="luckysheet-modal-dialog-slider-config luckysheet-modal-dialog-config-row"> <div> <span><i class="fa fa-list-alt" aria-hidden="true"></i> '+locale_pivotTable.titleRow+'</span> </div> <div id="luckysheet-modal-dialog-config-row" class="luckysheet-modal-dialog-slider-config-list luckysheet-scrollbars"> </div> </div> <div class="luckysheet-modal-dialog-slider-config luckysheet-modal-dialog-config-column"> <div> <span><i class="fa fa-indent" aria-hidden="true"></i> '+locale_pivotTable.titleColumn+'</span> </div> <div id="luckysheet-modal-dialog-config-column" class="luckysheet-modal-dialog-slider-config-list luckysheet-scrollbars"> </div> </div> <div class="luckysheet-modal-dialog-slider-config luckysheet-modal-dialog-config-value"> <div> <span><i class="fa fa-cube" aria-hidden="true"></i> '+locale_pivotTable.titleValue+'</span> <span style="float: right;margin-right: 10px;display:none;" id="luckysheetpivottablevaluecolrowshow"><label style="padding:0px 5px;margin:0px;font-size:12px;height:15px;line-height:15px;" title="'+locale_pivotTable.tipShowColumn+'" for="luckysheetpivottablevaluecolrow">'+locale_pivotTable.titleColumn+'</label> <input type="radio" checked="checked" value="1" name="luckysheetpivottablevaluecolrow" id="luckysheetpivottablevaluecolrow" /> <label style="padding:0px 5px;margin:0px;font-size:12px;height:15px;line-height:15px;" title="'+locale_pivotTable.tipShowRow+'" for="luckysheetpivottablevaluecolrow1">'+locale_pivotTable.titleRow+'</label> <input type="radio" value="0" name="luckysheetpivottablevaluecolrow" id="luckysheetpivottablevaluecolrow1" /></span></div> <div id="luckysheet-modal-dialog-config-value" class="luckysheet-modal-dialog-slider-config-list luckysheet-scrollbars"> </div> </div> </div> </div> </div>';
+    // return '<div id="sheet-modal-dialog-slider-pivot" class="sheet-modal-dialog-slider sheet-modal-dialog-slider-pivot"> <div class="sheet-modal-dialog-slider-title"> <span>'+locale_pivotTable.title+'</span> <span id="sheet-modal-dialog-slider-close" title="'+locale_pivotTable.closePannel+'"><i class="fa fa-times" aria-hidden="true"></i></span> </div> <div class="sheet-modal-dialog-slider-content"> <div class="sheet-modal-dialog-slider-range"> <div id="sheet-dialog-pivotTable-range"></div> <div id="sheet-dialog-pivotTable-range-seleted">'+locale_pivotTable.editRange+'</div> </div> <div class="sheet-modal-dialog-slider-list-title"> '+locale_pivotTable.tipPivotFieldSelected+' <span title="'+locale_pivotTable.tipClearSelectedField+'" id="sheet-dialog-pivotTable-clearitem">'+locale_pivotTable.btnClearSelectedField+'</span></div> <div id="sheet-modal-dialog-pivotTable-list" class="sheet-modal-dialog-slider-list sheet-scrollbars"> </div> <div class="sheet-modal-dialog-slider-config-c"> <div class="sheet-modal-dialog-slider-config sheet-modal-dialog-config-filter"> <div> <span><i class="fa fa-filter sheet-mousedown-cancel" aria-hidden="true"></i> '+locale_pivotTable.btnFilter+'</span> </div> <div id="sheet-modal-dialog-config-filter" class="sheet-modal-dialog-slider-config-list sheet-scrollbars"> </div> </div> <div class="sheet-modal-dialog-slider-config sheet-modal-dialog-config-row"> <div> <span><i class="fa fa-list-alt" aria-hidden="true"></i> '+locale_pivotTable.titleRow+'</span> </div> <div id="sheet-modal-dialog-config-row" class="sheet-modal-dialog-slider-config-list sheet-scrollbars"> </div> </div> <div class="sheet-modal-dialog-slider-config sheet-modal-dialog-config-column"> <div> <span><i class="fa fa-indent" aria-hidden="true"></i> '+locale_pivotTable.titleColumn+'</span> </div> <div id="sheet-modal-dialog-config-column" class="sheet-modal-dialog-slider-config-list sheet-scrollbars"> </div> </div> <div class="sheet-modal-dialog-slider-config sheet-modal-dialog-config-value"> <div> <span><i class="fa fa-cube" aria-hidden="true"></i> '+locale_pivotTable.titleValue+'</span> <span style="float: right;margin-right: 10px;display:none;" id="luckysheetpivottablevaluecolrowshow"><label style="padding:0px 5px;margin:0px;font-size:12px;height:15px;line-height:15px;" title="'+locale_pivotTable.tipShowColumn+'" for="luckysheetpivottablevaluecolrow">'+locale_pivotTable.titleColumn+'</label> <input type="radio" checked="checked" value="1" name="luckysheetpivottablevaluecolrow" id="luckysheetpivottablevaluecolrow" /> <label style="padding:0px 5px;margin:0px;font-size:12px;height:15px;line-height:15px;" title="'+locale_pivotTable.tipShowRow+'" for="luckysheetpivottablevaluecolrow1">'+locale_pivotTable.titleRow+'</label> <input type="radio" value="0" name="luckysheetpivottablevaluecolrow" id="luckysheetpivottablevaluecolrow1" /></span></div> <div id="sheet-modal-dialog-config-value" class="sheet-modal-dialog-slider-config-list sheet-scrollbars"> </div> </div> </div> </div> </div>';
     return `
-        <div id="luckysheet-modal-dialog-slider-pivot" class="luckysheet-modal-dialog-slider luckysheet-modal-dialog-slider-pivot">
-        <div class="luckysheet-modal-dialog-slider-title"> <span>${locale_pivotTable.title}</span> <span id="luckysheet-modal-dialog-slider-close" title="${locale_pivotTable.closePannel}"><i class="fa fa-times" aria-hidden="true"></i></span> </div>
-        <div class="luckysheet-modal-dialog-slider-content">
-            <div class="luckysheet-modal-dialog-slider-range">
-                <div id="luckysheet-dialog-pivotTable-range"></div>
-                <div id="luckysheet-dialog-pivotTable-range-seleted">${locale_pivotTable.editRange}</div>
+        <div id="sheet-modal-dialog-slider-pivot" class="sheet-modal-dialog-slider sheet-modal-dialog-slider-pivot">
+        <div class="sheet-modal-dialog-slider-title"> <span>${locale_pivotTable.title}</span> <span id="sheet-modal-dialog-slider-close" title="${locale_pivotTable.closePannel}"><i class="fa fa-times" aria-hidden="true"></i></span> </div>
+        <div class="sheet-modal-dialog-slider-content">
+            <div class="sheet-modal-dialog-slider-range">
+                <div id="sheet-dialog-pivotTable-range"></div>
+                <div id="sheet-dialog-pivotTable-range-seleted">${locale_pivotTable.editRange}</div>
             </div>
-            <div class="luckysheet-modal-dialog-slider-list-title"> ${locale_pivotTable.tipPivotFieldSelected} <span title="${locale_pivotTable.tipClearSelectedField}" id="luckysheet-dialog-pivotTable-clearitem">${locale_pivotTable.btnClearSelectedField}</span></div>
-            <div id="luckysheet-modal-dialog-pivotTable-list" class="luckysheet-modal-dialog-slider-list luckysheet-scrollbars"> </div>
-            <div class="luckysheet-modal-dialog-slider-config-c">
-                <div class="luckysheet-modal-dialog-slider-config luckysheet-modal-dialog-config-filter">
-                    <div> <span><i class="fa fa-filter luckysheet-mousedown-cancel" aria-hidden="true"></i> ${locale_pivotTable.btnFilter}</span> </div>
-                    <div id="luckysheet-modal-dialog-config-filter" class="luckysheet-modal-dialog-slider-config-list luckysheet-scrollbars"> </div>
+            <div class="sheet-modal-dialog-slider-list-title"> ${locale_pivotTable.tipPivotFieldSelected} <span title="${locale_pivotTable.tipClearSelectedField}" id="sheet-dialog-pivotTable-clearitem">${locale_pivotTable.btnClearSelectedField}</span></div>
+            <div id="sheet-modal-dialog-pivotTable-list" class="sheet-modal-dialog-slider-list sheet-scrollbars"> </div>
+            <div class="sheet-modal-dialog-slider-config-c">
+                <div class="sheet-modal-dialog-slider-config sheet-modal-dialog-config-filter">
+                    <div> <span><i class="fa fa-filter sheet-mousedown-cancel" aria-hidden="true"></i> ${locale_pivotTable.btnFilter}</span> </div>
+                    <div id="sheet-modal-dialog-config-filter" class="sheet-modal-dialog-slider-config-list sheet-scrollbars"> </div>
                 </div>
-                <div class="luckysheet-modal-dialog-slider-config luckysheet-modal-dialog-config-row">
+                <div class="sheet-modal-dialog-slider-config sheet-modal-dialog-config-row">
                     <div> <span><i class="fa fa-list-alt" aria-hidden="true"></i> ${locale_pivotTable.titleRow}</span> </div>
-                    <div id="luckysheet-modal-dialog-config-row" class="luckysheet-modal-dialog-slider-config-list luckysheet-scrollbars"> </div>
+                    <div id="sheet-modal-dialog-config-row" class="sheet-modal-dialog-slider-config-list sheet-scrollbars"> </div>
                 </div>
-                <div class="luckysheet-modal-dialog-slider-config luckysheet-modal-dialog-config-column">
+                <div class="sheet-modal-dialog-slider-config sheet-modal-dialog-config-column">
                     <div> <span><i class="fa fa-indent" aria-hidden="true"></i> ${locale_pivotTable.titleColumn}</span> </div>
-                    <div id="luckysheet-modal-dialog-config-column" class="luckysheet-modal-dialog-slider-config-list luckysheet-scrollbars"> </div>
+                    <div id="sheet-modal-dialog-config-column" class="sheet-modal-dialog-slider-config-list sheet-scrollbars"> </div>
                 </div>
-                <div class="luckysheet-modal-dialog-slider-config luckysheet-modal-dialog-config-value">
+                <div class="sheet-modal-dialog-slider-config sheet-modal-dialog-config-value">
                     <div> <span><i class="fa fa-cube" aria-hidden="true"></i> ${locale_pivotTable.titleValue}</span> <span style="float: right;margin-right: 10px;display:none;" id="luckysheetpivottablevaluecolrowshow"><label style="padding:0px 5px;margin:0px;font-size:12px;height:15px;line-height:15px;" title="${locale_pivotTable.tipShowColumn}" for="luckysheetpivottablevaluecolrow">${locale_pivotTable.titleColumn}</label> <input type="radio" checked="checked" value="1" name="luckysheetpivottablevaluecolrow" id="luckysheetpivottablevaluecolrow" /> <label style="padding:0px 5px;margin:0px;font-size:12px;height:15px;line-height:15px;" title="${locale_pivotTable.tipShowRow}" for="luckysheetpivottablevaluecolrow1">${locale_pivotTable.titleRow}</label> <input type="radio" value="0" name="luckysheetpivottablevaluecolrow" id="luckysheetpivottablevaluecolrow1" /></span></div>
-                    <div id="luckysheet-modal-dialog-config-value" class="luckysheet-modal-dialog-slider-config-list luckysheet-scrollbars"> </div>
+                    <div id="sheet-modal-dialog-config-value" class="sheet-modal-dialog-slider-config-list sheet-scrollbars"> </div>
                 </div>
             </div>
         </div>
@@ -772,14 +772,14 @@ function filtermenuHTML() {
     const _locale = locale();
     const locale_filter = _locale.filter;
     
-    return `<div class="luckysheet-cols-menu luckysheet-mousedown-cancel luckysheet-filter-menu" id="luckysheet-\${menuid}-menu"><div id="luckysheet-\${menuid}-orderby-asc" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${locale_filter.sortByAsc}</div></div><div id="luckysheet-\${menuid}-orderby-desc" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel"><div style="width:205px;" class="luckysheet-mousedown-cancel">${locale_filter.sortByDesc}</div></div></div> <div class="luckysheet-menuseparator luckysheet-mousedown-cancel" role="separator"></div><div id="luckysheet-\${menuid}-orderby-color" class="luckysheet-cols-menuitem luckysheet-cols-submenu luckysheet-mousedown-cancel"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel" style="position: relative;">${locale_filter.filterByColor}<span class="luckysheet-submenu-arrow iconfont luckysheet-iconfont-youjiantou" style="user-select: none;right: 0;"></span></div></div><div class="luckysheet-menuseparator luckysheet-mousedown-cancel" role="separator"></div> <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" id="luckysheet-\${menuid}-bycondition" style="padding-top:0px;padding-bottom:0px;"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel"><i class="fa fa-caret-right" aria-hidden="true"></i> ${locale_filter.filterByCondition}</div></div> <div class="luckysheet-\${menuid}-bycondition" style="display:none;"><div class="luckysheet-flat-menu-button luckysheet-mousedown-cancel" id="luckysheet-\${menuid}-selected"><span class="luckysheet-mousedown-cancel" data-value="null" data-type="0">${locale_filter.filiterInputNone}</span><div class="luckysheet-mousedown-cancel"><i class="fa fa-sort" aria-hidden="true"></i></div></div><div class="luckysheet-\${menuid}-selected-input"><input type="text" placeholder="${locale_filter.filiterInputTip}" class="luckysheet-mousedown-cancel" /></div><div class="luckysheet-\${menuid}-selected-input luckysheet-\${menuid}-selected-input2"><span>从</span><input type="text" placeholder="${locale_filter.filiterRangeStartTip}" class="luckysheet-mousedown-cancel" /><span>到</span><input type="text" placeholder="${locale_filter.filiterRangeEndTip}" class="luckysheet-mousedown-cancel" /></div></div> <div class="luckysheet-menuseparator luckysheet-mousedown-cancel" role="separator"></div> <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" id="luckysheet-\${menuid}-byvalue" style="padding-top:0px;padding-bottom:0px;"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel"><i class="fa fa-caret-right" aria-hidden="true"></i> ${locale_filter.filterByValues}</div></div> <div class="luckysheet-\${menuid}-byvalue"><div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel luckysheet-mousedown-\${menuid}-byvalue-btn"><span id="luckysheet-\${menuid}-byvalue-btn-all" class="luckysheet-mousedown-cancel">${locale_filter.filterValueByAllBtn}</span> - <span id="luckysheet-\${menuid}-byvalue-btn-clear" class="luckysheet-mousedown-cancel">${locale_filter.filterValueByClearBtn}</span> - <span id="luckysheet-\${menuid}-byvalue-btn-contra" class="luckysheet-mousedown-cancel">${locale_filter.filterValueByInverseBtn}</span> <div><i class="fa fa-\${menuid} luckysheet-mousedown-cancel" aria-hidden="true"></i></div></div></div><div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" style="padding-left:3px; padding-right:3px;"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel"><input type="text" placeholder="${locale_filter.filterValueByTip}" class="luckysheet-mousedown-cancel" id="luckysheet-\${menuid}-byvalue-input" /><div class="luckysheet-\${menuid}-byvalue-input-icon luckysheet-mousedown-cancel"><i class="fa fa-search luckysheet-mousedown-cancel" aria-hidden="true"></i></div></div></div><div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel"><div id="luckysheet-\${menuid}-byvalue-select" class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel"></div></div></div> <div class="luckysheet-menuseparator luckysheet-mousedown-cancel" role="separator"></div> <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel"><div class="btn btn-primary luckysheet-mousedown-cancel" id="luckysheet-\${menuid}-confirm">${locale_filter.filterConform}</div> <div class="btn btn-default luckysheet-mousedown-cancel" id="luckysheet-\${menuid}-cancel">${locale_filter.filterCancel}</div> <div class="btn btn-danger luckysheet-mousedown-cancel" id="luckysheet-\${menuid}-initial">${locale_filter.clearFilter}</div></div></div> </div>`
+    return `<div class="sheet-cols-menu sheet-mousedown-cancel sheet-filter-menu" id="sheet-\${menuid}-menu"><div id="sheet-\${menuid}-orderby-asc" class="sheet-cols-menuitem sheet-mousedown-cancel"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${locale_filter.sortByAsc}</div></div><div id="sheet-\${menuid}-orderby-desc" class="sheet-cols-menuitem sheet-mousedown-cancel"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel"><div style="width:205px;" class="sheet-mousedown-cancel">${locale_filter.sortByDesc}</div></div></div> <div class="sheet-menuseparator sheet-mousedown-cancel" role="separator"></div><div id="sheet-\${menuid}-orderby-color" class="sheet-cols-menuitem sheet-cols-submenu sheet-mousedown-cancel"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel" style="position: relative;">${locale_filter.filterByColor}<span class="sheet-submenu-arrow iconfont sheet-iconfont-youjiantou" style="user-select: none;right: 0;"></span></div></div><div class="sheet-menuseparator sheet-mousedown-cancel" role="separator"></div> <div class="sheet-cols-menuitem sheet-mousedown-cancel" id="sheet-\${menuid}-bycondition" style="padding-top:0px;padding-bottom:0px;"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel"><i class="fa fa-caret-right" aria-hidden="true"></i> ${locale_filter.filterByCondition}</div></div> <div class="sheet-\${menuid}-bycondition" style="display:none;"><div class="sheet-flat-menu-button sheet-mousedown-cancel" id="sheet-\${menuid}-selected"><span class="sheet-mousedown-cancel" data-value="null" data-type="0">${locale_filter.filiterInputNone}</span><div class="sheet-mousedown-cancel"><i class="fa fa-sort" aria-hidden="true"></i></div></div><div class="sheet-\${menuid}-selected-input"><input type="text" placeholder="${locale_filter.filiterInputTip}" class="sheet-mousedown-cancel" /></div><div class="sheet-\${menuid}-selected-input sheet-\${menuid}-selected-input2"><span>从</span><input type="text" placeholder="${locale_filter.filiterRangeStartTip}" class="sheet-mousedown-cancel" /><span>到</span><input type="text" placeholder="${locale_filter.filiterRangeEndTip}" class="sheet-mousedown-cancel" /></div></div> <div class="sheet-menuseparator sheet-mousedown-cancel" role="separator"></div> <div class="sheet-cols-menuitem sheet-mousedown-cancel" id="sheet-\${menuid}-byvalue" style="padding-top:0px;padding-bottom:0px;"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel"><i class="fa fa-caret-right" aria-hidden="true"></i> ${locale_filter.filterByValues}</div></div> <div class="sheet-\${menuid}-byvalue"><div class="sheet-cols-menuitem sheet-mousedown-cancel"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel sheet-mousedown-\${menuid}-byvalue-btn"><span id="sheet-\${menuid}-byvalue-btn-all" class="sheet-mousedown-cancel">${locale_filter.filterValueByAllBtn}</span> - <span id="sheet-\${menuid}-byvalue-btn-clear" class="sheet-mousedown-cancel">${locale_filter.filterValueByClearBtn}</span> - <span id="sheet-\${menuid}-byvalue-btn-contra" class="sheet-mousedown-cancel">${locale_filter.filterValueByInverseBtn}</span> <div><i class="fa fa-\${menuid} sheet-mousedown-cancel" aria-hidden="true"></i></div></div></div><div class="sheet-cols-menuitem sheet-mousedown-cancel" style="padding-left:3px; padding-right:3px;"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel"><input type="text" placeholder="${locale_filter.filterValueByTip}" class="sheet-mousedown-cancel" id="sheet-\${menuid}-byvalue-input" /><div class="sheet-\${menuid}-byvalue-input-icon sheet-mousedown-cancel"><i class="fa fa-search sheet-mousedown-cancel" aria-hidden="true"></i></div></div></div><div class="sheet-cols-menuitem sheet-mousedown-cancel"><div id="sheet-\${menuid}-byvalue-select" class="sheet-cols-menuitem-content sheet-mousedown-cancel"></div></div></div> <div class="sheet-menuseparator sheet-mousedown-cancel" role="separator"></div> <div class="sheet-cols-menuitem sheet-mousedown-cancel"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel"><div class="btn btn-primary sheet-mousedown-cancel" id="sheet-\${menuid}-confirm">${locale_filter.filterConform}</div> <div class="btn btn-default sheet-mousedown-cancel" id="sheet-\${menuid}-cancel">${locale_filter.filterCancel}</div> <div class="btn btn-danger sheet-mousedown-cancel" id="sheet-\${menuid}-initial">${locale_filter.clearFilter}</div></div></div> </div>`
 }
 
 function filtersubmenuHTML() {
     const _locale = locale();
     const locale_filter = _locale.filter;
     
-    return `<div style="z-index:1004;overflow-y:auto;" class="luckysheet-filter-submenu luckysheet-cols-menu luckysheet-mousedown-cancel" id="luckysheet-\${menuid}-submenu"><div data-value="null" data-type="0" class="luckysheet-cols-menuitem luckysheet-mousedown-cancel"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${locale_filter.conditionNone}</div></div><div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" data-value="cellnull"  data-type="0"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${locale_filter.conditionCellIsNull}</div></div><div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" data-value="cellnonull"  data-type="0"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${locale_filter.conditionCellNotNull}</div></div><div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" data-value="textinclude"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${locale_filter.conditionCellTextContain}</div></div><div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" data-value="textnotinclude"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${locale_filter.conditionCellTextNotContain}</div></div><div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" data-value="textstart"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${locale_filter.conditionCellTextStart}</div></div><div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" data-value="textend"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${locale_filter.conditionCellTextEnd}</div></div><div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" data-value="textequal"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${locale_filter.conditionCellTextEqual}</div></div>  <div class="luckysheet-menuseparator luckysheet-mousedown-cancel" role="separator"></div>  <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" data-value="dateequal"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${locale_filter.conditionCellDateEqual}</div></div><div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" data-value="datelessthan"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${locale_filter.conditionCellDateBefore}</div></div><div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" data-value="datemorethan"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${locale_filter.conditionCellDateAfter}</div></div> <div class="luckysheet-menuseparator luckysheet-mousedown-cancel" role="separator"></div> <div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" data-value="morethan"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${locale_filter.conditionCellGreater}</div></div><div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" data-value="moreequalthan"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${locale_filter.conditionCellGreaterEqual}</div></div><div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" data-value="lessthan"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${locale_filter.conditionCellLess}</div></div><div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" data-value="lessequalthan"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${locale_filter.conditionCellLessEqual}</div></div><div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" data-value="equal"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${locale_filter.conditionCellEqual}</div></div><div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" data-value="noequal"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${locale_filter.conditionCellNotEqual}</div></div><div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" data-value="include"  data-type="2"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${locale_filter.conditionCellBetween}</div></div><div class="luckysheet-cols-menuitem luckysheet-mousedown-cancel" data-value="noinclude" data-type="2"><div class="luckysheet-cols-menuitem-content luckysheet-mousedown-cancel">${locale_filter.conditionCellNotBetween}</div></div> </div>`
+    return `<div style="z-index:1004;overflow-y:auto;" class="sheet-filter-submenu sheet-cols-menu sheet-mousedown-cancel" id="sheet-\${menuid}-submenu"><div data-value="null" data-type="0" class="sheet-cols-menuitem sheet-mousedown-cancel"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${locale_filter.conditionNone}</div></div><div class="sheet-cols-menuitem sheet-mousedown-cancel" data-value="cellnull"  data-type="0"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${locale_filter.conditionCellIsNull}</div></div><div class="sheet-cols-menuitem sheet-mousedown-cancel" data-value="cellnonull"  data-type="0"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${locale_filter.conditionCellNotNull}</div></div><div class="sheet-cols-menuitem sheet-mousedown-cancel" data-value="textinclude"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${locale_filter.conditionCellTextContain}</div></div><div class="sheet-cols-menuitem sheet-mousedown-cancel" data-value="textnotinclude"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${locale_filter.conditionCellTextNotContain}</div></div><div class="sheet-cols-menuitem sheet-mousedown-cancel" data-value="textstart"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${locale_filter.conditionCellTextStart}</div></div><div class="sheet-cols-menuitem sheet-mousedown-cancel" data-value="textend"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${locale_filter.conditionCellTextEnd}</div></div><div class="sheet-cols-menuitem sheet-mousedown-cancel" data-value="textequal"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${locale_filter.conditionCellTextEqual}</div></div>  <div class="sheet-menuseparator sheet-mousedown-cancel" role="separator"></div>  <div class="sheet-cols-menuitem sheet-mousedown-cancel" data-value="dateequal"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${locale_filter.conditionCellDateEqual}</div></div><div class="sheet-cols-menuitem sheet-mousedown-cancel" data-value="datelessthan"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${locale_filter.conditionCellDateBefore}</div></div><div class="sheet-cols-menuitem sheet-mousedown-cancel" data-value="datemorethan"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${locale_filter.conditionCellDateAfter}</div></div> <div class="sheet-menuseparator sheet-mousedown-cancel" role="separator"></div> <div class="sheet-cols-menuitem sheet-mousedown-cancel" data-value="morethan"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${locale_filter.conditionCellGreater}</div></div><div class="sheet-cols-menuitem sheet-mousedown-cancel" data-value="moreequalthan"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${locale_filter.conditionCellGreaterEqual}</div></div><div class="sheet-cols-menuitem sheet-mousedown-cancel" data-value="lessthan"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${locale_filter.conditionCellLess}</div></div><div class="sheet-cols-menuitem sheet-mousedown-cancel" data-value="lessequalthan"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${locale_filter.conditionCellLessEqual}</div></div><div class="sheet-cols-menuitem sheet-mousedown-cancel" data-value="equal"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${locale_filter.conditionCellEqual}</div></div><div class="sheet-cols-menuitem sheet-mousedown-cancel" data-value="noequal"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${locale_filter.conditionCellNotEqual}</div></div><div class="sheet-cols-menuitem sheet-mousedown-cancel" data-value="include"  data-type="2"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${locale_filter.conditionCellBetween}</div></div><div class="sheet-cols-menuitem sheet-mousedown-cancel" data-value="noinclude" data-type="2"><div class="sheet-cols-menuitem-content sheet-mousedown-cancel">${locale_filter.conditionCellNotBetween}</div></div> </div>`
 }
 
 function sheetAlternateformatHtml(){
@@ -788,62 +788,62 @@ function sheetAlternateformatHtml(){
     const toolbar = _locale.toolbar;
 
 
-    return '<div id="luckysheet-modal-dialog-slider-alternateformat" class="luckysheet-modal-dialog-slider luckysheet-modal-dialog-slider-alternateformat" style="display: block;">'+
-                '<div class="luckysheet-modal-dialog-slider-title">'+
+    return '<div id="sheet-modal-dialog-slider-alternateformat" class="sheet-modal-dialog-slider sheet-modal-dialog-slider-alternateformat" style="display: block;">'+
+                '<div class="sheet-modal-dialog-slider-title">'+
                     '<span>'+ toolbar.alternatingColors +'</span>'+
-                    '<span class="luckysheet-model-close-btn" title="'+ alternatingColors.close +'">'+
+                    '<span class="sheet-model-close-btn" title="'+ alternatingColors.close +'">'+
                         '<i class="fa fa-times" aria-hidden="true"></i>'+
                     '</span>'+
                 '</div>'+
-                '<div class="luckysheet-modal-dialog-slider-content">'+
+                '<div class="sheet-modal-dialog-slider-content">'+
                     '<div class="textTitle">'+ alternatingColors.applyRange +'</div>'+
-                    '<div id="luckysheet-alternateformat-range">'+
+                    '<div id="sheet-alternateformat-range">'+
                         '<input class="formulaInputFocus" placeholder="'+ alternatingColors.selectRange +'"/>'+
                         '<i class="fa fa-table" aria-hidden="true"></i>'+
                     '</div>'+
-                    '<div id="luckysheet-alternateformat-checkbox">'+
+                    '<div id="sheet-alternateformat-checkbox">'+
                         '<div class="cf">'+
-                            '<input type="checkbox" id="luckysheet-alternateformat-rowHeader"/>'+
-                            '<label for="luckysheet-alternateformat-rowHeader">'+ alternatingColors.header +'</label>'+
+                            '<input type="checkbox" id="sheet-alternateformat-rowHeader"/>'+
+                            '<label for="sheet-alternateformat-rowHeader">'+ alternatingColors.header +'</label>'+
                         '</div>'+
                         '<div class="cf">'+
-                            '<input type="checkbox" id="luckysheet-alternateformat-rowFooter"/>'+
-                            '<label for="luckysheet-alternateformat-rowFooter">'+ alternatingColors.footer +'</label>'+
+                            '<input type="checkbox" id="sheet-alternateformat-rowFooter"/>'+
+                            '<label for="sheet-alternateformat-rowFooter">'+ alternatingColors.footer +'</label>'+
                         '</div>'+
                     '</div>'+
                     '<div class="textTitle">'+alternatingColors.textTitle+'</div>'+
-                    '<div id="luckysheet-alternateformat-modelList" class="cf"></div>'+
+                    '<div id="sheet-alternateformat-modelList" class="cf"></div>'+
                     '<div class="textTitle">'+alternatingColors.custom+'</div>'+
-                    '<div id="luckysheet-alternateformat-modelCustom" class="cf"></div>'+
-                    '<div id="luckysheet-alternateformat-modelToning">'+
+                    '<div id="sheet-alternateformat-modelCustom" class="cf"></div>'+
+                    '<div id="sheet-alternateformat-modelToning">'+
                         '<div class="toningbox header">'+
                             '<div class="toningShow"> '+ alternatingColors.header +' </div>'+
-                            '<div class="luckysheet-color-menu-button-indicator" title="'+ alternatingColors.selectionTextColor +'" style="border-bottom-color: #000;margin-right: 10px;"> <div class="luckysheet-icon luckysheet-inline-block"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-text-color" style="user-select: none;"> </div> </div> </div>'+
-                            '<div class="luckysheet-color-menu-button-indicator" title="'+ alternatingColors.selectionCellColor +'" style="border-bottom-color: #fff;"> <div class="luckysheet-icon luckysheet-inline-block"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-cell-color" style="user-select: none;"> </div> </div> </div>'+
+                            '<div class="sheet-color-menu-button-indicator" title="'+ alternatingColors.selectionTextColor +'" style="border-bottom-color: #000;margin-right: 10px;"> <div class="sheet-icon sheet-inline-block"> <div aria-hidden="true" class="sheet-icon-img-container sheet-icon-img sheet-icon-text-color" style="user-select: none;"> </div> </div> </div>'+
+                            '<div class="sheet-color-menu-button-indicator" title="'+ alternatingColors.selectionCellColor +'" style="border-bottom-color: #fff;"> <div class="sheet-icon sheet-inline-block"> <div aria-hidden="true" class="sheet-icon-img-container sheet-icon-img sheet-icon-cell-color" style="user-select: none;"> </div> </div> </div>'+
                         '</div>'+
                         '<div class="toningbox ctOne">'+
                             '<div class="toningShow"> '+ alternatingColors.colorShow +'1 </div>'+
-                            '<div class="luckysheet-color-menu-button-indicator" title="'+ alternatingColors.selectionTextColor +'" style="border-bottom-color: #000;margin-right: 10px;"> <div class="luckysheet-icon luckysheet-inline-block"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-text-color" style="user-select: none;"> </div> </div> </div>'+
-                            '<div class="luckysheet-color-menu-button-indicator" title="'+ alternatingColors.selectionCellColor +'" style="border-bottom-color: #fff;"> <div class="luckysheet-icon luckysheet-inline-block"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-cell-color" style="user-select: none;"> </div> </div> </div>'+
+                            '<div class="sheet-color-menu-button-indicator" title="'+ alternatingColors.selectionTextColor +'" style="border-bottom-color: #000;margin-right: 10px;"> <div class="sheet-icon sheet-inline-block"> <div aria-hidden="true" class="sheet-icon-img-container sheet-icon-img sheet-icon-text-color" style="user-select: none;"> </div> </div> </div>'+
+                            '<div class="sheet-color-menu-button-indicator" title="'+ alternatingColors.selectionCellColor +'" style="border-bottom-color: #fff;"> <div class="sheet-icon sheet-inline-block"> <div aria-hidden="true" class="sheet-icon-img-container sheet-icon-img sheet-icon-cell-color" style="user-select: none;"> </div> </div> </div>'+
                         '</div>'+
                         '<div class="toningbox ctTwo">'+
                             '<div class="toningShow"> '+ alternatingColors.colorShow +'2 </div>'+
-                            '<div class="luckysheet-color-menu-button-indicator" title="'+ alternatingColors.selectionTextColor +'" style="border-bottom-color: #000;margin-right: 10px;"> <div class="luckysheet-icon luckysheet-inline-block"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-text-color" style="user-select: none;"> </div> </div> </div>'+
-                            '<div class="luckysheet-color-menu-button-indicator" title="'+ alternatingColors.selectionCellColor +'" style="border-bottom-color: #fff;"> <div class="luckysheet-icon luckysheet-inline-block"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-cell-color" style="user-select: none;"> </div> </div> </div>'+
+                            '<div class="sheet-color-menu-button-indicator" title="'+ alternatingColors.selectionTextColor +'" style="border-bottom-color: #000;margin-right: 10px;"> <div class="sheet-icon sheet-inline-block"> <div aria-hidden="true" class="sheet-icon-img-container sheet-icon-img sheet-icon-text-color" style="user-select: none;"> </div> </div> </div>'+
+                            '<div class="sheet-color-menu-button-indicator" title="'+ alternatingColors.selectionCellColor +'" style="border-bottom-color: #fff;"> <div class="sheet-icon sheet-inline-block"> <div aria-hidden="true" class="sheet-icon-img-container sheet-icon-img sheet-icon-cell-color" style="user-select: none;"> </div> </div> </div>'+
                         '</div>'+
                         '<div class="toningbox footer">'+
                             '<div class="toningShow"> '+ alternatingColors.footer +' </div>'+
-                            '<div class="luckysheet-color-menu-button-indicator" title="'+ alternatingColors.selectionTextColor +'" style="border-bottom-color: #000;margin-right: 10px;"> <div class="luckysheet-icon luckysheet-inline-block"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-text-color" style="user-select: none;"> </div> </div> </div>'+
-                            '<div class="luckysheet-color-menu-button-indicator" title="'+ alternatingColors.selectionCellColor +'" style="border-bottom-color: #fff;"> <div class="luckysheet-icon luckysheet-inline-block"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-cell-color" style="user-select: none;"> </div> </div> </div>'+
+                            '<div class="sheet-color-menu-button-indicator" title="'+ alternatingColors.selectionTextColor +'" style="border-bottom-color: #000;margin-right: 10px;"> <div class="sheet-icon sheet-inline-block"> <div aria-hidden="true" class="sheet-icon-img-container sheet-icon-img sheet-icon-text-color" style="user-select: none;"> </div> </div> </div>'+
+                            '<div class="sheet-color-menu-button-indicator" title="'+ alternatingColors.selectionCellColor +'" style="border-bottom-color: #fff;"> <div class="sheet-icon sheet-inline-block"> <div aria-hidden="true" class="sheet-icon-img-container sheet-icon-img sheet-icon-cell-color" style="user-select: none;"> </div> </div> </div>'+
                         '</div>'+
                     '</div>'+
-                    '<button id="luckysheet-alternateformat-remove" class="btn btn-default" style="margin: 10px;">'+ alternatingColors.removeColor +'</button>'+
+                    '<button id="sheet-alternateformat-remove" class="btn btn-default" style="margin: 10px;">'+ alternatingColors.removeColor +'</button>'+
                 '</div>'+
             '</div>';
 }
 
-const sheetchartpointconfigHTML = '<div class="luckysheet-chart-point-config"> <div class="luckysheet-chart-point-config-set"> <div class="luckysheet-chart-point-config-left"> <div class="luckysheet-chart-point-config-left-top"> <div class="luckysheet-chart-point-searchcondition"> <div class="luckysheet-datavisual-content-row" style="margin-bottom: 0px;margin-top: 0px;height: 30px;"> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-title luckysheet-datavisual-content-column-2x" style="width:10%;white-space:nowrap;">选择维度</div> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-right luckysheet-datavisual-content-column-2x" style="width:80%;"> <select data-tips="维度选择" name="luckysheetpointconfigsearchdim" id="luckysheetpointconfigsearchdim"> </select> </div> </div> <div class="luckysheet-datavisual-content-row" style="margin-bottom: 0px;margin-top: 3px;height: 30px;"> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-title luckysheet-datavisual-content-column-2x" style="width:10%;">排序</div> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-right luckysheet-datavisual-content-column-2x" style="width:80%;"> <label data-tips="无排序" for="luckysheetpointconfigsearchorderno">无排序</label> <input type="radio" checked="checked" value="0" name="luckysheetpointconfigsearchorder" id="luckysheetpointconfigsearchorderno"> <label data-tips="升序" for="luckysheetpointconfigsearchorderasc">升序</label> <input type="radio" value="1" name="luckysheetpointconfigsearchorder" id="luckysheetpointconfigsearchorderasc"> <label data-tips="降序" for="luckysheetpointconfigsearchorderdesc">降序</label> <input type="radio" value="2" name="luckysheetpointconfigsearchorder" id="luckysheetpointconfigsearchorderdesc"> </div> </div> <div class="luckysheet-datavisual-content-row" style="margin-bottom: 0px;margin-top: 5px;height: 30px;"> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-right luckysheet-datavisual-content-column-2x" style="width:90%;text-align: left;"> <select data-width="70" data-tips="按照什么方式查询" name="luckysheetpointconfigsearchtype" id="luckysheetpointconfigsearchtype"> <option value="0" selected="selected">按照名称</option> <option value="1">按排序前%</option> </select> <input data-tips="查询关于点的关键字" id="luckysheetpointconfigsearchcontent" type="text" class="luckysheet-datavisual-config-input-no" style="width:40%;" placeholder="查询内容" /> <button id="luckysheetpointconfigsearchcomfirm" class="btn btn-primary luckysheet-model-conform-btn">查询</button> </div> </div> </div> </div> <div class="luckysheet-chart-point-config-left-mid"> <span id="luckysheet-chart-point-btn-all" class="luckysheet-mousedown-cancel">全选</span> - <span id="luckysheet-chart-point-btn-clear" class="luckysheet-mousedown-cancel">清除</span> - <span id="luckysheet-chart-point-btn-contra" class="luckysheet-mousedown-cancel">反选</span><span style="text-decoration:none;color:#8D8D8D;float:right;margin-right:40px;cursor:default;" class="luckysheet-mousedown-cancel">可以直接框选数据点</span> </div> <div class="luckysheet-chart-point-config-left-bottom"> <div class="luckysheet-chart-point-searchitem-c luckysheet-noselected-text">  </div> </div> </div> <div class="luckysheet-chart-point-config-right"> <div class="luckysheet-chart-point-itemconfig"> <div class="luckysheet-datavisual-content-row" style="font-size: 16px;font-weight: bold;"> 数据点设置 </div> <div class="luckysheet-datavisual-content-row"> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-title luckysheet-datavisual-content-column-2x" style="width:10%;white-space:nowrap;">图形颜色</div> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-right luckysheet-datavisual-content-column-2x" style="width:80%;"> <input data-tips="颜色" class="luckysheet-datavisual-config-colorOpacity" id="scattersingleitemstylecolor" type="text" data-bigclass="scattersingle" data-attr="itemstyle" data-func="color" /> </div> </div> <div class="luckysheet-datavisual-content-row"> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-title luckysheet-datavisual-content-column-2x" style="width:10%;white-space:nowrap;">图形大小</div> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-right luckysheet-datavisual-content-column-2x" style="width:80%;"> <select data-sliderdiy="scattersingleallsymbolsizeslider" data-tips="点大小设置" name="scattersingleallsymbolsize" id="scattersingleallsymbolsize" data-width="50" data-bigclass="scattersingle" data-attr="all" data-func="symbolsize"> <option value="4" selected="selected">4px</option> <option value="6">6px</option> <option value="8">8px</option> <option value="10">10px</option> <option value="12">12px</option> <option value="14">14px</option> <option value="16">16px</option> <option value="diy">自定义</option> </select> </div> </div> <div class="luckysheet-datavisual-content-row" style="display:none;"> <div data-tips="滑动修改点大小" id="scattersingleallsymbolsizeslider" data-bigclass="scattersingle" data-attr="all" data-func="symbolsize" class="luckysheet-datavisual-config-slider" style="width:70%;" data-min="1" data-max="50" data-step="1"></div> <input data-tips="自定义点大小" data-sliderid="scattersingleallsymbolsizeslider" id="scattersingleallsymbolsizesliderdiy" type="text" class="luckysheet-datavisual-config-input" data-bigclass="scattersingle" data-attr="all" data-func="symbolsize" placeholder="请输入" style="width:10%;margin-left:10px;text-align:center;margin-right: 2px;" /><label for="scattersingleallsymbolsizesliderdiy">px</label> </div> <div class="luckysheet-datavisual-content-row"> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-title luckysheet-datavisual-content-column-2x" style="width:10%;white-space:nowrap;">图形形状</div> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-right luckysheet-datavisual-content-column-2x" style="width:80%;"> <select data-tips="点类型设置" data-width="70" name="scattersingleallsymboltype" id="scattersingleallsymboltype" data-bigclass="scattersingle" data-attr="all" data-func="symboltype"> <option value="emptyCircle" selected="selected">空心圆</option> <option value="circle">圆形</option> <option value="emptyRectangle">空心矩形</option> <option value="rect">矩形</option> <option value="roundRect">圆角矩形</option> <option value="emptyTriangle">空心三角</option> <option value="triangle">三角形</option> <option value="emptyDiamond">空心菱形</option> <option value="diamond">菱形</option> <option value="droplet">水滴</option> <option value="pin">标注</option> <option value="arrow">箭头</option> <option value="heart">心形</option> <option value="star">星星</option> </select> </div> </div> <div class="luckysheet-datavisual-content-rowsplit-sub"></div> <div class="luckysheet-datavisual-content-row"> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-title luckysheet-datavisual-content-column-2x" style="width:10%;white-space:nowrap;">边框粗细</div> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-right luckysheet-datavisual-content-column-2x" style="width:80%;"> <select data-sliderdiy="scattersingleitemstyleborderwidthslider" data-tips="点边框粗细" name="scattersingleitemstyleborderwidth" id="scattersingleitemstyleborderwidth" data-width="50" data-bigclass="scattersingle" data-attr="itemstyle" data-func="borderwidth"><option value="0" selected="selected">无</option> <option value="1">1px</option> <option value="2">2px</option> <option value="3">3px</option> <option value="4">4px</option> <option value="5">5px</option> <option value="6">6px</option> <option value="7">7px</option> <option value="8">8px</option> <option value="diy">自定义</option> </select> </div> </div> <div class="luckysheet-datavisual-content-row" style="display:none;"> <div data-tips="滑动修改边框粗细" id="scattersingleitemstyleborderwidthslider" data-bigclass="scattersingle" data-attr="itemstyle" data-func="borderwidth" class="luckysheet-datavisual-config-slider" style="width:70%;" data-min="12" data-max="100" data-step="1"></div> <input data-tips="自定义边框粗细" data-sliderid="scattersingleitemstyleborderwidthslider" id="scattersingleitemstyleborderwidthsliderdiy" type="text" class="luckysheet-datavisual-config-input" data-bigclass="scattersingle" data-attr="itemstyle" data-func="borderwidth" placeholder="请输入" style="width:10%;margin-left:10px;text-align:center;margin-right: 2px;" /><label for="scattersingleitemstyleborderwidthsliderdiy">%</label> </div> <div class="luckysheet-datavisual-content-row"> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-title luckysheet-datavisual-content-column-2x" style="width:10%;white-space:nowrap;">边框样式</div> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-right luckysheet-datavisual-content-column-2x" style="width:80%;"> <select data-tips="点边框类型设置" data-width="50" name="scattersingleitemstyleborderlinetype" id="scattersingleitemstyleborderlinetype" data-bigclass="scattersingle" data-attr="itemstyle" data-func="borderlinetype"> <option value="solid" selected="selected">实线</option> <option value="dashed">虚线</option> <option value="dotted">点线</option> </select> </div> </div> <div class="luckysheet-datavisual-content-row"> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-title luckysheet-datavisual-content-column-2x" style="width:10%;white-space:nowrap;">边框颜色</div> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-right luckysheet-datavisual-content-column-2x" style="width:80%;"> <input data-tips="点边框颜色" class="luckysheet-datavisual-config-colorOpacity" id="scattersingleitemstyleborderlinecolor" type="text" data-bigclass="scattersingle" data-attr="itemstyle" data-func="borderlinecolor" /> </div> </div> <div class="luckysheet-datavisual-content-rowsplit-sub"></div> <div class="luckysheet-datavisual-content-row"> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-title luckysheet-datavisual-content-column-2x" style="width:10%;white-space:nowrap;"><i class="fa fa-th-large" aria-hidden="true"></i> 文字标签</div> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-right luckysheet-datavisual-content-column-2x" style="width:80%;"> <label data-tips="显示数据点的标签" data-bigclass="scattersingle" data-attr="label" data-func="labelshow" for="scattersinglelabellabelshow">显示</label> <input type="radio" checked="checked" value="1" name="scattersinglelabellabelshow" id="scattersinglelabellabelshow" data-bigclass="scattersingle" data-attr="label" data-func="labelshow"> <label data-tips="隐藏数据点的标签" data-bigclass="scattersingle" data-attr="label" data-func="labelshow" for="scattersinglelabellabelshow1">隐藏</label> <input type="radio" value="0" name="scattersinglelabellabelshow" id="scattersinglelabellabelshow1" data-bigclass="scattersingle" data-attr="label" data-func="labelshow"> </div> </div> <div class="luckysheet-datavisual-content-row" style="height:auto;line-height: initial;margin-left:auto;" showfor="scattersinglelabellabelshow1" hidefor="scattersinglelabellabelshow"> <div class="luckysheet-datavisual-content-row"> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-title luckysheet-datavisual-content-column-2x" style="width:40%;">数值比例</div> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-right luckysheet-datavisual-content-column-2x" style="width:50%;"> <select data-tips="刻度数值放大比例" name="scattersinglelabelformatratio" id="scattersinglelabelformatratio" data-bigclass="scattersingle" data-attr="label" data-func="formatratio"> <option value="0.01">乘以100</option> <option value="0.1">乘以10</option> <option value="1" selected="selected">默认</option> <option value="10">除以10</option> <option value="100">除以100</option> <option value="1000">除以1000</option> <option value="10000">除以1万</option> <option value="100000">除以10万</option> <option value="1000000">除以一百万</option> <option value="10000000">除以一千万</option> <option value="100000000">除以一亿</option> <option value="1000000000">除以十亿</option> </select> </div> </div> <div class="luckysheet-datavisual-content-row"> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-title luckysheet-datavisual-content-column-2x" style="width:40%;white-space: nowrap;">小数位数</div> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-right luckysheet-datavisual-content-column-2x" style="width:50%;"> <select data-tips="数值小数点位数" name="scattersinglelabelfloatlen" id="scattersinglelabelfloatlen" data-bigclass="scattersingle" data-attr="label" data-func="floatlen"> <option value="auto" selected="selected">自动显示</option> <option value="0">整数</option> <option value="1">1位小数</option> <option value="2">2位小数</option> <option value="3">3位小数</option> <option value="4">4位小数</option> <option value="5">5位小数</option> <option value="6">6位小数</option> <option value="7">7位小数</option> <option value="8">8位小数</option> </select> </div> </div> <div class="luckysheet-datavisual-content-row"> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-title luckysheet-datavisual-content-column-2x" style="width:20%;">标签格式</div> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-right luckysheet-datavisual-content-column-2x" style="width:70%;"> <select data-sliderdiy="scattersinglelabelcontentformatslider" data-tips="标签显示格式" name="scattersinglelabelcontentformat" id="scattersinglelabelcontentformat" data-bigclass="scattersingle" data-attr="label" data-func="contentformat"> <option value="default" selected="selected">默认</option> <option value="1">仅数据名</option> <option value="2">数据名+2维数值</option> <option value="5">数据名+全部数值</option> <option value="diy">自定义</option> </select> </div> </div> <div style="display:none;"> <div class="luckysheet-datavisual-content-row" id="scattersinglelabelcontentformatslider"> <div style="text-align:center; width:60px; display:inline-block;">数据名称</div> <label data-tips="是否显示数据名" data-bigclass="scattersingle" data-attr="label" data-func="scattersingledatalabelshow" for="scattersinglelabeldatalabelshow" style="font-weight:bold;"><i class="fa fa-eye" aria-hidden="true"></i></label> <input type="checkbox" checked="checked" name="scattersinglelabeldatalabelshow" id="scattersinglelabeldatalabelshow" data-bigclass="scattersingle" data-attr="label" data-func="scattersingledatalabelshow"> <input data-tips="显示在数据名前部文字" placeholder="前缀" id="scattersinglelabeldatalabelprefix" type="text" class="luckysheet-datavisual-config-input" style="width:60px;height:19px;" data-bigclass="scattersingle" data-attr="label" data-func="scattersingledatalabelprefix" /> <input data-tips="显示在数据名尾部文字" placeholder="后缀" id="scattersinglelabeldatalabelsuffix" type="text" class="luckysheet-datavisual-config-input" style="width:60px;height:19px;" data-bigclass="scattersingle" data-attr="label" data-func="scattersingledatalabelsuffix" /> <label data-tips="是否在数据名后换行" data-bigclass="scattersingle" data-attr="label" data-func="scattersingledatalabelline" for="scattersinglelabeldatalabelline" style="font-weight:bold;">换行</label> <input type="checkbox" checked="checked" name="scattersinglelabeldatalabelline" id="scattersinglelabeldatalabelline" data-bigclass="scattersingle" data-attr="label" data-func="scattersingledatalabelline"> </div> </div> <div class="luckysheet-datavisual-content-row" > <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-title luckysheet-datavisual-content-column-2x" style="width:10%;white-space:nowrap;">标签位置</div> <div class="luckysheet-datavisual-content-column luckysheet-datavisual-content-column-right luckysheet-datavisual-content-column-2x" style="width:80%;"> <select data-sliderdiy="scattersinglelabellabelplaceslider" data-tips="标签距离图形位置" data-width="70" name="scattersinglelabellabelplace" id="scattersinglelabellabelplace" data-bigclass="scattersingle" data-attr="label" data-func="labelplace"> <option value="top" selected="selected">顶端</option> <option value="left">左侧</option> <option value="right">右侧</option> <option value="bottom">底部</option> <option value="inside">内部居中</option> <option value="diy">自定义</option> <option value="insideLeft">内部左侧</option> <option value="insideRight">内部右侧</option> <option value="insideTop">内部顶端</option> <option value="insideBottom">内部底端</option> <option value="insideTopLeft">内部左上</option> <option value="insideBottomLeft">内部左下</option> <option value="insideTopRight">内部右上</option> <option value="insideBottomRight">内部右下</option> </select> </div> </div> <div class="luckysheet-datavisual-content-row" style="display:none;height:65px;"> <div data-tips="滑动修改点文本水平位置" id="scattersinglelabellabelplaceslider" data-bigclass="scattersingle" data-attr="label" data-func="labelplacediy" class="luckysheet-datavisual-config-slider" style="width:70%;" data-min="-100" data-max="100" data-step="1"></div> <input data-tips="自定义点文本水平位置" data-sliderid="scattersinglelabellabelplaceslider" id="scattersinglelabellabelplacesliderdiy" type="text" class="luckysheet-datavisual-config-input" data-bigclass="scattersingle" data-attr="label" data-func="labelplacediy" placeholder="请输入" style="width:10%;margin-left:10px;text-align:center;margin-right: 2px;" /><label for="scattersinglelabellabelplacesliderdiy">px</label> <br /> <div data-tips="滑动修改点文本垂直位置" id="scattersinglelabellabelplaceslider1" data-bigclass="scattersingle" data-attr="label" data-func="labelplacediy" class="luckysheet-datavisual-config-slider" style="width:70%;" data-min="-100" data-max="100" data-step="1"></div> <input data-tips="自定义点文本垂直位置" data-sliderid="scattersinglelabellabelplaceslider1" id="scattersinglelabellabelplaceslider1diy" type="text" class="luckysheet-datavisual-config-input" data-bigclass="scattersingle" data-attr="label" data-func="labelplacediy" placeholder="请输入" style="width:10%;margin-left:10px;text-align:center;margin-right: 2px;" /><label for="scattersinglelabellabelplaceslider1diy">px</label> </div> <div class="luckysheet-datavisual-content-row"> <label data-tips="加粗" data-bigclass="scattersingle" data-attr="label" data-func="labelbold" for="scattersinglelabellabelbold" style="font-weight:bold;"><i class="fa fa-bold" aria-hidden="true"></i></label> <input type="checkbox" name="scattersinglelabellabelbold" id="scattersinglelabellabelbold" data-bigclass="scattersingle" data-attr="label" data-func="labelbold"> <label data-tips="斜体" data-bigclass="scattersingle" data-attr="label" data-func="labelitalic" for="scattersinglelabellabelitalic" class="luckysheet-datavisual-content-column-italic"><i class="fa fa-italic" aria-hidden="true"></i></label> <input type="checkbox" name="scattersinglelabellabelitalic" id="scattersinglelabellabelitalic" data-bigclass="scattersingle" data-attr="label" data-func="labelitalic"> <select data-sliderdiy="scattersinglelabellabelfontsizeslider" data-width="50" data-tips="字体大小" name="scattersinglelabellabelfontsize" id="scattersinglelabellabelfontsize" data-bigclass="scattersingle" data-attr="label" data-func="labelfontsize"> <option value="12">12px</option> <option value="14">14px</option> <option value="16">16px</option> <option value="18">18px</option> <option value="20">20px</option> <option value="22">22px</option> <option value="24">24px</option> <option value="30">30px</option> <option value="36">36px</option> <option value="diy">自定义</option> </select> <input data-tips="字体颜色" class="luckysheet-datavisual-config-color" id="scattersinglelinelabelcolor" type="text" data-bigclass="scattersingle" data-attr="label" data-func="labelcolor" /> </div> <div class="luckysheet-datavisual-content-row" style="display:none;"> <div data-tips="滑动修改字体大小" id="scattersinglelabellabelfontsizeslider" data-bigclass="scattersingle" data-attr="label" data-func="labelfontsize" class="luckysheet-datavisual-config-slider" style="width:70%;" data-min="12" data-max="100" data-step="1"></div> <input data-tips="自定义字体大小" data-sliderid="scattersinglelabellabelfontsizeslider" id="scattersinglelabellabelfontsizesliderdiy" type="text" class="luckysheet-datavisual-config-input" data-bigclass="scattersingle" data-attr="label" data-func="labelfontsize" placeholder="请输入" style="width:10%;margin-left:10px;text-align:center;margin-right: 2px;" /><label for="scattersinglelabellabelfontsizesliderdiy">px</label> </div> </div> </div> </div> </div> <div class="luckysheet-chart-point-config-chart"> <div id="luckysheet-chart-point-config-chart-c" class="luckysheet-chart-point-config-chart-c"> </div> </div> </div>';
-const sheetToolHTML = '<div id="luckysheet-tooltip-up" class="jfk-tooltip" role="tooltip" aria-hidden="true" style="left: 505px; top: 410px;"><div class="jfk-tooltip-contentId">组合图表</div><div class="jfk-tooltip-arrow jfk-tooltip-arrowup" style="left: 35.5px;"><div class="jfk-tooltip-arrowimplbefore"></div><div class="jfk-tooltip-arrowimplafter"></div></div></div>';
+const sheetchartpointconfigHTML = '<div class="sheet-chart-point-config"> <div class="sheet-chart-point-config-set"> <div class="sheet-chart-point-config-left"> <div class="sheet-chart-point-config-left-top"> <div class="sheet-chart-point-searchcondition"> <div class="sheet-datavisual-content-row" style="margin-bottom: 0px;margin-top: 0px;height: 30px;"> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-title sheet-datavisual-content-column-2x" style="width:10%;white-space:nowrap;">选择维度</div> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-right sheet-datavisual-content-column-2x" style="width:80%;"> <select data-tips="维度选择" name="luckysheetpointconfigsearchdim" id="luckysheetpointconfigsearchdim"> </select> </div> </div> <div class="sheet-datavisual-content-row" style="margin-bottom: 0px;margin-top: 3px;height: 30px;"> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-title sheet-datavisual-content-column-2x" style="width:10%;">排序</div> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-right sheet-datavisual-content-column-2x" style="width:80%;"> <label data-tips="无排序" for="luckysheetpointconfigsearchorderno">无排序</label> <input type="radio" checked="checked" value="0" name="luckysheetpointconfigsearchorder" id="luckysheetpointconfigsearchorderno"> <label data-tips="升序" for="luckysheetpointconfigsearchorderasc">升序</label> <input type="radio" value="1" name="luckysheetpointconfigsearchorder" id="luckysheetpointconfigsearchorderasc"> <label data-tips="降序" for="luckysheetpointconfigsearchorderdesc">降序</label> <input type="radio" value="2" name="luckysheetpointconfigsearchorder" id="luckysheetpointconfigsearchorderdesc"> </div> </div> <div class="sheet-datavisual-content-row" style="margin-bottom: 0px;margin-top: 5px;height: 30px;"> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-right sheet-datavisual-content-column-2x" style="width:90%;text-align: left;"> <select data-width="70" data-tips="按照什么方式查询" name="luckysheetpointconfigsearchtype" id="luckysheetpointconfigsearchtype"> <option value="0" selected="selected">按照名称</option> <option value="1">按排序前%</option> </select> <input data-tips="查询关于点的关键字" id="luckysheetpointconfigsearchcontent" type="text" class="sheet-datavisual-config-input-no" style="width:40%;" placeholder="查询内容" /> <button id="luckysheetpointconfigsearchcomfirm" class="btn btn-primary sheet-model-conform-btn">查询</button> </div> </div> </div> </div> <div class="sheet-chart-point-config-left-mid"> <span id="sheet-chart-point-btn-all" class="sheet-mousedown-cancel">全选</span> - <span id="sheet-chart-point-btn-clear" class="sheet-mousedown-cancel">清除</span> - <span id="sheet-chart-point-btn-contra" class="sheet-mousedown-cancel">反选</span><span style="text-decoration:none;color:#8D8D8D;float:right;margin-right:40px;cursor:default;" class="sheet-mousedown-cancel">可以直接框选数据点</span> </div> <div class="sheet-chart-point-config-left-bottom"> <div class="sheet-chart-point-searchitem-c sheet-noselected-text">  </div> </div> </div> <div class="sheet-chart-point-config-right"> <div class="sheet-chart-point-itemconfig"> <div class="sheet-datavisual-content-row" style="font-size: 16px;font-weight: bold;"> 数据点设置 </div> <div class="sheet-datavisual-content-row"> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-title sheet-datavisual-content-column-2x" style="width:10%;white-space:nowrap;">图形颜色</div> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-right sheet-datavisual-content-column-2x" style="width:80%;"> <input data-tips="颜色" class="sheet-datavisual-config-colorOpacity" id="scattersingleitemstylecolor" type="text" data-bigclass="scattersingle" data-attr="itemstyle" data-func="color" /> </div> </div> <div class="sheet-datavisual-content-row"> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-title sheet-datavisual-content-column-2x" style="width:10%;white-space:nowrap;">图形大小</div> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-right sheet-datavisual-content-column-2x" style="width:80%;"> <select data-sliderdiy="scattersingleallsymbolsizeslider" data-tips="点大小设置" name="scattersingleallsymbolsize" id="scattersingleallsymbolsize" data-width="50" data-bigclass="scattersingle" data-attr="all" data-func="symbolsize"> <option value="4" selected="selected">4px</option> <option value="6">6px</option> <option value="8">8px</option> <option value="10">10px</option> <option value="12">12px</option> <option value="14">14px</option> <option value="16">16px</option> <option value="diy">自定义</option> </select> </div> </div> <div class="sheet-datavisual-content-row" style="display:none;"> <div data-tips="滑动修改点大小" id="scattersingleallsymbolsizeslider" data-bigclass="scattersingle" data-attr="all" data-func="symbolsize" class="sheet-datavisual-config-slider" style="width:70%;" data-min="1" data-max="50" data-step="1"></div> <input data-tips="自定义点大小" data-sliderid="scattersingleallsymbolsizeslider" id="scattersingleallsymbolsizesliderdiy" type="text" class="sheet-datavisual-config-input" data-bigclass="scattersingle" data-attr="all" data-func="symbolsize" placeholder="请输入" style="width:10%;margin-left:10px;text-align:center;margin-right: 2px;" /><label for="scattersingleallsymbolsizesliderdiy">px</label> </div> <div class="sheet-datavisual-content-row"> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-title sheet-datavisual-content-column-2x" style="width:10%;white-space:nowrap;">图形形状</div> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-right sheet-datavisual-content-column-2x" style="width:80%;"> <select data-tips="点类型设置" data-width="70" name="scattersingleallsymboltype" id="scattersingleallsymboltype" data-bigclass="scattersingle" data-attr="all" data-func="symboltype"> <option value="emptyCircle" selected="selected">空心圆</option> <option value="circle">圆形</option> <option value="emptyRectangle">空心矩形</option> <option value="rect">矩形</option> <option value="roundRect">圆角矩形</option> <option value="emptyTriangle">空心三角</option> <option value="triangle">三角形</option> <option value="emptyDiamond">空心菱形</option> <option value="diamond">菱形</option> <option value="droplet">水滴</option> <option value="pin">标注</option> <option value="arrow">箭头</option> <option value="heart">心形</option> <option value="star">星星</option> </select> </div> </div> <div class="sheet-datavisual-content-rowsplit-sub"></div> <div class="sheet-datavisual-content-row"> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-title sheet-datavisual-content-column-2x" style="width:10%;white-space:nowrap;">边框粗细</div> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-right sheet-datavisual-content-column-2x" style="width:80%;"> <select data-sliderdiy="scattersingleitemstyleborderwidthslider" data-tips="点边框粗细" name="scattersingleitemstyleborderwidth" id="scattersingleitemstyleborderwidth" data-width="50" data-bigclass="scattersingle" data-attr="itemstyle" data-func="borderwidth"><option value="0" selected="selected">无</option> <option value="1">1px</option> <option value="2">2px</option> <option value="3">3px</option> <option value="4">4px</option> <option value="5">5px</option> <option value="6">6px</option> <option value="7">7px</option> <option value="8">8px</option> <option value="diy">自定义</option> </select> </div> </div> <div class="sheet-datavisual-content-row" style="display:none;"> <div data-tips="滑动修改边框粗细" id="scattersingleitemstyleborderwidthslider" data-bigclass="scattersingle" data-attr="itemstyle" data-func="borderwidth" class="sheet-datavisual-config-slider" style="width:70%;" data-min="12" data-max="100" data-step="1"></div> <input data-tips="自定义边框粗细" data-sliderid="scattersingleitemstyleborderwidthslider" id="scattersingleitemstyleborderwidthsliderdiy" type="text" class="sheet-datavisual-config-input" data-bigclass="scattersingle" data-attr="itemstyle" data-func="borderwidth" placeholder="请输入" style="width:10%;margin-left:10px;text-align:center;margin-right: 2px;" /><label for="scattersingleitemstyleborderwidthsliderdiy">%</label> </div> <div class="sheet-datavisual-content-row"> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-title sheet-datavisual-content-column-2x" style="width:10%;white-space:nowrap;">边框样式</div> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-right sheet-datavisual-content-column-2x" style="width:80%;"> <select data-tips="点边框类型设置" data-width="50" name="scattersingleitemstyleborderlinetype" id="scattersingleitemstyleborderlinetype" data-bigclass="scattersingle" data-attr="itemstyle" data-func="borderlinetype"> <option value="solid" selected="selected">实线</option> <option value="dashed">虚线</option> <option value="dotted">点线</option> </select> </div> </div> <div class="sheet-datavisual-content-row"> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-title sheet-datavisual-content-column-2x" style="width:10%;white-space:nowrap;">边框颜色</div> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-right sheet-datavisual-content-column-2x" style="width:80%;"> <input data-tips="点边框颜色" class="sheet-datavisual-config-colorOpacity" id="scattersingleitemstyleborderlinecolor" type="text" data-bigclass="scattersingle" data-attr="itemstyle" data-func="borderlinecolor" /> </div> </div> <div class="sheet-datavisual-content-rowsplit-sub"></div> <div class="sheet-datavisual-content-row"> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-title sheet-datavisual-content-column-2x" style="width:10%;white-space:nowrap;"><i class="fa fa-th-large" aria-hidden="true"></i> 文字标签</div> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-right sheet-datavisual-content-column-2x" style="width:80%;"> <label data-tips="显示数据点的标签" data-bigclass="scattersingle" data-attr="label" data-func="labelshow" for="scattersinglelabellabelshow">显示</label> <input type="radio" checked="checked" value="1" name="scattersinglelabellabelshow" id="scattersinglelabellabelshow" data-bigclass="scattersingle" data-attr="label" data-func="labelshow"> <label data-tips="隐藏数据点的标签" data-bigclass="scattersingle" data-attr="label" data-func="labelshow" for="scattersinglelabellabelshow1">隐藏</label> <input type="radio" value="0" name="scattersinglelabellabelshow" id="scattersinglelabellabelshow1" data-bigclass="scattersingle" data-attr="label" data-func="labelshow"> </div> </div> <div class="sheet-datavisual-content-row" style="height:auto;line-height: initial;margin-left:auto;" showfor="scattersinglelabellabelshow1" hidefor="scattersinglelabellabelshow"> <div class="sheet-datavisual-content-row"> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-title sheet-datavisual-content-column-2x" style="width:40%;">数值比例</div> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-right sheet-datavisual-content-column-2x" style="width:50%;"> <select data-tips="刻度数值放大比例" name="scattersinglelabelformatratio" id="scattersinglelabelformatratio" data-bigclass="scattersingle" data-attr="label" data-func="formatratio"> <option value="0.01">乘以100</option> <option value="0.1">乘以10</option> <option value="1" selected="selected">默认</option> <option value="10">除以10</option> <option value="100">除以100</option> <option value="1000">除以1000</option> <option value="10000">除以1万</option> <option value="100000">除以10万</option> <option value="1000000">除以一百万</option> <option value="10000000">除以一千万</option> <option value="100000000">除以一亿</option> <option value="1000000000">除以十亿</option> </select> </div> </div> <div class="sheet-datavisual-content-row"> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-title sheet-datavisual-content-column-2x" style="width:40%;white-space: nowrap;">小数位数</div> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-right sheet-datavisual-content-column-2x" style="width:50%;"> <select data-tips="数值小数点位数" name="scattersinglelabelfloatlen" id="scattersinglelabelfloatlen" data-bigclass="scattersingle" data-attr="label" data-func="floatlen"> <option value="auto" selected="selected">自动显示</option> <option value="0">整数</option> <option value="1">1位小数</option> <option value="2">2位小数</option> <option value="3">3位小数</option> <option value="4">4位小数</option> <option value="5">5位小数</option> <option value="6">6位小数</option> <option value="7">7位小数</option> <option value="8">8位小数</option> </select> </div> </div> <div class="sheet-datavisual-content-row"> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-title sheet-datavisual-content-column-2x" style="width:20%;">标签格式</div> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-right sheet-datavisual-content-column-2x" style="width:70%;"> <select data-sliderdiy="scattersinglelabelcontentformatslider" data-tips="标签显示格式" name="scattersinglelabelcontentformat" id="scattersinglelabelcontentformat" data-bigclass="scattersingle" data-attr="label" data-func="contentformat"> <option value="default" selected="selected">默认</option> <option value="1">仅数据名</option> <option value="2">数据名+2维数值</option> <option value="5">数据名+全部数值</option> <option value="diy">自定义</option> </select> </div> </div> <div style="display:none;"> <div class="sheet-datavisual-content-row" id="scattersinglelabelcontentformatslider"> <div style="text-align:center; width:60px; display:inline-block;">数据名称</div> <label data-tips="是否显示数据名" data-bigclass="scattersingle" data-attr="label" data-func="scattersingledatalabelshow" for="scattersinglelabeldatalabelshow" style="font-weight:bold;"><i class="fa fa-eye" aria-hidden="true"></i></label> <input type="checkbox" checked="checked" name="scattersinglelabeldatalabelshow" id="scattersinglelabeldatalabelshow" data-bigclass="scattersingle" data-attr="label" data-func="scattersingledatalabelshow"> <input data-tips="显示在数据名前部文字" placeholder="前缀" id="scattersinglelabeldatalabelprefix" type="text" class="sheet-datavisual-config-input" style="width:60px;height:19px;" data-bigclass="scattersingle" data-attr="label" data-func="scattersingledatalabelprefix" /> <input data-tips="显示在数据名尾部文字" placeholder="后缀" id="scattersinglelabeldatalabelsuffix" type="text" class="sheet-datavisual-config-input" style="width:60px;height:19px;" data-bigclass="scattersingle" data-attr="label" data-func="scattersingledatalabelsuffix" /> <label data-tips="是否在数据名后换行" data-bigclass="scattersingle" data-attr="label" data-func="scattersingledatalabelline" for="scattersinglelabeldatalabelline" style="font-weight:bold;">换行</label> <input type="checkbox" checked="checked" name="scattersinglelabeldatalabelline" id="scattersinglelabeldatalabelline" data-bigclass="scattersingle" data-attr="label" data-func="scattersingledatalabelline"> </div> </div> <div class="sheet-datavisual-content-row" > <div class="sheet-datavisual-content-column sheet-datavisual-content-column-title sheet-datavisual-content-column-2x" style="width:10%;white-space:nowrap;">标签位置</div> <div class="sheet-datavisual-content-column sheet-datavisual-content-column-right sheet-datavisual-content-column-2x" style="width:80%;"> <select data-sliderdiy="scattersinglelabellabelplaceslider" data-tips="标签距离图形位置" data-width="70" name="scattersinglelabellabelplace" id="scattersinglelabellabelplace" data-bigclass="scattersingle" data-attr="label" data-func="labelplace"> <option value="top" selected="selected">顶端</option> <option value="left">左侧</option> <option value="right">右侧</option> <option value="bottom">底部</option> <option value="inside">内部居中</option> <option value="diy">自定义</option> <option value="insideLeft">内部左侧</option> <option value="insideRight">内部右侧</option> <option value="insideTop">内部顶端</option> <option value="insideBottom">内部底端</option> <option value="insideTopLeft">内部左上</option> <option value="insideBottomLeft">内部左下</option> <option value="insideTopRight">内部右上</option> <option value="insideBottomRight">内部右下</option> </select> </div> </div> <div class="sheet-datavisual-content-row" style="display:none;height:65px;"> <div data-tips="滑动修改点文本水平位置" id="scattersinglelabellabelplaceslider" data-bigclass="scattersingle" data-attr="label" data-func="labelplacediy" class="sheet-datavisual-config-slider" style="width:70%;" data-min="-100" data-max="100" data-step="1"></div> <input data-tips="自定义点文本水平位置" data-sliderid="scattersinglelabellabelplaceslider" id="scattersinglelabellabelplacesliderdiy" type="text" class="sheet-datavisual-config-input" data-bigclass="scattersingle" data-attr="label" data-func="labelplacediy" placeholder="请输入" style="width:10%;margin-left:10px;text-align:center;margin-right: 2px;" /><label for="scattersinglelabellabelplacesliderdiy">px</label> <br /> <div data-tips="滑动修改点文本垂直位置" id="scattersinglelabellabelplaceslider1" data-bigclass="scattersingle" data-attr="label" data-func="labelplacediy" class="sheet-datavisual-config-slider" style="width:70%;" data-min="-100" data-max="100" data-step="1"></div> <input data-tips="自定义点文本垂直位置" data-sliderid="scattersinglelabellabelplaceslider1" id="scattersinglelabellabelplaceslider1diy" type="text" class="sheet-datavisual-config-input" data-bigclass="scattersingle" data-attr="label" data-func="labelplacediy" placeholder="请输入" style="width:10%;margin-left:10px;text-align:center;margin-right: 2px;" /><label for="scattersinglelabellabelplaceslider1diy">px</label> </div> <div class="sheet-datavisual-content-row"> <label data-tips="加粗" data-bigclass="scattersingle" data-attr="label" data-func="labelbold" for="scattersinglelabellabelbold" style="font-weight:bold;"><i class="fa fa-bold" aria-hidden="true"></i></label> <input type="checkbox" name="scattersinglelabellabelbold" id="scattersinglelabellabelbold" data-bigclass="scattersingle" data-attr="label" data-func="labelbold"> <label data-tips="斜体" data-bigclass="scattersingle" data-attr="label" data-func="labelitalic" for="scattersinglelabellabelitalic" class="sheet-datavisual-content-column-italic"><i class="fa fa-italic" aria-hidden="true"></i></label> <input type="checkbox" name="scattersinglelabellabelitalic" id="scattersinglelabellabelitalic" data-bigclass="scattersingle" data-attr="label" data-func="labelitalic"> <select data-sliderdiy="scattersinglelabellabelfontsizeslider" data-width="50" data-tips="字体大小" name="scattersinglelabellabelfontsize" id="scattersinglelabellabelfontsize" data-bigclass="scattersingle" data-attr="label" data-func="labelfontsize"> <option value="12">12px</option> <option value="14">14px</option> <option value="16">16px</option> <option value="18">18px</option> <option value="20">20px</option> <option value="22">22px</option> <option value="24">24px</option> <option value="30">30px</option> <option value="36">36px</option> <option value="diy">自定义</option> </select> <input data-tips="字体颜色" class="sheet-datavisual-config-color" id="scattersinglelinelabelcolor" type="text" data-bigclass="scattersingle" data-attr="label" data-func="labelcolor" /> </div> <div class="sheet-datavisual-content-row" style="display:none;"> <div data-tips="滑动修改字体大小" id="scattersinglelabellabelfontsizeslider" data-bigclass="scattersingle" data-attr="label" data-func="labelfontsize" class="sheet-datavisual-config-slider" style="width:70%;" data-min="12" data-max="100" data-step="1"></div> <input data-tips="自定义字体大小" data-sliderid="scattersinglelabellabelfontsizeslider" id="scattersinglelabellabelfontsizesliderdiy" type="text" class="sheet-datavisual-config-input" data-bigclass="scattersingle" data-attr="label" data-func="labelfontsize" placeholder="请输入" style="width:10%;margin-left:10px;text-align:center;margin-right: 2px;" /><label for="scattersinglelabellabelfontsizesliderdiy">px</label> </div> </div> </div> </div> </div> <div class="sheet-chart-point-config-chart"> <div id="sheet-chart-point-config-chart-c" class="sheet-chart-point-config-chart-c"> </div> </div> </div>';
+const sheetToolHTML = '<div id="sheet-tooltip-up" class="jfk-tooltip" role="tooltip" aria-hidden="true" style="left: 505px; top: 410px;"><div class="jfk-tooltip-contentId">组合图表</div><div class="jfk-tooltip-arrow jfk-tooltip-arrowup" style="left: 35.5px;"><div class="jfk-tooltip-arrowimplbefore"></div><div class="jfk-tooltip-arrowimplafter"></div></div></div>';
 
 // toolbar
 function menuToolBar() {
@@ -916,19 +916,19 @@ const sheetlodingHTML = function (target, coverConfig) {
         }
     }
     const imageHtml = sheetloadingImage(config);
-    const id = "luckysheet-loading-" + uuid.v4();
+    const id = "sheet-loading-" + uuid.v4();
     const loadingHtml = `
-        <div class="luckysheet-loading-content"> 
-            <div class="${config.imageClass} luckysheet-loading-image">
+        <div class="sheet-loading-content"> 
+            <div class="${config.imageClass} sheet-loading-image">
                 ${imageHtml}
             </div>
-            <div class="${config.textClass} luckysheet-loading-text">
+            <div class="${config.textClass} sheet-loading-text">
             <span>${config.text}</span>
             </div>    
         </div>`;
     const loading = document.createElement("div");
     loading.id = id;
-    loading.className = "luckysheet-loading-mask " + config.customClass;
+    loading.className = "sheet-loading-mask " + config.customClass;
     $(loading).html(loadingHtml);
     $(target).append(loading);
 
@@ -951,17 +951,17 @@ const sheetlodingHTML = function (target, coverConfig) {
 }
 
 // var menusetting = {
-//     menu_selectall: '<div id="luckysheet-selectall-btn-title"><i class="fa fa-i-cursor"></i> 全选</div>',
-//     menu_copy: '<div id="luckysheet-copy-btn-title"><i class="fa fa-copy"></i> 复制</div>',
-//     menu_undo: '<div id="luckysheet-redo-btn-title"><i class="fa fa-reply"></i> 撤销</div>',
-//     menu_redo: '<div id="luckysheet-undo-btn-title"><i class="fa fa-share"></i> 恢复</div>',
-//     menu_paste: '<div id="luckysheet-paste-btn-title"><i class="fa fa-clipboard"></i> 粘贴</div>',
-//     menu_download: '<div id="luckysheet-download-btn-title"><i class="fa fa-cloud-download"></i> 下载</div>',
-//     menu_share: '<div id="luckysheet-share-btn-title"><i class="fa fa-share-alt"></i> 分享</div>',
-//     menu_chart: '<div id="luckysheet-chart-btn-title"> <i class="fa fa-pie-chart"></i> 图表生成</div>',
-//     menu_pivot: '<div id="luckysheet-pivot-btn-title"> <i class="fa fa-cube" aria-hidden="true"></i> 数据透视表</div>',
-//     menu_freezenrow: '<div id="luckysheet-freezen-btn-horizontal"><i class="fa fa-list-alt"></i> 冻结首行</div>',
-//     menu_freezencolumn: '<div id="luckysheet-freezen-btn-vertical"><i class="fa fa-indent"></i> 冻结首列</div>',
+//     menu_selectall: '<div id="sheet-selectall-btn-title"><i class="fa fa-i-cursor"></i> 全选</div>',
+//     menu_copy: '<div id="sheet-copy-btn-title"><i class="fa fa-copy"></i> 复制</div>',
+//     menu_undo: '<div id="sheet-redo-btn-title"><i class="fa fa-reply"></i> 撤销</div>',
+//     menu_redo: '<div id="sheet-undo-btn-title"><i class="fa fa-share"></i> 恢复</div>',
+//     menu_paste: '<div id="sheet-paste-btn-title"><i class="fa fa-clipboard"></i> 粘贴</div>',
+//     menu_download: '<div id="sheet-download-btn-title"><i class="fa fa-cloud-download"></i> 下载</div>',
+//     menu_share: '<div id="sheet-share-btn-title"><i class="fa fa-share-alt"></i> 分享</div>',
+//     menu_chart: '<div id="sheet-chart-btn-title"> <i class="fa fa-pie-chart"></i> 图表生成</div>',
+//     menu_pivot: '<div id="sheet-pivot-btn-title"> <i class="fa fa-cube" aria-hidden="true"></i> 数据透视表</div>',
+//     menu_freezenrow: '<div id="sheet-freezen-btn-horizontal"><i class="fa fa-list-alt"></i> 冻结首行</div>',
+//     menu_freezencolumn: '<div id="sheet-freezen-btn-vertical"><i class="fa fa-indent"></i> 冻结首列</div>',
 // };
 
 const sheetColor = [
@@ -1056,37 +1056,37 @@ luckysheet_CFiconsImg.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAA
 
 const iconfontObjects = {
     border:{
-        'border-top': ' iconfont luckysheet-iconfont-shangbiankuang',
-        'border-bottom': ' iconfont luckysheet-iconfont-xiabiankuang',
-        'border-left': ' iconfont luckysheet-iconfont-zuobiankuang',
-        'border-right': ' iconfont luckysheet-iconfont-youbiankuang',
-        'border-none': ' iconfont luckysheet-iconfont-wubiankuang',
-        'border-all': ' iconfont luckysheet-iconfont-quanjiabiankuang',
-        'border-outside': ' iconfont luckysheet-iconfont-sizhoujiabiankuang',
-        'border-inside': ' iconfont luckysheet-iconfont-neikuangxian',
-        'border-horizontal': ' iconfont luckysheet-iconfont-neikuanghengxian',
-        'border-vertical': ' iconfont luckysheet-iconfont-neikuangshuxian',
+        'border-top': ' iconfont sheet-iconfont-shangbiankuang',
+        'border-bottom': ' iconfont sheet-iconfont-xiabiankuang',
+        'border-left': ' iconfont sheet-iconfont-zuobiankuang',
+        'border-right': ' iconfont sheet-iconfont-youbiankuang',
+        'border-none': ' iconfont sheet-iconfont-wubiankuang',
+        'border-all': ' iconfont sheet-iconfont-quanjiabiankuang',
+        'border-outside': ' iconfont sheet-iconfont-sizhoujiabiankuang',
+        'border-inside': ' iconfont sheet-iconfont-neikuangxian',
+        'border-horizontal': ' iconfont sheet-iconfont-neikuanghengxian',
+        'border-vertical': ' iconfont sheet-iconfont-neikuangshuxian',
     },
     align:{
-        'left': ' iconfont luckysheet-iconfont-wenbenzuoduiqi',
-        'center': ' iconfont luckysheet-iconfont-wenbenjuzhongduiqi',
-        'right': ' iconfont luckysheet-iconfont-wenbenyouduiqi',
-        'top': ' iconfont luckysheet-iconfont-dingbuduiqi',
-        'middle': ' iconfont luckysheet-iconfont-shuipingduiqi',
-        'bottom': ' iconfont luckysheet-iconfont-dibuduiqi',
+        'left': ' iconfont sheet-iconfont-wenbenzuoduiqi',
+        'center': ' iconfont sheet-iconfont-wenbenjuzhongduiqi',
+        'right': ' iconfont sheet-iconfont-wenbenyouduiqi',
+        'top': ' iconfont sheet-iconfont-dingbuduiqi',
+        'middle': ' iconfont sheet-iconfont-shuipingduiqi',
+        'bottom': ' iconfont sheet-iconfont-dibuduiqi',
     },
     textWrap:{
-        'overflow': ' iconfont luckysheet-iconfont-yichu1',
-        'wrap': ' iconfont luckysheet-iconfont-zidonghuanhang',
-        'clip': ' iconfont luckysheet-iconfont-jieduan',
+        'overflow': ' iconfont sheet-iconfont-yichu1',
+        'wrap': ' iconfont sheet-iconfont-zidonghuanhang',
+        'clip': ' iconfont sheet-iconfont-jieduan',
     },
     rotation:{
-        'none': ' iconfont luckysheet-iconfont-wuxuanzhuang',
-        'angleup': ' iconfont luckysheet-iconfont-xiangshangqingxie',
-        'angledown': ' iconfont luckysheet-iconfont-xiangxiaqingxie',
-        'vertical': ' iconfont luckysheet-iconfont-shupaiwenzi',
-        'rotation-up': ' iconfont luckysheet-iconfont-wenbenxiangshang',
-        'rotation-down': ' iconfont luckysheet-iconfont-xiangxia90',
+        'none': ' iconfont sheet-iconfont-wuxuanzhuang',
+        'angleup': ' iconfont sheet-iconfont-xiangshangqingxie',
+        'angledown': ' iconfont sheet-iconfont-xiangxiaqingxie',
+        'vertical': ' iconfont sheet-iconfont-shupaiwenzi',
+        'rotation-up': ' iconfont sheet-iconfont-wenbenxiangshang',
+        'rotation-down': ' iconfont sheet-iconfont-xiangxia90',
     }
 }
 

@@ -30,7 +30,7 @@ export default {
     updateUrl: "", //表格数据的更新地址
     updateImageUrl: "", //缩略图的更新地址
     allowUpdate: false, //是否允许编辑后的后台更新
-    functionButton: "", //右上角功能按钮，例如'<button id="" class="btn btn-primary" style="padding:3px 6px;font-size: 12px;margin-right: 10px;">下载</button>    <button id="" class="btn btn-primary btn-danger" style="    padding:3px 6px;    font-size: 12px;    margin-right: 10px;">分享</button>    <button id="luckysheet-share-btn-title" class="btn btn-primary btn-danger" style="    padding:3px 6px;    font-size: 12px;    margin-right: 10px;">秀数据</button>'
+    functionButton: "", //右上角功能按钮，例如'<button id="" class="btn btn-primary" style="padding:3px 6px;font-size: 12px;margin-right: 10px;">下载</button>    <button id="" class="btn btn-primary btn-danger" style="    padding:3px 6px;    font-size: 12px;    margin-right: 10px;">分享</button>    <button id="sheet-share-btn-title" class="btn btn-primary btn-danger" style="    padding:3px 6px;    font-size: 12px;    margin-right: 10px;">秀数据</button>'
     showConfigWindowResize: true, //图表和数据透视表的配置会在右侧弹出，设置弹出后表格是否会自动缩进
     enableAddRow: false,//允许添加行
     enableAddBackTop: false,//允许回到顶部

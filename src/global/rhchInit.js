@@ -99,7 +99,7 @@ export function zoomSetting(){
     //zoom
     Store.rowHeaderWidth = sheetConfigSetting.rowHeaderWidth * Store.zoomRatio;
     Store.columnHeaderHeight = sheetConfigSetting.columnHeaderHeight *Store.zoomRatio;
-    $("#luckysheet-rows-h").width((Store.rowHeaderWidth-1.5));
-    $("#luckysheet-cols-h-c").height((Store.columnHeaderHeight-1.5));
-    $("#luckysheet-left-top").css({width:Store.rowHeaderWidth-1.5, height:Store.columnHeaderHeight-1.5});
+    $("#sheet-rows-h").width((Store.rowHeaderWidth-1.5));
+    $("#sheet-cols-h-c").height((Store.columnHeaderHeight-1.5));
+    $("#sheet-left-top").css({width:Store.rowHeaderWidth-1.5, height:Store.columnHeaderHeight-1.5});
 }

@@ -255,7 +255,7 @@ const sheetmanage = {
 
         $("#sheet-area div.sheets-item").removeClass("sheets-item-active");
         $("#sheets-item" + index).addClass("sheets-item-active");
-        $("#luckysheet-cell-main").append('<div id="luckysheet-datavisual-selection-set-' + index + '" class="luckysheet-datavisual-selection-set"></div>');
+        $("#sheet-cell-main").append('<div id="sheet-datavisual-selection-set-' + index + '" class="sheet-datavisual-selection-set"></div>');
         cleargridelement(e);
 
         server.saveParam("sha", null, $.extend(true, {}, sheetconfig));
@@ -411,7 +411,7 @@ const sheetmanage = {
             //     this.sheetMaxIndex = sheetIndex;
             // }
 
-            $("#luckysheet-cell-main").append('<div ' + display + ' id="luckysheet-datavisual-selection-set-' + sheetIndex + '" class="luckysheet-datavisual-selection-set"></div>');
+            $("#sheet-cell-main").append('<div ' + display + ' id="sheet-datavisual-selection-set-' + sheetIndex + '" class="sheet-datavisual-selection-set"></div>');
         }
 
         $("#sheet-container-c").append(btn.join(""));
@@ -475,7 +475,7 @@ const sheetmanage = {
 
         $("#sheet-area div.sheets-item").removeClass("sheets-item-active");
         $("#sheets-item" + index).addClass("sheets-item-active");
-        $("#luckysheet-cell-main").append('<div id="luckysheet-datavisual-selection-set-' + index + '" class="luckysheet-datavisual-selection-set"></div>');
+        $("#sheet-cell-main").append('<div id="sheet-datavisual-selection-set-' + index + '" class="sheet-datavisual-selection-set"></div>');
         cleargridelement(e);
 
         server.saveParam("shc", index, { "copyindex": file.index, "name": copyjson.name });
@@ -539,7 +539,7 @@ const sheetmanage = {
 
         $("#sheet-area div.sheets-item").removeClass("sheets-item-active");
         $("#sheets-item" + data.index).addClass("sheets-item-active");
-        $("#luckysheet-cell-main").append('<div id="luckysheet-datavisual-selection-set-' + data.index + '" class="luckysheet-datavisual-selection-set"></div>');
+        $("#sheet-cell-main").append('<div id="sheet-datavisual-selection-set-' + data.index + '" class="sheet-datavisual-selection-set"></div>');
         cleargridelement();
 
         if(isrenew != null){
@@ -565,7 +565,7 @@ const sheetmanage = {
         _this.setSheetHide(index);
 
         $("#sheets-item" + index).remove();
-        $("#luckysheet-datavisual-selection-set-" + index).remove();
+        $("#sheet-datavisual-selection-set-" + index).remove();
         
         let removedsheet = Store.luckysheetfile.splice(arrIndex, 1);
         _this.reOrderAllSheet();
@@ -787,11 +787,11 @@ const sheetmanage = {
 
         setTimeout(function () {
             tooltip.createHoverTip("#sheet_info_detail" ,".luckysheet_info_detail_back, .luckysheet_info_detail_input, .luckysheet_info_detail_update");
-            tooltip.createHoverTip("#luckysheet-wa-editor" ,".luckysheet-toolbar-menu-button, .luckysheet-toolbar-button, .luckysheet-toolbar-combo-button");
+            tooltip.createHoverTip("#sheet-wa-editor" ,".sheet-toolbar-menu-button, .sheet-toolbar-button, .sheet-toolbar-combo-button");
 
             Store.sheetTableContentHW = [
-                $("#luckysheet-cell-main").width() + Store.rowHeaderWidth - Store.cellMainSrollBarSize, 
-                $("#luckysheet-cell-main").height() + Store.columnHeaderHeight - Store.cellMainSrollBarSize
+                $("#sheet-cell-main").width() + Store.rowHeaderWidth - Store.cellMainSrollBarSize, 
+                $("#sheet-cell-main").height() + Store.columnHeaderHeight - Store.cellMainSrollBarSize
             ];
             if(!$("#sheetTableContent, #sheetTableContentF").get(0)){
                 return;
@@ -832,7 +832,7 @@ const sheetmanage = {
                     }
                     else {
                         Store.luckysheetcurrentisPivotTable = false;
-                        $("#luckysheet-modal-dialog-slider-pivot").hide();
+                        $("#sheet-modal-dialog-slider-pivot").hide();
                     }
 
                     // Store toolbar button width value
@@ -842,17 +842,17 @@ const sheetmanage = {
 
                     //等待滚动条dom宽高加载完成后 初始化滚动位置
                     if(file["scrollLeft"] != null && file["scrollLeft"] > 0){
-                        $("#luckysheet-scrollbar-x").scrollLeft(file["scrollLeft"]);
+                        $("#sheet-scrollbar-x").scrollLeft(file["scrollLeft"]);
                     }
                     else{
-                        $("#luckysheet-scrollbar-x").scrollLeft(0);
+                        $("#sheet-scrollbar-x").scrollLeft(0);
                     }
             
                     if(file["scrollTop"] != null && file["scrollTop"] > 0){
-                        $("#luckysheet-scrollbar-y").scrollTop(file["scrollTop"]);
+                        $("#sheet-scrollbar-y").scrollTop(file["scrollTop"]);
                     }
                     else{
-                        $("#luckysheet-scrollbar-y").scrollTop(0);
+                        $("#sheet-scrollbar-y").scrollTop(0);
                     }
 
                     // 此处已经渲染完成表格，应该挪到前面
@@ -967,12 +967,12 @@ const sheetmanage = {
         file["luckysheet_select_save"] = $.extend(true, [], Store.luckysheet_select_save);
         file["luckysheet_selection_range"] = $.extend(true, [], Store.luckysheet_selection_range);
 
-        if($("#luckysheet-scrollbar-x")[0].scrollWidth > $("#luckysheet-scrollbar-x")[0].offsetWidth){
-            file["scrollLeft"] = $("#luckysheet-scrollbar-x").scrollLeft(); //横向滚动条
+        if($("#sheet-scrollbar-x")[0].scrollWidth > $("#sheet-scrollbar-x")[0].offsetWidth){
+            file["scrollLeft"] = $("#sheet-scrollbar-x").scrollLeft(); //横向滚动条
         }
 
-        if($("#luckysheet-scrollbar-y")[0].scrollHeight > $("#luckysheet-scrollbar-y")[0].offsetHeight){
-            file["scrollTop"] = $("#luckysheet-scrollbar-y").scrollTop(); //纵向滚动条
+        if($("#sheet-scrollbar-y")[0].scrollHeight > $("#sheet-scrollbar-y")[0].offsetHeight){
+            file["scrollTop"] = $("#sheet-scrollbar-y").scrollTop(); //纵向滚动条
         }
 
         file["zoomRatio"] = Store.zoomRatio;
@@ -1033,17 +1033,17 @@ const sheetmanage = {
         selectionCopyShow();
 
         if (file["scrollLeft"] != null && file["scrollLeft"] > 0) {
-            $("#luckysheet-scrollbar-x").scrollLeft(file["scrollLeft"]); //列标题
+            $("#sheet-scrollbar-x").scrollLeft(file["scrollLeft"]); //列标题
         }
         else {
-            $("#luckysheet-scrollbar-x").scrollLeft(0);
+            $("#sheet-scrollbar-x").scrollLeft(0);
         }
 
         if (file["scrollTop"] != null && file["scrollTop"] > 0) {
-            $("#luckysheet-scrollbar-y").scrollTop(file["scrollTop"]); //列标题
+            $("#sheet-scrollbar-y").scrollTop(file["scrollTop"]); //列标题
         }
         else {
-            $("#luckysheet-scrollbar-y").scrollTop(0);
+            $("#sheet-scrollbar-y").scrollTop(0);
         }
     },
     storeSheetParamALL: function() {
@@ -1149,15 +1149,15 @@ const sheetmanage = {
         }
 
         if(server.allowUpdate){
-            $("#luckysheet-cell-main #luckysheet-multipleRange-show").empty();
+            $("#sheet-cell-main #sheet-multipleRange-show").empty();
             server.multipleIndex = 0;
         }
         
         // 钩子函数
         method.createHookFunction('sheetActivate', index, isPivotInitial, isNewSheet);
 
-        $('#luckysheet-filter-selected-sheet' + Store.currentSheetIndex + ', #luckysheet-filter-options-sheet' + Store.currentSheetIndex).hide();
-        $('#luckysheet-filter-selected-sheet' + index + ', #luckysheet-filter-options-sheet' + index).show();
+        $('#sheet-filter-selected-sheet' + Store.currentSheetIndex + ', #sheet-filter-options-sheet' + Store.currentSheetIndex).hide();
+        $('#sheet-filter-selected-sheet' + index + ', #sheet-filter-options-sheet' + index).show();
 
         _this.storeSheetParamALL();
         _this.setCurSheet(index);
@@ -1172,7 +1172,7 @@ const sheetmanage = {
         }
         else{
             Store.luckysheetcurrentisPivotTable = false;
-            $("#luckysheet-modal-dialog-slider-pivot").hide();
+            $("#sheet-modal-dialog-slider-pivot").hide();
             luckysheetsizeauto(false);
         }
 
@@ -1238,7 +1238,7 @@ const sheetmanage = {
                 server.saveParam("shs", null, Store.currentSheetIndex);
             }
             else{
-                $("#luckysheet-grid-window-1").append(sheetlodingHTML());
+                $("#sheet-grid-window-1").append(sheetlodingHTML());
 
                 let sheetindex = _this.checkLoadSheetIndex(file);
                 
@@ -1283,8 +1283,8 @@ const sheetmanage = {
             }
         }
 
-        $("#luckysheet-cell-main .luckysheet-datavisual-selection-set").hide();
-        $("#luckysheet-datavisual-selection-set-" + index).show();
+        $("#sheet-cell-main .sheet-datavisual-selection-set").hide();
+        $("#sheet-datavisual-selection-set-" + index).show();
 
         //隐藏其他sheet的图表，显示当前sheet的图表 chartMix
         renderChartShow(index);
@@ -1416,13 +1416,13 @@ const sheetmanage = {
     },
     showSheet: function() {
         // changeSheetContainerSize();
-        $("#luckysheet-cell-flow_0").css({ "width": Store.ch_width, "top": "-1px" }); //width更新
+        $("#sheet-cell-flow_0").css({ "width": Store.ch_width, "top": "-1px" }); //width更新
         $("#sheettable_0").css({ "width": Store.ch_width - 1, "height": Store.rh_height });
         $("#luckysheetrowHeader_0").css("height", Store.rh_height);
-        $("#luckysheet-cols-h-cells_0").css("width", Store.ch_width); //width更新
+        $("#sheet-cols-h-cells_0").css("width", Store.ch_width); //width更新
 
-        $("#luckysheet-scrollbar-x div").width(Store.ch_width);
-        $("#luckysheet-scrollbar-y div").height(Store.rh_height + Store.columnHeaderHeight - Store.cellMainSrollBarSize - 3);
+        $("#sheet-scrollbar-x div").width(Store.ch_width);
+        $("#sheet-scrollbar-y div").height(Store.rh_height + Store.columnHeaderHeight - Store.cellMainSrollBarSize - 3);
 
         //等待滚动条dom宽高计算完成后 初始化该表格滚动位置
         let index = this.getSheetIndex(Store.currentSheetIndex);
@@ -1432,17 +1432,17 @@ const sheetmanage = {
         Store.scrollRefreshSwitch = false;
         
         if(file["scrollLeft"] != null && file["scrollLeft"] > 0){
-            $("#luckysheet-scrollbar-x").scrollLeft(file["scrollLeft"] * Store.zoomRatio);
+            $("#sheet-scrollbar-x").scrollLeft(file["scrollLeft"] * Store.zoomRatio);
         }
         else{
-            $("#luckysheet-scrollbar-x").scrollLeft(0);
+            $("#sheet-scrollbar-x").scrollLeft(0);
         }
 
         if(file["scrollTop"] != null && file["scrollTop"] > 0){
-            $("#luckysheet-scrollbar-y").scrollTop(file["scrollTop"] * Store.zoomRatio);
+            $("#sheet-scrollbar-y").scrollTop(file["scrollTop"] * Store.zoomRatio);
         }
         else{
-            $("#luckysheet-scrollbar-y").scrollTop(0);
+            $("#sheet-scrollbar-y").scrollTop(0);
         }
 
         setTimeout(() => {
@@ -1483,7 +1483,7 @@ const sheetmanage = {
         cleargridelement();
         this.changeSheet(index, isPivotInitial, isNewSheet);
         
-        $("#sheet-list, #luckysheet-rightclick-sheet-menu").hide();
+        $("#sheet-list, #sheet-rightclick-sheet-menu").hide();
 
         if (formula.rangestart) {
             formula.createRangeHightlight();
@@ -1658,7 +1658,7 @@ const sheetmanage = {
         let index = this.getSheetIndex(sheetIndex);
         let file = Store.luckysheetfile[index];
 
-        // if($('#luckysheet-filter-selected-sheet' + sheetIndex).length > 0 || file.filter_select == null || JSON.stringify(file.filter_select) == "{}"){
+        // if($('#sheet-filter-selected-sheet' + sheetIndex).length > 0 || file.filter_select == null || JSON.stringify(file.filter_select) == "{}"){
         //     if(file.config != null && file.config.rowhidden != null){
         //         file.config.rowhidden =  {};
         //         Store.config = file.config;
@@ -1690,7 +1690,7 @@ const sheetmanage = {
             rowhidden =  file.config.rowhidden;
         }
 
-        $("#luckysheet-filter-options-sheet" + sheetIndex + " .luckysheet-filter-options").each(function(i){
+        $("#sheet-filter-options-sheet" + sheetIndex + " .sheet-filter-options").each(function(i){
             if(file.filter == null){
                 return false;
             }

@@ -18,8 +18,8 @@ import {checkProtectionLockedRangeList,checkProtectionAllSelected,checkProtectio
 //查找替换
 const luckysheetSearchReplace = {
     createDialog: function(source){
-        $("#luckysheet-modal-dialog-mask").hide();
-        $("#luckysheet-search-replace").remove();
+        $("#sheet-modal-dialog-mask").hide();
+        $("#sheet-search-replace").remove();
 
         const _locale = locale();
         const locale_findAndReplace = _locale.findAndReplace;
@@ -57,74 +57,74 @@ const luckysheetSearchReplace = {
                       '</div>';
 
         $("body").append(replaceHtml(modelHTML, { 
-            "id": "luckysheet-search-replace", 
-            "addclass": "luckysheet-search-replace", 
+            "id": "sheet-search-replace", 
+            "addclass": "sheet-search-replace", 
             "title": "", 
             "content": content, 
-            "botton": '<button class="btn btn-default luckysheet-model-close-btn">'+locale_button.close+'</button>', 
+            "botton": '<button class="btn btn-default sheet-model-close-btn">'+locale_button.close+'</button>', 
             "style": "z-index:100003",
             "close":locale_button.close
         }));
-        let _t = $("#luckysheet-search-replace").find(".luckysheet-modal-dialog-content").css("min-width", 500).end(), 
+        let _t = $("#sheet-search-replace").find(".sheet-modal-dialog-content").css("min-width", 500).end(), 
             myh = _t.outerHeight(), 
             myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
-        $("#luckysheet-search-replace").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 3 }).show();
+        $("#sheet-search-replace").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 3 }).show();
     
         if(source == "0"){
-            $("#luckysheet-search-replace #searchTab").addClass("on").siblings().removeClass("on");
-            $("#luckysheet-search-replace #replaceInput").hide();
-            $("#luckysheet-search-replace #replaceAllBtn").hide();
-            $("#luckysheet-search-replace #replaceBtn").hide();
+            $("#sheet-search-replace #searchTab").addClass("on").siblings().removeClass("on");
+            $("#sheet-search-replace #replaceInput").hide();
+            $("#sheet-search-replace #replaceAllBtn").hide();
+            $("#sheet-search-replace #replaceBtn").hide();
         }
         else if(source == "1"){
-            $("#luckysheet-search-replace #replaceTab").addClass("on").siblings().removeClass("on");
-            $("#luckysheet-search-replace #replaceInput").show();
-            $("#luckysheet-search-replace #replaceAllBtn").show();
-            $("#luckysheet-search-replace #replaceBtn").show();
+            $("#sheet-search-replace #replaceTab").addClass("on").siblings().removeClass("on");
+            $("#sheet-search-replace #replaceInput").show();
+            $("#sheet-search-replace #replaceAllBtn").show();
+            $("#sheet-search-replace #replaceBtn").show();
         }
     },
     init: function(){
         let _this = this;
 
         //查找替换 切换
-        $(document).off("click.SRtabBoxspan").on("click.SRtabBoxspan", "#luckysheet-search-replace .tabBox span", function(){
+        $(document).off("click.SRtabBoxspan").on("click.SRtabBoxspan", "#sheet-search-replace .tabBox span", function(){
             $(this).addClass("on").siblings().removeClass("on");
 
             let _id = $(this).attr("id");
             if(_id == "searchTab"){
-                $("#luckysheet-search-replace #replaceInput").hide();
-                $("#luckysheet-search-replace #replaceAllBtn").hide();
-                $("#luckysheet-search-replace #replaceBtn").hide();
+                $("#sheet-search-replace #replaceInput").hide();
+                $("#sheet-search-replace #replaceAllBtn").hide();
+                $("#sheet-search-replace #replaceBtn").hide();
 
-                $("#luckysheet-search-replace #searchInput input").focus();
+                $("#sheet-search-replace #searchInput input").focus();
             }
             else if(_id == "replaceTab"){
-                $("#luckysheet-search-replace #replaceInput").show();
-                $("#luckysheet-search-replace #replaceAllBtn").show();
-                $("#luckysheet-search-replace #replaceBtn").show();
+                $("#sheet-search-replace #replaceInput").show();
+                $("#sheet-search-replace #replaceAllBtn").show();
+                $("#sheet-search-replace #replaceBtn").show();
 
-                $("#luckysheet-search-replace #replaceInput input").focus();
+                $("#sheet-search-replace #replaceInput input").focus();
             }
         });
 
         //查找下一个
-        $(document).off("keyup.SRsearchInput").on("keyup.SRsearchInput", "#luckysheet-search-replace #searchInput input", function(event){
+        $(document).off("keyup.SRsearchInput").on("keyup.SRsearchInput", "#sheet-search-replace #searchInput input", function(event){
             let kcode = event.keyCode;
             if(kcode == keycode.ENTER){
                 _this.searchNext();
             }
         });
-        $(document).off("click.SRsearchNextBtn").on("click.SRsearchNextBtn", "#luckysheet-search-replace #searchNextBtn", function(){
+        $(document).off("click.SRsearchNextBtn").on("click.SRsearchNextBtn", "#sheet-search-replace #searchNextBtn", function(){
             _this.searchNext();
         });
 
         //查找全部
-        $(document).off("click.SRsearchAllBtn").on("click.SRsearchAllBtn", "#luckysheet-search-replace #searchAllBtn", function(){
+        $(document).off("click.SRsearchAllBtn").on("click.SRsearchAllBtn", "#sheet-search-replace #searchAllBtn", function(){
             _this.searchAll();
         });
-        $(document).off("click.SRsearchAllboxItem").on("click.SRsearchAllboxItem", "#luckysheet-search-replace #searchAllbox .boxItem", function(){
+        $(document).off("click.SRsearchAllboxItem").on("click.SRsearchAllboxItem", "#sheet-search-replace #searchAllbox .boxItem", function(){
             $(this).addClass("on").siblings().removeClass("on");
 
             let r = $(this).attr("data-row");
@@ -141,10 +141,10 @@ const luckysheetSearchReplace = {
 
             selectHightlightShow();
 
-            let scrollLeft = $("#luckysheet-cell-main").scrollLeft(), 
-                scrollTop = $("#luckysheet-cell-main").scrollTop();
-            let winH = $("#luckysheet-cell-main").height(), 
-                winW = $("#luckysheet-cell-main").width();
+            let scrollLeft = $("#sheet-cell-main").scrollLeft(), 
+                scrollTop = $("#sheet-cell-main").scrollTop();
+            let winH = $("#sheet-cell-main").height(), 
+                winW = $("#sheet-cell-main").width();
 
             let row = Store.visibledatarow[r], 
                 row_pre = r - 1 == -1 ? 0 : Store.visibledatarow[r - 1];
@@ -152,34 +152,34 @@ const luckysheetSearchReplace = {
                 col_pre = c - 1 == -1 ? 0 : Store.visibledatacolumn[c - 1];
 
             if (col - scrollLeft - winW + 20 > 0) {
-                $("#luckysheet-scrollbar-x").scrollLeft(col - winW + 20);
+                $("#sheet-scrollbar-x").scrollLeft(col - winW + 20);
             }
             else if (col_pre - scrollLeft - 20 < 0) {
-                $("#luckysheet-scrollbar-x").scrollLeft(col_pre - 20);
+                $("#sheet-scrollbar-x").scrollLeft(col_pre - 20);
             }
 
             if (row - scrollTop - winH + 20 > 0) {
-                $("#luckysheet-scrollbar-y").scrollTop(row - winH + 20);
+                $("#sheet-scrollbar-y").scrollTop(row - winH + 20);
             }
             else if (row_pre - scrollTop - 20 < 0) {
-                $("#luckysheet-scrollbar-y").scrollTop(row_pre - 20);
+                $("#sheet-scrollbar-y").scrollTop(row_pre - 20);
             }
         });
 
         //替换
-        $(document).off("click.SRreplaceBtn").on("click.SRreplaceBtn", "#luckysheet-search-replace #replaceBtn", function(){
+        $(document).off("click.SRreplaceBtn").on("click.SRreplaceBtn", "#sheet-search-replace #replaceBtn", function(){
             _this.replace();
         });
 
         //全部替换
-        $(document).off("click.SRreplaceAllBtn").on("click.SRreplaceAllBtn", "#luckysheet-search-replace #replaceAllBtn", function(){
+        $(document).off("click.SRreplaceAllBtn").on("click.SRreplaceAllBtn", "#sheet-search-replace #replaceAllBtn", function(){
             _this.replaceAll();
         });
     },
     searchNext: function(){
         let _this = this;
 
-        let searchText = $("#luckysheet-search-replace #searchInput input").val();
+        let searchText = $("#sheet-search-replace #searchInput input").val();
         if(searchText == "" || searchText == null){
             return;
         }
@@ -272,10 +272,10 @@ const luckysheetSearchReplace = {
 
         selectHightlightShow();
 
-        let scrollLeft = $("#luckysheet-cell-main").scrollLeft(), 
-            scrollTop = $("#luckysheet-cell-main").scrollTop();
-        let winH = $("#luckysheet-cell-main").height(), 
-            winW = $("#luckysheet-cell-main").width();
+        let scrollLeft = $("#sheet-cell-main").scrollLeft(), 
+            scrollTop = $("#sheet-cell-main").scrollTop();
+        let winH = $("#sheet-cell-main").height(), 
+            winW = $("#sheet-cell-main").width();
 
         let row = Store.visibledatarow[searchIndexArr[count].r], 
             row_pre = searchIndexArr[count].r - 1 == -1 ? 0 : Store.visibledatarow[searchIndexArr[count].r - 1];
@@ -283,21 +283,21 @@ const luckysheetSearchReplace = {
             col_pre = searchIndexArr[count].c - 1 == -1 ? 0 : Store.visibledatacolumn[searchIndexArr[count].c - 1];
 
         if (col - scrollLeft - winW + 20 > 0) {
-            $("#luckysheet-scrollbar-x").scrollLeft(col - winW + 20);
+            $("#sheet-scrollbar-x").scrollLeft(col - winW + 20);
         }
         else if (col_pre - scrollLeft - 20 < 0) {
-            $("#luckysheet-scrollbar-x").scrollLeft(col_pre - 20);
+            $("#sheet-scrollbar-x").scrollLeft(col_pre - 20);
         }
 
         if (row - scrollTop - winH + 20 > 0) {
-            $("#luckysheet-scrollbar-y").scrollTop(row - winH + 20);
+            $("#sheet-scrollbar-y").scrollTop(row - winH + 20);
         }
         else if (row_pre - scrollTop - 20 < 0) {
-            $("#luckysheet-scrollbar-y").scrollTop(row_pre - 20);
+            $("#sheet-scrollbar-y").scrollTop(row_pre - 20);
         }
         
         if($("#searchAllbox").is(":visible")){
-            $("#luckysheet-search-replace #searchAllbox .boxItem").removeClass("on");
+            $("#sheet-search-replace #searchAllbox .boxItem").removeClass("on");
         }
     },
     searchAll: function(){
@@ -306,9 +306,9 @@ const luckysheetSearchReplace = {
         const _locale = locale();
         const locale_findAndReplace = _locale.findAndReplace;
 
-        $("#luckysheet-search-replace #searchAllbox").remove();
+        $("#sheet-search-replace #searchAllbox").remove();
         
-        let searchText = $("#luckysheet-search-replace #searchInput input").val();
+        let searchText = $("#sheet-search-replace #searchInput input").val();
         if(searchText == "" || searchText == null){
             return;
         }
@@ -358,9 +358,9 @@ const luckysheetSearchReplace = {
             }
         }
         
-        $('<div id="searchAllbox"><div class="boxTitle"><span>'+ locale_findAndReplace.searchTargetSheet +'</span><span>'+locale_findAndReplace.searchTargetCell+'</span><span>'+locale_findAndReplace.searchTargetValue+'</span></div><div class="boxMain">' + searchAllHtml + '</div></div>').appendTo($("#luckysheet-search-replace"));
+        $('<div id="searchAllbox"><div class="boxTitle"><span>'+ locale_findAndReplace.searchTargetSheet +'</span><span>'+locale_findAndReplace.searchTargetCell+'</span><span>'+locale_findAndReplace.searchTargetValue+'</span></div><div class="boxMain">' + searchAllHtml + '</div></div>').appendTo($("#sheet-search-replace"));
         
-        $("#luckysheet-search-replace #searchAllbox .boxItem").eq(0).addClass("on").siblings().removeClass("on");
+        $("#sheet-search-replace #searchAllbox .boxItem").eq(0).addClass("on").siblings().removeClass("on");
 
         Store.luckysheet_select_save = [{ 
             "row": [searchIndexArr[0].r, searchIndexArr[0].r], 
@@ -375,19 +375,19 @@ const luckysheetSearchReplace = {
 
         //正则表达式匹配
         let regCheck = false;
-        if($("#luckysheet-search-replace #regCheck input[type='checkbox']").is(":checked")){
+        if($("#sheet-search-replace #regCheck input[type='checkbox']").is(":checked")){
             regCheck = true;
         }
 
         //整词匹配
         let wordCheck = false;
-        if($("#luckysheet-search-replace #wordCheck input[type='checkbox']").is(":checked")){
+        if($("#sheet-search-replace #wordCheck input[type='checkbox']").is(":checked")){
             wordCheck = true;
         }
 
         //区分大小写匹配
         let caseCheck = false;
-        if($("#luckysheet-search-replace #caseCheck input[type='checkbox']").is(":checked")){
+        if($("#sheet-search-replace #caseCheck input[type='checkbox']").is(":checked")){
             caseCheck = true;
         }
 
@@ -483,7 +483,7 @@ const luckysheetSearchReplace = {
             return;
         }
 
-        let searchText = $("#luckysheet-search-replace #searchInput input").val();
+        let searchText = $("#sheet-search-replace #searchInput input").val();
         if(searchText == "" || searchText == null){
             if(isEditMode()){
                 alert(locale_findAndReplace.searchInputTip);
@@ -550,23 +550,23 @@ const luckysheetSearchReplace = {
 
         //正则表达式匹配
         let regCheck = false;
-        if($("#luckysheet-search-replace #regCheck input[type='checkbox']").is(":checked")){
+        if($("#sheet-search-replace #regCheck input[type='checkbox']").is(":checked")){
             regCheck = true;
         }
 
         //整词匹配
         let wordCheck = false;
-        if($("#luckysheet-search-replace #wordCheck input[type='checkbox']").is(":checked")){
+        if($("#sheet-search-replace #wordCheck input[type='checkbox']").is(":checked")){
             wordCheck = true;
         }
 
         //区分大小写匹配
         let caseCheck = false;
-        if($("#luckysheet-search-replace #caseCheck input[type='checkbox']").is(":checked")){
+        if($("#sheet-search-replace #caseCheck input[type='checkbox']").is(":checked")){
             caseCheck = true;
         }
 
-        let replaceText = $("#luckysheet-search-replace #replaceInput input").val();
+        let replaceText = $("#sheet-search-replace #replaceInput input").val();
 
         let d = editor.deepCopyFlowData(Store.flowdata);
 
@@ -606,17 +606,17 @@ const luckysheetSearchReplace = {
 
         Store.luckysheet_select_save = [{ "row": [r, r], "column": [c, c] }];
 
-        if($("#luckysheet-search-replace #searchAllbox").is(":visible")){
-            $("#luckysheet-search-replace #searchAllbox").hide();
+        if($("#sheet-search-replace #searchAllbox").is(":visible")){
+            $("#sheet-search-replace #searchAllbox").hide();
         }
 
         jfrefreshgrid(d, Store.luckysheet_select_save);
         selectHightlightShow();
 
-        let scrollLeft = $("#luckysheet-cell-main").scrollLeft(), 
-            scrollTop = $("#luckysheet-cell-main").scrollTop();
-        let winH = $("#luckysheet-cell-main").height(), 
-            winW = $("#luckysheet-cell-main").width();
+        let scrollLeft = $("#sheet-cell-main").scrollLeft(), 
+            scrollTop = $("#sheet-cell-main").scrollTop();
+        let winH = $("#sheet-cell-main").height(), 
+            winW = $("#sheet-cell-main").width();
 
         let row = Store.visibledatarow[r], 
             row_pre = r - 1 == -1 ? 0 : Store.visibledatarow[r - 1];
@@ -624,17 +624,17 @@ const luckysheetSearchReplace = {
             col_pre = c - 1 == -1 ? 0 : Store.visibledatacolumn[c - 1];
 
         if (col - scrollLeft - winW + 20 > 0) {
-            $("#luckysheet-scrollbar-x").scrollLeft(col - winW + 20);
+            $("#sheet-scrollbar-x").scrollLeft(col - winW + 20);
         }
         else if (col_pre - scrollLeft - 20 < 0) {
-            $("#luckysheet-scrollbar-x").scrollLeft(col_pre - 20);
+            $("#sheet-scrollbar-x").scrollLeft(col_pre - 20);
         }
 
         if (row - scrollTop - winH + 20 > 0) {
-            $("#luckysheet-scrollbar-y").scrollTop(row - winH + 20);
+            $("#sheet-scrollbar-y").scrollTop(row - winH + 20);
         }
         else if (row_pre - scrollTop - 20 < 0) {
-            $("#luckysheet-scrollbar-y").scrollTop(row_pre - 20);
+            $("#sheet-scrollbar-y").scrollTop(row_pre - 20);
         }
     },
     replaceAll: function(){
@@ -648,7 +648,7 @@ const luckysheetSearchReplace = {
             return;
         }
 
-        let searchText = $("#luckysheet-search-replace #searchInput input").val();
+        let searchText = $("#sheet-search-replace #searchInput input").val();
         if(searchText == "" || searchText == null){
             if(isEditMode()){
                 alert(locale_findAndReplace.searchInputTip);
@@ -686,23 +686,23 @@ const luckysheetSearchReplace = {
 
         //正则表达式匹配
         let regCheck = false;
-        if($("#luckysheet-search-replace #regCheck input[type='checkbox']").is(":checked")){
+        if($("#sheet-search-replace #regCheck input[type='checkbox']").is(":checked")){
             regCheck = true;
         }
 
         //整词匹配
         let wordCheck = false;
-        if($("#luckysheet-search-replace #wordCheck input[type='checkbox']").is(":checked")){
+        if($("#sheet-search-replace #wordCheck input[type='checkbox']").is(":checked")){
             wordCheck = true;
         }
 
         //区分大小写匹配
         let caseCheck = false;
-        if($("#luckysheet-search-replace #caseCheck input[type='checkbox']").is(":checked")){
+        if($("#sheet-search-replace #caseCheck input[type='checkbox']").is(":checked")){
             caseCheck = true;
         }
 
-        let replaceText = $("#luckysheet-search-replace #replaceInput input").val();
+        let replaceText = $("#sheet-search-replace #replaceInput input").val();
 
         let d = editor.deepCopyFlowData(Store.flowdata);
         let replaceCount = 0;
@@ -749,8 +749,8 @@ const luckysheetSearchReplace = {
             }
         }
 
-        if($("#luckysheet-search-replace #searchAllbox").is(":visible")){
-            $("#luckysheet-search-replace #searchAllbox").hide();
+        if($("#sheet-search-replace #searchAllbox").is(":visible")){
+            $("#sheet-search-replace #searchAllbox").hide();
         }
 
         jfrefreshgrid(d, range);

@@ -14,7 +14,7 @@ If you have written or found an excellent tutorial and want to recommend it to u
 ## Front-end case
 
 ### Community Case
-- [luckysheet-vue-importAndExport](https://github.com/oy-paddy/luckysheet-vue-importAndExport/tree/master/)
+- [sheet-vue-importAndExport](https://github.com/oy-paddy/sheet-vue-importAndExport/tree/master/)
 
 ## Back-end case
 
@@ -22,7 +22,7 @@ If you have written or found an excellent tutorial and want to recommend it to u
 - [Java backend Luckysheet Server](https://github.com/mengshukeji/LuckysheetServer)
 
 ### Community Case
-- [Luckysheet save and restore](https://gitee.com/ichiva/luckysheet-saved-in-recovery) (Java version)
+- [Luckysheet save and restore](https://gitee.com/ichiva/sheet-saved-in-recovery) (Java version)
 - [Online form for collaborative editing based on Luckysheet](https://github.com/DilemmaVi/ecsheet) (Java version)
 - [Use .net core 3.1 and Npoi to make a basic export based on LuckSheet](https://gitee.com/xiong-kangli/luck-sheet_.-net-core) (.NET version)
 - [Collaborative editing in go language version](https://github.com/fandypeng/excel2config)（Go version）

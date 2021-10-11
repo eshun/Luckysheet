@@ -71,5 +71,5 @@ export function countfunc() {
         ret += "<span>"+locale_formula.min+":" + update("w", min) + "</span>";
     }
 
-    $("#luckysheet-sta-content").html(ret);
+    $("#sheet-sta-content").html(ret);
 }

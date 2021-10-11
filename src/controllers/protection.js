@@ -41,27 +41,27 @@ function addRangeItem(item){
     
     let passwordTxt = "";
     if(password!=null && password.length>0){
-        passwordTxt = '<i class="icon iconfont luckysheet-iconfont-bianji2" title="'+ local_protection.rangeItemHasPassword+'"></i>';
+        passwordTxt = '<i class="icon iconfont sheet-iconfont-bianji2" title="'+ local_protection.rangeItemHasPassword+'"></i>';
     }
 
     let rangeItemTemplate = `
-        <div class="luckysheet-protection-rangeItem" title="${local_protection.rangeItemDblclick}">
-            <div class="luckysheet-protection-rangeItem-del" title="${locale_button.delete}">
-                <i class="icon iconfont luckysheet-iconfont-shanchu"></i>
+        <div class="sheet-protection-rangeItem" title="${local_protection.rangeItemDblclick}">
+            <div class="sheet-protection-rangeItem-del" title="${locale_button.delete}">
+                <i class="icon iconfont sheet-iconfont-shanchu"></i>
             </div>
-            <div class="luckysheet-protection-rangeItem-name" title="${title}">
+            <div class="sheet-protection-rangeItem-name" title="${title}">
                 ${title}${passwordTxt}
             </div>
-            <div class="luckysheet-protection-rangeItem-range" title="${sqref}">
+            <div class="sheet-protection-rangeItem-range" title="${sqref}">
                 ${sqref}
             </div>
-            <div class="luckysheet-protection-rangeItem-update" title="${locale_button.update}">
-                <i class="icon iconfont luckysheet-iconfont-bianji"></i>
+            <div class="sheet-protection-rangeItem-update" title="${locale_button.update}">
+                <i class="icon iconfont sheet-iconfont-bianji"></i>
             </div>
         </div>
     `;
 
-    $("#luckysheet-protection-rangeItem-container").append(rangeItemTemplate);
+    $("#sheet-protection-rangeItem-container").append(rangeItemTemplate);
 }
 
 function initialEvent(file){
@@ -71,7 +71,7 @@ function initialEvent(file){
     const locale_button = _locale.button;
 
     //confirm protection
-    $("#luckysheet-slider-protection-ok").click(function(){
+    $("#sheet-slider-protection-ok").click(function(){
         let password = $("#protection-password").val();
         let sheet = $("#protection-swichProtectionState").is(":checked");
         let hint = $("#protection-hint").val();
@@ -109,7 +109,7 @@ function initialEvent(file){
 
         for(let i=0;i<authorityItemArr.length;i++){
             let name = authorityItemArr[i];
-            let checkId = "luckysheet-protection-check-" + name;
+            let checkId = "sheet-protection-check-" + name;
             let authorityValue =  $("#"+checkId).is(':checked');
             
             authorityData[name] = authorityValue==true?1:0;
@@ -133,17 +133,17 @@ function initialEvent(file){
     });
 
     //cancel protection
-    $("#luckysheet-slider-protection-cancel, #luckysheet-modal-dialog-protection-close").click(function(){
+    $("#sheet-slider-protection-cancel, #sheet-modal-dialog-protection-close").click(function(){
         closeProtectionModal();
     });
 
     //Add allow edit range
-    $("#luckysheet-slider-protection-addRange").click(function(){
+    $("#sheet-slider-protection-addRange").click(function(){
         initialProtectionRangeModal();
         isAddRangeItemState = true;
-        $("#luckysheet-protection-rangeItem-confirm").html(locale_button.insert);
+        $("#sheet-protection-rangeItem-confirm").html(locale_button.insert);
 
-        openSelfModel("luckysheet-protection-rangeItem-dialog");
+        openSelfModel("sheet-protection-rangeItem-dialog");
 
         $("#protection-allowRangeAdd-title").val("Default"+rangeItemListCache.length);
         $("#protection-allowRangeAdd-range input").val("");
@@ -153,19 +153,19 @@ function initialEvent(file){
     });
 
     //update allow edit range
-    $(document).off("click.luckysheetProtection.rangeItemUpdate").on("click.luckysheetProtection.rangeItemUpdate","#luckysheet-protection-rangeItem-container .luckysheet-protection-rangeItem-update", function(e){
+    $(document).off("click.luckysheetProtection.rangeItemUpdate").on("click.luckysheetProtection.rangeItemUpdate","#sheet-protection-rangeItem-container .sheet-protection-rangeItem-update", function(e){
         initialProtectionRangeModal();
 
         isAddRangeItemState = false;
-        $("#luckysheet-protection-rangeItem-confirm").html(locale_button.update);
+        $("#sheet-protection-rangeItem-confirm").html(locale_button.update);
 
-        openSelfModel("luckysheet-protection-rangeItem-dialog");
+        openSelfModel("sheet-protection-rangeItem-dialog");
 
-        let _rangeItem = $(e.target).closest(".luckysheet-protection-rangeItem");
+        let _rangeItem = $(e.target).closest(".sheet-protection-rangeItem");
 
-        let _rangeItemContainer =  $("#luckysheet-protection-rangeItem-container");
+        let _rangeItemContainer =  $("#sheet-protection-rangeItem-container");
 
-        let index = _rangeItemContainer.find("> div.luckysheet-protection-rangeItem").index(_rangeItem);
+        let index = _rangeItemContainer.find("> div.sheet-protection-rangeItem").index(_rangeItem);
 
         let item = rangeItemListCache[index];
 
@@ -183,12 +183,12 @@ function initialEvent(file){
     });
 
     //delete allow edit range
-    $(document).off("click.luckysheetProtection.rangeItemDelete").on("click.luckysheetProtection.rangeItemDelete","#luckysheet-protection-rangeItem-container .luckysheet-protection-rangeItem-del", function(e){
-        let _rangeItem = $(e.target).closest(".luckysheet-protection-rangeItem");
+    $(document).off("click.luckysheetProtection.rangeItemDelete").on("click.luckysheetProtection.rangeItemDelete","#sheet-protection-rangeItem-container .sheet-protection-rangeItem-del", function(e){
+        let _rangeItem = $(e.target).closest(".sheet-protection-rangeItem");
 
-        let _rangeItemContainer =  $("#luckysheet-protection-rangeItem-container");
+        let _rangeItemContainer =  $("#sheet-protection-rangeItem-container");
 
-        let index = _rangeItemContainer.find("> div.luckysheet-protection-rangeItem").index(_rangeItem);
+        let index = _rangeItemContainer.find("> div.sheet-protection-rangeItem").index(_rangeItem);
 
         let item = rangeItemListCache[index];
 
@@ -197,7 +197,7 @@ function initialEvent(file){
     });
 
     //confirm allow edit range
-    $(document).off("click.luckysheetProtection.rangeItemConfirm").on("click.luckysheetProtection.rangeItemConfirm","#luckysheet-protection-rangeItem-confirm", function(){
+    $(document).off("click.luckysheetProtection.rangeItemConfirm").on("click.luckysheetProtection.rangeItemConfirm","#sheet-protection-rangeItem-confirm", function(){
         let name = $("#protection-allowRangeAdd-title").val(),
         rangeText = $("#protection-allowRangeAdd-range input").val(),
         password = $("#protection-allowRangeAdd-password").val(),
@@ -250,42 +250,42 @@ function initialEvent(file){
                 item.algorithmName = "None";
             }
 
-            let _rangeItemContainer =  $("#luckysheet-protection-rangeItem-container");
+            let _rangeItemContainer =  $("#sheet-protection-rangeItem-container");
 
-            let _rangeitem = _rangeItemContainer.find("> div.luckysheet-protection-rangeItem").eq(index);
+            let _rangeitem = _rangeItemContainer.find("> div.sheet-protection-rangeItem").eq(index);
 
-            let _name = _rangeitem.find(".luckysheet-protection-rangeItem-name");
+            let _name = _rangeitem.find(".sheet-protection-rangeItem-name");
 
             let passwordTxt = "";
             if(password!=null && password.length>0){
-                passwordTxt = '<i class="icon iconfont luckysheet-iconfont-bianji2" title="'+ local_protection.rangeItemHasPassword+'"></i>';
+                passwordTxt = '<i class="icon iconfont sheet-iconfont-bianji2" title="'+ local_protection.rangeItemHasPassword+'"></i>';
             }
 
             _name.html(name+passwordTxt).attr("title",name);
 
-            let _range = _rangeitem.find(".luckysheet-protection-rangeItem-range");
+            let _range = _rangeitem.find(".sheet-protection-rangeItem-range");
 
             _range.html(rangeText).attr("title",rangeText);
         }
 
 
 
-        $("#luckysheet-protection-rangeItem-dialog").hide();
-        $("#luckysheet-modal-dialog-mask").hide();
+        $("#sheet-protection-rangeItem-dialog").hide();
+        $("#sheet-modal-dialog-mask").hide();
 
     });
 
 
     //sheet validation check passWord
-    $(document).off("click.luckysheetProtection.validationConfirm").on("click.luckysheetProtection.validationConfirm","#luckysheet-protection-sheet-validation-confirm", function(e){
-        let _validation = $("#luckysheet-protection-sheet-validation");
+    $(document).off("click.luckysheetProtection.validationConfirm").on("click.luckysheetProtection.validationConfirm","#sheet-protection-sheet-validation-confirm", function(e){
+        let _validation = $("#sheet-protection-sheet-validation");
         let aut = validationAuthority;
 
         if(aut==null){
             restoreProtectionConfig(validationAuthority);
             _validation.hide();
-            $("#luckysheet-modal-dialog-mask").hide();
-            $("#luckysheet-modal-dialog-slider-protection").show();
+            $("#sheet-modal-dialog-mask").hide();
+            $("#sheet-modal-dialog-slider-protection").show();
             luckysheetsizeauto();
             return;
         }
@@ -312,8 +312,8 @@ function initialEvent(file){
         if(password==aut.password){
             restoreProtectionConfig(validationAuthority);
             _validation.hide();
-            $("#luckysheet-modal-dialog-mask").hide();
-            $("#luckysheet-modal-dialog-slider-protection").show();
+            $("#sheet-modal-dialog-mask").hide();
+            $("#sheet-modal-dialog-slider-protection").show();
             luckysheetsizeauto();
             firstInputSheetProtectionPassword = false;
         }
@@ -323,8 +323,8 @@ function initialEvent(file){
         
     });
 
-    $("#luckysheet-protection-check-selectLockedCells").change(function() { 
-        let _selectLockedCells = $("#luckysheet-protection-check-selectLockedCells"), _selectunLockedCells = $("#luckysheet-protection-check-selectunLockedCells");
+    $("#sheet-protection-check-selectLockedCells").change(function() { 
+        let _selectLockedCells = $("#sheet-protection-check-selectLockedCells"), _selectunLockedCells = $("#sheet-protection-check-selectunLockedCells");
 
         let selectLockedCellsChecked = _selectLockedCells.is(":checked"), selectunLockedCellsChecked = _selectunLockedCells.is(":checked");
 
@@ -333,8 +333,8 @@ function initialEvent(file){
         }
     });
 
-    $("#luckysheet-protection-check-selectunLockedCells").change(function() { 
-        let _selectLockedCells = $("#luckysheet-protection-check-selectLockedCells"), _selectunLockedCells = $("#luckysheet-protection-check-selectunLockedCells");
+    $("#sheet-protection-check-selectunLockedCells").change(function() { 
+        let _selectLockedCells = $("#sheet-protection-check-selectLockedCells"), _selectunLockedCells = $("#sheet-protection-check-selectunLockedCells");
 
         let selectLockedCellsChecked = _selectLockedCells.is(":checked"), selectunLockedCellsChecked = _selectunLockedCells.is(":checked");
 
@@ -346,7 +346,7 @@ function initialEvent(file){
 
     //Cell range select controll
     $(document).off("click.luckysheetProtection.dvRange").on("click.luckysheetProtection.dvRange", "#protection-allowRangeAdd-range .fa-table", function(e) {
-        $("#luckysheet-protection-rangeItem-dialog").hide();
+        $("#sheet-protection-rangeItem-dialog").hide();
 
         let dataSource = "0";
         let txt = $(this).siblings("input").val().trim(); 
@@ -385,8 +385,8 @@ function initialEvent(file){
         
         selectionCopyShow(dataVerificationCtrl.selectRange);
     }); 
-    $(document).off("click.luckysheetProtection.dvRange2").on("click.luckysheetProtection.dvRange2", "#luckysheet-protection-rangeItem-dialog .show-box-item-dropdown .range .fa-table", function(e) {
-        $("#luckysheet-protection-rangeItem-dialog").hide();
+    $(document).off("click.luckysheetProtection.dvRange2").on("click.luckysheetProtection.dvRange2", "#sheet-protection-rangeItem-dialog .show-box-item-dropdown .range .fa-table", function(e) {
+        $("#sheet-protection-rangeItem-dialog").hide();
 
         let dataSource = "1";
         let txt = $(this).siblings("input").val().trim(); 
@@ -425,8 +425,8 @@ function initialEvent(file){
         
         selectionCopyShow(dataVerificationCtrl.selectRange);
     });
-    $(document).off("click.luckysheetProtection.dvRangeConfirm").on("click.luckysheetProtection.dvRangeConfirm", "#luckysheet-dataVerificationRange-dialog-confirm", function(e) {
-        let txt = $(this).parents("#luckysheet-dataVerificationRange-dialog").find("input").val();
+    $(document).off("click.luckysheetProtection.dvRangeConfirm").on("click.luckysheetProtection.dvRangeConfirm", "#sheet-dataVerificationRange-dialog-confirm", function(e) {
+        let txt = $(this).parents("#sheet-dataVerificationRange-dialog").find("input").val();
 
         let _input = $("#protection-allowRangeAdd-range input"), inputValue = _input.val();
         if(inputValue.substr(inputValue.length-1, 1)==","){
@@ -435,25 +435,25 @@ function initialEvent(file){
         else{
             _input.val(txt);
         }
-        $("#luckysheet-dataVerificationRange-dialog").hide();
-        $("#luckysheet-modal-dialog-mask").show();
-        $("#luckysheet-protection-rangeItem-dialog").show();
+        $("#sheet-dataVerificationRange-dialog").hide();
+        $("#sheet-modal-dialog-mask").show();
+        $("#sheet-protection-rangeItem-dialog").show();
 
         let range = [];
         selectionCopyShow(range);
     });
-    $(document).off("click.luckysheetProtection.dvRangeClose").on("click.dvRangeClose", "#luckysheet-dataVerificationRange-dialog-close", function(e) {
-        $("#luckysheet-dataVerificationRange-dialog").hide();
-        $("#luckysheet-modal-dialog-mask").show();
-        $("#luckysheet-protection-rangeItem-dialog").show();
+    $(document).off("click.luckysheetProtection.dvRangeClose").on("click.dvRangeClose", "#sheet-dataVerificationRange-dialog-close", function(e) {
+        $("#sheet-dataVerificationRange-dialog").hide();
+        $("#sheet-modal-dialog-mask").show();
+        $("#sheet-protection-rangeItem-dialog").show();
 
         let range = [];
         selectionCopyShow(range);
     });
-    $(document).on("click.luckysheetProtection.luckysheetProtection", "#luckysheet-dataVerificationRange-dialog .luckysheet-modal-dialog-title-close", function(e) {
-        $("#luckysheet-dataVerificationRange-dialog").hide();
-        $("#luckysheet-modal-dialog-mask").show();
-        $("#luckysheet-protection-rangeItem-dialog").show();
+    $(document).on("click.luckysheetProtection.luckysheetProtection", "#sheet-dataVerificationRange-dialog .sheet-modal-dialog-title-close", function(e) {
+        $("#sheet-dataVerificationRange-dialog").hide();
+        $("#sheet-modal-dialog-mask").show();
+        $("#sheet-protection-rangeItem-dialog").show();
 
         let range = [];
         selectionCopyShow(range);
@@ -470,50 +470,50 @@ function initialProtectionRangeModal(file){
     let local_protection = _locale.protection;
     const locale_button = _locale.button;
     $("body").append(replaceHtml(modelHTML, { 
-        "id": "luckysheet-protection-rangeItem-dialog", 
-        "addclass": "luckysheet-protection-rangeItem-dialog", 
+        "id": "sheet-protection-rangeItem-dialog", 
+        "addclass": "sheet-protection-rangeItem-dialog", 
         "title": local_protection.allowRangeTitle, 
         "content": `
-            <div class="luckysheet-protection-rangeItem-content">
-                <div class="luckysheet-slider-protection-row">
-                    <div class="luckysheet-slider-protection-column luckysheet-protection-column-3x">
+            <div class="sheet-protection-rangeItem-content">
+                <div class="sheet-slider-protection-row">
+                    <div class="sheet-slider-protection-column sheet-protection-column-3x">
                         ${local_protection.allowRangeAddTitle}
                     </div>
-                    <div class="luckysheet-slider-protection-column luckysheet-protection-column-7x" style="left:30%">
-                        <input class="luckysheet-protection-rangeItemiInput" id="protection-allowRangeAdd-title"  placeHolder="${local_protection.allowRangeAddtitleDefault}">
+                    <div class="sheet-slider-protection-column sheet-protection-column-7x" style="left:30%">
+                        <input class="sheet-protection-rangeItemiInput" id="protection-allowRangeAdd-title"  placeHolder="${local_protection.allowRangeAddtitleDefault}">
                     </div>
                 </div>
-                <div class="luckysheet-slider-protection-row">
-                    <div class="luckysheet-slider-protection-column luckysheet-protection-column-3x">
+                <div class="sheet-slider-protection-row">
+                    <div class="sheet-slider-protection-column sheet-protection-column-3x">
                         ${local_protection.allowRangeAddSqrf}
                     </div>
-                    <div class="luckysheet-slider-protection-column luckysheet-protection-column-7x" style="left:30%">
+                    <div class="sheet-slider-protection-column sheet-protection-column-7x" style="left:30%">
                         <div id="protection-allowRangeAdd-range" class="range">
                             <input class="formulaInputFocus" spellcheck="false" placeHolder="${local_protection.selectCellRangeHolder}">
                             <i class="fa fa-table" aria-hidden="true" title="${local_protection.selectCellRange}"></i>
                         </div>
                     </div>
                 </div>
-                <div class="luckysheet-slider-protection-row">
-                    <div class="luckysheet-slider-protection-column luckysheet-protection-column-3x">
+                <div class="sheet-slider-protection-row">
+                    <div class="sheet-slider-protection-column sheet-protection-column-3x">
                         ${local_protection.allowRangeAddTitlePassword}
                     </div>
-                    <div class="luckysheet-slider-protection-column luckysheet-protection-column-7x" style="left:30%">
-                        <input class="luckysheet-protection-rangeItemiInput" id="protection-allowRangeAdd-password"  placeHolder="${local_protection.enterPassword}">
+                    <div class="sheet-slider-protection-column sheet-protection-column-7x" style="left:30%">
+                        <input class="sheet-protection-rangeItemiInput" id="protection-allowRangeAdd-password"  placeHolder="${local_protection.enterPassword}">
                     </div>
                 </div>
-                <div class="luckysheet-slider-protection-row">
-                    <div class="luckysheet-slider-protection-column luckysheet-protection-column-3x">
+                <div class="sheet-slider-protection-row">
+                    <div class="sheet-slider-protection-column sheet-protection-column-3x">
                         ${local_protection.allowRangeAddTitleHint}
                     </div>
-                    <div class="luckysheet-slider-protection-column luckysheet-protection-column-7x" style="left:30%">
-                        <textarea class="luckysheet-protection-rangeItemTextarea" id="protection-allowRangeAdd-hint"  placeHolder="${local_protection.allowRangeAddTitleHintTitle}"></textarea>
+                    <div class="sheet-slider-protection-column sheet-protection-column-7x" style="left:30%">
+                        <textarea class="sheet-protection-rangeItemTextarea" id="protection-allowRangeAdd-hint"  placeHolder="${local_protection.allowRangeAddTitleHintTitle}"></textarea>
                     </div>
                 </div>
             </div>
         `, 
-        "botton":  `<button id="luckysheet-protection-rangeItem-confirm" class="btn btn-primary">${locale_button.insert}</button>
-                    <button class="btn btn-default luckysheet-model-close-btn">${locale_button.cancel}</button>`, 
+        "botton":  `<button id="sheet-protection-rangeItem-confirm" class="btn btn-primary">${locale_button.insert}</button>
+                    <button class="btn btn-default sheet-model-close-btn">${locale_button.cancel}</button>`, 
         "style": "z-index:100003" 
     }));
 }
@@ -530,65 +530,65 @@ function initialProtectionRIghtBar(file){
         let name = authorityItemArr[i];
 
         authorityItemHtml += `
-            <div class="luckysheet-slider-protection-row" style="height:18px;">
-                <div class="luckysheet-slider-protection-column luckysheet-protection-column-10x">
-                <label for="luckysheet-protection-check-${name}"><input id="luckysheet-protection-check-${name}" name="luckysheet-protection-check-${name}" type="checkbox">${local_protection[name]}</label>
+            <div class="sheet-slider-protection-row" style="height:18px;">
+                <div class="sheet-slider-protection-column sheet-protection-column-10x">
+                <label for="sheet-protection-check-${name}"><input id="sheet-protection-check-${name}" name="sheet-protection-check-${name}" type="checkbox">${local_protection[name]}</label>
                 </div>
             </div>
         `;
     }
 
     const protectionModalHtml = `
-    <div id="luckysheet-modal-dialog-slider-protection" class="luckysheet-modal-dialog-slider luckysheet-modal-dialog-slider-pivot" style="display:none;">
-        <div class="luckysheet-modal-dialog-slider-title"> <span>${local_protection.protectiontTitle}</span> <span id="luckysheet-modal-dialog-protection-close" title="${locale_button.close}"><i class="fa fa-times" aria-hidden="true"></i></span> </div>
-        <div class="luckysheet-modal-dialog-slider-content">
-            <div class="luckysheet-slider-protection-config">
-                <div class="luckysheet-slider-protection-row">
-                    <div class="luckysheet-slider-protection-column luckysheet-protection-column-10x">
+    <div id="sheet-modal-dialog-slider-protection" class="sheet-modal-dialog-slider sheet-modal-dialog-slider-pivot" style="display:none;">
+        <div class="sheet-modal-dialog-slider-title"> <span>${local_protection.protectiontTitle}</span> <span id="sheet-modal-dialog-protection-close" title="${locale_button.close}"><i class="fa fa-times" aria-hidden="true"></i></span> </div>
+        <div class="sheet-modal-dialog-slider-content">
+            <div class="sheet-slider-protection-config">
+                <div class="sheet-slider-protection-row">
+                    <div class="sheet-slider-protection-column sheet-protection-column-10x">
                     <label for="protection-swichProtectionState"><input id="protection-swichProtectionState" name="protection-swichProtectionState" type="checkbox">${local_protection.swichProtectionTip}</label>
                     </div>
                 </div>
-                <div class="luckysheet-slider-protection-row">
-                    <div class="luckysheet-slider-protection-column" style="width:98%;">
-                        <input class="luckysheet-protection-input" id="protection-password"  placeHolder="${local_protection.enterPassword}">
+                <div class="sheet-slider-protection-row">
+                    <div class="sheet-slider-protection-column" style="width:98%;">
+                        <input class="sheet-protection-input" id="protection-password"  placeHolder="${local_protection.enterPassword}">
                     </div>
                 </div>
-                <div class="luckysheet-slider-protection-row">
-                    <div class="luckysheet-slider-protection-column" style="width:98%;">
-                        <textarea class="luckysheet-protection-textarea" id="protection-hint"  placeHolder="${local_protection.enterHintTitle}"></textarea>
+                <div class="sheet-slider-protection-row">
+                    <div class="sheet-slider-protection-column" style="width:98%;">
+                        <textarea class="sheet-protection-textarea" id="protection-hint"  placeHolder="${local_protection.enterHintTitle}"></textarea>
                     </div>
                 </div>
             </div>
-            <div class="luckysheet-slider-protection-config" style="height:290px;border-top:1px solid #c5c5c5">
-                <div class="luckysheet-slider-protection-row" style="height:20px;">
+            <div class="sheet-slider-protection-config" style="height:290px;border-top:1px solid #c5c5c5">
+                <div class="sheet-slider-protection-row" style="height:20px;">
                     ${local_protection.authorityTitle}
                 </div>
                 ${authorityItemHtml}
             </div>
-            <div class="luckysheet-slider-protection-config" style="border-top:1px solid #c5c5c5">
-                <div class="luckysheet-slider-protection-row" style="height:25px;">
-                    <div class="luckysheet-slider-protection-column luckysheet-protection-column-7x" style="left:0px;line-height: 25px;">
+            <div class="sheet-slider-protection-config" style="border-top:1px solid #c5c5c5">
+                <div class="sheet-slider-protection-row" style="height:25px;">
+                    <div class="sheet-slider-protection-column sheet-protection-column-7x" style="left:0px;line-height: 25px;">
                         ${local_protection.allowRangeTitle}
                     </div>
-                    <div class="luckysheet-slider-protection-column luckysheet-protection-column-3x" style="left:70%;">
-                        <div class="luckysheet-slider-protection-ok luckysheet-slider-protection-addRange" id="luckysheet-slider-protection-addRange">
+                    <div class="sheet-slider-protection-column sheet-protection-column-3x" style="left:70%;">
+                        <div class="sheet-slider-protection-ok sheet-slider-protection-addRange" id="sheet-slider-protection-addRange">
                             ${local_protection.allowRangeAdd}
                         </div>
                     </div>
                 </div>
 
-                <div id="luckysheet-protection-rangeItem-container" class="luckysheet-slider-protection-row" style="">
+                <div id="sheet-protection-rangeItem-container" class="sheet-slider-protection-row" style="">
                    
                 </div>
             </div>
             <div style="bottom:0px;height:45px;position: absolute;width: 100%;">
-                <div class="luckysheet-slider-protection-column luckysheet-protection-column-5x" style="left:0px;">
-                    <div class="luckysheet-slider-protection-ok" id="luckysheet-slider-protection-ok">
+                <div class="sheet-slider-protection-column sheet-protection-column-5x" style="left:0px;">
+                    <div class="sheet-slider-protection-ok" id="sheet-slider-protection-ok">
                         ${locale_button.confirm}
                     </div>
                 </div>
-                <div class="luckysheet-slider-protection-column luckysheet-protection-column-5x" style="left:50%;">
-                    <div class="luckysheet-slider-protection-cancel" id="luckysheet-slider-protection-cancel">
+                <div class="sheet-slider-protection-column sheet-protection-column-5x" style="left:50%;">
+                    <div class="sheet-slider-protection-cancel" id="sheet-slider-protection-cancel">
                         ${locale_button.cancel}
                     </div>
                 </div>
@@ -602,23 +602,23 @@ function initialProtectionRIghtBar(file){
 
     //Password input initial for sheet Protection
     $("body").append(replaceHtml(modelHTML, { 
-        "id": "luckysheet-protection-sheet-validation", 
-        "addclass": "luckysheet-protection-sheet-validation", 
+        "id": "sheet-protection-sheet-validation", 
+        "addclass": "sheet-protection-sheet-validation", 
         "title": local_protection.validationTitle, 
         "content": `
-            <div class="luckysheet-slider-protection-row">
-                <div class="luckysheet-slider-protection-column luckysheet-protection-column-10x">
+            <div class="sheet-slider-protection-row">
+                <div class="sheet-slider-protection-column sheet-protection-column-10x">
                     ${local_protection.validationTips}
                 </div>
             </div>
-            <div class="luckysheet-slider-protection-row" style="margin-top:20px">
-                <div class="luckysheet-slider-protection-column luckysheet-protection-column-10x">
-                    <input type="password" class="luckysheet-protection-rangeItemiInput" placeHolder="${local_protection.validationInputHint}">
+            <div class="sheet-slider-protection-row" style="margin-top:20px">
+                <div class="sheet-slider-protection-column sheet-protection-column-10x">
+                    <input type="password" class="sheet-protection-rangeItemiInput" placeHolder="${local_protection.validationInputHint}">
                 </div>
             </div>
         `, 
-        "botton":  `<button id="luckysheet-protection-sheet-validation-confirm" class="btn btn-primary">${locale_button.confirm}</button>
-                    <button class="btn btn-default luckysheet-model-close-btn">${locale_button.cancel}</button>`, 
+        "botton":  `<button id="sheet-protection-sheet-validation-confirm" class="btn btn-primary">${locale_button.confirm}</button>
+                    <button class="btn btn-default sheet-model-close-btn">${locale_button.cancel}</button>`, 
         "style": "z-index:100003" 
     }));
 
@@ -631,7 +631,7 @@ function restoreProtectionConfig(aut){
     }
     for(let i=0;i<authorityItemArr.length;i++){
         let name = authorityItemArr[i];
-        let checkId = "luckysheet-protection-check-" + name;
+        let checkId = "sheet-protection-check-" + name;
         let authorityValue = aut[name];
         if(authorityValue==null){
             authorityValue = 0;
@@ -670,7 +670,7 @@ function restoreProtectionConfig(aut){
 
 
     rangeItemListCache = [];
-    $("#luckysheet-protection-rangeItem-container").empty();
+    $("#sheet-protection-rangeItem-container").empty();
     let allowRangeList = aut.allowRangeList;
     if(allowRangeList!=null && allowRangeList.length>0){
         for(let i=0;i<allowRangeList.length;i++){
@@ -696,8 +696,8 @@ export function openProtectionModal(file){
         let aut = file.config.authority;
         if(firstInputSheetProtectionPassword && aut.sheet==1 && aut.password!=null && aut.password.length>0){
             validationAuthority = aut;
-            $("#luckysheet-protection-sheet-validation input").val("");
-            openSelfModel("luckysheet-protection-sheet-validation");
+            $("#sheet-protection-sheet-validation input").val("");
+            openSelfModel("sheet-protection-sheet-validation");
             return;
         }
         else{//retore protection config
@@ -705,18 +705,18 @@ export function openProtectionModal(file){
         }
     }
     else{//protection initial config
-        $("#luckysheet-protection-check-selectLockedCells").prop('checked',true);
-        $("#luckysheet-protection-check-selectunLockedCells").prop('checked',true);
+        $("#sheet-protection-check-selectLockedCells").prop('checked',true);
+        $("#sheet-protection-check-selectunLockedCells").prop('checked',true);
     }
 
-    $("#luckysheet-modal-dialog-slider-protection").show();
+    $("#sheet-modal-dialog-slider-protection").show();
     luckysheetsizeauto();
 
 }
 
 export function closeProtectionModal(){
-    $("#luckysheet-protection-rangeItem-dialog").hide();
-    $("#luckysheet-modal-dialog-slider-protection").hide();
+    $("#sheet-protection-rangeItem-dialog").hide();
+    $("#sheet-modal-dialog-slider-protection").hide();
     luckysheetsizeauto();
 }
 
@@ -751,7 +751,7 @@ function checkProtectionLockedSqref(r, c, aut, local_protection, isOpenAlert=tru
                 if(password!=null && password.length>0  && !(sqref in inputRangeProtectionPassword)){
                     if(isOpenAlert){
                         openRangePasswordModal(ra);
-                        $("#luckysheet-selection-copy .luckysheet-selection-copy").hide();
+                        $("#sheet-selection-copy .sheet-selection-copy").hide();
                     }
                     return false;
                 }
@@ -773,7 +773,7 @@ function checkProtectionLockedSqref(r, c, aut, local_protection, isOpenAlert=tru
             ht = local_protection.defaultSheetHintText;
         }
         tooltip.info("", ht);
-        $("#luckysheet-selection-copy .luckysheet-selection-copy").hide();
+        $("#sheet-selection-copy .sheet-selection-copy").hide();
     }
     
     return isPass;
@@ -788,23 +788,23 @@ function openRangePasswordModal(rangeAut) {
     if(!initialRangePasswordHtml){
         //Password input initial for range
         $("body").append(replaceHtml(modelHTML, { 
-            "id": "luckysheet-protection-range-validation", 
-            "addclass": "luckysheet-protection-sheet-validation", 
+            "id": "sheet-protection-range-validation", 
+            "addclass": "sheet-protection-sheet-validation", 
             "title": local_protection.validationTitle, 
             "content": `
-                <div class="luckysheet-slider-protection-row">
-                    <div id="luckysheet-protection-range-validation-hint" class="luckysheet-slider-protection-column luckysheet-protection-column-10x">
+                <div class="sheet-slider-protection-row">
+                    <div id="sheet-protection-range-validation-hint" class="sheet-slider-protection-column sheet-protection-column-10x">
                         
                     </div>
                 </div>
-                <div class="luckysheet-slider-protection-row" style="margin-top:20px">
-                    <div class="luckysheet-slider-protection-column luckysheet-protection-column-10x">
-                        <input type="password" class="luckysheet-protection-rangeItemiInput" placeHolder="${local_protection.validationInputHint}">
+                <div class="sheet-slider-protection-row" style="margin-top:20px">
+                    <div class="sheet-slider-protection-column sheet-protection-column-10x">
+                        <input type="password" class="sheet-protection-rangeItemiInput" placeHolder="${local_protection.validationInputHint}">
                     </div>
                 </div>
             `, 
-            "botton":  `<button id="luckysheet-protection-range-validation-confirm" class="btn btn-primary">${locale_button.confirm}</button>
-                        <button class="btn btn-default luckysheet-model-close-btn">${locale_button.cancel}</button>`, 
+            "botton":  `<button id="sheet-protection-range-validation-confirm" class="btn btn-primary">${locale_button.confirm}</button>
+                        <button class="btn btn-default sheet-model-close-btn">${locale_button.cancel}</button>`, 
             "style": "z-index:100003" 
         }));
     }
@@ -813,20 +813,20 @@ function openRangePasswordModal(rangeAut) {
 
 
     
-    openSelfModel("luckysheet-protection-range-validation");
+    openSelfModel("sheet-protection-range-validation");
 
-    let _hint = $("#luckysheet-protection-range-validation-hint");
+    let _hint = $("#sheet-protection-range-validation-hint");
     if(rangeAut.hintText != null && rangeAut.hintText.length>0){
         _hint.html(rangeAut.hintText);
     }
     else{
         _hint.html(local_protection.defaultRangeHintText);
     }
-    let _rangeV = $("#luckysheet-protection-range-validation");
+    let _rangeV = $("#sheet-protection-range-validation");
     let _input = _rangeV.find("input");
     _input.val("");
 
-    $("#luckysheet-protection-range-validation-confirm").off("click").on("click", function(){
+    $("#sheet-protection-range-validation-confirm").off("click").on("click", function(){
         let password = _input.val();
 
         if(password==null || password.length==0){
@@ -848,7 +848,7 @@ function openRangePasswordModal(rangeAut) {
         if(password==rangeAut.password){
             inputRangeProtectionPassword[rangeAut.sqref] = 1;
             _rangeV.hide();
-            $("#luckysheet-modal-dialog-mask").hide();
+            $("#sheet-modal-dialog-mask").hide();
             alert(local_protection.checkPasswordSucceedalert);
         }
         else{

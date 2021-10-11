@@ -23,13 +23,13 @@ export default function luckysheetsizeauto(isRefreshCanvas=true) {
     }
 
     if (!!Store.toobarObject && !!Store.toobarObject.toobarElements && Store.toobarObject.toobarElements.length === 0) {
-        $("#" + Store.container).find(".luckysheet-wa-editor").hide();
+        $("#" + Store.container).find(".sheet-wa-editor").hide();
         Store.toolbarHeight = 0;
     }
     else {
-        $("#" + Store.container).find(".luckysheet-wa-editor").show();
+        $("#" + Store.container).find(".sheet-wa-editor").show();
         // Store.toolbarHeight = 72;
-        Store.toolbarHeight = document.querySelector('#' + Store.container +' .luckysheet-wa-editor').offsetHeight;
+        Store.toolbarHeight = document.querySelector('#' + Store.container +' .sheet-wa-editor').offsetHeight;
     }
 
     // if (!sheetConfigSetting.showsheetbar) {
@@ -45,18 +45,18 @@ export default function luckysheetsizeauto(isRefreshCanvas=true) {
     customSheetbarConfig();
 
     // if (!sheetConfigSetting.showstatisticBar) {
-    //     $("#" + Store.container).find(".luckysheet-stat-area").hide();
+    //     $("#" + Store.container).find(".sheet-stat-area").hide();
     //     Store.statisticBarHeight = 0;
     // }
     // else {
-    //     $("#" + Store.container).find(".luckysheet-stat-area").show();
+    //     $("#" + Store.container).find(".sheet-stat-area").show();
     //     Store.statisticBarHeight = 23;
     // }
 
     customStatisticBarConfig();
 
     // 公式栏
-    const formulaEle = document.querySelector("#" + Store.container + ' .luckysheet-wa-calculate');
+    const formulaEle = document.querySelector("#" + Store.container + ' .sheet-wa-calculate');
     if (!sheetConfigSetting.sheetFormulaBar) {
         formulaEle.style.display = 'none';
         Store.calculatebarHeight = 0;
@@ -66,23 +66,23 @@ export default function luckysheetsizeauto(isRefreshCanvas=true) {
         Store.calculatebarHeight = formulaEle.offsetHeight;
     }
 
-    $("#" + Store.container).find(".luckysheet-grid-container").css("top", Store.toolbarHeight + Store.infobarHeight + Store.calculatebarHeight);
+    $("#" + Store.container).find(".sheet-grid-container").css("top", Store.toolbarHeight + Store.infobarHeight + Store.calculatebarHeight);
 
     gridW = $("#" + Store.container).parent().width();
     gridH = $("#" + Store.container).parent().height();
 
     if(sheetConfigSetting.showConfigWindowResize){//数据透视表  图表  交替颜色 Protection
-        if($("#luckysheet-modal-dialog-slider-pivot").is(":visible")){
-            gridW -= $("#luckysheet-modal-dialog-slider-pivot").outerWidth();
+        if($("#sheet-modal-dialog-slider-pivot").is(":visible")){
+            gridW -= $("#sheet-modal-dialog-slider-pivot").outerWidth();
         }
         else if($(".chartSetting").is(":visible")){
             gridW -= $(".chartSetting").outerWidth();
         }
-        else if($("#luckysheet-modal-dialog-slider-alternateformat").is(":visible")){
-            gridW -= $("#luckysheet-modal-dialog-slider-alternateformat").outerWidth();
+        else if($("#sheet-modal-dialog-slider-alternateformat").is(":visible")){
+            gridW -= $("#sheet-modal-dialog-slider-alternateformat").outerWidth();
         }
-        if($("#luckysheet-modal-dialog-slider-protection").is(":visible")){
-            gridW -= $("#luckysheet-modal-dialog-slider-protection").outerWidth();
+        if($("#sheet-modal-dialog-slider-protection").is(":visible")){
+            gridW -= $("#sheet-modal-dialog-slider-protection").outerWidth();
         }
     }
 
@@ -90,40 +90,40 @@ export default function luckysheetsizeauto(isRefreshCanvas=true) {
     const locale_toolbar = _locale.toolbar;
     let ismore = false,
         toolbarW = 0,
-        morebtn = `<div class="luckysheet-toolbar-button luckysheet-inline-block" data-tips="${locale_toolbar.toolMoreTip}" id="luckysheet-icon-morebtn" role="button" style="user-select: none;">
-            <div class="luckysheet-toolbar-button-outer-box luckysheet-inline-block" style="user-select: none;">
-                <div class="luckysheet-toolbar-button-inner-box luckysheet-inline-block" style="user-select: none;">
+        morebtn = `<div class="sheet-toolbar-button sheet-inline-block" data-tips="${locale_toolbar.toolMoreTip}" id="sheet-icon-morebtn" role="button" style="user-select: none;">
+            <div class="sheet-toolbar-button-outer-box sheet-inline-block" style="user-select: none;">
+                <div class="sheet-toolbar-button-inner-box sheet-inline-block" style="user-select: none;">
 
-                    <div class="luckysheet-toolbar-menu-button-caption luckysheet-inline-block" style="user-select: none;">
+                    <div class="sheet-toolbar-menu-button-caption sheet-inline-block" style="user-select: none;">
                         ${locale_toolbar.toolMore}
                     </div>
-                    <div class="luckysheet-toolbar-menu-button-dropdown luckysheet-inline-block iconfont luckysheet-iconfont-xiayige" style="user-select: none;font-size:12px;">
+                    <div class="sheet-toolbar-menu-button-dropdown sheet-inline-block iconfont sheet-iconfont-xiayige" style="user-select: none;font-size:12px;">
                     </div>
 
                 </div>
             </div>
          </div>`,
          // Add style left:$$('.luckysheet') left, when the worksheet does not fill the full screen
-        morediv = '<div id="luckysheet-icon-morebtn-div" class="luckysheet-wa-editor" style="position:absolute;top:'+ (Store.infobarHeight + Store.toolbarHeight + $("#" + Store.container).offset().top + $("body").scrollTop()) +'px;right:0px;z-index:1003;padding:5.5px;visibility:hidden;height:auto;white-space:initial;"></div>';
+        morediv = '<div id="sheet-icon-morebtn-div" class="sheet-wa-editor" style="position:absolute;top:'+ (Store.infobarHeight + Store.toolbarHeight + $("#" + Store.container).offset().top + $("body").scrollTop()) +'px;right:0px;z-index:1003;padding:5.5px;visibility:hidden;height:auto;white-space:initial;"></div>';
 
-    if($("#luckysheet-icon-morebtn-div").length == 0){
+    if($("#sheet-icon-morebtn-div").length == 0){
         $("body").append(morediv);
     }
 
-    // $("#luckysheet-icon-morebtn-div").hide();
-    $$("#luckysheet-icon-morebtn-div").style.visibility = 'hidden';
-    // $("#luckysheet-icon-morebtn-div > div").appendTo($("#luckysheet-wa-editor"));
+    // $("#sheet-icon-morebtn-div").hide();
+    $$("#sheet-icon-morebtn-div").style.visibility = 'hidden';
+    // $("#sheet-icon-morebtn-div > div").appendTo($("#sheet-wa-editor"));
 
-    $("#luckysheet-icon-morebtn-div > div").each(function(){
+    $("#sheet-icon-morebtn-div > div").each(function(){
         const _t = $(this)[0];
-        const _container =  $("#luckysheet-wa-editor")[0];
+        const _container =  $("#sheet-wa-editor")[0];
 
         _container.appendChild(document.createTextNode(" "));
 
         _container.appendChild(_t);
     });
 
-    $("#luckysheet-icon-morebtn").remove();
+    $("#sheet-icon-morebtn").remove();
 
     // 所有按钮宽度与元素定位
     const toobarWidths = Store.toobarObject.toobarWidths;
@@ -137,7 +137,7 @@ export default function luckysheetsizeauto(isRefreshCanvas=true) {
     // 找到应该隐藏的起始元素位置
     for (let index = toobarWidths.length - 1; index >= 0; index--) {
 
-        // #luckysheet-icon-morebtn button width plus right is 83px
+        // #sheet-icon-morebtn button width plus right is 83px
         if(toobarWidths[index] < gridW - 90){
             moreButtonIndex = index;
             if(moreButtonIndex < toobarWidths.length - 1){
@@ -152,112 +152,112 @@ export default function luckysheetsizeauto(isRefreshCanvas=true) {
         const element = toobarElements[index];
         if(element instanceof Array){
             for(const ele of element){
-                $("#luckysheet-icon-morebtn-div").append($(`${ele}`));
+                $("#sheet-icon-morebtn-div").append($(`${ele}`));
             }
         }else{
-            $("#luckysheet-icon-morebtn-div").append($(`${element}`));
+            $("#sheet-icon-morebtn-div").append($(`${element}`));
         }
 
     }
 
     if(ismore){
 
-        $("#luckysheet-wa-editor").append(morebtn);
-        $("#luckysheet-icon-morebtn").click(function(){
+        $("#sheet-wa-editor").append(morebtn);
+        $("#sheet-icon-morebtn").click(function(){
 
             //When resize, change the width of the more button container in real time
-            $$('#luckysheet-icon-morebtn-div').style.left = '';//reset
+            $$('#sheet-icon-morebtn-div').style.left = '';//reset
 
             const containerLeft = $$('#luckysheet').getBoundingClientRect ? $$('#luckysheet').getBoundingClientRect().left : 0;
-            const morebtnLeft = $$('#luckysheet-icon-morebtn-div').getBoundingClientRect().left;//get real left info
+            const morebtnLeft = $$('#sheet-icon-morebtn-div').getBoundingClientRect().left;//get real left info
 
             if(morebtnLeft < containerLeft){
-                $$('#luckysheet-icon-morebtn-div').style.left = containerLeft + 'px';
+                $$('#sheet-icon-morebtn-div').style.left = containerLeft + 'px';
             }
 
-            let right = $(window).width() - $("#luckysheet-icon-morebtn").offset().left - $("#luckysheet-icon-morebtn").width()+ $("body").scrollLeft();
+            let right = $(window).width() - $("#sheet-icon-morebtn").offset().left - $("#sheet-icon-morebtn").width()+ $("body").scrollLeft();
 
 
-            // $("#luckysheet-icon-morebtn-div").toggle().css("right", right < 0 ? 0 : right);
+            // $("#sheet-icon-morebtn-div").toggle().css("right", right < 0 ? 0 : right);
 
             // use native js operation
-            $$('#luckysheet-icon-morebtn-div').style.right = right < 0 ? 0 : right + 'px';
+            $$('#sheet-icon-morebtn-div').style.right = right < 0 ? 0 : right + 'px';
 
             // change to visibility,morebtnLeft will get the actual value
-            if($$('#luckysheet-icon-morebtn-div').style.visibility === 'hidden'){
-                $$('#luckysheet-icon-morebtn-div').style.visibility = 'visible';
+            if($$('#sheet-icon-morebtn-div').style.visibility === 'hidden'){
+                $$('#sheet-icon-morebtn-div').style.visibility = 'visible';
             }else{
-                $$('#luckysheet-icon-morebtn-div').style.visibility = 'hidden';
+                $$('#sheet-icon-morebtn-div').style.visibility = 'hidden';
             }
 
-            let _txt = $(this).find(".luckysheet-toolbar-menu-button-caption");
+            let _txt = $(this).find(".sheet-toolbar-menu-button-caption");
             if(_txt.text().indexOf(locale_toolbar.toolMore) > -1){
 
                 const toolCloseHTML = `
-                <div class="luckysheet-toolbar-menu-button-caption luckysheet-inline-block" style="user-select: none;">
+                <div class="sheet-toolbar-menu-button-caption sheet-inline-block" style="user-select: none;">
                     ${locale_toolbar.toolClose}
                 </div>
-                <div class="luckysheet-toolbar-menu-button-dropdown luckysheet-inline-block iconfont luckysheet-iconfont-shangyige" style="user-select: none;font-size:12px;">
+                <div class="sheet-toolbar-menu-button-dropdown sheet-inline-block iconfont sheet-iconfont-shangyige" style="user-select: none;font-size:12px;">
                 </div>
                 `
-                $(this).find(".luckysheet-toolbar-button-inner-box").html(toolCloseHTML);
+                $(this).find(".sheet-toolbar-button-inner-box").html(toolCloseHTML);
             }
             else{
 
                 const toolMoreHTML = `
-                <div class="luckysheet-toolbar-menu-button-caption luckysheet-inline-block" style="user-select: none;">
+                <div class="sheet-toolbar-menu-button-caption sheet-inline-block" style="user-select: none;">
                     ${locale_toolbar.toolMore}
                 </div>
-                <div class="luckysheet-toolbar-menu-button-dropdown luckysheet-inline-block iconfont luckysheet-iconfont-xiayige" style="user-select: none;font-size:12px;">
+                <div class="sheet-toolbar-menu-button-dropdown sheet-inline-block iconfont sheet-iconfont-xiayige" style="user-select: none;font-size:12px;">
                 </div>
                 `
 
-                $(this).find(".luckysheet-toolbar-button-inner-box").html(toolMoreHTML);
+                $(this).find(".sheet-toolbar-button-inner-box").html(toolMoreHTML);
             }
 
         });
-        //$("#luckysheet-wa-editor div").trigger("create");
+        //$("#sheet-wa-editor div").trigger("create");
 
-        // $("#luckysheet-icon-morebtn-div .luckysheet-toolbar-menu-button").css("margin-right", -1);
-        // $("#luckysheet-icon-morebtn-div .luckysheet-toolbar-button-split-left").css("margin-right", -3);
+        // $("#sheet-icon-morebtn-div .sheet-toolbar-menu-button").css("margin-right", -1);
+        // $("#sheet-icon-morebtn-div .sheet-toolbar-button-split-left").css("margin-right", -3);
 
         // “更多”容器中，联动hover效果
-        $("#luckysheet-icon-morebtn-div .luckysheet-toolbar-button-split-left").off("hover").hover(function(){
-            $(this).next(".luckysheet-toolbar-button-split-right").addClass("luckysheet-toolbar-button-split-right-hover");
+        $("#sheet-icon-morebtn-div .sheet-toolbar-button-split-left").off("hover").hover(function(){
+            $(this).next(".sheet-toolbar-button-split-right").addClass("sheet-toolbar-button-split-right-hover");
         }, function(){
-            $(this).next(".luckysheet-toolbar-button-split-right").removeClass("luckysheet-toolbar-button-split-right-hover");
+            $(this).next(".sheet-toolbar-button-split-right").removeClass("sheet-toolbar-button-split-right-hover");
         });
 
-        $("#luckysheet-icon-morebtn-div .luckysheet-toolbar-button-split-right").off("hover").hover(function(){
-            $(this).prev(".luckysheet-toolbar-button-split-left").addClass("luckysheet-toolbar-button-hover");
+        $("#sheet-icon-morebtn-div .sheet-toolbar-button-split-right").off("hover").hover(function(){
+            $(this).prev(".sheet-toolbar-button-split-left").addClass("sheet-toolbar-button-hover");
         }, function(){
-            $(this).prev(".luckysheet-toolbar-button-split-left").removeClass("luckysheet-toolbar-button-hover");
+            $(this).prev(".sheet-toolbar-button-split-left").removeClass("sheet-toolbar-button-hover");
         });
 
         // tooltip
-        tooltip.createHoverTip("#luckysheet-icon-morebtn-div" ,".luckysheet-toolbar-menu-button, .luckysheet-toolbar-button, .luckysheet-toolbar-combo-button");
+        tooltip.createHoverTip("#sheet-icon-morebtn-div" ,".sheet-toolbar-menu-button, .sheet-toolbar-button, .sheet-toolbar-combo-button");
     }
 
-    $("#"+ Store.container + " .luckysheet-wa-editor .luckysheet-toolbar-button-split-left").off("hover").hover(function(){
-        $(this).next(".luckysheet-toolbar-button-split-right").addClass("luckysheet-toolbar-button-split-right-hover");
+    $("#"+ Store.container + " .sheet-wa-editor .sheet-toolbar-button-split-left").off("hover").hover(function(){
+        $(this).next(".sheet-toolbar-button-split-right").addClass("sheet-toolbar-button-split-right-hover");
     }, function(){
-        $(this).next(".luckysheet-toolbar-button-split-right").removeClass("luckysheet-toolbar-button-split-right-hover");
+        $(this).next(".sheet-toolbar-button-split-right").removeClass("sheet-toolbar-button-split-right-hover");
     });
 
-    $("#"+ Store.container + " .luckysheet-wa-editor .luckysheet-toolbar-button-split-right").off("hover").hover(function(){
-        $(this).prev(".luckysheet-toolbar-button-split-left").addClass("luckysheet-toolbar-button-hover");
+    $("#"+ Store.container + " .sheet-wa-editor .sheet-toolbar-button-split-right").off("hover").hover(function(){
+        $(this).prev(".sheet-toolbar-button-split-left").addClass("sheet-toolbar-button-hover");
     }, function(){
-        $(this).prev(".luckysheet-toolbar-button-split-left").removeClass("luckysheet-toolbar-button-hover");
+        $(this).prev(".sheet-toolbar-button-split-left").removeClass("sheet-toolbar-button-hover");
     });
 
-    // When adding elements to the luckysheet-icon-morebtn-div element of the toolbar, it will affect the height of the entire workbook area, so the height is obtained here
+    // When adding elements to the sheet-icon-morebtn-div element of the toolbar, it will affect the height of the entire workbook area, so the height is obtained here
 
     Store.gridW=gridW;
     Store.gridH=gridH;
     changeSheetContainerSize(gridW, gridH)
 
     if(isRefreshCanvas){
-        luckysheetrefreshgrid($("#luckysheet-cell-main").scrollLeft(), $("#luckysheet-cell-main").scrollTop());
+        luckysheetrefreshgrid($("#sheet-cell-main").scrollLeft(), $("#sheet-cell-main").scrollTop());
     }
 
     sheetmanage.sheetArrowShowAndHide();
@@ -286,15 +286,15 @@ export function changeSheetContainerSize(gridW, gridH){
     Store.cellmainHeight = gridH - (Store.infobarHeight + Store.toolbarHeight + Store.calculatebarHeight + Store.columnHeaderHeight + Store.sheetBarHeight + Store.statisticBarHeight);
     Store.cellmainWidth = gridW - Store.rowHeaderWidth;
 
-    $("#luckysheet-cols-h-c, #luckysheet-cell-main").width(Store.cellmainWidth);
-    $("#luckysheet-cell-main").height(Store.cellmainHeight);
-    $("#luckysheet-rows-h").height(Store.cellmainHeight - Store.cellMainSrollBarSize);
+    $("#sheet-cols-h-c, #sheet-cell-main").width(Store.cellmainWidth);
+    $("#sheet-cell-main").height(Store.cellmainHeight);
+    $("#sheet-rows-h").height(Store.cellmainHeight - Store.cellMainSrollBarSize);
 
-    $("#luckysheet-scrollbar-y").height(Store.cellmainHeight + Store.columnHeaderHeight - Store.cellMainSrollBarSize - 3);
-    $("#luckysheet-scrollbar-x").height(Store.cellMainSrollBarSize);
-    $("#luckysheet-scrollbar-y").width(Store.cellMainSrollBarSize);
+    $("#sheet-scrollbar-y").height(Store.cellmainHeight + Store.columnHeaderHeight - Store.cellMainSrollBarSize - 3);
+    $("#sheet-scrollbar-x").height(Store.cellMainSrollBarSize);
+    $("#sheet-scrollbar-y").width(Store.cellMainSrollBarSize);
 
-    $("#luckysheet-scrollbar-x").width(Store.cellmainWidth).css("left", Store.rowHeaderWidth - 2);
+    $("#sheet-scrollbar-x").width(Store.cellmainWidth).css("left", Store.rowHeaderWidth - 2);
 
     Store.sheetTableContentHW = [
         Store.cellmainWidth + Store.rowHeaderWidth - Store.cellMainSrollBarSize,
@@ -307,22 +307,22 @@ export function changeSheetContainerSize(gridW, gridH){
     })
     .css({ width: Store.sheetTableContentHW[0], height: Store.sheetTableContentHW[1] });
 
-    $("#" + Store.container).find("#luckysheet-grid-window-1").css("bottom", Store.sheetBarHeight);
-    $("#" + Store.container).find(".luckysheet-grid-window").css("bottom", Store.statisticBarHeight);
+    $("#" + Store.container).find("#sheet-grid-window-1").css("bottom", Store.sheetBarHeight);
+    $("#" + Store.container).find(".sheet-grid-window").css("bottom", Store.statisticBarHeight);
 
-    let gridwidth = $("#luckysheet-grid-window-1").width();
-    $("#luckysheet-freezebar-horizontal").find(".luckysheet-freezebar-horizontal-handle")
+    let gridwidth = $("#sheet-grid-window-1").width();
+    $("#sheet-freezebar-horizontal").find(".sheet-freezebar-horizontal-handle")
     .css({ "width": gridwidth - 10 })
     .end()
-    .find(".luckysheet-freezebar-horizontal-drop")
+    .find(".sheet-freezebar-horizontal-drop")
     .css({ "width": gridwidth - 10 });
 
-    let gridheight = $("#luckysheet-grid-window-1").height();
-    $("#luckysheet-freezebar-vertical")
-    .find(".luckysheet-freezebar-vertical-handle")
+    let gridheight = $("#sheet-grid-window-1").height();
+    $("#sheet-freezebar-vertical")
+    .find(".sheet-freezebar-vertical-handle")
     .css({ "height": gridheight - 10 })
     .end()
-    .find(".luckysheet-freezebar-vertical-drop")
+    .find(".sheet-freezebar-vertical-drop")
     .css({ "height": gridheight - 10 });
 
     luckysheetFreezen.createAssistCanvas();
@@ -348,10 +348,10 @@ export function menuToolBarWidth() {
      * @returns {object}
      * @input showtoolbarConfig = ['undo', 'redo', '|' , 'font' , 'moreFormats', '|']
      * {
-     *     undo: {ele: '#luckysheet-icon-undo', index: 0},
-     *     redo: {ele: ['#luckysheet-icon-redo', '#luckysheet-separator-redo'], index: 1},
-     *     undo: {ele: '#luckysheet-icon-font', index: 2},
-     *     moreFormats: {ele: ['#luckysheet-icon-fmt-other', '#luckysheet-separator-more-formats'], index: 3},
+     *     undo: {ele: '#sheet-icon-undo', index: 0},
+     *     redo: {ele: ['#sheet-icon-redo', '#sheet-separator-redo'], index: 1},
+     *     undo: {ele: '#sheet-icon-font', index: 2},
+     *     moreFormats: {ele: ['#sheet-icon-fmt-other', '#sheet-separator-more-formats'], index: 3},
      * }
      */
     function buildBoolBarConfig() {
@@ -586,7 +586,7 @@ function customStatisticBarConfig() {
         if(!config[s]){
             switch (s) {
                 case 'count':
-                    $('#luckysheet-sta-content').hide();
+                    $('#sheet-sta-content').hide();
                     isHide++;
                     break;
 
@@ -596,7 +596,7 @@ function customStatisticBarConfig() {
                     break;
 
                 case 'zoom':
-                    $('#luckysheet-zoom-content').hide();
+                    $('#sheet-zoom-content').hide();
                     isHide++;
                     break;
 
@@ -607,11 +607,11 @@ function customStatisticBarConfig() {
     }
 
     if (isHide === 3) {
-        $("#" + Store.container).find(".luckysheet-stat-area").hide();
+        $("#" + Store.container).find(".sheet-stat-area").hide();
         Store.statisticBarHeight = 0;
     }
     else {
-        $("#" + Store.container).find(".luckysheet-stat-area").show();
+        $("#" + Store.container).find(".sheet-stat-area").show();
         Store.statisticBarHeight = 23;
     }
 }

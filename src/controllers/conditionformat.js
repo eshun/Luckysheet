@@ -24,27 +24,27 @@ const conditionformat = {
 
         return `<div class="ruleTypeBox">
                     <div class="ruleTypeItem">
-                        <span class="icon iconfont luckysheet-iconfont-youjiantou"></span>
+                        <span class="icon iconfont sheet-iconfont-youjiantou"></span>
                         <span>${conditionformat_Text.ruleTypeItem1}</span>
                     </div>
                     <div class="ruleTypeItem">
-                        <span class="icon iconfont luckysheet-iconfont-youjiantou"></span>
+                        <span class="icon iconfont sheet-iconfont-youjiantou"></span>
                         <span>${conditionformat_Text.ruleTypeItem2}</span>
                     </div>
                     <div class="ruleTypeItem">
-                        <span class="icon iconfont luckysheet-iconfont-youjiantou"></span>
+                        <span class="icon iconfont sheet-iconfont-youjiantou"></span>
                         <span>${conditionformat_Text.ruleTypeItem3}</span>
                     </div>
                     <div class="ruleTypeItem">
-                        <span class="icon iconfont luckysheet-iconfont-youjiantou"></span>
+                        <span class="icon iconfont sheet-iconfont-youjiantou"></span>
                         <span>${conditionformat_Text.ruleTypeItem4}</span>
                     </div>
                     <div class="ruleTypeItem">
-                        <span class="icon iconfont luckysheet-iconfont-youjiantou"></span>
+                        <span class="icon iconfont sheet-iconfont-youjiantou"></span>
                         <span>${conditionformat_Text.ruleTypeItem5}</span>
                     </div>
                     <div class="ruleTypeItem">
-                        <span class="icon iconfont luckysheet-iconfont-youjiantou"></span>
+                        <span class="icon iconfont sheet-iconfont-youjiantou"></span>
                         <span>${conditionformat_Text.ruleTypeItem6}</span>
                     </div>
                 </div>`;
@@ -56,12 +56,12 @@ const conditionformat = {
                     <div class="colorbox">
                         <input id="checkTextColor" type="checkbox" checked="checked">
                         <label for="checkTextColor">${conditionformat_Text.textColor}：</label>
-                        <input id="textcolorshow" data-tips="${conditionformat_Text.textColor}" data-func="background" class="luckysheet-conditionformat-config-color" type="text" value="#9c0006" style="display: none;">
+                        <input id="textcolorshow" data-tips="${conditionformat_Text.textColor}" data-func="background" class="sheet-conditionformat-config-color" type="text" value="#9c0006" style="display: none;">
                     </div>
                     <div class="colorbox">
                         <input id="checkCellColor" type="checkbox" checked="checked">
                         <label for="checkCellColor">${conditionformat_Text.cellColor}：</label>
-                        <input id="cellcolorshow" data-tips="${conditionformat_Text.cellColor}" data-func="background" class="luckysheet-conditionformat-config-color" type="text" value="#ffc7ce" style="display: none;">
+                        <input id="cellcolorshow" data-tips="${conditionformat_Text.cellColor}" data-func="background" class="sheet-conditionformat-config-color" type="text" value="#ffc7ce" style="display: none;">
                     </div>
                 </div>`;
     },
@@ -107,15 +107,15 @@ const conditionformat = {
         const conditionformat_Text = locale().conditionformat;
 
         // 管理规则
-        $(document).off("change.CFchooseSheet").on("change.CFchooseSheet", "#luckysheet-administerRule-dialog .chooseSheet", function(){
-            let index = $("#luckysheet-administerRule-dialog .chooseSheet option:selected").val();
+        $(document).off("change.CFchooseSheet").on("change.CFchooseSheet", "#sheet-administerRule-dialog .chooseSheet", function(){
+            let index = $("#sheet-administerRule-dialog .chooseSheet option:selected").val();
             _this.getConditionRuleList(index);
         });
-        $(document).off("click.CFadministerRuleItem").on("click.CFadministerRuleItem", "#luckysheet-administerRule-dialog .ruleList .listBox .item", function(){
+        $(document).off("click.CFadministerRuleItem").on("click.CFadministerRuleItem", "#sheet-administerRule-dialog .ruleList .listBox .item", function(){
             $(this).addClass("on").siblings().removeClass("on");
         });
 
-        $(document).off("click.CFadministerRuleConfirm").on("click.CFadministerRuleConfirm", "#luckysheet-administerRule-dialog-confirm", function(){
+        $(document).off("click.CFadministerRuleConfirm").on("click.CFadministerRuleConfirm", "#sheet-administerRule-dialog-confirm", function(){
             if(!checkProtectionFormatCells(Store.currentSheetIndex)){
                 return;
             }
@@ -138,8 +138,8 @@ const conditionformat = {
             _this.ref(historyRules, currentRules);
 
             //隐藏一些dom
-            $("#luckysheet-modal-dialog-mask").hide();
-            $("#luckysheet-administerRule-dialog").hide();
+            $("#sheet-modal-dialog-mask").hide();
+            $("#sheet-administerRule-dialog").hide();
 
             //发送给后台
             if(server.allowUpdate){
@@ -150,15 +150,15 @@ const conditionformat = {
             }
         });
 
-        $(document).off("click.CFadministerRuleClose").on("click.CFadministerRuleClose", "#luckysheet-administerRule-dialog-close", function(){
-            $("#luckysheet-modal-dialog-mask").hide();
-            $("#luckysheet-administerRule-dialog").hide();
+        $(document).off("click.CFadministerRuleClose").on("click.CFadministerRuleClose", "#sheet-administerRule-dialog-close", function(){
+            $("#sheet-modal-dialog-mask").hide();
+            $("#sheet-administerRule-dialog").hide();
             _this.fileClone = [];
         });
-        $(document).off("click.CFadministerRuleFa").on("click.CFadministerRuleFa", "#luckysheet-administerRule-dialog .item .fa-table", function(){
-            $(this).parents("#luckysheet-administerRule-dialog").hide();
+        $(document).off("click.CFadministerRuleFa").on("click.CFadministerRuleFa", "#sheet-administerRule-dialog .item .fa-table", function(){
+            $(this).parents("#sheet-administerRule-dialog").hide();
 
-            let sheetIndex = $("#luckysheet-administerRule-dialog .chooseSheet select option:selected").val();
+            let sheetIndex = $("#sheet-administerRule-dialog .chooseSheet select option:selected").val();
             if(sheetIndex != Store.currentSheetIndex){
                 sheetmanage.changeSheetExec(sheetIndex);
             }
@@ -200,30 +200,30 @@ const conditionformat = {
 
             selectionCopyShow(_this.selectRange);
         });
-        $(document).off("click.CFmultiRangeConfirm").on("click.CFmultiRangeConfirm", "#luckysheet-multiRange-dialog-confirm", function(){
-            $(this).parents("#luckysheet-multiRange-dialog").hide();
+        $(document).off("click.CFmultiRangeConfirm").on("click.CFmultiRangeConfirm", "#sheet-multiRange-dialog-confirm", function(){
+            $(this).parents("#sheet-multiRange-dialog").hide();
 
             let dataItem = $(this).attr("data-item");
-            let v = $(this).parents("#luckysheet-multiRange-dialog").find("input").val();
-            $("#luckysheet-administerRule-dialog .item[data-item="+dataItem+"] input").val(v);
+            let v = $(this).parents("#sheet-multiRange-dialog").find("input").val();
+            $("#sheet-administerRule-dialog .item[data-item="+dataItem+"] input").val(v);
 
-            let sheetIndex = $("#luckysheet-administerRule-dialog .chooseSheet option:selected").val();
+            let sheetIndex = $("#sheet-administerRule-dialog .chooseSheet option:selected").val();
             _this.fileClone[getSheetIndex(sheetIndex)]["conditionformat_save"][dataItem].cellrange = _this.getRangeByTxt(v);
 
-            $("#luckysheet-modal-dialog-mask").show();
-            $("#luckysheet-administerRule-dialog").show();
+            $("#sheet-modal-dialog-mask").show();
+            $("#sheet-administerRule-dialog").show();
 
             let range = [];
             selectionCopyShow(range);
         });
-        $(document).off("click.CFmultiRangeClose").on("click.CFmultiRangeClose", "#luckysheet-multiRange-dialog-close", function(){
-            $(this).parents("#luckysheet-multiRange-dialog").hide();
-            $("#luckysheet-modal-dialog-mask").show();
-            $("#luckysheet-administerRule-dialog").show();
+        $(document).off("click.CFmultiRangeClose").on("click.CFmultiRangeClose", "#sheet-multiRange-dialog-close", function(){
+            $(this).parents("#sheet-multiRange-dialog").hide();
+            $("#sheet-modal-dialog-mask").show();
+            $("#sheet-administerRule-dialog").show();
 
-            $("#luckysheet-formula-functionrange-select").hide();
-            $("#luckysheet-row-count-show").hide();
-            $("#luckysheet-column-count-show").hide();
+            $("#sheet-formula-functionrange-select").hide();
+            $("#sheet-row-count-show").hide();
+            $("#sheet-column-count-show").hide();
 
             let range = [];
             selectionCopyShow(range);
@@ -231,7 +231,7 @@ const conditionformat = {
 
         // 新建规则
         $(document).off("click.CFnewConditionRule").on("click.CFnewConditionRule", "#newConditionRule", function(){
-            let sheetIndex = $("#luckysheet-administerRule-dialog .chooseSheet option:selected").val();
+            let sheetIndex = $("#sheet-administerRule-dialog .chooseSheet option:selected").val();
             if(!checkProtectionFormatCells(sheetIndex)){
                 return;
             }
@@ -248,20 +248,20 @@ const conditionformat = {
 
             _this.newConditionRuleDialog(1);
         });
-        $(document).off("click.CFnewConditionRuleConfirm").on("click.CFnewConditionRuleConfirm", "#luckysheet-newConditionRule-dialog-confirm", function(){
+        $(document).off("click.CFnewConditionRuleConfirm").on("click.CFnewConditionRuleConfirm", "#sheet-newConditionRule-dialog-confirm", function(){
 
             if(!checkProtectionFormatCells(Store.currentSheetIndex)){
                 return;
             }
 
-            let index = $("#luckysheet-newConditionRule-dialog .ruleTypeItem.on").index();
-            let type1 = $("#luckysheet-newConditionRule-dialog #type1 option:selected").val();
-            let type2 = $("#luckysheet-newConditionRule-dialog ." + type1 + "Box #type2 option:selected").val();
+            let index = $("#sheet-newConditionRule-dialog .ruleTypeItem.on").index();
+            let type1 = $("#sheet-newConditionRule-dialog #type1 option:selected").val();
+            let type2 = $("#sheet-newConditionRule-dialog ." + type1 + "Box #type2 option:selected").val();
 
             let format, rule;
             if(index == 0){
                 if(type1 == "dataBar"){ //数据条
-                    let color = $(this).parents("#luckysheet-newConditionRule-dialog").find(".dataBarBox .luckysheet-conditionformat-config-color").spectrum("get").toHexString();
+                    let color = $(this).parents("#sheet-newConditionRule-dialog").find(".dataBarBox .sheet-conditionformat-config-color").spectrum("get").toHexString();
 
                     if(type2 == "gradient"){ //渐变填充
                         format = [color, "#ffffff"];
@@ -277,9 +277,9 @@ const conditionformat = {
                     };
                 }
                 else if(type1 == "colorGradation"){ //色阶
-                    let maxcolor = $(this).parents("#luckysheet-newConditionRule-dialog").find(".colorGradationBox .maxVal .luckysheet-conditionformat-config-color").spectrum("get").toRgbString();
-                    let midcolor = $(this).parents("#luckysheet-newConditionRule-dialog").find(".colorGradationBox .midVal .luckysheet-conditionformat-config-color").spectrum("get").toRgbString();
-                    let mincolor = $(this).parents("#luckysheet-newConditionRule-dialog").find(".colorGradationBox .minVal .luckysheet-conditionformat-config-color").spectrum("get").toRgbString();
+                    let maxcolor = $(this).parents("#sheet-newConditionRule-dialog").find(".colorGradationBox .maxVal .sheet-conditionformat-config-color").spectrum("get").toRgbString();
+                    let midcolor = $(this).parents("#sheet-newConditionRule-dialog").find(".colorGradationBox .midVal .sheet-conditionformat-config-color").spectrum("get").toRgbString();
+                    let mincolor = $(this).parents("#sheet-newConditionRule-dialog").find(".colorGradationBox .minVal .sheet-conditionformat-config-color").spectrum("get").toRgbString();
 
                     if(type2 == "threeColor"){ //三色
                         format = [maxcolor, midcolor, mincolor];
@@ -295,9 +295,9 @@ const conditionformat = {
                     };
                 }
                 else if(type1 == "icons"){ //图标集
-                    let len = $(this).parents("#luckysheet-newConditionRule-dialog").find(".iconsBox .model").attr("data-len");
-                    let leftMin = $(this).parents("#luckysheet-newConditionRule-dialog").find(".iconsBox .model").attr("data-leftmin");
-                    let top = $(this).parents("#luckysheet-newConditionRule-dialog").find(".iconsBox .model").attr("data-top");
+                    let len = $(this).parents("#sheet-newConditionRule-dialog").find(".iconsBox .model").attr("data-len");
+                    let leftMin = $(this).parents("#sheet-newConditionRule-dialog").find(".iconsBox .model").attr("data-leftmin");
+                    let top = $(this).parents("#sheet-newConditionRule-dialog").find(".iconsBox .model").attr("data-top");
 
                     format = {
                         "len": len,
@@ -320,8 +320,8 @@ const conditionformat = {
                         conditionName = type2;
 
                         if(type2 == "betweenness"){
-                            let v1 = $("#luckysheet-newConditionRule-dialog #conditionVal input").val().trim();
-                            let v2 = $("#luckysheet-newConditionRule-dialog #conditionVal2 input").val().trim();
+                            let v1 = $("#sheet-newConditionRule-dialog #conditionVal input").val().trim();
+                            let v2 = $("#sheet-newConditionRule-dialog #conditionVal2 input").val().trim();
 
                             //条件值是否是选区
                             let rangeArr1 = _this.getRangeByTxt(v1);
@@ -386,7 +386,7 @@ const conditionformat = {
                         }
                         else{
                             //条件值
-                            let v = $("#luckysheet-newConditionRule-dialog #conditionVal input").val().trim();
+                            let v = $("#sheet-newConditionRule-dialog #conditionVal input").val().trim();
 
                             //条件值是否是选区
                             let rangeArr = _this.getRangeByTxt(v);
@@ -424,7 +424,7 @@ const conditionformat = {
                         conditionName = "textContains";
 
                         //条件值
-                        let v = $("#luckysheet-newConditionRule-dialog #conditionVal input").val().trim();
+                        let v = $("#sheet-newConditionRule-dialog #conditionVal input").val().trim();
 
                         //条件值是否是选区
                         let rangeArr = _this.getRangeByTxt(v);
@@ -461,7 +461,7 @@ const conditionformat = {
                         conditionName = "occurrenceDate";
 
                         //条件值
-                        let v = $("#luckysheet-newConditionRule-dialog #daterange-btn").val();
+                        let v = $("#sheet-newConditionRule-dialog #daterange-btn").val();
 
                         if(v == "" || v == null){
                             _this.infoDialog(conditionformat_Text.pleaseSelectADate, "");
@@ -474,7 +474,7 @@ const conditionformat = {
                 else if(index == 2){ //排名靠前靠后
                     //条件名称
                     if(type1 == "top"){
-                        if($("#luckysheet-newConditionRule-dialog #isPercent").is(":selected")){
+                        if($("#sheet-newConditionRule-dialog #isPercent").is(":selected")){
                             conditionName = "top10%";
                         }
                         else{
@@ -482,7 +482,7 @@ const conditionformat = {
                         }
                     }
                     else if(type1 == "last"){
-                        if($("#luckysheet-newConditionRule-dialog #isPercent").is(":selected")){
+                        if($("#sheet-newConditionRule-dialog #isPercent").is(":selected")){
                             conditionName = "last10%";
                         }
                         else{
@@ -491,7 +491,7 @@ const conditionformat = {
                     }
 
                     //条件值
-                    let v = $("#luckysheet-newConditionRule-dialog #conditionVal input").val().trim();
+                    let v = $("#sheet-newConditionRule-dialog #conditionVal input").val().trim();
 
                     if(parseInt(v) != v || parseInt(v) < 1 || parseInt(v) > 1000){
                         _this.infoDialog(conditionformat_Text.pleaseEnterInteger, "");
@@ -518,7 +518,7 @@ const conditionformat = {
                     conditionName = "formula";
 
                     //条件值
-                    let v = $("#luckysheet-newConditionRule-dialog #formulaConditionVal input").val().trim(); 
+                    let v = $("#sheet-newConditionRule-dialog #formulaConditionVal input").val().trim(); 
 
                     if(v == ""){
                         _this.infoDialog("Condition value cannot be empty!", "");
@@ -530,16 +530,16 @@ const conditionformat = {
 
                 //格式颜色
                 let textcolor;
-                if($("#luckysheet-newConditionRule-dialog #checkTextColor").is(":checked")){
-                    textcolor = $("#luckysheet-newConditionRule-dialog #textcolorshow").spectrum("get").toHexString();
+                if($("#sheet-newConditionRule-dialog #checkTextColor").is(":checked")){
+                    textcolor = $("#sheet-newConditionRule-dialog #textcolorshow").spectrum("get").toHexString();
                 }
                 else{
                     textcolor = null;
                 }
 
                 let cellcolor;
-                if($("#luckysheet-newConditionRule-dialog #checkCellColor").is(":checked")){
-                    cellcolor = $("#luckysheet-newConditionRule-dialog #cellcolorshow").spectrum("get").toHexString();
+                if($("#sheet-newConditionRule-dialog #checkCellColor").is(":checked")){
+                    cellcolor = $("#sheet-newConditionRule-dialog #cellcolorshow").spectrum("get").toHexString();
                 }
                 else{
                     cellcolor = null;
@@ -560,13 +560,13 @@ const conditionformat = {
                 };
             }
 
-            $("#luckysheet-newConditionRule-dialog").hide();
+            $("#sheet-newConditionRule-dialog").hide();
 
             //新建规则的入口
             let source = $(this).attr("data-source");
 
             if(source == 0){
-                $("#luckysheet-modal-dialog-mask").hide();
+                $("#sheet-modal-dialog-mask").hide();
 
                 //保存之前的规则
                 let fileH = $.extend(true, [], Store.luckysheetfile);
@@ -598,36 +598,36 @@ const conditionformat = {
                 _this.administerRuleDialog();
             }
         });
-        $(document).off("click.CFnewConditionRuleClose").on("click.CFnewConditionRuleClose", "#luckysheet-newConditionRule-dialog-close", function(){
+        $(document).off("click.CFnewConditionRuleClose").on("click.CFnewConditionRuleClose", "#sheet-newConditionRule-dialog-close", function(){
             //新建规则的入口
             let source = $(this).attr("data-source");
             if(source == 0){
-                $("#luckysheet-modal-dialog-mask").hide();
+                $("#sheet-modal-dialog-mask").hide();
             }
             if(source == 1){
-                $("#luckysheet-administerRule-dialog").show();
+                $("#sheet-administerRule-dialog").show();
             }
 
             //新建规则隐藏
-            $("#luckysheet-newConditionRule-dialog").hide();
+            $("#sheet-newConditionRule-dialog").hide();
 
             //隐藏虚线框
-            $("#luckysheet-formula-functionrange-select").hide();
-            $("#luckysheet-row-count-show").hide();
-            $("#luckysheet-column-count-show").hide();
+            $("#sheet-formula-functionrange-select").hide();
+            $("#sheet-row-count-show").hide();
+            $("#sheet-column-count-show").hide();
         });
 
         // 编辑规则
         $(document).off("click.CFeditorConditionRule").on("click.CFeditorConditionRule", "#editorConditionRule", function(){
 
-            let sheetIndex = $("#luckysheet-administerRule-dialog .chooseSheet option:selected").val();
+            let sheetIndex = $("#sheet-administerRule-dialog .chooseSheet option:selected").val();
 
             if(!checkProtectionFormatCells(sheetIndex)){
                 return;
             }
 
 
-            let itemIndex = $("#luckysheet-administerRule-dialog .ruleList .listBox .item.on").attr("data-item");
+            let itemIndex = $("#sheet-administerRule-dialog .ruleList .listBox .item.on").attr("data-item");
             let rule = {
                 "sheetIndex": sheetIndex,
                 "itemIndex": itemIndex,
@@ -636,17 +636,17 @@ const conditionformat = {
             _this.editorRule = rule;
             _this.editorConditionRuleDialog();
         });
-        $(document).off("click.CFeditorConditionRuleConfirm").on("click.CFeditorConditionRuleConfirm", "#luckysheet-editorConditionRule-dialog-confirm",function(){
-            let index = $("#luckysheet-editorConditionRule-dialog .ruleTypeItem.on").index();
-            let type1 = $("#luckysheet-editorConditionRule-dialog #type1 option:selected").val();
-            let type2 = $("#luckysheet-editorConditionRule-dialog ." + type1 + "Box #type2 option:selected").val();
+        $(document).off("click.CFeditorConditionRuleConfirm").on("click.CFeditorConditionRuleConfirm", "#sheet-editorConditionRule-dialog-confirm",function(){
+            let index = $("#sheet-editorConditionRule-dialog .ruleTypeItem.on").index();
+            let type1 = $("#sheet-editorConditionRule-dialog #type1 option:selected").val();
+            let type2 = $("#sheet-editorConditionRule-dialog ." + type1 + "Box #type2 option:selected").val();
 
             let cellrange = _this.editorRule["data"].cellrange;
 
             let format, rule;
             if(index == 0){
                 if(type1 == "dataBar"){ //数据条
-                    let color = $(this).parents("#luckysheet-editorConditionRule-dialog").find(".dataBarBox .luckysheet-conditionformat-config-color").spectrum("get").toHexString();
+                    let color = $(this).parents("#sheet-editorConditionRule-dialog").find(".dataBarBox .sheet-conditionformat-config-color").spectrum("get").toHexString();
 
                     if(type2 == "gradient"){ //渐变填充
                         format = [color, "#ffffff"];
@@ -662,9 +662,9 @@ const conditionformat = {
                     };
                 }
                 else if(type1 == "colorGradation"){ //色阶
-                    let maxcolor = $(this).parents("#luckysheet-editorConditionRule-dialog").find(".colorGradationBox .maxVal .luckysheet-conditionformat-config-color").spectrum("get").toRgbString();
-                    let midcolor = $(this).parents("#luckysheet-editorConditionRule-dialog").find(".colorGradationBox .midVal .luckysheet-conditionformat-config-color").spectrum("get").toRgbString();
-                    let mincolor = $(this).parents("#luckysheet-editorConditionRule-dialog").find(".colorGradationBox .minVal .luckysheet-conditionformat-config-color").spectrum("get").toRgbString();
+                    let maxcolor = $(this).parents("#sheet-editorConditionRule-dialog").find(".colorGradationBox .maxVal .sheet-conditionformat-config-color").spectrum("get").toRgbString();
+                    let midcolor = $(this).parents("#sheet-editorConditionRule-dialog").find(".colorGradationBox .midVal .sheet-conditionformat-config-color").spectrum("get").toRgbString();
+                    let mincolor = $(this).parents("#sheet-editorConditionRule-dialog").find(".colorGradationBox .minVal .sheet-conditionformat-config-color").spectrum("get").toRgbString();
 
                     if(type2 == "threeColor"){ //三色
                         format = [maxcolor, midcolor, mincolor];
@@ -680,9 +680,9 @@ const conditionformat = {
                     };
                 }
                 else if(type1 == "icons"){ //图标集
-                    let len = $(this).parents("#luckysheet-editorConditionRule-dialog").find(".iconsBox .model").attr("data-len");
-                    let leftMin = $(this).parents("#luckysheet-editorConditionRule-dialog").find(".iconsBox .model").attr("data-leftmin");
-                    let top = $(this).parents("#luckysheet-editorConditionRule-dialog").find(".iconsBox .model").attr("data-top");
+                    let len = $(this).parents("#sheet-editorConditionRule-dialog").find(".iconsBox .model").attr("data-len");
+                    let leftMin = $(this).parents("#sheet-editorConditionRule-dialog").find(".iconsBox .model").attr("data-leftmin");
+                    let top = $(this).parents("#sheet-editorConditionRule-dialog").find(".iconsBox .model").attr("data-top");
 
                     format = {
                         "len": len,
@@ -705,8 +705,8 @@ const conditionformat = {
                         conditionName = type2;
 
                         if(type2 == "betweenness"){
-                            let v1 = $("#luckysheet-editorConditionRule-dialog #conditionVal input").val().trim();
-                            let v2 = $("#luckysheet-editorConditionRule-dialog #conditionVal2 input").val().trim();
+                            let v1 = $("#sheet-editorConditionRule-dialog #conditionVal input").val().trim();
+                            let v2 = $("#sheet-editorConditionRule-dialog #conditionVal2 input").val().trim();
 
                             //条件值是否是选区
                             let rangeArr1 = _this.getRangeByTxt(v1);
@@ -771,7 +771,7 @@ const conditionformat = {
                         }
                         else{
                             //条件值
-                            let v = $("#luckysheet-editorConditionRule-dialog #conditionVal input").val().trim();
+                            let v = $("#sheet-editorConditionRule-dialog #conditionVal input").val().trim();
 
                             //条件值是否是选区
                             let rangeArr = _this.getRangeByTxt(v);
@@ -809,7 +809,7 @@ const conditionformat = {
                         conditionName = "textContains";
 
                         //条件值
-                        let v = $("#luckysheet-editorConditionRule-dialog #conditionVal input").val().trim();
+                        let v = $("#sheet-editorConditionRule-dialog #conditionVal input").val().trim();
 
                         //条件值是否是选区
                         let rangeArr = _this.getRangeByTxt(v);
@@ -846,7 +846,7 @@ const conditionformat = {
                         conditionName = "occurrenceDate";
 
                         //条件值
-                        let v = $("#luckysheet-editorConditionRule-dialog #daterange-btn").val();
+                        let v = $("#sheet-editorConditionRule-dialog #daterange-btn").val();
 
                         if(v == "" || v == null){
                             _this.infoDialog(conditionformat_Text.pleaseSelectADate, "");
@@ -859,7 +859,7 @@ const conditionformat = {
                 else if(index == 2){ //排名靠前靠后
                     //条件名称
                     if(type1 == "top"){
-                        if($("#luckysheet-editorConditionRule-dialog #isPercent").is(":selected")){
+                        if($("#sheet-editorConditionRule-dialog #isPercent").is(":selected")){
                             conditionName = "top10%";
                         }
                         else{
@@ -867,7 +867,7 @@ const conditionformat = {
                         }
                     }
                     else if(type1 == "last"){
-                        if($("#luckysheet-editorConditionRule-dialog #isPercent").is(":selected")){
+                        if($("#sheet-editorConditionRule-dialog #isPercent").is(":selected")){
                             conditionName = "last10%";
                         }
                         else{
@@ -876,7 +876,7 @@ const conditionformat = {
                     }
 
                     //条件值
-                    let v = $("#luckysheet-editorConditionRule-dialog #conditionVal input").val().trim();
+                    let v = $("#sheet-editorConditionRule-dialog #conditionVal input").val().trim();
 
                     if(parseInt(v) != v || parseInt(v) < 1 || parseInt(v) > 1000){
                         _this.infoDialog(conditionformat_Text.pleaseEnterInteger, "");
@@ -903,7 +903,7 @@ const conditionformat = {
                     conditionName = "formula";
 
                     //条件值
-                    let v = $("#luckysheet-editorConditionRule-dialog #formulaConditionVal input").val().trim(); 
+                    let v = $("#sheet-editorConditionRule-dialog #formulaConditionVal input").val().trim(); 
                     console.log(v)
                     if(v == ""){
                         _this.infoDialog("Condition value cannot be empty!", "");
@@ -915,16 +915,16 @@ const conditionformat = {
 
                 //格式颜色
                 let textcolor;
-                if($("#luckysheet-editorConditionRule-dialog #checkTextColor").is(":checked")){
-                    textcolor = $("#luckysheet-editorConditionRule-dialog #textcolorshow").spectrum("get").toHexString();
+                if($("#sheet-editorConditionRule-dialog #checkTextColor").is(":checked")){
+                    textcolor = $("#sheet-editorConditionRule-dialog #textcolorshow").spectrum("get").toHexString();
                 }
                 else{
                     textcolor = null;
                 }
 
                 let cellcolor;
-                if($("#luckysheet-editorConditionRule-dialog #checkCellColor").is(":checked")){
-                    cellcolor = $("#luckysheet-editorConditionRule-dialog #cellcolorshow").spectrum("get").toHexString();
+                if($("#sheet-editorConditionRule-dialog #checkCellColor").is(":checked")){
+                    cellcolor = $("#sheet-editorConditionRule-dialog #cellcolorshow").spectrum("get").toHexString();
                 }
                 else{
                     cellcolor = null;
@@ -951,69 +951,69 @@ const conditionformat = {
             _this.fileClone[getSheetIndex(sheetIndex)]["conditionformat_save"][itemIndex] = rule;
 
             //编辑规则隐藏，管理规则显示
-            $("#luckysheet-editorConditionRule-dialog").hide();
+            $("#sheet-editorConditionRule-dialog").hide();
             _this.administerRuleDialog();
         });
-        $(document).off("click.CFeditorConditionRuleClose").on("click.CFeditorConditionRuleClose", "#luckysheet-editorConditionRule-dialog-close",function(){
+        $(document).off("click.CFeditorConditionRuleClose").on("click.CFeditorConditionRuleClose", "#sheet-editorConditionRule-dialog-close",function(){
             //编辑规则隐藏，管理规则显示
-            $("#luckysheet-editorConditionRule-dialog").hide();
-            $("#luckysheet-administerRule-dialog").show();
+            $("#sheet-editorConditionRule-dialog").hide();
+            $("#sheet-administerRule-dialog").show();
             //隐藏虚线框
-            $("#luckysheet-formula-functionrange-select").hide();
-            $("#luckysheet-row-count-show").hide();
-            $("#luckysheet-column-count-show").hide();
+            $("#sheet-formula-functionrange-select").hide();
+            $("#sheet-row-count-show").hide();
+            $("#sheet-column-count-show").hide();
         });
 
         // 新建规则、编辑规则 类型切换
-        $(document).off("click.CFnewEditorRuleItem").on("click.CFnewEditorRuleItem", ".luckysheet-newEditorRule-dialog .ruleTypeItem", function(){
+        $(document).off("click.CFnewEditorRuleItem").on("click.CFnewEditorRuleItem", ".sheet-newEditorRule-dialog .ruleTypeItem", function(){
             $(this).addClass("on").siblings().removeClass("on");
 
             let index = $(this).index();
-            $(this).parents(".luckysheet-newEditorRule-dialog").find(".ruleExplainBox").html(_this.getRuleExplain(index));
+            $(this).parents(".sheet-newEditorRule-dialog").find(".ruleExplainBox").html(_this.getRuleExplain(index));
 
             _this.colorSelectInit();
         });
-        $(document).off("change.CFnewEditorRuleType1").on("change.CFnewEditorRuleType1", ".luckysheet-newEditorRule-dialog #type1", function(){
+        $(document).off("change.CFnewEditorRuleType1").on("change.CFnewEditorRuleType1", ".sheet-newEditorRule-dialog #type1", function(){
             let optionVal = $(this).find("option:selected").val();
 
             if(optionVal == "dataBar" || optionVal == "colorGradation" || optionVal == "icons" || optionVal == "number" || optionVal == "text" || optionVal == "date"){
-                $(this).parents(".luckysheet-newEditorRule-dialog").find("." + optionVal + "Box").show().siblings().hide();
+                $(this).parents(".sheet-newEditorRule-dialog").find("." + optionVal + "Box").show().siblings().hide();
             }
 
             if(optionVal == "date"){
-                _this.daterangeInit($(this).parents(".luckysheet-newEditorRule-dialog").attr("id"));
+                _this.daterangeInit($(this).parents(".sheet-newEditorRule-dialog").attr("id"));
             }
         });
-        $(document).off("change.CFnewEditorRuleType2").on("change.CFnewEditorRuleType2", ".luckysheet-newEditorRule-dialog #type2", function(){
-            let type1 = $(this).parents(".luckysheet-newEditorRule-dialog").find("#type1 option:selected").val();
+        $(document).off("change.CFnewEditorRuleType2").on("change.CFnewEditorRuleType2", ".sheet-newEditorRule-dialog #type2", function(){
+            let type1 = $(this).parents(".sheet-newEditorRule-dialog").find("#type1 option:selected").val();
 
             if(type1 == "colorGradation"){
                 let type2 = $(this).find("option:selected").val();
 
                 if(type2 == "threeColor"){
-                    $(this).parents(".luckysheet-newEditorRule-dialog").find(".midVal").show();
+                    $(this).parents(".sheet-newEditorRule-dialog").find(".midVal").show();
                 }
                 else{
-                    $(this).parents(".luckysheet-newEditorRule-dialog").find(".midVal").hide();
+                    $(this).parents(".sheet-newEditorRule-dialog").find(".midVal").hide();
                 }
             }
             else if(type1 == "number"){
                 let type2 = $(this).find("option:selected").val();
 
                 if(type2 == "betweenness"){
-                    $(this).parents(".luckysheet-newEditorRule-dialog").find(".txt").show();
-                    $(this).parents(".luckysheet-newEditorRule-dialog").find("#conditionVal2").show();
+                    $(this).parents(".sheet-newEditorRule-dialog").find(".txt").show();
+                    $(this).parents(".sheet-newEditorRule-dialog").find("#conditionVal2").show();
                 }
                 else{
-                    $(this).parents(".luckysheet-newEditorRule-dialog").find(".txt").hide();
-                    $(this).parents(".luckysheet-newEditorRule-dialog").find("#conditionVal2").hide();
+                    $(this).parents(".sheet-newEditorRule-dialog").find(".txt").hide();
+                    $(this).parents(".sheet-newEditorRule-dialog").find("#conditionVal2").hide();
                 }
             }
         });
-        $(document).off("click.CFiconsShowbox").on("click.CFiconsShowbox", ".luckysheet-newEditorRule-dialog .iconsBox .showbox", function(){
+        $(document).off("click.CFiconsShowbox").on("click.CFiconsShowbox", ".sheet-newEditorRule-dialog .iconsBox .showbox", function(){
             $(this).parents(".iconsBox").find("ul").toggle();
         });
-        $(document).off("click.CFiconsLi").on("click.CFiconsLi", ".luckysheet-newEditorRule-dialog .iconsBox li", function(){
+        $(document).off("click.CFiconsLi").on("click.CFiconsLi", ".sheet-newEditorRule-dialog .iconsBox li", function(){
             let len = $(this).find("div").attr("data-len");
             let leftmin = $(this).find("div").attr("data-leftmin");
             let top = $(this).find("div").attr("data-top");
@@ -1031,26 +1031,26 @@ const conditionformat = {
 
         // 删除规则
         $(document).off("click.CFdeleteConditionRule").on("click.CFdeleteConditionRule", "#deleteConditionRule", function(){
-            let sheetIndex = $("#luckysheet-administerRule-dialog .chooseSheet option:selected").val();
+            let sheetIndex = $("#sheet-administerRule-dialog .chooseSheet option:selected").val();
 
             if(!checkProtectionFormatCells(sheetIndex)){
                 return;
             }
 
-            let itemIndex = $("#luckysheet-administerRule-dialog .ruleList .listBox .item.on").attr("data-item");
+            let itemIndex = $("#sheet-administerRule-dialog .ruleList .listBox .item.on").attr("data-item");
             _this.fileClone[getSheetIndex(sheetIndex)]["conditionformat_save"].splice(itemIndex, 1);
             _this.administerRuleDialog();
         });
 
         // 规则子菜单弹出层 点击确定修改样式
-        $(document).off("click.CFdefault").on("click.CFdefault", "#luckysheet-conditionformat-dialog-confirm", function(){
+        $(document).off("click.CFdefault").on("click.CFdefault", "#sheet-conditionformat-dialog-confirm", function(){
 
             if(!checkProtectionFormatCells(Store.currentSheetIndex)){
                 return;
             }
 
             //条件名称
-            let conditionName = $("#luckysheet-conditionformat-dialog .box").attr("data-itemvalue");
+            let conditionName = $("#sheet-conditionformat-dialog .box").attr("data-itemvalue");
 
             //条件单元格
             let conditionRange = [];
@@ -1058,7 +1058,7 @@ const conditionformat = {
             //条件值
             let conditionValue = [];
             if(conditionName == "greaterThan" || conditionName == "lessThan" || conditionName == "equal" || conditionName == "textContains"){
-                let v = $("#luckysheet-conditionformat-dialog #conditionVal").val().trim();
+                let v = $("#sheet-conditionformat-dialog #conditionVal").val().trim();
 
                 //条件值是否是选区
                 let rangeArr = _this.getRangeByTxt(v);
@@ -1092,8 +1092,8 @@ const conditionformat = {
                 }
             }
             else if(conditionName == "betweenness"){//介于
-                let v1 = $("#luckysheet-conditionformat-dialog #conditionVal").val().trim();
-                let v2 = $("#luckysheet-conditionformat-dialog #conditionVal2").val().trim();
+                let v1 = $("#sheet-conditionformat-dialog #conditionVal").val().trim();
+                let v2 = $("#sheet-conditionformat-dialog #conditionVal2").val().trim();
 
                 //条件值是否是选区
                 let rangeArr1 = _this.getRangeByTxt(v1);
@@ -1157,7 +1157,7 @@ const conditionformat = {
                 }
             }
             else if(conditionName == "occurrenceDate"){//日期
-                let v = $("#luckysheet-conditionformat-dialog #daterange-btn").val();
+                let v = $("#sheet-conditionformat-dialog #daterange-btn").val();
 
                 if(v == "" || v == null){
                     _this.infoDialog(conditionformat_Text.pleaseSelectADate, "");
@@ -1167,10 +1167,10 @@ const conditionformat = {
                 conditionValue.push(v);
             }
             else if(conditionName == "duplicateValue"){//重复值
-                conditionValue.push($("#luckysheet-conditionformat-dialog #conditionVal option:selected").val());
+                conditionValue.push($("#sheet-conditionformat-dialog #conditionVal option:selected").val());
             }
             else if(conditionName == "top10" || conditionName == "top10%" || conditionName == "last10" || conditionName == "last10%"){
-                let v = $("#luckysheet-conditionformat-dialog #conditionVal").val().trim();
+                let v = $("#sheet-conditionformat-dialog #conditionVal").val().trim();
 
                 if(parseInt(v) != v || parseInt(v) < 1 || parseInt(v) > 1000){
                     _this.infoDialog(conditionformat_Text.pleaseEnterInteger, "");
@@ -1230,8 +1230,8 @@ const conditionformat = {
             _this.ref(historyRules, currentRules);
 
             //隐藏一些dom
-            $("#luckysheet-modal-dialog-mask").hide();
-            $("#luckysheet-conditionformat-dialog").hide();
+            $("#sheet-modal-dialog-mask").hide();
+            $("#sheet-conditionformat-dialog").hide();
 
             //发送给后台
             if(server.allowUpdate){
@@ -1240,9 +1240,9 @@ const conditionformat = {
         });
 
         // 图标集弹出层 选择
-        $(document).off("click.CFicons").on("click.CFicons", "#luckysheet-CFicons-dialog .item", function(){
-            $("#luckysheet-modal-dialog-mask").hide();
-            $("#luckysheet-CFicons-dialog").hide();
+        $(document).off("click.CFicons").on("click.CFicons", "#sheet-CFicons-dialog .item", function(){
+            $("#sheet-modal-dialog-mask").hide();
+            $("#sheet-CFicons-dialog").hide();
 
             if(Store.luckysheet_select_save.length > 0){
                 let cellrange = $.extend(true, [], Store.luckysheet_select_save);
@@ -1258,12 +1258,12 @@ const conditionformat = {
 
         // 选择单元格
         $(document).on("click", ".range .fa-table", function(){
-            let id = $(this).parents(".luckysheet-modal-dialog").attr("id");
+            let id = $(this).parents(".sheet-modal-dialog").attr("id");
             $("#" + id).hide();
             //入口
             let source;
             
-            if(id == "luckysheet-conditionformat-dialog"){
+            if(id == "sheet-conditionformat-dialog"){
                 let _id = $(this).siblings("input").attr("id");
                 
                 if(_id == "conditionVal"){
@@ -1273,7 +1273,7 @@ const conditionformat = {
                     source = "0_2";
                 }
             }
-            else if(id == "luckysheet-newConditionRule-dialog"){
+            else if(id == "sheet-newConditionRule-dialog"){
                 let _id = $(this).parents(".range").attr("id");
 
                 if(_id == "formulaConditionVal"){
@@ -1286,7 +1286,7 @@ const conditionformat = {
                     source = "1_2";
                 }
             }
-            else if(id == "luckysheet-editorConditionRule-dialog"){
+            else if(id == "sheet-editorConditionRule-dialog"){
                 let _id = $(this).parents(".range").attr("id");
 
                 if(_id == "formulaConditionVal"){
@@ -1305,62 +1305,62 @@ const conditionformat = {
             _this.singleRangeDialog(source, v);
             selectionCopyShow(_this.getRangeByTxt(v));
         });
-        $(document).on("click", "#luckysheet-singleRange-dialog-confirm", function(){
-            $("#luckysheet-modal-dialog-mask").show();
-            $(this).parents("#luckysheet-singleRange-dialog").hide();
+        $(document).on("click", "#sheet-singleRange-dialog-confirm", function(){
+            $("#sheet-modal-dialog-mask").show();
+            $(this).parents("#sheet-singleRange-dialog").hide();
 
             let source = $(this).attr("data-source");
-            let v = $(this).parents("#luckysheet-singleRange-dialog").find("input").val();
+            let v = $(this).parents("#sheet-singleRange-dialog").find("input").val();
 
             if(source == "0_1"){
-                $("#luckysheet-conditionformat-dialog").show();
-                $("#luckysheet-conditionformat-dialog #conditionVal").val(v);
+                $("#sheet-conditionformat-dialog").show();
+                $("#sheet-conditionformat-dialog #conditionVal").val(v);
             }
             else if(source == "0_2"){
-                $("#luckysheet-conditionformat-dialog").show();
-                $("#luckysheet-conditionformat-dialog #conditionVal2").val(v);
+                $("#sheet-conditionformat-dialog").show();
+                $("#sheet-conditionformat-dialog #conditionVal2").val(v);
             }
             else if(source == "1_0"){
-                $("#luckysheet-newConditionRule-dialog").show();
-                $("#luckysheet-newConditionRule-dialog #formulaConditionVal input").val(v);
+                $("#sheet-newConditionRule-dialog").show();
+                $("#sheet-newConditionRule-dialog #formulaConditionVal input").val(v);
             }
             else if(source == "1_1"){
-                $("#luckysheet-newConditionRule-dialog").show();
-                $("#luckysheet-newConditionRule-dialog #conditionVal input").val(v);
+                $("#sheet-newConditionRule-dialog").show();
+                $("#sheet-newConditionRule-dialog #conditionVal input").val(v);
             }
             else if(source == "1_2"){
-                $("#luckysheet-newConditionRule-dialog").show();
-                $("#luckysheet-newConditionRule-dialog #conditionVal2 input").val(v);
+                $("#sheet-newConditionRule-dialog").show();
+                $("#sheet-newConditionRule-dialog #conditionVal2 input").val(v);
             }
             else if(source == "2_0"){
-                $("#luckysheet-editorConditionRule-dialog").show();
-                $("#luckysheet-editorConditionRule-dialog #formulaConditionVal input").val(v);
+                $("#sheet-editorConditionRule-dialog").show();
+                $("#sheet-editorConditionRule-dialog #formulaConditionVal input").val(v);
             }
             else if(source == "2_1"){
-                $("#luckysheet-editorConditionRule-dialog").show();
-                $("#luckysheet-editorConditionRule-dialog #conditionVal input").val(v);
+                $("#sheet-editorConditionRule-dialog").show();
+                $("#sheet-editorConditionRule-dialog #conditionVal input").val(v);
             }
             else if(source == "2_2"){
-                $("#luckysheet-editorConditionRule-dialog").show();
-                $("#luckysheet-editorConditionRule-dialog #conditionVal2 input").val(v);
+                $("#sheet-editorConditionRule-dialog").show();
+                $("#sheet-editorConditionRule-dialog #conditionVal2 input").val(v);
             }
 
             let range = [];
             selectionCopyShow(range);
         });
-        $(document).on("click", "#luckysheet-singleRange-dialog-close", function(){
-            $("#luckysheet-modal-dialog-mask").show();
-            $(this).parents("#luckysheet-singleRange-dialog").hide();
+        $(document).on("click", "#sheet-singleRange-dialog-close", function(){
+            $("#sheet-modal-dialog-mask").show();
+            $(this).parents("#sheet-singleRange-dialog").hide();
 
             let source = $(this).attr("data-source");
             if(source == "0_1" || source == "0_2"){
-                $("#luckysheet-conditionformat-dialog").show();
+                $("#sheet-conditionformat-dialog").show();
             }
             else if(source == "1_0" || source == "1_1" || source == "1_2"){
-                $("#luckysheet-newConditionRule-dialog").show();
+                $("#sheet-newConditionRule-dialog").show();
             }
             else if(source == "2_0" || source == "2_1" || source == "2_2"){
-                $("#luckysheet-editorConditionRule-dialog").show();
+                $("#sheet-editorConditionRule-dialog").show();
             }
 
             let range = [];
@@ -1368,36 +1368,36 @@ const conditionformat = {
         });
 
         // 弹出层右上角关闭按钮
-        $(document).on("click", ".luckysheet-modal-dialog-title-close", function(){
-            let id = $(this).parents(".luckysheet-modal-dialog").attr("id");
+        $(document).on("click", ".sheet-modal-dialog-title-close", function(){
+            let id = $(this).parents(".sheet-modal-dialog").attr("id");
 
             //新建规则弹出层
-            if(id == "luckysheet-newConditionRule-dialog"){
-                let source = $("#" + id).find("#luckysheet-newConditionRule-dialog-close").attr("data-source");
+            if(id == "sheet-newConditionRule-dialog"){
+                let source = $("#" + id).find("#sheet-newConditionRule-dialog-close").attr("data-source");
                 //新建规则入口
                 if(source == 1){
-                    $("#luckysheet-administerRule-dialog").show();
+                    $("#sheet-administerRule-dialog").show();
                 }
             }
 
             //编辑规则弹出层
-            if(id == "luckysheet-editorConditionRule-dialog"){
-                $("#luckysheet-administerRule-dialog").show();
+            if(id == "sheet-editorConditionRule-dialog"){
+                $("#sheet-administerRule-dialog").show();
             }
 
             //选择单元格弹出层
-            if(id == "luckysheet-singleRange-dialog"){
-                $("#luckysheet-modal-dialog-mask").show();
+            if(id == "sheet-singleRange-dialog"){
+                $("#sheet-modal-dialog-mask").show();
 
-                let source = $(this).parents("#luckysheet-singleRange-dialog").find("#luckysheet-singleRange-dialog-confirm").attr("data-source");
+                let source = $(this).parents("#sheet-singleRange-dialog").find("#sheet-singleRange-dialog-confirm").attr("data-source");
                 if(source == "0_1" || source == "0_2"){
-                    $("#luckysheet-conditionformat-dialog").show();
+                    $("#sheet-conditionformat-dialog").show();
                 }
                 else if(source == "1_1" || source == "1_2"){
-                    $("#luckysheet-newConditionRule-dialog").show();
+                    $("#sheet-newConditionRule-dialog").show();
                 }
                 else if(source == "2_1" || source == "2_2"){
-                    $("#luckysheet-editorConditionRule-dialog").show();
+                    $("#sheet-editorConditionRule-dialog").show();
                 }
 
                 let range = [];
@@ -1405,50 +1405,50 @@ const conditionformat = {
             }
 
             //选择应用范围弹出层
-            if(id == "luckysheet-multiRange-dialog"){
-                $("#luckysheet-modal-dialog-mask").show();
+            if(id == "sheet-multiRange-dialog"){
+                $("#sheet-modal-dialog-mask").show();
 
-                $("#luckysheet-administerRule-dialog").show();
+                $("#sheet-administerRule-dialog").show();
 
                 let range = [];
                 selectionCopyShow(range);
             }
 
             //提示框
-            if(id == "luckysheet-conditionformat-info-dialog"){
-                $("#luckysheet-modal-dialog-mask").show();
+            if(id == "sheet-conditionformat-info-dialog"){
+                $("#sheet-modal-dialog-mask").show();
             }
         });
 
         //提示框
-        $(document).on("click", "#luckysheet-conditionformat-info-dialog-close", function(){
-            $(this).parents("#luckysheet-conditionformat-info-dialog").hide();
+        $(document).on("click", "#sheet-conditionformat-info-dialog-close", function(){
+            $(this).parents("#sheet-conditionformat-info-dialog").hide();
         });
     },
     singleRangeDialog: function(source, value){
-        $("#luckysheet-modal-dialog-mask").hide();
-        $("#luckysheet-singleRange-dialog").remove();
+        $("#sheet-modal-dialog-mask").hide();
+        $("#sheet-singleRange-dialog").remove();
 
         const conditionformat_Text = locale().conditionformat;
 
         $("body").append(replaceHtml(modelHTML, {
-            "id": "luckysheet-singleRange-dialog",
-            "addclass": "luckysheet-singleRange-dialog",
+            "id": "sheet-singleRange-dialog",
+            "addclass": "sheet-singleRange-dialog",
             "title": conditionformat_Text.selectCell,
             "content": `<input readonly="readonly" placeholder="${conditionformat_Text.pleaseSelectCell}" value="${value}"/>`,
-            "botton":  `<button id="luckysheet-singleRange-dialog-confirm" class="btn btn-primary" data-source="${source}">${conditionformat_Text.confirm}</button>
-                        <button id="luckysheet-singleRange-dialog-close" class="btn btn-default" data-source="${source}">${conditionformat_Text.cancel}</button>`,
+            "botton":  `<button id="sheet-singleRange-dialog-confirm" class="btn btn-primary" data-source="${source}">${conditionformat_Text.confirm}</button>
+                        <button id="sheet-singleRange-dialog-close" class="btn btn-default" data-source="${source}">${conditionformat_Text.cancel}</button>`,
             "style": "z-index:100003"
         }));
-        let _t = $("#luckysheet-singleRange-dialog")
-                .find(".luckysheet-modal-dialog-content")
+        let _t = $("#sheet-singleRange-dialog")
+                .find(".sheet-modal-dialog-content")
                 .css("min-width", 300)
                 .end(),
             myh = _t.outerHeight(),
             myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
-        $("#luckysheet-singleRange-dialog").css({
+        $("#sheet-singleRange-dialog").css({
             "left": (winw + scrollLeft - myw) / 2,
             "top": (winh + scrollTop - myh) / 3
         }).show();
@@ -1456,29 +1456,29 @@ const conditionformat = {
     multiRangeDialog: function(dataItem, value){
         let _this = this;
 
-        $("#luckysheet-modal-dialog-mask").hide();
-        $("#luckysheet-multiRange-dialog").remove();
+        $("#sheet-modal-dialog-mask").hide();
+        $("#sheet-multiRange-dialog").remove();
 
         const conditionformat_Text = locale().conditionformat;
 
         $("body").append(replaceHtml(modelHTML, {
-            "id": "luckysheet-multiRange-dialog",
-            "addclass": "luckysheet-multiRange-dialog",
+            "id": "sheet-multiRange-dialog",
+            "addclass": "sheet-multiRange-dialog",
             "title": conditionformat_Text.selectRange,
             "content": `<input readonly="readonly" placeholder="${conditionformat_Text.pleaseSelectRange}" value="${value}"/>`,
-            "botton":  `<button id="luckysheet-multiRange-dialog-confirm" class="btn btn-primary" data-item="${dataItem}">${conditionformat_Text.confirm}</button>
-                        <button id="luckysheet-multiRange-dialog-close" class="btn btn-default">${conditionformat_Text.cancel}</button>`,
+            "botton":  `<button id="sheet-multiRange-dialog-confirm" class="btn btn-primary" data-item="${dataItem}">${conditionformat_Text.confirm}</button>
+                        <button id="sheet-multiRange-dialog-close" class="btn btn-default">${conditionformat_Text.cancel}</button>`,
             "style": "z-index:100003"
         }));
-        let _t = $("#luckysheet-multiRange-dialog")
-                .find(".luckysheet-modal-dialog-content")
+        let _t = $("#sheet-multiRange-dialog")
+                .find(".sheet-modal-dialog-content")
                 .css("min-width", 300)
                 .end(),
             myh = _t.outerHeight(),
             myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
-        $("#luckysheet-multiRange-dialog").css({
+        $("#sheet-multiRange-dialog").css({
             "left": (winw + scrollLeft - myw) / 2,
             "top": (winh + scrollTop - myh) / 3
         }).show();
@@ -1526,7 +1526,7 @@ const conditionformat = {
     colorSelectInit: function(){
         const conditionformat_Text = locale().conditionformat;
 
-        $(".luckysheet-conditionformat-config-color").spectrum({
+        $(".sheet-conditionformat-config-color").spectrum({
             showPalette: true,
             showPaletteOnly:true,
             preferredFormat: "hex",
@@ -1566,29 +1566,29 @@ const conditionformat = {
     conditionformatDialog: function(title, content){
         let _this = this;
 
-        $("#luckysheet-modal-dialog-mask").show();
-        $("#luckysheet-conditionformat-dialog").remove();
+        $("#sheet-modal-dialog-mask").show();
+        $("#sheet-conditionformat-dialog").remove();
 
         const conditionformat_Text = locale().conditionformat;
 
         $("body").append(replaceHtml(modelHTML, {
-            "id": "luckysheet-conditionformat-dialog",
-            "addclass": "luckysheet-conditionformat-dialog",
+            "id": "sheet-conditionformat-dialog",
+            "addclass": "sheet-conditionformat-dialog",
             "title": title,
             "content": content,
-            "botton":  `<button id="luckysheet-conditionformat-dialog-confirm" class="btn btn-primary">${conditionformat_Text.confirm}</button>
-                        <button class="btn btn-default luckysheet-model-close-btn">${conditionformat_Text.cancel}</button>`,
+            "botton":  `<button id="sheet-conditionformat-dialog-confirm" class="btn btn-primary">${conditionformat_Text.confirm}</button>
+                        <button class="btn btn-default sheet-model-close-btn">${conditionformat_Text.cancel}</button>`,
             "style": "z-index:9999"
         }));
-        let _t = $("#luckysheet-conditionformat-dialog")
-                .find(".luckysheet-modal-dialog-content")
+        let _t = $("#sheet-conditionformat-dialog")
+                .find(".sheet-modal-dialog-content")
                 .css("min-width", 300)
                 .end(),
             myh = _t.outerHeight(),
             myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
-        $("#luckysheet-conditionformat-dialog").css({
+        $("#sheet-conditionformat-dialog").css({
             "left": (winw + scrollLeft - myw) / 2,
             "top": (winh + scrollTop - myh) / 3
         }).show();
@@ -1597,12 +1597,12 @@ const conditionformat = {
         _this.colorSelectInit();
 
         if(title == locale().conditionformat.conditionformat_occurrenceDate){
-            _this.daterangeInit("luckysheet-conditionformat-dialog");
+            _this.daterangeInit("sheet-conditionformat-dialog");
         }
     },
     CFiconsDialog: function(){　
-        $("#luckysheet-modal-dialog-mask").show();
-        $("#luckysheet-CFicons-dialog").remove();
+        $("#sheet-modal-dialog-mask").show();
+        $("#sheet-CFicons-dialog").remove();
 
         const conditionformat_Text = locale().conditionformat;
 
@@ -1663,29 +1663,29 @@ const conditionformat = {
                         </div>`;
 
         $("body").append(replaceHtml(modelHTML, {
-            "id": "luckysheet-CFicons-dialog",
-            "addclass": "luckysheet-CFicons-dialog",
+            "id": "sheet-CFicons-dialog",
+            "addclass": "sheet-CFicons-dialog",
             "title": conditionformat_Text.icons,
             "content": content,
-            "botton": `<button class="btn btn-default luckysheet-model-close-btn">${conditionformat_Text.close}</button>`,
+            "botton": `<button class="btn btn-default sheet-model-close-btn">${conditionformat_Text.close}</button>`,
             "style": "z-index:100003"
         }));
-        let _t = $("#luckysheet-CFicons-dialog")
-                .find(".luckysheet-modal-dialog-content")
+        let _t = $("#sheet-CFicons-dialog")
+                .find(".sheet-modal-dialog-content")
                 .css("min-width", 400)
                 .end(),
             myh = _t.outerHeight(),
             myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
-        $("#luckysheet-CFicons-dialog").css({
+        $("#sheet-CFicons-dialog").css({
             "left": (winw + scrollLeft - myw) / 2,
             "top": (winh + scrollTop - myh) / 3
         }).show();
     },
     administerRuleDialog: function(){
-        $("#luckysheet-modal-dialog-mask").show();
-        $("#luckysheet-administerRule-dialog").remove();
+        $("#sheet-modal-dialog-mask").show();
+        $("#sheet-administerRule-dialog").remove();
 
         const conditionformat_Text = locale().conditionformat;
 
@@ -1725,36 +1725,36 @@ const conditionformat = {
                         </div>`;
 
         $("body").append(replaceHtml(modelHTML, {
-            "id": "luckysheet-administerRule-dialog",
-            "addclass": "luckysheet-administerRule-dialog",
+            "id": "sheet-administerRule-dialog",
+            "addclass": "sheet-administerRule-dialog",
             "title": conditionformat_Text.conditionformatManageRules,
             "content": content,
-            "botton":  `<button id="luckysheet-administerRule-dialog-confirm" class="btn btn-primary">${conditionformat_Text.confirm}</button>
-                        <button id="luckysheet-administerRule-dialog-close" class="btn btn-default">${conditionformat_Text.close}</button>`,
+            "botton":  `<button id="sheet-administerRule-dialog-confirm" class="btn btn-primary">${conditionformat_Text.confirm}</button>
+                        <button id="sheet-administerRule-dialog-close" class="btn btn-default">${conditionformat_Text.close}</button>`,
             "style": "z-index:100003"
         }));
-        let _t = $("#luckysheet-administerRule-dialog")
-                .find(".luckysheet-modal-dialog-content")
+        let _t = $("#sheet-administerRule-dialog")
+                .find(".sheet-modal-dialog-content")
                 .css("min-width", 400)
                 .end(),
             myh = _t.outerHeight(),
             myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
-        $("#luckysheet-administerRule-dialog").css({
+        $("#sheet-administerRule-dialog").css({
             "left": (winw + scrollLeft - myw) / 2,
             "top": (winh + scrollTop - myh) / 3
         }).show();
 
         //当前工作表的规则列表
-        let index = $("#luckysheet-administerRule-dialog .chooseSheet option:selected").val();
+        let index = $("#sheet-administerRule-dialog .chooseSheet option:selected").val();
         this.getConditionRuleList(index);
     },
     getConditionRuleList: function(index){
 
         let _this = this;
 
-        $("#luckysheet-administerRule-dialog .ruleList .listBox").empty();
+        $("#sheet-administerRule-dialog .ruleList .listBox").empty();
 
         let ruleArr = _this.fileClone[getSheetIndex(index)].conditionformat_save; //条件格式规则集合
         if(ruleArr != null && ruleArr.length > 0){
@@ -1813,10 +1813,10 @@ const conditionformat = {
                                     '</div>' +
                                 '</div>';
 
-                $("#luckysheet-administerRule-dialog .ruleList .listBox").prepend(itemHtml);
+                $("#sheet-administerRule-dialog .ruleList .listBox").prepend(itemHtml);
             }
 
-            $("#luckysheet-administerRule-dialog .ruleList .listBox .item canvas").each(function(i){
+            $("#sheet-administerRule-dialog .ruleList .listBox .item canvas").each(function(i){
                 let x = $(this).closest(".item").attr("data-item");
 
                 let type = ruleArr[x]["type"];
@@ -1893,7 +1893,7 @@ const conditionformat = {
                 }
             })
 
-            $("#luckysheet-administerRule-dialog .ruleList .listBox .item").eq(0).addClass("on");
+            $("#sheet-administerRule-dialog .ruleList .listBox .item").eq(0).addClass("on");
         }
     },
     getConditionRuleName: function(conditionName, conditionRange, conditionValue){
@@ -1977,9 +1977,9 @@ const conditionformat = {
         let ruleExplainHtml = _this.getRuleExplain(0);
 
         //弹出层
-        $("#luckysheet-modal-dialog-mask").show();
-        $("#luckysheet-administerRule-dialog").hide();
-        $("#luckysheet-newConditionRule-dialog").remove();
+        $("#sheet-modal-dialog-mask").show();
+        $("#sheet-administerRule-dialog").hide();
+        $("#sheet-newConditionRule-dialog").remove();
 
         let content = '<div>' +
                         '<div class="boxTitle">' + conditionformat_Text.chooseRuleType + '：</div>' +
@@ -1991,29 +1991,29 @@ const conditionformat = {
                       '</div>';
 
         $("body").append(replaceHtml(modelHTML, {
-            "id": "luckysheet-newConditionRule-dialog",
-            "addclass": "luckysheet-newEditorRule-dialog",
+            "id": "sheet-newConditionRule-dialog",
+            "addclass": "sheet-newEditorRule-dialog",
             "title": conditionformat_Text.newFormatRule,
             "content": content,
-            "botton":  `<button id="luckysheet-newConditionRule-dialog-confirm" class="btn btn-primary" data-source="${source}">${conditionformat_Text.confirm}</button>
-                        <button id="luckysheet-newConditionRule-dialog-close" class="btn btn-default" data-source="${source}">${conditionformat_Text.cancel}</button>`,
+            "botton":  `<button id="sheet-newConditionRule-dialog-confirm" class="btn btn-primary" data-source="${source}">${conditionformat_Text.confirm}</button>
+                        <button id="sheet-newConditionRule-dialog-close" class="btn btn-default" data-source="${source}">${conditionformat_Text.cancel}</button>`,
             "style": "z-index:100003"
         }));
-        let _t = $("#luckysheet-newConditionRule-dialog")
-                .find(".luckysheet-modal-dialog-content")
+        let _t = $("#sheet-newConditionRule-dialog")
+                .find(".sheet-modal-dialog-content")
                 .css("min-width", 400)
                 .end(),
             myh = _t.outerHeight(),
             myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
-        $("#luckysheet-newConditionRule-dialog").css({
+        $("#sheet-newConditionRule-dialog").css({
             "left": (winw + scrollLeft - myw) / 2,
             "top": (winh + scrollTop - myh) / 3
         }).show();
 
         //index的规则类型focus
-        $("#luckysheet-newConditionRule-dialog .ruleTypeBox .ruleTypeItem:eq(0)").addClass("on").siblings().removeClass("on");
+        $("#sheet-newConditionRule-dialog .ruleTypeBox .ruleTypeItem:eq(0)").addClass("on").siblings().removeClass("on");
 
         _this.colorSelectInit();
     },
@@ -2078,9 +2078,9 @@ const conditionformat = {
         let ruleExplainHtml = _this.getRuleExplain(index);
 
         //弹出层
-        $("#luckysheet-modal-dialog-mask").show();
-        $("#luckysheet-administerRule-dialog").hide();
-        $("#luckysheet-editorConditionRule-dialog").remove();
+        $("#sheet-modal-dialog-mask").show();
+        $("#sheet-administerRule-dialog").hide();
+        $("#sheet-editorConditionRule-dialog").remove();
 
         let content = '<div>' +
                         '<div class="boxTitle">'+ conditionformat_Text.chooseRuleType +'：</div>' +
@@ -2092,23 +2092,23 @@ const conditionformat = {
                       '</div>';
 
         $("body").append(replaceHtml(modelHTML, {
-            "id": "luckysheet-editorConditionRule-dialog",
-            "addclass": "luckysheet-newEditorRule-dialog",
+            "id": "sheet-editorConditionRule-dialog",
+            "addclass": "sheet-newEditorRule-dialog",
             "title": conditionformat_Text.editFormatRule,
             "content": content,
-            "botton":  `<button id="luckysheet-editorConditionRule-dialog-confirm" class="btn btn-primary">${conditionformat_Text.confirm}</button>
-                        <button id="luckysheet-editorConditionRule-dialog-close" class="btn btn-default">${conditionformat_Text.cancel}</button>`,
+            "botton":  `<button id="sheet-editorConditionRule-dialog-confirm" class="btn btn-primary">${conditionformat_Text.confirm}</button>
+                        <button id="sheet-editorConditionRule-dialog-close" class="btn btn-default">${conditionformat_Text.cancel}</button>`,
             "style": "z-index:100003"
         }));
-        let _t = $("#luckysheet-editorConditionRule-dialog")
-                .find(".luckysheet-modal-dialog-content")
+        let _t = $("#sheet-editorConditionRule-dialog")
+                .find(".sheet-modal-dialog-content")
                 .css("min-width", 400)
                 .end(),
             myh = _t.outerHeight(),
             myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
-        $("#luckysheet-editorConditionRule-dialog").css({
+        $("#sheet-editorConditionRule-dialog").css({
             "left": (winw + scrollLeft - myw) / 2,
             "top": (winh + scrollTop - myh) / 3
         }).show();
@@ -2116,48 +2116,48 @@ const conditionformat = {
         _this.colorSelectInit();
 
         //规则类型focus
-        $("#luckysheet-editorConditionRule-dialog .ruleTypeBox .ruleTypeItem:eq(" + index + ")").addClass("on").siblings().removeClass("on");
+        $("#sheet-editorConditionRule-dialog .ruleTypeBox .ruleTypeItem:eq(" + index + ")").addClass("on").siblings().removeClass("on");
 
         //type1
-        $("#luckysheet-editorConditionRule-dialog #type1").val(type1);
+        $("#sheet-editorConditionRule-dialog #type1").val(type1);
         if(type1 == "dataBar" || type1 == "colorGradation" || type1 == "icons" || type1 == "number" || type1 == "text" || type1 == "date"){
-            $("#luckysheet-editorConditionRule-dialog ." + type1 + "Box").show();
-            $("#luckysheet-editorConditionRule-dialog ." + type1 + "Box").siblings().hide();
+            $("#sheet-editorConditionRule-dialog ." + type1 + "Box").show();
+            $("#sheet-editorConditionRule-dialog ." + type1 + "Box").siblings().hide();
         }
 
         if(type1 == "date"){
-            _this.daterangeInit("luckysheet-editorConditionRule-dialog");
+            _this.daterangeInit("sheet-editorConditionRule-dialog");
         }
 
         //type2  format  value
         if(ruleType == "dataBar" || ruleType == "colorGradation" || ruleType == "icons"){
             if(type1 == "dataBar"){
                 if(ruleFormat.length == 2){
-                    $("#luckysheet-editorConditionRule-dialog .dataBarBox #type2").val("gradient");
+                    $("#sheet-editorConditionRule-dialog .dataBarBox #type2").val("gradient");
                 }
                 else if(ruleFormat.length == 1){
-                    $("#luckysheet-editorConditionRule-dialog .dataBarBox #type2").val("solid");
+                    $("#sheet-editorConditionRule-dialog .dataBarBox #type2").val("solid");
                 }
 
-                $("#luckysheet-editorConditionRule-dialog .dataBarBox .luckysheet-conditionformat-config-color").spectrum("set", ruleFormat[0]);
+                $("#sheet-editorConditionRule-dialog .dataBarBox .sheet-conditionformat-config-color").spectrum("set", ruleFormat[0]);
             }
             else if(type1 == "colorGradation"){
                 if(ruleFormat.length == 3){
-                    $("#luckysheet-editorConditionRule-dialog .colorGradationBox #type2").val("threeColor");
+                    $("#sheet-editorConditionRule-dialog .colorGradationBox #type2").val("threeColor");
 
-                    $("#luckysheet-editorConditionRule-dialog .colorGradationBox .midVal").show();
+                    $("#sheet-editorConditionRule-dialog .colorGradationBox .midVal").show();
 
-                    $("#luckysheet-editorConditionRule-dialog .colorGradationBox .maxVal .luckysheet-conditionformat-config-color").spectrum("set", ruleFormat[0]);
-                    $("#luckysheet-editorConditionRule-dialog .colorGradationBox .midVal .luckysheet-conditionformat-config-color").spectrum("set", ruleFormat[1]);
-                    $("#luckysheet-editorConditionRule-dialog .colorGradationBox .minVal .luckysheet-conditionformat-config-color").spectrum("set", ruleFormat[2]);
+                    $("#sheet-editorConditionRule-dialog .colorGradationBox .maxVal .sheet-conditionformat-config-color").spectrum("set", ruleFormat[0]);
+                    $("#sheet-editorConditionRule-dialog .colorGradationBox .midVal .sheet-conditionformat-config-color").spectrum("set", ruleFormat[1]);
+                    $("#sheet-editorConditionRule-dialog .colorGradationBox .minVal .sheet-conditionformat-config-color").spectrum("set", ruleFormat[2]);
                 }
                 else if(ruleFormat.length == 2){
-                    $("#luckysheet-editorConditionRule-dialog .colorGradationBox #type2").val("twoColor");
+                    $("#sheet-editorConditionRule-dialog .colorGradationBox #type2").val("twoColor");
 
-                    $("#luckysheet-editorConditionRule-dialog .colorGradationBox .midVal").hide();
+                    $("#sheet-editorConditionRule-dialog .colorGradationBox .midVal").hide();
 
-                    $("#luckysheet-editorConditionRule-dialog .colorGradationBox .maxVal .luckysheet-conditionformat-config-color").spectrum("set", ruleFormat[0]);
-                    $("#luckysheet-editorConditionRule-dialog .colorGradationBox .minVal .luckysheet-conditionformat-config-color").spectrum("set", ruleFormat[1]);
+                    $("#sheet-editorConditionRule-dialog .colorGradationBox .maxVal .sheet-conditionformat-config-color").spectrum("set", ruleFormat[0]);
+                    $("#sheet-editorConditionRule-dialog .colorGradationBox .minVal .sheet-conditionformat-config-color").spectrum("set", ruleFormat[1]);
                 }
             }
             else if(type1 == "icons"){
@@ -2165,13 +2165,13 @@ const conditionformat = {
                 let l = ruleFormat["leftMin"];
                 let t = ruleFormat["top"];
 
-                $("#luckysheet-editorConditionRule-dialog .iconsBox li").each(function(i, e){
+                $("#sheet-editorConditionRule-dialog .iconsBox li").each(function(i, e){
                     if($(e).find("div").attr("data-len") == len && $(e).find("div").attr("data-leftmin") == l && $(e).find("div").attr("data-top") == t){
-                        $("#luckysheet-editorConditionRule-dialog .iconsBox .showbox .model").css("background-position", $(e).find("div").css("background-position"));
-                        $("#luckysheet-editorConditionRule-dialog .iconsBox .showbox .model").attr("data-len", $(e).find("div").attr("data-len"));
-                        $("#luckysheet-editorConditionRule-dialog .iconsBox .showbox .model").attr("data-leftmin", $(e).find("div").attr("data-leftmin"));
-                        $("#luckysheet-editorConditionRule-dialog .iconsBox .showbox .model").attr("data-top", $(e).find("div").attr("data-leftmin"));
-                        $("#luckysheet-editorConditionRule-dialog .iconsBox .showbox .model").attr("title", $(e).find("div").attr("title"));
+                        $("#sheet-editorConditionRule-dialog .iconsBox .showbox .model").css("background-position", $(e).find("div").css("background-position"));
+                        $("#sheet-editorConditionRule-dialog .iconsBox .showbox .model").attr("data-len", $(e).find("div").attr("data-len"));
+                        $("#sheet-editorConditionRule-dialog .iconsBox .showbox .model").attr("data-leftmin", $(e).find("div").attr("data-leftmin"));
+                        $("#sheet-editorConditionRule-dialog .iconsBox .showbox .model").attr("data-top", $(e).find("div").attr("data-leftmin"));
+                        $("#sheet-editorConditionRule-dialog .iconsBox .showbox .model").attr("title", $(e).find("div").attr("title"));
 
                         return true;
                     }
@@ -2180,7 +2180,7 @@ const conditionformat = {
         }
         else{
             if(type1 == "number"){
-                $("#luckysheet-editorConditionRule-dialog .numberBox #type2").val(conditionName);
+                $("#sheet-editorConditionRule-dialog .numberBox #type2").val(conditionName);
 
                 let val1;
                 if(rule.conditionRange[0] != null){
@@ -2190,11 +2190,11 @@ const conditionformat = {
                     val1 = rule.conditionValue[0];
                 }
 
-                $("#luckysheet-editorConditionRule-dialog .numberBox #conditionVal input").val(val1);
+                $("#sheet-editorConditionRule-dialog .numberBox #conditionVal input").val(val1);
 
                 if(conditionName == "betweenness"){
-                    $("#luckysheet-editorConditionRule-dialog .numberBox .txt").show();
-                    $("#luckysheet-editorConditionRule-dialog .numberBox #conditionVal2").show();
+                    $("#sheet-editorConditionRule-dialog .numberBox .txt").show();
+                    $("#sheet-editorConditionRule-dialog .numberBox #conditionVal2").show();
 
                     let val2;
                     if(rule.conditionRange[1] != null){
@@ -2204,11 +2204,11 @@ const conditionformat = {
                         val2 = rule.conditionValue[1];
                     }
 
-                    $("#luckysheet-editorConditionRule-dialog .numberBox #conditionVal2 input").val(val2);
+                    $("#sheet-editorConditionRule-dialog .numberBox #conditionVal2 input").val(val2);
                 }
                 else{
-                    $("#luckysheet-editorConditionRule-dialog .numberBox .txt").hide();
-                    $("#luckysheet-editorConditionRule-dialog .numberBox #conditionVal2").hide();
+                    $("#sheet-editorConditionRule-dialog .numberBox .txt").hide();
+                    $("#sheet-editorConditionRule-dialog .numberBox #conditionVal2").hide();
                 }
             }
             else if(type1 == "text"){
@@ -2220,52 +2220,52 @@ const conditionformat = {
                     val1 = rule.conditionValue[0];
                 }
 
-                $("#luckysheet-editorConditionRule-dialog .textBox #conditionVal input").val(val1);
+                $("#sheet-editorConditionRule-dialog .textBox #conditionVal input").val(val1);
             }
             else if(type1 == "date"){
-                _this.daterangeInit("luckysheet-editorConditionRule-dialog");
+                _this.daterangeInit("sheet-editorConditionRule-dialog");
 
                 let val1 = rule.conditionValue[0];
-                $("#luckysheet-editorConditionRule-dialog .dateBox #daterange-btn").val(val1);
+                $("#sheet-editorConditionRule-dialog .dateBox #daterange-btn").val(val1);
             }
             else if(type1 == "top" || type1 == "last"){
                 let val1 = rule.conditionValue[0];
 
                 if(conditionName == "top10%" || conditionName == "last10%"){
-                    $("#luckysheet-editorConditionRule-dialog #isPercent").attr("checked", "checked");
+                    $("#sheet-editorConditionRule-dialog #isPercent").attr("checked", "checked");
                 }
             }
             else{
                 if(conditionName == "formula"){
                     let val1 = rule.conditionValue[0];
-                    $("#luckysheet-editorConditionRule-dialog #formulaConditionVal input").val(val1);
+                    $("#sheet-editorConditionRule-dialog #formulaConditionVal input").val(val1);
                 }
             }
 
-            $("#luckysheet-editorConditionRule-dialog #textcolorshow").spectrum("set", ruleFormat.textColor);
-            $("#luckysheet-editorConditionRule-dialog #cellcolorshow").spectrum("set", ruleFormat.cellColor);
+            $("#sheet-editorConditionRule-dialog #textcolorshow").spectrum("set", ruleFormat.textColor);
+            $("#sheet-editorConditionRule-dialog #cellcolorshow").spectrum("set", ruleFormat.cellColor);
         }
     },
     infoDialog: function(title, content){
-        $("#luckysheet-modal-dialog-mask").show();
-        $("#luckysheet-conditionformat-info-dialog").remove();
+        $("#sheet-modal-dialog-mask").show();
+        $("#sheet-conditionformat-info-dialog").remove();
         $("body").append(replaceHtml(modelHTML, {
-            "id": "luckysheet-conditionformat-info-dialog",
+            "id": "sheet-conditionformat-info-dialog",
             "addclass": "",
             "title": title,
             "content": content,
-            "botton": `<button id="luckysheet-conditionformat-info-dialog-close" class="btn btn-default">${locale().conditionformat.close}</button>`,
+            "botton": `<button id="sheet-conditionformat-info-dialog-close" class="btn btn-default">${locale().conditionformat.close}</button>`,
             "style": "z-index:100003"
         }));
-        let _t = $("#luckysheet-conditionformat-info-dialog")
-                .find(".luckysheet-modal-dialog-content")
+        let _t = $("#sheet-conditionformat-info-dialog")
+                .find(".sheet-modal-dialog-content")
                 .css("min-width", 300)
                 .end(),
             myh = _t.outerHeight(),
             myw = _t.outerWidth();
         let winw = $(window).width(), winh = $(window).height();
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
-        $("#luckysheet-conditionformat-info-dialog").css({
+        $("#sheet-conditionformat-info-dialog").css({
             "left": (winw + scrollLeft - myw) / 2,
             "top": (winh + scrollTop - myh) / 3
         }).show();
@@ -2298,7 +2298,7 @@ const conditionformat = {
                                             </div>
                                             <div style="height: 30px;margin-bottom: 5px;">
                                                 <label style="display: block;width: 80px;height: 30px;line-height: 30px;float: left;">${conditionformat_Text.color}：</label>
-                                                <input data-tips="${conditionformat_Text.dataBarColor}" data-func="background" class="luckysheet-conditionformat-config-color" type="text" value="#638ec6" style="display: none;"> 
+                                                <input data-tips="${conditionformat_Text.dataBarColor}" data-func="background" class="sheet-conditionformat-config-color" type="text" value="#638ec6" style="display: none;"> 
                                             </div>
                                         </div>
                                         <div class="type1Box colorGradationBox" style="display: none;">
@@ -2311,15 +2311,15 @@ const conditionformat = {
                                             </div>
                                             <div class="maxVal" style="height: 30px;margin-bottom: 5px;">
                                                 <label style="display: block;width: 80px;height: 30px;line-height: 30px;float: left;">${conditionformat_Text.maxValue}：</label>
-                                                <input data-tips="${conditionformat_Text.maxValue} ${conditionformat_Text.color}" data-func="background" class="luckysheet-conditionformat-config-color" type="text" value="rgb(99, 190, 123)" style="display: none;">
+                                                <input data-tips="${conditionformat_Text.maxValue} ${conditionformat_Text.color}" data-func="background" class="sheet-conditionformat-config-color" type="text" value="rgb(99, 190, 123)" style="display: none;">
                                             </div>
                                             <div class="midVal" style="height: 30px;margin-bottom: 5px;">
                                                 <label style="display: block;width: 80px;height: 30px;line-height: 30px;float: left;">${conditionformat_Text.medianValue}：</label>
-                                                <input data-tips="${conditionformat_Text.medianValue} ${conditionformat_Text.color}" data-func="background" class="luckysheet-conditionformat-config-color" type="text" value="rgb(255, 235, 132)" style="display: none;">
+                                                <input data-tips="${conditionformat_Text.medianValue} ${conditionformat_Text.color}" data-func="background" class="sheet-conditionformat-config-color" type="text" value="rgb(255, 235, 132)" style="display: none;">
                                             </div>
                                             <div class="minVal" style="height: 30px;margin-bottom: 5px;">
                                                 <label style="display: block;width: 80px;height: 30px;line-height: 30px;float: left;">${conditionformat_Text.minValue}：</label>
-                                                <input data-tips="${conditionformat_Text.minValue} ${conditionformat_Text.color}" data-func="background" class="luckysheet-conditionformat-config-color" type="text" value="rgb(248, 105, 107)" style="display: none;">
+                                                <input data-tips="${conditionformat_Text.minValue} ${conditionformat_Text.color}" data-func="background" class="sheet-conditionformat-config-color" type="text" value="rgb(248, 105, 107)" style="display: none;">
                                             </div>
                                         </div>
                                         <div class="type1Box iconsBox" style="display: none;">

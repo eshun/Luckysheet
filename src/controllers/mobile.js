@@ -14,7 +14,7 @@ export default function mobileinit(){
         luckysheet_touchmove_startPos = {},
         luckysheet_touchhandle_status = false,
         _scrollTimer = null;
-    $(document).on("touchstart", "#luckysheet-grid-window-1", function(event){
+    $(document).on("touchstart", "#sheet-grid-window-1", function(event){
         clearInterval(_scrollTimer);//clear timer
         luckysheet_touchmove_status = true;
 
@@ -26,7 +26,7 @@ export default function mobileinit(){
             moveType:"y",
         }
     })
-    $(document).on("touchmove", "#luckysheet-grid-window-1", function(event){
+    $(document).on("touchmove", "#sheet-grid-window-1", function(event){
         if(event.originalEvent.targetTouches.length > 1 || (event.scale && event.scale !== 1)){
             return;
         }
@@ -40,8 +40,8 @@ export default function mobileinit(){
             luckysheet_touchmove_startPos.x = touch.pageX;
             luckysheet_touchmove_startPos.y = touch.pageY;
 
-            let scrollLeft = $("#luckysheet-scrollbar-x").scrollLeft();
-            let scrollTop = $("#luckysheet-scrollbar-y").scrollTop();
+            let scrollLeft = $("#sheet-scrollbar-x").scrollLeft();
+            let scrollTop = $("#sheet-scrollbar-y").scrollTop();
 
             // console.log("start",scrollTop, slideY,touch.pageY);
 
@@ -58,12 +58,12 @@ export default function mobileinit(){
                 scrollTop = 0;
             }
             
-            $("#luckysheet-scrollbar-y").scrollTop(scrollTop);
+            $("#sheet-scrollbar-y").scrollTop(scrollTop);
 
             luckysheet_touchmove_startPos.vy_y = slideY;
             luckysheet_touchmove_startPos.scrollTop = scrollTop;
 
-            $("#luckysheet-scrollbar-x").scrollLeft(scrollLeft);
+            $("#sheet-scrollbar-x").scrollLeft(scrollLeft);
 
             luckysheet_touchmove_startPos.vy_x = slideX;
 
@@ -73,8 +73,8 @@ export default function mobileinit(){
         }
         else if(luckysheet_touchhandle_status){//选区
             let mouse = mouseposition(touch.pageX, touch.pageY);
-            let x = mouse[0] + $("#luckysheet-cell-main").scrollLeft();
-            let y = mouse[1] + $("#luckysheet-cell-main").scrollTop();
+            let x = mouse[0] + $("#sheet-cell-main").scrollLeft();
+            let y = mouse[1] + $("#sheet-cell-main").scrollTop();
 
             let row_location = rowLocation(y), 
                 row = row_location[1], 
@@ -192,7 +192,7 @@ export default function mobileinit(){
                         luckysheet_touchmove_startPos.scrollTop += vy_y;
                     }
             
-                    $("#luckysheet-scrollbar-y").scrollTop(luckysheet_touchmove_startPos.scrollTop);
+                    $("#sheet-scrollbar-y").scrollTop(luckysheet_touchmove_startPos.scrollTop);
             
                     if(luckysheet_touchmove_startPos.vy_x>0){
                         luckysheet_touchmove_startPos.scrollLeft -= vy_x;
@@ -201,7 +201,7 @@ export default function mobileinit(){
                         luckysheet_touchmove_startPos.scrollLeft += vy_x;
                     }
             
-                    $("#luckysheet-scrollbar-x").scrollLeft(luckysheet_touchmove_startPos.scrollLeft);
+                    $("#sheet-scrollbar-x").scrollLeft(luckysheet_touchmove_startPos.scrollLeft);
          
                     if(vy_x<=0 && vy_y<=0){
                         clearInterval(_scrollTimer);

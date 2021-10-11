@@ -15,9 +15,9 @@ function initialCellFormatModelEvent(){
     const _locale = locale();
     const local_cellFormat = _locale.cellFormat;
 
-    $("#luckysheet-cellFormat-confirm").click(function(){
-        let locked = $("#luckysheet-protection-check-locked").is(':checked');
-        let hidden = $("#luckysheet-protection-check-hidden").is(':checked');
+    $("#sheet-cellFormat-confirm").click(function(){
+        let locked = $("#sheet-protection-check-locked").is(':checked');
+        let hidden = $("#sheet-protection-check-hidden").is(':checked');
     
         locked = locked==true?1:0;
         hidden = hidden==true?1:0;
@@ -42,8 +42,8 @@ function initialCellFormatModelEvent(){
 
         jfrefreshgrid(d, undefined, undefined, false);
 
-        $("#luckysheet-cellFormat-config").hide();
-        $("#luckysheet-modal-dialog-mask").hide();
+        $("#sheet-cellFormat-config").hide();
+        $("#sheet-modal-dialog-mask").hide();
     });
 }
 
@@ -115,28 +115,28 @@ function initialCellFormatModel(){
 
     //Password input initial
     $("body").append(replaceHtml(modelHTML, { 
-        "id": "luckysheet-cellFormat-config", 
-        "addclass": "luckysheet-cellFormat-config", 
+        "id": "sheet-cellFormat-config", 
+        "addclass": "sheet-cellFormat-config", 
         "title": local_cellFormat.cellFormatTitle, 
         "content": `
-            <div class="luckysheet-cellFormat-menu-c">
-                <div class="luckysheet-cellFormat-menu luckysheet-cellFormat-menu-active" id="luckysheet-cellFormat-protection">
+            <div class="sheet-cellFormat-menu-c">
+                <div class="sheet-cellFormat-menu sheet-cellFormat-menu-active" id="sheet-cellFormat-protection">
                     ${local_cellFormat.protection}
                 </div>
             </div>
-            <div id="luckysheet-cellFormat-protection-content" class="luckysheet-cellFormat-content">
-                <div class="luckysheet-cellFormat-protection">
+            <div id="sheet-cellFormat-protection-content" class="sheet-cellFormat-content">
+                <div class="sheet-cellFormat-protection">
                     <p>
                         ${local_cellFormat.protectionTips}
                     </p>
-                    <label for="luckysheet-protection-check-locked"><input id="luckysheet-protection-check-locked" name="luckysheet-protection-check-locked" type="checkbox">${local_cellFormat.locked}</label><span>部分选中</span>
+                    <label for="sheet-protection-check-locked"><input id="sheet-protection-check-locked" name="sheet-protection-check-locked" type="checkbox">${local_cellFormat.locked}</label><span>部分选中</span>
                     <br/>
-                    <label for="luckysheet-protection-check-hidden"><input id="luckysheet-protection-check-hidden" name="luckysheet-protection-check-hidden" type="checkbox">${local_cellFormat.hidden}</label><span>全部选中</span>
+                    <label for="sheet-protection-check-hidden"><input id="sheet-protection-check-hidden" name="sheet-protection-check-hidden" type="checkbox">${local_cellFormat.hidden}</label><span>全部选中</span>
                 </div>
             </div>
         `, 
-        "botton":  `<button id="luckysheet-cellFormat-confirm" class="btn btn-primary">${locale_button.confirm}</button>
-                    <button class="btn btn-default luckysheet-model-close-btn">${locale_button.cancel}</button>`, 
+        "botton":  `<button id="sheet-cellFormat-confirm" class="btn btn-primary">${locale_button.confirm}</button>
+                    <button class="btn btn-default sheet-model-close-btn">${locale_button.cancel}</button>`, 
         "style": "z-index:100003" 
     }));
 
@@ -150,7 +150,7 @@ export function openCellFormatModel(){
     const local_cellFormat = _locale.cellFormat;
     const locale_button = _locale.button;
 
-    $("#luckysheet-rightclick-menu").hide();
+    $("#sheet-rightclick-menu").hide();
 
     if(!checkProtectionNotEnable(Store.currentSheetIndex)){
         return;
@@ -193,9 +193,9 @@ export function openCellFormatModel(){
         tipshidden = hiddenCount==count?local_cellFormat.tipsAll:local_cellFormat.tipsPart;
     }
 
-    $("#luckysheet-protection-check-locked").prop('checked',locked).parent().next().html(tipsLock);
-    $("#luckysheet-protection-check-hidden").prop('checked',hidden).parent().next().html(tipshidden);
+    $("#sheet-protection-check-locked").prop('checked',locked).parent().next().html(tipsLock);
+    $("#sheet-protection-check-hidden").prop('checked',hidden).parent().next().html(tipshidden);
 
 
-    openSelfModel("luckysheet-cellFormat-config");
+    openSelfModel("sheet-cellFormat-config");
 }

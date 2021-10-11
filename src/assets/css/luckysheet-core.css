@@ -10,7 +10,7 @@
     background-color: transparent;
 }
 
-.luckysheet-noselected-text {
+.sheet-noselected-text {
     -moz-user-select: -moz-test;
     -khtml-user-select: none;
     -webkit-user-select: none;
@@ -55,7 +55,7 @@
     background-size: 100% 100%;
 }
 
-.luckysheet-loading-mask{
+.sheet-loading-mask{
     position:absolute;
     z-index:1000000000;
     margin: 0;
@@ -68,7 +68,7 @@
     background:#fff;
 }
 
-.luckysheet-loading-content{
+.sheet-loading-content{
     position:relative;
     top: 50%;
     transform: translateY(-50%);
@@ -78,17 +78,17 @@
     text-align:center;
 }
 
-.luckysheet-loading-image{
+.sheet-loading-image{
     width: 8em;
     height: 8em;
     margin: 0 auto;
 }
 
-.luckysheet-loading-text{
+.sheet-loading-text{
     margin-top: 1em;
 }
 
-.luckysheet-loading-image .image-type{
+.sheet-loading-image .image-type{
     width:100%;
     height:100%;
     background-repeat: no-repeat;
@@ -96,12 +96,12 @@
     background-size: 100% 100%;
 }
 
-.luckysheet-loading-image .path-type{
+.sheet-loading-image .path-type{
     width:100%;
     height:100%;
 }
 
-.luckysheet-work-area {
+.sheet-work-area {
     height: 90px;
     width: 100%;
     position: relative;
@@ -246,12 +246,12 @@
     margin:0 5px;
 }
 
-.luckysheet-share-logo {
+.sheet-share-logo {
     height: 32px;
     width: 32px;
 }
 
-.luckysheet-wa-editor {
+.sheet-wa-editor {
     height: 32px;
     /* background: #f7f7f7; */
     background: #fafafc;
@@ -265,7 +265,7 @@
 }
 
 /* 
-.luckysheet-wa-editor>div.luckysheetfulltoolbar {
+.sheet-wa-editor>div.luckysheetfulltoolbar {
     display: inline-block;
     height: 34px;
     padding: 0px 5px;
@@ -278,13 +278,13 @@
     vertical-align: middle;
 }
 
-.luckysheet-wa-editor>div.luckysheetfulltoolbar:hover {
+.sheet-wa-editor>div.luckysheetfulltoolbar:hover {
     background: #0188fb;
     color: #FAFAFA;
     cursor: pointer;
 }
 
-.luckysheet-wa-editor>div.luckysheetfulltoolbar:active {
+.sheet-wa-editor>div.luckysheetfulltoolbar:active {
     background: #FB4747;
     color: #FFFFFF;
     -webkit-box-shadow: inset 0 0 2px #727272;
@@ -295,7 +295,7 @@
 
 /*toolbar菜单start*/
 
-.luckysheet-toolbar-left-theme {
+.sheet-toolbar-left-theme {
     width: 15px;
     /* background: #0188fb;  */ /* 工具栏左边的蓝色背景 */
     position: absolute;
@@ -304,14 +304,14 @@
     bottom: 1px;
 }
 
-.luckysheet-inline-block {
+.sheet-inline-block {
     position: relative;
     display: -moz-inline-box;
     display: inline-block;
 }
 
 /*分隔符*/
-.luckysheet-toolbar-separator {
+.sheet-toolbar-separator {
     line-height: normal;
     list-style: none;
     outline: none;
@@ -328,7 +328,7 @@
 }
 
 /*combo*/
-.luckysheet-toolbar-combo-button {
+.sheet-toolbar-combo-button {
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
@@ -354,7 +354,7 @@
     margin: 0 1px;
 }
 
-.luckysheet-toolbar-combo-button:hover {
+.sheet-toolbar-combo-button:hover {
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
     -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
     box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
@@ -378,11 +378,11 @@
     cursor: pointer;
 }
 
-.luckysheet-toolbar-combo-button:hover .luckysheet-toolbar-combo-button-input {
+.sheet-toolbar-combo-button:hover .sheet-toolbar-combo-button-input {
     border-right-color: rgba(0, 0, 0, 0.12);
 }
 
-.luckysheet-toolbar-combo-button-open {
+.sheet-toolbar-combo-button-open {
     color: #222;
     border-width: 1px;
     border-color: transparent !important;
@@ -392,36 +392,36 @@
 }
 
 
-.luckysheet-toolbar-combo-button-open .luckysheet-toolbar-combo-button-input {
+.sheet-toolbar-combo-button-open .sheet-toolbar-combo-button-input {
     background: transparent;
     border-right: 1px solid transparent !important;
 }
 
 
-.luckysheet-toolbar-combo-button-outer-box,
-.luckysheet-toolbar-combo-button-inner-box {
+.sheet-toolbar-combo-button-outer-box,
+.sheet-toolbar-combo-button-inner-box {
     border: 0;
     vertical-align: top;
     margin: 0;
     padding: 0;
 }
 
-/* .luckysheet-toolbar-combo-button-inner-box {
+/* .sheet-toolbar-combo-button-inner-box {
     padding: 0 2px;
     margin: 0 1px;
 } */
 
-.luckysheet-toolbar-zoom-combobox .luckysheet-toolbar-combo-button-caption {
+.sheet-toolbar-zoom-combobox .sheet-toolbar-combo-button-caption {
     /* width: 48px !important; */
     width: 36px !important;
 }
 
-.luckysheet-toolbar-combo-button-caption {
+.sheet-toolbar-combo-button-caption {
     padding: 0;
     margin: 0 0 0 -3px;
 }
 
-.luckysheet-toolbar-combo-button-input {
+.sheet-toolbar-combo-button-input {
     background: transparent;
     border: 1px solid transparent !important;
     color: #333;
@@ -435,14 +435,14 @@
     width: 22px;
 }
 
-.luckysheet-toolbar-combo-button-input:focus {
+.sheet-toolbar-combo-button-input:focus {
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
     background: #fff;
     outline: none;
     border: 1px solid #0188fb !important;
 }
 
-.luckysheet-toolbar-textinput {
+.sheet-toolbar-textinput {
     -webkit-border-radius: 1px;
     -moz-border-radius: 1px;
     border-radius: 1px;
@@ -454,7 +454,7 @@
     padding: 1px 0px 1px 8px;
 }
 
-.luckysheet-toolbar-combo-button-dropdown {
+.sheet-toolbar-combo-button-dropdown {
     /* background: url(../images/arrow-down.png) center no-repeat; */
     float: right;
     margin: 9px 0 0 0px;
@@ -469,18 +469,18 @@
 }
 
 /*menubar*/
-.luckysheet-toolbar-color-menu-button .luckysheet-toolbar-menu-button-caption {
+.sheet-toolbar-color-menu-button .sheet-toolbar-menu-button-caption {
     top: -2px;
 }
 
-.luckysheet-color-menu-button-indicator {
+.sheet-color-menu-button-indicator {
     position: relative;
     /* border-bottom: 4px solid #f0f0f0; */
     height: 20px;
     /* border-bottom-color: transparent; */
 }
 
-.luckysheet-color-menu-button-indicator .text-color-bar{
+.sheet-color-menu-button-indicator .text-color-bar{
     position: absolute;
     bottom: 0px;
     background-color: #0081f9;
@@ -489,23 +489,23 @@
     left: 30%;
 }
 
-.luckysheet-toolbar-button-inner-box .luckysheet-icon,
-.luckysheet-toolbar-menu-button-caption .luckysheet-icon,
-.luckysheet-toolbar-menu-button-caption .luckysheet-color-menu-button-indicator .luckysheet-icon {
+.sheet-toolbar-button-inner-box .sheet-icon,
+.sheet-toolbar-menu-button-caption .sheet-icon,
+.sheet-toolbar-menu-button-caption .sheet-color-menu-button-indicator .sheet-icon {
     margin-top: 0px;
 }
 
 /*menubutton*/
-.luckysheet-toolbar-menu-button-caption {
+.sheet-toolbar-menu-button-caption {
     padding: 0;
     margin: 0;
 }
 
-.luckysheet-toolbar-menu-button-inner-box {
+.sheet-toolbar-menu-button-inner-box {
     margin: 0px 2px;
 }
 
-.luckysheet-toolbar-menu-button-dropdown {
+.sheet-toolbar-menu-button-dropdown {
     /* background: url(../images/arrow-down.png) center no-repeat; */
     float: right;
     margin: 10px 2px 0 3px;
@@ -521,38 +521,38 @@
     margin-top: 10px;
 }
 
-.luckysheet-toolbar-button-split-right .luckysheet-toolbar-menu-button-dropdown {
+.sheet-toolbar-button-split-right .sheet-toolbar-menu-button-dropdown {
     padding: 0px 3px;
 }
 
-/* .luckysheet-toolbar-select {
+/* .sheet-toolbar-select {
     margin-left: 1px;
 } */
 
 /*split*/
-.luckysheet-toolbar-button-split-left,
-.luckysheet-toolbar-button-split-left * {
+.sheet-toolbar-button-split-left,
+.sheet-toolbar-button-split-left * {
     border-top-right-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
     margin-right: 0;
 }
 
-.luckysheet-toolbar-button-split-right,
-.luckysheet-toolbar-button-split-right * {
+.sheet-toolbar-button-split-right,
+.sheet-toolbar-button-split-right * {
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
     min-width: 5px !important;
     margin-left: 0;
 }
 
-#luckysheet-icon-merge-menu {
+#sheet-icon-merge-menu {
     margin-right: 1px;
 }
 
 
 /*button*/
-.luckysheet-toolbar-button,
-.luckysheet-toolbar-menu-button {
+.sheet-toolbar-button,
+.sheet-toolbar-menu-button {
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
@@ -577,9 +577,9 @@
     color: #333;
 }
 
-.luckysheet-toolbar-button:hover,
-.luckysheet-toolbar-menu-button:hover,
-.luckysheet-toolbar-button-hover {
+.sheet-toolbar-button:hover,
+.sheet-toolbar-menu-button:hover,
+.sheet-toolbar-button-hover {
     border: 1px solid transparent;
     background-color: rgba(0, 0, 0, 0.06);
     background-image: none;
@@ -587,11 +587,11 @@
     cursor: pointer;
 }
 
-.luckysheet-toolbar-button-split-right.luckysheet-toolbar-menu-button:hover {
+.sheet-toolbar-button-split-right.sheet-toolbar-menu-button:hover {
     border-left-color: rgba(0, 0, 0, 0.12) !important;
 }
 
-.luckysheet-toolbar-button-split-right-hover {
+.sheet-toolbar-button-split-right-hover {
     border-width: 1px;
     border-color: transparent !important;
     background-color: rgba(0, 0, 0, 0.06);
@@ -600,8 +600,8 @@
     border-left-color: rgba(0, 0, 0, 0.12) !important;
 }
 
-.luckysheet-toolbar-button:active,
-.luckysheet-toolbar-menu-button:active {
+.sheet-toolbar-button:active,
+.sheet-toolbar-menu-button:active {
     border: 1px solid transparent;
     background-color: rgba(0, 0, 0, 0.12);
     background-image: none;
@@ -609,16 +609,16 @@
     cursor: pointer;
 }
 
-.luckysheet-toolbar-button-outer-box,
-.luckysheet-toolbar-menu-button-outer-box {
+.sheet-toolbar-button-outer-box,
+.sheet-toolbar-menu-button-outer-box {
     border: 0;
     vertical-align: top;
     margin: 0;
     padding: 0;
 }
 
-.luckysheet-toolbar-button-inner-box,
-.luckysheet-toolbar-menu-button-inner-box {
+.sheet-toolbar-button-inner-box,
+.sheet-toolbar-menu-button-inner-box {
     padding: 0 2px;
     padding: 0;
     text-align: center;
@@ -626,7 +626,7 @@
     min-width: 26px;
 }
 
-.luckysheet-icon {
+.sheet-icon {
     direction: ltr;
     /* text-align: left; */
     text-align: center;
@@ -641,7 +641,7 @@
     /* opacity: .54; */
 }
 
-#luckysheet-icon-fmt-other .luckysheet-toolbar-menu-button-caption {
+#sheet-icon-fmt-other .sheet-toolbar-menu-button-caption {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -650,7 +650,7 @@
     text-align: center;
 }
 
-#luckysheet-icon-font-family .luckysheet-toolbar-menu-button-caption {
+#sheet-icon-font-family .sheet-toolbar-menu-button-caption {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -660,228 +660,228 @@
     text-align: center;
 }
 
-/* .luckysheet-icon-bold {
+/* .sheet-icon-bold {
     left: -18px;
     top: -186px;
 }
 
-.luckysheet-icon-italic {
+.sheet-icon-italic {
     left: -36px;
     top: -1606px;
 }
 
-.luckysheet-icon-strikethrough {
+.sheet-icon-strikethrough {
     left: -54px;
     top: -442px;
 }
 
-.luckysheet-icon-text-color {
+.sheet-icon-text-color {
     left: -72px;
     top: -1850px;
 }
 
-.luckysheet-icon-cell-color {
+.sheet-icon-cell-color {
     left: 0;
     top: -406px;
 }
 
-.luckysheet-icon-border-all {
+.sheet-icon-border-all {
     left: -54px;
     top: -1552px;
 }
 
-.luckysheet-icon-merge {
+.sheet-icon-merge {
     left: -54px;
     top: -1534px;
 }
 
 
-.luckysheet-icon-align-left {
+.sheet-icon-align-left {
     left: -18px;
     top: -1426px;
 }
 
-.luckysheet-icon-align-center {
+.sheet-icon-align-center {
     left: -18px;
     top: -334px;
 }
 
-.luckysheet-icon-align-right {
+.sheet-icon-align-right {
     left: -36px;
     top: -1588px;
 }
 
 
-.luckysheet-icon-valign-middle {
+.sheet-icon-valign-middle {
     left: -72px;
     top: -1390px;
 }
 
-.luckysheet-icon-valign-top {
+.sheet-icon-valign-top {
     left: -72px;
     top: -442px;
 }
 
-.luckysheet-icon-valign-bottom {
+.sheet-icon-valign-bottom {
     left: 0;
     top: -316px;
 }
 
-.luckysheet-icon-textwrap-wrap {
+.sheet-icon-textwrap-wrap {
     left: -36px;
     top: -316px;
 }
 
-.luckysheet-icon-textwrap-overflow {
+.sheet-icon-textwrap-overflow {
     left: -58px;
     top: -1116px;
 }
 
-.luckysheet-icon-textwrap-clip {
+.sheet-icon-textwrap-clip {
     left: -54px;
     top: -1444px;
 }
 
-.luckysheet-icon-rotation-none {
+.sheet-icon-rotation-none {
     left: -36px;
     top: -586px;
 }
 
-.luckysheet-icon-rotation-angleup {
+.sheet-icon-rotation-angleup {
     left: -72px;
     top: -1134px;
 }
 
-.luckysheet-icon-rotation-angledown {
+.sheet-icon-rotation-angledown {
     left: -36px;
     top: -186px;
 }
 
-.luckysheet-icon-rotation-vertical {
+.sheet-icon-rotation-vertical {
     left: -36px;
     top: -1282px;
 }
 
-.luckysheet-icon-rotation-rotation-up {
+.sheet-icon-rotation-rotation-up {
     left: 0;
     top: -1318px;
 }
 
-.luckysheet-icon-rotation-rotation-down {
+.sheet-icon-rotation-rotation-down {
     left: -36px;
     top: -1336px;
 }
 
-.luckysheet-icon-function {
+.sheet-icon-function {
     left: -18px;
     top: -460px;
 }
 
 
 
-.luckysheet-material-icon .luckysheet-icon-border-all {
+.sheet-material-icon .sheet-icon-border-all {
     left: -54px;
     top: -1552px;
 }
 
-.luckysheet-icon-border-inside {
+.sheet-icon-border-inside {
     left: -36px;
     top: -806px;
 }
 
-.luckysheet-icon-border-horizontal {
+.sheet-icon-border-horizontal {
     left: -58px;
     top: -168px;
 }
 
-.luckysheet-icon-border-vertical {
+.sheet-icon-border-vertical {
     left: 0;
     top: -878px;
 }
 
-.luckysheet-icon-border-outside {
+.sheet-icon-border-outside {
     left: -54px;
     top: -1246px;
 }
 
-.luckysheet-icon-border-left {
+.sheet-icon-border-left {
     left: -54px;
     top: 0;
 }
 
-.luckysheet-icon-border-top {
+.sheet-icon-border-top {
     left: -36px;
     top: -752px;
 }
 
-.luckysheet-icon-border-right {
+.sheet-icon-border-right {
     left: -18px;
     top: -406px;
 }
 
-.luckysheet-icon-border-bottom {
+.sheet-icon-border-bottom {
     left: -72px;
     top: -586px;
 }
 
 
-.luckysheet-icon-border-none {
+.sheet-icon-border-none {
     left: -18px;
     top: -1072px;
 }
 
 
-.luckysheet-icon-line-color {
+.sheet-icon-line-color {
     left: -36px;
     top: -622px;
 }
 
-.luckysheet-icon-line-type {
+.sheet-icon-line-type {
     left: 0;
     top: -126px;
 } */
 
 
-#luckysheet-icon-function .luckysheet-toolbar-menu-button-caption {
+#sheet-icon-function .sheet-toolbar-menu-button-caption {
     margin-right: 5px;
     margin-left: -5px;
 }
 
-#luckysheet-icon-function .luckysheet-icon {
+#sheet-icon-function .sheet-icon {
     margin-right: 0px;
 }
 
-/* .luckysheet-icon-autofilter {
+/* .sheet-icon-autofilter {
     left: -36px;
     top: -406px;
 } */
 
-#luckysheet-icon-pivotTable .luckysheet-toolbar-menu-button-caption {
+#sheet-icon-pivotTable .sheet-toolbar-menu-button-caption {
     color: #0188fb;
 }
 
-#luckysheet-icon-chart .luckysheet-toolbar-menu-button-caption {
+#sheet-icon-chart .sheet-toolbar-menu-button-caption {
     color: #0188fb;
 }
 
-.luckysheet-rightgclick-menu-sub .sp-container {
+.sheet-rightgclick-menu-sub .sp-container {
     background-color: #ffffff;
     border: solid 1px #ffffff;
 }
 
-#luckysheet-icon-text-color-menu-menuButton .sp-palette-container,
-#luckysheet-icon-cell-color-menu-menuButton .sp-palette-container {
+#sheet-icon-text-color-menu-menuButton .sp-palette-container,
+#sheet-icon-cell-color-menu-menuButton .sp-palette-container {
     margin-bottom: -300px;
 }
 
-#luckysheet-icon-text-color-menu-menuButton .sp-palette,
-#luckysheet-icon-cell-color-menu-menuButton .sp-palette {
+#sheet-icon-text-color-menu-menuButton .sp-palette,
+#sheet-icon-cell-color-menu-menuButton .sp-palette {
     margin-top: -10px;
 }
 
 /*toolbar菜单end*/
 
-.luckysheet-wa-calculate {
+.sheet-wa-calculate {
     height: 28px;
     /*padding: 10px 8px;*/
     background: #fff;
@@ -893,13 +893,13 @@
 
 
 
-.luckysheet-wa-calculate-help {
+.sheet-wa-calculate-help {
     height: 100%;
     width: 99px;
     border-right: 1px solid #d4d4d4;
 }
 
-.luckysheet-wa-calculate-help-box {
+.sheet-wa-calculate-help-box {
     height: 100%;
     width: 85px;
     position: absolute;
@@ -907,7 +907,7 @@
     left: 0px;
 }
 
-#luckysheet-helpbox {
+#sheet-helpbox {
     left: 0;
     position: absolute;
     right: 0;
@@ -922,7 +922,7 @@
     padding: 2px 5px;
 }
 
-.luckysheet-helpbox-cell-input {
+.sheet-helpbox-cell-input {
     width: 100%;
     height: 100%;
     margin: 0;
@@ -941,7 +941,7 @@
 }
 
 
-.luckysheet-wa-calculate-help-tool {
+.sheet-wa-calculate-help-tool {
     position: absolute;
     left: 85px;
     text-align: center;
@@ -950,21 +950,21 @@
     border-left: 1px solid transparent;
     border-right: 1px solid transparent;
 }
-.luckysheet-wa-calculate-help-tool .fa-caret-down {
+.sheet-wa-calculate-help-tool .fa-caret-down {
     position: absolute;
     top: 50%;
     left: 3px;
     transform: translateY(-50%);
 }
 
-.luckysheet-wa-calculate-help-tool:hover {
+.sheet-wa-calculate-help-tool:hover {
     background: #EFEFEF;
     cursor: pointer;
     border-left: 1px solid #E5E5E5;
     border-right: 1px solid #E5E5E5;
 }
 
-.luckysheet-wa-calculate-size {
+.sheet-wa-calculate-size {
     position: absolute;
     height: 3px;
     width: 100%;
@@ -973,24 +973,24 @@
     z-index: 1000;
 }
 
-.luckysheet-wa-calculate-size:hover {
+.sheet-wa-calculate-size:hover {
     background: #5e5e5e;
     cursor: ns-resize;
 }
 
 
-#luckysheet-wa-functionbox-cancel {
+#sheet-wa-functionbox-cancel {
     left: 104px;
     /* font-size: 18px; */
 }
 
-#luckysheet-wa-functionbox-confirm {
+#sheet-wa-functionbox-confirm {
     left: 130px;
     /* font-size: 18px; */
 }
 
 
-.luckysheet-wa-functionbox {
+.sheet-wa-functionbox {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -1000,34 +1000,34 @@
     color: #d6d6d6;
 }
 
-.luckysheet-wa-functionbox span {
+.sheet-wa-functionbox span {
     vertical-align: middle;
     width: 30px;
     height: 30px;
 }
 
-.luckysheet-wa-functionbox i {
+.sheet-wa-functionbox i {
     font-size: 24px;
 }
 
 
-.luckysheet-wa-calculate-active {
+.sheet-wa-calculate-active {
     color: #585858;
     cursor: pointer;
 }
 
-.luckysheet-wa-calculate-active:hover {
+.sheet-wa-calculate-active:hover {
     color: #0188fb;
 }
 
-.luckysheet-grid-container {
+.sheet-grid-container {
     width: 100%;
     position: absolute;
     top: 90px;
     bottom: 0px;
 }
 
-.luckysheet-stat-area {
+.sheet-stat-area {
     position: absolute;
     height: 23px;
     bottom: 0px;
@@ -1035,7 +1035,7 @@
     width: 100%;
 }
 
-.luckysheet-sta-c {
+.sheet-sta-c {
     height: 22px;
     background-color: #fff;
     border-top: 1px solid #e1e1e1;
@@ -1046,7 +1046,7 @@
     user-select: none;
 }
 
-.luckysheet-stat-area:hover .luckysheet-sta-c {
+.sheet-stat-area:hover .sheet-sta-c {
     -moz-user-select: -moz-all;
     -khtml-user-select: initial;
     -webkit-user-select: initial;
@@ -1054,12 +1054,12 @@
     user-select: initial;
 }
 
-.luckysheet-bottom-content{
+.sheet-bottom-content{
     display: flex;
     overflow: hidden;
 }
 
-.luckysheet-sta-c .luckysheet-sta-content {
+.sheet-sta-c .sheet-sta-content {
     /* position: absolute; */
     /* left: 0px; */
     /* right: 358px; */
@@ -1071,11 +1071,11 @@
     flex: 1;
 }
 
-.luckysheet-sta-c .luckysheet-sta-content span {
+.sheet-sta-c .sheet-sta-content span {
     margin-right: 10px;
 }
 
-.luckysheet-grid-window {
+.sheet-grid-window {
     position: absolute;
     top: 0px;
     bottom: 23px;
@@ -1112,7 +1112,7 @@
     align-items: center;
 }
 
-#luckysheet-bottom-pager {
+#sheet-bottom-pager {
     width: 0;
     background-color: #fafafc;
     z-index: 1;
@@ -1327,7 +1327,7 @@ div.sheets-m:hover {
     color: #222;
 }
 
-.luckysheet-grid-window-1 {
+.sheet-grid-window-1 {
     position: absolute;
     top: 0;
     right: 0;
@@ -1358,7 +1358,7 @@ div.sheets-m:hover {
     user-select: none;
 }
 
-.luckysheet-grid-window-2 {
+.sheet-grid-window-2 {
     /*background-color: #fff !important;*/
     height: 100%;
     width: 100%;
@@ -1367,12 +1367,12 @@ div.sheets-m:hover {
     display: table;
 }
 
-.luckysheet-paneswrapper {
+.sheet-paneswrapper {
     overflow: hidden;
     height: 1px;
 }
 
-.luckysheet-left-top {
+.sheet-left-top {
     width: 44.5px;
     height: 18.5px;
     border: solid 0 #dfdfdf;
@@ -1384,7 +1384,7 @@ div.sheets-m:hover {
     cursor: pointer;
 }
 
-.luckysheet-cols-h-c {
+.sheet-cols-h-c {
     color: #5e5e5e;
     overflow: hidden;
     padding: 0;
@@ -1397,7 +1397,7 @@ div.sheets-m:hover {
     background: #f3f3f2;
 }
 
-.luckysheet-rows-h {
+.sheet-rows-h {
     position: relative;
     outline-style: none;
     color: #5e5e5e;
@@ -1411,7 +1411,7 @@ div.sheets-m:hover {
     background: #f3f3f2;
 }
 
-.luckysheet-cols-menu-btn {
+.sheet-cols-menu-btn {
     color: #5e5e5e;
     cursor: pointer;
     position: absolute;
@@ -1428,12 +1428,12 @@ div.sheets-m:hover {
     /*transition: all 0.1s;*/
 }
 
-.luckysheet-cols-menu-btn:hover {
+.sheet-cols-menu-btn:hover {
     opacity: 1;
 }
 
 
-.luckysheet-cols-h-hover {
+.sheet-cols-h-hover {
     color: #5e5e5e;
     cursor: default;
     position: absolute;
@@ -1447,7 +1447,7 @@ div.sheets-m:hover {
     background-color: rgba(194, 194, 194, 0.4);
 }
 
-.luckysheet-cols-h-selected {
+.sheet-cols-h-selected {
     color: #5e5e5e;
     cursor: default;
     position: absolute;
@@ -1463,7 +1463,7 @@ div.sheets-m:hover {
              width: 863px;*/
 }
 
-.luckysheet-cols-h-cells {
+.sheet-cols-h-cells {
     margin: 0;
     padding: 0;
     border: none 0;
@@ -1472,14 +1472,14 @@ div.sheets-m:hover {
     /*width: 4721px;*/
 }
 
-.luckysheet-cols-h-cells-c {
+.sheet-cols-h-cells-c {
     color: #5e5e5e;
     cursor: default;
     width: 5000000px;
     height: inherit;
 }
 
-.luckysheet-cols-h-cells-clip {
+.sheet-cols-h-cells-clip {
     color: #5e5e5e;
     cursor: default;
     margin: 0;
@@ -1496,7 +1496,7 @@ div.sheets-m:hover {
     top: -1px;
 }
 
-.luckysheet-cols-h-cell-nosel {
+.sheet-cols-h-cell-nosel {
     position: absolute;
     cursor: pointer;
     border: 0 solid;
@@ -1508,7 +1508,7 @@ div.sheets-m:hover {
     height: inherit;
 }
 
-.luckysheet-cols-h-cell-sel {
+.sheet-cols-h-cell-sel {
     direction: ltr;
     height: inherit;
     position: absolute;
@@ -1524,7 +1524,7 @@ div.sheets-m:hover {
     border-right-width: 1px;
 }
 
-.luckysheet-col-flow-h {
+.sheet-col-flow-h {
     float: left;
     direction: ltr;
     position: relative;
@@ -1535,7 +1535,7 @@ div.sheets-m:hover {
     overflow: hidden;
 }
 
-.luckysheet-col-flow-h-sheet {
+.sheet-col-flow-h-sheet {
     width: inherit;
     height: inherit;
     position: relative;
@@ -1543,14 +1543,14 @@ div.sheets-m:hover {
     direction: ltr;
 }
 
-body:not(.ewa-ipad) .luckysheet-cols-h-cell-nosel:hover,
-body:not(.ewa-ipad) .luckysheet-cols-h-cell-sel:hover,
-body:not(.ewa-ipad) .luckysheet-rows-h-cell-nosel:hover,
-body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
+body:not(.ewa-ipad) .sheet-cols-h-cell-nosel:hover,
+body:not(.ewa-ipad) .sheet-cols-h-cell-sel:hover,
+body:not(.ewa-ipad) .sheet-rows-h-cell-nosel:hover,
+body:not(.ewa-ipad) .sheet-rows-h-cell-sel:hover {
     background-color: #FCC3C3;
 }
 
-.luckysheet-cols-h-cell-txt {
+.sheet-cols-h-cell-txt {
     cursor: pointer;
     height: inherit;
     position: relative;
@@ -1561,7 +1561,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     padding-top: 2px;
 }
 
-.luckysheet-rows-h {
+.sheet-rows-h {
     position: relative;
     outline-style: none;
     color: #5e5e5e;
@@ -1573,7 +1573,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     width: 45px;
 }
 
-.luckysheet-rows-h-hover {
+.sheet-rows-h-hover {
     position: absolute;
     z-index: 11;
     border: 0 none;
@@ -1585,7 +1585,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     background-color: rgba(194, 194, 194, 0.4);
 }
 
-.luckysheet-rows-h-selected {
+.sheet-rows-h-selected {
     position: absolute;
     z-index: 10;
     border-right: 1px solid #0188fb;
@@ -1599,7 +1599,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
              height: 145px;*/
 }
 
-.luckysheet-rows-h-cells {
+.sheet-rows-h-cells {
     margin: 0;
     padding: 0;
     border: none 0;
@@ -1607,7 +1607,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     width: 100%;
 }
 
-.luckysheet-rows-h-cells-c {
+.sheet-rows-h-cells-c {
     margin: 0;
     padding: 0;
     border: none 0;
@@ -1617,7 +1617,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     width: 100%;
 }
 
-.luckysheet-rows-h-cells-clip {
+.sheet-rows-h-cells-clip {
     cursor: default;
     color: #5e5e5e;
     direction: ltr;
@@ -1629,7 +1629,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     height: inherit;
 }
 
-.luckysheet-rows-h-cell-nosel {
+.sheet-rows-h-cell-nosel {
     direction: ltr;
     width: 100%;
     position: absolute;
@@ -1640,7 +1640,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     touch-action: manipulation;
 }
 
-.luckysheet-rows-h-cell-sel {
+.sheet-rows-h-cell-sel {
     direction: ltr;
     width: 100%;
     position: absolute;
@@ -1654,7 +1654,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     touch-action: manipulation;
 }
 
-.luckysheet-rows-h-cell-txt {
+.sheet-rows-h-cell-txt {
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -1665,7 +1665,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     font-size: 14px;
 }
 
-.luckysheet-cell-loading {
+.sheet-cell-loading {
     width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.3);
@@ -1678,7 +1678,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     display: none;
 }
 
-.luckysheet-cell-loading-inner {
+.sheet-cell-loading-inner {
     position: relative;
     top: 40%;
     width: 100%;
@@ -1686,11 +1686,11 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     text-align: center;
 }
 
-.luckysheet-cell-loading-inner span {
+.sheet-cell-loading-inner span {
     margin-left: 10px;
 }
 
-.luckysheet-cell-main {
+.sheet-cell-main {
     /*border: solid 1px #BEC1C4;*/
     background-color: white;
     width: 15px;
@@ -1704,8 +1704,8 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     cursor: default;
 }
 
-.luckysheet-scrollbars,
-.luckysheet-menu {
+.sheet-scrollbars,
+.sheet-menu {
     scrollbar-base-color: #FFFFFF;
     scrollbar-track-color: #E7E7E7;
     scrollbar-darkshadow-color: #FFFFFF;
@@ -1717,47 +1717,47 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     overflow: auto;
 }
 
-.luckysheet-scrollbar-ltr {
+.sheet-scrollbar-ltr {
     position: absolute;
     overflow: hidden;
     z-index: 903;
 }
 
-.luckysheet-scrollbar-ltr div {
+.sheet-scrollbar-ltr div {
     height: 1px;
     width: 1px;
 }
 
-.luckysheet-scrollbar-ltr::-webkit-scrollbar-button {
+.sheet-scrollbar-ltr::-webkit-scrollbar-button {
     height: 0;
     width: 0
 }
 
-.luckysheet-scrollbar-ltr::-webkit-scrollbar-button:start {
+.sheet-scrollbar-ltr::-webkit-scrollbar-button:start {
     display: none
 }
 
-.luckysheet-scrollbar-ltr::-webkit-scrollbar-button:end {
+.sheet-scrollbar-ltr::-webkit-scrollbar-button:end {
     display: block
 }
 
-.luckysheet-scrollbar-ltr::-webkit-scrollbar-button {
+.sheet-scrollbar-ltr::-webkit-scrollbar-button {
     border: 1px solid #d9d9d9
 }
 
-.luckysheet-scrollbar-ltr::-webkit-scrollbar-button:horizontal {
+.sheet-scrollbar-ltr::-webkit-scrollbar-button:horizontal {
     border-width: 1px 0 0 0
 }
 
-.luckysheet-scrollbar-ltr::-webkit-scrollbar-button:vertical {
+.sheet-scrollbar-ltr::-webkit-scrollbar-button:vertical {
     border-width: 0 0 0 1px
 }
 
-.luckysheet-scrollbar-ltr::-webkit-scrollbar-button:vertical {
+.sheet-scrollbar-ltr::-webkit-scrollbar-button:vertical {
     border-width: 0 1px 0 0
 }
 
-.luckysheet-scrollbar-ltr::-webkit-scrollbar-button:horizontal:increment {
+.sheet-scrollbar-ltr::-webkit-scrollbar-button:horizontal:increment {
     background: no-repeat url("../images/waffle_sprite.png") -663px -13px;
     width: 15px;
     padding-left: 1px;
@@ -1769,15 +1769,15 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     border-bottom: 1px solid #d9d9d9;
 }
 
-.luckysheet-scrollbar-ltr::-webkit-scrollbar-button:horizontal:increment:hover {
+.sheet-scrollbar-ltr::-webkit-scrollbar-button:horizontal:increment:hover {
     background: no-repeat url("../images/waffle_sprite.png") -395px -62px
 }
 
-.luckysheet-scrollbar-ltr::-webkit-scrollbar-button:horizontal:increment:active {
+.sheet-scrollbar-ltr::-webkit-scrollbar-button:horizontal:increment:active {
     background: no-repeat url("../images/waffle_sprite.png") -679px -13px
 }
 
-.luckysheet-scrollbar-ltr::-webkit-scrollbar-button:horizontal:decrement {
+.sheet-scrollbar-ltr::-webkit-scrollbar-button:horizontal:decrement {
     border-left: 1px solid #d9d9d9;
     border-right: 1px solid #d9d9d9;
     background: no-repeat url("../images/waffle_sprite.png") -283px -62px;
@@ -1785,30 +1785,30 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     border-bottom: 1px solid #d9d9d9;
 }
 
-.luckysheet-scrollbar-ltr::-webkit-scrollbar-button:horizontal:hover {
+.sheet-scrollbar-ltr::-webkit-scrollbar-button:horizontal:hover {
     background: no-repeat url("../images/waffle_sprite.png") -145px -70px
 }
 
-.luckysheet-scrollbar-ltr::-webkit-scrollbar-button:horizontal:active {
+.sheet-scrollbar-ltr::-webkit-scrollbar-button:horizontal:active {
     background: no-repeat url("../images/waffle_sprite.png") -552px 0
 }
 
-.luckysheet-scrollbar-ltr::-webkit-scrollbar-button:vertical:increment {
+.sheet-scrollbar-ltr::-webkit-scrollbar-button:vertical:increment {
     padding-top: 1px;
     background: no-repeat url("../images/waffle_sprite.png") -531px -24px;
     border-left: 1px solid #d9d9d9;
     height: 15px
 }
 
-.luckysheet-scrollbar-ltr::-webkit-scrollbar-button:vertical:increment:hover {
+.sheet-scrollbar-ltr::-webkit-scrollbar-button:vertical:increment:hover {
     background: no-repeat url("../images/waffle_sprite.png") -570px -42px
 }
 
-.luckysheet-scrollbar-ltr::-webkit-scrollbar-button:vertical:increment:active {
+.sheet-scrollbar-ltr::-webkit-scrollbar-button:vertical:increment:active {
     background: no-repeat url("../images/waffle_sprite.png") -83px -46px
 }
 
-.luckysheet-scrollbar-ltr::-webkit-scrollbar-button:vertical:decrement {
+.sheet-scrollbar-ltr::-webkit-scrollbar-button:vertical:decrement {
     border-top: 1px solid #d9d9d9;
     border-bottom: 1px solid #d9d9d9;
     border-left: 1px solid #d9d9d9;
@@ -1816,21 +1816,21 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     height: 17px
 }
 
-.luckysheet-scrollbar-ltr::-webkit-scrollbar-button:vertical:decrement:hover {
+.sheet-scrollbar-ltr::-webkit-scrollbar-button:vertical:decrement:hover {
     background: no-repeat url("../images/waffle_sprite.png") -180px -58px
 }
 
-.luckysheet-scrollbar-ltr::-webkit-scrollbar-button:vertical:decrement:active {
+.sheet-scrollbar-ltr::-webkit-scrollbar-button:vertical:decrement:active {
     background: no-repeat url("../images/waffle_sprite.png") -776px -28px
 }
 
-.luckysheet-scrollbar-x {
+.sheet-scrollbar-x {
     bottom: 0px;
     left: 44px;
     overflow-x: scroll;
 }
 
-.luckysheet-scrollbar-y {
+.sheet-scrollbar-y {
     right: 0px;
     top: 0px;
     overflow-y: scroll;
@@ -1838,7 +1838,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
 }
 
 
-.luckysheet-cell-flow {
+.sheet-cell-flow {
     margin: 0;
     padding: 0;
     border: none 0;
@@ -1848,7 +1848,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     /*background: #fff;*/
 }
 
-.luckysheet-cell-flow-clip {
+.sheet-cell-flow-clip {
     border-collapse: collapse;
     cursor: default;
     width: 5000000px;
@@ -1856,7 +1856,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     overflow: hidden;
 }
 
-.luckysheet-cell-flow-col {
+.sheet-cell-flow-col {
     margin: 0;
     padding: 0;
     border: none 0;
@@ -1867,7 +1867,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     direction: ltr;
 }
 
-.luckysheet-cell-sheettable {
+.sheet-cell-sheettable {
     position: relative;
     /*background-color: #fff;*/
     text-align: left;
@@ -1876,7 +1876,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     text-decoration: none;
 }
 
-.luckysheet-bottom-controll-row {
+.sheet-bottom-controll-row {
     position: absolute;
     height: 30px;
     /*width: 400px;*/
@@ -1886,25 +1886,25 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     z-index: 1000;
 }
 
-#luckysheet-bottom-add-row {
+#sheet-bottom-add-row {
     padding: 5px 20px;
     margin-right: 5px;
     margin-top: -2px;
 }
 
-#luckysheet-bottom-add-row-input {
+#sheet-bottom-add-row-input {
     width: 40px;
     min-width: 40px;
 }
 
-#luckysheet-bottom-return-top {
+#sheet-bottom-return-top {
     padding: 5px 6px;
     margin-left: 10px;
     margin-top: -2px;
 }
 
 
-.luckysheet-cell-flow-column {
+.sheet-cell-flow-column {
     position: absolute;
     height: inherit;
     width: inherit;
@@ -1914,13 +1914,13 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     touch-action: manipulation;
 }
 
-.luckysheet-cell-flow-column-line {
+.sheet-cell-flow-column-line {
     position: absolute;
     border-right: 1px solid #d4d4d4;
     height: inherit;
 }
 
-.luckysheet-cell-flow-row {
+.sheet-cell-flow-row {
     text-align: left;
     position: absolute;
     height: inherit;
@@ -1931,7 +1931,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     touch-action: manipulation;
 }
 
-.luckysheet-cell-flow-row-line {
+.sheet-cell-flow-row-line {
     position: absolute;
     border-bottom: 1px solid #d4d4d4;
     width: inherit;
@@ -1948,7 +1948,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     /*transition: all 0.1s;*/
 }
 
-.luckysheet-selection-copy {
+.sheet-selection-copy {
     position: absolute;
     pointer-events: none;
     z-index: 18;
@@ -1957,13 +1957,13 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     display: none;
 }
 
-.luckysheet-selection-copy .luckysheet-copy {
+.sheet-selection-copy .sheet-copy {
     position: absolute;
     z-index: 18;
     background-color: transparent;
 }
 
-.luckysheet-selection-copy-top {
+.sheet-selection-copy-top {
     left: 0;
     right: 0;
     height: 2px;
@@ -1972,7 +1972,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     background-image: url("../images/EwaAntH.gif");
 }
 
-.luckysheet-selection-copy-right {
+.sheet-selection-copy-right {
     top: 0;
     bottom: 0;
     width: 2px;
@@ -1980,7 +1980,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     background-image: url("../images/EwaAntV.gif");
 }
 
-.luckysheet-selection-copy-bottom {
+.sheet-selection-copy-bottom {
     left: 0;
     right: 0;
     height: 2px;
@@ -1988,7 +1988,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     background-image: url("../images/EwaAntH.gif");
 }
 
-.luckysheet-selection-copy-left {
+.sheet-selection-copy-left {
     top: 0;
     bottom: 0;
     width: 2px;
@@ -1997,7 +1997,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     background-image: url("../images/EwaAntV.gif");
 }
 
-.luckysheet-selection-copy-hc {
+.sheet-selection-copy-hc {
     position: absolute;
     top: 0;
     right: 0;
@@ -2007,7 +2007,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     z-index: 8;
 }
 
-.luckysheet-selection-highlight {
+.sheet-selection-highlight {
     position: absolute;
     /*pointer-events: none;*/
     z-index: 14;
@@ -2016,7 +2016,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     display: none;
 }
 
-.luckysheet-formula-functionrange-highlight .luckysheet-copy {
+.sheet-formula-functionrange-highlight .sheet-copy {
     background-image: none;
     background: #0188fb;
     position: absolute;
@@ -2026,62 +2026,62 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     /*border: 1px solid #fff;*/
 }
 
-.luckysheet-formula-functionrange-highlight .luckysheet-selection-copy-top {
+.sheet-formula-functionrange-highlight .sheet-selection-copy-top {
     top: -2px;
     border-top: 2px solid #fff;
     border-bottom: 2px solid #fff;
 }
 
-.luckysheet-formula-functionrange-highlight .luckysheet-selection-copy-right {
+.sheet-formula-functionrange-highlight .sheet-selection-copy-right {
     right: -2px;
     border-left: 2px solid #fff;
     border-right: 2px solid #fff;
 }
 
-.luckysheet-formula-functionrange-highlight .luckysheet-selection-copy-bottom {
+.sheet-formula-functionrange-highlight .sheet-selection-copy-bottom {
     bottom: -2px;
     border-top: 2px solid #fff;
     border-bottom: 2px solid #fff;
 }
 
-.luckysheet-formula-functionrange-highlight .luckysheet-selection-copy-left {
+.sheet-formula-functionrange-highlight .sheet-selection-copy-left {
     left: -2px;
     border-left: 2px solid #fff;
     border-right: 2px solid #fff;
 }
 
-.luckysheet-formula-functionrange-highlight .luckysheet-selection-copy-hc {
+.sheet-formula-functionrange-highlight .sheet-selection-copy-hc {
     border: 2px solid #5e5e5e;
     opacity: 0.03;
     z-index: initial;
 }
 
-.luckysheet-selection-highlight-topleft {
+.sheet-selection-highlight-topleft {
     left: -3px;
     top: -3px;
     cursor: se-resize;
 }
 
-.luckysheet-selection-highlight-topright {
+.sheet-selection-highlight-topright {
     right: -3px;
     top: -3px;
     cursor: ne-resize;
 }
 
-.luckysheet-selection-highlight-bottomleft {
+.sheet-selection-highlight-bottomleft {
     left: -3px;
     bottom: -3px;
     cursor: ne-resize;
 }
 
-.luckysheet-selection-highlight-bottomright {
+.sheet-selection-highlight-bottomright {
     right: -3px;
     bottom: -3px;
     cursor: se-resize;
 }
 
 
-.luckysheet-formula-functionrange-highlight .luckysheet-highlight {
+.sheet-formula-functionrange-highlight .sheet-highlight {
     position: absolute;
     z-index: 19;
     border: 1px solid #fff;
@@ -2260,7 +2260,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     color: rgba(0, 0, 0, 0.15);
 }
 
-#luckysheet-dynamicArray-hightShow {
+#sheet-dynamicArray-hightShow {
     position: absolute;
     pointer-events: none;
     z-index: 15;
@@ -2269,29 +2269,29 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     display: none;
 }
 
-.luckysheet-scrollbars::-webkit-scrollbar-track {
+.sheet-scrollbars::-webkit-scrollbar-track {
     background-color: #FFFFFF;
     border: 1px solid #d9d9d9;
 }
 
-.luckysheet-scrollbar-x::-webkit-scrollbar-track {
+.sheet-scrollbar-x::-webkit-scrollbar-track {
     border-left: 1px solid #d9d9d9;
     border-right: none;
 }
 
-.luckysheet-scrollbar-y::-webkit-scrollbar-track {
+.sheet-scrollbar-y::-webkit-scrollbar-track {
     border-top: none;
     border-bottom: none;
 }
 
-.luckysheet-scrollbars::-webkit-scrollbar {
+.sheet-scrollbars::-webkit-scrollbar {
     width: 12px;
     height: 12px;
     background-color: #FFFFFF;
     /*border:0 none;*/
 }
 
-.luckysheet-scrollbars::-webkit-scrollbar-thumb {
+.sheet-scrollbars::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, .2);
     background-clip: padding-box;
     border: solid transparent;
@@ -2300,27 +2300,27 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1), inset 0 -1px 0 rgba(0, 0, 0, .07);
 }
 
-.luckysheet-scrollbars::-webkit-scrollbar-thumb:hover {
+.sheet-scrollbars::-webkit-scrollbar-thumb:hover {
     background-color: #969696;
     border: 1px solid #A0A0A0;
     border-radius: 12px;
 }
 
-.luckysheet-grdusedrange {
+.sheet-grdusedrange {
     position: absolute;
     visibility: hidden;
     width: 1px;
     height: 1px;
 }
 
-.luckysheet-grdblkflowpush {
+.sheet-grdblkflowpush {
     margin: 0;
     padding: 0;
     border: none 0;
     width: 1px;
 }
 
-.luckysheet-grdblkpush {
+.sheet-grdblkpush {
     margin: 0;
     padding: 0;
     border: none 0;
@@ -2329,7 +2329,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     direction: ltr;
 }
 
-.luckysheet-cell-flow-data {
+.sheet-cell-flow-data {
     position: absolute;
     height: inherit;
     width: inherit;
@@ -2338,17 +2338,17 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     z-index: 1;
 }
 
-.luckysheet-cell-flow-data-row {
+.sheet-cell-flow-data-row {
     position: absolute;
     width: inherit;
 }
 
-.luckysheet-cell-flow-data-cell {
+.sheet-cell-flow-data-cell {
     position: absolute;
     height: inherit;
 }
 
-.luckysheet-cell-flow-data-value {
+.sheet-cell-flow-data-value {
     position: absolute !important;
     bottom: 0;
     letter-spacing: -.02em;
@@ -2374,7 +2374,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     margin-top: -1px;
 }
 
-.luckysheet-cols-menu {
+.sheet-cols-menu {
     max-height: 100%;
     overflow-y: auto;
     -webkit-border-radius: 0;
@@ -2403,7 +2403,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     overflow: hidden;
 }
 
-.luckysheet-cols-menu .luckysheet-cols-menuitem {
+.sheet-cols-menu .sheet-cols-menuitem {
     position: relative;
     color: #333;
     cursor: pointer;
@@ -2419,12 +2419,12 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
 }
 
 /* 右击菜单项目 hover背景色 */
-.luckysheet-cols-menu .luckysheet-cols-menuitem:hover,
-.luckysheet-cols-menu .luckysheet-cols-menuitem-hover {
+.sheet-cols-menu .sheet-cols-menuitem:hover,
+.sheet-cols-menu .sheet-cols-menuitem-hover {
     background: #EFEFEF;
 }
 
-.luckysheet-cols-menu .luckysheet-cols-menuitem .luckysheet-cols-menuitem-content {
+.sheet-cols-menu .sheet-cols-menuitem .sheet-cols-menuitem-content {
     position: relative;
     color: #333;
     cursor: pointer;
@@ -2435,7 +2435,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     user-select: none;
 }
 
-.luckysheet-rightgclick-menu .luckysheet-cols-menuitem .luckysheet-cols-menuitem-content {
+.sheet-rightgclick-menu .sheet-cols-menuitem .sheet-cols-menuitem-content {
     position: relative;
     color: #333;
     cursor: pointer;
@@ -2446,26 +2446,26 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     user-select: none;
 }
 
-#luckysheet-cols-menu .luckysheet-cols-menuitem,
-.luckysheet-filter-menu .luckysheet-cols-menuitem,
-#luckysheet-pivotTable-config-option .luckysheet-cols-menuitem {
+#sheet-cols-menu .sheet-cols-menuitem,
+.sheet-filter-menu .sheet-cols-menuitem,
+#sheet-pivotTable-config-option .sheet-cols-menuitem {
     padding-right: 10px;
     padding-left: 12px;
 }
 
-#luckysheet-pivotTable-config-option-sumtype .luckysheet-cols-menuitem {
+#sheet-pivotTable-config-option-sumtype .sheet-cols-menuitem {
     padding-right: 15px;
     padding-left: 12px;
     padding-top: 1px;
     padding-bottom: 1px;
 }
 
-#luckysheet-cols-menu .luckysheet-cols-menuitem-content,
-.luckysheet-filter-menu .luckysheet-cols-menuitem .luckysheet-cols-menuitem-content {
+#sheet-cols-menu .sheet-cols-menuitem-content,
+.sheet-filter-menu .sheet-cols-menuitem .sheet-cols-menuitem-content {
     padding-right: 10px;
     padding-left: 12px;
 }
-#sheet-list .luckysheet-cols-menuitem .luckysheet-cols-menuitem-content {
+#sheet-list .sheet-cols-menuitem .sheet-cols-menuitem-content {
     padding-right: 0px;
     max-width: 430px;
     min-width: 100px;
@@ -2473,32 +2473,32 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.luckysheet-filter-menu div.luckysheet-cols-menuitem {
+.sheet-filter-menu div.sheet-cols-menuitem {
     padding-top: 0px;
     padding-bottom: 0px;
 }
 
-.luckysheet-filter-submenu div.luckysheet-cols-menuitem {
+.sheet-filter-submenu div.sheet-cols-menuitem {
     padding-top: 1px;
     padding-bottom: 1px;
 }
 
-.luckysheet-filter-menu .luckysheet-filter-byvalue .luckysheet-cols-menuitem,
-.luckysheet-filter-menu .luckysheet-pivotTableFilter-byvalue .luckysheet-cols-menuitem {
+.sheet-filter-menu .sheet-filter-byvalue .sheet-cols-menuitem,
+.sheet-filter-menu .sheet-pivotTableFilter-byvalue .sheet-cols-menuitem {
     padding-top: 2px;
     padding-bottom: 0px;
     cursor: default;
 }
 
-.luckysheet-filter-menu .luckysheet-filter-byvalue .luckysheet-cols-menuitem-content,
-.luckysheet-filter-menu .luckysheet-pivotTableFilter-byvalue .luckysheet-cols-menuitem-content {
+.sheet-filter-menu .sheet-filter-byvalue .sheet-cols-menuitem-content,
+.sheet-filter-menu .sheet-pivotTableFilter-byvalue .sheet-cols-menuitem-content {
     padding-top: 2px;
     padding-bottom: 0px;
     cursor: default;
 }
 
-.luckysheet-filter-menu .luckysheet-filter-byvalue .luckysheet-cols-menuitem-content input,
-.luckysheet-filter-menu .luckysheet-pivotTableFilter-byvalue .luckysheet-cols-menuitem-content input {
+.sheet-filter-menu .sheet-filter-byvalue .sheet-cols-menuitem-content input,
+.sheet-filter-menu .sheet-pivotTableFilter-byvalue .sheet-cols-menuitem-content input {
     height: 24px;
     width: 191px;
     padding-right: 25px;
@@ -2512,8 +2512,8 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
 }
 
 
-.luckysheet-filter-menu .luckysheet-filter-byvalue .luckysheet-cols-menuitem-content input:focus,
-.luckysheet-filter-menu .luckysheet-pivotTableFilter-byvalue .luckysheet-cols-menuitem-content input:focus {
+.sheet-filter-menu .sheet-filter-byvalue .sheet-cols-menuitem-content input:focus,
+.sheet-filter-menu .sheet-pivotTableFilter-byvalue .sheet-cols-menuitem-content input:focus {
     -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -2521,50 +2521,50 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     outline: none;
 }
 
-.luckysheet-filter-menu .luckysheet-filter-byvalue .luckysheet-cols-menuitem-content .luckysheet-filter-byvalue-input-icon,
-.luckysheet-filter-menu .luckysheet-pivotTableFilter-byvalue .luckysheet-cols-menuitem-content .luckysheet-pivotTableFilter-byvalue-input-icon {
+.sheet-filter-menu .sheet-filter-byvalue .sheet-cols-menuitem-content .sheet-filter-byvalue-input-icon,
+.sheet-filter-menu .sheet-pivotTableFilter-byvalue .sheet-cols-menuitem-content .sheet-pivotTableFilter-byvalue-input-icon {
     position: absolute;
     right: 17px;
     top: 7px;
 }
 
-.luckysheet-filter-menu .luckysheet-filter-byvalue .luckysheet-cols-menuitem:hover,
-.luckysheet-filter-menu .luckysheet-pivotTableFilter-byvalue .luckysheet-cols-menuitem:hover {
+.sheet-filter-menu .sheet-filter-byvalue .sheet-cols-menuitem:hover,
+.sheet-filter-menu .sheet-pivotTableFilter-byvalue .sheet-cols-menuitem:hover {
     background: #fff;
 }
 
-.luckysheet-filter-menu .luckysheet-cols-menuitem:last-child:hover {
+.sheet-filter-menu .sheet-cols-menuitem:last-child:hover {
     background: #fff;
 }
 
-.luckysheet-filter-menu .luckysheet-cols-menuitem:last-child,
-.luckysheet-filter-menu .luckysheet-cols-menuitem:last-child .luckysheet-cols-menuitem-content {
+.sheet-filter-menu .sheet-cols-menuitem:last-child,
+.sheet-filter-menu .sheet-cols-menuitem:last-child .sheet-cols-menuitem-content {
     cursor: default;
 }
 
-#luckysheet-filter-byvalue-select,
-#luckysheet-pivotTableFilter-byvalue-select {
+#sheet-filter-byvalue-select,
+#sheet-pivotTableFilter-byvalue-select {
     min-height: 100px;
     width: 200px;
 }
 
-.luckysheet-filter-menu .luckysheet-mousedown-filter-byvalue-btn span,
-.luckysheet-filter-menu .luckysheet-mousedown-pivotTableFilter-byvalue-btn span {
+.sheet-filter-menu .sheet-mousedown-filter-byvalue-btn span,
+.sheet-filter-menu .sheet-mousedown-pivotTableFilter-byvalue-btn span {
     color: blue;
     cursor: pointer;
     text-decoration: underline;
 }
 
-.luckysheet-filter-menu .luckysheet-mousedown-filter-byvalue-btn div,
-.luckysheet-filter-menu .luckysheet-mousedown-pivotTableFilter-byvalue-btn div {
+.sheet-filter-menu .sheet-mousedown-filter-byvalue-btn div,
+.sheet-filter-menu .sheet-mousedown-pivotTableFilter-byvalue-btn div {
     position: absolute;
     right: 14px;
     top: 0px;
     font-size: 18px;
 }
 
-.luckysheet-filter-menu .luckysheet-filter-bycondition .luckysheet-filter-selected-input,
-.luckysheet-filter-menu .luckysheet-pivotTableFilter-bycondition .luckysheet-pivotTableFilter-selected-input {
+.sheet-filter-menu .sheet-filter-bycondition .sheet-filter-selected-input,
+.sheet-filter-menu .sheet-pivotTableFilter-bycondition .sheet-pivotTableFilter-selected-input {
     padding-left: 8px;
     padding-right: 8px;
     margin-top: 3px;
@@ -2572,8 +2572,8 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
 }
 
 
-.luckysheet-filter-menu .luckysheet-filter-bycondition .luckysheet-filter-selected-input input,
-.luckysheet-filter-menu .luckysheet-pivotTableFilter-bycondition .luckysheet-pivotTableFilter-selected-input input {
+.sheet-filter-menu .sheet-filter-bycondition .sheet-filter-selected-input input,
+.sheet-filter-menu .sheet-pivotTableFilter-bycondition .sheet-pivotTableFilter-selected-input input {
     height: 24px;
     width: 100%;
     padding-right: 3px;
@@ -2588,8 +2588,8 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
 }
 
 
-.luckysheet-filter-menu .luckysheet-filter-bycondition .luckysheet-filter-selected-input2 input,
-.luckysheet-filter-menu .luckysheet-pivotTableFilter-bycondition .luckysheet-pivotTableFilter-selected-input2 input {
+.sheet-filter-menu .sheet-filter-bycondition .sheet-filter-selected-input2 input,
+.sheet-filter-menu .sheet-pivotTableFilter-bycondition .sheet-pivotTableFilter-selected-input2 input {
     height: 24px;
     width: 92px;
     padding-right: 3px;
@@ -2603,19 +2603,19 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     font-size: 13px;
 }
 
-.luckysheet-filter-menu .luckysheet-filter-bycondition .luckysheet-filter-selected-input2 span,
-.luckysheet-filter-menu .luckysheet-pivotTableFilter-bycondition .luckysheet-pivotTableFilter-selected-input2 span {
+.sheet-filter-menu .sheet-filter-bycondition .sheet-filter-selected-input2 span,
+.sheet-filter-menu .sheet-pivotTableFilter-bycondition .sheet-pivotTableFilter-selected-input2 span {
     margin-left: 2px;
     margin-right: 5px;
 }
 
-.luckysheet-menuseparator {
+.sheet-menuseparator {
     border-top: 1px solid #ebebeb;
     margin-top: 6px;
     margin-bottom: 6px;
 }
 
-.luckysheet-submenu-arrow {
+.sheet-submenu-arrow {
     -webkit-transition: all 0.218s;
     -moz-transition: all 0.218s;
     -o-transition: all 0.218s;
@@ -2635,76 +2635,76 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     line-height: 100%;
 }
 
-#luckysheet-pivotTable-config-option-sumtype .luckysheet-submenu-arrow {
+#sheet-pivotTable-config-option-sumtype .sheet-submenu-arrow {
     right: -5px;
     font-size: 16px;
     padding-top: 0px;
     color: blue;
 }
 
-#luckysheet-filter-byvalue-select table,
-#luckysheet-pivotTableFilter-byvalue-select table {
+#sheet-filter-byvalue-select table,
+#sheet-pivotTableFilter-byvalue-select table {
     table-layout: fixed;
 }
 
-#luckysheet-filter-byvalue-select tr td,
-#luckysheet-pivotTableFilter-byvalue-select tr td {
+#sheet-filter-byvalue-select tr td,
+#sheet-pivotTableFilter-byvalue-select tr td {
     padding: 2px 3px;
 }
 
-#luckysheet-filter-byvalue-select tr:hover td,
-#luckysheet-pivotTableFilter-byvalue-select tr:hover td {
+#sheet-filter-byvalue-select tr:hover td,
+#sheet-pivotTableFilter-byvalue-select tr:hover td {
     background: #E1E1E1;
 }
 
 /*筛选改 -- pan*/
-.luckysheet-cols-menu .cf:before,
-.luckysheet-cols-menu .cf:after {
+.sheet-cols-menu .cf:before,
+.sheet-cols-menu .cf:after {
     content: "";
     display: table;
 }
 
-.luckysheet-cols-menu .cf:after {
+.sheet-cols-menu .cf:after {
     clear: both;
 }
 
-#luckysheet-filter-byvalue-select .yearBox .monthList,
-#luckysheet-pivotTableFilter-byvalue-select .yearBox .monthList {
+#sheet-filter-byvalue-select .yearBox .monthList,
+#sheet-pivotTableFilter-byvalue-select .yearBox .monthList {
     padding-left: 20px;
 }
 
-#luckysheet-filter-byvalue-select .yearBox .dayList,
-#luckysheet-pivotTableFilter-byvalue-select .yearBox .dayList {
+#sheet-filter-byvalue-select .yearBox .dayList,
+#sheet-pivotTableFilter-byvalue-select .yearBox .dayList {
     padding-left: 20px;
 }
 
-#luckysheet-filter-byvalue-select .yearBox .fa-caret-right,
-#luckysheet-pivotTableFilter-byvalue-select .yearBox .fa-caret-right {
+#sheet-filter-byvalue-select .yearBox .fa-caret-right,
+#sheet-pivotTableFilter-byvalue-select .yearBox .fa-caret-right {
     padding: 0 2px;
     float: left;
     margin-top: 3px;
     cursor: pointer;
 }
 
-#luckysheet-filter-byvalue-select .count,
-#luckysheet-pivotTableFilter-byvalue-select .count {
+#sheet-filter-byvalue-select .count,
+#sheet-pivotTableFilter-byvalue-select .count {
     color: gray;
     margin-left: 5px;
 }
 
-#luckysheet-filter-byvalue-select input[type="checkbox"],
-#luckysheet-pivotTableFilter-byvalue-select input[type="checkbox"] {
+#sheet-filter-byvalue-select input[type="checkbox"],
+#sheet-pivotTableFilter-byvalue-select input[type="checkbox"] {
     width: auto;
     height: auto;
     float: left;
 }
 
 /*颜色筛选 -- pan*/
-#luckysheet-filter-orderby-color-submenu {
+#sheet-filter-orderby-color-submenu {
     font-size: 12px;
 }
 
-#luckysheet-filter-orderby-color-submenu .title {
+#sheet-filter-orderby-color-submenu .title {
     padding: 10px;
     font-weight: 600;
     color: #333;
@@ -2712,30 +2712,30 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     text-align: center;
 }
 
-#luckysheet-filter-orderby-color-submenu .item {
+#sheet-filter-orderby-color-submenu .item {
     padding: 5px 40px 5px 20px;
     cursor: pointer;
     position: relative;
 }
 
-#luckysheet-filter-orderby-color-submenu .item:hover {
+#sheet-filter-orderby-color-submenu .item:hover {
     background-color: #d3d3d3;
 }
 
-#luckysheet-filter-orderby-color-submenu .item label {
+#sheet-filter-orderby-color-submenu .item label {
     display: block;
     width: 70px;
     height: 20px;
     border: 1px solid #d1d1d1;
 }
 
-#luckysheet-filter-orderby-color-submenu .item input[type="checkbox"] {
+#sheet-filter-orderby-color-submenu .item input[type="checkbox"] {
     position: absolute;
     right: 10px;
     top: 6px;
 }
 
-#luckysheet-copy-content {
+#sheet-copy-content {
     position: fixed;
     height: 0px;
     width: 0px;
@@ -2745,7 +2745,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     padding-left: 999999px;
 }
 
-/* #luckysheet-copy-btn {
+/* #sheet-copy-btn {
     position: absolute;
     visibility: hidden;
 } */
@@ -3046,15 +3046,15 @@ fieldset[disabled] .btn-danger.focus {
     background-color: #fff;
 }
 
-.luckysheet-cols-change-size,
-.luckysheet-rows-change-size,
-.luckysheet-change-size-line {
+.sheet-cols-change-size,
+.sheet-rows-change-size,
+.sheet-change-size-line {
     /*display: none;*/
     position: absolute;
     z-index: 12;
 }
 
-.luckysheet-cols-change-size {
+.sheet-cols-change-size {
     width: 5px;
     height: 100%;
     background: #0188fb;
@@ -3062,7 +3062,7 @@ fieldset[disabled] .btn-danger.focus {
     opacity: 0;
 }
 
-.luckysheet-rows-change-size {
+.sheet-rows-change-size {
     width: 100%;
     height: 5px;
     background: #0188fb;
@@ -3070,14 +3070,14 @@ fieldset[disabled] .btn-danger.focus {
     opacity: 0;
 }
 
-.luckysheet-change-size-line {
+.sheet-change-size-line {
     border-color: #0188fb;
     border-style: solid;
     z-index: 15;
     display: none;
 }
 
-.luckysheet-count-show {
+.sheet-count-show {
     position: absolute;
     z-index: 15;
     background: rgba(76, 76, 76, 0.8);
@@ -3089,11 +3089,11 @@ fieldset[disabled] .btn-danger.focus {
     white-space: nowrap;
 }
 
-.luckysheet-row-count-show {
+.sheet-row-count-show {
     text-align: center;
 }
 
-.luckysheet-row-count-show div {
+.sheet-row-count-show div {
     width: 14px;
     /*-webkit-writing-mode: vertical-rl;*/
     writing-mode: vertical-rl;
@@ -3104,7 +3104,7 @@ fieldset[disabled] .btn-danger.focus {
     /* IE 写法 */
 }
 
-.luckysheet-row-count-show div:last-child {
+.sheet-row-count-show div:last-child {
     writing-mode: initial;
 }
 
@@ -3113,16 +3113,16 @@ fieldset[disabled] .btn-danger.focus {
     overflow: auto;
 }
 
-#sheet-list .luckysheet-cols-menuitem {
+#sheet-list .sheet-cols-menuitem {
     padding-left: 0px;
     padding-right: 10px;
 }
 
-#sheet-list .luckysheet-cols-menuitem .luckysheet-cols-menuitem-content {
+#sheet-list .sheet-cols-menuitem .sheet-cols-menuitem-content {
     padding-left: 5px;
 }
 /* 
-#sheet-list .luckysheet-cols-menuitem .luckysheet-cols-menuitem-content {
+#sheet-list .sheet-cols-menuitem .sheet-cols-menuitem-content {
     max-width: 420px;
     min-width: 190px;
     overflow: hidden;
@@ -3137,7 +3137,7 @@ fieldset[disabled] .btn-danger.focus {
     display: inline-block;
 }
 
-.luckysheet-input-box {
+.sheet-input-box {
     position: absolute;
     font: normal normal 400 13px arial, sans, sans-serif;
     text-align: left;
@@ -3160,7 +3160,7 @@ fieldset[disabled] .btn-danger.focus {
 }
 
 
-.luckysheet-cell-input {
+.sheet-cell-input {
     width: 100%;
     height: 100%;
     margin: 0;
@@ -3172,7 +3172,7 @@ fieldset[disabled] .btn-danger.focus {
     /*    background-color: white;*/
 }
 
-#luckysheet-rich-text-editor {
+#sheet-rich-text-editor {
     -webkit-user-modify: read-write;
     /*    background-color: rgb(255, 255, 255); 
     font-size: 13px; 
@@ -3182,7 +3182,7 @@ fieldset[disabled] .btn-danger.focus {
     font-style: normal;*/
 }
 
-.luckysheet-input-box-index {
+.sheet-input-box-index {
     display: none;
     position: absolute;
     /*top: -20px;
@@ -3198,7 +3198,7 @@ fieldset[disabled] .btn-danger.focus {
 }
 
 
-.luckysheet-modal-dialog {
+.sheet-modal-dialog {
     -webkit-box-shadow: 0 4px 16px rgba(0, 0, 0, .2);
     -moz-box-shadow: 0 4px 16px rgba(0, 0, 0, .2);
     box-shadow: 0 4px 16px rgba(0, 0, 0, .2);
@@ -3213,7 +3213,7 @@ fieldset[disabled] .btn-danger.focus {
     z-index: 100002;
 }
 
-.luckysheet-modal-dialog-mask {
+.sheet-modal-dialog-mask {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -3227,7 +3227,7 @@ fieldset[disabled] .btn-danger.focus {
 
 
 
-.luckysheet-modal-dialog-title {
+.sheet-modal-dialog-title {
     background-color: #fff;
     color: #000;
     cursor: default;
@@ -3237,7 +3237,7 @@ fieldset[disabled] .btn-danger.focus {
     margin: 0 0 16px;
 }
 
-.luckysheet-modal-dialog-title-close {
+.sheet-modal-dialog-title-close {
     height: 11px;
     opacity: 0.7;
     padding: 17px;
@@ -3249,46 +3249,46 @@ fieldset[disabled] .btn-danger.focus {
     outline: 0;
 }
 
-.luckysheet-modal-dialog-chart {
+.sheet-modal-dialog-chart {
     padding: 20px 10px;
     webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
 }
 
-/*         .luckysheet-modal-dialog-chart .luckysheet-modal-dialog-title{
+/*         .sheet-modal-dialog-chart .sheet-modal-dialog-title{
              line-height:0px;
              margin: 0px;
              font-size: 12px;
          }
 
-        .luckysheet-modal-dialog-chart .luckysheet-modal-dialog-title-close,.luckysheet-modal-dialog-chart .luckysheet-modal-dialog-title-max,.luckysheet-modal-dialog-chart .luckysheet-modal-dialog-title-min,.luckysheet-modal-dialog-chart .luckysheet-modal-dialog-title-restore, .luckysheet-modal-dialog-chart .luckysheet-modal-dialog-title-update {
+        .sheet-modal-dialog-chart .sheet-modal-dialog-title-close,.sheet-modal-dialog-chart .sheet-modal-dialog-title-max,.sheet-modal-dialog-chart .sheet-modal-dialog-title-min,.sheet-modal-dialog-chart .sheet-modal-dialog-title-restore, .sheet-modal-dialog-chart .sheet-modal-dialog-title-update {
              height: 5px;
              opacity: 0.7;
              padding: 12px;
          }
 
-         .luckysheet-modal-dialog-title-update {
+         .sheet-modal-dialog-title-update {
              right: 105px;
              color:#0188fb;
              font-size:14px;
              padding-top: 9px;
          }
 
-         .luckysheet-modal-dialog-title-min {
+         .sheet-modal-dialog-title-min {
              right: 70px;
              padding-top: 9px;
          }
 
-         .luckysheet-modal-dialog-title-max, .luckysheet-modal-dialog-title-restore {
+         .sheet-modal-dialog-title-max, .sheet-modal-dialog-title-restore {
              right: 35px;
          }
 
-         .luckysheet-modal-dialog-title-restore{
+         .sheet-modal-dialog-title-restore{
              display: none;
          }*/
 
-.luckysheet-modal-dialog-resize {
+.sheet-modal-dialog-resize {
     position: absolute;
     border: 2px solid #0188fb;
     margin: 0px;
@@ -3300,7 +3300,7 @@ fieldset[disabled] .btn-danger.focus {
     pointer-events: none;
 }
 
-.luckysheet-modal-dialog-resize-item {
+.sheet-modal-dialog-resize-item {
     position: absolute;
     height: 6px;
     width: 6px;
@@ -3310,60 +3310,60 @@ fieldset[disabled] .btn-danger.focus {
     border-radius: 6px;
 }
 
-.luckysheet-modal-dialog-resize-item-lt {
+.sheet-modal-dialog-resize-item-lt {
     left: -6px;
     top: -6px;
     cursor: se-resize;
 }
 
-.luckysheet-modal-dialog-resize-item-mt {
+.sheet-modal-dialog-resize-item-mt {
     left: 50%;
     top: -6px;
     margin-left: -4px;
     cursor: s-resize;
 }
 
-.luckysheet-modal-dialog-resize-item-rt {
+.sheet-modal-dialog-resize-item-rt {
     right: -6px;
     top: -6px;
     cursor: ne-resize;
 }
 
-.luckysheet-modal-dialog-resize-item-lm {
+.sheet-modal-dialog-resize-item-lm {
     top: 50%;
     left: -6px;
     margin-top: -4px;
     cursor: w-resize;
 }
 
-.luckysheet-modal-dialog-resize-item-rm {
+.sheet-modal-dialog-resize-item-rm {
     top: 50%;
     right: -6px;
     margin-top: -4px;
     cursor: w-resize;
 }
 
-.luckysheet-modal-dialog-resize-item-lb {
+.sheet-modal-dialog-resize-item-lb {
     left: -6px;
     bottom: -6px;
     cursor: ne-resize;
 }
 
-.luckysheet-modal-dialog-resize-item-mb {
+.sheet-modal-dialog-resize-item-mb {
     left: 50%;
     bottom: -6px;
     margin-left: -4px;
     cursor: s-resize;
 }
 
-.luckysheet-modal-dialog-resize-item-rb {
+.sheet-modal-dialog-resize-item-rb {
     right: -6px;
     bottom: -6px;
     cursor: se-resize;
 }
 
 
-.luckysheet-modal-dialog-controll {
+.sheet-modal-dialog-controll {
     position: absolute;
     margin: 0px;
     padding: 0px;
@@ -3373,7 +3373,7 @@ fieldset[disabled] .btn-danger.focus {
     top: 0px;
 }
 
-.luckysheet-modal-controll-btn {
+.sheet-modal-controll-btn {
     height: 13px;
     /* opacity: 0.7; */
     padding: 8px;
@@ -3394,22 +3394,22 @@ fieldset[disabled] .btn-danger.focus {
     -o-transition: all 0.2s;
 }
 
-.luckysheet-modal-controll-btn:hover {
+.sheet-modal-controll-btn:hover {
     border: 1px solid #A1A1A1;
     color: #0188fb;
 }
 
-.luckysheet-modal-controll-btn:active {
+.sheet-modal-controll-btn:active {
     border: 1px solid #BBBBBB;
     background: #EFEFEF;
     color: #0188fb;
 }
 
-.luckysheet-modal-controll-del {
+.sheet-modal-controll-del {
     font-size: 16px;
 }
 
-.luckysheet-modal-controll-max-close {
+.sheet-modal-controll-max-close {
     font-size: 22px;
     width: 42px;
     height: 42px;
@@ -3427,83 +3427,83 @@ fieldset[disabled] .btn-danger.focus {
     text-align: center;
 }
 
-.luckysheet-modal-controll-max-close:hover {
+.sheet-modal-controll-max-close:hover {
     background: #0188fb;
     cursor: pointer;
 }
 
-.luckysheet-sort-item-close {
+.sheet-sort-item-close {
     margin-right: 3px;
     font-size: 14px;
     color: #BBBBBB;
     cursor: pointer;
 }
 
-.luckysheet-sort-item-close:hover {
+.sheet-sort-item-close:hover {
     color: #494949;
 }
 
-.luckysheet-modal-dialog-title-close:hover {
+.sheet-modal-dialog-title-close:hover {
     color: #5e5e5e;
     cursor: pointer;
 }
 
-.luckysheet-modal-dialog-content {
+.sheet-modal-dialog-content {
     background-color: #fff;
     line-height: 1.4em;
     word-wrap: break-word;
 }
 
-.luckysheet-modal-dialog-buttons {
+.sheet-modal-dialog-buttons {
     margin-top: 10px;
 }
 
-.luckysheet-modal-dialog-buttons button {
+.sheet-modal-dialog-buttons button {
     margin-right: 10px;
 }
 
-.luckysheet-modal-dialog-title-text span {
+.sheet-modal-dialog-title-text span {
     font-family: Arial;
 }
 
-.luckysheet-sort-modal {
+.sheet-sort-modal {
     font-size: 12px;
 }
 
-.luckysheet-sort-modal label input,
-.luckysheet-sort-modal label span {
+.sheet-sort-modal label input,
+.sheet-sort-modal label span {
     vertical-align: middle;
 }
 
-.luckysheet-sort-modal>div,
-.luckysheet-sort-modal table {
+.sheet-sort-modal>div,
+.sheet-sort-modal table {
     margin-bottom: 10px;
 }
 
-.luckysheet-sort-modal table tr {
+.sheet-sort-modal table tr {
     margin-bottom: 10px;
 }
 
-.luckysheet-sort-modal table tr td {
+.sheet-sort-modal table tr td {
     padding: 5px;
     white-space: nowrap;
     border-top: 1px solid #ffc6c6;
 }
 
-.luckysheet-sort-modal table tr td>div:first-child {
+.sheet-sort-modal table tr td>div:first-child {
     margin-bottom: 8px;
 }
 
-.luckysheet-sort-modal table tr td select {
+.sheet-sort-modal table tr td select {
     max-width: 180px;
     min-width: 50px;
 }
 
-.luckysheet-sort-modal table tr:first-child td {
+.sheet-sort-modal table tr:first-child td {
     border-top: none;
 }
 
-.luckysheet-filter-options {
+.sheet-filter-options {
     color: #897BFF;
     cursor: pointer;
     position: absolute;
@@ -3520,20 +3520,20 @@ fieldset[disabled] .btn-danger.focus {
     /* transition: all 0.1s; */
 }
 
-.luckysheet-filter-options:hover {
+.sheet-filter-options:hover {
     color: #fff;
     border: 1px solid #fff;
     background: #897BFF;
 }
 
-.luckysheet-filter-options-active {
+.sheet-filter-options-active {
     color: #fff;
     border: 1px solid #897BFF;
     background: #897BFF;
 }
 
 
-.luckysheet-flat-menu-button {
+.sheet-flat-menu-button {
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
@@ -3560,7 +3560,7 @@ fieldset[disabled] .btn-danger.focus {
     padding-left: 15px;
 }
 
-.luckysheet-flat-menu-button:hover {
+.sheet-flat-menu-button:hover {
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
@@ -3574,7 +3574,7 @@ fieldset[disabled] .btn-danger.focus {
     color: #000;
 }
 
-.luckysheet-flat-menu-button div {
+.sheet-flat-menu-button div {
     display: inline-block;
     vertical-align: middle;
     position: absolute;
@@ -3584,39 +3584,39 @@ fieldset[disabled] .btn-danger.focus {
 
 /*图表生成CSS*/
 
-.luckysheet-data-visualization {
+.sheet-data-visualization {
     width: 60%;
     min-width: 860px;
 }
 
-.luckysheet-data-visualization-selection,
-.luckysheet-data-pivotTable-selection {
+.sheet-data-visualization-selection,
+.sheet-data-pivotTable-selection {
     width: 30%;
     min-width: 200px;
     display: none;
 }
 
-.luckysheet-data-visualization-chart {
+.sheet-data-visualization-chart {
     width: 50%;
     /*min-width: 860px;*/
     height: 50%;
 }
 
-.luckysheet-data-visualization-chart .luckysheet-modal-dialog-content {
+.sheet-data-visualization-chart .sheet-modal-dialog-content {
     width: 100%;
     height: 100%;
     overflow: hidden;
 }
 
-.luckysheet-datavisual-modal {
+.sheet-datavisual-modal {
     font-size: 12px;
     /*height: 450px;*/
     height: 100%;
     width: 100%;
 }
 
-/*, .luckysheet-datavisual-right*/
-.luckysheet-datavisual-left {
+/*, .sheet-datavisual-right*/
+.sheet-datavisual-left {
     display: inline-block;
     width: 100%;
     height: 100%;
@@ -3624,16 +3624,16 @@ fieldset[disabled] .btn-danger.focus {
     overflow: hidden;
 }
 
-.luckysheet-datavisual-left {}
+.sheet-datavisual-left {}
 
-.luckysheet-datavisual-tabs {
+.sheet-datavisual-tabs {
     border-bottom: 1px solid #DEDEDE;
     width: 80%;
     height: 26px;
     padding-left: 20px;
 }
 
-.luckysheet-datavisual-tabs .luckysheet-datavisual-tab {
+.sheet-datavisual-tabs .sheet-datavisual-tab {
     padding: 0px 5px;
     text-align: center;
     display: inline-block;
@@ -3646,11 +3646,11 @@ fieldset[disabled] .btn-danger.focus {
     color: #777;
 }
 
-.luckysheet-datavisual-tabs .luckysheet-datavisual-tab:hover {
+.sheet-datavisual-tabs .sheet-datavisual-tab:hover {
     color: #000;
 }
 
-.luckysheet-datavisual-tabs .luckysheet-datavisual-tab-active {
+.sheet-datavisual-tabs .sheet-datavisual-tab-active {
     border: 1px solid #DEDEDE;
     border-bottom: none;
     cursor: default;
@@ -3658,7 +3658,7 @@ fieldset[disabled] .btn-danger.focus {
     color: #000;
 }
 
-.luckysheet-datavisual-tab-content {
+.sheet-datavisual-tab-content {
     position: absolute;
     top: 28px;
     bottom: 0px;
@@ -3668,19 +3668,19 @@ fieldset[disabled] .btn-danger.focus {
 
 
 
-.luckysheet-datavisual-quick {}
+.sheet-datavisual-quick {}
 
-.luckysheet-datavisual-quick-menu {
+.sheet-datavisual-quick-menu {
     width: 90px;
     overflow: auto;
     margin-top: 5px;
 }
 
-.luckysheet-datavisual-quick-menu::-webkit-scrollbar {
+.sheet-datavisual-quick-menu::-webkit-scrollbar {
     display: none;
 }
 
-.luckysheet-datavisual-quick-menu>div {
+.sheet-datavisual-quick-menu>div {
     text-align: left;
     padding: 4px 4px;
     border-right: 3px solid #fff;
@@ -3691,33 +3691,33 @@ fieldset[disabled] .btn-danger.focus {
     /*margin: 4px 0px;*/
 }
 
-.luckysheet-datavisual-quick-menu>div:hover {
+.sheet-datavisual-quick-menu>div:hover {
     color: #000;
 }
 
-.luckysheet-datavisual-quick-menu>div i {
+.sheet-datavisual-quick-menu>div i {
     width: 15px;
 }
 
-.luckysheet-datavisual-quick-menu>div:hover i {
+.sheet-datavisual-quick-menu>div:hover i {
     color: #FF7E7E;
 }
 
-.luckysheet-datavisual-quick-menu>div.luckysheet-datavisual-quick-menu-active {
+.sheet-datavisual-quick-menu>div.sheet-datavisual-quick-menu-active {
     border-right: 3px solid #FF7E7E;
     color: #000;
     font-weight: bold;
 }
 
-.luckysheet-datavisual-quick-menu>div.luckysheet-datavisual-quick-menu-active:hover i {
+.sheet-datavisual-quick-menu>div.sheet-datavisual-quick-menu-active:hover i {
     color: #000;
 }
 
-.luckysheet-datavisual-quick-range {
+.sheet-datavisual-quick-range {
     padding: 5px 0px;
 }
 
-.luckysheet-datavisual-range-container {
+.sheet-datavisual-range-container {
     background: #fff;
     border: 1px solid #d9d9d9;
     border-top: 1px solid #c0c0c0;
@@ -3727,14 +3727,14 @@ fieldset[disabled] .btn-danger.focus {
     display: inline-block;
 }
 
-.luckysheet-datavisual-range-container-focus {
+.sheet-datavisual-range-container-focus {
     border: 1px solid #4d90fe;
     box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.3);
     outline: none;
 }
 
-.luckysheet-datavisual-range-input,
-.luckysheet-datavisual-range-input:focus {
+.sheet-datavisual-range-input,
+.sheet-datavisual-range-input:focus {
     background: transparent !important;
     border: none !important;
     box-sizing: border-box;
@@ -3748,33 +3748,33 @@ fieldset[disabled] .btn-danger.focus {
     width: 100%;
 }
 
-.luckysheet-datavisual-range-button-container {
+.sheet-datavisual-range-button-container {
     overflow: hidden;
     padding: 0 0 0 8px;
     text-align: right;
     width: 21px;
 }
 
-.luckysheet-datavisual-range-button-container div {
+.sheet-datavisual-range-button-container div {
     padding: 2px 10px 0px 10px;
     font-size: 18px;
     cursor: pointer;
     color: #6598F3;
 }
 
-.luckysheet-datavisual-range-button-container div:hover {
+.sheet-datavisual-range-button-container div:hover {
     color: #FF7E7E;
 }
 
-.luckysheet-datavisual-range-config {
+.sheet-datavisual-range-config {
     /*display: inline-block;*/
 }
 
-.luckysheet-datavisual-quick-m {
+.sheet-datavisual-quick-m {
     margin-top: 5px;
 }
 
-.luckysheet-datavisual-quick-list {
+.sheet-datavisual-quick-list {
     left: 90px;
     right: 0px;
     bottom: 0px;
@@ -3785,17 +3785,17 @@ fieldset[disabled] .btn-danger.focus {
     padding: 5px 3px 35px 3px;
 }
 
-.luckysheet-datavisual-quick-list-title {
+.sheet-datavisual-quick-list-title {
     padding: 4px 6px;
     background: #e5e5e5;
     margin-top: 10px;
 }
 
-.luckysheet-datavisual-quick-list-ul {
+.sheet-datavisual-quick-list-ul {
     overflow: hidden;
 }
 
-.luckysheet-datavisual-quick-list-item {
+.sheet-datavisual-quick-list-item {
     display: inline-block;
     margin: 5px 8px;
     border: 1px solid #DADADA;
@@ -3803,27 +3803,27 @@ fieldset[disabled] .btn-danger.focus {
     height: 80px;
 }
 
-.luckysheet-datavisual-quick-list-item:hover {
+.sheet-datavisual-quick-list-item:hover {
     border: 1px solid #FF7E7E;
     box-shadow: 0px 0px 20px #FF7E7E;
 }
 
-.luckysheet-datavisual-quick-list-item img {
+.sheet-datavisual-quick-list-item img {
     display: inline-block;
     width: 100px;
     height: 80px;
 }
 
-.luckysheet-datavisual-quick-list-item-active {
+.sheet-datavisual-quick-list-item-active {
     border: 1px solid #6598F3;
     box-shadow: 0px 0px 20px #6598F3;
 }
 
-/*.luckysheet-datavisual-right {
+/*.sheet-datavisual-right {
     background: #fff;
 }
 
-.luckysheet-datavisual-right-chart {
+.sheet-datavisual-right-chart {
     width: 100%;
     height: 90%;
     top: 5%;
@@ -3922,7 +3922,7 @@ fieldset[disabled] .btn-danger.focus {
 
 
 /*图表详细设置*/
-.luckysheet-datavisual-config {
+.sheet-datavisual-config {
     position: relative;
     width: 100%;
     height: 97%;
@@ -3930,11 +3930,11 @@ fieldset[disabled] .btn-danger.focus {
     top: 0px;
 }
 
-.luckysheet-datavisual-config input {
+.sheet-datavisual-config input {
     outline: none;
 }
 
-.luckysheet-datavisual-config .luckysheet-datavisual-accordion-title {
+.sheet-datavisual-config .sheet-datavisual-accordion-title {
     position: relative;
     width: 97%;
     height: 33px;
@@ -3947,12 +3947,12 @@ fieldset[disabled] .btn-danger.focus {
     cursor: pointer;
 }
 
-.luckysheet-datavisual-config .luckysheet-datavisual-accordion-title:hover {
+.sheet-datavisual-config .sheet-datavisual-accordion-title:hover {
     background: #EFEFEF;
     border: 1px solid #E0E0E0;
 }
 
-.luckysheet-datavisual-config .luckysheet-datavisual-accordion-content {
+.sheet-datavisual-config .sheet-datavisual-accordion-content {
     position: relative;
     width: 97%;
     border: 1px solid #E5E5E5;
@@ -3962,8 +3962,8 @@ fieldset[disabled] .btn-danger.focus {
     padding-bottom: 20px;
 }
 
-.luckysheet-datavisual-config-input,
-.luckysheet-datavisual-config-input-no {
+.sheet-datavisual-config-input,
+.sheet-datavisual-config-input-no {
     background: #fff;
     border: 1px solid #d9d9d9;
     border-top: 1px solid #c0c0c0;
@@ -3975,14 +3975,14 @@ fieldset[disabled] .btn-danger.focus {
     padding: 3px;
 }
 
-.luckysheet-datavisual-config-input:focus,
-.luckysheet-datavisual-config-input-no:focus {
+.sheet-datavisual-config-input:focus,
+.sheet-datavisual-config-input-no:focus {
     border: 1px solid #4d90fe;
     box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.3);
     outline: none;
 }
 
-.luckysheet-datavisual-content-row {
+.sheet-datavisual-content-row {
     margin-left: 15px;
     margin-bottom: 5px;
     margin-top: 15px;
@@ -3990,28 +3990,28 @@ fieldset[disabled] .btn-danger.focus {
     line-height: 30px;
 }
 
-.luckysheet-datavisual-content-column {
+.sheet-datavisual-content-column {
     display: inline-block;
     position: relative;
 }
 
-.luckysheet-datavisual-content-column-title {
+.sheet-datavisual-content-column-title {
     text-align: left;
     font-size: 14px;
 }
 
-.luckysheet-datavisual-content-column-right {
+.sheet-datavisual-content-column-right {
     text-align: right;
 }
 
-.luckysheet-datavisual-content-rowsplit {
+.sheet-datavisual-content-rowsplit {
     height: 5px;
     border-top: 1px solid #E5E5E5;
     width: 100%;
     margin-top: 25px;
 }
 
-.luckysheet-datavisual-content-rowsplit-sub {
+.sheet-datavisual-content-rowsplit-sub {
     height: 2px;
     border-top: 1px dashed #E5E5E5;
     width: 90%;
@@ -4030,13 +4030,13 @@ fieldset[disabled] .btn-danger.focus {
     box-shadow: none;
 }
 
-.luckysheet-datavisual-config-slider,
-.luckysheet-datavisual-config-slider-range {
+.sheet-datavisual-config-slider,
+.sheet-datavisual-config-slider-range {
     width: 70%;
     display: inline-block;
 }
 
-.luckysheet-datavisual-config-slider-range .luckysheet-slider-handle {
+.sheet-datavisual-config-slider-range .sheet-slider-handle {
     width: 45px;
     height: 26px;
     top: 50%;
@@ -4045,7 +4045,7 @@ fieldset[disabled] .btn-danger.focus {
     line-height: 26px;
 }
 
-.luckysheet-datavisual-content-row-subtitle {
+.sheet-datavisual-content-row-subtitle {
     display: none;
 }
 
@@ -4055,7 +4055,7 @@ fieldset[disabled] .btn-danger.focus {
     width: 48%;
 }
 
-.luckysheet-datavisual-content-column-italic {
+.sheet-datavisual-content-column-italic {
     font-style: italic;
     font-weight: bold;
     font-family: 'Times New Roman', Times, serif;
@@ -4065,7 +4065,7 @@ fieldset[disabled] .btn-danger.focus {
     display: none;
 }
 
-.luckysheet-datavisual-chart-axistitle-show {
+.sheet-datavisual-chart-axistitle-show {
     display: none;
 }
 
@@ -4103,9 +4103,9 @@ fieldset[disabled] .btn-danger.focus {
     z-index: 100003;
 }
 
-.luckysheet-datavisual-skin {}
+.sheet-datavisual-skin {}
 
-.luckysheet-datavisual-skin-menu {
+.sheet-datavisual-skin-menu {
     top: 5px;
     position: absolute;
     left: 0px;
@@ -4113,12 +4113,12 @@ fieldset[disabled] .btn-danger.focus {
     height: 30px;
 }
 
-#luckysheet-chart-theme-content {
+#sheet-chart-theme-content {
     height: 21px;
     width: 120px;
 }
 
-.luckysheet-datavisual-skin-c {
+.sheet-datavisual-skin-c {
     position: absolute;
     left: 0px;
     top: 38px;
@@ -4128,7 +4128,7 @@ fieldset[disabled] .btn-danger.focus {
     overflow: auto;
 }
 
-.luckysheet-datavisual-skin-c .luckysheet-datavisual-skin-item {
+.sheet-datavisual-skin-c .sheet-datavisual-skin-item {
     display: inline-block;
     width: 46%;
     height: 152px;
@@ -4140,7 +4140,7 @@ fieldset[disabled] .btn-danger.focus {
     cursor: pointer;
 }
 
-.luckysheet-datavisual-skin-c .luckysheet-datavisual-skin-item-more {
+.sheet-datavisual-skin-c .sheet-datavisual-skin-item-more {
     display: inline-block;
     width: 94%;
     height: 32px;
@@ -4152,19 +4152,19 @@ fieldset[disabled] .btn-danger.focus {
     text-align: center;
 }
 
-.luckysheet-datavisual-skin-item .luckysheet-datavisual-skin-canvas,
-.luckysheet-datavisual-skin-item .luckysheet-datavisual-skin-cover {
+.sheet-datavisual-skin-item .sheet-datavisual-skin-canvas,
+.sheet-datavisual-skin-item .sheet-datavisual-skin-cover {
     position: absolute;
     width: 100%;
     height: 100%;
     bottom: 0;
 }
 
-.luckysheet-datavisual-skin-item .luckysheet-datavisual-skin-canvas {
+.sheet-datavisual-skin-item .sheet-datavisual-skin-canvas {
     /*z-index: 1;*/
 }
 
-.luckysheet-datavisual-skin-item .luckysheet-datavisual-skin-cover {
+.sheet-datavisual-skin-item .sheet-datavisual-skin-cover {
     background-color: rgba(0, 0, 0, 0.4);
     color: #FFFFFF;
     font-size: 14px;
@@ -4176,12 +4176,12 @@ fieldset[disabled] .btn-danger.focus {
     -o-transition: opacity 0.15s ease;
 }
 
-.luckysheet-datavisual-skin-item:hover .luckysheet-datavisual-skin-cover {
+.sheet-datavisual-skin-item:hover .sheet-datavisual-skin-cover {
     opacity: 1;
     z-index: 2;
 }
 
-.luckysheet-datavisual-skin-cover .luckysheet-datavisual-skin-cover-txt {
+.sheet-datavisual-skin-cover .sheet-datavisual-skin-cover-txt {
     position: absolute;
     width: 80%;
     height: 80%;
@@ -4193,7 +4193,7 @@ fieldset[disabled] .btn-danger.focus {
 
 
 /*图表点设置*/
-.luckysheet-chart-point-config {
+.sheet-chart-point-config {
     position: relative;
     width: 100%;
     height: 100%;
@@ -4201,7 +4201,7 @@ fieldset[disabled] .btn-danger.focus {
     font-size: 12px;
 }
 
-.luckysheet-chart-point-config-set {
+.sheet-chart-point-config-set {
     position: absolute;
     width: 60%;
     height: 100%;
@@ -4210,7 +4210,7 @@ fieldset[disabled] .btn-danger.focus {
     /*background:#ff0000;*/
 }
 
-.luckysheet-chart-point-config-left {
+.sheet-chart-point-config-left {
     position: absolute;
     height: 100%;
     width: 50%;
@@ -4218,14 +4218,14 @@ fieldset[disabled] .btn-danger.focus {
     top: 0px;
 }
 
-.luckysheet-chart-point-config-left-top {
+.sheet-chart-point-config-left-top {
     position: absolute;
     top: 0px;
     height: 120px;
     width: 100%;
 }
 
-.luckysheet-chart-point-searchcondition {
+.sheet-chart-point-searchcondition {
     position: absolute;
     top: 10px;
     bottom: 10px;
@@ -4233,7 +4233,7 @@ fieldset[disabled] .btn-danger.focus {
     right: 10px;
 }
 
-.luckysheet-chart-point-config-left-mid {
+.sheet-chart-point-config-left-mid {
     position: absolute;
     top: 120px;
     height: 25px;
@@ -4243,14 +4243,14 @@ fieldset[disabled] .btn-danger.focus {
     line-height: 35px;
 }
 
-.luckysheet-chart-point-config-left-mid span {
+.sheet-chart-point-config-left-mid span {
     color: blue;
     cursor: pointer;
     text-decoration: underline;
     font-size: 12px
 }
 
-.luckysheet-chart-point-config-left-bottom {
+.sheet-chart-point-config-left-bottom {
     position: absolute;
     top: 0px;
     bottom: 0px;
@@ -4258,7 +4258,7 @@ fieldset[disabled] .btn-danger.focus {
     width: 100%;
 }
 
-.luckysheet-chart-point-searchitem-c {
+.sheet-chart-point-searchitem-c {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -4267,7 +4267,7 @@ fieldset[disabled] .btn-danger.focus {
     cursor: default;
 }
 
-.luckysheet-chart-point-searchitem {
+.sheet-chart-point-searchitem {
     display: inline-block;
     margin-left: 5px;
     margin-top: 5px;
@@ -4281,7 +4281,7 @@ fieldset[disabled] .btn-danger.focus {
     position: relative;
 }
 
-.luckysheet-chart-point-searchitem-selected {
+.sheet-chart-point-searchitem-selected {
     position: absolute;
     color: #616161;
     left: -6px;
@@ -4291,15 +4291,15 @@ fieldset[disabled] .btn-danger.focus {
     font-weight: normal;
 }
 
-.luckysheet-chart-point-searchitem-active {
+.sheet-chart-point-searchitem-active {
     box-shadow: 0px 0px 4px #656565;
 }
 
-.luckysheet-chart-point-searchitem-active .luckysheet-chart-point-searchitem-selected {
+.sheet-chart-point-searchitem-active .sheet-chart-point-searchitem-selected {
     display: block;
 }
 
-.luckysheet-chart-point-searchitem-name {
+.sheet-chart-point-searchitem-name {
     font-size: 12px;
     cursor: default;
     white-space: nowrap;
@@ -4307,7 +4307,7 @@ fieldset[disabled] .btn-danger.focus {
     text-overflow: ellipsis;
 }
 
-.luckysheet-chart-point-searchitem-dim {
+.sheet-chart-point-searchitem-dim {
     font-size: 12px;
     opacity: 0.7;
     /*color: #C1C1C1;*/
@@ -4317,13 +4317,13 @@ fieldset[disabled] .btn-danger.focus {
     text-overflow: ellipsis;
 }
 
-#luckysheet-chart-point-selectedhelp {
+#sheet-chart-point-selectedhelp {
     pointer-events: none;
     position: absolute;
     border: 1px dotted #535353;
 }
 
-.luckysheet-chart-point-config-right {
+.sheet-chart-point-config-right {
     position: absolute;
     height: 100%;
     width: 50%;
@@ -4331,7 +4331,7 @@ fieldset[disabled] .btn-danger.focus {
     right: 0px;
 }
 
-.luckysheet-chart-point-itemconfig {
+.sheet-chart-point-itemconfig {
     position: absolute;
     top: 10px;
     bottom: 10px;
@@ -4340,7 +4340,7 @@ fieldset[disabled] .btn-danger.focus {
     overflow: auto;
 }
 
-.luckysheet-chart-point-config-chart {
+.sheet-chart-point-config-chart {
     position: absolute;
     width: 40%;
     height: 100%;
@@ -4348,7 +4348,7 @@ fieldset[disabled] .btn-danger.focus {
     top: 0px;
 }
 
-.luckysheet-chart-point-config-chart-c {
+.sheet-chart-point-config-chart-c {
     width: 100%;
     height: 80%;
     top: 10%;
@@ -4356,59 +4356,59 @@ fieldset[disabled] .btn-danger.focus {
 }
 
 @media (max-width: 776px) {
-    .luckysheet-chart-point-config-set {
+    .sheet-chart-point-config-set {
         width: 90%;
     }
 
-    .luckysheet-chart-point-config-chart {
+    .sheet-chart-point-config-chart {
         width: 10%;
     }
 }
 
 @media (min-width: 768px) {
-    .luckysheet-chart-point-config-set {
+    .sheet-chart-point-config-set {
         width: 80%;
     }
 
-    .luckysheet-chart-point-config-chart {
+    .sheet-chart-point-config-chart {
         width: 20%;
     }
 }
 
 
 @media (min-width: 1024px) {
-    .luckysheet-chart-point-config-set {
+    .sheet-chart-point-config-set {
         width: 70%;
     }
 
-    .luckysheet-chart-point-config-chart {
+    .sheet-chart-point-config-chart {
         width: 30%;
     }
 }
 
 @media (min-width: 1280px) {
-    .luckysheet-chart-point-config-set {
+    .sheet-chart-point-config-set {
         width: 60%;
     }
 
-    .luckysheet-chart-point-config-chart {
+    .sheet-chart-point-config-chart {
         width: 40%;
     }
 }
 
 @media (min-width: 1680px) {
-    .luckysheet-chart-point-config-set {
+    .sheet-chart-point-config-set {
         width: 50%;
     }
 
-    .luckysheet-chart-point-config-chart {
+    .sheet-chart-point-config-chart {
         width: 50%;
     }
 }
 
 
 /*边栏通用样式*/
-.luckysheet-modal-dialog-slider {
+.sheet-modal-dialog-slider {
     top: 1px;
     bottom: 1px;
     position: absolute;
@@ -4427,7 +4427,7 @@ fieldset[disabled] .btn-danger.focus {
     /*display: none;*/
 }
 
-.luckysheet-modal-dialog-slider .luckysheet-modal-dialog-slider-title {
+.sheet-modal-dialog-slider .sheet-modal-dialog-slider-title {
     background: #fafafc;
     color: #333;
     height: 39px;
@@ -4437,26 +4437,26 @@ fieldset[disabled] .btn-danger.focus {
     border-bottom: 1px solid #d4d4d4;
 }
 
-.luckysheet-modal-dialog-slider .luckysheet-modal-dialog-slider-title>span:first-child {
+.sheet-modal-dialog-slider .sheet-modal-dialog-slider-title>span:first-child {
     margin-left: 5px;
     font-weight: bold;
 }
 
-.luckysheet-modal-dialog-slider .luckysheet-modal-dialog-slider-title>span:last-child {
+.sheet-modal-dialog-slider .sheet-modal-dialog-slider-title>span:last-child {
     position: relative;
     float: right;
     margin-right: 20px;
     cursor: pointer;
 }
 
-.luckysheet-modal-dialog-slider-content {
+.sheet-modal-dialog-slider-content {
     background: #EFEFEF;
     width: 100%;
     height: 100%;
     font-size: 12px;
 }
 
-.luckysheet-modal-dialog-slider-range {
+.sheet-modal-dialog-slider-range {
     background: #E1E1DE;
     color: #1B1B19;
     height: 40px;
@@ -4464,7 +4464,7 @@ fieldset[disabled] .btn-danger.focus {
     line-height: 40px;
 }
 
-.luckysheet-modal-dialog-slider-range>div:first-child {
+.sheet-modal-dialog-slider-range>div:first-child {
     font-weight: bold;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -4475,13 +4475,13 @@ fieldset[disabled] .btn-danger.focus {
     white-space: nowrap;
 }
 
-.luckysheet-modal-dialog-slider-range>div:last-child {
+.sheet-modal-dialog-slider-range>div:last-child {
     color: blue;
     cursor: pointer;
     float: left;
 }
 
-.luckysheet-modal-dialog-slider-list {
+.sheet-modal-dialog-slider-list {
     width: 250px;
     height: 320px;
     overflow-y: scroll;
@@ -4492,13 +4492,13 @@ fieldset[disabled] .btn-danger.focus {
     background: #fff;
 }
 
-.luckysheet-modal-dialog-slider-list-title {
+.sheet-modal-dialog-slider-list-title {
     height: 20px;
     line-height: 25px;
     padding: 0px 5px;
 }
 
-.luckysheet-modal-dialog-slider-list .luckysheet-modal-dialog-slider-list-item {
+.sheet-modal-dialog-slider-list .sheet-modal-dialog-slider-list-item {
     padding: 0px 4px;
     position: relative;
     width: 228px;
@@ -4507,12 +4507,12 @@ fieldset[disabled] .btn-danger.focus {
     border: 1px solid #fff;
 }
 
-.luckysheet-modal-dialog-slider-list .luckysheet-modal-dialog-slider-list-item:hover {
+.sheet-modal-dialog-slider-list .sheet-modal-dialog-slider-list-item:hover {
     background: #FFF6CB;
     border: 1px solid #FFE463;
 }
 
-.luckysheet-modal-dialog-slider-list .luckysheet-slider-list-item-name {
+.sheet-modal-dialog-slider-list .sheet-slider-list-item-name {
     cursor: pointer;
     height: 25px;
     line-height: 25px;
@@ -4526,7 +4526,7 @@ fieldset[disabled] .btn-danger.focus {
     top: 0px;
 }
 
-.luckysheet-modal-dialog-slider-list .luckysheet-slider-list-item-selected {
+.sheet-modal-dialog-slider-list .sheet-slider-list-item-selected {
     width: 20px;
     cursor: pointer;
     text-align: center;
@@ -4536,12 +4536,12 @@ fieldset[disabled] .btn-danger.focus {
     height: 25px;
 }
 
-.luckysheet-modal-dialog-slider-list .luckysheet-slider-list-item-selected i {
+.sheet-modal-dialog-slider-list .sheet-slider-list-item-selected i {
     margin-top: 4px;
     font-size: 16px;
 }
 
-.luckysheet-modal-dialog-slider-list .luckysheet-slider-list-item-selected div {
+.sheet-modal-dialog-slider-list .sheet-slider-list-item-selected div {
     border: 1px solid #9C9C9C;
     top: 4px;
     left: 1px;
@@ -4556,11 +4556,11 @@ fieldset[disabled] .btn-danger.focus {
     /* For Latest Opera */
 }
 
-.luckysheet-modal-dialog-slider-list .luckysheet-slider-list-item-selected div:hover {
+.sheet-modal-dialog-slider-list .sheet-slider-list-item-selected div:hover {
     border: 1px solid #5E5E5E;
 }
 
-.luckysheet-modal-dialog-slider-list .luckysheet-slider-list-item-filtered {
+.sheet-modal-dialog-slider-list .sheet-slider-list-item-filtered {
     width: 20px;
     cursor: pointer;
     text-align: center;
@@ -4571,16 +4571,16 @@ fieldset[disabled] .btn-danger.focus {
     display: none;
 }
 
-.luckysheet-modal-dialog-slider-list .luckysheet-slider-list-item-filtered i {
+.sheet-modal-dialog-slider-list .sheet-slider-list-item-filtered i {
     margin-top: 2px;
     font-size: 16px;
 }
 
-.luckysheet-modal-dialog-slider-list .luckysheet-slider-list-item-filtered:hover i {
+.sheet-modal-dialog-slider-list .sheet-slider-list-item-filtered:hover i {
     color: #FB8686;
 }
 
-.luckysheet-modal-dialog-slider-list .luckysheet-slider-list-item-filtered i.fa-times {
+.sheet-modal-dialog-slider-list .sheet-slider-list-item-filtered i.fa-times {
     right: 0px;
     bottom: 3px;
     color: red;
@@ -4588,7 +4588,7 @@ fieldset[disabled] .btn-danger.focus {
     position: absolute;
 }
 
-.luckysheet-modal-dialog-slider-list .luckysheet-slider-list-item-filter {
+.sheet-modal-dialog-slider-list .sheet-slider-list-item-filter {
     width: 20px;
     cursor: pointer;
     text-align: center;
@@ -4598,16 +4598,16 @@ fieldset[disabled] .btn-danger.focus {
     height: 25px;
 }
 
-.luckysheet-modal-dialog-slider-list .luckysheet-slider-list-item-filter i {
+.sheet-modal-dialog-slider-list .sheet-slider-list-item-filter i {
     margin-top: 2px;
     font-size: 16px;
 }
 
-.luckysheet-modal-dialog-slider-list .luckysheet-slider-list-item-filter:hover i {
+.sheet-modal-dialog-slider-list .sheet-slider-list-item-filter:hover i {
     color: #FB8686;
 }
 
-.luckysheet-modal-dialog-slider-config-c {
+.sheet-modal-dialog-slider-config-c {
     width: 100%;
     position: absolute;
     margin-top: 390px;
@@ -4615,13 +4615,13 @@ fieldset[disabled] .btn-danger.focus {
     bottom: 3px;
 }
 
-.luckysheet-modal-dialog-slider-config {
+.sheet-modal-dialog-slider-config {
     height: 50%;
     width: 50%;
     position: absolute;
 }
 
-.luckysheet-modal-dialog-slider-config>div:first-child {
+.sheet-modal-dialog-slider-config>div:first-child {
     color: #1B1B19;
     font-size: 13px;
     height: 20px;
@@ -4629,13 +4629,13 @@ fieldset[disabled] .btn-danger.focus {
     padding-left: 5px;
 }
 
-.luckysheet-modal-dialog-slider-config>div:first-child span {
+.sheet-modal-dialog-slider-config>div:first-child span {
     font-weight: bold;
     font-weight: bold;
     overflow: hidden;
 }
 
-.luckysheet-modal-dialog-slider-config .luckysheet-modal-dialog-slider-config-list {
+.sheet-modal-dialog-slider-config .sheet-modal-dialog-slider-config-list {
     position: absolute;
     margin-top: 22px;
     margin-left: 5px;
@@ -4649,7 +4649,7 @@ fieldset[disabled] .btn-danger.focus {
     background: #fff;
 }
 
-.luckysheet-modal-dialog-slider-config-list .luckysheet-modal-dialog-slider-config-item {
+.sheet-modal-dialog-slider-config-list .sheet-modal-dialog-slider-config-item {
     position: relative;
     height: 19px;
     line-height: 19px;
@@ -4659,12 +4659,12 @@ fieldset[disabled] .btn-danger.focus {
     margin: 2px;
 }
 
-.luckysheet-modal-dialog-slider-config-list .luckysheet-modal-dialog-slider-config-item:hover {
+.sheet-modal-dialog-slider-config-list .sheet-modal-dialog-slider-config-item:hover {
     border: 1px solid #0188fb;
     background: #5f9afc;
 }
 
-.luckysheet-modal-dialog-slider-config-item-txt {
+.sheet-modal-dialog-slider-config-item-txt {
     position: absolute;
     height: 100%;
     left: 5px;
@@ -4675,7 +4675,7 @@ fieldset[disabled] .btn-danger.focus {
     cursor: move;
 }
 
-.luckysheet-modal-dialog-slider-config-item-icon {
+.sheet-modal-dialog-slider-config-item-icon {
     position: absolute;
     height: 100%;
     width: 15px;
@@ -4685,32 +4685,32 @@ fieldset[disabled] .btn-danger.focus {
     font-size: 14px;
 }
 
-.luckysheet-modal-dialog-slider-config-item-icon:hover {
+.sheet-modal-dialog-slider-config-item-icon:hover {
     color: #FA7272;
 }
 
 
-.luckysheet-modal-dialog-config-filter {
+.sheet-modal-dialog-config-filter {
     top: 0;
     left: 0;
 }
 
-.luckysheet-modal-dialog-config-column {
+.sheet-modal-dialog-config-column {
     top: 0;
     left: 50%;
 }
 
-.luckysheet-modal-dialog-config-row {
+.sheet-modal-dialog-config-row {
     top: 50%;
     left: 0;
 }
 
-.luckysheet-modal-dialog-config-value {
+.sheet-modal-dialog-config-value {
     top: 50%;
     left: 50%;
 }
 
-#luckysheet-modal-dialog-slider-pivot-move {
+#sheet-modal-dialog-slider-pivot-move {
     position: absolute;
     max-width: 100px;
     overflow: hidden;
@@ -4727,19 +4727,19 @@ fieldset[disabled] .btn-danger.focus {
     user-select: none;
 }
 
-.luckysheet-modal-dialog-slider-chart {
+.sheet-modal-dialog-slider-chart {
     width: 445px;
 }
 
-.luckysheet-modal-dialog-slider-chart .luckysheet-modal-dialog-slider-title {
+.sheet-modal-dialog-slider-chart .sheet-modal-dialog-slider-title {
     background: #b94045;
 }
 
-.luckysheet-modal-dialog-slider-chart .luckysheet-modal-dialog-slider-content {
+.sheet-modal-dialog-slider-chart .sheet-modal-dialog-slider-content {
     background: #fff;
 }
 
-#luckysheet-dialog-pivotTable-clearitem {
+#sheet-dialog-pivotTable-clearitem {
     color: blue;
     cursor: pointer;
     float: right;
@@ -4748,29 +4748,29 @@ fieldset[disabled] .btn-danger.focus {
 
 
 /*冻结窗口样式*/
-.luckysheet-freezebar-handle,
-.luckysheet-freezebar-drop {
+.sheet-freezebar-handle,
+.sheet-freezebar-drop {
     position: absolute;
     z-index: 999;
 }
 
-.luckysheet-freezebar-vertical-handle {
+.sheet-freezebar-vertical-handle {
     width: 4px;
     display: none;
     /*background: url(//ssl.gstatic.com/docs/spreadsheets/ritz_luckysheet-freezebar_vertical.png) no-repeat;*/
 }
 
-.luckysheet-freezebar-vertical-drop {
+.sheet-freezebar-vertical-drop {
     /*background: url(//ssl.gstatic.com/docs/spreadsheets/jfk_luckysheet-freezebar_active_vertical.png) no-repeat;*/
     width: 4px;
 }
 
-.luckysheet-freezebar-active .luckysheet-freezebar-vertical-handle {
+.sheet-freezebar-active .sheet-freezebar-vertical-handle {
     display: block;
     z-index: 1003;
 }
 
-.luckysheet-freezebar-vertical-handle-bar {
+.sheet-freezebar-vertical-handle-bar {
     width: 2px;
     background: #dbe5f7;
     border-color: #a5c6fe;
@@ -4783,7 +4783,7 @@ fieldset[disabled] .btn-danger.focus {
     bottom: 0px;
 }
 
-.luckysheet-freezebar-vertical-handle-title {
+.sheet-freezebar-vertical-handle-title {
     width: 4px;
     background: #9dbefb;
     opacity: 0.80;
@@ -4792,13 +4792,13 @@ fieldset[disabled] .btn-danger.focus {
     top: 0px;
 }
 
-.luckysheet-freezebar-handle-bar,
-.luckysheet-freezebar-drop-bar {
+.sheet-freezebar-handle-bar,
+.sheet-freezebar-drop-bar {
     position: absolute;
     z-index: 7;
 }
 
-.luckysheet-freezebar-vertical-drop-bar {
+.sheet-freezebar-vertical-drop-bar {
     width: 2px;
     background: rgba(0, 0, 0, 0.45);
     border-width: 2px 1px 2px 2px;
@@ -4807,7 +4807,7 @@ fieldset[disabled] .btn-danger.focus {
     bottom: 0px;
 }
 
-.luckysheet-freezebar-vertical-drop-title {
+.sheet-freezebar-vertical-drop-title {
     width: 2px;
     background: #bcbdbc;
     /*            opacity: 0.80;
@@ -4817,36 +4817,36 @@ fieldset[disabled] .btn-danger.focus {
 }
 
 
-.luckysheet-freezebar-hover .luckysheet-freezebar-vertical-drop-bar,
-.luckysheet-freezebar-active .luckysheet-freezebar-vertical-drop-bar {
+.sheet-freezebar-hover .sheet-freezebar-vertical-drop-bar,
+.sheet-freezebar-active .sheet-freezebar-vertical-drop-bar {
     background: #C1C1C1;
     width: 4px;
 }
 
-.luckysheet-freezebar-hover .luckysheet-freezebar-vertical-drop-title,
-.luckysheet-freezebar-active .luckysheet-freezebar-vertical-drop-title {
+.sheet-freezebar-hover .sheet-freezebar-vertical-drop-title,
+.sheet-freezebar-active .sheet-freezebar-vertical-drop-title {
     background: #5D88DB;
     width: 4px;
 }
 
 
-.luckysheet-freezebar-horizontal-handle {
+.sheet-freezebar-horizontal-handle {
     height: 4px;
     display: none;
     /*background: url(//ssl.gstatic.com/docs/spreadsheets/ritz_luckysheet-freezebar_horizontal.png) no-repeat;*/
 }
 
-.luckysheet-freezebar-horizontal-drop {
+.sheet-freezebar-horizontal-drop {
     /*background: url(//ssl.gstatic.com/docs/spreadsheets/jfk_luckysheet-freezebar_active_horizontal.png) no-repeat;*/
     height: 4px;
 }
 
-.luckysheet-freezebar-active .luckysheet-freezebar-horizontal-handle {
+.sheet-freezebar-active .sheet-freezebar-horizontal-handle {
     display: block;
     z-index: 1003;
 }
 
-.luckysheet-freezebar-horizontal-handle-bar {
+.sheet-freezebar-horizontal-handle-bar {
     height: 2px;
     background: #dbe5f7;
     border-color: #a5c6fe;
@@ -4859,7 +4859,7 @@ fieldset[disabled] .btn-danger.focus {
     right: 0px;
 }
 
-.luckysheet-freezebar-horizontal-handle-title {
+.sheet-freezebar-horizontal-handle-title {
     height: 4px;
     background: #9dbefb;
     opacity: 0.80;
@@ -4868,7 +4868,7 @@ fieldset[disabled] .btn-danger.focus {
     left: 0px;
 }
 
-.luckysheet-freezebar-horizontal-drop-bar {
+.sheet-freezebar-horizontal-drop-bar {
     height: 2px;
     overflow: hidden;
     background: rgba(0, 0, 0, 0.45);
@@ -4879,7 +4879,7 @@ fieldset[disabled] .btn-danger.focus {
 }
 
 
-.luckysheet-freezebar-horizontal-drop-title {
+.sheet-freezebar-horizontal-drop-title {
     height: 2px;
     background: #bcbdbc;
     /*            opacity: 0.80;
@@ -4888,14 +4888,14 @@ fieldset[disabled] .btn-danger.focus {
     left: 0px;
 }
 
-.luckysheet-freezebar-hover .luckysheet-freezebar-horizontal-drop-bar,
-.luckysheet-freezebar-active .luckysheet-freezebar-horizontal-drop-bar {
+.sheet-freezebar-hover .sheet-freezebar-horizontal-drop-bar,
+.sheet-freezebar-active .sheet-freezebar-horizontal-drop-bar {
     background: #C1C1C1;
     height: 4px;
 }
 
-.luckysheet-freezebar-hover .luckysheet-freezebar-horizontal-drop-title,
-.luckysheet-freezebar-active .luckysheet-freezebar-horizontal-drop-title {
+.sheet-freezebar-hover .sheet-freezebar-horizontal-drop-title,
+.sheet-freezebar-active .sheet-freezebar-horizontal-drop-title {
     background: #5D88DB;
     height: 4px;
 }
@@ -4903,7 +4903,7 @@ fieldset[disabled] .btn-danger.focus {
 
 
 /*函数样式*/
-#luckysheet-functionbox-container {
+#sheet-functionbox-container {
     height: 100%;
     padding-left: 10px;
     overflow: hidden;
@@ -4916,7 +4916,7 @@ fieldset[disabled] .btn-danger.focus {
 }
 
 
-#luckysheet-functionbox-container>div {
+#sheet-functionbox-container>div {
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
@@ -4924,7 +4924,7 @@ fieldset[disabled] .btn-danger.focus {
 }
 
 
-#luckysheet-functionbox {
+#sheet-functionbox {
     bottom: 6px;
     left: 0;
     position: absolute;
@@ -4941,13 +4941,13 @@ fieldset[disabled] .btn-danger.focus {
 
 
 
-#luckysheet-functionbox .luckysheet-functionbox-cell-input {
+#sheet-functionbox .sheet-functionbox-cell-input {
     word-wrap: break-word;
     -webkit-nbsp-mode: space;
     -webkit-line-break: after-white-space;
 }
 
-.luckysheet-functionbox-cell-input {
+.sheet-functionbox-cell-input {
     width: 100%;
     height: 100%;
     margin: 0;
@@ -4959,15 +4959,15 @@ fieldset[disabled] .btn-danger.focus {
     background-color: white;
 }
 
-.luckysheet-formula-text-color {
+.sheet-formula-text-color {
     color: black;
 }
 
-.luckysheet-formula-text-string {
+.sheet-formula-text-string {
     color: forestgreen;
 }
 
-.luckysheet-formula-search-c {
+.sheet-formula-search-c {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -4981,34 +4981,34 @@ fieldset[disabled] .btn-danger.focus {
     display: none;
 }
 
-.luckysheet-formula-search-c .luckysheet-formula-search-item {
+.sheet-formula-search-c .sheet-formula-search-item {
     background: #fff;
     padding: 5px 10px;
     cursor: pointer;
 }
 
-.luckysheet-formula-search-c .luckysheet-formula-search-item .luckysheet-formula-search-detail {
+.sheet-formula-search-c .sheet-formula-search-item .sheet-formula-search-detail {
     display: none;
     color: #444;
 }
 
-.luckysheet-formula-search-c .luckysheet-formula-search-item .luckysheet-formula-search-func {
+.sheet-formula-search-c .sheet-formula-search-item .sheet-formula-search-func {
     color: #222;
     font-size: 14px;
 }
 
-.luckysheet-formula-search-c .luckysheet-formula-search-item-active {
+.sheet-formula-search-c .sheet-formula-search-item-active {
     display: block;
     border-top: 1px solid #EBEBEB;
     border-bottom: 1px solid #EBEBEB;
     background: #F5F5F5;
 }
 
-.luckysheet-formula-search-c .luckysheet-formula-search-item-active .luckysheet-formula-search-detail {
+.sheet-formula-search-c .sheet-formula-search-item-active .sheet-formula-search-detail {
     display: block;
 }
 
-.luckysheet-formula-help-c {
+.sheet-formula-help-c {
     display: none;
     position: absolute;
     left: 20%;
@@ -5022,16 +5022,16 @@ fieldset[disabled] .btn-danger.focus {
     width: 300px;
 }
 
-.luckysheet-formula-help-c .luckysheet-formula-help-content {
+.sheet-formula-help-c .sheet-formula-help-content {
     max-height: 300px;
     overflow-y: scroll;
 }
 
-.luckysheet-formula-help-content-example {
+.sheet-formula-help-content-example {
     margin-top: 5px;
 }
 
-.luckysheet-formula-help-title {
+.sheet-formula-help-title {
     display: block;
     border-top: 1px solid #EBEBEB;
     border-bottom: 1px solid #EBEBEB;
@@ -5040,39 +5040,39 @@ fieldset[disabled] .btn-danger.focus {
     font-size: 14px;
 }
 
-.luckysheet-formula-help-title-formula {
+.sheet-formula-help-title-formula {
     width: 250px;
     word-break: break-word;
 }
 
-.luckysheet-arguments-help-section {
+.sheet-arguments-help-section {
     margin-top: 5px;
     margin-bottom: 5px;
     color: #222;
 }
 
-.luckysheet-arguments-help-section-title {
+.sheet-arguments-help-section-title {
     padding: 1px 10px;
     color: #666;
 }
 
-.luckysheet-arguments-help-parameter-content {
+.sheet-arguments-help-parameter-content {
     padding: 1px 10px;
     display: inline-block;
     word-wrap: break-word;
 }
 
-.luckysheet-arguments-help-formula {
+.sheet-arguments-help-formula {
     padding: 1px 10px;
     font-size: 14px;
 }
 
-.luckysheet-arguments-help-parameter-active {
+.sheet-arguments-help-parameter-active {
     background-color: #fff9b2;
 }
 
 
-.luckysheet-formula-help-collapse {
+.sheet-formula-help-collapse {
     position: absolute;
     top: 0px;
     right: 25px;
@@ -5081,7 +5081,7 @@ fieldset[disabled] .btn-danger.focus {
     color: #bbb;
 }
 
-.luckysheet-formula-help-close {
+.sheet-formula-help-close {
     position: absolute;
     top: 0px;
     right: 5px;
@@ -5090,8 +5090,8 @@ fieldset[disabled] .btn-danger.focus {
     color: #bbb;
 }
 
-.luckysheet-formula-help-close:hover,
-.luckysheet-formula-help-collapse:hover {
+.sheet-formula-help-close:hover,
+.sheet-formula-help-collapse:hover {
     color: #555;
 }
 
@@ -5304,12 +5304,12 @@ fieldset[disabled] .btn-danger.focus {
          }*/
 
 /*查找替换弹出框样式*/
-#luckysheet-search-replace .tabBox {
+#sheet-search-replace .tabBox {
     margin-top: 20px;
     font-size: 0;
 }
 
-#luckysheet-search-replace .tabBox span {
+#sheet-search-replace .tabBox span {
     display: inline-block;
     text-align: center;
     width: 100px;
@@ -5318,54 +5318,54 @@ fieldset[disabled] .btn-danger.focus {
     line-height: 2;
 }
 
-#luckysheet-search-replace .tabBox span.on {
+#sheet-search-replace .tabBox span.on {
     background-color: #8C89FE;
     border-color: #726EFE;
     color: #fff;
 }
 
-#luckysheet-search-replace .ctBox {
+#sheet-search-replace .ctBox {
     padding: 5px 10px;
     border: solid 1px #d4d4d4;
     font-size: 14px;
 }
 
-#luckysheet-search-replace .inputBox {
+#sheet-search-replace .inputBox {
     height: 90px;
     position: relative;
 }
 
-#luckysheet-search-replace .inputBox .textboxs {
+#sheet-search-replace .inputBox .textboxs {
     height: 30px;
     line-height: 30px;
 }
 
-#luckysheet-search-replace .inputBox .checkboxs {
+#sheet-search-replace .inputBox .checkboxs {
     height: 90px;
     position: absolute;
     right: 0;
     top: 0;
 }
 
-#luckysheet-search-replace .inputBox .checkboxs div {
+#sheet-search-replace .inputBox .checkboxs div {
     height: 30px;
     line-height: 30px;
 }
 
-#luckysheet-search-replace .inputBox .checkboxs input[type="checkbox"] {
+#sheet-search-replace .inputBox .checkboxs input[type="checkbox"] {
     float: left;
     margin-top: 9px;
 }
 
-#luckysheet-search-replace .btnBox {
+#sheet-search-replace .btnBox {
     margin-top: 10px;
 }
 
-#luckysheet-search-replace .btnBox button {
+#sheet-search-replace .btnBox button {
     margin: 0 2.5px;
 }
 
-#luckysheet-search-replace #searchAllbox {
+#sheet-search-replace #searchAllbox {
     height: 210px;
     border: 1px solid #d4d4d4;
     margin-top: 10px;
@@ -5373,7 +5373,7 @@ fieldset[disabled] .btn-danger.focus {
     position: relative;
 }
 
-#luckysheet-search-replace #searchAllbox .boxTitle {
+#sheet-search-replace #searchAllbox .boxTitle {
     width: 100%;
     height: 30px;
     line-height: 29px;
@@ -5386,24 +5386,24 @@ fieldset[disabled] .btn-danger.focus {
     top: 0;
 }
 
-#luckysheet-search-replace #searchAllbox .boxTitle span {
+#sheet-search-replace #searchAllbox .boxTitle span {
     display: inline-block;
     text-align: center;
 }
 
-#luckysheet-search-replace #searchAllbox .boxTitle span:nth-of-type(1) {
+#sheet-search-replace #searchAllbox .boxTitle span:nth-of-type(1) {
     width: 25%;
 }
 
-#luckysheet-search-replace #searchAllbox .boxTitle span:nth-of-type(2) {
+#sheet-search-replace #searchAllbox .boxTitle span:nth-of-type(2) {
     width: 25%;
 }
 
-#luckysheet-search-replace #searchAllbox .boxTitle span:nth-of-type(3) {
+#sheet-search-replace #searchAllbox .boxTitle span:nth-of-type(3) {
     width: 50%;
 }
 
-#luckysheet-search-replace #searchAllbox .boxMain .boxItem {
+#sheet-search-replace #searchAllbox .boxMain .boxItem {
     height: 30px;
     line-height: 29px;
     border-bottom: 1px solid #d4d4d4;
@@ -5411,32 +5411,32 @@ fieldset[disabled] .btn-danger.focus {
     box-sizing: border-box;
 }
 
-#luckysheet-search-replace #searchAllbox .boxMain .boxItem.on {
+#sheet-search-replace #searchAllbox .boxMain .boxItem.on {
     background-color: #8C89FE;
     color: #fff;
 }
 
-#luckysheet-search-replace #searchAllbox .boxMain .boxItem span {
+#sheet-search-replace #searchAllbox .boxMain .boxItem span {
     display: block;
     text-align: center;
     float: left;
 }
 
-#luckysheet-search-replace #searchAllbox .boxMain .boxItem span:nth-of-type(1) {
+#sheet-search-replace #searchAllbox .boxMain .boxItem span:nth-of-type(1) {
     width: 25%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-#luckysheet-search-replace #searchAllbox .boxMain .boxItem span:nth-of-type(2) {
+#sheet-search-replace #searchAllbox .boxMain .boxItem span:nth-of-type(2) {
     width: 25%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-#luckysheet-search-replace #searchAllbox .boxMain .boxItem span:nth-of-type(3) {
+#sheet-search-replace #searchAllbox .boxMain .boxItem span:nth-of-type(3) {
     width: 50%;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -5444,20 +5444,20 @@ fieldset[disabled] .btn-danger.focus {
 }
 
 /*函数公式查找样式*/
-#luckysheet-search-formula {
+#sheet-search-formula {
     font-size: 12px;
 }
 
-#luckysheet-search-formula .inpbox {
+#sheet-search-formula .inpbox {
     margin-bottom: 5px;
 }
 
-#luckysheet-search-formula .inpbox label {
+#sheet-search-formula .inpbox label {
     display: block;
     margin-bottom: 5px;
 }
 
-#luckysheet-search-formula .inpbox input {
+#sheet-search-formula .inpbox input {
     width: 100%;
     height: 24px;
     line-height: 24px;
@@ -5467,11 +5467,11 @@ fieldset[disabled] .btn-danger.focus {
     font-size: 12px;
 }
 
-#luckysheet-search-formula .selbox {
+#sheet-search-formula .selbox {
     margin-bottom: 5px;
 }
 
-#luckysheet-search-formula .selbox select {
+#sheet-search-formula .selbox select {
     width: 50%;
     height: 24px;
     line-height: 24px;
@@ -5480,7 +5480,7 @@ fieldset[disabled] .btn-danger.focus {
     font-size: 12px;
 }
 
-#luckysheet-search-formula .listbox label {
+#sheet-search-formula .listbox label {
     display: block;
     margin-bottom: 5px;
 }
@@ -5510,28 +5510,28 @@ fieldset[disabled] .btn-danger.focus {
     display: block;
 }
 
-#luckysheet-search-formula-parm {
+#sheet-search-formula-parm {
     width: 502px;
     font-size: 12px;
 }
 
-#luckysheet-search-formula-parm .parmListBox {
+#sheet-search-formula-parm .parmListBox {
     width: 500px;
     padding: 5px 0;
     border: 1px solid #d4d4d4;
 }
 
-#luckysheet-search-formula-parm .parmBox {
+#sheet-search-formula-parm .parmBox {
     height: 30px;
     line-height: 30px;
     margin-bottom: 5px;
 }
 
-#luckysheet-search-formula-parm .parmBox:last-child {
+#sheet-search-formula-parm .parmBox:last-child {
     margin-bottom: 0;
 }
 
-#luckysheet-search-formula-parm .parmBox .name {
+#sheet-search-formula-parm .parmBox .name {
     width: 90px;
     height: 30px;
     padding: 0 5px;
@@ -5542,14 +5542,14 @@ fieldset[disabled] .btn-danger.focus {
     white-space: nowrap;
 }
 
-#luckysheet-search-formula-parm .parmBox .txt {
+#sheet-search-formula-parm .parmBox .txt {
     width: 198px;
     height: 28px;
     border: 1px solid #d4d4d4;
     float: left;
 }
 
-#luckysheet-search-formula-parm .parmBox .txt input {
+#sheet-search-formula-parm .parmBox .txt input {
     width: 150px;
     height: 28px;
     padding: 0 10px;
@@ -5558,22 +5558,22 @@ fieldset[disabled] .btn-danger.focus {
     float: left;
 }
 
-#luckysheet-search-formula-parm .parmBox .txt i {
+#sheet-search-formula-parm .parmBox .txt i {
     float: right;
     margin-top: 8px;
     margin-right: 5px;
 }
 
-#luckysheet-search-formula-parm .fa-table {
+#sheet-search-formula-parm .fa-table {
     cursor: pointer;
     color: #6598F3;
 }
 
-#luckysheet-search-formula-parm .fa-table:hover {
+#sheet-search-formula-parm .fa-table:hover {
     color: #FF7E7E;
 }
 
-#luckysheet-search-formula-parm .parmBox .val {
+#sheet-search-formula-parm .parmBox .val {
     width: 190px;
     height: 30px;
     line-height: 30px;
@@ -5584,21 +5584,21 @@ fieldset[disabled] .btn-danger.focus {
     white-space: nowrap;
 }
 
-#luckysheet-search-formula-parm .formulaDetails {
+#sheet-search-formula-parm .formulaDetails {
     padding: 5px;
 }
 
-#luckysheet-search-formula-parm .parmDetailsBox {
+#sheet-search-formula-parm .parmDetailsBox {
     max-height: 100px;
     padding: 5px 0 5px 20px;
     overflow-y: scroll;
 }
 
-#luckysheet-search-formula-parm .parmDetailsBox span {
+#sheet-search-formula-parm .parmDetailsBox span {
     display: inline-block;
 }
 
-#luckysheet-search-formula-parm .result {
+#sheet-search-formula-parm .result {
     padding: 5px;
     border-top: 1px solid #d4d4d4;
 }
@@ -5626,30 +5626,30 @@ fieldset[disabled] .btn-danger.focus {
 }
 
 /*条件格式单元格选择框*/
-#luckysheet-singleRange-dialog input,
-#luckysheet-multiRange-dialog input {
+#sheet-singleRange-dialog input,
+#sheet-multiRange-dialog input {
     border: 1px solid #d4d4d4;
     padding: 0 10px;
     height: 30px;
 }
 
 /*条件格式弹出框*/
-#luckysheet-conditionformat-dialog {
+#sheet-conditionformat-dialog {
     font-size: 12px;
 }
 
-#luckysheet-conditionformat-dialog .box .boxTitleOne {
+#sheet-conditionformat-dialog .box .boxTitleOne {
     margin: 5px 0;
     font-weight: 600;
 }
 
-#luckysheet-conditionformat-dialog .box .inpbox {
+#sheet-conditionformat-dialog .box .inpbox {
     width: 198px;
     height: 28px;
     border: 1px solid #d4d4d4;
 }
 
-#luckysheet-conditionformat-dialog .box .inpbox input {
+#sheet-conditionformat-dialog .box .inpbox input {
     width: 150px;
     height: 28px;
     padding: 0 10px;
@@ -5658,14 +5658,14 @@ fieldset[disabled] .btn-danger.focus {
     float: left;
 }
 
-#luckysheet-conditionformat-dialog .box .inpbox2 {
+#sheet-conditionformat-dialog .box .inpbox2 {
     float: left;
     width: 108px;
     height: 28px;
     border: 1px solid #d4d4d4;
 }
 
-#luckysheet-conditionformat-dialog .box .inpbox2 input {
+#sheet-conditionformat-dialog .box .inpbox2 input {
     width: 60px;
     height: 28px;
     padding: 0 10px;
@@ -5674,22 +5674,22 @@ fieldset[disabled] .btn-danger.focus {
     float: left;
 }
 
-#luckysheet-conditionformat-dialog .box i.fa-table {
+#sheet-conditionformat-dialog .box i.fa-table {
     float: right;
     margin-top: 8px;
     margin-right: 5px;
 }
 
-#luckysheet-conditionformat-dialog .box .fa-table {
+#sheet-conditionformat-dialog .box .fa-table {
     cursor: pointer;
     color: #6598F3;
 }
 
-#luckysheet-conditionformat-dialog .box .fa-table:hover {
+#sheet-conditionformat-dialog .box .fa-table:hover {
     color: #FF7E7E;
 }
 
-#luckysheet-conditionformat-dialog .box #daterange-btn {
+#sheet-conditionformat-dialog .box #daterange-btn {
     width: 188px;
     height: 28px;
     padding: 0 5px;
@@ -5698,96 +5698,96 @@ fieldset[disabled] .btn-danger.focus {
     cursor: pointer;
 }
 
-#luckysheet-conditionformat-dialog .box .selectbox {
+#sheet-conditionformat-dialog .box .selectbox {
     width: 150px;
     height: 30px;
 }
 
-#luckysheet-icon-dataBar-menuButton .bgImgBox {
+#sheet-icon-dataBar-menuButton .bgImgBox {
     width: 28px;
     height: 26px;
     background: url(../../plugins/images/CFdataBar.png)no-repeat;
 }
 
-#luckysheet-icon-colorGradation-menuButton .bgImgBox {
+#sheet-icon-colorGradation-menuButton .bgImgBox {
     width: 28px;
     height: 26px;
     background: url(../../plugins/images/CFcolorGradation.png)no-repeat;
 }
 
 /*条件格式规则管理器*/
-#luckysheet-administerRule-dialog {
+#sheet-administerRule-dialog {
     font-size: 12px;
 }
 
-#luckysheet-administerRule-dialog .chooseSheet {
+#sheet-administerRule-dialog .chooseSheet {
     height: 24px;
     line-height: 24px;
     margin-bottom: 5px;
 }
 
-#luckysheet-administerRule-dialog .chooseSheet select {
+#sheet-administerRule-dialog .chooseSheet select {
     height: 24px;
     padding: 0 5px;
     box-sizing: border-box;
     font-size: 12px;
 }
 
-#luckysheet-administerRule-dialog .ruleBox {
+#sheet-administerRule-dialog .ruleBox {
     border: 1px solid #d4d4d4;
 }
 
-#luckysheet-administerRule-dialog .ruleBox .ruleBtn {
+#sheet-administerRule-dialog .ruleBox .ruleBtn {
     padding: 2.5px 5px;
     border-bottom: 1px solid #d4d4d4;
 }
 
-#luckysheet-administerRule-dialog .ruleBox .ruleBtn button {
+#sheet-administerRule-dialog .ruleBox .ruleBtn button {
     margin-right: 10px;
     font-size: 12px;
 }
 
-#luckysheet-administerRule-dialog .ruleBox .ruleList .listTitle {
+#sheet-administerRule-dialog .ruleBox .ruleList .listTitle {
     height: 30px;
     padding: 0 10px;
     border-bottom: 1px solid #d4d4d4;
 }
 
-#luckysheet-administerRule-dialog .ruleBox .ruleList .listTitle span {
+#sheet-administerRule-dialog .ruleBox .ruleList .listTitle span {
     display: block;
     height: 100%;
     line-height: 29px;
     float: left;
 }
 
-#luckysheet-administerRule-dialog .ruleBox .ruleList .listTitle span:nth-of-type(1) {
+#sheet-administerRule-dialog .ruleBox .ruleList .listTitle span:nth-of-type(1) {
     width: 30%;
 }
 
-#luckysheet-administerRule-dialog .ruleBox .ruleList .listTitle span:nth-of-type(2) {
+#sheet-administerRule-dialog .ruleBox .ruleList .listTitle span:nth-of-type(2) {
     width: 20%;
 }
 
-#luckysheet-administerRule-dialog .ruleBox .ruleList .listTitle span:nth-of-type(3) {
+#sheet-administerRule-dialog .ruleBox .ruleList .listTitle span:nth-of-type(3) {
     width: 45%;
 }
 
-#luckysheet-administerRule-dialog .ruleBox .ruleList .listBox {
+#sheet-administerRule-dialog .ruleBox .ruleList .listBox {
     height: 150px;
     overflow-y: scroll;
 }
 
-#luckysheet-administerRule-dialog .ruleBox .ruleList .listBox .item {
+#sheet-administerRule-dialog .ruleBox .ruleList .listBox .item {
     height: 24px;
     padding: 2.5px 10px;
     border-bottom: 1px solid #d4d4d4;
 }
 
-#luckysheet-administerRule-dialog .ruleBox .ruleList .listBox .item.on {
+#sheet-administerRule-dialog .ruleBox .ruleList .listBox .item.on {
     background-color: #8C89FE;
 }
 
-#luckysheet-administerRule-dialog .ruleBox .ruleList .listBox .item .ruleName {
+#sheet-administerRule-dialog .ruleBox .ruleList .listBox .item .ruleName {
     width: 30%;
     height: 100%;
     line-height: 24px;
@@ -5799,11 +5799,11 @@ fieldset[disabled] .btn-danger.focus {
     box-sizing: border-box;
 }
 
-#luckysheet-administerRule-dialog .ruleBox .ruleList .listBox .item.on .ruleName {
+#sheet-administerRule-dialog .ruleBox .ruleList .listBox .item.on .ruleName {
     color: #fff;
 }
 
-#luckysheet-administerRule-dialog .ruleBox .ruleList .listBox .item .format {
+#sheet-administerRule-dialog .ruleBox .ruleList .listBox .item .format {
     width: 20%;
     height: 100%;
     line-height: 24px;
@@ -5811,7 +5811,7 @@ fieldset[disabled] .btn-danger.focus {
     position: relative;
 }
 
-#luckysheet-administerRule-dialog .ruleBox .ruleList .listBox .item .format .colorbox {
+#sheet-administerRule-dialog .ruleBox .ruleList .listBox .item .format .colorbox {
     display: inline-block;
     width: 16px;
     height: 16px;
@@ -5820,7 +5820,7 @@ fieldset[disabled] .btn-danger.focus {
     cursor: pointer;
 }
 
-#luckysheet-administerRule-dialog .ruleBox .ruleList .listBox .item .ruleRange {
+#sheet-administerRule-dialog .ruleBox .ruleList .listBox .item .ruleRange {
     width: 45%;
     height: 100%;
     border: 1px solid #d4d4d4;
@@ -5830,7 +5830,7 @@ fieldset[disabled] .btn-danger.focus {
     background-color: #fff;
 }
 
-#luckysheet-administerRule-dialog .ruleBox .ruleList .listBox .item .ruleRange input {
+#sheet-administerRule-dialog .ruleBox .ruleList .listBox .item .ruleRange input {
     width: 130px;
     height: 22px;
     padding: 0 5px;
@@ -5839,7 +5839,7 @@ fieldset[disabled] .btn-danger.focus {
     float: left;
 }
 
-#luckysheet-administerRule-dialog .ruleBox .ruleList .listBox .item .ruleRange i.fa-table {
+#sheet-administerRule-dialog .ruleBox .ruleList .listBox .item .ruleRange i.fa-table {
     float: right;
     cursor: pointer;
     color: #6598F3;
@@ -5847,57 +5847,57 @@ fieldset[disabled] .btn-danger.focus {
     margin-right: 5px;
 }
 
-#luckysheet-administerRule-dialog .ruleBox .ruleList .listBox .item .ruleRange i.fa-table:hover {
+#sheet-administerRule-dialog .ruleBox .ruleList .listBox .item .ruleRange i.fa-table:hover {
     color: #FF7E7E;
 }
 
 /*新建、编辑条件格式规则*/
-.luckysheet-newEditorRule-dialog {
+.sheet-newEditorRule-dialog {
     font-size: 12px;
 }
 
-.luckysheet-newEditorRule-dialog .boxTitle {
+.sheet-newEditorRule-dialog .boxTitle {
     margin-bottom: 5px;
 }
 
-.luckysheet-newEditorRule-dialog .ruleTypeBox {
+.sheet-newEditorRule-dialog .ruleTypeBox {
     border: 1px solid #d4d4d4;
     margin-bottom: 10px;
 }
 
-.luckysheet-newEditorRule-dialog .ruleTypeBox .ruleTypeItem {
+.sheet-newEditorRule-dialog .ruleTypeBox .ruleTypeItem {
     padding: 3px 5px;
     cursor: pointer;
 }
 
-.luckysheet-newEditorRule-dialog .ruleTypeBox .ruleTypeItem.on {
+.sheet-newEditorRule-dialog .ruleTypeBox .ruleTypeItem.on {
     background-color: #7C79FE;
     color: #fff;
 }
 
-.luckysheet-newEditorRule-dialog .ruleTypeBox .ruleTypeItem .icon {
+.sheet-newEditorRule-dialog .ruleTypeBox .ruleTypeItem .icon {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.luckysheet-newEditorRule-dialog .ruleExplainBox {
+.sheet-newEditorRule-dialog .ruleExplainBox {
     border: 1px solid #d4d4d4;
     padding: 10px;
 }
 
-.luckysheet-newEditorRule-dialog .ruleExplainBox .title {
+.sheet-newEditorRule-dialog .ruleExplainBox .title {
     display: block;
     font-weight: 600;
     margin-bottom: 5px;
 }
 
-.luckysheet-newEditorRule-dialog .ruleExplainBox select {
+.sheet-newEditorRule-dialog .ruleExplainBox select {
     height: 30px;
     font-size: 12px;
     float: left;
     margin-right: 5px;
 }
 
-.luckysheet-newEditorRule-dialog .ruleExplainBox .inpbox {
+.sheet-newEditorRule-dialog .ruleExplainBox .inpbox {
     width: 100px;
     height: 30px;
     border: 1px solid #d4d4d4;
@@ -5906,7 +5906,7 @@ fieldset[disabled] .btn-danger.focus {
     float: left;
 }
 
-.luckysheet-newEditorRule-dialog .ruleExplainBox .inpbox input {
+.sheet-newEditorRule-dialog .ruleExplainBox .inpbox input {
     width: 70px;
     height: 100%;
     border: none;
@@ -5914,7 +5914,7 @@ fieldset[disabled] .btn-danger.focus {
     padding: 0 5px;
 }
 
-.luckysheet-newEditorRule-dialog .ruleExplainBox .txt {
+.sheet-newEditorRule-dialog .ruleExplainBox .txt {
     display: block;
     height: 100%;
     line-height: 30px;
@@ -5922,33 +5922,33 @@ fieldset[disabled] .btn-danger.focus {
     margin: 0 5px;
 }
 
-.luckysheet-newEditorRule-dialog .ruleExplainBox #isPercent {
+.sheet-newEditorRule-dialog .ruleExplainBox #isPercent {
     float: left;
     margin: 9px 0 8px 10px;
 }
 
-.luckysheet-newEditorRule-dialog i.fa-table {
+.sheet-newEditorRule-dialog i.fa-table {
     float: right;
     margin-top: 8px;
     margin-right: 5px;
 }
 
-.luckysheet-newEditorRule-dialog .fa-table {
+.sheet-newEditorRule-dialog .fa-table {
     cursor: pointer;
     color: #6598F3;
 }
 
-.luckysheet-newEditorRule-dialog .fa-table:hover {
+.sheet-newEditorRule-dialog .fa-table:hover {
     color: #FF7E7E;
 }
 
-.luckysheet-newEditorRule-dialog .iconsBox {
+.sheet-newEditorRule-dialog .iconsBox {
     height: 30px;
     margin-bottom: 5px;
     position: relative;
 }
 
-.luckysheet-newEditorRule-dialog .iconsBox label {
+.sheet-newEditorRule-dialog .iconsBox label {
     display: block;
     width: 80px;
     height: 30px;
@@ -5956,7 +5956,7 @@ fieldset[disabled] .btn-danger.focus {
     float: left;
 }
 
-.luckysheet-newEditorRule-dialog .iconsBox .showbox {
+.sheet-newEditorRule-dialog .iconsBox .showbox {
     width: 150px;
     height: 20px;
     padding: 4px 4px 4px 10px;
@@ -5966,7 +5966,7 @@ fieldset[disabled] .btn-danger.focus {
     cursor: pointer;
 }
 
-.luckysheet-newEditorRule-dialog .iconsBox .showbox .model {
+.sheet-newEditorRule-dialog .iconsBox .showbox .model {
     width: 125px;
     height: 20px;
     background: url(../../plugins/images/CFicons.png)no-repeat;
@@ -5974,7 +5974,7 @@ fieldset[disabled] .btn-danger.focus {
     float: left;
 }
 
-.luckysheet-newEditorRule-dialog .iconsBox ul {
+.sheet-newEditorRule-dialog .iconsBox ul {
     display: none;
     width: 164px;
     max-height: 150px;
@@ -5989,17 +5989,17 @@ fieldset[disabled] .btn-danger.focus {
     padding: 0;
 }
 
-.luckysheet-newEditorRule-dialog .iconsBox ul li {
+.sheet-newEditorRule-dialog .iconsBox ul li {
     padding: 5px 10px;
     background-color: #fff;
     cursor: pointer;
 }
 
-.luckysheet-newEditorRule-dialog .iconsBox ul li:hover {
+.sheet-newEditorRule-dialog .iconsBox ul li:hover {
     background-color: #dfdfdf;
 }
 
-.luckysheet-newEditorRule-dialog .iconsBox ul li div {
+.sheet-newEditorRule-dialog .iconsBox ul li div {
     width: 125px;
     height: 20px;
     background: url(../../plugins/images/CFicons.png)no-repeat;
@@ -6007,35 +6007,35 @@ fieldset[disabled] .btn-danger.focus {
 }
 
 /*条件格式 图标集弹框*/
-#luckysheet-CFicons-dialog .box {
+#sheet-CFicons-dialog .box {
     padding: 10px;
     border: 1px solid #dfdfdf;
     font-size: 14px;
 }
 
-#luckysheet-CFicons-dialog .box .title {
+#sheet-CFicons-dialog .box .title {
     height: 20px;
     line-height: 20px;
     padding: 0 10px;
     background-color: #ebebeb;
 }
 
-#luckysheet-CFicons-dialog .box .list {
+#sheet-CFicons-dialog .box .list {
     width: 300px;
     padding: 5px 0;
 }
 
-#luckysheet-CFicons-dialog .box .list .left {
+#sheet-CFicons-dialog .box .list .left {
     width: 50%;
     float: left;
 }
 
-#luckysheet-CFicons-dialog .box .list .right {
+#sheet-CFicons-dialog .box .list .right {
     width: 50%;
     float: right;
 }
 
-#luckysheet-CFicons-dialog .box .list .item {
+#sheet-CFicons-dialog .box .list .item {
     width: 125px;
     height: 20px;
     padding: 2.5px 10px;
@@ -6043,11 +6043,11 @@ fieldset[disabled] .btn-danger.focus {
     cursor: pointer;
 }
 
-#luckysheet-CFicons-dialog .box .list .item:hover {
+#sheet-CFicons-dialog .box .list .item:hover {
     background-color: #dfdfdf;
 }
 
-#luckysheet-CFicons-dialog .box .list .item div {
+#sheet-CFicons-dialog .box .list .item div {
     width: 125px;
     height: 20px;
     background: url(../../plugins/images/CFicons.png)no-repeat;
@@ -6055,29 +6055,29 @@ fieldset[disabled] .btn-danger.focus {
 }
 
 /*交替颜色*/
-#luckysheet-modal-dialog-slider-alternateformat {
+#sheet-modal-dialog-slider-alternateformat {
     width: 280px;
     font-size: 12px;
 }
 
-#luckysheet-modal-dialog-slider-alternateformat .luckysheet-modal-dialog-slider-content {
+#sheet-modal-dialog-slider-alternateformat .sheet-modal-dialog-slider-content {
     background-color: #fff;
     overflow-y: scroll;
 }
 
-#luckysheet-modal-dialog-slider-alternateformat .textTitle {
+#sheet-modal-dialog-slider-alternateformat .textTitle {
     padding: 5px 10px;
     font-weight: 600;
 }
 
-#luckysheet-alternateformat-range {
+#sheet-alternateformat-range {
     width: 198px;
     height: 28px;
     border: 1px solid #d4d4d4;
     margin-left: 10px;
 }
 
-#luckysheet-alternateformat-range input {
+#sheet-alternateformat-range input {
     width: 150px;
     height: 28px;
     padding: 0 10px;
@@ -6086,7 +6086,7 @@ fieldset[disabled] .btn-danger.focus {
     float: left;
 }
 
-#luckysheet-alternateformat-range .fa-table {
+#sheet-alternateformat-range .fa-table {
     float: right;
     margin-top: 8px;
     margin-right: 5px;
@@ -6094,43 +6094,43 @@ fieldset[disabled] .btn-danger.focus {
     color: #6598F3;
 }
 
-#luckysheet-alternateformat-range .fa-table:hover {
+#sheet-alternateformat-range .fa-table:hover {
     color: #FF7E7E;
 }
 
-#luckysheet-alternateformat-checkbox {
+#sheet-alternateformat-checkbox {
     padding: 5px 10px;
     border-top: 1px solid #d4d4d4;
     border-bottom: 1px solid #d4d4d4;
     margin: 10px 0;
 }
 
-#luckysheet-alternateformat-checkbox div {
+#sheet-alternateformat-checkbox div {
     height: 20px;
     line-height: 20px;
 }
 
-#luckysheet-alternateformat-checkbox div:first-child {
+#sheet-alternateformat-checkbox div:first-child {
     margin-bottom: 5px;
 }
 
-#luckysheet-alternateformat-checkbox input[type="checkbox"] {
+#sheet-alternateformat-checkbox input[type="checkbox"] {
     float: left;
     cursor: pointer;
     margin-top: 4px;
 }
 
-#luckysheet-alternateformat-modelList {
+#sheet-alternateformat-modelList {
     padding: 0 10px;
     margin-bottom: 10px;
 }
 
-#luckysheet-alternateformat-modelCustom {
+#sheet-alternateformat-modelCustom {
     padding: 0 10px;
     margin-bottom: 10px;
 }
 
-#luckysheet-modal-dialog-slider-alternateformat .modelbox {
+#sheet-modal-dialog-slider-alternateformat .modelbox {
     display: inline-block;
     width: 36px;
     padding: 2px;
@@ -6141,17 +6141,17 @@ fieldset[disabled] .btn-danger.focus {
     cursor: pointer;
 }
 
-#luckysheet-modal-dialog-slider-alternateformat .modelbox.on {
+#sheet-modal-dialog-slider-alternateformat .modelbox.on {
     border-color: #726EFE;
 }
 
-#luckysheet-modal-dialog-slider-alternateformat .modelbox .box {
+#sheet-modal-dialog-slider-alternateformat .modelbox .box {
     width: 100%;
     border: 1px solid #d4d4d4;
     box-sizing: border-box;
 }
 
-#luckysheet-modal-dialog-slider-alternateformat .modelbox .box span {
+#sheet-modal-dialog-slider-alternateformat .modelbox .box span {
     display: block;
     width: 100%;
     height: 10px;
@@ -6161,21 +6161,21 @@ fieldset[disabled] .btn-danger.focus {
     box-sizing: border-box;
 }
 
-#luckysheet-modal-dialog-slider-alternateformat .modelbox .box span:last-child {
+#sheet-modal-dialog-slider-alternateformat .modelbox .box span:last-child {
     line-height: 10px;
     border-bottom: none;
 }
 
-#luckysheet-alternateformat-modelToning {
+#sheet-alternateformat-modelToning {
     padding: 10px;
 }
 
-#luckysheet-alternateformat-modelToning .toningbox {
+#sheet-alternateformat-modelToning .toningbox {
     height: 25px;
     margin-bottom: 5px;
 }
 
-#luckysheet-alternateformat-modelToning .toningbox .toningShow {
+#sheet-alternateformat-modelToning .toningbox .toningShow {
     width: 150px;
     height: 100%;
     line-height: 23px;
@@ -6185,24 +6185,24 @@ fieldset[disabled] .btn-danger.focus {
     margin-right: 10px;
 }
 
-#luckysheet-alternateformat-modelToning .toningbox .luckysheet-color-menu-button-indicator {
+#sheet-alternateformat-modelToning .toningbox .sheet-color-menu-button-indicator {
     width: 20px;
     float: left;
     user-select: none;
     cursor: pointer;
 }
 
-#luckysheet-alternateformat-modelToning .toningbox .luckysheet-color-menu-button-indicator .luckysheet-icon {
+#sheet-alternateformat-modelToning .toningbox .sheet-color-menu-button-indicator .sheet-icon {
     user-select: none;
     margin-bottom: -6px;
 }
 
-#luckysheet-alternateformat-colorSelect-dialog .currenColor {
+#sheet-alternateformat-colorSelect-dialog .currenColor {
     font-size: 12px;
     margin-bottom: 5px;
 }
 
-#luckysheet-alternateformat-colorSelect-dialog .currenColor span {
+#sheet-alternateformat-colorSelect-dialog .currenColor span {
     display: inline-block;
     width: 16px;
     height: 16px;
@@ -6212,23 +6212,23 @@ fieldset[disabled] .btn-danger.focus {
     cursor: pointer;
 }
 
-#luckysheet-alternateformat-rangeDialog input {
+#sheet-alternateformat-rangeDialog input {
     border: 1px solid #d4d4d4;
     padding: 0 10px;
     height: 30px;
 }
 
 /*if公式生成器*/
-#luckysheet-ifFormulaGenerator-dialog {
+#sheet-ifFormulaGenerator-dialog {
     font-size: 12px;
 }
 
-#luckysheet-ifFormulaGenerator-dialog .ifAttr .attrBox {
+#sheet-ifFormulaGenerator-dialog .ifAttr .attrBox {
     height: 30px;
     margin-bottom: 10px;
 }
 
-#luckysheet-ifFormulaGenerator-dialog .ifAttr .attrBox label {
+#sheet-ifFormulaGenerator-dialog .ifAttr .attrBox label {
     display: block;
     width: 100px;
     height: 100%;
@@ -6238,7 +6238,7 @@ fieldset[disabled] .btn-danger.focus {
     float: left;
 }
 
-#luckysheet-ifFormulaGenerator-dialog .ifAttr .attrBox .inpBox {
+#sheet-ifFormulaGenerator-dialog .ifAttr .attrBox .inpBox {
     width: 150px;
     height: 100%;
     padding: 0 10px;
@@ -6247,7 +6247,7 @@ fieldset[disabled] .btn-danger.focus {
     float: left;
 }
 
-#luckysheet-ifFormulaGenerator-dialog .ifAttr .attrBox .inpBox input {
+#sheet-ifFormulaGenerator-dialog .ifAttr .attrBox .inpBox input {
     width: 100px;
     height: 100%;
     padding: 0;
@@ -6257,7 +6257,7 @@ fieldset[disabled] .btn-danger.focus {
     float: left;
 }
 
-#luckysheet-ifFormulaGenerator-dialog .ifAttr .attrBox .inpBox i.fa-table {
+#sheet-ifFormulaGenerator-dialog .ifAttr .attrBox .inpBox i.fa-table {
     font-size: 14px;
     color: #6598F3;
     float: right;
@@ -6266,19 +6266,19 @@ fieldset[disabled] .btn-danger.focus {
     cursor: pointer;
 }
 
-#luckysheet-ifFormulaGenerator-dialog .ifAttr .attrBox .inpBox i.fa-table:hover {
+#sheet-ifFormulaGenerator-dialog .ifAttr .attrBox .inpBox i.fa-table:hover {
     color: #FF7E7E;
 }
 
-#luckysheet-ifFormulaGenerator-dialog .ifAttr .attrBox span.text {
+#sheet-ifFormulaGenerator-dialog .ifAttr .attrBox span.text {
     height: 100%;
     line-height: 30px;
     padding: 0 5px;
     float: left;
 }
 
-#luckysheet-ifFormulaGenerator-dialog #smallRange,
-#luckysheet-ifFormulaGenerator-dialog #largeRange {
+#sheet-ifFormulaGenerator-dialog #smallRange,
+#sheet-ifFormulaGenerator-dialog #largeRange {
     width: 100px;
     height: 100%;
     padding: 0 10px;
@@ -6287,23 +6287,23 @@ fieldset[disabled] .btn-danger.focus {
     float: left;
 }
 
-#luckysheet-ifFormulaGenerator-dialog #rangeAssess {
+#sheet-ifFormulaGenerator-dialog #rangeAssess {
     height: 100%;
     line-height: 30px;
     float: left;
     margin-left: 20px;
 }
 
-#luckysheet-ifFormulaGenerator-dialog #rangeAssess i.fa-table {
+#sheet-ifFormulaGenerator-dialog #rangeAssess i.fa-table {
     color: #6598F3;
     cursor: pointer;
 }
 
-#luckysheet-ifFormulaGenerator-dialog #rangeAssess i.fa-table:hover {
+#sheet-ifFormulaGenerator-dialog #rangeAssess i.fa-table:hover {
     color: #FF7E7E;
 }
 
-#luckysheet-ifFormulaGenerator-dialog #DivisionMethod {
+#sheet-ifFormulaGenerator-dialog #DivisionMethod {
     width: 100px;
     height: 100%;
     border: 1px solid #d4d4d4;
@@ -6311,7 +6311,7 @@ fieldset[disabled] .btn-danger.focus {
     float: left;
 }
 
-#luckysheet-ifFormulaGenerator-dialog #DivisionMethodVal {
+#sheet-ifFormulaGenerator-dialog #DivisionMethodVal {
     width: 120px;
     height: 100%;
     border: 1px solid #d4d4d4;
@@ -6321,7 +6321,7 @@ fieldset[disabled] .btn-danger.focus {
     margin-left: 10px;
 }
 
-#luckysheet-ifFormulaGenerator-dialog #createBtn {
+#sheet-ifFormulaGenerator-dialog #createBtn {
     width: 100px;
     height: 100%;
     line-height: 30px;
@@ -6334,19 +6334,19 @@ fieldset[disabled] .btn-danger.focus {
     cursor: pointer;
 }
 
-#luckysheet-ifFormulaGenerator-dialog .ifList {
+#sheet-ifFormulaGenerator-dialog .ifList {
     border-top: 1px solid #d4d4d4;
     height: 180px;
     padding: 10px;
     overflow-y: scroll;
 }
 
-#luckysheet-ifFormulaGenerator-dialog .ifList .item {
+#sheet-ifFormulaGenerator-dialog .ifList .item {
     height: 30px;
     margin-bottom: 10px;
 }
 
-#luckysheet-ifFormulaGenerator-dialog .ifList .item input {
+#sheet-ifFormulaGenerator-dialog .ifList .item input {
     width: 80px;
     height: 100%;
     border: 1px solid #d4d4d4;
@@ -6356,11 +6356,11 @@ fieldset[disabled] .btn-danger.focus {
     float: left;
 }
 
-#luckysheet-ifFormulaGenerator-dialog .ifList .item input.markText {
+#sheet-ifFormulaGenerator-dialog .ifList .item input.markText {
     width: 140px;
 }
 
-#luckysheet-ifFormulaGenerator-dialog .ifList .item select {
+#sheet-ifFormulaGenerator-dialog .ifList .item select {
     width: 50px;
     height: 100%;
     padding: 0 5px;
@@ -6370,14 +6370,14 @@ fieldset[disabled] .btn-danger.focus {
     margin: 0 10px;
 }
 
-#luckysheet-ifFormulaGenerator-dialog .ifList .item span {
+#sheet-ifFormulaGenerator-dialog .ifList .item span {
     height: 100%;
     line-height: 30px;
     float: left;
     margin: 0 10px;
 }
 
-#luckysheet-ifFormulaGenerator-dialog .ifList .item i.fa-remove {
+#sheet-ifFormulaGenerator-dialog .ifList .item i.fa-remove {
     font-size: 16px;
     float: left;
     margin-left: 15px;
@@ -6386,12 +6386,12 @@ fieldset[disabled] .btn-danger.focus {
     cursor: pointer;
 }
 
-#luckysheet-ifFormulaGenerator-dialog .ifList .item i.fa-remove:hover {
+#sheet-ifFormulaGenerator-dialog .ifList .item i.fa-remove:hover {
     color: #333;
 }
 
-#luckysheet-ifFormulaGenerator-singleRange-dialog input,
-#luckysheet-ifFormulaGenerator-multiRange-dialog input {
+#sheet-ifFormulaGenerator-singleRange-dialog input,
+#sheet-ifFormulaGenerator-multiRange-dialog input {
     border: 1px solid #d4d4d4;
     padding: 0 10px;
     height: 30px;
@@ -6403,7 +6403,7 @@ fieldset[disabled] .btn-danger.focus {
 }
 
 /*下拉图标*/
-#luckysheet-dropCell-icon #icon_dropCell {
+#sheet-dropCell-icon #icon_dropCell {
     width: 25px;
     height: 15px;
     background-image: url(../../plugins/images/icon_dropCell.png);
@@ -6413,135 +6413,135 @@ fieldset[disabled] .btn-danger.focus {
 }
 
 /*定位*/
-#luckysheet-locationCell-dialog .listbox {
+#sheet-locationCell-dialog .listbox {
     border: 1px solid #dfdfdf;
     padding: 10px;
     font-size: 14px;
     color: #000;
 }
 
-#luckysheet-locationCell-dialog .listbox .listItem {
+#sheet-locationCell-dialog .listbox .listItem {
     padding: 5px 0;
 }
 
-#luckysheet-locationCell-dialog .listbox .listItem input[type="radio"] {
+#sheet-locationCell-dialog .listbox .listItem input[type="radio"] {
     float: left;
     margin-top: 5px;
 }
 
-#luckysheet-locationCell-dialog .listbox .listItem .subbox {
+#sheet-locationCell-dialog .listbox .listItem .subbox {
     height: 30px;
     padding: 0 10px;
 }
 
-#luckysheet-locationCell-dialog .listbox .listItem .subbox .subItem {
+#sheet-locationCell-dialog .listbox .listItem .subbox .subItem {
     float: left;
     margin-right: 5px;
 }
 
 /*更多格式*/
-#luckysheet-moreFormat-dialog {
+#sheet-moreFormat-dialog {
     font-size: 14px;
     color: #000;
 }
 
-#luckysheet-moreFormat-dialog .decimal {
+#sheet-moreFormat-dialog .decimal {
     margin-bottom: 5px;
     height: 30px;
     line-height: 30px;
 }
 
-#luckysheet-moreFormat-dialog .decimal input {
+#sheet-moreFormat-dialog .decimal input {
     width: 80px;
     height: 24px;
     padding: 0 5px;
 }
 
-#luckysheet-moreFormat-dialog .listbox {
+#sheet-moreFormat-dialog .listbox {
     border: 1px solid #666;
     height: 240px;
     overflow-y: auto;
 }
 
-#luckysheet-moreFormat-dialog .listbox .listItem {
+#sheet-moreFormat-dialog .listbox .listItem {
     height: 30px;
     padding: 0 20px 0 10px;
     border-bottom: 1px solid #dfdfdf;
 }
 
-#luckysheet-moreFormat-dialog .listbox .listItem.on {
+#sheet-moreFormat-dialog .listbox .listItem.on {
     background-color: #7C79FE;
     color: #fff;
 }
 
-#luckysheet-moreFormat-dialog .listbox .listItem .name {
+#sheet-moreFormat-dialog .listbox .listItem .name {
     line-height: 29px;
     float: left;
 }
 
-#luckysheet-moreFormat-dialog .listbox .listItem .value {
+#sheet-moreFormat-dialog .listbox .listItem .value {
     line-height: 30px;
     float: right;
     color: gray;
 }
 
-#luckysheet-moreFormat-dialog .listbox .listItem.on .value {
+#sheet-moreFormat-dialog .listbox .listItem.on .value {
     color: #fff;
 }
 
 /*分列*/
-#luckysheet-splitColumn-dialog {
+#sheet-splitColumn-dialog {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
 }
 
-#luckysheet-splitColumn-dialog .box {
+#sheet-splitColumn-dialog .box {
     font-size: 14px;
 
 }
 
-#luckysheet-splitColumn-dialog .box .boxTitle {
+#sheet-splitColumn-dialog .box .boxTitle {
     padding: 5px;
 }
 
-#luckysheet-splitColumn-dialog .box .boxMain {
+#sheet-splitColumn-dialog .box .boxMain {
     padding: 5px;
     border: 1px solid #dfdfdf;
 }
 
-#luckysheet-splitColumn-dialog .box input[type="checkbox"] {
+#sheet-splitColumn-dialog .box input[type="checkbox"] {
     float: left;
     margin-top: 5px;
 }
 
-#luckysheet-splitColumn-dialog .box .boxMain input[type="text"] {
+#sheet-splitColumn-dialog .box .boxMain input[type="text"] {
     margin-left: 5px;
     width: 50px;
     padding: 0 5px;
 }
 
-#luckysheet-splitColumn-dialog .box #splitColumnData {
+#sheet-splitColumn-dialog .box #splitColumnData {
     height: 100px;
     overflow-y: auto;
 }
 
-#luckysheet-splitColumn-dialog .box #splitColumnData table {
+#sheet-splitColumn-dialog .box #splitColumnData table {
     border-collapse: collapse;
 }
 
-#luckysheet-splitColumn-dialog .box #splitColumnData td {
+#sheet-splitColumn-dialog .box #splitColumnData td {
     border: 1px solid #333;
 }
 
 /*图表设置最下方下拉框优化*/
-.luckysheet-datavisual-config .luckysheet-datavisual-accordion-content:last-child {
+.sheet-datavisual-config .sheet-datavisual-accordion-content:last-child {
     padding-bottom: 100px;
 }
 
 /*批注聚焦框 移动 改变大小*/
-.luckysheet-postil-dialog-move {
+.sheet-postil-dialog-move {
     position: absolute;
     margin: 0px;
     padding: 0px;
@@ -6552,14 +6552,14 @@ fieldset[disabled] .btn-danger.focus {
     pointer-events: none;
 }
 
-.luckysheet-postil-dialog-move .luckysheet-postil-dialog-move-item {
+.sheet-postil-dialog-move .sheet-postil-dialog-move-item {
     /*background: #000;*/
     position: absolute;
     pointer-events: all;
     cursor: move;
 }
 
-.luckysheet-postil-dialog-move .luckysheet-postil-dialog-move-item-t {
+.sheet-postil-dialog-move .sheet-postil-dialog-move-item-t {
     width: 100%;
     height: 3px;
     border-bottom: 1px solid #000;
@@ -6567,7 +6567,7 @@ fieldset[disabled] .btn-danger.focus {
     top: -4px;
 }
 
-.luckysheet-postil-dialog-move .luckysheet-postil-dialog-move-item-r {
+.sheet-postil-dialog-move .sheet-postil-dialog-move-item-r {
     width: 3px;
     height: 100%;
     border-left: 1px solid #000;
@@ -6575,7 +6575,7 @@ fieldset[disabled] .btn-danger.focus {
     top: 0;
 }
 
-.luckysheet-postil-dialog-move .luckysheet-postil-dialog-move-item-b {
+.sheet-postil-dialog-move .sheet-postil-dialog-move-item-b {
     width: 100%;
     height: 3px;
     border-top: 1px solid #000;
@@ -6583,7 +6583,7 @@ fieldset[disabled] .btn-danger.focus {
     bottom: -4px;
 }
 
-.luckysheet-postil-dialog-move .luckysheet-postil-dialog-move-item-l {
+.sheet-postil-dialog-move .sheet-postil-dialog-move-item-l {
     width: 3px;
     height: 100%;
     border-right: 1px solid #000;
@@ -6591,11 +6591,11 @@ fieldset[disabled] .btn-danger.focus {
     top: 0;
 }
 
-.luckysheet-postil-show-active .luckysheet-postil-dialog-move .luckysheet-postil-dialog-move-item {
+.sheet-postil-show-active .sheet-postil-dialog-move .sheet-postil-dialog-move-item {
     border-color: #0188fb;
 }
 
-.luckysheet-postil-dialog-resize {
+.sheet-postil-dialog-resize {
     position: absolute;
     margin: 0px;
     padding: 0px;
@@ -6606,7 +6606,7 @@ fieldset[disabled] .btn-danger.focus {
     pointer-events: none;
 }
 
-.luckysheet-postil-dialog-resize .luckysheet-postil-dialog-resize-item {
+.sheet-postil-dialog-resize .sheet-postil-dialog-resize-item {
     position: absolute;
     height: 6px;
     width: 6px;
@@ -6614,70 +6614,70 @@ fieldset[disabled] .btn-danger.focus {
     pointer-events: all;
 }
 
-.luckysheet-postil-dialog-resize .luckysheet-postil-dialog-resize-item-lt {
+.sheet-postil-dialog-resize .sheet-postil-dialog-resize-item-lt {
     left: -6px;
     top: -6px;
     cursor: se-resize;
 }
 
-.luckysheet-postil-dialog-resize .luckysheet-postil-dialog-resize-item-mt {
+.sheet-postil-dialog-resize .sheet-postil-dialog-resize-item-mt {
     left: 50%;
     top: -6px;
     margin-left: -4px;
     cursor: s-resize;
 }
 
-.luckysheet-postil-dialog-resize .luckysheet-postil-dialog-resize-item-lm {
+.sheet-postil-dialog-resize .sheet-postil-dialog-resize-item-lm {
     top: 50%;
     left: -6px;
     margin-top: -4px;
     cursor: w-resize;
 }
 
-.luckysheet-postil-dialog-resize .luckysheet-postil-dialog-resize-item-rm {
+.sheet-postil-dialog-resize .sheet-postil-dialog-resize-item-rm {
     top: 50%;
     right: -6px;
     margin-top: -4px;
     cursor: w-resize;
 }
 
-.luckysheet-postil-dialog-resize .luckysheet-postil-dialog-resize-item-rt {
+.sheet-postil-dialog-resize .sheet-postil-dialog-resize-item-rt {
     right: -6px;
     top: -6px;
     cursor: ne-resize;
 }
 
-.luckysheet-postil-dialog-resize .luckysheet-postil-dialog-resize-item-lb {
+.sheet-postil-dialog-resize .sheet-postil-dialog-resize-item-lb {
     left: -6px;
     bottom: -6px;
     cursor: ne-resize;
 }
 
-.luckysheet-postil-dialog-resize .luckysheet-postil-dialog-resize-item-mb {
+.sheet-postil-dialog-resize .sheet-postil-dialog-resize-item-mb {
     left: 50%;
     bottom: -6px;
     margin-left: -4px;
     cursor: s-resize;
 }
 
-.luckysheet-postil-dialog-resize .luckysheet-postil-dialog-resize-item-rb {
+.sheet-postil-dialog-resize .sheet-postil-dialog-resize-item-rb {
     right: -6px;
     bottom: -6px;
     cursor: se-resize;
 }
 
 /*图表设置最下方下拉框优化*/
-.luckysheet-datavisual-config .luckysheet-datavisual-accordion-content:last-child {
+.sheet-datavisual-config .sheet-datavisual-accordion-content:last-child {
     padding-bottom: 100px;
 }
 
 /*图表样式新增样式: 设置界面overflow滚动*/
-.luckysheet-datavisual-left .el-tabs__content {
+.sheet-datavisual-left .el-tabs__content {
     overflow: auto;
 }
 
 
-/* .luckysheet-modal-dialog {
+/* .sheet-modal-dialog {
     -webkit-box-shadow: 0 4px 16px rgba(0, 0, 0, .2);
     -moz-box-shadow: 0 4px 16px rgba(0, 0, 0, .2);
     box-shadow: 0 4px 16px rgba(0, 0, 0, .2);
@@ -6692,7 +6692,7 @@ fieldset[disabled] .btn-danger.focus {
     z-index: 100002;
 }
 
-.luckysheet-modal-dialog-mask {
+.sheet-modal-dialog-mask {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -6706,7 +6706,7 @@ fieldset[disabled] .btn-danger.focus {
 
 
 
-.luckysheet-modal-dialog-title {
+.sheet-modal-dialog-title {
     background-color: #fff;
     color: #000;
     cursor: default;
@@ -6716,7 +6716,7 @@ fieldset[disabled] .btn-danger.focus {
     margin: 0 0 16px;
 }
 
-.luckysheet-modal-dialog-title-close {
+.sheet-modal-dialog-title-close {
     height: 11px;
     opacity: 0.7;
     padding: 17px;
@@ -6728,14 +6728,14 @@ fieldset[disabled] .btn-danger.focus {
     outline: 0;
 }
 
-.luckysheet-modal-dialog-chart {
+.sheet-modal-dialog-chart {
     padding: 20px 10px;
     webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
 }
 
-.luckysheet-modal-dialog-resize {
+.sheet-modal-dialog-resize {
     position: absolute;
     border: 2px solid #85c0fc;
     margin: 0px;
@@ -6747,7 +6747,7 @@ fieldset[disabled] .btn-danger.focus {
     pointer-events: none;
 }
 
-.luckysheet-modal-dialog-resize-item {
+.sheet-modal-dialog-resize-item {
     position: absolute;
     height: 6px;
     width: 6px;
@@ -6757,60 +6757,60 @@ fieldset[disabled] .btn-danger.focus {
     border-radius: 6px;
 }
 
-.luckysheet-modal-dialog-resize-item-lt {
+.sheet-modal-dialog-resize-item-lt {
     left: -6px;
     top: -6px;
     cursor: se-resize;
 }
 
-.luckysheet-modal-dialog-resize-item-mt {
+.sheet-modal-dialog-resize-item-mt {
     left: 50%;
     top: -6px;
     margin-left: -4px;
     cursor: s-resize;
 }
 
-.luckysheet-modal-dialog-resize-item-rt {
+.sheet-modal-dialog-resize-item-rt {
     right: -6px;
     top: -6px;
     cursor: ne-resize;
 }
 
-.luckysheet-modal-dialog-resize-item-lm {
+.sheet-modal-dialog-resize-item-lm {
     top: 50%;
     left: -6px;
     margin-top: -4px;
     cursor: w-resize;
 }
 
-.luckysheet-modal-dialog-resize-item-rm {
+.sheet-modal-dialog-resize-item-rm {
     top: 50%;
     right: -6px;
     margin-top: -4px;
     cursor: w-resize;
 }
 
-.luckysheet-modal-dialog-resize-item-lb {
+.sheet-modal-dialog-resize-item-lb {
     left: -6px;
     bottom: -6px;
     cursor: ne-resize;
 }
 
-.luckysheet-modal-dialog-resize-item-mb {
+.sheet-modal-dialog-resize-item-mb {
     left: 50%;
     bottom: -6px;
     margin-left: -4px;
     cursor: s-resize;
 }
 
-.luckysheet-modal-dialog-resize-item-rb {
+.sheet-modal-dialog-resize-item-rb {
     right: -6px;
     bottom: -6px;
     cursor: se-resize;
 }
 
 
-.luckysheet-modal-dialog-controll {
+.sheet-modal-dialog-controll {
     position: absolute;
     margin: 0px;
     padding: 0px;
@@ -6819,7 +6819,7 @@ fieldset[disabled] .btn-danger.focus {
     top: 0px;
 }
 
-.luckysheet-modal-controll-btn {
+.sheet-modal-controll-btn {
     height: 13px;
     padding: 8px;
     width: 13px;
@@ -6836,22 +6836,22 @@ fieldset[disabled] .btn-danger.focus {
     -o-transition: all 0.2s;
 }
 
-.luckysheet-modal-controll-btn:hover {
+.sheet-modal-controll-btn:hover {
     border: 1px solid #A1A1A1;
     color: #85c0fc;
 }
 
-.luckysheet-modal-controll-btn:active {
+.sheet-modal-controll-btn:active {
     border: 1px solid #BBBBBB;
     background: #EFEFEF;
     color: #85c0fc;
 }
 
-.luckysheet-modal-controll-del {
+.sheet-modal-controll-del {
     font-size: 16px;
 }
 
-.luckysheet-modal-controll-max-close {
+.sheet-modal-controll-max-close {
     font-size: 22px;
     width: 42px;
     height: 42px;
@@ -6869,13 +6869,13 @@ fieldset[disabled] .btn-danger.focus {
     text-align: center;
 }
 
-.luckysheet-modal-controll-max-close:hover {
+.sheet-modal-controll-max-close:hover {
     background: #85c0fc;
     cursor: pointer;
 } */
 
 /* 图片 */
-#luckysheet-modal-dialog-activeImage .luckysheet-modal-dialog-content{
+#sheet-modal-dialog-activeImage .sheet-modal-dialog-content{
     width: 100%;
     height: 100%;
     position: absolute;
@@ -6888,7 +6888,7 @@ fieldset[disabled] .btn-danger.focus {
     image-rendering: crisp-edges;
 }
 
-#luckysheet-modal-dialog-cropping::before{
+#sheet-modal-dialog-cropping::before{
     content: "";
     outline: 1px solid #fff;
     position: absolute;
@@ -6899,7 +6899,7 @@ fieldset[disabled] .btn-danger.focus {
     z-index: 1;
     pointer-events: none;
 }
-#luckysheet-modal-dialog-cropping::after{
+#sheet-modal-dialog-cropping::after{
     content: "";
     outline: 1px solid #fff;
     position: absolute;
@@ -6910,14 +6910,14 @@ fieldset[disabled] .btn-danger.focus {
     z-index: 1;
     pointer-events: none;
 }
-#luckysheet-modal-dialog-cropping .cropping-mask{
+#sheet-modal-dialog-cropping .cropping-mask{
     filter: brightness(.5);
     position: absolute;
     background-size: 100% 100%;
     left: 0;
     top: 0;
 }
-#luckysheet-modal-dialog-cropping .cropping-content{
+#sheet-modal-dialog-cropping .cropping-content{
     position: absolute;
     overflow: hidden;
     background-position: 0 0;
@@ -6926,7 +6926,7 @@ fieldset[disabled] .btn-danger.focus {
     width: 100%;
     height: 100%;
 }
-#luckysheet-modal-dialog-cropping .luckysheet-modal-dialog-resize{
+#sheet-modal-dialog-cropping .sheet-modal-dialog-resize{
     border: none;
     position: absolute;
     margin: 0px;
@@ -6937,7 +6937,7 @@ fieldset[disabled] .btn-danger.focus {
     right: 0;
     pointer-events: all;
 }
-#luckysheet-modal-dialog-cropping .resize-item{
+#sheet-modal-dialog-cropping .resize-item{
     width: 0;
     height: 0;
     background: none;
@@ -6945,24 +6945,24 @@ fieldset[disabled] .btn-danger.focus {
     position: absolute;
     z-index: 3;
 }
-#luckysheet-modal-dialog-cropping .resize-item::before{
+#sheet-modal-dialog-cropping .resize-item::before{
     content: "";
     display: block;
     position: absolute;
     background: #000;
 }
-#luckysheet-modal-dialog-cropping .resize-item::after{
+#sheet-modal-dialog-cropping .resize-item::after{
     content: "";
     display: block;
     position: absolute;
     background: #000;
 }
-#luckysheet-modal-dialog-cropping .lt{
+#sheet-modal-dialog-cropping .lt{
     left: 0;
     top: 0;
     cursor: nwse-resize;
 }
-#luckysheet-modal-dialog-cropping .lt::before{
+#sheet-modal-dialog-cropping .lt::before{
     width: 18px;
     height: 4px;
     left: 0;
@@ -6970,7 +6970,7 @@ fieldset[disabled] .btn-danger.focus {
     border-right: 2px solid #fff;
     border-bottom: 2px solid #fff;
 }
-#luckysheet-modal-dialog-cropping .lt::after{
+#sheet-modal-dialog-cropping .lt::after{
     width: 4px;
     height: 14px;
     left: 0;
@@ -6978,12 +6978,12 @@ fieldset[disabled] .btn-danger.focus {
     border-right: 2px solid #fff;
     border-bottom: 2px solid #fff;
 }
-#luckysheet-modal-dialog-cropping .mt{
+#sheet-modal-dialog-cropping .mt{
     left: 50%;
     top: 0;
     cursor: ns-resize;
 }
-#luckysheet-modal-dialog-cropping .mt::before{
+#sheet-modal-dialog-cropping .mt::before{
     width: 18px;
     height: 4px;
     left: -11px;
@@ -6992,12 +6992,12 @@ fieldset[disabled] .btn-danger.focus {
     border-right: 2px solid #fff;
     border-bottom: 2px solid #fff;
 }
-#luckysheet-modal-dialog-cropping .rt{
+#sheet-modal-dialog-cropping .rt{
     right: 0;
     top: 0;
     cursor: nesw-resize;
 }
-#luckysheet-modal-dialog-cropping .rt::before{
+#sheet-modal-dialog-cropping .rt::before{
     width: 18px;
     height: 4px;
     right: 0;
@@ -7005,7 +7005,7 @@ fieldset[disabled] .btn-danger.focus {
     border-left: 2px solid #fff;
     border-bottom: 2px solid #fff;
 }
-#luckysheet-modal-dialog-cropping .rt::after{
+#sheet-modal-dialog-cropping .rt::after{
     width: 4px;
     height: 14px;
     right: 0;
@@ -7013,12 +7013,12 @@ fieldset[disabled] .btn-danger.focus {
     border-left: 2px solid #fff;
     border-bottom: 2px solid #fff;
 }
-#luckysheet-modal-dialog-cropping .lm{
+#sheet-modal-dialog-cropping .lm{
     left: 0;
     top: 50%;
     cursor: ew-resize;
 }
-#luckysheet-modal-dialog-cropping .lm::before{
+#sheet-modal-dialog-cropping .lm::before{
     width: 4px;
     height: 18px;
     left: 0;
@@ -7027,12 +7027,12 @@ fieldset[disabled] .btn-danger.focus {
     border-top: 2px solid #fff;
     border-bottom: 2px solid #fff;
 }
-#luckysheet-modal-dialog-cropping .rm{
+#sheet-modal-dialog-cropping .rm{
     right: 0;
     top: 50%;
     cursor: ew-resize;
 }
-#luckysheet-modal-dialog-cropping .rm::before{
+#sheet-modal-dialog-cropping .rm::before{
     width: 4px;
     height: 18px;
     right: 0;
@@ -7041,12 +7041,12 @@ fieldset[disabled] .btn-danger.focus {
     border-top: 2px solid #fff;
     border-bottom: 2px solid #fff;
 }
-#luckysheet-modal-dialog-cropping .lb{
+#sheet-modal-dialog-cropping .lb{
     left: 0;
     bottom: 0;
     cursor: nesw-resize;
 }
-#luckysheet-modal-dialog-cropping .lb::before{
+#sheet-modal-dialog-cropping .lb::before{
     width: 18px;
     height: 4px;
     left: 0;
@@ -7054,7 +7054,7 @@ fieldset[disabled] .btn-danger.focus {
     border-right: 2px solid #fff;
     border-top: 2px solid #fff;
 }
-#luckysheet-modal-dialog-cropping .lb::after{
+#sheet-modal-dialog-cropping .lb::after{
     width: 4px;
     height: 14px;
     left: 0;
@@ -7062,12 +7062,12 @@ fieldset[disabled] .btn-danger.focus {
     border-right: 2px solid #fff;
     border-top: 2px solid #fff;
 }
-#luckysheet-modal-dialog-cropping .rb{
+#sheet-modal-dialog-cropping .rb{
     right: 0;
     bottom: 0;
     cursor: nwse-resize;
 }
-#luckysheet-modal-dialog-cropping .rb::before{
+#sheet-modal-dialog-cropping .rb::before{
     width: 18px;
     height: 4px;
     right: 0;
@@ -7075,7 +7075,7 @@ fieldset[disabled] .btn-danger.focus {
     border-left: 2px solid #fff;
     border-top: 2px solid #fff;
 }
-#luckysheet-modal-dialog-cropping .rb::after{
+#sheet-modal-dialog-cropping .rb::after{
     width: 4px;
     height: 14px;
     right: 0;
@@ -7083,12 +7083,12 @@ fieldset[disabled] .btn-danger.focus {
     border-left: 2px solid #fff;
     border-top: 2px solid #fff;
 }
-#luckysheet-modal-dialog-cropping .mb{
+#sheet-modal-dialog-cropping .mb{
     left: 50%;
     bottom: 0;
     cursor: ns-resize;
 }
-#luckysheet-modal-dialog-cropping .mb::before{
+#sheet-modal-dialog-cropping .mb::before{
     width: 18px;
     height: 4px;
     left: -11px;
@@ -7097,53 +7097,53 @@ fieldset[disabled] .btn-danger.focus {
     border-right: 2px solid #fff;
     border-top: 2px solid #fff;
 }
-#luckysheet-modal-dialog-slider-imageCtrl .luckysheet-modal-dialog-slider-content{
+#sheet-modal-dialog-slider-imageCtrl .sheet-modal-dialog-slider-content{
     background-color: #fff;
 }
-#luckysheet-modal-dialog-slider-imageCtrl .slider-box{
+#sheet-modal-dialog-slider-imageCtrl .slider-box{
     border-bottom: 1px solid #E1E4E8;
 }
-#luckysheet-modal-dialog-slider-imageCtrl .slider-box .slider-box-title{
+#sheet-modal-dialog-slider-imageCtrl .slider-box .slider-box-title{
     padding: 10px 20px;
     font-weight: 600;
 }
-#luckysheet-modal-dialog-slider-imageCtrl .slider-box .slider-box-radios{
+#sheet-modal-dialog-slider-imageCtrl .slider-box .slider-box-radios{
     padding: 10px 30px;
 }
-#luckysheet-modal-dialog-slider-imageCtrl .slider-box .radio-item{
+#sheet-modal-dialog-slider-imageCtrl .slider-box .radio-item{
     margin-bottom: 10px;
 }
-#luckysheet-modal-dialog-slider-imageCtrl .slider-box .radio-item:last-child{
+#sheet-modal-dialog-slider-imageCtrl .slider-box .radio-item:last-child{
     margin-bottom: 0;
 }
-#luckysheet-modal-dialog-slider-imageCtrl .slider-box .radio-item input{
+#sheet-modal-dialog-slider-imageCtrl .slider-box .radio-item input{
     vertical-align: sub;
 }
-#luckysheet-modal-dialog-slider-imageCtrl .slider-box .slider-box-checkbox{
+#sheet-modal-dialog-slider-imageCtrl .slider-box .slider-box-checkbox{
     padding: 10px 30px;
     border-top: 1px solid #E1E4E8;
 }
-#luckysheet-modal-dialog-slider-imageCtrl .slider-box .slider-box-checkbox input{
+#sheet-modal-dialog-slider-imageCtrl .slider-box .slider-box-checkbox input{
     vertical-align: middle;
 }
-#luckysheet-modal-dialog-slider-imageCtrl .slider-box .slider-box-borderConfig{
+#sheet-modal-dialog-slider-imageCtrl .slider-box .slider-box-borderConfig{
     padding: 10px 30px;
 }
-#luckysheet-modal-dialog-slider-imageCtrl .slider-box .border-item{
+#sheet-modal-dialog-slider-imageCtrl .slider-box .border-item{
     margin-bottom: 10px;
 }
-#luckysheet-modal-dialog-slider-imageCtrl .slider-box .border-item:last-child{
+#sheet-modal-dialog-slider-imageCtrl .slider-box .border-item:last-child{
     margin-bottom: 0;
 }
-#luckysheet-modal-dialog-slider-imageCtrl .slider-box .border-item label{
+#sheet-modal-dialog-slider-imageCtrl .slider-box .border-item label{
     display: inline-block;
     width: 40px;
 }
-#luckysheet-modal-dialog-slider-imageCtrl .slider-box .border-item input{
+#sheet-modal-dialog-slider-imageCtrl .slider-box .border-item input{
     width: 130px;
     padding: 5px;
 }
-#luckysheet-modal-dialog-slider-imageCtrl .slider-box .border-item .imgItemBorderColor{
+#sheet-modal-dialog-slider-imageCtrl .slider-box .border-item .imgItemBorderColor{
     display: inline-block;
     width: 20px;
     height: 20px;
@@ -7152,16 +7152,16 @@ fieldset[disabled] .btn-danger.focus {
     vertical-align: middle;
     cursor: pointer;
 }
-#luckysheet-modal-dialog-slider-imageCtrl .slider-box .border-item .imgItemBorderColor span{
+#sheet-modal-dialog-slider-imageCtrl .slider-box .border-item .imgItemBorderColor span{
     display: block;
     width: 100%;
     height: 100%;
 }
-#luckysheet-imageCtrl-colorSelect-dialog .currenColor{
+#sheet-imageCtrl-colorSelect-dialog .currenColor{
     font-size: 12px;
     margin-bottom: 5px;
 }
-#luckysheet-imageCtrl-colorSelect-dialog .currenColor span{
+#sheet-imageCtrl-colorSelect-dialog .currenColor span{
     display: inline-block;
     width: 16px;
     height: 16px;
@@ -7170,12 +7170,12 @@ fieldset[disabled] .btn-danger.focus {
     margin-bottom: -5px;
     cursor: pointer;
 }
-#luckysheet-modal-dialog-activeImage, #luckysheet-modal-dialog-cropping{
+#sheet-modal-dialog-activeImage, #sheet-modal-dialog-cropping{
     background: none;
     box-shadow: none;
 }
 
-.luckysheet-modal-dialog-image {
+.sheet-modal-dialog-image {
     border: none;
     box-shadow:none;
     background: none;
@@ -7186,7 +7186,7 @@ fieldset[disabled] .btn-danger.focus {
     image-rendering: crisp-edges;
 }
 
-.luckysheet-modal-dialog-image .luckysheet-modal-dialog-content, #luckysheet-modal-dialog-activeImage .luckysheet-modal-dialog-content{
+.sheet-modal-dialog-image .sheet-modal-dialog-content, #sheet-modal-dialog-activeImage .sheet-modal-dialog-content{
     background: none;
 }
 /* 单元格日期选择 */
@@ -7195,24 +7195,24 @@ fieldset[disabled] .btn-danger.focus {
     display: none;
 }
 /* 插入链接 */
-#luckysheet-insertLink-dialog{
+#sheet-insertLink-dialog{
     user-select: none;
 }
-#luckysheet-insertLink-dialog .box{
+#sheet-insertLink-dialog .box{
     font-size: 12px;
 }
-#luckysheet-insertLink-dialog .box-item{
+#sheet-insertLink-dialog .box-item{
     height: 30px;
     line-height: 30px;
     margin-bottom: 10px;
 }
-#luckysheet-insertLink-dialog .box-item label{
+#sheet-insertLink-dialog .box-item label{
     display: inline-block;
     width: 80px;
     text-align: right;
     margin-right: 10px;
 }
-#luckysheet-insertLink-dialog .box-item input{
+#sheet-insertLink-dialog .box-item input{
     width: 200px;
     height: 30px;
     padding: 0 10px;
@@ -7220,7 +7220,7 @@ fieldset[disabled] .btn-danger.focus {
     outline-style: none;
     box-sizing: border-box;
 }
-#luckysheet-insertLink-dialog .box-item select{
+#sheet-insertLink-dialog .box-item select{
     width: 200px;
     height: 30px;
     padding: 0 5px;
@@ -7229,45 +7229,45 @@ fieldset[disabled] .btn-danger.focus {
     box-sizing: border-box;
 }
 /* 数据验证 */
-#luckysheet-dataVerification-dialog{
+#sheet-dataVerification-dialog{
     user-select: none;
 }
-#luckysheet-dataVerification-dialog .box{
+#sheet-dataVerification-dialog .box{
     font-size: 12px;
 }
-#luckysheet-dataVerification-dialog .box select{
+#sheet-dataVerification-dialog .box select{
     width: 100%;
     height: 30px;
     border-color: #d4d4d4;
     outline-style: none;
 }
-#luckysheet-dataVerification-dialog .box input::-webkit-input-placeholder { 
+#sheet-dataVerification-dialog .box input::-webkit-input-placeholder { 
     color: #d4d4d4; 
 } 
-#luckysheet-dataVerification-dialog .box input:-moz-placeholder { 
+#sheet-dataVerification-dialog .box input:-moz-placeholder { 
     color: #d4d4d4; 
 } 
-#luckysheet-dataVerification-dialog .box input::-moz-placeholder { 
+#sheet-dataVerification-dialog .box input::-moz-placeholder { 
     color: #d4d4d4; 
 } 
-#luckysheet-dataVerification-dialog .box input:-ms-input-placeholder { 
+#sheet-dataVerification-dialog .box input:-ms-input-placeholder { 
     color: #d4d4d4; 
 }
-#luckysheet-dataVerification-dialog .box-item{
+#sheet-dataVerification-dialog .box-item{
     padding: 10px;
     border-bottom: 1px solid #E1E4E8;
 }
-#luckysheet-dataVerification-dialog .box-item .box-item-title{
+#sheet-dataVerification-dialog .box-item .box-item-title{
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 10px;
 }
-#luckysheet-dataVerification-dialog .box-item .range{
+#sheet-dataVerification-dialog .box-item .range{
     width: 100%;
     height: 30px;
     border: 1px solid #d4d4d4;
 }
-#luckysheet-dataVerification-dialog .box-item .range input{
+#sheet-dataVerification-dialog .box-item .range input{
     width: calc(100% - 30px);
     height: 30px;
     padding: 0 10px;
@@ -7276,73 +7276,73 @@ fieldset[disabled] .btn-danger.focus {
     outline-style: none;
     box-sizing: border-box;
 }
-#luckysheet-dataVerification-dialog .box-item .range i.fa-table{
+#sheet-dataVerification-dialog .box-item .range i.fa-table{
     float: right;
     margin-top: 9px;
     margin-right: 5px;
     cursor: pointer;
     color: #6598F3;
 }
-#luckysheet-dataVerification-dialog .box-item .multi {
+#sheet-dataVerification-dialog .box-item .multi {
     margin-top: 10px;
     line-height: 30px;
     font-size: 12px;
 }
-#luckysheet-dataVerification-dialog .box-item .multi input {
+#sheet-dataVerification-dialog .box-item .multi input {
     vertical-align: text-top;
 }
-#luckysheet-dataVerification-dialog .box-item .show-box{
+#sheet-dataVerification-dialog .box-item .show-box{
     margin-top: 10px;
 }
-#luckysheet-dataVerification-dialog .box-item .check-box{
+#sheet-dataVerification-dialog .box-item .check-box{
     height: 30px;
     line-height: 30px;
     margin-bottom: 10px;
 }
-#luckysheet-dataVerification-dialog .box-item .check-box:last-child{
+#sheet-dataVerification-dialog .box-item .check-box:last-child{
     margin-bottom: 0;
 }
-#luckysheet-dataVerification-dialog .box-item .check-box input{
+#sheet-dataVerification-dialog .box-item .check-box input{
     height: 30px;
     padding: 0 10px;
     border: 1px solid #d4d4d4;
     box-sizing: border-box;
 }
-#luckysheet-dataVerification-dialog .box-item .check{
+#sheet-dataVerification-dialog .box-item .check{
     line-height: 30px;
 }
-#luckysheet-dataVerification-dialog .box-item .check input{
+#sheet-dataVerification-dialog .box-item .check input{
     vertical-align: text-top;
 }
-#luckysheet-dataVerification-dialog .box-item .input{
+#sheet-dataVerification-dialog .box-item .input{
     height: 30px;
     line-height: 30px;
     margin-top: 10px;
 }
-#luckysheet-dataVerification-dialog .box-item .input input{
+#sheet-dataVerification-dialog .box-item .input input{
     height: 30px;
     padding: 4px 10px 4px 10px;
     border: 1px solid #d4d4d4;
     box-sizing: border-box;
 }
-#luckysheet-dataVerification-dialog .box-item .input1 input{
+#sheet-dataVerification-dialog .box-item .input1 input{
     width: 150px;
 }
-#luckysheet-dataVerification-dialog .box-item .input2 input{
+#sheet-dataVerification-dialog .box-item .input2 input{
     width: 100%;
 }
-#luckysheet-dataVerification-dialog .box-item .input span{
+#sheet-dataVerification-dialog .box-item .input span{
     display: inline-block;
     width: 30px;
     text-align: center;
 }
-#luckysheet-dataVerification-dialog .data-verification-hint-text{
+#sheet-dataVerification-dialog .data-verification-hint-text{
     width: 100%;
     height: 30px;
     border: 1px solid #d4d4d4;
     margin-top: 10px;
 }
-#luckysheet-dataVerification-dialog .data-verification-hint-text input{
+#sheet-dataVerification-dialog .data-verification-hint-text input{
     display: block;
     width: 100%;
     height: 100%;
@@ -7351,16 +7351,16 @@ fieldset[disabled] .btn-danger.focus {
     outline-style: none;
     box-sizing: border-box;
 }
-#luckysheet-dataVerification-dialog .show-box .show-box-item{
+#sheet-dataVerification-dialog .show-box .show-box-item{
     display: none;
 }
-#luckysheet-dataVerificationRange-dialog input{
+#sheet-dataVerificationRange-dialog input{
     height: 30px;
     padding: 0 10px;
     border: 1px solid #d4d4d4;
     outline-style: none;
 }
-#luckysheet-dataVerification-dropdown-btn{
+#sheet-dataVerification-dropdown-btn{
     display: none;
     width: 20px;
     height: 20px;
@@ -7369,7 +7369,7 @@ fieldset[disabled] .btn-danger.focus {
     z-index: 10;
     overflow: hidden;
 }
-#luckysheet-dataVerification-dropdown-btn::after{
+#sheet-dataVerification-dropdown-btn::after{
     content: '';
     width: 10px;
     height: 10px;
@@ -7380,7 +7380,7 @@ fieldset[disabled] .btn-danger.focus {
     margin-left: -5px;
     margin-top: -5px;
 }
-#luckysheet-dataVerification-dropdown-List{
+#sheet-dataVerification-dropdown-List{
     display: none;
     background-color: #fff;
     border: 1px solid #ccc;
@@ -7389,16 +7389,16 @@ fieldset[disabled] .btn-danger.focus {
     z-index: 10000;
     box-sizing: border-box;
 }
-#luckysheet-dataVerification-dropdown-List .dropdown-List-item{
+#sheet-dataVerification-dropdown-List .dropdown-List-item{
     padding: 5px 10px;
     box-sizing: border-box;
     cursor: pointer;
 }
 
-#luckysheet-dataVerification-dropdown-List .dropdown-List-item.multi {
+#sheet-dataVerification-dropdown-List .dropdown-List-item.multi {
     padding-left: 0;
 }
-#luckysheet-dataVerification-dropdown-List .dropdown-List-item.multi:before{
+#sheet-dataVerification-dropdown-List .dropdown-List-item.multi:before{
     content: "";
     width: 14px;
     font-family: "iconfont" !important;
@@ -7409,13 +7409,13 @@ fieldset[disabled] .btn-danger.focus {
     display: inline-block;
     margin-right: 2px;
 }
-#luckysheet-dataVerification-dropdown-List .dropdown-List-item.multi.checked:before{
+#sheet-dataVerification-dropdown-List .dropdown-List-item.multi.checked:before{
     content: "\e7c8"; 
 }
-#luckysheet-dataVerification-dropdown-List .dropdown-List-item:hover{
+#sheet-dataVerification-dropdown-List .dropdown-List-item:hover{
     background-color: #E1E1E1;
 }
-#luckysheet-dataVerification-showHintBox{
+#sheet-dataVerification-showHintBox{
     display: none;
     padding: 10px;
     background-color: #fff;

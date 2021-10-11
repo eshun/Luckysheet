@@ -121,20 +121,20 @@ function renderCharts(chartLists, isDemo) {
         let chart_id = chart.chart_id
         let chart_id_c = chart_id + '_c'
         let modelChartShowHTML =
-            '<div id="${id}"class="luckysheet-modal-dialog luckysheet-modal-dialog-chart ${addclass}"tabindex="0"role="dialog"aria-labelledby=":41e"dir="ltr"><div class="luckysheet-modal-dialog-resize"><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-lt"data-type="lt"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-mt"data-type="mt"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-lm"data-type="lm"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-rm"data-type="rm"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-rt"data-type="rt"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-lb"data-type="lb"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-mb"data-type="mb"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-rb"data-type="rb"></div></div><div class="luckysheet-modal-dialog-controll"><span class="luckysheet-modal-controll-btn luckysheet-modal-controll-update"role="button"tabindex="0"aria-label="修改图表"title="修改图表"><i class="fa fa-pencil"aria-hidden="true"></i></span><span class="luckysheet-modal-controll-btn luckysheet-modal-controll-max"role="butluckysheet_chartIns_indexton"tabindex="0"aria-label="最大化"title="最大化"><i class="fa fa-window-maximize"aria-hidden="true"></i></span><span class="luckysheet-modal-controll-btn luckysheet-modal-controll-del"role="button"tabindex="0"aria-label="删除"title="删除"><i class="fa fa-trash"aria-hidden="true"></i></span></div><div class="luckysheet-modal-dialog-content">${content}</div></div>'
+            '<div id="${id}"class="sheet-modal-dialog sheet-modal-dialog-chart ${addclass}"tabindex="0"role="dialog"aria-labelledby=":41e"dir="ltr"><div class="sheet-modal-dialog-resize"><div class="sheet-modal-dialog-resize-item sheet-modal-dialog-resize-item-lt"data-type="lt"></div><div class="sheet-modal-dialog-resize-item sheet-modal-dialog-resize-item-mt"data-type="mt"></div><div class="sheet-modal-dialog-resize-item sheet-modal-dialog-resize-item-lm"data-type="lm"></div><div class="sheet-modal-dialog-resize-item sheet-modal-dialog-resize-item-rm"data-type="rm"></div><div class="sheet-modal-dialog-resize-item sheet-modal-dialog-resize-item-rt"data-type="rt"></div><div class="sheet-modal-dialog-resize-item sheet-modal-dialog-resize-item-lb"data-type="lb"></div><div class="sheet-modal-dialog-resize-item sheet-modal-dialog-resize-item-mb"data-type="mb"></div><div class="sheet-modal-dialog-resize-item sheet-modal-dialog-resize-item-rb"data-type="rb"></div></div><div class="sheet-modal-dialog-controll"><span class="sheet-modal-controll-btn sheet-modal-controll-update"role="button"tabindex="0"aria-label="修改图表"title="修改图表"><i class="fa fa-pencil"aria-hidden="true"></i></span><span class="sheet-modal-controll-btn sheet-modal-controll-max"role="butluckysheet_chartIns_indexton"tabindex="0"aria-label="最大化"title="最大化"><i class="fa fa-window-maximize"aria-hidden="true"></i></span><span class="sheet-modal-controll-btn sheet-modal-controll-del"role="button"tabindex="0"aria-label="删除"title="删除"><i class="fa fa-trash"aria-hidden="true"></i></span></div><div class="sheet-modal-dialog-content">${content}</div></div>'
 
         let _t = $(
             replaceHtml(modelChartShowHTML, {
                 id: chart_id_c,
-                addclass: 'luckysheet-data-visualization-chart',
+                addclass: 'sheet-data-visualization-chart',
                 title: '图表生成',
                 content: ''
             })
-        ).appendTo($('.luckysheet-cell-main'))
+        ).appendTo($('.sheet-cell-main'))
 
         setChartMoveableEffect(_t);
 
-        $(`#${chart_id_c}`).children('.luckysheet-modal-dialog-content')[0].id = chart_id
+        $(`#${chart_id_c}`).children('.sheet-modal-dialog-content')[0].id = chart_id
 
         let container = document.getElementById(chart_id_c)
 
@@ -149,16 +149,16 @@ function renderCharts(chartLists, isDemo) {
         showNeedRangeShow(chart_id);
 
         // delete current chart
-        $(`#${chart_id}_c .luckysheet-modal-controll-del`).click(function (e) {
+        $(`#${chart_id}_c .sheet-modal-controll-del`).click(function (e) {
             delChart(chart_id)
         })
 
         // edit current chart
-        $(`#${chart_id}_c .luckysheet-modal-controll-update`).click(function (e) {
+        $(`#${chart_id}_c .sheet-modal-controll-update`).click(function (e) {
             showChartSettingComponent()
         })
 
-        _t.children('.luckysheet-modal-dialog-content').mousedown(function (e) {
+        _t.children('.sheet-modal-dialog-content').mousedown(function (e) {
             if (!chartInfo.chartparam.luckysheetCurrentChartMaxState) {
                 //当前图表显示区域高亮
                 showNeedRangeShow(chart_id);
@@ -174,8 +174,8 @@ function renderCharts(chartLists, isDemo) {
 
                     //允许拖动渲染框
                     if (
-                        !$(e.target).is(".luckysheet-modal-dialog-controll") &&
-                        !$(e.target).is(".luckysheet-modal-controll-btn") &&
+                        !$(e.target).is(".sheet-modal-dialog-controll") &&
+                        !$(e.target).is(".sheet-modal-controll-btn") &&
                         !$(e.target).is("i")
                     ) {
                         // Debounce
@@ -195,31 +195,31 @@ function renderCharts(chartLists, isDemo) {
                         e.pageY - toffset.top,
                         tpsition.left,
                         tpsition.top,
-                        $("#luckysheet-scrollbar-x").scrollLeft(),
-                        $("#luckysheet-scrollbar-y").scrollTop()
+                        $("#sheet-scrollbar-x").scrollLeft(),
+                        $("#sheet-scrollbar-y").scrollTop()
                     ];
                     chartInfo.chartparam.luckysheetCurrentChartMoveWinH = $(
-                        "#luckysheet-cell-main"
+                        "#sheet-cell-main"
                     )[0].scrollHeight;
                     chartInfo.chartparam.luckysheetCurrentChartMoveWinW = $(
-                        "#luckysheet-cell-main"
+                        "#sheet-cell-main"
                     )[0].scrollWidth;
 
                     if (
-                        !$(e.target).hasClass("luckysheet-mousedown-cancel") &&
+                        !$(e.target).hasClass("sheet-mousedown-cancel") &&
                         $(e.target).filter("[class*='sp-palette']").length == 0 &&
                         $(e.target).filter("[class*='sp-thumb']").length == 0 &&
                         $(e.target).filter("[class*='sp-']").length == 0
                     ) {
-                        $("#luckysheet-rightclick-menu").hide();
-                        $("#luckysheet-cols-h-hover").hide();
-                        $("#luckysheet-cols-menu-btn").hide();
-                        $("#luckysheet-rightclick-menu").hide();
+                        $("#sheet-rightclick-menu").hide();
+                        $("#sheet-cols-h-hover").hide();
+                        $("#sheet-cols-menu-btn").hide();
+                        $("#sheet-rightclick-menu").hide();
                         $(
-                            "#sheet-list, #luckysheet-rightclick-sheet-menu, #luckysheet-user-menu"
+                            "#sheet-list, #sheet-rightclick-sheet-menu, #sheet-user-menu"
                         ).hide();
                         $(
-                            "body > .luckysheet-filter-menu, body > .luckysheet-filter-submenu, body > .luckysheet-cols-menu"
+                            "body > .sheet-filter-menu, body > .sheet-filter-submenu, body > .sheet-cols-menu"
                         ).hide();
 
                     }
@@ -228,14 +228,14 @@ function renderCharts(chartLists, isDemo) {
 
                 }
 
-            }).find(".luckysheet-modal-dialog-resize-item")
+            }).find(".sheet-modal-dialog-resize-item")
             .mousedown(function (e) {
                 if (chartInfo.chartparam.luckysheetCurrentChartActive) {
                     chartInfo.chartparam.luckysheetCurrentChartResize = $(this).data("type"); //开始状态resize
 
                     var mouse = mouseposition(e.pageX, e.pageY),
-                        scrollLeft = $("#luckysheet-scrollbar-x").scrollLeft(),
-                        scrollTop = $("#luckysheet-scrollbar-y").scrollTop();
+                        scrollLeft = $("#sheet-scrollbar-x").scrollLeft(),
+                        scrollTop = $("#sheet-scrollbar-y").scrollTop();
                     var x = mouse[0] + scrollLeft;
                     var y = mouse[1] + scrollTop;
                     var position = chartInfo.chartparam.luckysheetCurrentChartResizeObj.position();
@@ -251,10 +251,10 @@ function renderCharts(chartLists, isDemo) {
                         scrollTop
                     ];
                     chartInfo.chartparam.luckysheetCurrentChartResizeWinH = $(
-                        "#luckysheet-cell-main"
+                        "#sheet-cell-main"
                     )[0].scrollHeight;
                     chartInfo.chartparam.luckysheetCurrentChartResizeWinW = $(
-                        "#luckysheet-cell-main"
+                        "#sheet-cell-main"
                     )[0].scrollWidth;
 
                     chartInfo.chartparam.luckysheetCurrentChart = chart_id;
@@ -335,13 +335,13 @@ function chart_selection() {
                 return
             }
 
-            $('#luckysheet-chart-rangeShow').empty()
+            $('#sheet-chart-rangeShow').empty()
             $('#sheet-cell-selected-boxs').hide()
             $('#sheet-cell-selected-focus').hide()
-            $('#luckysheet-rows-h-selected').empty()
-            $('#luckysheet-cols-h-selected').empty()
-            $('#luckysheet-row-count-show').hide()
-            $('#luckysheet-column-count-show').hide()
+            $('#sheet-rows-h-selected').empty()
+            $('#sheet-cols-h-selected').empty()
+            $('#sheet-row-count-show').hide()
+            $('#sheet-column-count-show').hide()
 
             var st_r = chart_json.rangeArray[0].row[0]
             var st_c = chart_json.rangeArray[0].column[0]
@@ -387,7 +387,7 @@ function chart_selection() {
                 rangeSplitArray.content.column[1] + st_c
             )
 
-            $('#luckysheet-chart-rangeShow').append(
+            $('#sheet-chart-rangeShow').append(
                 chart_rowtitle_html + chart_coltitle_html + chart_content_html
             )
 
@@ -413,7 +413,7 @@ function chart_selection() {
                 }
 
                 var html =
-                    '<div id="luckysheet-chart-rangeShow-' +
+                    '<div id="sheet-chart-rangeShow-' +
                     type +
                     '" style="left: ' +
                     col_pre +
@@ -424,31 +424,31 @@ function chart_selection() {
                     'px;height: ' +
                     (row - row_pre - 1) +
                     'px;border: none;margin: 0;position: absolute;z-index: 14;">' +
-                    '<div class="luckysheet-chart-rangeShow-move" data-type="top" style="height: 2px;border-top: 2px solid #fff;border-bottom: 2px solid #fff;background: ' +
+                    '<div class="sheet-chart-rangeShow-move" data-type="top" style="height: 2px;border-top: 2px solid #fff;border-bottom: 2px solid #fff;background: ' +
                     color +
                     ';position: absolute;left: 0;right: 0;top: -2px;z-index: 18;opacity: 0.9;cursor: move;"></div>' +
-                    '<div class="luckysheet-chart-rangeShow-move" data-type="right" style="width: 2px;border-left: 2px solid #fff;border-right: 2px solid #fff;background: ' +
+                    '<div class="sheet-chart-rangeShow-move" data-type="right" style="width: 2px;border-left: 2px solid #fff;border-right: 2px solid #fff;background: ' +
                     color +
                     ';position: absolute;top: 0;bottom: 0;right: -2px;z-index: 18;opacity: 0.9;cursor: move;"></div>' +
-                    '<div class="luckysheet-chart-rangeShow-move" data-type="bottom" style="height: 2px;border-top: 2px solid #fff;border-bottom: 2px solid #fff;background: ' +
+                    '<div class="sheet-chart-rangeShow-move" data-type="bottom" style="height: 2px;border-top: 2px solid #fff;border-bottom: 2px solid #fff;background: ' +
                     color +
                     ';position: absolute;left: 0;right: 0;bottom: -2px;z-index: 18;opacity: 0.9;cursor: move;"></div>' +
-                    '<div class="luckysheet-chart-rangeShow-move" data-type="left" style="width: 2px;border-left: 2px solid #fff;border-right: 2px solid #fff;background: ' +
+                    '<div class="sheet-chart-rangeShow-move" data-type="left" style="width: 2px;border-left: 2px solid #fff;border-right: 2px solid #fff;background: ' +
                     color +
                     ';position: absolute;top: 0;bottom: 0;left: -2px;z-index: 18;opacity: 0.9;cursor: move;"></div>' +
                     '<div style="border: 2px solid #85c0fc;background: ' +
                     color +
                     ';position: absolute;top: 0;right: 0;bottom: 0;left: 0;z-index: 15;opacity: 0.1;"></div>' +
-                    '<div class="luckysheet-chart-rangeShow-resize" data-type="lt" style="width: 6px;height: 6px;border: 1px solid #fff;background: ' +
+                    '<div class="sheet-chart-rangeShow-resize" data-type="lt" style="width: 6px;height: 6px;border: 1px solid #fff;background: ' +
                     color +
                     ';position: absolute;left: -3px;top: -3px;z-index: 19;cursor: se-resize;"></div>' +
-                    '<div class="luckysheet-chart-rangeShow-resize" data-type="rt" style="width: 6px;height: 6px;border: 1px solid #fff;background: ' +
+                    '<div class="sheet-chart-rangeShow-resize" data-type="rt" style="width: 6px;height: 6px;border: 1px solid #fff;background: ' +
                     color +
                     ';position: absolute;right: -3px;top: -3px;z-index: 19;cursor: ne-resize;"></div>' +
-                    '<div class="luckysheet-chart-rangeShow-resize" data-type="lb" style="width: 6px;height: 6px;border: 1px solid #fff;background: ' +
+                    '<div class="sheet-chart-rangeShow-resize" data-type="lb" style="width: 6px;height: 6px;border: 1px solid #fff;background: ' +
                     color +
                     ';position: absolute;left: -3px;bottom: -3px;z-index: 19;cursor: ne-resize;"></div>' +
-                    '<div class="luckysheet-chart-rangeShow-resize" data-type="rb" style="width: 6px;height: 6px;border: 1px solid #fff;background: ' +
+                    '<div class="sheet-chart-rangeShow-resize" data-type="rb" style="width: 6px;height: 6px;border: 1px solid #fff;background: ' +
                     color +
                     ';position: absolute;right: -3px;bottom: -3px;z-index: 19;cursor: se-resize;"></div>' +
                     '</div>'
@@ -469,8 +469,8 @@ function chart_selection() {
             var rangeSplitArray = chart_json.rangeSplitArray
 
             var mouse = mouseposition(event.pageX, event.pageY)
-            var scrollLeft = $('#luckysheet-cell-main').scrollLeft()
-            var scrollTop = $('#luckysheet-cell-main').scrollTop()
+            var scrollLeft = $('#sheet-cell-main').scrollLeft()
+            var scrollTop = $('#sheet-cell-main').scrollTop()
 
             var x = mouse[0] + scrollLeft
             var y = mouse[1] + scrollTop
@@ -489,7 +489,7 @@ function chart_selection() {
 
             var _id = chartInfo.chart_selection.rangeMoveObj.attr('id')
 
-            if (_id == 'luckysheet-chart-rangeShow-content') {
+            if (_id == 'sheet-chart-rangeShow-content') {
                 //行
                 var row_s =
                     chartInfo.chart_selection.rangeMoveIndex[0] -
@@ -600,7 +600,7 @@ function chart_selection() {
                         column: [col_s, col_e]
                     }
                 }
-            } else if (_id == 'luckysheet-chart-rangeShow-rowtitle') {
+            } else if (_id == 'sheet-chart-rangeShow-rowtitle') {
                 //列
                 var col_s =
                     chartInfo.chart_selection.rangeMoveIndex[1] -
@@ -658,7 +658,7 @@ function chart_selection() {
                         column: [col_s, col_e]
                     }
                 }
-            } else if (_id == 'luckysheet-chart-rangeShow-coltitle') {
+            } else if (_id == 'sheet-chart-rangeShow-coltitle') {
                 //行
                 var row_s =
                     chartInfo.chart_selection.rangeMoveIndex[0] -
@@ -750,8 +750,8 @@ function chart_selection() {
             var rangeSplitArray = chart_json.rangeSplitArray
 
             var mouse = mouseposition(event.pageX, event.pageY)
-            var scrollLeft = $('#luckysheet-cell-main').scrollLeft()
-            var scrollTop = $('#luckysheet-cell-main').scrollTop()
+            var scrollLeft = $('#sheet-cell-main').scrollLeft()
+            var scrollTop = $('#sheet-cell-main').scrollTop()
 
             var x = mouse[0] + scrollLeft
             var y = mouse[1] + scrollTop
@@ -770,7 +770,7 @@ function chart_selection() {
 
             var _id = chartInfo.chart_selection.rangeResizeObj.attr('id')
 
-            if (_id == 'luckysheet-chart-rangeShow-content') {
+            if (_id == 'sheet-chart-rangeShow-content') {
                 var r1, r2, c1, c2
 
                 if (chartInfo.chart_selection.rangeResize == 'lt') {
@@ -891,7 +891,7 @@ function chart_selection() {
                         }
                     }
                 }
-            } else if (_id == 'luckysheet-chart-rangeShow-rowtitle') {
+            } else if (_id == 'sheet-chart-rangeShow-rowtitle') {
                 var c1, c2
 
                 if (
@@ -964,7 +964,7 @@ function chart_selection() {
                         column: [obj_c1 - st_c, obj_c2 - st_c]
                     }
                 }
-            } else if (_id == 'luckysheet-chart-rangeShow-coltitle') {
+            } else if (_id == 'sheet-chart-rangeShow-coltitle') {
                 var r1, r2
 
                 if (
@@ -1166,20 +1166,20 @@ function createLuckyChart(width, height, left, top) {
     let chart_id_c = chart_id + '_c'
 
     let modelChartShowHTML =
-        '<div id="${id}"class="luckysheet-modal-dialog luckysheet-modal-dialog-chart ${addclass}"tabindex="0"role="dialog"aria-labelledby=":41e"dir="ltr"><div class="luckysheet-modal-dialog-resize"><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-lt"data-type="lt"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-mt"data-type="mt"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-lm"data-type="lm"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-rm"data-type="rm"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-rt"data-type="rt"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-lb"data-type="lb"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-mb"data-type="mb"></div><div class="luckysheet-modal-dialog-resize-item luckysheet-modal-dialog-resize-item-rb"data-type="rb"></div></div><div class="luckysheet-modal-dialog-controll"><span class="luckysheet-modal-controll-btn luckysheet-modal-controll-update"role="button"tabindex="0"aria-label="修改图表"title="修改图表"><i class="fa fa-pencil"aria-hidden="true"></i></span><span class="luckysheet-modal-controll-btn luckysheet-modal-controll-max"role="butluckysheet_chartIns_indexton"tabindex="0"aria-label="最大化"title="最大化"><i class="fa fa-window-maximize"aria-hidden="true"></i></span><span class="luckysheet-modal-controll-btn luckysheet-modal-controll-del"role="button"tabindex="0"aria-label="删除"title="删除"><i class="fa fa-trash"aria-hidden="true"></i></span></div><div class="luckysheet-modal-dialog-content">${content}</div></div>'
+        '<div id="${id}"class="sheet-modal-dialog sheet-modal-dialog-chart ${addclass}"tabindex="0"role="dialog"aria-labelledby=":41e"dir="ltr"><div class="sheet-modal-dialog-resize"><div class="sheet-modal-dialog-resize-item sheet-modal-dialog-resize-item-lt"data-type="lt"></div><div class="sheet-modal-dialog-resize-item sheet-modal-dialog-resize-item-mt"data-type="mt"></div><div class="sheet-modal-dialog-resize-item sheet-modal-dialog-resize-item-lm"data-type="lm"></div><div class="sheet-modal-dialog-resize-item sheet-modal-dialog-resize-item-rm"data-type="rm"></div><div class="sheet-modal-dialog-resize-item sheet-modal-dialog-resize-item-rt"data-type="rt"></div><div class="sheet-modal-dialog-resize-item sheet-modal-dialog-resize-item-lb"data-type="lb"></div><div class="sheet-modal-dialog-resize-item sheet-modal-dialog-resize-item-mb"data-type="mb"></div><div class="sheet-modal-dialog-resize-item sheet-modal-dialog-resize-item-rb"data-type="rb"></div></div><div class="sheet-modal-dialog-controll"><span class="sheet-modal-controll-btn sheet-modal-controll-update"role="button"tabindex="0"aria-label="修改图表"title="修改图表"><i class="fa fa-pencil"aria-hidden="true"></i></span><span class="sheet-modal-controll-btn sheet-modal-controll-max"role="butluckysheet_chartIns_indexton"tabindex="0"aria-label="最大化"title="最大化"><i class="fa fa-window-maximize"aria-hidden="true"></i></span><span class="sheet-modal-controll-btn sheet-modal-controll-del"role="button"tabindex="0"aria-label="删除"title="删除"><i class="fa fa-trash"aria-hidden="true"></i></span></div><div class="sheet-modal-dialog-content">${content}</div></div>'
 
     let _t = $(
         replaceHtml(modelChartShowHTML, {
             id: chart_id_c,
-            addclass: 'luckysheet-data-visualization-chart',
+            addclass: 'sheet-data-visualization-chart',
             title: '图表生成',
             content: ''
         })
-    ).appendTo($('.luckysheet-cell-main'))
+    ).appendTo($('.sheet-cell-main'))
 
     let container = document.getElementById(chart_id_c)
 
-    let { render, chart_json } = chartInfo.createChart($(`#${chart_id_c}`).children('.luckysheet-modal-dialog-content')[0], chartData, chart_id, rangeArray, rangeTxt)
+    let { render, chart_json } = chartInfo.createChart($(`#${chart_id_c}`).children('.sheet-modal-dialog-content')[0], chartData, chart_id, rangeArray, rangeTxt)
     // chartInfo.currentChart = chart_json.chartOptions
     console.dir(JSON.stringify(chart_json))
 
@@ -1217,18 +1217,18 @@ function createLuckyChart(width, height, left, top) {
     showNeedRangeShow(chart_id);
 
     // delete current chart
-    $(`#${chart_id}_c .luckysheet-modal-controll-del`).click(function (e) {
+    $(`#${chart_id}_c .sheet-modal-controll-del`).click(function (e) {
         delChart(chart_id)
     })
 
     setChartMoveableEffect(_t);
 
     // edit current chart
-    $(`#${chart_id}_c .luckysheet-modal-controll-update`).click(function (e) {
+    $(`#${chart_id}_c .sheet-modal-controll-update`).click(function (e) {
         showChartSettingComponent()
     })
 
-    _t.children('.luckysheet-modal-dialog-content').mousedown(function (e) {
+    _t.children('.sheet-modal-dialog-content').mousedown(function (e) {
         if (!chartInfo.chartparam.luckysheetCurrentChartMaxState) {
             //当前图表显示区域高亮
             showNeedRangeShow(chart_id);
@@ -1244,8 +1244,8 @@ function createLuckyChart(width, height, left, top) {
 
             //允许拖动渲染框
             if (
-                !$(e.target).is(".luckysheet-modal-dialog-controll") &&
-                !$(e.target).is(".luckysheet-modal-controll-btn") &&
+                !$(e.target).is(".sheet-modal-dialog-controll") &&
+                !$(e.target).is(".sheet-modal-controll-btn") &&
                 !$(e.target).is("i")
             ) {
                 // Debounce
@@ -1265,31 +1265,31 @@ function createLuckyChart(width, height, left, top) {
                 e.pageY - toffset.top,
                 tpsition.left,
                 tpsition.top,
-                $("#luckysheet-scrollbar-x").scrollLeft(),
-                $("#luckysheet-scrollbar-y").scrollTop()
+                $("#sheet-scrollbar-x").scrollLeft(),
+                $("#sheet-scrollbar-y").scrollTop()
             ];
             chartInfo.chartparam.luckysheetCurrentChartMoveWinH = $(
-                "#luckysheet-cell-main"
+                "#sheet-cell-main"
             )[0].scrollHeight;
             chartInfo.chartparam.luckysheetCurrentChartMoveWinW = $(
-                "#luckysheet-cell-main"
+                "#sheet-cell-main"
             )[0].scrollWidth;
 
             if (
-                !$(e.target).hasClass("luckysheet-mousedown-cancel") &&
+                !$(e.target).hasClass("sheet-mousedown-cancel") &&
                 $(e.target).filter("[class*='sp-palette']").length == 0 &&
                 $(e.target).filter("[class*='sp-thumb']").length == 0 &&
                 $(e.target).filter("[class*='sp-']").length == 0
             ) {
-                $("#luckysheet-rightclick-menu").hide();
-                $("#luckysheet-cols-h-hover").hide();
-                $("#luckysheet-cols-menu-btn").hide();
-                $("#luckysheet-rightclick-menu").hide();
+                $("#sheet-rightclick-menu").hide();
+                $("#sheet-cols-h-hover").hide();
+                $("#sheet-cols-menu-btn").hide();
+                $("#sheet-rightclick-menu").hide();
                 $(
-                    "#sheet-list, #luckysheet-rightclick-sheet-menu, #luckysheet-user-menu"
+                    "#sheet-list, #sheet-rightclick-sheet-menu, #sheet-user-menu"
                 ).hide();
                 $(
-                    "body > .luckysheet-filter-menu, body > .luckysheet-filter-submenu, body > .luckysheet-cols-menu"
+                    "body > .sheet-filter-menu, body > .sheet-filter-submenu, body > .sheet-cols-menu"
                 ).hide();
 
             }
@@ -1298,14 +1298,14 @@ function createLuckyChart(width, height, left, top) {
 
         }
 
-    }).find(".luckysheet-modal-dialog-resize-item")
+    }).find(".sheet-modal-dialog-resize-item")
         .mousedown(function (e) {
             if (chartInfo.chartparam.luckysheetCurrentChartActive) {
                 chartInfo.chartparam.luckysheetCurrentChartResize = $(this).data("type"); //开始状态resize
 
                 var mouse = mouseposition(e.pageX, e.pageY),
-                    scrollLeft = $("#luckysheet-scrollbar-x").scrollLeft(),
-                    scrollTop = $("#luckysheet-scrollbar-y").scrollTop();
+                    scrollLeft = $("#sheet-scrollbar-x").scrollLeft(),
+                    scrollTop = $("#sheet-scrollbar-y").scrollTop();
                 var x = mouse[0] + scrollLeft;
                 var y = mouse[1] + scrollTop;
                 var position = chartInfo.chartparam.luckysheetCurrentChartResizeObj.position();
@@ -1321,10 +1321,10 @@ function createLuckyChart(width, height, left, top) {
                     scrollTop
                 ];
                 chartInfo.chartparam.luckysheetCurrentChartResizeWinH = $(
-                    "#luckysheet-cell-main"
+                    "#sheet-cell-main"
                 )[0].scrollHeight;
                 chartInfo.chartparam.luckysheetCurrentChartResizeWinW = $(
-                    "#luckysheet-cell-main"
+                    "#sheet-cell-main"
                 )[0].scrollWidth;
 
                 chartInfo.chartparam.luckysheetCurrentChart = chart_id;
@@ -1340,7 +1340,7 @@ function createLuckyChart(width, height, left, top) {
  * @param {JQuery} _container 图表的容器DIV
  */
 function setChartMoveableEffect(_container) {
-  _container.find('.luckysheet-modal-dialog-content').hover(function () {
+  _container.find('.sheet-modal-dialog-content').hover(function () {
     _container.removeClass("chart-moveable");
   }, function () {
     _container.addClass("chart-moveable");
@@ -1356,7 +1356,7 @@ function setChartMoveableEffect(_container) {
 // delete chart
 function delChart(chart_id) {
     // delete container
-    $(`.luckysheet-cell-main #${chart_id}_c`).remove()
+    $(`.sheet-cell-main #${chart_id}_c`).remove()
 
     // Hide selected range
     hideAllNeedRangeShow()
@@ -1419,16 +1419,16 @@ function selectRangeBorderShow(chart_id) {
     chartInfo.chartparam.luckysheetCurrentChart = chart_id
 
     //luckysheet取cell-main，后续扩展到其他的用户自定义元素
-    $('#luckysheet-cell-main')
-        .find('.luckysheet-modal-dialog-chart .luckysheet-modal-dialog-resize')
+    $('#sheet-cell-main')
+        .find('.sheet-modal-dialog-chart .sheet-modal-dialog-resize')
         .hide()
-    $('#luckysheet-cell-main')
-        .find('.luckysheet-modal-dialog-chart .luckysheet-modal-dialog-controll')
+    $('#sheet-cell-main')
+        .find('.sheet-modal-dialog-chart .sheet-modal-dialog-controll')
         .hide()
 
     _t.css('z-index', chartInfo.chartparam.luckysheetCurrentChartZIndexRank++)
-    _t.find('.luckysheet-modal-dialog-resize').show()
-    _t.find('.luckysheet-modal-dialog-controll').show()
+    _t.find('.sheet-modal-dialog-resize').show()
+    _t.find('.sheet-modal-dialog-controll').show()
 
     if (
         ($('.chartSetting').is(':visible') || chartInfo.chartparam.luckysheet_chart_redo_click) &&
@@ -1436,7 +1436,7 @@ function selectRangeBorderShow(chart_id) {
     ) {
         // TODO: 第一次创建图表时候需要初始化数据选择框 qkSelection
         // generator.ini(chartMixConfig)
-        $('body .luckysheet-cols-menu').hide()
+        $('body .sheet-cols-menu').hide()
     }
 
     // 切换到当前图表设置项
@@ -1446,11 +1446,11 @@ function selectRangeBorderShow(chart_id) {
 //选择区域高亮隐藏
 function selectRangeBorderHide(settingShow) {
 
-    $('#luckysheet-cell-main .luckysheet-modal-dialog-chart .luckysheet-modal-dialog-resize, #luckysheet-cell-main .luckysheet-modal-dialog-chart .luckysheet-modal-dialog-controll').hide()
-    $('#luckysheet-cell-main').find('.luckysheet-datavisual-selection-set div').remove()
+    $('#sheet-cell-main .sheet-modal-dialog-chart .sheet-modal-dialog-resize, #sheet-cell-main .sheet-modal-dialog-chart .sheet-modal-dialog-controll').hide()
+    $('#sheet-cell-main').find('.sheet-datavisual-selection-set div').remove()
     chartInfo.chartparam.luckysheetCurrentChartActive = false
 
-    $('#luckysheet-chart-rangeShow').empty()
+    $('#sheet-chart-rangeShow').empty()
 
     //标识：是否处理设置界面
     if (!settingShow && $('.chartSetting').is(':visible') && !isEditMode()) {
@@ -1465,7 +1465,7 @@ function showChartSettingComponent(refresh, chart_id) {
         //隐藏设置界面
         $('.chartSetting').show();
 
-        $('#luckysheet-cell-main').find('.luckysheet-datavisual-selection-set div').show()
+        $('#sheet-cell-main').find('.sheet-datavisual-selection-set div').show()
         chartInfo.chartparam.luckysheetCurrentChartActive = true
         setTimeout(function () {
             luckysheetsizeauto()
@@ -1479,10 +1479,10 @@ function hideChartSettingComponent(refresh) {
 
         //隐藏设置界面
         $('.chartSetting').hide();
-        //.luckysheet-modal-dialog-resize为图表显示框的缩放框，.luckysheet-modal-dialog-controll为显示框右边的控制按钮
-        $('#luckysheet-cell-main .luckysheet-modal-dialog-chart .luckysheet-modal-dialog-resize, #luckysheet-cell-main .luckysheet-modal-dialog-chart .luckysheet-modal-dialog-controll').hide()
+        //.sheet-modal-dialog-resize为图表显示框的缩放框，.sheet-modal-dialog-controll为显示框右边的控制按钮
+        $('#sheet-cell-main .sheet-modal-dialog-chart .sheet-modal-dialog-resize, #sheet-cell-main .sheet-modal-dialog-chart .sheet-modal-dialog-controll').hide()
 
-        $('#luckysheet-cell-main').find('.luckysheet-datavisual-selection-set div').remove()
+        $('#sheet-cell-main').find('.sheet-datavisual-selection-set div').remove()
 
         chartInfo.chartparam.luckysheetCurrentChartActive = false
         if (!isEditMode() && !refresh) {

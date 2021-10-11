@@ -17,8 +17,8 @@ export function initialMatrixOperation(){
 
     //右键功能键
     //复制为json格式字符串，首行为标题
-    $("#luckysheet-copy-json-head").click(function (event) {
-        $("body .luckysheet-cols-menu").hide();
+    $("#sheet-copy-json-head").click(function (event) {
+        $("body .sheet-cols-menu").hide();
         luckysheetContainerFocus();
 
         if(Store.luckysheet_select_save.length > 1){
@@ -90,8 +90,8 @@ export function initialMatrixOperation(){
     });
 
     //复制为json格式字符串，无标题，采用ABCD作为标题
-    $("#luckysheet-copy-json-nohead").click(function (event) {
-        $("body .luckysheet-cols-menu").hide();
+    $("#sheet-copy-json-nohead").click(function (event) {
+        $("body .sheet-cols-menu").hide();
         luckysheetContainerFocus();
 
 
@@ -151,8 +151,8 @@ export function initialMatrixOperation(){
     });
 
     //复制为一维数组
-    $("#luckysheet-copy-array1").click(function (event) {
-        $("body .luckysheet-cols-menu").hide();
+    $("#sheet-copy-array1").click(function (event) {
+        $("body .sheet-cols-menu").hide();
         luckysheetContainerFocus();
 
         if(Store.luckysheet_select_save.length > 1){
@@ -208,8 +208,8 @@ export function initialMatrixOperation(){
     });
 
     //复制为二维数组
-    $("#luckysheet-copy-array2").click(function (event) {
-        $("body .luckysheet-cols-menu").hide();
+    $("#sheet-copy-array2").click(function (event) {
+        $("body .sheet-cols-menu").hide();
         luckysheetContainerFocus();
 
 
@@ -268,14 +268,14 @@ export function initialMatrixOperation(){
     });
 
     //复制为多维数组
-    $("#luckysheet-copy-arraymore-confirm").click(function (event) {
+    $("#sheet-copy-arraymore-confirm").click(function (event) {
 
         // Click input element, don't comfirm 
         if(event.target.nodeName === 'INPUT'){
             return;
         }
 
-        $("body .luckysheet-cols-menu").hide();
+        $("body .sheet-cols-menu").hide();
 
         if(Store.luckysheet_select_save.length > 1){
             if(isEditMode()){
@@ -327,11 +327,11 @@ export function initialMatrixOperation(){
             }
         }
 
-        let row = $("#luckysheet-copy-arraymore-row").val(), col = $("#luckysheet-copy-arraymore-col").val();
+        let row = $("#sheet-copy-arraymore-row").val(), col = $("#sheet-copy-arraymore-col").val();
 
         if (row == "" && col == "") {
             selection.copybyformat(event, JSON.stringify(arr));
-            $("body .luckysheet-cols-menu").hide();
+            $("body .sheet-cols-menu").hide();
             return;
         }
 
@@ -382,7 +382,7 @@ export function initialMatrixOperation(){
                 a.push(arr[i++]);
                 if (i >= arrlen) {
                     selection.copybyformat(event, JSON.stringify(ret));
-                    $("body .luckysheet-cols-menu").hide();
+                    $("body .sheet-cols-menu").hide();
                     return;
                 }
             }
@@ -393,8 +393,8 @@ export function initialMatrixOperation(){
     });
 
     //复制为对角线
-    $("#luckysheet-copy-diagonal").click(function (event) {
-        $("body .luckysheet-cols-menu").hide();
+    $("#sheet-copy-diagonal").click(function (event) {
+        $("body .sheet-cols-menu").hide();
         luckysheetContainerFocus();
 
         if(Store.luckysheet_select_save.length > 1){
@@ -453,8 +453,8 @@ export function initialMatrixOperation(){
     });
 
     //复制为反对角线
-    $("#luckysheet-copy-antidiagonal").click(function (event) {
-        $("body .luckysheet-cols-menu").hide();
+    $("#sheet-copy-antidiagonal").click(function (event) {
+        $("body .sheet-cols-menu").hide();
         luckysheetContainerFocus();
 
 
@@ -514,14 +514,14 @@ export function initialMatrixOperation(){
     });
 
     //复制为对角偏移n列
-    $("#luckysheet-copy-diagonaloffset").click(function (event) {
+    $("#sheet-copy-diagonaloffset").click(function (event) {
 
         // Click input element, don't comfirm 
         if(event.target.nodeName === 'INPUT'){
             return;
         }
         
-        $("body .luckysheet-cols-menu").hide();
+        $("body .sheet-cols-menu").hide();
         luckysheetContainerFocus();
 
         if(Store.luckysheet_select_save.length > 1){
@@ -569,7 +569,7 @@ export function initialMatrixOperation(){
         }
 
         let clen = getdata[0].length, 
-            offset = parseInt($("#luckysheet-copy-diagonaloffset-value").val());
+            offset = parseInt($("#sheet-copy-diagonaloffset-value").val());
 
         if(offset.toString() == "NaN"){
             if(isEditMode()){
@@ -606,8 +606,8 @@ export function initialMatrixOperation(){
     });
 
     //复制为布尔值
-    $("#luckysheet-copy-boolvalue").click(function (event) {
-        $("body .luckysheet-cols-menu").hide();
+    $("#sheet-copy-boolvalue").click(function (event) {
+        $("body .sheet-cols-menu").hide();
         luckysheetContainerFocus();
 
 
@@ -688,8 +688,8 @@ export function initialMatrixOperation(){
     });
 
     //矩阵操作选区 翻转 上下
-    $("#luckysheet-matrix-turn-up").click(function (event) {
-        $("body .luckysheet-cols-menu").hide();
+    $("#sheet-matrix-turn-up").click(function (event) {
+        $("body .sheet-cols-menu").hide();
         luckysheetContainerFocus();
 
         if(Store.luckysheet_select_save.length > 1){
@@ -724,8 +724,8 @@ export function initialMatrixOperation(){
     });
 
     //矩阵操作选区 翻转 左右
-    $("#luckysheet-matrix-turn-left").click(function (event) {
-        $("body .luckysheet-cols-menu").hide();
+    $("#sheet-matrix-turn-left").click(function (event) {
+        $("body .sheet-cols-menu").hide();
         luckysheetContainerFocus();
 
         if(Store.luckysheet_select_save.length > 1){
@@ -760,8 +760,8 @@ export function initialMatrixOperation(){
     });
 
     //矩阵操作选区 翻转 顺时针
-    $("#luckysheet-matrix-turn-cw").click(function (event) {
-        $("body .luckysheet-cols-menu").hide();
+    $("#sheet-matrix-turn-cw").click(function (event) {
+        $("body .sheet-cols-menu").hide();
         luckysheetContainerFocus();
 
         if(Store.luckysheet_select_save.length > 1){
@@ -796,8 +796,8 @@ export function initialMatrixOperation(){
     });
 
     //矩阵操作选区 翻转 逆时针
-    $("#luckysheet-matrix-turn-anticw").click(function (event) {
-        $("body .luckysheet-cols-menu").hide();
+    $("#sheet-matrix-turn-anticw").click(function (event) {
+        $("body .sheet-cols-menu").hide();
         luckysheetContainerFocus();
 
         if(Store.luckysheet_select_save.length > 1){
@@ -832,8 +832,8 @@ export function initialMatrixOperation(){
     });
 
     //矩阵操作选区 转置
-    $("#luckysheet-matrix-turn-trans").click(function (event) {
-        $("body .luckysheet-cols-menu").hide();
+    $("#sheet-matrix-turn-trans").click(function (event) {
+        $("body .sheet-cols-menu").hide();
         luckysheetContainerFocus();
 
         if(Store.luckysheet_select_save.length > 1){
@@ -881,14 +881,14 @@ export function initialMatrixOperation(){
     }
 
     //矩阵操作选区 矩阵计算
-    $("#luckysheet-matrix-cal-confirm").click(function (event) {
+    $("#sheet-matrix-cal-confirm").click(function (event) {
 
         // Click input element, don't comfirm 
         if(event.target.nodeName === 'INPUT' || event.target.nodeName === 'SELECT'){
             return;
         }
 
-        $("body .luckysheet-cols-menu").hide();
+        $("body .sheet-cols-menu").hide();
         luckysheetContainerFocus();
 
         if(Store.luckysheet_select_save.length > 1){
@@ -906,8 +906,8 @@ export function initialMatrixOperation(){
             return;
         }
 
-        let caltype = $("#luckysheet-matrix-cal-type").val(), 
-            calvalue = parseInt($("#luckysheet-matrix-cal-value").val());
+        let caltype = $("#sheet-matrix-cal-type").val(), 
+            calvalue = parseInt($("#sheet-matrix-cal-value").val());
 
         if(calvalue.toString() == "NaN"){
             if(isEditMode()){
@@ -980,8 +980,8 @@ export function initialMatrixOperation(){
     });
 
     //矩阵操作选区 删除两端0值 按行
-    $("#luckysheet-matrix-delezero-row").click(function (event) {
-        $("body .luckysheet-cols-menu").hide();
+    $("#sheet-matrix-delezero-row").click(function (event) {
+        $("body .sheet-cols-menu").hide();
         luckysheetContainerFocus();
 
         if(Store.luckysheet_select_save.length > 1){
@@ -1048,8 +1048,8 @@ export function initialMatrixOperation(){
     });
 
     //矩阵操作选区 删除两端0值 按列
-    $("#luckysheet-matrix-delezero-column").click(function (event) {
-        $("body .luckysheet-cols-menu").hide();
+    $("#sheet-matrix-delezero-column").click(function (event) {
+        $("body .sheet-cols-menu").hide();
         luckysheetContainerFocus();
 
         if(Store.luckysheet_select_save.length > 1){
@@ -1129,8 +1129,8 @@ export function initialMatrixOperation(){
     });
 
     //矩阵操作选区 删除重复值 按行
-    $("#luckysheet-matrix-delerpt-row").click(function (event) {
-        $("body .luckysheet-cols-menu").hide();
+    $("#sheet-matrix-delerpt-row").click(function (event) {
+        $("body .sheet-cols-menu").hide();
         luckysheetContainerFocus();
 
         if(Store.luckysheet_select_save.length > 1){
@@ -1190,8 +1190,8 @@ export function initialMatrixOperation(){
     });
 
     //矩阵操作选区 删除重复值 按列
-    $("#luckysheet-matrix-delerpt-column").click(function (event) {
-        $("body .luckysheet-cols-menu").hide();
+    $("#sheet-matrix-delerpt-column").click(function (event) {
+        $("body .sheet-cols-menu").hide();
         luckysheetContainerFocus();
 
         if(Store.luckysheet_select_save.length > 1){

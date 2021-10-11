@@ -234,7 +234,7 @@ const controlHistory = {
         else if (ctr.type == "datachangeAll_filter_clear") {
             createFilterOptions(ctr.filter_save);
 
-            $("#luckysheet-filter-options-sheet" + Store.currentSheetIndex + " .luckysheet-filter-options").each(function(i){
+            $("#sheet-filter-options-sheet" + Store.currentSheetIndex + " .sheet-filter-options").each(function(i){
                 let top = $(this);
                 let item = ctr.optiongroups[i];
                 labelFilterOptionState(top, item.optionstate, item.rowhidden, item.caljs, false, item.st_r, item.ed_r, item.cindex, item.st_c, item.ed_c);
@@ -255,10 +255,10 @@ const controlHistory = {
             //行高、列宽 刷新  
             jfrefreshgrid_rhcw(Store.flowdata.length, Store.flowdata[0].length);
 
-            $("#luckysheet-filter-menu, #luckysheet-filter-submenu").hide();
+            $("#sheet-filter-menu, #sheet-filter-submenu").hide();
         }
         else if (ctr.type == "datachangeAll_filter") {
-            let top = $("#luckysheet-filter-options-sheet" + Store.currentSheetIndex + " .luckysheet-filter-options").eq(ctr["optionsindex"]);
+            let top = $("#sheet-filter-options-sheet" + Store.currentSheetIndex + " .sheet-filter-options").eq(ctr["optionsindex"]);
             let st_r = top.data("str"), 
                 ed_r = top.data("edr"), 
                 cindex = top.data("cindex"), 
@@ -280,10 +280,10 @@ const controlHistory = {
             //行高、列宽 刷新  
             jfrefreshgrid_rhcw(Store.flowdata.length, Store.flowdata[0].length);
             
-            $("#luckysheet-filter-menu, #luckysheet-filter-submenu").hide();
+            $("#sheet-filter-menu, #sheet-filter-submenu").hide();
         }
         else if (ctr.type == "filtershow") {
-            $('#luckysheet-filter-selected-sheet' + ctr.sheetIndex + ', #luckysheet-filter-options-sheet' + ctr.sheetIndex).remove();
+            $('#sheet-filter-selected-sheet' + ctr.sheetIndex + ', #sheet-filter-options-sheet' + ctr.sheetIndex).remove();
             
             if(server.allowUpdate){
                 server.saveParam("all", ctr.sheetIndex, null, { "k": "filter_select" });
@@ -300,8 +300,8 @@ const controlHistory = {
         else if (ctr.type == "addSheet") {
             sheetmanage.deleteSheet(ctr.index);
             sheetmanage.changeSheetExec(ctr.currentSheetIndex);
-            $("#luckysheet-input-box").removeAttr("style");
-            $("#sheet-list, #luckysheet-rightclick-sheet-menu").hide();
+            $("#sheet-input-box").removeAttr("style");
+            $("#sheet-list, #sheet-rightclick-sheet-menu").hide();
         }
         else if (ctr.type == "copySheet") {
             sheetmanage.deleteSheet(ctr.index);
@@ -318,8 +318,8 @@ const controlHistory = {
 
             if(!isDupName){
                 sheetmanage.createSheetbydata(ctr, "isrenew");
-                $("#luckysheet-input-box").removeAttr("style");
-                $("#sheet-list, #luckysheet-rightclick-sheet-menu").hide();
+                $("#sheet-input-box").removeAttr("style");
+                $("#sheet-list, #sheet-rightclick-sheet-menu").hide();
             }
         }
         else if (ctr.type == "sheetName") {
@@ -583,14 +583,14 @@ const controlHistory = {
             jfrefreshgrid_rhcw(Store.flowdata.length, Store.flowdata[0].length);
             
 
-            $("#luckysheet-filter-menu .luckysheet-filter-selected-input").hide().find("input").val();
-            $("#luckysheet-filter-selected span").data("type", "0").data("type", null).text("无");
+            $("#sheet-filter-menu .sheet-filter-selected-input").hide().find("input").val();
+            $("#sheet-filter-selected span").data("type", "0").data("type", null).text("无");
 
-            $('#luckysheet-filter-selected-sheet' + Store.currentSheetIndex + ', #luckysheet-filter-options-sheet' + Store.currentSheetIndex).remove();
-            $("#luckysheet-filter-menu, #luckysheet-filter-submenu").hide();
+            $('#sheet-filter-selected-sheet' + Store.currentSheetIndex + ', #sheet-filter-options-sheet' + Store.currentSheetIndex).remove();
+            $("#sheet-filter-menu, #sheet-filter-submenu").hide();
         }
         else if (ctr.type == "datachangeAll_filter") {
-            let top = $("#luckysheet-filter-options-sheet" + Store.currentSheetIndex + " .luckysheet-filter-options").eq(ctr["optionsindex"]);
+            let top = $("#sheet-filter-options-sheet" + Store.currentSheetIndex + " .sheet-filter-options").eq(ctr["optionsindex"]);
             let st_r = top.data("str"), 
                 ed_r = top.data("edr"), 
                 cindex = top.data("cindex"), 
@@ -608,7 +608,7 @@ const controlHistory = {
             //行高、列宽 刷新  
             jfrefreshgrid_rhcw(Store.flowdata.length, Store.flowdata[0].length);
 
-            $("#luckysheet-filter-menu, #luckysheet-filter-submenu").hide();
+            $("#sheet-filter-menu, #sheet-filter-submenu").hide();
         }
         else if (ctr.type == "filtershow") {
             Store.luckysheet_select_save = [ctr.filter_save];
@@ -625,8 +625,8 @@ const controlHistory = {
         }
         else if (ctr.type == "addSheet") {
             sheetmanage.createSheetbydata(ctr.sheetconfig);
-            $("#luckysheet-input-box").removeAttr("style");
-            $("#sheet-list, #luckysheet-rightclick-sheet-menu").hide();
+            $("#sheet-input-box").removeAttr("style");
+            $("#sheet-list, #sheet-rightclick-sheet-menu").hide();
         }
         else if (ctr.type == "copySheet") {
             sheetmanage.copySheet(ctr.copyindex);
@@ -641,8 +641,8 @@ const controlHistory = {
                 sheetmanage.changeSheetExec(Store.luckysheetfile[ctr.order - 1].index);
             }
             
-            $("#luckysheet-input-box").removeAttr("style");
-            $("#sheet-list, #luckysheet-rightclick-sheet-menu").hide();
+            $("#sheet-input-box").removeAttr("style");
+            $("#sheet-list, #sheet-rightclick-sheet-menu").hide();
         }
         else if (ctr.type == "sheetName") {
             Store.luckysheetfile[getSheetIndex(ctr.sheetIndex)].name = ctr.txt;

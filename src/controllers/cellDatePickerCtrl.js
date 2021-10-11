@@ -75,7 +75,7 @@ const cellDatePickerCtrl = {
             time_24hr = false;
         }
 
-        const fp = flatpickr('#luckysheet-input-box', {
+        const fp = flatpickr('#sheet-input-box', {
             allowInput: false,
             noCalendar,
             enableSeconds,
@@ -99,7 +99,7 @@ const cellDatePickerCtrl = {
             },
             onChange: function (selectedDates, dateStr) {
                 let currentVal = datenum_local(new Date(selectedDates))
-                $("#luckysheet-rich-text-editor").html(dateStr);
+                $("#sheet-rich-text-editor").html(dateStr);
                 setCellValue(r, c, currentVal, { isRefresh: false })
                 setCellFormat(r, c, 'ct', cell.ct)
                 if (!enableTime) {
@@ -108,7 +108,7 @@ const cellDatePickerCtrl = {
             }
         });
 
-        $("#luckysheet-input-box").click();
+        $("#sheet-input-box").click();
     },
 }
 
