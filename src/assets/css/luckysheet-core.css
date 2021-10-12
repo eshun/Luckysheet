@@ -37,7 +37,7 @@
     outline: none;
 }
 
-.luckysheetLoaderGif {
+.sheetLoaderGif {
     /*换用GIF loading*/
     width: 8em;
     height: 8em;
@@ -126,26 +126,26 @@
     margin: auto;
 }
 
-.sheet_info_detail .luckysheet_info_detail {
+.sheet_info_detail .sheet_info_detail {
     border-radius: 3px;
     background-color: green; 
     display: flex;
     color:#ffffff;
     padding-right: 10px;
 }
-.sheet_info_detail .luckysheet_info_detail span {
+.sheet_info_detail .sheet_info_detail span {
     /* padding: 0px 10px; */
 }
-.sheet_info_detail .luckysheet_info_detail>span:first-child {
+.sheet_info_detail .sheet_info_detail>span:first-child {
     padding: 0px 10px;
 }
 
-.sheet_info_detail .luckysheet_info_detail:hover {
+.sheet_info_detail .sheet_info_detail:hover {
     
 }
 
 
-.sheet_info_detail .luckysheet_info_detail_input {
+.sheet_info_detail .sheet_info_detail_input {
     border: 1px solid transparent;
     border-radius: 3px !important;
     color: #000000;
@@ -158,11 +158,11 @@
     visibility: hidden;
 }
 
-.sheet_info_detail .luckysheet_info_detail_input:hover {
+.sheet_info_detail .sheet_info_detail_input:hover {
     border: 1px solid #e5e5e5;
 }
 
-.sheet_info_detail .luckysheet_info_detail_input:focus {
+.sheet_info_detail .sheet_info_detail_input:focus {
     -webkit-appearance: none;
     -moz-appearance: none;
     border: 1px solid #0188fb !important;
@@ -220,27 +220,27 @@
     overflow: hidden;
 }
 
-.luckysheet_info_detail_update {
+.sheet_info_detail_update {
     color: #cbcbcb;
     font-size: 12px;
     margin-left: 15px;
 }
 
-.luckysheet_info_detail_user {
+.sheet_info_detail_user {
 	/* right: 20px; */
 	font-size: 12px;
 	cursor: pointer;
 	margin-left: 10px;
 	/* position: absolute; */
 }
-#luckysheet_info_detail_user_img {
+#sheet_info_detail_user_img {
     vertical-align: middle;
     height: 20px;
     line-height: 20px;
     border-radius: 50%;
     object-fit: cover;
 }
-.luckysheet_info_detail_save {
+.sheet_info_detail_save {
     color: #828282;
     font-size: 12px;
     margin:0 5px;
@@ -265,7 +265,7 @@
 }
 
 /* 
-.sheet-wa-editor>div.luckysheetfulltoolbar {
+.sheet-wa-editor>div.sheetfulltoolbar {
     display: inline-block;
     height: 34px;
     padding: 0px 5px;
@@ -278,13 +278,13 @@
     vertical-align: middle;
 }
 
-.sheet-wa-editor>div.luckysheetfulltoolbar:hover {
+.sheet-wa-editor>div.sheetfulltoolbar:hover {
     background: #0188fb;
     color: #FAFAFA;
     cursor: pointer;
 }
 
-.sheet-wa-editor>div.luckysheetfulltoolbar:active {
+.sheet-wa-editor>div.sheetfulltoolbar:active {
     background: #FB4747;
     color: #FFFFFF;
     -webkit-box-shadow: inset 0 0 2px #727272;
@@ -2361,15 +2361,15 @@ body:not(.ewa-ipad) .sheet-rows-h-cell-sel:hover {
     position: absolute;
 }
 
-.luckysheetcolumeHeader {
+.sheetcolumeHeader {
     margin-left: -1px;
 }
 
-.luckysheetrowHeader {
+.sheetrowHeader {
     margin-top: 1px;
 }
 
-.luckysheetsheettable {
+.sheetsheettable {
     margin-left: -1px;
     margin-top: -1px;
 }
@@ -4061,7 +4061,7 @@ fieldset[disabled] .btn-danger.focus {
     font-family: 'Times New Roman', Times, serif;
 }
 
-.luckysheetChartAxisShow {
+.sheetChartAxisShow {
     display: none;
 }
 
@@ -4069,11 +4069,11 @@ fieldset[disabled] .btn-danger.focus {
     display: none;
 }
 
-.luckysheetChartseriesShow {
+.sheetChartseriesShow {
     display: none;
 }
 
-#luckysheetswichxy-button,
+#sheetswichxy-button,
 #piecutselect-button {
     width: 70%;
 }
@@ -4089,11 +4089,11 @@ fieldset[disabled] .btn-danger.focus {
     background-image: none;
 }
 
-#luckysheetswichseries-menu .ui-state-active,
+#sheetswichseries-menu .ui-state-active,
 #pie0cutselect-menu .ui-state-active,
 #pie1cutselect-menu .ui-state-active,
 #pie2cutselect-menu .ui-state-active,
-#luckysheetscatterselectshow-menu .ui-state-active {
+#sheetscatterselectshow-menu .ui-state-active {
     border: 1px solid #F5F5F5;
     background: #F5F5F5;
     color: #333;
@@ -4757,11 +4757,11 @@ fieldset[disabled] .btn-danger.focus {
 .sheet-freezebar-vertical-handle {
     width: 4px;
     display: none;
-    /*background: url(//ssl.gstatic.com/docs/spreadsheets/ritz_luckysheet-freezebar_vertical.png) no-repeat;*/
+    /*background: url(//ssl.gstatic.com/docs/spreadsheets/ritz_sheet-freezebar_vertical.png) no-repeat;*/
 }
 
 .sheet-freezebar-vertical-drop {
-    /*background: url(//ssl.gstatic.com/docs/spreadsheets/jfk_luckysheet-freezebar_active_vertical.png) no-repeat;*/
+    /*background: url(//ssl.gstatic.com/docs/spreadsheets/jfk_sheet-freezebar_active_vertical.png) no-repeat;*/
     width: 4px;
 }
 
@@ -4833,11 +4833,11 @@ fieldset[disabled] .btn-danger.focus {
 .sheet-freezebar-horizontal-handle {
     height: 4px;
     display: none;
-    /*background: url(//ssl.gstatic.com/docs/spreadsheets/ritz_luckysheet-freezebar_horizontal.png) no-repeat;*/
+    /*background: url(//ssl.gstatic.com/docs/spreadsheets/ritz_sheet-freezebar_horizontal.png) no-repeat;*/
 }
 
 .sheet-freezebar-horizontal-drop {
-    /*background: url(//ssl.gstatic.com/docs/spreadsheets/jfk_luckysheet-freezebar_active_horizontal.png) no-repeat;*/
+    /*background: url(//ssl.gstatic.com/docs/spreadsheets/jfk_sheet-freezebar_active_horizontal.png) no-repeat;*/
     height: 4px;
 }
 
@@ -5096,7 +5096,7 @@ fieldset[disabled] .btn-danger.focus {
 }
 
 
-.luckysheetLoader {
+.sheetLoader {
     font-size: 20px;
     width: 1em;
     height: 1em;
@@ -5108,7 +5108,7 @@ fieldset[disabled] .btn-danger.focus {
     animation: load-effect 1s infinite linear;
 }
 
-/*.luckysheetLoaderGif>img{
+/*.sheetLoaderGif>img{
     width:100%;
     height:100%;
 }*/
@@ -5238,7 +5238,7 @@ fieldset[disabled] .btn-danger.focus {
     }
 }
 
-.luckysheetpopover {
+.sheetpopover {
     position: absolute;
     /*    left: 50%; 
     top:20px; */
@@ -5253,9 +5253,9 @@ fieldset[disabled] .btn-danger.focus {
     display: none;
 }
 
-.luckysheetpopover .luckysheetpopover-content {}
+.sheetpopover .sheetpopover-content {}
 
-.luckysheetpopover .luckysheetpopover-btn {
+.sheetpopover .sheetpopover-btn {
     position: absolute;
     right: 10px;
     top: 50%;
@@ -5267,12 +5267,12 @@ fieldset[disabled] .btn-danger.focus {
     font-size: 14px;
 }
 
-.luckysheetpopover .luckysheetpopover-btn:hover {
+.sheetpopover .sheetpopover-btn:hover {
     border: 1px solid #FEA2A2;
     color: #FEA2A2;
 }
 
-.luckysheetPaintCursor {
+.sheetPaintCursor {
     cursor: url(../images/paint_24px.ico), auto;
 }
 

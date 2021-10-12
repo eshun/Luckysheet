@@ -2,25 +2,25 @@ import { isEditMode } from '../global/validate';
 import cleargridelement from '../global/cleargridelement';
 import { getcellvalue, datagridgrowth,getcellFormula } from '../global/getdata';
 import { setcellvalue } from '../global/setdata';
-import luckysheetcreatedom from '../global/createdom';
+import sheetcreatedom from '../global/createdom';
 import tooltip from '../global/tooltip';
 import formula from '../global/formula';
-import { luckysheetrefreshgrid, jfrefreshgrid_rhcw } from '../global/refresh';
+import { sheetrefreshgrid, jfrefreshgrid_rhcw } from '../global/refresh';
 import rhchInit from '../global/rhchInit';
 import editor from '../global/editor';
-import { luckysheetextendtable, luckysheetdeletetable } from '../global/extend';
+import { sheetextendtable, sheetdeletetable } from '../global/extend';
 import { isRealNum } from '../global/validate';
 import { replaceHtml, getObjType, chatatABC, arrayRemoveItem } from '../utils/util';
 import { sheetHTML,sheetlodingHTML } from './constant';
 import server from './server';
 import sheetConfigSetting from './sheetConfigSetting';
 import pivotTable from './pivotTable';
-import luckysheetsizeauto from './resize';
-import luckysheetPostil from './postil';
+import sheetsizeauto from './resize';
+import sheetPostil from './postil';
 import imageCtrl from './imageCtrl';
 import dataVerificationCtrl from './dataVerificationCtrl';
 import hyperlinkCtrl from './hyperlinkCtrl';
-import luckysheetFreezen from './freezen';
+import sheetFreezen from './freezen';
 import { createFilterOptions, labelFilterOptionState } from './filter';
 import { selectHightlightShow, selectionCopyShow } from './select';
 import Store from '../store';
@@ -154,7 +154,7 @@ const sheetmanage = {
 
         let i = _this.getSheetIndex(index);
         
-        return Store.luckysheetfile[i];
+        return Store.sheetfile[i];
     },
     getSheetByName: function(name) {
         let _this = this;
@@ -163,8 +163,8 @@ const sheetmanage = {
             return null;
         }
 
-        for(let i=0;i<Store.luckysheetfile.length;i++){
-            let file = Store.luckysheetfile[i];
+        for(let i=0;i<Store.sheetfile.length;i++){
+            let file = Store.sheetfile[i];
             if(file.name==name){
                 return file;
             }
@@ -175,9 +175,9 @@ const sheetmanage = {
     getCurSheetnoset: function() {
         let curindex = 0;
 
-        for (let i = 0; i < Store.luckysheetfile.length; i++) {
-            if (Store.luckysheetfile[i].status == 1) {
-                curindex = Store.luckysheetfile[i].index;
+        for (let i = 0; i < Store.sheetfile.length; i++) {
+            if (Store.sheetfile[i].status == 1) {
+                curindex = Store.sheetfile[i].index;
                 break;
             }
         }
@@ -185,9 +185,9 @@ const sheetmanage = {
         return curindex;
     },
     getCurSheet: function() {
-        if (Store.luckysheetfile.length) {
+        if (Store.sheetfile.length) {
             let hasActive = false, indexs = []
-            Store.luckysheetfile.forEach(item => {
+            Store.sheetfile.forEach(item => {
                 if ('undefined' === typeof item.index) {
                     item.index = this.generateRandomSheetIndex()
                 }
@@ -209,14 +209,14 @@ const sheetmanage = {
                 }
             })
             if (!hasActive) {
-                Store.luckysheetfile[0].status = 1
+                Store.sheetfile[0].status = 1
             }
         }
-        Store.currentSheetIndex = Store.luckysheetfile[0].index;
+        Store.currentSheetIndex = Store.sheetfile[0].index;
 
-        for (let i = 0; i < Store.luckysheetfile.length; i++) {
-            if (Store.luckysheetfile[i].status == 1) {
-                Store.currentSheetIndex = Store.luckysheetfile[i].index;
+        for (let i = 0; i < Store.sheetfile.length; i++) {
+            if (Store.sheetfile[i].status == 1) {
+                Store.currentSheetIndex = Store.sheetfile[i].index;
                 break;
             }
         }
@@ -231,10 +231,10 @@ const sheetmanage = {
 
         let _this = this;
 
-        let order = Store.luckysheetfile.length;
+        let order = Store.sheetfile.length;
         let index = _this.generateRandomSheetIndex();
 
-        let sheetname = _this.generateRandomSheetName(Store.luckysheetfile, isPivotTable);
+        let sheetname = _this.generateRandomSheetName(Store.sheetfile, isPivotTable);
         
         $("#sheet-container-c").append(replaceHtml(sheetHTML, { "index": index, "active": "", "name": sheetname, "style": "","colorset":"" }));
 
@@ -251,7 +251,7 @@ const sheetmanage = {
             "pivotTable": null, 
             "isPivotTable": !!isPivotTable 
         };
-        Store.luckysheetfile.push(sheetconfig);
+        Store.sheetfile.push(sheetconfig);
 
         $("#sheet-area div.sheets-item").removeClass("sheets-item-active");
         $("#sheets-item" + index).addClass("sheets-item-active");
@@ -275,25 +275,25 @@ const sheetmanage = {
     setSheetHide: function(index) {
         let _this = this;
         let currentIdx = _this.getSheetIndex(index);
-        Store.luckysheetfile[currentIdx].hide = 1;
+        Store.sheetfile[currentIdx].hide = 1;
         
-        let luckysheetcurrentSheetitem = $("#sheets-item" + index);
-        luckysheetcurrentSheetitem.hide();
+        let sheetcurrentSheetitem = $("#sheets-item" + index);
+        sheetcurrentSheetitem.hide();
 
         $("#sheet-area div.sheets-item").removeClass("sheets-item-active");
         
         let indicator;
         if(sheetConfigSetting.showsheetbarConfig.sheet){
-            indicator = luckysheetcurrentSheetitem.nextAll(":visible");
-            if (luckysheetcurrentSheetitem.nextAll(":visible").length > 0) {
+            indicator = sheetcurrentSheetitem.nextAll(":visible");
+            if (sheetcurrentSheetitem.nextAll(":visible").length > 0) {
                 indicator = indicator.eq(0).data("index");
             }
             else {
-                indicator = luckysheetcurrentSheetitem.prevAll(":visible").eq(0).data("index");
+                indicator = sheetcurrentSheetitem.prevAll(":visible").eq(0).data("index");
             }
         }else{
             let  nextActiveIdx , showSheetIdxs = [];
-            Store.luckysheetfile.forEach((ele,index)=>{
+            Store.sheetfile.forEach((ele,index)=>{
                 if(1 !== ele.hide) showSheetIdxs.push(index);
             });
             let len = showSheetIdxs.length;
@@ -303,19 +303,19 @@ const sheetmanage = {
                 nextActiveIdx = showSheetIdxs[len-1] > currentIdx ? showSheetIdxs.find(e => e>currentIdx ) : showSheetIdxs[len-1];
             }
 
-            indicator = Store.luckysheetfile[nextActiveIdx].index;
+            indicator = Store.sheetfile[nextActiveIdx].index;
         }
         
         $("#sheets-item" + indicator).addClass("sheets-item-active");
         
         _this.changeSheetExec(indicator);
 
-        server.saveParam("sh", luckysheetcurrentSheetitem.data("index"), 1, { "op": "hide", "cur": indicator });
+        server.saveParam("sh", sheetcurrentSheetitem.data("index"), 1, { "op": "hide", "cur": indicator });
     },
     setSheetShow: function(index) {
         let _this = this;
 
-        Store.luckysheetfile[_this.getSheetIndex(index)].hide = 0;
+        Store.sheetfile[_this.getSheetIndex(index)].hide = 0;
         _this.changeSheetExec(index);
 
         server.saveParam("sh", index, 0, {"op": "show", "cur": null});
@@ -334,8 +334,8 @@ const sheetmanage = {
         $("#sheet-area div.sheets-item").each(function (a) {
             let index = $(this).data("index");
 
-            for (let i = 0; i < Store.luckysheetfile.length; i++) {
-                if (Store.luckysheetfile[i].index == index) {
+            for (let i = 0; i < Store.sheetfile.length; i++) {
+                if (Store.sheetfile[i].index == index) {
                     orders[index.toString()] = a;
                     break;
                 }
@@ -350,9 +350,9 @@ const sheetmanage = {
         $("#sheet-area div.sheets-item").each(function (a) {
             let index = $(this).data("index");
 
-            for (let i = 0; i < Store.luckysheetfile.length; i++) {
-                if (Store.luckysheetfile[i].index == index) {
-                    Store.luckysheetfile[i].order = a;
+            for (let i = 0; i < Store.sheetfile.length; i++) {
+                if (Store.sheetfile[i].index == index) {
+                    Store.sheetfile[i].order = a;
                     orders[index.toString()] = a;
                     break;
                 }
@@ -361,7 +361,7 @@ const sheetmanage = {
 
         server.saveParam("shr", null, orders);
 
-        Store.luckysheetfile.sort((x, y) => {
+        Store.sheetfile.sort((x, y) => {
             let order_x = x.order;
             let order_y = y.order;
     
@@ -383,30 +383,30 @@ const sheetmanage = {
         let _this = this;
 
         let btn = [];
-        Store.luckysheetfile.sort(_this.ordersheet('order'));
+        Store.sheetfile.sort(_this.ordersheet('order'));
 
-        for (let i = 0; i < Store.luckysheetfile.length; i++) {
+        for (let i = 0; i < Store.sheetfile.length; i++) {
             let display = "";
-            let sheetIndex = Store.luckysheetfile[i].index;
+            let sheetIndex = Store.sheetfile[i].index;
 
             let colorset = '';
-            if(Store.luckysheetfile[i].color != null){
-                colorset = '<div class="sheets-item-color" style=" position: absolute; width: 100%; height: 3px; bottom: 0px; left: 0px; background-color: ' + Store.luckysheetfile[i].color + ';"></div>';
+            if(Store.sheetfile[i].color != null){
+                colorset = '<div class="sheets-item-color" style=" position: absolute; width: 100%; height: 3px; bottom: 0px; left: 0px; background-color: ' + Store.sheetfile[i].color + ';"></div>';
             }
 
-            if (Store.currentSheetIndex == sheetIndex) { //使用Store.luckysheetfile中的index比较，而不是order
-                btn.push(replaceHtml(sheetHTML, { "index": sheetIndex, "active": "sheets-item-active", "name": Store.luckysheetfile[i].name, "style": "","colorset":colorset }));
+            if (Store.currentSheetIndex == sheetIndex) { //使用Store.sheetfile中的index比较，而不是order
+                btn.push(replaceHtml(sheetHTML, { "index": sheetIndex, "active": "sheets-item-active", "name": Store.sheetfile[i].name, "style": "","colorset":colorset }));
             }
             else {
-                if (Store.luckysheetfile[i].hide == 1) {
-                    btn.push(replaceHtml(sheetHTML, { "index": sheetIndex, "active": "", "name": Store.luckysheetfile[i].name, "style": "display:none;","colorset":colorset }));
+                if (Store.sheetfile[i].hide == 1) {
+                    btn.push(replaceHtml(sheetHTML, { "index": sheetIndex, "active": "", "name": Store.sheetfile[i].name, "style": "display:none;","colorset":colorset }));
                 }
                 else {
-                    btn.push(replaceHtml(sheetHTML, { "index": sheetIndex, "active": "", "name": Store.luckysheetfile[i].name, "style": "","colorset":colorset }));
+                    btn.push(replaceHtml(sheetHTML, { "index": sheetIndex, "active": "", "name": Store.sheetfile[i].name, "style": "","colorset":colorset }));
                 }
                 display = "style='display:none;'";
             }
-            //Store.luckysheetfile[i].index = i; //index即为默认
+            //Store.sheetfile[i].index = i; //index即为默认
             // if(sheetIndex > this.sheetMaxIndex){
             //     this.sheetMaxIndex = sheetIndex;
             // }
@@ -449,19 +449,19 @@ const sheetmanage = {
             // alert("非编辑模式下不允许该操作！");
             return;
         }
-        console.log('copySheet',copyindex, Store.luckysheetfile);
+        console.log('copySheet',copyindex, Store.sheetfile);
 
         let _this = this;
 
-        let order = Store.luckysheetfile.length;
+        let order = Store.sheetfile.length;
         let index = _this.generateRandomSheetIndex();
         
         let copyarrindex = _this.getSheetIndex(copyindex);
-        let file = Store.luckysheetfile[copyarrindex];
+        let file = Store.sheetfile[copyarrindex];
         let copyjson = $.extend(true, {}, file);
         copyjson.order = order;
         copyjson.index = index;
-        copyjson.name = _this.generateCopySheetName(Store.luckysheetfile, copyjson.name);
+        copyjson.name = _this.generateCopySheetName(Store.sheetfile, copyjson.name);
         
         let colorset = '';
         if(copyjson.color != null){
@@ -471,7 +471,7 @@ const sheetmanage = {
         let copyobject = $("#sheets-item" + copyindex);
         $("#sheet-container-c").append(replaceHtml(sheetHTML, { "index": copyjson.index, "active": "", "name": copyjson.name, "order": copyjson.order, "style": "", "colorset": colorset }));
         $("#sheets-item" + copyjson.index).insertAfter(copyobject);
-        Store.luckysheetfile.splice(copyarrindex + 1, 0, copyjson);
+        Store.sheetfile.splice(copyarrindex + 1, 0, copyjson);
 
         $("#sheet-area div.sheets-item").removeClass("sheets-item-active");
         $("#sheets-item" + index).addClass("sheets-item-active");
@@ -526,16 +526,16 @@ const sheetmanage = {
 
         if(isBefore){
             let previndex = data.order;
-            if(previndex >= Store.luckysheetfile.length){
-                previndex = Store.luckysheetfile.length - 1;
-                $("#sheets-item" + data.index).insertAfter($("#sheets-item" + Store.luckysheetfile[previndex].index));
+            if(previndex >= Store.sheetfile.length){
+                previndex = Store.sheetfile.length - 1;
+                $("#sheets-item" + data.index).insertAfter($("#sheets-item" + Store.sheetfile[previndex].index));
             }
             else{
-                $("#sheets-item" + data.index).insertBefore($("#sheets-item" + Store.luckysheetfile[previndex].index));
+                $("#sheets-item" + data.index).insertBefore($("#sheets-item" + Store.sheetfile[previndex].index));
             }
         }
         
-        Store.luckysheetfile.push(data);
+        Store.sheetfile.push(data);
 
         $("#sheet-area div.sheets-item").removeClass("sheets-item-active");
         $("#sheets-item" + data.index).addClass("sheets-item-active");
@@ -567,7 +567,7 @@ const sheetmanage = {
         $("#sheets-item" + index).remove();
         $("#sheet-datavisual-selection-set-" + index).remove();
         
-        let removedsheet = Store.luckysheetfile.splice(arrIndex, 1);
+        let removedsheet = Store.sheetfile.splice(arrIndex, 1);
         _this.reOrderAllSheet();
 
         server.saveParam("shd", null, {"deleIndex": index });
@@ -679,23 +679,23 @@ const sheetmanage = {
         return data;
     },
     sheetParamRestore: function(file, data) {
-        Store.luckysheet_select_save = file["luckysheet_select_save"];
-        if(Store.luckysheet_select_save == null || Store.luckysheet_select_save.length == 0){
+        Store.sheet_select_save = file["sheet_select_save"];
+        if(Store.sheet_select_save == null || Store.sheet_select_save.length == 0){
             if(data[0] != null && data[0][0] != null && data[0][0].mc != null){
-                Store.luckysheet_select_save = [{ 
+                Store.sheet_select_save = [{ 
                     "row": [0, data[0][0].mc.rs - 1], 
                     "column": [0, data[0][0].mc.cs - 1] 
                 }];
             }
             else{
-                Store.luckysheet_select_save = [{ 
+                Store.sheet_select_save = [{ 
                     "row": [0, 0], 
                     "column": [0, 0] 
                 }];
             }
         }
 
-        Store.luckysheet_selection_range = file["luckysheet_selection_range"] == null ? [] : file["luckysheet_selection_range"];
+        Store.sheet_selection_range = file["sheet_selection_range"] == null ? [] : file["sheet_selection_range"];
         Store.config = file["config"] == null ? {} : file["config"];
 
         Store.zoomRatio = file["zoomRatio"] == null ? 1 : file["zoomRatio"];
@@ -731,7 +731,7 @@ const sheetmanage = {
         let _this = this;
 
         _this.getCurSheet();
-        let file = Store.luckysheetfile[_this.getSheetIndex(Store.currentSheetIndex)];
+        let file = Store.sheetfile[_this.getSheetIndex(Store.currentSheetIndex)];
         _this.nulldata = datagridgrowth([], Store.defaultrowNum, Store.defaultcolumnNum);
         let data = _this.buildGridData(file);
 
@@ -739,21 +739,21 @@ const sheetmanage = {
         let select_save = [];
         file.jfgird_select_save = file.jfgird_select_save || [];
         file.jfgird_select_save.forEach(item=>select_save.push({"row":item.row,"column":item.column}));
-        file.luckysheet_select_save = select_save;
+        file.sheet_select_save = select_save;
         
         this.sheetParamRestore(file, data);
 
-        let r2 = Store.luckysheet_select_save[0].row[1], 
-            c2 = Store.luckysheet_select_save[0].column[1];
+        let r2 = Store.sheet_select_save[0].row[1], 
+            c2 = Store.sheet_select_save[0].column[1];
         
-        if(Store.luckysheet_select_save.length > 1){
-            for(let i = 0; i < Store.luckysheet_select_save.length; i++){
-                if(Store.luckysheet_select_save[i].row[1] > r2){
-                    r2 = Store.luckysheet_select_save[i].row[1];
+        if(Store.sheet_select_save.length > 1){
+            for(let i = 0; i < Store.sheet_select_save.length; i++){
+                if(Store.sheet_select_save[i].row[1] > r2){
+                    r2 = Store.sheet_select_save[i].row[1];
                 }
 
-                if(Store.luckysheet_select_save[i].column[1] > c2){
-                    c2 = Store.luckysheet_select_save[i].column[1];
+                if(Store.sheet_select_save[i].column[1] > c2){
+                    c2 = Store.sheet_select_save[i].column[1];
                 }
             }
         }
@@ -783,10 +783,10 @@ const sheetmanage = {
 
         // Store.flowdata = data;
 
-        luckysheetcreatedom(colwidth, rowheight, data, menu, title);
+        sheetcreatedom(colwidth, rowheight, data, menu, title);
 
         setTimeout(function () {
-            tooltip.createHoverTip("#sheet_info_detail" ,".luckysheet_info_detail_back, .luckysheet_info_detail_input, .luckysheet_info_detail_update");
+            tooltip.createHoverTip("#sheet_info_detail" ,".sheet_info_detail_back, .sheet_info_detail_input, .sheet_info_detail_update");
             tooltip.createHoverTip("#sheet-wa-editor" ,".sheet-toolbar-menu-button, .sheet-toolbar-button, .sheet-toolbar-combo-button");
 
             Store.sheetTableContentHW = [
@@ -823,22 +823,22 @@ const sheetmanage = {
                     formula.execFunctionGroupForce(sheetConfigSetting.forceCalculation);
                     _this.restoreSheetAll(Store.currentSheetIndex);
                     
-                    // luckysheetrefreshgrid(0, 0);
-                    $("#luckysheet_info_detail_save").html(locale_info.detailSave);
+                    // sheetrefreshgrid(0, 0);
+                    $("#sheet_info_detail_save").html(locale_info.detailSave);
 
                     if (!!file.isPivotTable) {
-                        Store.luckysheetcurrentisPivotTable = true;
+                        Store.sheetcurrentisPivotTable = true;
                         // pivotTable.changePivotTable(Store.currentSheetIndex); //此方法需要注释掉，在restoreSheetAll中已经执行了刷新了数据透视表，这里就不需要了
                     }
                     else {
-                        Store.luckysheetcurrentisPivotTable = false;
+                        Store.sheetcurrentisPivotTable = false;
                         $("#sheet-modal-dialog-slider-pivot").hide();
                     }
 
                     // Store toolbar button width value
                     menuToolBarWidth();
 
-                    luckysheetsizeauto();
+                    sheetsizeauto();
 
                     //等待滚动条dom宽高加载完成后 初始化滚动位置
                     if(file["scrollLeft"] != null && file["scrollLeft"] > 0){
@@ -885,12 +885,12 @@ const sheetmanage = {
                 //     execF();
                 // }
                 // else if(sheetindex.length>0 && loadSheetUrl == ""){
-                    // for(let i = 0;i<Store.luckysheetfile.length;i++){
-                    //     let otherfile = Store.luckysheetfile[i];
+                    // for(let i = 0;i<Store.sheetfile.length;i++){
+                    //     let otherfile = Store.sheetfile[i];
                     //     if(otherfile.index == file.index){
                     //         continue;
                     //     }
-                    //     // let otherfile = Store.luckysheetfile[_this.getSheetIndex(item)]; 
+                    //     // let otherfile = Store.sheetfile[_this.getSheetIndex(item)]; 
                     //     if(otherfile["load"] == null || otherfile["load"] == "0"){
                     //         otherfile["data"] = _this.buildGridData(otherfile);
                     //         otherfile["load"] = "1";
@@ -927,7 +927,7 @@ const sheetmanage = {
                                 continue;
                             }
 
-                            let otherfile = Store.luckysheetfile[_this.getSheetIndex(item)];
+                            let otherfile = Store.sheetfile[_this.getSheetIndex(item)];
                             
                             if(otherfile["load"] == null || otherfile["load"] == "0"){
                                 otherfile.celldata = dataset[item.toString()];
@@ -958,14 +958,14 @@ const sheetmanage = {
     },
     storeSheetParam: function() {
         let index = this.getSheetIndex(Store.currentSheetIndex);
-        let file = Store.luckysheetfile[index];
+        let file = Store.sheetfile[index];
         file["config"] = Store.config;
         file["visibledatarow"] = Store.visibledatarow;
         file["visibledatacolumn"] = Store.visibledatacolumn;
         file["ch_width"] = Store.ch_width;
         file["rh_height"] = Store.rh_height;
-        file["luckysheet_select_save"] = $.extend(true, [], Store.luckysheet_select_save);
-        file["luckysheet_selection_range"] = $.extend(true, [], Store.luckysheet_selection_range);
+        file["sheet_select_save"] = $.extend(true, [], Store.sheet_select_save);
+        file["sheet_selection_range"] = $.extend(true, [], Store.sheet_selection_range);
 
         if($("#sheet-scrollbar-x")[0].scrollWidth > $("#sheet-scrollbar-x")[0].offsetWidth){
             file["scrollLeft"] = $("#sheet-scrollbar-x").scrollLeft(); //横向滚动条
@@ -979,24 +979,24 @@ const sheetmanage = {
     },
     setSheetParam: function(isload=true) {
         let index = this.getSheetIndex(Store.currentSheetIndex);
-        let file = Store.luckysheetfile[index];
+        let file = Store.sheetfile[index];
 
         Store.flowdata = file["data"];
         editor.webWorkerFlowDataCache(Store.flowdata);//worker存数据
 
         // formula.execFunctionGroupData = null;
         formula.execFunctionGlobalData = null;
-        window.luckysheet_getcelldata_cache = null;
+        window.sheet_getcelldata_cache = null;
 
         this.sheetParamRestore(file, Store.flowdata);
 
         if(file["freezen"] == null){
-            luckysheetFreezen.freezenhorizontaldata = null;
-            luckysheetFreezen.freezenverticaldata = null;
+            sheetFreezen.freezenhorizontaldata = null;
+            sheetFreezen.freezenverticaldata = null;
         }
         else{
-            luckysheetFreezen.freezenhorizontaldata = file["freezen"].horizontal == null ? null : file["freezen"].horizontal.freezenhorizontaldata;
-            luckysheetFreezen.freezenverticaldata = file["freezen"].vertical == null ? null : file["freezen"].vertical.freezenverticaldata;
+            sheetFreezen.freezenhorizontaldata = file["freezen"].horizontal == null ? null : file["freezen"].horizontal.freezenhorizontaldata;
+            sheetFreezen.freezenverticaldata = file["freezen"].vertical == null ? null : file["freezen"].vertical.freezenverticaldata;
         }
         
         if(isload){
@@ -1004,7 +1004,7 @@ const sheetmanage = {
         }
 
         //批注
-        luckysheetPostil.buildAllPs(Store.flowdata);
+        sheetPostil.buildAllPs(Store.flowdata);
 
         //图片
         imageCtrl.currentImgId = null;
@@ -1024,7 +1024,7 @@ const sheetmanage = {
     },
     restoreselect: function() {
         let index = this.getSheetIndex(Store.currentSheetIndex);
-        let file = Store.luckysheetfile[index];
+        let file = Store.sheetfile[index];
 
         //选区
         selectHightlightShow(true);
@@ -1051,12 +1051,12 @@ const sheetmanage = {
 
         _this.storeSheetParam();
         let index = _this.getSheetIndex(Store.currentSheetIndex);
-        Store.luckysheetfile[index]["data"] = Store.flowdata;
-        Store.luckysheetfile[index]["config"] = $.extend(true, {}, Store.config);
+        Store.sheetfile[index]["data"] = Store.flowdata;
+        Store.sheetfile[index]["config"] = $.extend(true, {}, Store.config);
     },
     mergeCalculationSheet:{},
     mergeCalculation:function(index){
-        let file = Store.luckysheetfile[this.getSheetIndex(index)];
+        let file = Store.sheetfile[this.getSheetIndex(index)];
         let config = file.config, data = file.data;
         if(config==null){
             return;
@@ -1117,19 +1117,19 @@ const sheetmanage = {
 
         // for(let i = 0;i<sheetindex.length;i++){
         //     let item = sheetindex[i];
-        //     let otherfile = Store.luckysheetfile[_this.getSheetIndex(item)]; 
+        //     let otherfile = Store.sheetfile[_this.getSheetIndex(item)]; 
         //     if(otherfile["load"] == null || otherfile["load"] == "0"){
         //         otherfile["data"] = _this.buildGridData(otherfile);
         //         otherfile["load"] = "1";
         //     }
         // }
 
-        for(let i = 0;i<Store.luckysheetfile.length;i++){
-            let otherfile = Store.luckysheetfile[i];
+        for(let i = 0;i<Store.sheetfile.length;i++){
+            let otherfile = Store.sheetfile[i];
             if(otherfile.index == file.index){
                 continue;
             }
-            // let otherfile = Store.luckysheetfile[_this.getSheetIndex(item)]; 
+            // let otherfile = Store.sheetfile[_this.getSheetIndex(item)]; 
             if(otherfile["load"] == null || otherfile["load"] == "0"){
                 otherfile["data"] = _this.buildGridData(otherfile);
                 otherfile["load"] = "1";
@@ -1162,18 +1162,18 @@ const sheetmanage = {
         _this.storeSheetParamALL();
         _this.setCurSheet(index);
 
-        let file = Store.luckysheetfile[_this.getSheetIndex(index)]
+        let file = Store.sheetfile[_this.getSheetIndex(index)]
   
         if (!!file.isPivotTable) {
-            Store.luckysheetcurrentisPivotTable = true;
+            Store.sheetcurrentisPivotTable = true;
             if (!isPivotInitial) {
                 pivotTable.changePivotTable(index);
             }
         }
         else{
-            Store.luckysheetcurrentisPivotTable = false;
+            Store.sheetcurrentisPivotTable = false;
             $("#sheet-modal-dialog-slider-pivot").hide();
-            luckysheetsizeauto(false);
+            sheetsizeauto(false);
         }
 
         let load = file["load"];
@@ -1188,13 +1188,13 @@ const sheetmanage = {
 
             setTimeout(function () {
                 formula.execFunctionGroup();
-                luckysheetrefreshgrid();
+                sheetrefreshgrid();
                 server.saveParam("shs", null, Store.currentSheetIndex);
             }, 1);
         }
         else {
             let loadSheetUrl = server.loadSheetUrl;
-            if(loadSheetUrl == "" || Store.luckysheetcurrentisPivotTable || !!isNewSheet){
+            if(loadSheetUrl == "" || Store.sheetcurrentisPivotTable || !!isNewSheet){
                 let data = _this.buildGridData(file);
 
                 file["data"] = data;
@@ -1217,7 +1217,7 @@ const sheetmanage = {
 
                 // for(let i = 0;i<sheetindex.length;i++){
                 //     let item = sheetindex[i];
-                //     let otherfile = Store.luckysheetfile[_this.getSheetIndex(item)]; 
+                //     let otherfile = Store.sheetfile[_this.getSheetIndex(item)]; 
                 //     if(otherfile["load"] == null || otherfile["load"] == "0"){
                 //         otherfile["data"] = _this.buildGridData(otherfile);
                 //         otherfile["load"] = "1";
@@ -1232,7 +1232,7 @@ const sheetmanage = {
                     _this.restoreCache();
                     formula.execFunctionGroupForce(sheetConfigSetting.forceCalculation);
                     _this.restoreSheetAll(Store.currentSheetIndex);
-                    luckysheetrefreshgrid();
+                    sheetrefreshgrid();
                 }, 1);
 
                 server.saveParam("shs", null, Store.currentSheetIndex);
@@ -1256,7 +1256,7 @@ const sheetmanage = {
                             continue;
                         }
 
-                        let otherfile = Store.luckysheetfile[_this.getSheetIndex(item)];
+                        let otherfile = Store.sheetfile[_this.getSheetIndex(item)];
                         
                         if(otherfile["load"] == null || otherfile["load"] == "0"){
                             otherfile.celldata = dataset[item.toString()];
@@ -1275,7 +1275,7 @@ const sheetmanage = {
                         _this.restoreCache();
                         formula.execFunctionGroupForce(sheetConfigSetting.forceCalculation);
                         _this.restoreSheetAll(Store.currentSheetIndex);
-                        luckysheetrefreshgrid();
+                        sheetrefreshgrid();
                     }, 1);
 
                     server.saveParam("shs", null, Store.currentSheetIndex);
@@ -1289,7 +1289,7 @@ const sheetmanage = {
         //隐藏其他sheet的图表，显示当前sheet的图表 chartMix
         renderChartShow(index);
         
-        luckysheetFreezen.initialFreezen(index);
+        sheetFreezen.initialFreezen(index);
         _this.restoreselect();
     },
     checkLoadSheetIndexToDataIndex:{},
@@ -1315,7 +1315,7 @@ const sheetmanage = {
                 let formulaTxt = getcellFormula(f.r, f.c, dataindex);
 
                 if(formulaTxt==null){
-                    let file = Store.luckysheetfile[this.getSheetIndex(dataindex)];
+                    let file = Store.sheetfile[this.getSheetIndex(dataindex)];
                     file.data = this.buildGridData(file);
                     formulaTxt = getcellFormula(f.r, f.c, dataindex);
 
@@ -1418,7 +1418,7 @@ const sheetmanage = {
         // changeSheetContainerSize();
         $("#sheet-cell-flow_0").css({ "width": Store.ch_width, "top": "-1px" }); //width更新
         $("#sheettable_0").css({ "width": Store.ch_width - 1, "height": Store.rh_height });
-        $("#luckysheetrowHeader_0").css("height", Store.rh_height);
+        $("#sheetrowHeader_0").css("height", Store.rh_height);
         $("#sheet-cols-h-cells_0").css("width", Store.ch_width); //width更新
 
         $("#sheet-scrollbar-x div").width(Store.ch_width);
@@ -1426,7 +1426,7 @@ const sheetmanage = {
 
         //等待滚动条dom宽高计算完成后 初始化该表格滚动位置
         let index = this.getSheetIndex(Store.currentSheetIndex);
-        let file = Store.luckysheetfile[index];
+        let file = Store.sheetfile[index];
 
 
         Store.scrollRefreshSwitch = false;
@@ -1452,20 +1452,20 @@ const sheetmanage = {
         zoomNumberDomBind(Store.zoomRatio);
     },
     setCurSheet: function(index) {
-        for (let i = 0; i < Store.luckysheetfile.length; i++) {
-            if (Store.luckysheetfile[i]["index"] == index) {
-                Store.luckysheetfile[i].status = 1;
+        for (let i = 0; i < Store.sheetfile.length; i++) {
+            if (Store.sheetfile[i]["index"] == index) {
+                Store.sheetfile[i].status = 1;
             }
             else {
-                Store.luckysheetfile[i].status = 0;
+                Store.sheetfile[i].status = 0;
             }
         }
 
         Store.currentSheetIndex = index;
     },
     getSheetIndex: function(index) {
-        for (let i = 0; i < Store.luckysheetfile.length; i++) {
-            if (Store.luckysheetfile[i]["index"] == index) {
+        for (let i = 0; i < Store.sheetfile.length; i++) {
+            if (Store.sheetfile[i]["index"] == index) {
                 return i;
             }
         }
@@ -1476,7 +1476,7 @@ const sheetmanage = {
         
         let _sheet = $("#sheets-item" + index);
 
-        window.luckysheet_getcelldata_cache = null;
+        window.sheet_getcelldata_cache = null;
         $("#sheet-area div.sheets-item").removeClass("sheets-item-active");
         _sheet.addClass("sheets-item-active").show();
 
@@ -1538,7 +1538,7 @@ const sheetmanage = {
     },
     delChart: function(chart_id, sheetIndex) {
         let index = this.getSheetIndex(sheetIndex);
-        let file = Store.luckysheetfile[index];
+        let file = Store.sheetfile[index];
 
         if (file.chart == null) {
             file.chart = [];
@@ -1546,15 +1546,15 @@ const sheetmanage = {
         else {
             for (let i = 0; i < file.chart.length; i++) {
                 if (file.chart[i].chart_id == chart_id) {
-                    Store.luckysheetfile[index].chart.splice(i, 1);
+                    Store.sheetfile[index].chart.splice(i, 1);
                     break;
                 }
             }
         }
     },
-    saveChart: function(json) {//采用chartMix store存储，弃用Store.luckysheetfile存储，防止重复存储
+    saveChart: function(json) {//采用chartMix store存储，弃用Store.sheetfile存储，防止重复存储
         let index = this.getSheetIndex(json.sheetIndex);
-        let file = Store.luckysheetfile[index];
+        let file = Store.sheetfile[index];
 
         if (file.chart == null) {
             file.chart = [];
@@ -1574,7 +1574,7 @@ const sheetmanage = {
     },
     getChart: function(sheetIndex, chart_id) {
         let index = this.getSheetIndex(sheetIndex);
-        let file = Store.luckysheetfile[index];
+        let file = Store.sheetfile[index];
 
         if (file.chart == null) {
             return null;
@@ -1597,7 +1597,7 @@ const sheetmanage = {
         }
 
         if (sheetIndex != currentIndex) {
-            sheettxt = Store.luckysheetfile[this.getSheetIndex(sheetIndex)].name + "!";
+            sheettxt = Store.sheetfile[this.getSheetIndex(sheetIndex)].name + "!";
         }
 
         let row0 = range["row"][0], row1 = range["row"][1];
@@ -1623,7 +1623,7 @@ const sheetmanage = {
             sheetIndex = Store.currentSheetIndex;
         }
 
-        return Store.luckysheetfile[this.getSheetIndex(sheetIndex)].name;
+        return Store.sheetfile[this.getSheetIndex(sheetIndex)].name;
     },
     getSheetMerge: function() {
         if(Store.config.merge == null){
@@ -1637,7 +1637,7 @@ const sheetmanage = {
             sheetIndex = Store.currentSheetIndex;
         }
 
-        return Store.luckysheetfile[this.getSheetIndex(sheetIndex)].data;
+        return Store.sheetfile[this.getSheetIndex(sheetIndex)].data;
     },
     getSheetConfig: function(sheetIndex) {
         let _this = this;
@@ -1646,17 +1646,17 @@ const sheetmanage = {
             sheetIndex = Store.currentSheetIndex;
         }
 
-        let config = Store.luckysheetfile[_this.getSheetIndex(sheetIndex)].config;
+        let config = Store.sheetfile[_this.getSheetIndex(sheetIndex)].config;
 
         if(config == null){
-        	Store.luckysheetfile[_this.getSheetIndex(sheetIndex)].config = {};
+        	Store.sheetfile[_this.getSheetIndex(sheetIndex)].config = {};
         }
 
-        return Store.luckysheetfile[_this.getSheetIndex(sheetIndex)].config;
+        return Store.sheetfile[_this.getSheetIndex(sheetIndex)].config;
     },
     restoreFilter: function(sheetIndex) {
         let index = this.getSheetIndex(sheetIndex);
-        let file = Store.luckysheetfile[index];
+        let file = Store.sheetfile[index];
 
         // if($('#sheet-filter-selected-sheet' + sheetIndex).length > 0 || file.filter_select == null || JSON.stringify(file.filter_select) == "{}"){
         //     if(file.config != null && file.config.rowhidden != null){
@@ -1722,7 +1722,7 @@ const sheetmanage = {
     },
     restorePivot: function(sheetIndex) {
         let index = this.getSheetIndex(sheetIndex);
-        let file = Store.luckysheetfile[index];
+        let file = Store.sheetfile[index];
 
         if (!file.isPivotTable) {
             return;
@@ -1739,7 +1739,7 @@ const sheetmanage = {
         _this.restoreFreezen(sheetIndex);
     },
     restoreFreezen: function(sheetIndex) {
-        luckysheetFreezen.initialFreezen(sheetIndex);
+        sheetFreezen.initialFreezen(sheetIndex);
     },
     restoreCache: function() {
         let _this = this;
@@ -1763,22 +1763,22 @@ const sheetmanage = {
         let type = item.t;
         let index = item.i;
         let value = item.v;
-        let file = Store.luckysheetfile[_this.getSheetIndex(index)];
+        let file = Store.sheetfile[_this.getSheetIndex(index)];
 
         if(type == "sha"){
-            Store.luckysheetfile.push(value);
+            Store.sheetfile.push(value);
         }
         else if(type == "shc"){
-            let copyjson = $.extend(true, {}, Store.luckysheetfile[_this.getSheetIndex(value.copyindex)]);
+            let copyjson = $.extend(true, {}, Store.sheetfile[_this.getSheetIndex(value.copyindex)]);
             copyjson.index = index;
-            Store.luckysheetfile.push(copyjson);
+            Store.sheetfile.push(copyjson);
         }
         else if(type == "shd"){
-            Store.luckysheetfile.splice(value.deleIndex, 1);
+            Store.sheetfile.splice(value.deleIndex, 1);
         }
         else if(type == "shr"){
             for(let pos in value){
-                Store.luckysheetfile[_this.getSheetIndex(pos)].order = value[pos];
+                Store.sheetfile[_this.getSheetIndex(pos)].order = value[pos];
             }
         }
 
@@ -1850,11 +1850,11 @@ const sheetmanage = {
             let op = item.op, cur = item.cur, v = value;       
             if(op == "hide"){
                 file.status = 0;
-                Store.luckysheetfile[_this.getSheetIndex(cur)].status = 1;
+                Store.sheetfile[_this.getSheetIndex(cur)].status = 1;
             }
             else if(op == "show"){
-                for(let i = 0; i < Store.luckysheetfile.length; i++){
-                    Store.luckysheetfile[i].status = 0;
+                for(let i = 0; i < Store.sheetfile.length; i++){
+                    Store.sheetfile[i].status = 0;
                 }
                 file.status = 1;
             }
@@ -1946,7 +1946,7 @@ const sheetmanage = {
             mst = index;
             med = index + len - 1;
 
-            luckysheetdeletetable(mtype, mst, med, true);
+            sheetdeletetable(mtype, mst, med, true);
         }
         else if(type=="arc"){
             let rc = item.rc, index = value.index, len = value.len;
@@ -1981,7 +1981,7 @@ const sheetmanage = {
                 mtype = "column";
             }
             
-            luckysheetextendtable(mtype, index, len, true);
+            sheetextendtable(mtype, index, len, true);
         }
         else if(type == "na"){
             server.saveParam("na", null, value);

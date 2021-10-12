@@ -4,7 +4,7 @@
 import {createProxy} from '../utils/util';
 import Store from '../store/index';
 import method from '../global/method';
-import { getluckysheetfile } from '../methods/get'
+import { getsheet_file } from '../methods/get'
 import { toJson } from '../global/api';
 
 const initListener = function(){

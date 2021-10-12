@@ -48,12 +48,12 @@ function initialCellFormatModelEvent(){
 }
 
 function recycleSeletion(cycleFunction, dataIsNullFunction){
-    if(Store.luckysheet_select_save != null && Store.luckysheet_select_save.length > 0){
+    if(Store.sheet_select_save != null && Store.sheet_select_save.length > 0){
         let sheetFile = sheetmanage.getSheetByIndex(), data=sheetFile.data;
         if(data!=null){
             
-            for(let i=0;i<Store.luckysheet_select_save.length;i++){
-                let selection = Store.luckysheet_select_save[i];
+            for(let i=0;i<Store.sheet_select_save.length;i++){
+                let selection = Store.sheet_select_save[i];
                 let row = selection.row, column = selection.column;
                 for(let r=row[0];r<=row[1];r++){
                     for(let c=column[0];c<=column[1];c++){
@@ -158,7 +158,7 @@ export function openCellFormatModel(){
 
     let locked =false, hidden=false;
     let lockedCount=0, hiddenCount=0, count=0;
-    if(Store.luckysheet_select_save != null && Store.luckysheet_select_save.length > 0){
+    if(Store.sheet_select_save != null && Store.sheet_select_save.length > 0){
         recycleSeletion(
             function(cell){
                 // let cell = data[r][c];

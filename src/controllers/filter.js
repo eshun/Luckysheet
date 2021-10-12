@@ -4,7 +4,7 @@ import { isRealNull, isEditMode } from '../global/validate';
 import tooltip from '../global/tooltip';
 import { rowlenByRange } from '../global/getRowlen';
 import { selectHightlightShow } from './select';
-import { luckysheetMoveEndCell } from './sheetMove';
+import { sheetMoveEndCell } from './sheetMove';
 import { sheetlodingHTML } from '../controllers/constant';
 import server from './server';
 import locale from '../locale/locale';
@@ -50,7 +50,7 @@ function labelFilterOptionState(top, optionstate, rowhidden, caljs, notSave, str
     }
 
     if(!!notSave){
-        let file = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)];
+        let file = Store.sheetfile[getSheetIndex(Store.currentSheetIndex)];
 
         if(file.filter == null){
             file.filter = {};
@@ -143,7 +143,7 @@ function createFilter() {
         return;
     }
 
-    if(Store.luckysheet_select_save.length > 1){
+    if(Store.sheet_select_save.length > 1){
         $("#sheet-rightclick-menu").hide();
         $("#sheet-filter-menu, #sheet-filter-submenu").hide();
         $("#" + Store.container).attr("tabindex", 0).focus();
@@ -160,13 +160,13 @@ function createFilter() {
         return;
     }
 
-    if(Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].isPivotTable){
+    if(Store.sheetfile[getSheetIndex(Store.currentSheetIndex)].isPivotTable){
         return;
     }
 
     $('#sheet-filter-selected-sheet' + Store.currentSheetIndex + ', #sheet-filter-options-sheet' + Store.currentSheetIndex).remove();
 
-    let last = Store.luckysheet_select_save[0];
+    let last = Store.sheet_select_save[0];
     if (last["row"][0] == last["row"][1] && last["column"][0] == last["column"][1]) {
         let st_c, ed_c, curR = last["row"][1];
 
@@ -188,22 +188,22 @@ function createFilter() {
             ed_c = Store.flowdata[curR].length - 1;
         }
 
-        Store.luckysheet_select_save = [{ "row": [curR, curR], "column": [st_c, ed_c] }];
+        Store.sheet_select_save = [{ "row": [curR, curR], "column": [st_c, ed_c] }];
         selectHightlightShow();
 
-        Store.luckysheet_shiftpositon = $.extend(true, {}, last);
-        luckysheetMoveEndCell("down", "range");
+        Store.sheet_shiftpositon = $.extend(true, {}, last);
+        sheetMoveEndCell("down", "range");
     }
     else if (last["row"][1] - last["row"][0] < 2) {
-        Store.luckysheet_shiftpositon = $.extend(true, {}, last);
-        luckysheetMoveEndCell("down", "range");
+        Store.sheet_shiftpositon = $.extend(true, {}, last);
+        sheetMoveEndCell("down", "range");
     }
 
-    Store.luckysheet_filter_save = $.extend(true, {}, Store.luckysheet_select_save[0]);
+    Store.sheet_filter_save = $.extend(true, {}, Store.sheet_select_save[0]);
 
-    createFilterOptions(Store.luckysheet_filter_save);
+    createFilterOptions(Store.sheet_filter_save);
 
-    server.saveParam("all", Store.currentSheetIndex, Store.luckysheet_filter_save, { "k": "filter_select" });
+    server.saveParam("all", Store.currentSheetIndex, Store.sheet_filter_save, { "k": "filter_select" });
 
     if (Store.filterchage) {
         Store.jfredo.push({ 
@@ -211,24 +211,24 @@ function createFilter() {
             "data": [], 
             "curdata": [], 
             "sheetIndex": Store.currentSheetIndex, 
-            "filter_save": Store.luckysheet_filter_save 
+            "filter_save": Store.sheet_filter_save 
         });
     }
 }
 
 //创建筛选配置
-function createFilterOptions(luckysheet_filter_save, filterObj) {
+function createFilterOptions(sheet_filter_save, filterObj) {
     $("#sheet-filter-selected-sheet" + Store.currentSheetIndex).remove();
     $("#sheet-filter-options-sheet" + Store.currentSheetIndex).remove();
     
-    if(luckysheet_filter_save == null || JSON.stringify(luckysheet_filter_save) == "{}"){
+    if(sheet_filter_save == null || JSON.stringify(sheet_filter_save) == "{}"){
         return;
     }
 
-    let r1 = luckysheet_filter_save.row[0], 
-        r2 = luckysheet_filter_save.row[1];
-    let c1 = luckysheet_filter_save.column[0], 
-        c2 = luckysheet_filter_save.column[1];
+    let r1 = sheet_filter_save.row[0], 
+        r2 = sheet_filter_save.row[1];
+    let c1 = sheet_filter_save.column[0], 
+        c2 = sheet_filter_save.column[1];
 
     let row = Store.visibledatarow[r2], 
         row_pre = r1 - 1 == -1 ? 0 : Store.visibledatarow[r1 - 1];
@@ -282,13 +282,13 @@ function createFilterOptions(luckysheet_filter_save, filterObj) {
     $("#sheet-rightclick-menu").hide();
     $("#sheet-filter-menu, #sheet-filter-submenu").hide();
 
-    if ($("#sheet-cell-main").scrollTop() > luckysheet_filter_save["top_move"]) {
-        $("#sheet-scrollbar-y").scrollTop(luckysheet_filter_save["top_move"]);
+    if ($("#sheet-cell-main").scrollTop() > sheet_filter_save["top_move"]) {
+        $("#sheet-scrollbar-y").scrollTop(sheet_filter_save["top_move"]);
     }
 
-    let file = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)];
+    let file = Store.sheetfile[getSheetIndex(Store.currentSheetIndex)];
 
-    file.filter_select = luckysheet_filter_save;
+    file.filter_select = sheet_filter_save;
 }
 
 function initialFilterHandler(){
@@ -297,7 +297,7 @@ function initialFilterHandler(){
     const _locale = locale();
     const locale_filter = _locale.filter;
     const locale_button= _locale.button;
-    $("#luckysheetfilter").click(createFilter);
+    $("#sheetfilter").click(createFilter);
 
     //右键菜单 菜单项hover
     let submenuhide = null, rightclickmenu = null;
@@ -1067,7 +1067,7 @@ function initialFilterHandler(){
     
         //config
         Store.config = cfg;
-        Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].config = Store.config;
+        Store.sheetfile[getSheetIndex(Store.currentSheetIndex)].config = Store.config;
     
         server.saveParam("cg", Store.currentSheetIndex, cfg["rowhidden"], { "k": "rowhidden" });
     
@@ -1285,7 +1285,7 @@ function initialFilterHandler(){
         Store.config["rowhidden"] = {};
         redo["curconfig"] = $.extend(true, {}, Store.config);
 
-        redo["filter_save"] = $.extend(true, {}, Store.luckysheet_filter_save);
+        redo["filter_save"] = $.extend(true, {}, Store.sheet_filter_save);
 
         let optiongroups = [];
         $("#sheet-filter-options-sheet" + Store.currentSheetIndex + " .sheet-filter-options").each(function () {
@@ -1315,13 +1315,13 @@ function initialFilterHandler(){
         $("#sheet-filter-menu, #sheet-filter-submenu").hide();
 
         //清除筛选发送给后台
-        Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].filter = null;
-        Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].filter_select = null;
+        Store.sheetfile[getSheetIndex(Store.currentSheetIndex)].filter = null;
+        Store.sheetfile[getSheetIndex(Store.currentSheetIndex)].filter_select = null;
 
         server.saveParam("fsc", Store.currentSheetIndex, null);
 
         //config
-        Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].config = Store.config;
+        Store.sheetfile[getSheetIndex(Store.currentSheetIndex)].config = Store.config;
 
         server.saveParam("cg", Store.currentSheetIndex, {}, { "k": "rowhidden" });
 
@@ -1789,7 +1789,7 @@ function initialFilterHandler(){
 
         //config
         Store.config = cfg;
-        Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].config = Store.config;
+        Store.sheetfile[getSheetIndex(Store.currentSheetIndex)].config = Store.config;
 
         server.saveParam("cg", Store.currentSheetIndex, cfg["rowhidden"], { "k": "rowhidden" });
 

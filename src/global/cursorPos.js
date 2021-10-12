@@ -1,6 +1,6 @@
 import Store from '../store';
 
-function luckysheetRangeLast(obj) {
+function sheetRangeLast(obj) {
     let range;
     
     if(document.createRange){ //chrome, firefox, opera, safari, ie9+
@@ -63,7 +63,7 @@ function hideMenuByCancel(event){
         $("#sheet-list, #sheet-rightclick-sheet-menu, #sheet-user-menu").hide();
         $("body > .sheet-filter-menu, body > .sheet-filter-submenu, body > .sheet-cols-menu").hide();
         //$("body > sheet-menuButton").hide();
-        Store.luckysheet_cols_menu_status = false;
+        Store.sheet_cols_menu_status = false;
     }
 }
 
@@ -139,7 +139,7 @@ function isInPage(node) {
 }
 
 export {
-    luckysheetRangeLast,
+    sheetRangeLast,
     getCursortPosition,
     hideMenuByCancel,
     selectTextContent,

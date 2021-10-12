@@ -234,7 +234,7 @@ $.range_map = function(map) {
     return new RangeMap(map);
 };
 
-const luckysheetSparkline = {
+const sheetSparkline = {
     defaultOption:{
         // Settings common to most/all chart types
         common: {
@@ -2213,44 +2213,44 @@ let barHighlightMixin = {
     }
 };
 
-let _luckysheetSparkLineOptions = {
+let _sheetSparkLineOptions = {
     get:function(type){
-        return luckysheetSparkline.mergedOptions[type];
+        return sheetSparkline.mergedOptions[type];
     }
 }
 
-let _luckysheetSparkLineTarget = {
+let _sheetSparkLineTarget = {
     drawLine:function(x1, y1, x2, y2, lineColor, lineWidth){
-        return luckysheetSparkline.drawLine(x1, y1, x2, y2, lineColor, lineWidth);
+        return sheetSparkline.drawLine(x1, y1, x2, y2, lineColor, lineWidth);
     },
 
     drawShape:function(path, lineColor, fillColor, lineWidth){
-        return luckysheetSparkline.drawShape(path, lineColor, fillColor, lineWidth);
+        return sheetSparkline.drawShape(path, lineColor, fillColor, lineWidth);
     },
 
     drawCircle:function(x, y, radius, lineColor, fillColor, lineWidth){
-        return luckysheetSparkline.drawCircle(x, y, radius, lineColor, fillColor, lineWidth);
+        return sheetSparkline.drawCircle(x, y, radius, lineColor, fillColor, lineWidth);
     },
 
     drawPieSlice:function(x, y, radius, startAngle, endAngle, lineColor, fillColor){
-        return luckysheetSparkline.drawPieSlice(x, y, radius, startAngle, endAngle, lineColor, fillColor);
+        return sheetSparkline.drawPieSlice(x, y, radius, startAngle, endAngle, lineColor, fillColor);
     },
 
     drawRect:function(x, y, width, height, lineColor, fillColor){
-        return luckysheetSparkline.drawRect(x, y, width, height, lineColor, fillColor);
+        return sheetSparkline.drawRect(x, y, width, height, lineColor, fillColor);
     }
 }
 
-for(let item in luckysheetSparkline){
+for(let item in sheetSparkline){
     if(item in {"line":null, "bar":null, "column":null, "tristate":null, "discrete":null, "bullet":null, "pie":null, "box":null}){
-        luckysheetSparkline[item].options = _luckysheetSparkLineOptions;
-        luckysheetSparkline[item].target = _luckysheetSparkLineTarget;
+        sheetSparkline[item].options = _sheetSparkLineOptions;
+        sheetSparkline[item].target = _sheetSparkLineTarget;
     }
 
     if(item in {"bar":null, "column":null, "tristate":null, "discrete":null}){
-        luckysheetSparkline[item].changeHighlight = barHighlightMixin.changeHighlight;
-        luckysheetSparkline[item].render = barHighlightMixin.render;
+        sheetSparkline[item].changeHighlight = barHighlightMixin.changeHighlight;
+        sheetSparkline[item].render = barHighlightMixin.render;
     }
 }
 
-export default luckysheetSparkline;
+export default sheetSparkline;

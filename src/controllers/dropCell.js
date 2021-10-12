@@ -16,7 +16,7 @@ import locale from '../locale/locale';
 import dayjs from 'dayjs'
 
 //选区下拉
-const luckysheetDropCell = {
+const sheetDropCell = {
     iconHtml: '<div id="sheet-dropCell-icon" style="position: absolute;padding: 2px;background-color: #f1f1f1;z-index: 990;cursor: pointer;">'+
                 '<div id="icon_dropCell"></div>'+
               '</div>',
@@ -441,7 +441,7 @@ const luckysheetDropCell = {
         }
 
         let d = editor.deepCopyFlowData(Store.flowdata);
-        let file = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)];
+        let file = Store.sheetfile[getSheetIndex(Store.currentSheetIndex)];
 
         let cfg = $.extend(true, {}, Store.config);
         let borderInfoCompute = getBorderInfoCompute();
@@ -880,7 +880,7 @@ const luckysheetDropCell = {
             "cdformat": cdformat,
             "dataVerification": dataVerification
         }
-        jfrefreshgrid(d, Store.luckysheet_select_save, allParam);
+        jfrefreshgrid(d, Store.sheet_select_save, allParam);
 
         selectHightlightShow();
     },
@@ -2749,4 +2749,4 @@ const luckysheetDropCell = {
     }
 }
 
-export default luckysheetDropCell;
+export default sheetDropCell;

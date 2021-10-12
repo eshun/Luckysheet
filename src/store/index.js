@@ -1,7 +1,7 @@
 const Store = {
     container: null,
     loadingObj:{},
-    luckysheetfile: null,
+    sheetfile: null,
     defaultcolumnNum: 60,
     defaultrowNum: 84,
     fullscreenmode: true,
@@ -37,51 +37,51 @@ const Store = {
     jfcountfuncTimeout: null, 
     jfautoscrollTimeout: null,
 
-    luckysheet_select_status: false,
-    luckysheet_select_save: [{ "row": [0, 0], "column": [0, 0] }],
-    luckysheet_selection_range: [],
+    sheet_select_status: false,
+    sheet_select_save: [{ "row": [0, 0], "column": [0, 0] }],
+    sheet_selection_range: [],
 
-    luckysheet_copy_save: {}, //复制粘贴
-    luckysheet_paste_iscut: false,
+    sheet_copy_save: {}, //复制粘贴
+    sheet_paste_iscut: false,
 
     filterchage: true, //筛选
-    luckysheet_filter_save: { "row": [], "column": [] },
+    sheet_filter_save: { "row": [], "column": [] },
 
-    luckysheet_sheet_move_status: false,
-    luckysheet_sheet_move_data: [],
-    luckysheet_scroll_status: false,
+    sheet_sheet_move_status: false,
+    sheet_sheet_move_data: [],
+    sheet_scroll_status: false,
 
-    luckysheetisrefreshdetail: true,
-    luckysheetisrefreshtheme: true,
-    luckysheetcurrentisPivotTable: false,
+    sheetisrefreshdetail: true,
+    sheetisrefreshtheme: true,
+    sheetcurrentisPivotTable: false,
 
-    luckysheet_rows_selected_status: false,  //行列标题相关参
-    luckysheet_cols_selected_status: false,  
-    luckysheet_rows_change_size: false,
-    luckysheet_rows_change_size_start: [],
-    luckysheet_cols_change_size: false,
-    luckysheet_cols_change_size_start: [],
-    luckysheet_cols_dbclick_timeout: null,
-    luckysheet_cols_dbclick_times: 0,
+    sheet_rows_selected_status: false,  //行列标题相关参
+    sheet_cols_selected_status: false,  
+    sheet_rows_change_size: false,
+    sheet_rows_change_size_start: [],
+    sheet_cols_change_size: false,
+    sheet_cols_change_size_start: [],
+    sheet_cols_dbclick_timeout: null,
+    sheet_cols_dbclick_times: 0,
 
-    luckysheetCellUpdate: [],
+    sheetCellUpdate: [],
     
-    luckysheet_shiftpositon: null,
+    sheet_shiftpositon: null,
 
     iscopyself: true,
 
     orderbyindex: 0, //排序下标
 
-    luckysheet_model_move_state: false, //模态框拖动
-    luckysheet_model_xy: [0, 0],
-    luckysheet_model_move_obj: null,
+    sheet_model_move_state: false, //模态框拖动
+    sheet_model_xy: [0, 0],
+    sheet_model_move_obj: null,
 
-    luckysheet_cell_selected_move: false,  //选区拖动替换
-    luckysheet_cell_selected_move_index: [],
+    sheet_cell_selected_move: false,  //选区拖动替换
+    sheet_cell_selected_move_index: [],
 
-    luckysheet_cell_selected_extend: false,  //选区下拉
-    luckysheet_cell_selected_extend_index: [],
-    luckysheet_cell_selected_extend_time: null,
+    sheet_cell_selected_extend: false,  //选区下拉
+    sheet_cell_selected_extend_index: [],
+    sheet_cell_selected_extend_time: null,
 
     clearjfundo: true,
     jfundo: [],
@@ -91,30 +91,30 @@ const Store = {
     highlightChart: '',
     zIndex: 15,
     chartparam: {
-        luckysheetCurrentChart: null, //current chart_id
-        luckysheetCurrentChartActive: false,
-        luckysheetCurrentChartMove: null, // Debounce state
-        luckysheetCurrentChartMoveTimeout: null,//拖动图表框的节流定时器
-        luckysheetCurrentChartMoveObj: null, //chart DOM object
-        luckysheetCurrentChartMoveXy: null, //上一次操作结束的图表信息，x,y: chart框位置，scrollLeft1,scrollTop1: 滚动条位置
-        luckysheetCurrentChartMoveWinH: null, //左右滚动条滑动距离
-        luckysheetCurrentChartMoveWinW: null, //上下滚动条滑动距离
-        luckysheetCurrentChartResize: null,
-        luckysheetCurrentChartResizeObj: null,
-        luckysheetCurrentChartResizeXy: null,
-        luckysheetCurrentChartResizeWinH: null,
-        luckysheetCurrentChartResizeWinW: null,
-        luckysheetInsertChartTosheetChange: true, // 正在执行撤销
-        luckysheetCurrentChartZIndexRank : 100,
-        luckysheet_chart_redo_click:false, //撤销重做时标识
-        luckysheetCurrentChartMaxState: false, //图表全屏状态
+        sheetCurrentChart: null, //current chart_id
+        sheetCurrentChartActive: false,
+        sheetCurrentChartMove: null, // Debounce state
+        sheetCurrentChartMoveTimeout: null,//拖动图表框的节流定时器
+        sheetCurrentChartMoveObj: null, //chart DOM object
+        sheetCurrentChartMoveXy: null, //上一次操作结束的图表信息，x,y: chart框位置，scrollLeft1,scrollTop1: 滚动条位置
+        sheetCurrentChartMoveWinH: null, //左右滚动条滑动距离
+        sheetCurrentChartMoveWinW: null, //上下滚动条滑动距离
+        sheetCurrentChartResize: null,
+        sheetCurrentChartResizeObj: null,
+        sheetCurrentChartResizeXy: null,
+        sheetCurrentChartResizeWinH: null,
+        sheetCurrentChartResizeWinW: null,
+        sheetInsertChartTosheetChange: true, // 正在执行撤销
+        sheetCurrentChartZIndexRank : 100,
+        sheet_chart_redo_click:false, //撤销重做时标识
+        sheetCurrentChartMaxState: false, //图表全屏状态
         jfrefreshchartall: '',
         changeChartCellData: '',
         renderChart: '',
         getChartJson: ''
     },
     functionList:null, //function list explanation
-    luckysheet_function:null,
+    sheet_function:null,
     chart_selection: {},
     currentChart: '',
     scrollRefreshSwitch:true,

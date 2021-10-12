@@ -12,7 +12,7 @@ import {
     sheetconfigHTML,
 } from '../controllers/constant';
 import sheetConfigSetting from '../controllers/sheetConfigSetting';
-import luckysheetPostil from '../controllers/postil';
+import sheetPostil from '../controllers/postil';
 import { datagridgrowth } from './getdata';
 import editor from './editor';
 import rhchInit from './rhchInit';
@@ -20,7 +20,7 @@ import { replaceHtml } from '../utils/util';
 import Store from '../store';
 import locale from '../locale/locale';
 
-export default function luckysheetcreatedom(colwidth, rowheight, data, menu, title) {
+export default function sheetcreatedom(colwidth, rowheight, data, menu, title) {
     // //最少30行
     // if(rowheight < 30){
     //     rowheight = 30;
@@ -90,13 +90,13 @@ export default function luckysheetcreatedom(colwidth, rowheight, data, menu, tit
         bottomControll += backControll;
     }
 
-    let flowstr = replaceHtml('<div id="luckysheetcoltable_0" class="sheet-cell-flow-col"> <div id ="sheettable_0" class="sheet-cell-sheettable" style="height:${height}px;width:${width}px;"></div><div id="sheet-bottom-controll-row" class="sheet-bottom-controll-row"> '+ bottomControll +' </div> </div>', { "height": Store.rh_height, "width": Store.ch_width - 1 });
+    let flowstr = replaceHtml('<div id="sheetcoltable_0" class="sheet-cell-flow-col"> <div id ="sheettable_0" class="sheet-cell-sheettable" style="height:${height}px;width:${width}px;"></div><div id="sheet-bottom-controll-row" class="sheet-bottom-controll-row"> '+ bottomControll +' </div> </div>', { "height": Store.rh_height, "width": Store.ch_width - 1 });
 
     let colsheader = replaceHtml(columnHeaderHTML, { "width": Store.ch_width, "index": 0, "column": "" });
 
     flowHTML = replaceHtml(flowHTML, { "width": Store.ch_width, "flow": flowstr, "index": 0 });
 
-    gh = replaceHtml(gh, { "flow": flowHTML, "rowHeader": "<div style='height:" + Store.rh_height + "px' id='luckysheetrowHeader_0' class='luckysheetsheetchange'></div>", "columnHeader": colsheader, "functionButton": sheetConfigSetting.functionButton });//设置需要显示的菜单
+    gh = replaceHtml(gh, { "flow": flowHTML, "rowHeader": "<div style='height:" + Store.rh_height + "px' id='sheetrowHeader_0' class='sheetsheetchange'></div>", "columnHeader": colsheader, "functionButton": sheetConfigSetting.functionButton });//设置需要显示的菜单
 
     $("#" + Store.container).append(gh);
 
@@ -117,7 +117,7 @@ export default function luckysheetcreatedom(colwidth, rowheight, data, menu, tit
     $("#sheet-left-top").css({width:Store.rowHeaderWidth-1.5, height:Store.columnHeaderHeight-1.5});
 
     // //批注
-    // luckysheetPostil.buildAllPs(Store.flowdata);
+    // sheetPostil.buildAllPs(Store.flowdata);
 
-    $("#luckysheet_info_detail_input").val(sheetConfigSetting.title);
+    $("#sheet_info_detail_input").val(sheetConfigSetting.title);
 }

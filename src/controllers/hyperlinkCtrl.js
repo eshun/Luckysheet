@@ -1,6 +1,6 @@
 import { replaceHtml } from '../utils/util';
 import { getcellvalue } from '../global/getdata';
-import { luckysheetrefreshgrid } from '../global/refresh';
+import { sheetrefreshgrid } from '../global/refresh';
 import { rowLocation, colLocation, mouseposition } from '../global/location';
 import formula from '../global/formula';
 import tooltip from '../global/tooltip';
@@ -9,7 +9,7 @@ import { modelHTML } from './constant';
 import { selectHightlightShow } from './select';
 import server from './server';
 import sheetmanage from './sheetmanage';
-import luckysheetFreezen from './freezen';
+import sheetFreezen from './freezen';
 import menuButton from './menuButton';
 import { getSheetIndex } from '../methods/get';
 import locale from '../locale/locale';
@@ -34,7 +34,7 @@ const hyperlinkCtrl = {
         $("#sheet-insertLink-dialog").remove();
 
         let sheetListOption = '';
-        Store.luckysheetfile.forEach(item => {
+        Store.sheetfile.forEach(item => {
             sheetListOption += `<option value="${item.name}">${item.name}</option>`;
         })
 
@@ -113,7 +113,7 @@ const hyperlinkCtrl = {
 
         //确认按钮
         $(document).off("click.confirm").on("click.confirm", "#sheet-insertLink-dialog-confirm", function(e){
-            let last = Store.luckysheet_select_save[Store.luckysheet_select_save.length - 1];
+            let last = Store.sheet_select_save[Store.sheet_select_save.length - 1];
             let rowIndex = last.row_focus || last.row[0];
             let colIndex = last.column_focus || last.column[0];
 
@@ -188,7 +188,7 @@ const hyperlinkCtrl = {
     dataAllocation: function(){
         let _this = this;
 
-        let last = Store.luckysheet_select_save[Store.luckysheet_select_save.length - 1];
+        let last = Store.sheet_select_save[Store.sheet_select_save.length - 1];
         let rowIndex = last.row_focus || last.row[0];
         let colIndex = last.column_focus || last.column[0];
 
@@ -253,7 +253,7 @@ const hyperlinkCtrl = {
                 sheetmanage.changeSheet(sheetIndex);
             }
 
-            Store.luckysheet_select_save = range;
+            Store.sheet_select_save = range;
             selectHightlightShow(true);
 
             let row_pre = cellrange.row[0] - 1 == -1 ? 0 : Store.visibledatarow[cellrange.row[0] - 1];
@@ -278,11 +278,11 @@ const hyperlinkCtrl = {
         let x = mouse[0] + scrollLeft;
         let y = mouse[1] + scrollTop;
 
-        if(luckysheetFreezen.freezenverticaldata != null && mouse[0] < (luckysheetFreezen.freezenverticaldata[0] - luckysheetFreezen.freezenverticaldata[2])){
+        if(sheetFreezen.freezenverticaldata != null && mouse[0] < (sheetFreezen.freezenverticaldata[0] - sheetFreezen.freezenverticaldata[2])){
             return;
         }
 
-        if(luckysheetFreezen.freezenhorizontaldata != null && mouse[1] < (luckysheetFreezen.freezenhorizontaldata[0] - luckysheetFreezen.freezenhorizontaldata[2])){
+        if(sheetFreezen.freezenhorizontaldata != null && mouse[1] < (sheetFreezen.freezenhorizontaldata[0] - sheetFreezen.freezenhorizontaldata[2])){
             return;
         }
 
@@ -344,11 +344,11 @@ const hyperlinkCtrl = {
         }
 
         _this.hyperlink = currentHyperlink;
-        Store.luckysheetfile[getSheetIndex(sheetIndex)].hyperlink = currentHyperlink;
+        Store.sheetfile[getSheetIndex(sheetIndex)].hyperlink = currentHyperlink;
 
         Store.flowdata = d;
         editor.webWorkerFlowDataCache(Store.flowdata);//worker存数据
-        Store.luckysheetfile[getSheetIndex(sheetIndex)].data = Store.flowdata;
+        Store.sheetfile[getSheetIndex(sheetIndex)].data = Store.flowdata;
 
         //共享编辑模式
         if(server.allowUpdate){ 
@@ -357,7 +357,7 @@ const hyperlinkCtrl = {
         }
 
         setTimeout(function () {
-            luckysheetrefreshgrid();
+            sheetrefreshgrid();
         }, 1);
     }
 }

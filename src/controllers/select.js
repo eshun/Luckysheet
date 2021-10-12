@@ -34,26 +34,26 @@ function selectHightlightShow(isRestore = false) {
     $("#sheet-cell-selected-boxs").show();
     $("#sheet-cell-selected-boxs #sheet-cell-selected").siblings(".sheet-cell-selected").remove();
 
-    if (Store.luckysheet_select_save.length > 0) {
-        for (let i = 0; i < Store.luckysheet_select_save.length; i++) {
-            let r1 = Store.luckysheet_select_save[i].row[0],
-                r2 = Store.luckysheet_select_save[i].row[1];
-            let c1 = Store.luckysheet_select_save[i].column[0],
-                c2 = Store.luckysheet_select_save[i].column[1];
+    if (Store.sheet_select_save.length > 0) {
+        for (let i = 0; i < Store.sheet_select_save.length; i++) {
+            let r1 = Store.sheet_select_save[i].row[0],
+                r2 = Store.sheet_select_save[i].row[1];
+            let c1 = Store.sheet_select_save[i].column[0],
+                c2 = Store.sheet_select_save[i].column[1];
 
             let rf, cf;
-            if (Store.luckysheet_select_save[i].row_focus == null) {
+            if (Store.sheet_select_save[i].row_focus == null) {
                 rf = r1;
             }
             else {
-                rf = Store.luckysheet_select_save[i].row_focus;
+                rf = Store.sheet_select_save[i].row_focus;
             }
 
-            if (Store.luckysheet_select_save[i].column_focus == null) {
+            if (Store.sheet_select_save[i].column_focus == null) {
                 cf = c1;
             }
             else {
-                cf = Store.luckysheet_select_save[i].column_focus;
+                cf = Store.sheet_select_save[i].column_focus;
             }
 
             let row = Store.visibledatarow[r2],
@@ -75,30 +75,30 @@ function selectHightlightShow(isRestore = false) {
                 col_pre_f = margeset.column[0];
             }
 
-            Store.luckysheet_select_save[i]["row"] = [r1, r2];
-            Store.luckysheet_select_save[i]["column"] = [c1, c2];
+            Store.sheet_select_save[i]["row"] = [r1, r2];
+            Store.sheet_select_save[i]["column"] = [c1, c2];
 
-            Store.luckysheet_select_save[i]["row_focus"] = rf;
-            Store.luckysheet_select_save[i]["column_focus"] = cf;
+            Store.sheet_select_save[i]["row_focus"] = rf;
+            Store.sheet_select_save[i]["column_focus"] = cf;
 
-            Store.luckysheet_select_save[i]["left"] = col_pre_f;
-            Store.luckysheet_select_save[i]["width"] = col_f - col_pre_f - 1;
-            Store.luckysheet_select_save[i]["top"] = row_pre_f;
-            Store.luckysheet_select_save[i]["height"] = row_f - row_pre_f - 1;
+            Store.sheet_select_save[i]["left"] = col_pre_f;
+            Store.sheet_select_save[i]["width"] = col_f - col_pre_f - 1;
+            Store.sheet_select_save[i]["top"] = row_pre_f;
+            Store.sheet_select_save[i]["height"] = row_f - row_pre_f - 1;
 
-            Store.luckysheet_select_save[i]["left_move"] = col_pre;
-            Store.luckysheet_select_save[i]["width_move"] = col - col_pre - 1;
-            Store.luckysheet_select_save[i]["top_move"] = row_pre;
-            Store.luckysheet_select_save[i]["height_move"] = row - row_pre - 1;
+            Store.sheet_select_save[i]["left_move"] = col_pre;
+            Store.sheet_select_save[i]["width_move"] = col - col_pre - 1;
+            Store.sheet_select_save[i]["top_move"] = row_pre;
+            Store.sheet_select_save[i]["height_move"] = row - row_pre - 1;
 
             if (i == 0) {
-                if (Store.luckysheet_select_save.length == 1) {
+                if (Store.sheet_select_save.length == 1) {
                     if (browser.mobilecheck()) {//移动端
                         $("#sheet-cell-selected-boxs #sheet-cell-selected").css({
-                            "left": Store.luckysheet_select_save[i]["left_move"],
-                            "width": Store.luckysheet_select_save[i]["width_move"],
-                            "top": Store.luckysheet_select_save[i]["top_move"],
-                            "height": Store.luckysheet_select_save[i]["height_move"],
+                            "left": Store.sheet_select_save[i]["left_move"],
+                            "width": Store.sheet_select_save[i]["width_move"],
+                            "top": Store.sheet_select_save[i]["top_move"],
+                            "height": Store.sheet_select_save[i]["height_move"],
                             "display": "block",
                             "border": "1px solid #0188fb"
                         })
@@ -113,10 +113,10 @@ function selectHightlightShow(isRestore = false) {
                     }
                     else {
                         $("#sheet-cell-selected-boxs #sheet-cell-selected").css({
-                            "left": Store.luckysheet_select_save[i]["left_move"],
-                            "width": Store.luckysheet_select_save[i]["width_move"],
-                            "top": Store.luckysheet_select_save[i]["top_move"],
-                            "height": Store.luckysheet_select_save[i]["height_move"],
+                            "left": Store.sheet_select_save[i]["left_move"],
+                            "width": Store.sheet_select_save[i]["width_move"],
+                            "top": Store.sheet_select_save[i]["top_move"],
+                            "height": Store.sheet_select_save[i]["height_move"],
                             "display": "block",
                             "border": "1px solid #0188fb"
                         })
@@ -132,10 +132,10 @@ function selectHightlightShow(isRestore = false) {
                 }
                 else {
                     $("#sheet-cell-selected-boxs #sheet-cell-selected").css({
-                        "left": Store.luckysheet_select_save[i]["left_move"],
-                        "width": Store.luckysheet_select_save[i]["width_move"],
-                        "top": Store.luckysheet_select_save[i]["top_move"],
-                        "height": Store.luckysheet_select_save[i]["height_move"],
+                        "left": Store.sheet_select_save[i]["left_move"],
+                        "width": Store.sheet_select_save[i]["width_move"],
+                        "top": Store.sheet_select_save[i]["top_move"],
+                        "height": Store.sheet_select_save[i]["height_move"],
                         "display": "block",
                         "border": "1px solid rgba(1, 136, 251, 0.15)"
                     })
@@ -147,24 +147,24 @@ function selectHightlightShow(isRestore = false) {
                 }
             }
             else {
-                $("#sheet-cell-selected-boxs").append('<div class="sheet-cell-selected" style="left: ' + Store.luckysheet_select_save[i]["left_move"] + 'px; width: ' + Store.luckysheet_select_save[i]["width_move"] + 'px; top: ' + Store.luckysheet_select_save[i]["top_move"] + 'px; height: ' + Store.luckysheet_select_save[i]["height_move"] + 'px; border: 1px solid rgba(1, 136, 251, 0.15); display: block;"></div>');
+                $("#sheet-cell-selected-boxs").append('<div class="sheet-cell-selected" style="left: ' + Store.sheet_select_save[i]["left_move"] + 'px; width: ' + Store.sheet_select_save[i]["width_move"] + 'px; top: ' + Store.sheet_select_save[i]["top_move"] + 'px; height: ' + Store.sheet_select_save[i]["height_move"] + 'px; border: 1px solid rgba(1, 136, 251, 0.15); display: block;"></div>');
             }
 
-            if (i == Store.luckysheet_select_save.length - 1) {
+            if (i == Store.sheet_select_save.length - 1) {
                 //focus 取选区数组最后一个
                 $("#sheet-cell-selected-focus").css({
-                    "left": Store.luckysheet_select_save[i]["left"],
-                    "width": Store.luckysheet_select_save[i]["width"],
-                    "top": Store.luckysheet_select_save[i]["top"],
-                    "height": Store.luckysheet_select_save[i]["height"],
+                    "left": Store.sheet_select_save[i]["left"],
+                    "width": Store.sheet_select_save[i]["width"],
+                    "top": Store.sheet_select_save[i]["top"],
+                    "height": Store.sheet_select_save[i]["height"],
                     "display": "block"
                 });
                 //行列数
-                luckysheet_count_show(
-                    Store.luckysheet_select_save[i]["left_move"],
-                    Store.luckysheet_select_save[i]["top_move"],
-                    Store.luckysheet_select_save[i]["width_move"],
-                    Store.luckysheet_select_save[i]["height_move"],
+                sheet_count_show(
+                    Store.sheet_select_save[i]["left_move"],
+                    Store.sheet_select_save[i]["top_move"],
+                    Store.sheet_select_save[i]["width_move"],
+                    Store.sheet_select_save[i]["height_move"],
                     [r1, r2],
                     [c1, c2]
                 );
@@ -176,29 +176,29 @@ function selectHightlightShow(isRestore = false) {
         }
 
         //行列标题栏
-        selectTitlesShow(Store.luckysheet_select_save, isRestore);
+        selectTitlesShow(Store.sheet_select_save, isRestore);
 
         //左上角范围显示
         selectHelpboxFill();
 
         //动态数组显示
-        if (Store.luckysheet_select_save.length == 1 && Store.luckysheet_select_save[0].row[0] == Store.luckysheet_select_save[0].row[1] && Store.luckysheet_select_save[0].column[0] == Store.luckysheet_select_save[0].column[1]) {
-            dynamicArrayHightShow(Store.luckysheet_select_save[0].row[0], Store.luckysheet_select_save[0].column[0]);
+        if (Store.sheet_select_save.length == 1 && Store.sheet_select_save[0].row[0] == Store.sheet_select_save[0].row[1] && Store.sheet_select_save[0].column[0] == Store.sheet_select_save[0].column[1]) {
+            dynamicArrayHightShow(Store.sheet_select_save[0].row[0], Store.sheet_select_save[0].column[0]);
         }
     
         /* 刷新当前状态栏 */
         refreshMenuButtonFocus();
     }
 
-    Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].luckysheet_select_save = Store.luckysheet_select_save;
+    Store.sheetfile[getSheetIndex(Store.currentSheetIndex)].sheet_select_save = Store.sheet_select_save;
             // Hook function, change the range selection box, selectHightlightShowillbe triggered multiple times when mousemove is moused, and thhistoricalvalue is used here to throttle
-        const luckysheet_select_save_previous = JSON.stringify(Store.luckysheet_select_save);
+        const sheet_select_save_previous = JSON.stringify(Store.sheet_select_save);
 
-        if(Store.luckysheet_select_save_previous == null |Store.luckysheet_select_save_previous !== luckysheet_select_save_previous){
-            method.createHookFunction('rangeSelect', Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)], Store.luckysheet_select_save);
+        if(Store.sheet_select_save_previous == null |Store.sheet_select_save_previous !== sheet_select_save_previous){
+            method.createHookFunction('rangeSelect', Store.sheetfile[getSheetIndex(Store.currentSheetIndex)], Store.sheet_select_save);
         }
         
-        Store.luckysheet_select_save_previous = luckysheet_select_save_previous;
+        Store.sheet_select_save_previous = sheet_select_save_previous;
 }
 
 //选区标题栏
@@ -317,7 +317,7 @@ function selectTitlesRange(map) {
 //选区是否重叠
 function selectIsOverlap(range) {
     if (range == null) {
-        range = Store.luckysheet_select_save;
+        range = Store.sheet_select_save;
     }
     range = JSON.parse(JSON.stringify(range));
 
@@ -370,7 +370,7 @@ function collaborativeEditBox() {
                 //当改变宽的列不在提示框范围内时，将改变列的初始位置改为在提示框范围内
                 for (let k in Store.config.columnlen) {
                     if (value.v.column[0] <= k && k <= value.v.column[1]) {
-                        Store.luckysheet_cols_change_size_start[1] = k - 0
+                        Store.sheet_cols_change_size_start[1] = k - 0
                         break
                     }
                 }
@@ -378,15 +378,15 @@ function collaborativeEditBox() {
             if (Store.config.rowlen !== null) {
                 for (let k in Store.config.rowlen) {
                     if (value.v.row[0] <= k && k <= value.v.row[1]) {
-                        Store.luckysheet_rows_change_size_start[1] = k - 0
+                        Store.sheet_rows_change_size_start[1] = k - 0
                         break
                     }
                 }
             }
             // 改变列宽的位置在提示框范围内
-            let flag_width = value.v.column[0] <= Store.luckysheet_cols_change_size_start[1] && Store.luckysheet_cols_change_size_start[1] <= value.v.column[1]
+            let flag_width = value.v.column[0] <= Store.sheet_cols_change_size_start[1] && Store.sheet_cols_change_size_start[1] <= value.v.column[1]
             if (flag_width) {
-                if (Store.luckysheet_cols_change_size_start[1] == 0) {
+                if (Store.sheet_cols_change_size_start[1] == 0) {
                     change_width = all_width[0] - 1
                 } else {
                     // 不在提示框范围内
@@ -394,9 +394,9 @@ function collaborativeEditBox() {
                     change_width = all_width[counts[1]] - all_width[counts[0] - 1] - (counts[1] - counts[0] + 1)
                 }
             }
-            let flag_height = value.v.row[0] <= Store.luckysheet_rows_change_size_start[1] && Store.luckysheet_rows_change_size_start[1] <= value.v.row[1]
+            let flag_height = value.v.row[0] <= Store.sheet_rows_change_size_start[1] && Store.sheet_rows_change_size_start[1] <= value.v.row[1]
             if (flag_height) {
-                if (Store.luckysheet_rows_change_size_start[1] == 0) {
+                if (Store.sheet_rows_change_size_start[1] == 0) {
                     change_height = all_height[0] - 1
                 } else {
                     let counts = value.v.row;
@@ -461,7 +461,7 @@ function selectionCopyShow(range) {
     $("#sheet-selection-copy").empty();
 
     if (range == null) {
-        range = Store.luckysheet_selection_range;
+        range = Store.sheet_selection_range;
     }
     range = JSON.parse(JSON.stringify(range));
 
@@ -488,7 +488,7 @@ function selectionCopyShow(range) {
 }
 
 //选区行列数显示
-function luckysheet_count_show(left, top, width, height, rowseleted, columnseleted) {
+function sheet_count_show(left, top, width, height, rowseleted, columnseleted) {
     let rowl = rowseleted[1] - rowseleted[0] + 1,
         coll = columnseleted[1] - columnseleted[0] + 1;
     let drawWidth = Store.sheetTableContentHW[0],
@@ -543,7 +543,7 @@ function luckysheet_count_show(left, top, width, height, rowseleted, columnselet
 }
 
 function selectHelpboxFill() {
-    let range = Store.luckysheet_select_save[Store.luckysheet_select_save.length - 1];
+    let range = Store.sheet_select_save[Store.sheet_select_save.length - 1];
     let rf = range["row_focus"], cf = range["column_focus"];
     if (Store.config["merge"] != null && (rf + "_" + cf) in Store.config["merge"]) {
         $("#sheet-helpbox-cell").text(getRangetxt(Store.currentSheetIndex, {
@@ -563,6 +563,6 @@ export {
     selectIsOverlap,
     selectionCopyShow,
     collaborativeEditBox,
-    luckysheet_count_show,
+    sheet_count_show,
     selectHelpboxFill
 }

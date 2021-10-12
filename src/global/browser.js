@@ -112,19 +112,19 @@ const browser = {
             return "-1"; //非IE
         }
     },
-    luckysheetrefreshfixednum:null,
-    luckysheetrefreshfixed:function(){
+    sheetrefreshfixednum:null,
+    sheetrefreshfixed:function(){
         var _this = this;
-        if(_this.luckysheetrefreshfixednum==null){
+        if(_this.sheetrefreshfixednum==null){
             if(_this.BrowserType()=="FF"){
-                _this.luckysheetrefreshfixednum = 5;
+                _this.sheetrefreshfixednum = 5;
             }
             else{
-                _this.luckysheetrefreshfixednum = 0;
+                _this.sheetrefreshfixednum = 0;
             }
         }
 
-        return _this.luckysheetrefreshfixednum;
+        return _this.sheetrefreshfixednum;
     },
     detectOS() {
         var userAgent = navigator.userAgent;

@@ -1,4 +1,4 @@
-name: Luckysheet demo github pages deploy
+name: sheet demo github pages deploy
 
 on:
   push:
@@ -24,11 +24,11 @@ jobs:
           npm install gulp -g
           npm run build
       
-      - name: Deploy LuckysheetDemo to GitHub Pages # 发布demo 到github pages
+      - name: Deploy sheetDemo to GitHub Pages # 发布demo 到github pages
         if: success()
         uses: crazy-max/ghaction-github-pages@v2
         with:
-          repo: mengshukeji/LuckysheetDemo
+          repo: mengshukeji/sheetDemo
           target_branch: gh-pages
           build_dir: dist
         env:

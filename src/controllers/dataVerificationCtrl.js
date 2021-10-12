@@ -2,7 +2,7 @@ import { replaceHtml } from '../utils/util';
 import formula from '../global/formula';
 import { isRealNum, isRealNull } from '../global/validate';
 import { isdatetime, diff } from '../global/datecontroll';
-import { luckysheetrefreshgrid } from '../global/refresh';
+import { sheetrefreshgrid } from '../global/refresh';
 import tooltip from '../global/tooltip';
 import { setcellvalue } from '../global/setdata';
 import { getcellvalue } from '../global/getdata';
@@ -271,7 +271,7 @@ const dataVerificationCtrl = {
             } else {
                 $("#sheet-dataVerification-dropdown-List").hide();
             }
-            let last = Store.luckysheet_select_save[Store.luckysheet_select_save.length - 1];
+            let last = Store.sheet_select_save[Store.sheet_select_save.length - 1];
             let rowIndex = last.row_focus;
             let colIndex = last.column_focus;
 
@@ -830,7 +830,7 @@ const dataVerificationCtrl = {
         let _this = this;
 
         //单元格范围
-        let range = Store.luckysheet_select_save[Store.luckysheet_select_save.length - 1];
+        let range = Store.sheet_select_save[Store.sheet_select_save.length - 1];
         let rangeTxt = getRangetxt(Store.currentSheetIndex, range, Store.currentSheetIndex);
         $("#sheet-dataVerification-dialog #data-verification-range input").val(rangeTxt);
 
@@ -1464,7 +1464,7 @@ const dataVerificationCtrl = {
 
         let _this = this;
 
-        let last = Store.luckysheet_select_save[Store.luckysheet_select_save.length - 1];
+        let last = Store.sheet_select_save[Store.sheet_select_save.length - 1];
         let rowIndex = last.row_focus;
         let colIndex = last.column_focus;
 
@@ -1524,7 +1524,7 @@ const dataVerificationCtrl = {
 
         if(formula.iscelldata(txt)){
             let range = formula.getcellrange(txt);
-            let d = Store.luckysheetfile[getSheetIndex(range.sheetIndex)].data;
+            let d = Store.sheetfile[getSheetIndex(range.sheetIndex)].data;
 
             for(let r = range.row[0]; r <= range.row[1]; r++){
                 for(let c = range.column[0]; c <= range.column[1]; c++){
@@ -1604,7 +1604,7 @@ const dataVerificationCtrl = {
         }
         
         _this.dataVerification = currentDataVerification;
-        Store.luckysheetfile[getSheetIndex(sheetIndex)].dataVerification = currentDataVerification;
+        Store.sheetfile[getSheetIndex(sheetIndex)].dataVerification = currentDataVerification;
 
         //共享编辑模式
         if(server.allowUpdate){ 
@@ -1612,7 +1612,7 @@ const dataVerificationCtrl = {
         }
 
         setTimeout(function () {
-            luckysheetrefreshgrid();
+            sheetrefreshgrid();
         }, 1);
     },
     refOfCheckbox: function(historyDataVerification, currentDataVerification, sheetIndex, d, range){
@@ -1633,11 +1633,11 @@ const dataVerificationCtrl = {
         }
 
         _this.dataVerification = currentDataVerification;
-        Store.luckysheetfile[getSheetIndex(sheetIndex)].dataVerification = currentDataVerification;
+        Store.sheetfile[getSheetIndex(sheetIndex)].dataVerification = currentDataVerification;
 
         Store.flowdata = d;
         editor.webWorkerFlowDataCache(Store.flowdata);//worker存数据
-        Store.luckysheetfile[getSheetIndex(sheetIndex)].data = Store.flowdata;
+        Store.sheetfile[getSheetIndex(sheetIndex)].data = Store.flowdata;
 
         //共享编辑模式
         if(server.allowUpdate){ 
@@ -1646,7 +1646,7 @@ const dataVerificationCtrl = {
         }
 
         setTimeout(function () {
-            luckysheetrefreshgrid();
+            sheetrefreshgrid();
         }, 1);
     },
 }

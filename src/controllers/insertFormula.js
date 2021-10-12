@@ -1,10 +1,10 @@
-import { luckysheet_getcelldata } from '../function/func';
+import { sheet_getcelldata } from '../function/func';
 // import functionlist from '../function/functionlist';
-// import Store.luckysheet_function from '../function/Store.luckysheet_function';
+// import Store.sheet_function from '../function/Store.sheet_function';
 import formula from '../global/formula';
 import { isRealNum, isRealNull } from '../global/validate';
 import { modelHTML } from './constant';
-import { luckysheet_count_show } from './select';
+import { sheet_count_show } from './select';
 import { replaceHtml, getObjType } from '../utils/util';
 import Store from '../store';
 import locale from '../locale/locale';
@@ -68,16 +68,16 @@ const insertFormula = {
             formula.data_parm_index = parmIndex;
 
             let formulatxt = $(this).parents("#sheet-search-formula-parm").find(".sheet-modal-dialog-title-text").text();
-            let parmLen = Store.luckysheet_function[formulatxt].p.length;
+            let parmLen = Store.sheet_function[formulatxt].p.length;
 
             let parmDetail, parmRepeat;
             if(parmIndex >= parmLen){
-                parmDetail = Store.luckysheet_function[formulatxt].p[parmLen - 1].detail;
-                parmRepeat = Store.luckysheet_function[formulatxt].p[parmLen - 1].repeat;
+                parmDetail = Store.sheet_function[formulatxt].p[parmLen - 1].detail;
+                parmRepeat = Store.sheet_function[formulatxt].p[parmLen - 1].repeat;
             }
             else{
-                parmDetail = Store.luckysheet_function[formulatxt].p[parmIndex].detail;
-                parmRepeat = Store.luckysheet_function[formulatxt].p[parmIndex].repeat;
+                parmDetail = Store.sheet_function[formulatxt].p[parmIndex].detail;
+                parmRepeat = Store.sheet_function[formulatxt].p[parmIndex].repeat;
             }
 
             //参数选区显示，参数值显示
@@ -300,7 +300,7 @@ const insertFormula = {
             
             if(formula.getfunctionParam(parmtxt).fn == null){ //参数不是公式
                 if(formula.iscelldata(parmtxt)){ //参数是选区
-                    let txtdata = luckysheet_getcelldata(parmtxt).data;
+                    let txtdata = sheet_getcelldata(parmtxt).data;
 
                     if(getObjType(txtdata) == "array"){ //参数为多个单元格选区
                         let txtArr = [];
@@ -358,9 +358,9 @@ const insertFormula = {
                 }).show();
                 $("#sheet-formula-help-c").hide();
 
-                luckysheet_count_show(col_pre, row_pre, col - col_pre - 1, row - row_pre - 1, cellrange.row, cellrange.column);
+                sheet_count_show(col_pre, row_pre, col - col_pre - 1, row - row_pre - 1, cellrange.row, cellrange.column);
 
-                let txtdata = luckysheet_getcelldata(parmtxt).data;
+                let txtdata = sheet_getcelldata(parmtxt).data;
                 if(getObjType(txtdata) == "array"){ //参数为多个单元格选区
                     let txtArr = [];
                     
@@ -417,7 +417,7 @@ const insertFormula = {
             }).show();
             $("#sheet-formula-help-c").hide();
 
-            luckysheet_count_show(col_pre, row_pre, col - col_pre - 1, row - row_pre - 1, cellrange.row, cellrange.column);
+            sheet_count_show(col_pre, row_pre, col - col_pre - 1, row - row_pre - 1, cellrange.row, cellrange.column);
 
             $("#sheet-search-formula-parm .parmBox").eq(formula.data_parm_index).find(".val").text(" = {"+ (new Function("return " + $.trim(formula.functionParserExe("=" + parmtxt)))()) +"}");
         }
@@ -428,7 +428,7 @@ const insertFormula = {
         let lvi = -1; //最后一个有值的参数索引
 
         let formulatxt = $("#sheet-search-formula-parm").find(".sheet-modal-dialog-title-text").text();
-        let p = Store.luckysheet_function[formulatxt].p;
+        let p = Store.sheet_function[formulatxt].p;
         
         $("#sheet-search-formula-parm .parmBox").each(function(i, e){
             let parmtxt = $(e).find(".txt input").val();

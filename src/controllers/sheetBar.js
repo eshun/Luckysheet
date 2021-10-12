@@ -20,13 +20,13 @@ import {pagerInit} from '../global/api'
 
 
 //表格底部名称栏区域 相关事件（增、删、改、隐藏显示、颜色等等）
-let isInitialSheetConfig = false, luckysheetcurrentSheetitem = null, jfdbclicklagTimeout = null,oldSheetFileName = "";
+let isInitialSheetConfig = false, sheetcurrentSheetitem = null, jfdbclicklagTimeout = null,oldSheetFileName = "";
 function showsheetconfigmenu() {
     if (!isInitialSheetConfig) {
         isInitialSheetConfig = true;
         const _locale = locale();
         let locale_toolbar = _locale.toolbar;
-        $("#luckysheetsheetconfigcolorur").spectrum({
+        $("#sheetsheetconfigcolorur").spectrum({
             showPalette: true,
             preferredFormat: "hex",
             clickoutFiresChange: false,
@@ -53,14 +53,14 @@ function showsheetconfigmenu() {
                 }
 
                 let oldcolor = null;
-                if(luckysheetcurrentSheetitem.find(".sheets-item-color").length>0){
-                    oldcolor = luckysheetcurrentSheetitem.find(".sheets-item-color").css("background-color");
+                if(sheetcurrentSheetitem.find(".sheets-item-color").length>0){
+                    oldcolor = sheetcurrentSheetitem.find(".sheets-item-color").css("background-color");
                 }
 
-                luckysheetcurrentSheetitem.find(".sheets-item-color").remove();
-                luckysheetcurrentSheetitem.append('<div class="sheets-item-color" style=" position: absolute; width: 100%; height: 3px; bottom: 0px; left: 0px; background-color: ' + color + ';"></div>');
+                sheetcurrentSheetitem.find(".sheets-item-color").remove();
+                sheetcurrentSheetitem.append('<div class="sheets-item-color" style=" position: absolute; width: 100%; height: 3px; bottom: 0px; left: 0px; background-color: ' + color + ';"></div>');
                 let index = getSheetIndex(Store.currentSheetIndex);
-                Store.luckysheetfile[index].color = color;
+                Store.sheetfile[index].color = color;
                 server.saveParam("all", Store.currentSheetIndex, color, { "k": "color" });
 
                 if (Store.clearjfundo) {
@@ -77,15 +77,15 @@ function showsheetconfigmenu() {
             }
         });
 
-        $("#luckysheetsheetconfigcolorreset").click(function () {
+        $("#sheetsheetconfigcolorreset").click(function () {
             let oldcolor = null;
-            if(luckysheetcurrentSheetitem.find(".sheets-item-color").length>0){
-                oldcolor = luckysheetcurrentSheetitem.find(".sheets-item-color").css("background-color");
+            if(sheetcurrentSheetitem.find(".sheets-item-color").length>0){
+                oldcolor = sheetcurrentSheetitem.find(".sheets-item-color").css("background-color");
             }
 
-            luckysheetcurrentSheetitem.find(".sheets-item-color").remove();
+            sheetcurrentSheetitem.find(".sheets-item-color").remove();
             let index = getSheetIndex(Store.currentSheetIndex);
-            Store.luckysheetfile[index].color = null;
+            Store.sheetfile[index].color = null;
             server.saveParam("all", Store.currentSheetIndex, null, { "k": "color" } );
 
             if (Store.clearjfundo) {
@@ -103,12 +103,12 @@ function showsheetconfigmenu() {
     }
 
     let index = getSheetIndex(Store.currentSheetIndex);
-    if (Store.luckysheetfile[index].color != null && Store.luckysheetfile[index].color.length > 0) {
-        $("#luckysheetsheetconfigcolorur").spectrum("set", Store.luckysheetfile[index].color);
+    if (Store.sheetfile[index].color != null && Store.sheetfile[index].color.length > 0) {
+        $("#sheetsheetconfigcolorur").spectrum("set", Store.sheetfile[index].color);
 
     }
 
-    $("#luckysheetsheetconfigcolorur").parent().find("span, div, button, input, a").addClass("sheet-mousedown-cancel");
+    $("#sheetsheetconfigcolorur").parent().find("span, div, button, input, a").addClass("sheet-mousedown-cancel");
 
     // 如果全部按钮设置了隐藏，则不显示
     const config = sheetConfigSetting.sheetRightClickConfig;
@@ -118,11 +118,11 @@ function showsheetconfigmenu() {
     }
 
     setTimeout(function(){
-        mouseclickposition($("#sheet-rightclick-sheet-menu"), luckysheetcurrentSheetitem.offset().left + luckysheetcurrentSheetitem.width(), luckysheetcurrentSheetitem.offset().top - 18, "leftbottom");
+        mouseclickposition($("#sheet-rightclick-sheet-menu"), sheetcurrentSheetitem.offset().left + sheetcurrentSheetitem.width(), sheetcurrentSheetitem.offset().top - 18, "leftbottom");
     },1);
 }
 
-let luckysheetsheetrightclick = function (_t, _cur, e) {
+let sheetsheetrightclick = function (_t, _cur, e) {
     clearTimeout(jfdbclicklagTimeout);
     if (_cur.hasClass("sheets-item-name") && _cur.attr("contenteditable") == "true") {
         return;
@@ -138,7 +138,7 @@ let luckysheetsheetrightclick = function (_t, _cur, e) {
     else {
         //保存正在编辑的单元格内容
         if (parseInt($("#sheet-input-box").css("top")) > 0) {
-            formula.updatecell(Store.luckysheetCellUpdate[0], Store.luckysheetCellUpdate[1]);
+            formula.updatecell(Store.sheetCellUpdate[0], Store.sheetCellUpdate[1]);
         }
 
         $("#sheet-input-box").removeAttr("style");
@@ -153,7 +153,7 @@ let luckysheetsheetrightclick = function (_t, _cur, e) {
     $("#sheet-list, #sheet-rightclick-sheet-menu").hide();
 
     if (_cur.hasClass("sheets-item-menu") || _cur.hasClass("fa-sort-desc") || e.which == "3") {
-        luckysheetcurrentSheetitem = _cur.closest(".sheets-item");
+        sheetcurrentSheetitem = _cur.closest(".sheets-item");
         showsheetconfigmenu();
     }
 }
@@ -173,33 +173,33 @@ export function initialSheetBar(){
         let _t = $(this), _cur = $(e.target), _item = _cur.closest(".sheets-item");
 
         if (e.which == "3") {
-            luckysheetsheetrightclick(_t, _cur, e);
-            luckysheetcurrentSheetitem = _item;
+            sheetsheetrightclick(_t, _cur, e);
+            sheetcurrentSheetitem = _item;
             showsheetconfigmenu();
             return;
         }
 
         if (_item.hasClass("sheets-item-active") && _item.find(".sheets-item-name").attr("contenteditable") == "false") {
             jfdbclicklagTimeout = setTimeout(function () {
-                Store.luckysheet_sheet_move_status = true;
-                Store.luckysheet_sheet_move_data = {};
-                Store.luckysheet_sheet_move_data.widthlist = [];
+                Store.sheet_sheet_move_status = true;
+                Store.sheet_sheet_move_data = {};
+                Store.sheet_sheet_move_data.widthlist = [];
 
                 $("#sheet-area div.sheets-item:visible").each(function (i) {
                     if (i == 0) {
-                        Store.luckysheet_sheet_move_data.widthlist.push(parseInt($(this).outerWidth()));
+                        Store.sheet_sheet_move_data.widthlist.push(parseInt($(this).outerWidth()));
                     }
                     else {
-                        Store.luckysheet_sheet_move_data.widthlist.push(parseInt($(this).outerWidth()) + Store.luckysheet_sheet_move_data.widthlist[i - 1]);
+                        Store.sheet_sheet_move_data.widthlist.push(parseInt($(this).outerWidth()) + Store.sheet_sheet_move_data.widthlist[i - 1]);
                     }
                 });
 
-                Store.luckysheet_sheet_move_data.curindex = $("#sheet-area div.sheets-item").index(_item);
+                Store.sheet_sheet_move_data.curindex = $("#sheet-area div.sheets-item").index(_item);
                 let x = e.pageX;
-                Store.luckysheet_sheet_move_data.curleft = x - _item.offset().left;
-                Store.luckysheet_sheet_move_data.pageX = x;
-                Store.luckysheet_sheet_move_data.activeobject = _item;
-                Store.luckysheet_sheet_move_data.cursorobject = _cur;
+                Store.sheet_sheet_move_data.curleft = x - _item.offset().left;
+                Store.sheet_sheet_move_data.pageX = x;
+                Store.sheet_sheet_move_data.activeobject = _item;
+                Store.sheet_sheet_move_data.cursorobject = _cur;
                 let _itemclone = _item.clone().css("visibility", "hidden").attr("id", "sheets-item-clone");
                 _item.after(_itemclone);
                 _item.css({ "position": "absolute", "opacity": 0.8, "cursor": "move", "transition": "initial", "z-index": 10 });
@@ -213,11 +213,11 @@ export function initialSheetBar(){
         }
 
         let _t = $(this), _cur = $(e.target);
-        luckysheetsheetrightclick(_t, _cur, e);
+        sheetsheetrightclick(_t, _cur, e);
         server.keepHighLightBox()
     });
 
-    let luckysheetsheetnameeditor = function (_t) {
+    let sheetsheetnameeditor = function (_t) {
         if(Store.allowEdit===false){
             return;
         }
@@ -229,7 +229,7 @@ export function initialSheetBar(){
     }
 
     $("#sheet-area").on("dblclick", "span.sheets-item-name", function (e) {
-        luckysheetsheetnameeditor($(this));
+        sheetsheetnameeditor($(this));
     });
 
     let compositionFlag = true;
@@ -276,7 +276,7 @@ export function initialSheetBar(){
 
             setTimeout(()=>{
                 $(this).text(oldSheetFileName);
-                luckysheetsheetnameeditor($(this));
+                sheetsheetnameeditor($(this));
                 $(this).focus();
             }, 1);
             return;
@@ -287,15 +287,15 @@ export function initialSheetBar(){
         if(txt.length>31 || txt.charAt(0)=="'" || txt.charAt(txt.length-1)=="'" || /[：\:\\\/？\?\*\[\]]+/.test(txt)){
             alert(locale_sheetconfig.sheetNameSpecCharError);
             setTimeout(()=>{
-                luckysheetsheetnameeditor($(this));
+                sheetsheetnameeditor($(this));
                 $(this).focus();
             }, 1);
             return;
         }
 
         let index = getSheetIndex(Store.currentSheetIndex);
-        for (let i = 0; i < Store.luckysheetfile.length; i++) {
-            if (index != i && Store.luckysheetfile[i].name == txt) {
+        for (let i = 0; i < Store.sheetfile.length; i++) {
+            if (index != i && Store.sheetfile[i].name == txt) {
                 if(isEditMode()){
                     alert(locale_sheetconfig.tipNameRepeat);
                 }
@@ -309,7 +309,7 @@ export function initialSheetBar(){
 
         sheetmanage.sheetArrowShowAndHide();
 
-        Store.luckysheetfile[index].name = txt;
+        Store.sheetfile[index].name = txt;
         server.saveParam("all", Store.currentSheetIndex, txt, { "k": "name" });
 
         _t.attr("contenteditable", "false").removeClass("sheet-mousedown-cancel");
@@ -335,43 +335,43 @@ export function initialSheetBar(){
         let _t = $(this);
         if (kcode == keycode.ENTER) {
             let index = getSheetIndex(Store.currentSheetIndex);
-            oldSheetFileName = Store.luckysheetfile[index].name || oldSheetFileName;
-            Store.luckysheetfile[index].name = _t.text();
+            oldSheetFileName = Store.sheetfile[index].name || oldSheetFileName;
+            Store.sheetfile[index].name = _t.text();
             _t.attr("contenteditable", "false");
         }
     });
 
-    $("#luckysheetsheetconfigrename").click(function () {
-        luckysheetsheetnameeditor(luckysheetcurrentSheetitem.find("span.sheets-item-name"));
+    $("#sheetsheetconfigrename").click(function () {
+        sheetsheetnameeditor(sheetcurrentSheetitem.find("span.sheets-item-name"));
         $("#sheet-input-box").removeAttr("style");
         $("#sheet-list, #sheet-rightclick-sheet-menu").hide();
     });
 
-    $("#luckysheetsheetconfigshow").click(function () {
+    $("#sheetsheetconfigshow").click(function () {
         $("#sheets-m").click();
         $("#sheet-input-box").removeAttr("style");
         $("#sheet-rightclick-sheet-menu").hide();
     });
 
-    $("#luckysheetsheetconfigmoveleft").click(function () {
-        if (luckysheetcurrentSheetitem.prevAll(":visible").length > 0) {
-            luckysheetcurrentSheetitem.insertBefore(luckysheetcurrentSheetitem.prevAll(":visible").eq(0));
+    $("#sheetsheetconfigmoveleft").click(function () {
+        if (sheetcurrentSheetitem.prevAll(":visible").length > 0) {
+            sheetcurrentSheetitem.insertBefore(sheetcurrentSheetitem.prevAll(":visible").eq(0));
             sheetmanage.reOrderAllSheet();
         }
         $("#sheet-input-box").removeAttr("style");
         $("#sheet-list, #sheet-rightclick-sheet-menu").hide();
     });
 
-    $("#luckysheetsheetconfigmoveright").click(function () {
-        if (luckysheetcurrentSheetitem.nextAll(":visible").length > 0) {
-            luckysheetcurrentSheetitem.insertAfter(luckysheetcurrentSheetitem.nextAll(":visible").eq(0));
+    $("#sheetsheetconfigmoveright").click(function () {
+        if (sheetcurrentSheetitem.nextAll(":visible").length > 0) {
+            sheetcurrentSheetitem.insertAfter(sheetcurrentSheetitem.nextAll(":visible").eq(0));
             sheetmanage.reOrderAllSheet();
         }
         $("#sheet-input-box").removeAttr("style");
         $("#sheet-list, #sheet-rightclick-sheet-menu").hide();
     });
 
-    $("#luckysheetsheetconfigdelete").click(function (e) {
+    $("#sheetsheetconfigdelete").click(function (e) {
         $("#sheet-list, #sheet-rightclick-sheet-menu").hide();
 
         if($("#sheet-container-c .sheets-item:visible").length <= 1){
@@ -387,20 +387,20 @@ export function initialSheetBar(){
 
         let index = getSheetIndex(Store.currentSheetIndex);
 
-        tooltip.confirm(locale_sheetconfig.confirmDelete+"【" + Store.luckysheetfile[index].name + "】？", "<span style='color:#9e9e9e;font-size:12px;'>"+locale_sheetconfig.redoDelete+"</span>", function () {
-            sheetmanage.deleteSheet(luckysheetcurrentSheetitem.data("index"));
+        tooltip.confirm(locale_sheetconfig.confirmDelete+"【" + Store.sheetfile[index].name + "】？", "<span style='color:#9e9e9e;font-size:12px;'>"+locale_sheetconfig.redoDelete+"</span>", function () {
+            sheetmanage.deleteSheet(sheetcurrentSheetitem.data("index"));
         }, null);
 
         $("#sheet-input-box").removeAttr("style");
     });
 
-    $("#luckysheetsheetconfigcopy").click(function (e) {
-        sheetmanage.copySheet(luckysheetcurrentSheetitem.data("index"), e);
+    $("#sheetsheetconfigcopy").click(function (e) {
+        sheetmanage.copySheet(sheetcurrentSheetitem.data("index"), e);
         $("#sheet-input-box").removeAttr("style");
         $("#sheet-list, #sheet-rightclick-sheet-menu").hide();
     });
 
-    $("#luckysheetsheetconfighide").click(function () {
+    $("#sheetsheetconfighide").click(function () {
         if ($("#sheet-area div.sheets-item:visible").length == 1) {
             if(isEditMode()){
                 alert(locale_sheetconfig.noHide);
@@ -410,7 +410,7 @@ export function initialSheetBar(){
             }
             return;
         }
-        sheetmanage.setSheetHide(luckysheetcurrentSheetitem.data("index"));
+        sheetmanage.setSheetHide(sheetcurrentSheetitem.data("index"));
         $("#sheet-input-box").removeAttr("style");
         $("#sheet-list, #sheet-rightclick-sheet-menu").hide();
     });
@@ -422,7 +422,7 @@ export function initialSheetBar(){
     $("#sheets-add").click(function (e) {
         //保存正在编辑的单元格内容
         if (parseInt($("#sheet-input-box").css("top")) > 0) {
-            formula.updatecell(Store.luckysheetCellUpdate[0], Store.luckysheetCellUpdate[1]);
+            formula.updatecell(Store.sheetCellUpdate[0], Store.sheetCellUpdate[1]);
         }
 
         sheetmanage.addNewSheet(e);
@@ -475,14 +475,14 @@ export function initialSheetBar(){
     $("#sheets-m").click(function (e) {
         //保存正在编辑的单元格内容
         if (parseInt($("#sheet-input-box").css("top")) > 0) {
-            formula.updatecell(Store.luckysheetCellUpdate[0], Store.luckysheetCellUpdate[1]);
+            formula.updatecell(Store.sheetCellUpdate[0], Store.sheetCellUpdate[1]);
         }
 
         $("#sheet-list").html("");
 
         let item = "";
-        for (let i = 0; i < Store.luckysheetfile.length; i++) {
-            let f = Store.luckysheetfile[i], icon = '', style = "";
+        for (let i = 0; i < Store.sheetfile.length; i++) {
+            let f = Store.sheetfile[i], icon = '', style = "";
             if (f["status"] == 1) {
                 icon = '<i class="fa fa-check" aria-hidden="true"></i>';
             }

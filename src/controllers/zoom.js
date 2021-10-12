@@ -5,20 +5,20 @@ import sheetmanage from './sheetmanage';
 import {changeSheetContainerSize} from './resize';
 import { jfrefreshgrid_rhcw } from '../global/refresh';
 import server from './server';
-import luckysheetPostil from './postil';
+import sheetPostil from './postil';
 import imageCtrl from './imageCtrl';
 
 
 
-let luckysheetZoomTimeout = null;
+let sheetZoomTimeout = null;
 
 export function zoomChange(ratio){
     if(Store.flowdata==null || Store.flowdata.length==0){
         return;
     }
 
-    clearTimeout(luckysheetZoomTimeout);
-    luckysheetZoomTimeout = setTimeout(() => {
+    clearTimeout(sheetZoomTimeout);
+    sheetZoomTimeout = setTimeout(() => {
         if (Store.clearjfundo) {
             Store.jfredo.push({ 
                 "type": "zoomChange", 
@@ -33,7 +33,7 @@ export function zoomChange(ratio){
         let currentSheet = sheetmanage.getSheetByIndex();
 
         //批注
-        luckysheetPostil.buildAllPs(currentSheet.data);
+        sheetPostil.buildAllPs(currentSheet.data);
 
         //图片
         imageCtrl.images = currentSheet.images;

@@ -17,10 +17,10 @@ import { jfrefreshgrid, jfrefreshgridall } from '../global/refresh';
 import tooltip from '../global/tooltip';
 import editor from '../global/editor';
 import cleargridelement from '../global/cleargridelement';
-import luckysheetArray from '../global/array';
+import sheetArray from '../global/array';
 import analysis from '../global/analysis';
 import { selectHightlightShow } from './select';
-import { luckysheet_searcharray } from './sheetSearch';
+import { sheet_searcharray } from './sheetSearch';
 import { 
     modelHTML, 
     filtermenuHTML, 
@@ -30,7 +30,7 @@ import {
     sheetPivotTableHTML 
 } from './constant';
 import sheetmanage from './sheetmanage';
-import luckysheetsizeauto from './resize';
+import sheetsizeauto from './resize';
 import server from './server';
 import {checkProtectionAuthorityNormal} from './protection';
 import Store from '../store';
@@ -57,28 +57,28 @@ const pivotTable = {
 
         let realIndex = getSheetIndex(sheetIndex);
 
-        if (getObjType(Store.luckysheetfile[realIndex].pivotTable) != "object"){
-            Store.luckysheetfile[realIndex].pivotTable = new Function("return " + Store.luckysheetfile[realIndex].pivotTable )();
+        if (getObjType(Store.sheetfile[realIndex].pivotTable) != "object"){
+            Store.sheetfile[realIndex].pivotTable = new Function("return " + Store.sheetfile[realIndex].pivotTable )();
         }
 
-        if (Store.luckysheetfile[realIndex].pivotTable != null) {
-            _this.column = Store.luckysheetfile[realIndex].pivotTable.column;
-            _this.row = Store.luckysheetfile[realIndex].pivotTable.row;
-            _this.values = Store.luckysheetfile[realIndex].pivotTable.values;
-            _this.filter = Store.luckysheetfile[realIndex].pivotTable.filter;
-            _this.showType = Store.luckysheetfile[realIndex].pivotTable.showType;
+        if (Store.sheetfile[realIndex].pivotTable != null) {
+            _this.column = Store.sheetfile[realIndex].pivotTable.column;
+            _this.row = Store.sheetfile[realIndex].pivotTable.row;
+            _this.values = Store.sheetfile[realIndex].pivotTable.values;
+            _this.filter = Store.sheetfile[realIndex].pivotTable.filter;
+            _this.showType = Store.sheetfile[realIndex].pivotTable.showType;
 
-            _this.filterparm = Store.luckysheetfile[realIndex].pivotTable.filterparm;
+            _this.filterparm = Store.sheetfile[realIndex].pivotTable.filterparm;
 
-            if (Store.luckysheetfile[realIndex].pivotTable.drawPivotTable != null) {
-                _this.drawPivotTable = Store.luckysheetfile[realIndex].pivotTable.drawPivotTable;
+            if (Store.sheetfile[realIndex].pivotTable.drawPivotTable != null) {
+                _this.drawPivotTable = Store.sheetfile[realIndex].pivotTable.drawPivotTable;
             }
             else {
                 _this.drawPivotTable = true;
             }
 
-            if (Store.luckysheetfile[realIndex].pivotTable.pivotTableBoundary != null) {
-                _this.pivotTableBoundary = Store.luckysheetfile[realIndex].pivotTable.pivotTableBoundary;
+            if (Store.sheetfile[realIndex].pivotTable.pivotTableBoundary != null) {
+                _this.pivotTableBoundary = Store.sheetfile[realIndex].pivotTable.pivotTableBoundary;
             }
             else {
                 _this.pivotTableBoundary = [12, 6];
@@ -88,14 +88,14 @@ const pivotTable = {
                 _this.pivot_select_save = data_select_save;
             }
             else {
-                _this.pivot_select_save = Store.luckysheetfile[realIndex].pivotTable.pivot_select_save;
+                _this.pivot_select_save = Store.sheetfile[realIndex].pivotTable.pivot_select_save;
             }
 
             if (datasheetindex != null) {
                 _this.pivotDataSheetIndex = datasheetindex;
             }
             else {
-                _this.pivotDataSheetIndex = Store.luckysheetfile[realIndex].pivotTable.pivotDataSheetIndex;
+                _this.pivotDataSheetIndex = Store.sheetfile[realIndex].pivotTable.pivotDataSheetIndex;
             }
         }
         else {
@@ -114,7 +114,7 @@ const pivotTable = {
                 _this.pivot_select_save = data_select_save;
             }
             else {
-                _this.pivot_select_save = Store.luckysheet_select_save;
+                _this.pivot_select_save = Store.sheet_select_save;
             }
 
             if (datasheetindex != null) {
@@ -127,7 +127,7 @@ const pivotTable = {
 
         let pivotrealIndex = getSheetIndex(_this.pivotDataSheetIndex);
 
-        let otherfile = Store.luckysheetfile[pivotrealIndex];
+        let otherfile = Store.sheetfile[pivotrealIndex];
         if(otherfile["data"] == null){
             otherfile["data"] = sheetmanage.buildGridData(otherfile);
         }
@@ -175,7 +175,7 @@ const pivotTable = {
     caljs: null,
     initial: true,
     filterparm: null,
-    luckysheet_pivotTable_select_state: false,
+    sheet_pivotTable_select_state: false,
     jgridCurrentPivotInput: null,
     movestate: false,
     moveitemposition: [],
@@ -184,25 +184,25 @@ const pivotTable = {
         let _this = this;
 
         if ($("#sheet-modal-dialog-config-value .sheet-modal-dialog-slider-config-item").length >= 2) {
-            $("#luckysheetpivottablevaluecolrowshow").show();
+            $("#sheetpivottablevaluecolrowshow").show();
 
             if (_this.showType == "column") {
-                $("#luckysheetpivottablevaluecolrow").prop("checked", true);
-                $("#luckysheetpivottablevaluecolrowshow label[for='luckysheetpivottablevaluecolrow']").addClass("ui-state-active");
+                $("#sheetpivottablevaluecolrow").prop("checked", true);
+                $("#sheetpivottablevaluecolrowshow label[for='sheetpivottablevaluecolrow']").addClass("ui-state-active");
 
-                $("#luckysheetpivottablevaluecolrow1").prop("checked", false);
-                $("#luckysheetpivottablevaluecolrowshow label[for='luckysheetpivottablevaluecolrow1']").removeClass("ui-state-active");
+                $("#sheetpivottablevaluecolrow1").prop("checked", false);
+                $("#sheetpivottablevaluecolrowshow label[for='sheetpivottablevaluecolrow1']").removeClass("ui-state-active");
             }
             else {
-                $("#luckysheetpivottablevaluecolrow1").prop("checked", true);
-                $("#luckysheetpivottablevaluecolrowshow label[for='luckysheetpivottablevaluecolrow1']").addClass("ui-state-active");
+                $("#sheetpivottablevaluecolrow1").prop("checked", true);
+                $("#sheetpivottablevaluecolrowshow label[for='sheetpivottablevaluecolrow1']").addClass("ui-state-active");
 
-                $("#luckysheetpivottablevaluecolrow").prop("checked", false);
-                $("#luckysheetpivottablevaluecolrowshow label[for='luckysheetpivottablevaluecolrow']").removeClass("ui-state-active");
+                $("#sheetpivottablevaluecolrow").prop("checked", false);
+                $("#sheetpivottablevaluecolrowshow label[for='sheetpivottablevaluecolrow']").removeClass("ui-state-active");
             }
         }
         else {
-            $("#luckysheetpivottablevaluecolrowshow").hide();
+            $("#sheetpivottablevaluecolrowshow").hide();
         }
     },
     resetOrderby: function (obj) {
@@ -213,7 +213,7 @@ const pivotTable = {
             }
         });
     },
-    luckysheetsliderlistclearfilter: function (_filter) {
+    sheetsliderlistclearfilter: function (_filter) {
         let _this = this;
 
         let _t = _filter.parent();
@@ -240,7 +240,7 @@ const pivotTable = {
         _this.refreshPivotTable();
         $("#sheet-pivotTableFilter-menu, #sheet-pivotTableFilter-submenu").hide();
     },
-    luckysheetsliderlistitemfilter: function (_filter) {
+    sheetsliderlistitemfilter: function (_filter) {
         let _this = this;
 
         const _locale = locale();
@@ -599,23 +599,23 @@ const pivotTable = {
         let _this = this;
 
         let index = getSheetIndex(_this.pivotSheetIndex);
-        if (Store.luckysheetfile[index]["pivotTable"] == null) {
-            Store.luckysheetfile[index]["pivotTable"] = {};
+        if (Store.sheetfile[index]["pivotTable"] == null) {
+            Store.sheetfile[index]["pivotTable"] = {};
         }
 
         if (cindex == null) {
-            Store.luckysheetfile[index]["pivotTable"][attr] = value;
+            Store.sheetfile[index]["pivotTable"][attr] = value;
             _this[attr] = value;
         }
         else {
-            if (Store.luckysheetfile[index]["pivotTable"]["filterparm"] == null) {
-                Store.luckysheetfile[index]["pivotTable"]["filterparm"] = {};
+            if (Store.sheetfile[index]["pivotTable"]["filterparm"] == null) {
+                Store.sheetfile[index]["pivotTable"]["filterparm"] = {};
             }
 
-            if (Store.luckysheetfile[index]["pivotTable"]["filterparm"][cindex.toString()] == null) {
-                Store.luckysheetfile[index]["pivotTable"]["filterparm"][cindex.toString()] = {};
+            if (Store.sheetfile[index]["pivotTable"]["filterparm"][cindex.toString()] == null) {
+                Store.sheetfile[index]["pivotTable"]["filterparm"][cindex.toString()] = {};
             }
-            Store.luckysheetfile[index]["pivotTable"]["filterparm"][cindex.toString()][attr] = value;
+            Store.sheetfile[index]["pivotTable"]["filterparm"][cindex.toString()][attr] = value;
 
             if (_this["filterparm"] == null) {
                 _this["filterparm"] = {};
@@ -645,17 +645,17 @@ const pivotTable = {
             return;
         }
 
-        if(Store.luckysheet_select_save.length > 1){
+        if(Store.sheet_select_save.length > 1){
             tooltip.info("", locale_pivotTable.errorNotAllowMulti);
             return
         }
 
-        if (Store.luckysheet_select_save.length == 0 || Store.luckysheet_select_save[0].row[0] == Store.luckysheet_select_save[0].row[1] || Store.luckysheet_select_save[0].column[0] == Store.luckysheet_select_save[0].column[1]) {
+        if (Store.sheet_select_save.length == 0 || Store.sheet_select_save[0].row[0] == Store.sheet_select_save[0].row[1] || Store.sheet_select_save[0].column[0] == Store.sheet_select_save[0].column[1]) {
             tooltip.info("", locale_pivotTable.errorSelectRange);
             return;
         }
 
-        let select_save = $.extend(true, {}, Store.luckysheet_select_save[0]);
+        let select_save = $.extend(true, {}, Store.sheet_select_save[0]);
         sheetmanage.addNewSheet(e, true);
 
         _this.getCellData(Store.currentSheetIndex, datasheetindex, select_save);
@@ -671,7 +671,7 @@ const pivotTable = {
         const _locale = locale();
         const locale_pivotTable = _locale.pivotTable;
 
-        let pivotDataSheetIndex = Store.luckysheetfile[getSheetIndex(index)].pivotTable.pivotDataSheetIndex;
+        let pivotDataSheetIndex = Store.sheetfile[getSheetIndex(index)].pivotTable.pivotDataSheetIndex;
         let real_pivotDataSheetIndex = getSheetIndex(pivotDataSheetIndex);
 
         if(real_pivotDataSheetIndex == null){
@@ -744,10 +744,10 @@ const pivotTable = {
         Store.clearjfundo = false;
         
         if (addr > 0 || addc > 0) {
-            jfrefreshgridall(data[0].length, data.length, data, null, Store.luckysheet_select_save, "datachangeAll", undefined, undefined,isRefreshCanvas);
+            jfrefreshgridall(data[0].length, data.length, data, null, Store.sheet_select_save, "datachangeAll", undefined, undefined,isRefreshCanvas);
         }
         else {
-            jfrefreshgrid(data, Store.luckysheet_select_save, {}, null, isRefreshCanvas);
+            jfrefreshgrid(data, Store.sheet_select_save, {}, null, isRefreshCanvas);
             selectHightlightShow();
         }
 
@@ -762,7 +762,7 @@ const pivotTable = {
 
 
 
-        let file = Store.luckysheetfile[getSheetIndex(index)];
+        let file = Store.sheetfile[getSheetIndex(index)];
 
         if(!file.isPivotTable){
             return;
@@ -780,23 +780,23 @@ const pivotTable = {
         let isRangeClick = this.isPivotRange(row_index, col_index);
         if (isRangeClick && slider.is(":hidden")) {
             if(!checkProtectionAuthorityNormal(index, "usePivotTablereports",false)){
-                // Store.luckysheet_select_status = false;
+                // Store.sheet_select_status = false;
                 return;
             }
             slider.show();
-            luckysheetsizeauto();
+            sheetsizeauto();
             $("#sheet-sta-content").css("padding-right", 260);
         }
         else if(!isRangeClick && slider.is(":visible")) {
             slider.hide();
-            luckysheetsizeauto();
+            sheetsizeauto();
             $("#sheet-sta-content").css("padding-right", 10);
         }
     },
     isPivotRange: function (row_index, col_index) {
         let _this = this;
 
-        if (!!Store.luckysheetcurrentisPivotTable) {
+        if (!!Store.sheetcurrentisPivotTable) {
             if (row_index < _this.pivotTableBoundary[0] && col_index < _this.pivotTableBoundary[1]) {
                 return true;
             }
@@ -853,7 +853,7 @@ const pivotTable = {
         _this.setDatatojsfile("row", rowarr);
         _this.setDatatojsfile("filter", filterarr);
         _this.setDatatojsfile("values", valuesarr);
-        let showtype = $("#luckysheetpivottablevaluecolrow:checked, #luckysheetpivottablevaluecolrow1:checked").val();
+        let showtype = $("#sheetpivottablevaluecolrow:checked, #sheetpivottablevaluecolrow1:checked").val();
         _this.setDatatojsfile("showType", showtype == "0" ? "row" : "column");
 
         let pivotTable = _this.getPivotTableData();
@@ -866,10 +866,10 @@ const pivotTable = {
         }
 
         let index = getSheetIndex(dataindex);
-        let pivotTable = Store.luckysheetfile[index]["pivotTable"];
+        let pivotTable = Store.sheetfile[index]["pivotTable"];
 
         if(getObjType(pivotTable) == "object"){
-            pivotTable = $.extend(true, {}, Store.luckysheetfile[index]["pivotTable"]);
+            pivotTable = $.extend(true, {}, Store.sheetfile[index]["pivotTable"]);
         }
         else{
             pivotTable = new Function("return " + pivotTable )();
@@ -921,7 +921,7 @@ const pivotTable = {
             $("body").append(sheetPivotTableHTML());
             $("#sheet-modal-dialog-slider-close").click(function () {
                 $("#sheet-modal-dialog-slider-pivot").hide();
-                luckysheetsizeauto();
+                sheetsizeauto();
             });
 
             $("body").append(replaceHtml(modelHTML, { "id": "sheet-data-pivotTable-selection", "addclass": "sheet-data-pivotTable-selection", "title": locale_pivotTable.titleSelectionDataRange, "content": '<input id="sheet-pivotTable-range-selection-input" class="sheet-datavisual-range-container" style="font-size: 14px;padding:5px;max-width:none;" spellcheck="false" aria-label="'+locale_pivotTable.titleDataRange+'" placeholder="'+locale_pivotTable.titleDataRange+'">', "botton": '<button id="sheet-pivotTable-selection-confirm" class="btn btn-primary">'+locale_button.confirm+'</button><button class="btn btn-default sheet-model-close-btn">'+locale_button.cancel+'</button>' }));
@@ -937,7 +937,7 @@ const pivotTable = {
             $("#sheet-pivotTableFilter-orderby-color").next().remove();
             $("#sheet-pivotTableFilter-orderby-color").remove();
 
-            $("#luckysheetpivottablevaluecolrow, #luckysheetpivottablevaluecolrow1").checkboxradio({
+            $("#sheetpivottablevaluecolrow, #sheetpivottablevaluecolrow1").checkboxradio({
                 icon: false
             }).change(function () {
                 _this.refreshPivotTable();
@@ -1254,20 +1254,20 @@ const pivotTable = {
             });
 
             $("#sheet-modal-dialog-pivotTable-list").on("click", " .sheet-slider-list-item-filter", function (e) {
-                _this.luckysheetsliderlistitemfilter($(this));
+                _this.sheetsliderlistitemfilter($(this));
                 e.stopPropagation();
                 return false;
             });
 
             $("#sheet-modal-dialog-pivotTable-list").on("click", " .sheet-slider-list-item-filtered", function (e) {
-                _this.luckysheetsliderlistclearfilter($(this).next());
+                _this.sheetsliderlistclearfilter($(this).next());
                 e.stopPropagation();
                 return false;
             });
 
             $("#sheet-dialog-pivotTable-range-seleted").click(function () {
                 $("#sheet-modal-dialog-slider-pivot").hide();
-                luckysheetsizeauto();
+                sheetsizeauto();
                 let _t = $("#sheet-data-pivotTable-selection"), 
                     myh = _t.outerHeight(), 
                     myw = _t.outerWidth();
@@ -1278,7 +1278,7 @@ const pivotTable = {
 
                 _this.jgridCurrentPivotInput = $("#sheet-dialog-pivotTable-range").html();
                 $("#sheet-pivotTable-range-selection-input").val(_this.jgridCurrentPivotInput);
-                _this.luckysheet_pivotTable_select_state = true;
+                _this.sheet_pivotTable_select_state = true;
             });
 
             //清除筛选按钮
@@ -1384,7 +1384,7 @@ const pivotTable = {
             $("#sheet-modal-dialog-config-filter").on("click", ".sheet-modal-dialog-slider-config-item-icon", function (e) {
                 let _t = $(e.target), 
                     cindex = _t.closest(".sheet-modal-dialog-slider-config-item").data("index");
-                _this.luckysheetsliderlistitemfilter($("#sheet-modal-dialog-pivotTable-list .sheet-modal-dialog-slider-list-item").eq(cindex).find(".sheet-slider-list-item-filter"));
+                _this.sheetsliderlistitemfilter($("#sheet-modal-dialog-pivotTable-list .sheet-modal-dialog-slider-list-item").eq(cindex).find(".sheet-slider-list-item-filter"));
                 e.stopPropagation();
                 return false;
             });
@@ -1810,14 +1810,14 @@ const pivotTable = {
 
             $("#sheet-data-pivotTable-selection .sheet-model-close-btn, #sheet-data-pivotTable-selection .sheet-modal-dialog-title-close").click(function () {
                 $("#sheet-modal-dialog-slider-pivot").show();
-                luckysheetsizeauto();
+                sheetsizeauto();
                 $("#sheet-cell-main .sheet-pivotTable-selection-set div").show();
 
                 $("#sheet-data-pivotTable-selection").hide();
 
                 sheetmanage.changeSheetExec(_this.pivotSheetIndex);
 
-                _this.luckysheet_pivotTable_select_state = false;
+                _this.sheet_pivotTable_select_state = false;
 
                 cleargridelement();
             });
@@ -1838,9 +1838,9 @@ const pivotTable = {
                         sheettxt = val1[0];
                         rangetxt = val1[1];
 
-                        for (let i in Store.luckysheetfile) {
-                            if (sheettxt == Store.luckysheetfile[i].name) {
-                                sheetIndex = Store.luckysheetfile[i].index;
+                        for (let i in Store.sheetfile) {
+                            if (sheettxt == Store.sheetfile[i].name) {
+                                sheetIndex = Store.sheetfile[i].index;
                                 break;
                             }
                         }
@@ -1851,12 +1851,12 @@ const pivotTable = {
                     }
                     else {
                         let index = getSheetIndex(Store.currentSheetIndex);
-                        sheettxt = Store.luckysheetfile[index].name;
-                        sheetIndex = Store.luckysheetfile[index].index;
+                        sheettxt = Store.sheetfile[index].name;
+                        sheetIndex = Store.sheetfile[index].index;
                         rangetxt = val1[0];
                     }
 
-                    if(Store.luckysheetfile[getSheetIndex(sheetIndex)].isPivotTable){
+                    if(Store.sheetfile[getSheetIndex(sheetIndex)].isPivotTable){
                         if(isEditMode()){
                             alert(locale_pivotTable.errorNotAllowPivotData);
                         }
@@ -1923,11 +1923,11 @@ const pivotTable = {
 
                     $("#sheet-data-pivotTable-selection").hide();
 
-                    _this.luckysheet_pivotTable_select_state = false;
+                    _this.sheet_pivotTable_select_state = false;
 
                     _this.refreshPivotTable();
 
-                    luckysheetsizeauto();
+                    sheetsizeauto();
 
                     cleargridelement();
                 }
@@ -1967,7 +1967,7 @@ const pivotTable = {
                     let x = event.pageX, y = event.pageY, _container = $(this);
                     let curtop = y - _container.offset().top + _container.scrollTop();
                     let position = _this.moveitemposition;
-                    let row_index = luckysheet_searcharray(position, curtop);
+                    let row_index = sheet_searcharray(position, curtop);
 
                     if (row_index == -1) {
                         $("#sheet-modal-dialog-config-order-help").css({ "top": position[position.length - 1] });
@@ -2028,7 +2028,7 @@ const pivotTable = {
                     let x = event.pageX, y = event.pageY, _container = $(this);
                     let curtop = y - _container.offset().top + _container.scrollTop();
                     let position = _this.moveitemposition;
-                    let row_index = luckysheet_searcharray(position, curtop);
+                    let row_index = sheet_searcharray(position, curtop);
 
                     if ((_this.movesave.containerid == "sheet-modal-dialog-pivotTable-list") || (_this.movesave.containerid == "sheet-modal-dialog-config-value" && _this.movesave.containerid != _t.attr("id"))) {
                         $("#sheet-modal-dialog-config-filter, #sheet-modal-dialog-config-row, #sheet-modal-dialog-config-column").find(".sheet-modal-dialog-slider-config-item").each(function () {
@@ -2242,9 +2242,9 @@ const pivotTable = {
         }
         $("#sheet-modal-dialog-pivotTable-list").html(selecteditem);
 
-        $("#luckysheetpivottablevaluecolrowshow").hide();
-        $("#luckysheetpivottablevaluecolrow").prop("checked", true);
-        $("#luckysheetpivottablevaluecolrow1").prop("checked", false);
+        $("#sheetpivottablevaluecolrowshow").hide();
+        $("#sheetpivottablevaluecolrow").prop("checked", true);
+        $("#sheetpivottablevaluecolrow1").prop("checked", false);
 
         $("#sheet-modal-dialog-config-filter, #sheet-modal-dialog-config-row, #sheet-modal-dialog-config-column, #sheet-modal-dialog-config-value").empty();
         
@@ -2344,20 +2344,20 @@ const pivotTable = {
                 }
 
                 if (_this.values.length >= 2) {
-                    $("#luckysheetpivottablevaluecolrowshow").show();
+                    $("#sheetpivottablevaluecolrowshow").show();
                     if (_this.showType == "column") {
-                        $("#luckysheetpivottablevaluecolrow").prop("checked", true);
-                        $("#luckysheetpivottablevaluecolrowshow label[for='luckysheetpivottablevaluecolrow']").addClass("ui-state-active");
+                        $("#sheetpivottablevaluecolrow").prop("checked", true);
+                        $("#sheetpivottablevaluecolrowshow label[for='sheetpivottablevaluecolrow']").addClass("ui-state-active");
 
-                        $("#luckysheetpivottablevaluecolrow1").prop("checked", false);
-                        $("#luckysheetpivottablevaluecolrowshow label[for='luckysheetpivottablevaluecolrow1']").removeClass("ui-state-active");
+                        $("#sheetpivottablevaluecolrow1").prop("checked", false);
+                        $("#sheetpivottablevaluecolrowshow label[for='sheetpivottablevaluecolrow1']").removeClass("ui-state-active");
                     }
                     else {
-                        $("#luckysheetpivottablevaluecolrow1").prop("checked", true);
-                        $("#luckysheetpivottablevaluecolrowshow label[for='luckysheetpivottablevaluecolrow1']").addClass("ui-state-active");
+                        $("#sheetpivottablevaluecolrow1").prop("checked", true);
+                        $("#sheetpivottablevaluecolrowshow label[for='sheetpivottablevaluecolrow1']").addClass("ui-state-active");
 
-                        $("#luckysheetpivottablevaluecolrow").prop("checked", false);
-                        $("#luckysheetpivottablevaluecolrowshow label[for='luckysheetpivottablevaluecolrow']").removeClass("ui-state-active");
+                        $("#sheetpivottablevaluecolrow").prop("checked", false);
+                        $("#sheetpivottablevaluecolrowshow label[for='sheetpivottablevaluecolrow']").removeClass("ui-state-active");
                     }
                 }
             }
@@ -2366,7 +2366,7 @@ const pivotTable = {
         $("#sheet-dialog-pivotTable-range").html(getRangetxt(_this.pivotDataSheetIndex, _this.pivot_select_save));
         $("#sheet-modal-dialog-slider-pivot").show();
         
-        luckysheetsizeauto(false);
+        sheetsizeauto(false);
     },
     getComposeArray: function (data) {
         if (data.length == 0) {
@@ -2921,7 +2921,7 @@ const pivotTable = {
         }
 
         let datacoltitle_index = datacoltitle;
-        datacoltitle = luckysheetArray.transpose(datacoltitle, false);
+        datacoltitle = sheetArray.transpose(datacoltitle, false);
 
         let valuenslen = values.length == 0 ? 0 : 1;
         let rowLen = (datacoltitle.length == 0 ? valuenslen : datacoltitle.length) + (datarowtitle.length == 0 ? valuenslen : datarowtitle.length), colLen = (datacoltitle.length == 0 ? valuenslen : datacoltitle[0].length) + (datarowtitle.length == 0 ? valuenslen : datarowtitle[0].length);
@@ -3167,10 +3167,10 @@ const pivotTable = {
             }
         }
 
-        Store.luckysheet_select_save = [{ "row": [0, rowArr.length], "column": [0, _this.celldata[0].length - 1] }];
+        Store.sheet_select_save = [{ "row": [0, rowArr.length], "column": [0, _this.celldata[0].length - 1] }];
 
         Store.clearjfundo = false;
-        jfrefreshgrid(d, Store.luckysheet_select_save);
+        jfrefreshgrid(d, Store.sheet_select_save);
         selectHightlightShow();
         Store.clearjfundo = true;
     }

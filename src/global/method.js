@@ -1,22 +1,22 @@
 import server from '../controllers/server';
 import { sheetlodingHTML, sheetColor } from '../controllers/constant';
 import sheetmanage from '../controllers/sheetmanage';
-import luckysheetformula from './formula';
+import sheetformula from './formula';
 import imageCtrl from '../controllers/imageCtrl';
 import dataVerificationCtrl from '../controllers/dataVerificationCtrl';
 import pivotTable from '../controllers/pivotTable';
-import luckysheetFreezen from '../controllers/freezen';
+import sheetFreezen from '../controllers/freezen';
 import { getSheetIndex } from '../methods/get';
-import { luckysheetextendData } from './extend';
+import { sheetextendData } from './extend';
 import sheetConfigSetting from '../controllers/sheetConfigSetting';
 import editor from './editor';
-import luckysheetcreatesheet from './createsheet';
+import sheetcreatesheet from './createsheet';
 import Store from '../store';
 
 const defaultConfig = {
     defaultStore:{
         container: null, 
-        luckysheetfile: null, 
+        sheetfile: null, 
         defaultcolumnNum: 60, 
         defaultrowNum: 84, 
         fullscreenmode: true,
@@ -50,51 +50,51 @@ const defaultConfig = {
         jfcountfuncTimeout: null, 
         jfautoscrollTimeout: null,
     
-        luckysheet_select_status: false,
-        luckysheet_select_save: [{ "row": [0, 0], "column": [0, 0] }],
-        luckysheet_selection_range: [],
+        sheet_select_status: false,
+        sheet_select_save: [{ "row": [0, 0], "column": [0, 0] }],
+        sheet_selection_range: [],
     
-        luckysheet_copy_save: {}, //复制粘贴
-        luckysheet_paste_iscut: false,
+        sheet_copy_save: {}, //复制粘贴
+        sheet_paste_iscut: false,
     
         filterchage: true, //筛选
-        luckysheet_filter_save: { "row": [], "column": [] },
+        sheet_filter_save: { "row": [], "column": [] },
     
-        luckysheet_sheet_move_status: false,
-        luckysheet_sheet_move_data: [],
-        luckysheet_scroll_status: false,
+        sheet_sheet_move_status: false,
+        sheet_sheet_move_data: [],
+        sheet_scroll_status: false,
     
-        luckysheetisrefreshdetail: true,
-        luckysheetisrefreshtheme: true,
-        luckysheetcurrentisPivotTable: false,
+        sheetisrefreshdetail: true,
+        sheetisrefreshtheme: true,
+        sheetcurrentisPivotTable: false,
     
-        luckysheet_rows_selected_status: false,  //行列标题相关参
-        luckysheet_cols_selected_status: false,  
-        luckysheet_rows_change_size: false,
-        luckysheet_rows_change_size_start: [],
-        luckysheet_cols_change_size: false,
-        luckysheet_cols_change_size_start: [],
-        luckysheet_cols_dbclick_timeout: null,
-        luckysheet_cols_dbclick_times: 0,
+        sheet_rows_selected_status: false,  //行列标题相关参
+        sheet_cols_selected_status: false,  
+        sheet_rows_change_size: false,
+        sheet_rows_change_size_start: [],
+        sheet_cols_change_size: false,
+        sheet_cols_change_size_start: [],
+        sheet_cols_dbclick_timeout: null,
+        sheet_cols_dbclick_times: 0,
     
-        luckysheetCellUpdate: [],
+        sheetCellUpdate: [],
         
-        luckysheet_shiftpositon: null,
+        sheet_shiftpositon: null,
     
         iscopyself: true,
     
         orderbyindex: 0, //排序下标
     
-        luckysheet_model_move_state: false, //模态框拖动
-        luckysheet_model_xy: [0, 0],
-        luckysheet_model_move_obj: null,
+        sheet_model_move_state: false, //模态框拖动
+        sheet_model_xy: [0, 0],
+        sheet_model_move_obj: null,
     
-        luckysheet_cell_selected_move: false,  //选区拖动替换
-        luckysheet_cell_selected_move_index: [],
+        sheet_cell_selected_move: false,  //选区拖动替换
+        sheet_cell_selected_move_index: [],
     
-        luckysheet_cell_selected_extend: false,  //选区下拉
-        luckysheet_cell_selected_extend_index: [],
-        luckysheet_cell_selected_extend_time: null,
+        sheet_cell_selected_extend: false,  //选区下拉
+        sheet_cell_selected_extend_index: [],
+        sheet_cell_selected_extend_time: null,
     
         clearjfundo: true,
         jfredo: [],
@@ -104,30 +104,30 @@ const defaultConfig = {
         highlightChart: '',
         zIndex: 15,
         chartparam: {
-            luckysheetCurrentChart: null, //current chart_id
-            luckysheetCurrentChartActive: false,
-            luckysheetCurrentChartMove: null, // Debounce state
-            luckysheetCurrentChartMoveTimeout: null,//拖动图表框的节流定时器
-            luckysheetCurrentChartMoveObj: null, //chart DOM object
-            luckysheetCurrentChartMoveXy: null, //上一次操作结束的图表信息，x,y: chart框位置，scrollLeft1,scrollTop1: 滚动条位置
-            luckysheetCurrentChartMoveWinH: null, //左右滚动条滑动距离
-            luckysheetCurrentChartMoveWinW: null, //上下滚动条滑动距离
-            luckysheetCurrentChartResize: null,
-            luckysheetCurrentChartResizeObj: null,
-            luckysheetCurrentChartResizeXy: null,
-            luckysheetCurrentChartResizeWinH: null,
-            luckysheetCurrentChartResizeWinW: null,
-            luckysheetInsertChartTosheetChange: true, // 正在执行撤销
-            luckysheetCurrentChartZIndexRank : 100,
-            luckysheet_chart_redo_click:false, //撤销重做时标识
-            luckysheetCurrentChartMaxState: false, //图表全屏状态
+            sheetCurrentChart: null, //current chart_id
+            sheetCurrentChartActive: false,
+            sheetCurrentChartMove: null, // Debounce state
+            sheetCurrentChartMoveTimeout: null,//拖动图表框的节流定时器
+            sheetCurrentChartMoveObj: null, //chart DOM object
+            sheetCurrentChartMoveXy: null, //上一次操作结束的图表信息，x,y: chart框位置，scrollLeft1,scrollTop1: 滚动条位置
+            sheetCurrentChartMoveWinH: null, //左右滚动条滑动距离
+            sheetCurrentChartMoveWinW: null, //上下滚动条滑动距离
+            sheetCurrentChartResize: null,
+            sheetCurrentChartResizeObj: null,
+            sheetCurrentChartResizeXy: null,
+            sheetCurrentChartResizeWinH: null,
+            sheetCurrentChartResizeWinW: null,
+            sheetInsertChartTosheetChange: true, // 正在执行撤销
+            sheetCurrentChartZIndexRank : 100,
+            sheet_chart_redo_click:false, //撤销重做时标识
+            sheetCurrentChartMaxState: false, //图表全屏状态
             jfrefreshchartall: '',
             changeChartCellData: '',
             renderChart: '',
             getChartJson: ''
         },
         functionList:null, //function list explanation
-        luckysheet_function:null,
+        sheet_function:null,
         chart_selection: {},
         currentChart: '',
         scrollRefreshSwitch:true,
@@ -222,7 +222,7 @@ const defaultConfig = {
         caljs: null,
         initial: true,
         filterparm: null,
-        luckysheet_pivotTable_select_state: false,
+        sheet_pivotTable_select_state: false,
         jgridCurrentPivotInput: null,
         movestate: false,
         moveitemposition: [],
@@ -324,7 +324,7 @@ const method = {
                 let dataset = d.data;
                 
                 let newData = dataset.celldata;
-                luckysheetextendData(dataset["row"], newData);
+                sheetextendData(dataset["row"], newData);
 
                 setTimeout(function(){
                     Store.loadingObj.close()
@@ -352,7 +352,7 @@ const method = {
 
         let arg = {"gridKey" : server.gridKey, "index": index};
         param = $.extend(true, param, arg);
-        let file = Store.luckysheetfile[getSheetIndex(index)];
+        let file = Store.sheetfile[getSheetIndex(index)];
 
         $.post(url, param, function (d) {
             let dataset = new Function("return " + d)();
@@ -367,11 +367,11 @@ const method = {
             Store.flowdata = data;
             editor.webWorkerFlowDataCache(data);//worker存数据
 
-            luckysheetcreatesheet(data[0].length, data.length, data, null, false);
+            sheetcreatesheet(data[0].length, data.length, data, null, false);
             file["load"] = "1";
 
-            Store.luckysheet_select_save.length = 0;
-            Store.luckysheet_selection_range = [];
+            Store.sheet_select_save.length = 0;
+            Store.sheet_selection_range = [];
 
             server.saveParam("shs", null, Store.currentSheetIndex);
 
@@ -384,7 +384,7 @@ const method = {
     },
     clearSheetByIndex: function(i){
         let index = getSheetIndex(i);
-        let sheetfile = Store.luckysheetfile[index];
+        let sheetfile = Store.sheetfile[index];
 
         if(!sheetfile.isPivotTable){
             sheetfile.data = [];
@@ -412,15 +412,15 @@ const method = {
             delete sheetfile.load;
         }
         else {
-            delete Store.luckysheetfile[index];
+            delete Store.sheetfile[index];
         }
     },
     clear: function(index){
         let _this = this;
 
         if(index == "all"){
-            for(let i = 0; i < Store.luckysheetfile.length; i++){
-                let sheetfile = Store.luckysheetfile[i];
+            for(let i = 0; i < Store.sheetfile.length; i++){
+                let sheetfile = Store.sheetfile[i];
                 _this.clearSheetByIndex(sheetfile.index);
             }
             
@@ -432,24 +432,24 @@ const method = {
             _this.clearSheetByIndex(index);
         }
 
-        sheetmanage.changeSheet(Store.luckysheetfile[0].index);
+        sheetmanage.changeSheet(Store.sheetfile[0].index);
     },
     destroy:function(){
         $("#" + Store.container).empty();
         $("body > .sheet-cols-menu").remove();
 
-        $("#sheet-modal-dialog-mask, #luckysheetTextSizeTest, #sheet-icon-morebtn-div").remove();
+        $("#sheet-modal-dialog-mask, #sheetTextSizeTest, #sheet-icon-morebtn-div").remove();
         $("#sheet-input-box").parent().remove();
         $("#sheet-formula-help-c").remove();
         $(".chartSetting, .sheet-modal-dialog-slider").remove();
 
         //document event release
         $(document).off(".sheetEvent");
-        $(document).off(".luckysheetProtection");
+        $(document).off(".sheetProtection");
         
         //参数重置
-        luckysheetFreezen.initialHorizontal = true;
-        luckysheetFreezen.initialVertical = true;
+        sheetFreezen.initialHorizontal = true;
+        sheetFreezen.initialVertical = true;
 
         let defaultStore = $.extend(true, {}, defaultConfig.defaultStore);
         for(let key in defaultStore){
@@ -460,8 +460,8 @@ const method = {
 
         let defaultFormula = $.extend(true, {}, defaultConfig.defaultFormula);
         for(let key in defaultFormula){
-            if(key in luckysheetformula){
-                luckysheetformula[key] = defaultFormula[key];
+            if(key in sheetformula){
+                sheetformula[key] = defaultFormula[key];
             }
         }
 
@@ -498,7 +498,7 @@ const method = {
     },
     editorChart:function(c){
         let chart_selection_color = sheetColor[0];
-        let chart_id = "luckysheetEditMode-datav-chart";
+        let chart_id = "sheetEditMode-datav-chart";
         let chart_selection_id = chart_id + "_selection";
         c.chart_id = chart_id;
         let chartTheme = c.chartTheme;

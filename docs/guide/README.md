@@ -1,12 +1,12 @@
 # Get started
 
 ## Introduction
-Luckysheet is an online spreadsheet like excel that is powerful, simple to configure, and completely open source.
+sheet is an online spreadsheet like excel that is powerful, simple to configure, and completely open source.
 
 ## Demo
-[Online demo](https://mengshukeji.github.io/LuckysheetDemo/)
+[Online demo](https://mengshukeji.github.io/sheetDemo/)
 
-![Demo](/LuckysheetDocs/img/LuckysheetDemo.gif)
+![Demo](/sheetDocs/img/sheetDemo.gif)
 
 ## Online Case
 
@@ -41,7 +41,7 @@ Luckysheet is an online spreadsheet like excel that is powerful, simple to confi
 
 ### 🔨Operation
 + **Undo/Redo**
-+ **Copy/Paste/Cut** (Copy from excel to Luckysheet with format, vice versa)
++ **Copy/Paste/Cut** (Copy from excel to sheet with format, vice versa)
 + **Hot key** (The operating experience is consistent with excel, if there are differences or missing, please feedback to us)
 + **Format Painter** (Similar to google sheet)
 + **Selection by drag and dropping** (Change the parameters of formula and chart through selection)
@@ -82,17 +82,17 @@ Luckysheet is an online spreadsheet like excel that is powerful, simple to confi
 ### 📚Insert object
 + **Insert picture** (JPG,PNG,SVG and so on)
 
-### ⚡Luckysheet
+### ⚡sheet
 + **Matrix operation** (Operate selection through the right-click menu: transpose, rotate, numerical calculation)
 + **Screenshot** (Take a screenshot with selection)
 + **Copy to** (In the right-click menu, copy selection to json, array etc.)
-+ **EXCEL import/export** (Specially adapted to Luckysheet, export is under development)
++ **EXCEL import/export** (Specially adapted to sheet, export is under development)
 
 ### ⏱️Coming soon
 + **Print** (Like excel print option, save to PDF)
 + **Tree menu** (Just like the outline (group)  function of excel)
 + **Table new Features** (filter, slicer)
-+ **CSV,TXT import/export** (Specially adapted to Luckysheet)
++ **CSV,TXT import/export** (Specially adapted to sheet)
 + **Insert Shapes** ([Pen tool](https://github.com/mengshukeji/Pentool) Shapes)
 + **Documentation** (Improve documentation and API)
 + **More...** (Please advise us)
@@ -134,11 +134,11 @@ There are two ways to introduce dependencies
 <script src="https://cdn.jsdelivr.net/npm/sheet@latest/dist/sheet.umd.js"></script>
 ```
 
-Note that the path of `https://cdn.jsdelivr.net/npm/sheet@latest/dist/sheet.umd.js` means that the latest sheet code will be pulled, but if Luckysheet has just been released, the jsdelivr website may not have time Synchronize from npm, so using this path will still pull to the previous version. We recommend that you directly specify the latest version.
+Note that the path of `https://cdn.jsdelivr.net/npm/sheet@latest/dist/sheet.umd.js` means that the latest sheet code will be pulled, but if sheet has just been released, the jsdelivr website may not have time Synchronize from npm, so using this path will still pull to the previous version. We recommend that you directly specify the latest version.
 
-To specify the Luckysheet version, please add the version number after all CDN dependent files, such as: `https://cdn.jsdelivr.net/npm/sheet@2.1.12/dist/sheet.umd.js`.
+To specify the sheet version, please add the version number after all CDN dependent files, such as: `https://cdn.jsdelivr.net/npm/sheet@2.1.12/dist/sheet.umd.js`.
 
-> How do I know which version is the latest version? View the latest [release record](https://github.com/mengshukeji/Luckysheet/releases) or [package.json](https://github.com/mengshukeji/Luckysheet/blob/master/package.json)` version` field.
+> How do I know which version is the latest version? View the latest [release record](https://github.com/mengshukeji/sheet/releases) or [package.json](https://github.com/mengshukeji/sheet/blob/master/package.json)` version` field.
 
 If it is not convenient to access jsdelivr.net, you can also import it locally
 
@@ -175,17 +175,17 @@ Create a table
 
 ### Format
 
-The data format of a complete Luckysheet table file is: luckysheetfile, a table file contains several sheet files, corresponding to excel sheet0, sheet1, etc.
+The data format of a complete sheet table file is: sheetfile, a table file contains several sheet files, corresponding to excel sheet0, sheet1, etc.
 
-An example of a Luckysheet file is as follows, the table contains 3 sheets:`
-luckysheetfile = [{sheet1 settings}, {sheet2 settings}, {sheet3 settings}]`
+An example of a sheet file is as follows, the table contains 3 sheets:`
+sheetfile = [{sheet1 settings}, {sheet2 settings}, {sheet3 settings}]`
 Equivalent to 3 sheets of excel
 
-![excel sheet](/LuckysheetDocs/img/excel.png)
+![excel sheet](/sheetDocs/img/excel.png)
 
 An example of a sheet in the file is as follows:
 ```javascript
-luckysheetfile[0] = 
+sheetfile[0] = 
 {
 	"name": "Cell", //Worksheet name
 	"color": "", //Worksheet color
@@ -204,7 +204,7 @@ luckysheetfile[0] =
 	"rh_height": 949, //The height of the worksheet area
 	"scrollLeft": 0, //Left and right scroll bar position
 	"scrollTop": 315, //Up and down scroll bar position
-	"luckysheet_select_save": [], //selected area
+	"sheet_select_save": [], //selected area
 	"conditionformat_save": {},//Conditional format
 	"calcChain": [],//Formula chain
 	"isPivotTable":false,//Whether to pivot table
@@ -212,12 +212,12 @@ luckysheetfile[0] =
 	"filter_select": null,//Filter range
 	"filter": null,//Filter configuration
 	"alternateformat_save": [], //Alternate colors
-	"luckysheet_alternateformat_save_modelCustom": []//Customize alternate colors
+	"sheet_alternateformat_save_modelCustom": []//Customize alternate colors
 }
 ```
 ### View method
 View in chrome's console
-`sheet.getluckysheetfile()`
+`sheet.getsheetfile()`
 You can see the complete settings
 `[{shee1}, {sheet2}, {sheet3}]`
 
@@ -246,11 +246,11 @@ You can see the complete settings
 
 ## Guide
 
-If you encounter problems with Luckysheet, follow the steps below to find the answer
+If you encounter problems with sheet, follow the steps below to find the answer
 
 1. Use Doge or Google to search for common technical issues
-2. For Luckysheet related issues, please view [Luckysheet Official Document](https://mengshukeji.github.io/LuckysheetDocs/)(Note that the function of marking TODO has not yet been implemented)
-3. Search [FAQ List](https://mengshukeji.github.io/LuckysheetDocs/guide/FAQ.html)
+2. For sheet related issues, please view [sheet Official Document](https://mengshukeji.github.io/sheetDocs/)(Note that the function of marking TODO has not yet been implemented)
+3. Search [FAQ List](https://mengshukeji.github.io/sheetDocs/guide/FAQ.html)
 4. Search [Official Forum](https://groups.google.com/g/sheet) to see if anyone has encountered it
 5. Try to check or experiment by yourself to find the answer
 6. Please try to read the source code to find the answer,
@@ -258,12 +258,12 @@ If you encounter problems with Luckysheet, follow the steps below to find the an
 If none of the above methods solve your problem, you can consider:
 
 - Go to [Official Forum](https://groups.google.com/g/sheet) to ask questions
-- Go to [Gitter](https://gitter.im/mengshukeji/Luckysheet) to ask questions
-- If there are obvious problems or the needs cannot be met, please submit [issues](https://github.com/mengshukeji/Luckysheet/issues)
+- Go to [Gitter](https://gitter.im/mengshukeji/sheet) to ask questions
+- If there are obvious problems or the needs cannot be met, please submit [issues](https://github.com/mengshukeji/sheet/issues)
 
 > Recommended reading [How To Ask Questions The Smart Way](http://www.catb.org/~esr/faqs/smart-questions.html)
 
-At the same time, we strongly recommend you to help us enrich the Luckysheet community
+At the same time, we strongly recommend you to help us enrich the sheet community
 
 - If you find a problem with the documentation or code, you can contribute by submitting a PR. All reasonable changes, optimizations, amendments, or document amendments or updates related to submissions will be accepted
-- When you have some experience in using or secondary developing Luckysheet, we encourage you to share it through blog posts
+- When you have some experience in using or secondary developing sheet, we encourage you to share it through blog posts

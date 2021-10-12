@@ -3,10 +3,10 @@ import { replaceHtml, getObjType, chatatABC } from '../utils/util';
 import formula from '../global/formula';
 import { isRealNull, isEditMode } from '../global/validate';
 import tooltip from '../global/tooltip';
-import { luckysheetrefreshgrid } from '../global/refresh';
+import { sheetrefreshgrid } from '../global/refresh';
 import { getcellvalue } from '../global/getdata';
 import { genarate } from '../global/format';
-import { modelHTML, luckysheet_CFiconsImg } from './constant';
+import { modelHTML, sheet_CFiconsImg } from './constant';
 import server from './server';
 import { selectionCopyShow } from './select';
 import sheetmanage from './sheetmanage';
@@ -18,7 +18,7 @@ import dayjs from 'dayjs'
 //条件格式
 const conditionformat = {
     fileClone: [],
-    editorRule: null, //{"sheetIndex": sheetIndex,"itemIndex": itemIndex,"data": luckysheetfile[sheetIndex].conditionformat_save[itemIndex]}
+    editorRule: null, //{"sheetIndex": sheetIndex,"itemIndex": itemIndex,"data": sheetfile[sheetIndex].conditionformat_save[itemIndex]}
     ruleTypeHtml: function(){
         const conditionformat_Text = locale().conditionformat;
 
@@ -121,17 +121,17 @@ const conditionformat = {
             }
 
             //保存之前的规则
-            let fileH = $.extend(true, [], Store.luckysheetfile);
+            let fileH = $.extend(true, [], Store.sheetfile);
             let historyRules = _this.getHistoryRules(fileH);
 
             //保存当前的规则
             let fileClone = $.extend(true, [], _this.fileClone);
             for(let c = 0; c < fileClone.length; c++){
                 let sheetIndex = fileClone[c]["index"];
-                Store.luckysheetfile[getSheetIndex(sheetIndex)]["conditionformat_save"] = fileClone[getSheetIndex(sheetIndex)]["conditionformat_save"];
+                Store.sheetfile[getSheetIndex(sheetIndex)]["conditionformat_save"] = fileClone[getSheetIndex(sheetIndex)]["conditionformat_save"];
             }
 
-            let fileC = $.extend(true, [], Store.luckysheetfile);
+            let fileC = $.extend(true, [], Store.sheetfile);
             let currentRules = _this.getCurrentRules(fileC);
 
             //刷新一次表格
@@ -143,7 +143,7 @@ const conditionformat = {
 
             //发送给后台
             if(server.allowUpdate){
-                let files = $.extend(true, [], Store.luckysheetfile);
+                let files = $.extend(true, [], Store.sheetfile);
                 for(let i = 0; i < files.length; i++){
                     server.saveParam("all", files[i]["index"], files[i]["conditionformat_save"], { "k": "conditionformat_save" });
                 }
@@ -236,7 +236,7 @@ const conditionformat = {
                 return;
             }
 
-            if(Store.luckysheet_select_save.length == 0){
+            if(Store.sheet_select_save.length == 0){
                 if(isEditMode()){
                     alert(conditionformat_Text.pleaseSelectRange);
                 }
@@ -272,7 +272,7 @@ const conditionformat = {
 
                     rule = {
                         "type": "dataBar",
-                        "cellrange": $.extend(true, [], Store.luckysheet_select_save),
+                        "cellrange": $.extend(true, [], Store.sheet_select_save),
                         "format": format
                     };
                 }
@@ -290,7 +290,7 @@ const conditionformat = {
 
                     rule = {
                         "type": "colorGradation",
-                        "cellrange": $.extend(true, [], Store.luckysheet_select_save),
+                        "cellrange": $.extend(true, [], Store.sheet_select_save),
                         "format": format
                     };
                 }
@@ -307,7 +307,7 @@ const conditionformat = {
 
                     rule = {
                         "type": "icons",
-                        "cellrange": $.extend(true, [], Store.luckysheet_select_save),
+                        "cellrange": $.extend(true, [], Store.sheet_select_save),
                         "format": format
                     };
                 }
@@ -552,7 +552,7 @@ const conditionformat = {
 
                 rule = {
                     "type": "default",
-                    "cellrange": $.extend(true, [], Store.luckysheet_select_save),
+                    "cellrange": $.extend(true, [], Store.sheet_select_save),
                     "format": format,
                     "conditionName": conditionName,
                     "conditionRange": conditionRange,
@@ -569,15 +569,15 @@ const conditionformat = {
                 $("#sheet-modal-dialog-mask").hide();
 
                 //保存之前的规则
-                let fileH = $.extend(true, [], Store.luckysheetfile);
+                let fileH = $.extend(true, [], Store.sheetfile);
                 let historyRules = _this.getHistoryRules(fileH);
 
                 //保存当前的规则
-                let ruleArr = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"] == undefined ? [] : Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"];
+                let ruleArr = Store.sheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"] == undefined ? [] : Store.sheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"];
                 ruleArr.push(rule);
-                Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"] = ruleArr;
+                Store.sheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"] = ruleArr;
 
-                let fileC = $.extend(true, [], Store.luckysheetfile);
+                let fileC = $.extend(true, [], Store.sheetfile);
                 let currentRules = _this.getCurrentRules(fileC);
 
                 //刷新一次表格
@@ -1204,13 +1204,13 @@ const conditionformat = {
             }
 
             //保存之前的规则
-            let fileH = $.extend(true, [], Store.luckysheetfile);
+            let fileH = $.extend(true, [], Store.sheetfile);
             let historyRules = _this.getHistoryRules(fileH);
 
             //保存当前的规则
             let rule = {
                 "type": "default",
-                "cellrange": $.extend(true, [], Store.luckysheet_select_save),
+                "cellrange": $.extend(true, [], Store.sheet_select_save),
                 "format": {
                     "textColor": textcolor,
                     "cellColor": cellcolor
@@ -1219,11 +1219,11 @@ const conditionformat = {
                 "conditionRange": conditionRange,
                 "conditionValue": conditionValue
             };
-            let ruleArr = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"] == undefined ? [] : Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"];
+            let ruleArr = Store.sheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"] == undefined ? [] : Store.sheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"];
             ruleArr.push(rule);
-            Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"] = ruleArr;
+            Store.sheetfile[getSheetIndex(Store.currentSheetIndex)]["conditionformat_save"] = ruleArr;
 
-            let fileC = $.extend(true, [], Store.luckysheetfile);
+            let fileC = $.extend(true, [], Store.sheetfile);
             let currentRules = _this.getCurrentRules(fileC);
 
             //刷新一次表格
@@ -1244,8 +1244,8 @@ const conditionformat = {
             $("#sheet-modal-dialog-mask").hide();
             $("#sheet-CFicons-dialog").hide();
 
-            if(Store.luckysheet_select_save.length > 0){
-                let cellrange = $.extend(true, [], Store.luckysheet_select_save);
+            if(Store.sheet_select_save.length > 0){
+                let cellrange = $.extend(true, [], Store.sheet_select_save);
                 let format = {
                     "len": $(this).attr("data-len"),
                     "leftMin": $(this).attr("data-leftMin"),
@@ -1691,15 +1691,15 @@ const conditionformat = {
 
         //工作表
         let opHtml = '';
-        for(let j = 0; j < Store.luckysheetfile.length; j++){
-            if(Store.luckysheetfile[j].status == "1"){
-                opHtml +=  `<option value="${Store.luckysheetfile[j]["index"]}" selected="selected">
-                                ${conditionformat_Text.currentSheet}：${Store.luckysheetfile[j]["name"]}
+        for(let j = 0; j < Store.sheetfile.length; j++){
+            if(Store.sheetfile[j].status == "1"){
+                opHtml +=  `<option value="${Store.sheetfile[j]["index"]}" selected="selected">
+                                ${conditionformat_Text.currentSheet}：${Store.sheetfile[j]["name"]}
                             </option>`;
             }
             else{
-                opHtml +=  `<option value="${Store.luckysheetfile[j]["index"]}">
-                                ${conditionformat_Text.sheet}：${Store.luckysheetfile[j]["name"]}
+                opHtml +=  `<option value="${Store.sheetfile[j]["index"]}">
+                                ${conditionformat_Text.sheet}：${Store.sheetfile[j]["name"]}
                             </option>`;
             }
         }
@@ -1885,10 +1885,10 @@ const conditionformat = {
                     let h2 = 46 * 32 / w1;
 
                     if(l == "0"){
-                        can.drawImage(luckysheet_CFiconsImg, 0, t * 32, w1, h1, 0, (18 - h2) / 2, w2, h2);
+                        can.drawImage(sheet_CFiconsImg, 0, t * 32, w1, h1, 0, (18 - h2) / 2, w2, h2);
                     }
                     else if(l == "5"){
-                        can.drawImage(luckysheet_CFiconsImg, 210, t * 32, w1, h1, 0, (18 - h2) / 2, w2, h2);
+                        can.drawImage(sheet_CFiconsImg, 210, t * 32, w1, h1, 0, (18 - h2) / 2, w2, h2);
                     }
                 }
             })
@@ -2884,7 +2884,7 @@ const conditionformat = {
     getCFPartRange: function(sheetIndex, range1, range2){
         let ruleArr = [];
 
-        let cf = Store.luckysheetfile[getSheetIndex(sheetIndex)].conditionformat_save;
+        let cf = Store.sheetfile[getSheetIndex(sheetIndex)].conditionformat_save;
         if(cf != null && cf.length > 0){
             label:  for(let i = 0; i < cf.length; i++){
                         let cellrange = cf[i].cellrange;
@@ -2921,8 +2921,8 @@ const conditionformat = {
             index = getSheetIndex(sheetIndex);
         }
 
-        let ruleArr = Store.luckysheetfile[index]["conditionformat_save"];
-        let data = Store.luckysheetfile[index]["data"];
+        let ruleArr = Store.sheetfile[index]["conditionformat_save"];
+        let data = Store.sheetfile[index]["data"];
 
         if(data == null){
             return null;
@@ -3779,7 +3779,7 @@ const conditionformat = {
         let index = getSheetIndex(Store.currentSheetIndex);
 
         //保存之前的规则
-        let fileH = $.extend(true, [], Store.luckysheetfile);
+        let fileH = $.extend(true, [], Store.sheetfile);
         let historyRules = _this.getHistoryRules(fileH);
 
         //保存当前的规则
@@ -3793,13 +3793,13 @@ const conditionformat = {
                 "cellrange": cellrange,
                 "format": format
             };
-            ruleArr = Store.luckysheetfile[index]["conditionformat_save"] == null ? [] : Store.luckysheetfile[index]["conditionformat_save"];
+            ruleArr = Store.sheetfile[index]["conditionformat_save"] == null ? [] : Store.sheetfile[index]["conditionformat_save"];
             ruleArr.push(rule);
         }
 
-        Store.luckysheetfile[index]["conditionformat_save"] = ruleArr;
+        Store.sheetfile[index]["conditionformat_save"] = ruleArr;
 
-        let fileC = $.extend(true, [], Store.luckysheetfile);
+        let fileC = $.extend(true, [], Store.sheetfile);
         let currentRules = _this.getCurrentRules(fileC);
 
         //刷新一次表格
@@ -3839,7 +3839,7 @@ const conditionformat = {
         }
 
         setTimeout(function () {
-            luckysheetrefreshgrid();
+            sheetrefreshgrid();
         }, 1);
     }
 }

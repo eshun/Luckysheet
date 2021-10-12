@@ -1,10 +1,10 @@
 import { mouseposition } from '../global/location';
 import server from './server';
-import luckysheetsizeauto from './resize';
+import sheetsizeauto from './resize';
 import { modelHTML } from './constant';
 import {checkProtectionAuthorityNormal} from './protection';
 import { getSheetIndex } from '../methods/get';
-import { setluckysheet_scroll_status } from '../methods/set';
+import { setsheet_scroll_status } from '../methods/set';
 import { replaceHtml } from '../utils/util';
 import Store from '../store';
 import locale from '../locale/locale';
@@ -52,7 +52,7 @@ const imageCtrl = {
     inserImg: function(src){
         let _this = this;
         
-        let last = Store.luckysheet_select_save[Store.luckysheet_select_save.length - 1];
+        let last = Store.sheet_select_save[Store.sheet_select_save.length - 1];
         let rowIndex = last.row_focus || 0;
         let colIndex = last.column_focus || 0;
         let left = colIndex == 0 ? 0 : Store.visibledatacolumn[colIndex - 1];
@@ -183,7 +183,7 @@ const imageCtrl = {
 
         let sliderHtml = _this.getSliderHtml();
         $("body").append(sliderHtml);
-        luckysheetsizeauto();
+        sheetsizeauto();
 
         let imgItem = _this.images[_this.currentImgId];
 
@@ -289,7 +289,7 @@ const imageCtrl = {
         //关闭
         $("#sheet-modal-dialog-slider-imageCtrl .sheet-model-close-btn").click(function () {
             $("#sheet-modal-dialog-slider-imageCtrl").hide();
-            luckysheetsizeauto();
+            sheetsizeauto();
         });
 
         //常规
@@ -413,7 +413,7 @@ const imageCtrl = {
                 e.pageY - offset.top, 
             ];
 
-            setluckysheet_scroll_status(true);
+            setsheet_scroll_status(true);
 
             e.stopPropagation();
         })
@@ -450,7 +450,7 @@ const imageCtrl = {
                 scrollTop
             ];
 
-            setluckysheet_scroll_status(true);
+            setsheet_scroll_status(true);
             
             e.stopPropagation();
         })
@@ -482,7 +482,7 @@ const imageCtrl = {
                 y
             ];
 
-            setluckysheet_scroll_status(true);
+            setsheet_scroll_status(true);
             
             e.stopPropagation();
         })
@@ -873,7 +873,7 @@ const imageCtrl = {
             clipboardData = e.originalEvent.clipboardData;
         }
 
-        let cpdata = '<table data-type="luckysheet_copy_action_image"><tr><td><td></tr></table>';
+        let cpdata = '<table data-type="sheet_copy_action_image"><tr><td><td></tr></table>';
 
         if (!clipboardData) {
             let textarea = $("#sheet-copy-content");
@@ -899,8 +899,8 @@ const imageCtrl = {
             _this.images = {};
         }
 
-        let rowIndex = Store.luckysheet_select_save[0].row_focus || 0;
-        let colIndex = Store.luckysheet_select_save[0].column_focus || 0;
+        let rowIndex = Store.sheet_select_save[0].row_focus || 0;
+        let colIndex = Store.sheet_select_save[0].column_focus || 0;
         let left = colIndex == 0 ? 0 : Store.visibledatacolumn[colIndex - 1];
         let top = rowIndex == 0 ? 0 : Store.visibledatarow[rowIndex - 1];
 
@@ -1067,7 +1067,7 @@ const imageCtrl = {
     ref: function() {
         let _this = this;
 
-        let file = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)];
+        let file = Store.sheetfile[getSheetIndex(Store.currentSheetIndex)];
         let images = _this.images;
 
         if (Store.clearjfundo) {

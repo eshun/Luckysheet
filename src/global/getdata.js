@@ -12,7 +12,7 @@ import Store from '../store';
 //Get selection range value
 export function getdatabyselection(range, sheetIndex) {
     if(range == null){
-        range = Store.luckysheet_select_save[0];
+        range = Store.sheet_select_save[0];
     }
 
     if (range["row"] == null || range["row"].length == 0) {
@@ -22,8 +22,8 @@ export function getdatabyselection(range, sheetIndex) {
     //取数据
     let d, cfg;
     if(sheetIndex != null && sheetIndex != Store.currentSheetIndex){
-        d = Store.luckysheetfile[getSheetIndex(sheetIndex)]["data"];
-        cfg = Store.luckysheetfile[getSheetIndex(sheetIndex)]["config"];
+        d = Store.sheetfile[getSheetIndex(sheetIndex)]["data"];
+        cfg = Store.sheetfile[getSheetIndex(sheetIndex)]["config"];
     }
     else{
         d = editor.deepCopyFlowData(Store.flowdata);
@@ -58,7 +58,7 @@ export function getdatabyselectionD(d, range) {
         return [];
     }
     
-    let dynamicArray_compute = dynamicArrayCompute(Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["dynamicArray"]);
+    let dynamicArray_compute = dynamicArrayCompute(Store.sheetfile[getSheetIndex(Store.currentSheetIndex)]["dynamicArray"]);
     let data = [];
 
     if(d==null){

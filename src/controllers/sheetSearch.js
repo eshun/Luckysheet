@@ -1,4 +1,4 @@
-function luckysheetbinary_search(arr, key) {
+function sheetbinary_search(arr, key) {
     let low = 0, high = arr.length - 1;
     
     while (low <= high) {
@@ -19,7 +19,7 @@ function luckysheetbinary_search(arr, key) {
     }
 }
 
-function luckysheetorder_search(arr, y) {
+function sheetorder_search(arr, y) {
     let i = 0, 
         row = 0, 
         row_pre = 0, 
@@ -62,19 +62,19 @@ function luckysheetorder_search(arr, y) {
     return row_index;
 }
 
-function luckysheet_searcharray(arr, y) {
+function sheet_searcharray(arr, y) {
     let index = arr.length - 1;
 
     if (arr.length < 40 || y <= arr[20] || y >= arr[index - 20]) {
-        index = luckysheetorder_search(arr, y);
+        index = sheetorder_search(arr, y);
     }
     else {
-        index = luckysheetbinary_search(arr, y);
+        index = sheetbinary_search(arr, y);
     }
 
     return index;
 }
 
 export {
-    luckysheet_searcharray,
+    sheet_searcharray,
 }

@@ -4,9 +4,9 @@ import { replaceHtml } from '../utils/util';
 import formula from '../global/formula';
 import { isEditMode } from '../global/validate';
 import tooltip from '../global/tooltip';
-import { luckysheetrefreshgrid } from '../global/refresh';
+import { sheetrefreshgrid } from '../global/refresh';
 import { sheetAlternateformatHtml, modelHTML } from './constant';
-import luckysheetsizeauto from './resize';
+import sheetsizeauto from './resize';
 import server from './server';
 import { selectHightlightShow } from './select';
 import Store from '../store';
@@ -214,7 +214,7 @@ const alternateformat = {
         $("#sheet-modal-dialog-slider-alternateformat #sheet-alternateformat-modelList").append(modelListHtml);
 
         //自定义 模板
-        let modelCustom = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["luckysheet_alternateformat_save_modelCustom"];
+        let modelCustom = Store.sheetfile[getSheetIndex(Store.currentSheetIndex)]["sheet_alternateformat_save_modelCustom"];
         if(modelCustom != null && modelCustom.length > 0){
             let modelCustomHtml = '';
 
@@ -266,12 +266,12 @@ const alternateformat = {
 
         $("#sheet-modal-dialog-slider-alternateformat").remove();
         $("body").append(sheetAlternateformatHtml());
-        luckysheetsizeauto();
+        sheetsizeauto();
 
         //关闭
         $("#sheet-modal-dialog-slider-alternateformat .sheet-model-close-btn").click(function () {
             $("#sheet-modal-dialog-slider-alternateformat").hide();
-            luckysheetsizeauto();
+            sheetsizeauto();
         });
 
         //应用范围
@@ -290,7 +290,7 @@ const alternateformat = {
         });
         $(document).off("click.AFrangeIcon").on("click.AFrangeIcon", "#sheet-alternateformat-range .fa-table", function(){
             $("#sheet-modal-dialog-slider-alternateformat").hide();
-            luckysheetsizeauto();
+            sheetsizeauto();
 
             let rangeValue = $(this).parents("#sheet-alternateformat-range").find("input").val().trim();
             _this.rangeDialog(rangeValue);
@@ -301,19 +301,19 @@ const alternateformat = {
 
             $(this).parents("#sheet-alternateformat-rangeDialog").hide();
             $("#sheet-modal-dialog-slider-alternateformat").show();
-            luckysheetsizeauto();
+            sheetsizeauto();
 
             _this.update();
         });
         $(document).off("click.AFrDCl").on("click.AFrDCl", "#sheet-alternateformat-rangeDialog-close", function(){
             $(this).parents("#sheet-alternateformat-rangeDialog").hide();
             $("#sheet-modal-dialog-slider-alternateformat").show();
-            luckysheetsizeauto();
+            sheetsizeauto();
         });
         $(document).off("click.AFrDTitle").on("click.AFrDTitle", "#sheet-alternateformat-rangeDialog .sheet-modal-dialog-title-close", function(){
             $(this).parents("#sheet-alternateformat-rangeDialog").hide();
             $("#sheet-modal-dialog-slider-alternateformat").show();
-            luckysheetsizeauto();
+            sheetsizeauto();
         });
 
         //页眉、页脚选中
@@ -505,8 +505,8 @@ const alternateformat = {
                 format = $.extend(true, {}, _this.getFormatByIndex());
             }
             else{
-                file = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)];
-                let modelCustom = file["luckysheet_alternateformat_save_modelCustom"];
+                file = Store.sheetfile[getSheetIndex(Store.currentSheetIndex)];
+                let modelCustom = file["sheet_alternateformat_save_modelCustom"];
 
                 format = $.extend(true, {}, modelCustom[index - len]);
             }
@@ -549,10 +549,10 @@ const alternateformat = {
                 _this.modelfocusIndex = _this.getIndexByFormat(format);
             }
             else{
-                file["luckysheet_alternateformat_save_modelCustom"][index - len] = format;
+                file["sheet_alternateformat_save_modelCustom"][index - len] = format;
 
                 if(server.allowUpdate){
-                    server.saveParam("all", Store.currentSheetIndex, file["luckysheet_alternateformat_save_modelCustom"], { "k": "luckysheet_alternateformat_save_modelCustom" });
+                    server.saveParam("all", Store.currentSheetIndex, file["sheet_alternateformat_save_modelCustom"], { "k": "sheet_alternateformat_save_modelCustom" });
                 }
             }
 
@@ -565,7 +565,7 @@ const alternateformat = {
         $(document).off("click.AFremove").on("click.AFremove", "#sheet-alternateformat-remove", function(){
             let dataIndex = $(this).data("index");
 
-            let file = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)];
+            let file = Store.sheetfile[getSheetIndex(Store.currentSheetIndex)];
 
             let ruleArr = file["alternateformat_save"];
 
@@ -593,22 +593,22 @@ const alternateformat = {
             $("#sheet-modal-dialog-mask").hide();
             $("#sheet-modal-dialog-slider-alternateformat").hide();
 
-            luckysheetsizeauto();
+            sheetsizeauto();
         });
     },
     perfect: function(){
         let _this = this;
 
-        let range = $.extend(true, {}, Store.luckysheet_select_save[0]);
+        let range = $.extend(true, {}, Store.sheet_select_save[0]);
         let existsIndex = _this.rangeIsExists(range)[1];
         
-        let obj = $.extend(true, {}, Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["alternateformat_save"][existsIndex]);
+        let obj = $.extend(true, {}, Store.sheetfile[getSheetIndex(Store.currentSheetIndex)]["alternateformat_save"][existsIndex]);
         
         //应用范围
         let cellrange = obj["cellrange"];
         $("#sheet-alternateformat-range input").val(getRangetxt(Store.currentSheetIndex, { "row": cellrange["row"], "column": cellrange["column"] }, Store.currentSheetIndex));
         
-        Store.luckysheet_select_save = [{ "row": cellrange["row"], "column": cellrange["column"] }];
+        Store.sheet_select_save = [{ "row": cellrange["row"], "column": cellrange["column"] }];
         selectHightlightShow();
 
         //页眉、页脚
@@ -698,16 +698,16 @@ const alternateformat = {
         $("#sheet-alternateformat-modelToning .footer .sheet-icon-cell-color").parents(".sheet-color-menu-button-indicator").css("border-bottom-color", format["foot"].bc);
     },
     addCustomModel: function(format){
-        let file = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)];
+        let file = Store.sheetfile[getSheetIndex(Store.currentSheetIndex)];
 
-        if(file["luckysheet_alternateformat_save_modelCustom"] == null){
-            file["luckysheet_alternateformat_save_modelCustom"] = [];
+        if(file["sheet_alternateformat_save_modelCustom"] == null){
+            file["sheet_alternateformat_save_modelCustom"] = [];
         }
 
-        file["luckysheet_alternateformat_save_modelCustom"].push(format);
+        file["sheet_alternateformat_save_modelCustom"].push(format);
 
         if(server.allowUpdate){
-            server.saveParam("all", Store.currentSheetIndex, file["luckysheet_alternateformat_save_modelCustom"], { "k": "luckysheet_alternateformat_save_modelCustom" });
+            server.saveParam("all", Store.currentSheetIndex, file["sheet_alternateformat_save_modelCustom"], { "k": "sheet_alternateformat_save_modelCustom" });
         }
     },
     colorSelectDialog: function(currenColor, colorType, source){
@@ -829,7 +829,7 @@ const alternateformat = {
         let existsIndex = null;
 
         //获取已有交替颜色所有应用范围
-        let AFarr = $.extend(true, [], Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["alternateformat_save"]);
+        let AFarr = $.extend(true, [], Store.sheetfile[getSheetIndex(Store.currentSheetIndex)]["alternateformat_save"]);
 
         if(index != undefined && index != null){
             if(AFarr.length > 1){
@@ -906,7 +906,7 @@ const alternateformat = {
         }
         
         //自定义 模板
-        let modelCustom = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["luckysheet_alternateformat_save_modelCustom"];
+        let modelCustom = Store.sheetfile[getSheetIndex(Store.currentSheetIndex)]["sheet_alternateformat_save_modelCustom"];
         if(modelCustom != null && modelCustom.length > 0){
             for(let j = 0; j < modelCustom.length; j++){
                 let obj = modelCustom[j];
@@ -938,7 +938,7 @@ const alternateformat = {
             format = _this.FixedModelColor[index];
         }
         else{
-            format = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["luckysheet_alternateformat_save_modelCustom"][index - len];
+            format = Store.sheetfile[getSheetIndex(Store.currentSheetIndex)]["sheet_alternateformat_save_modelCustom"][index - len];
         }
 
         return format;
@@ -948,7 +948,7 @@ const alternateformat = {
 
         let format = _this.getFormatByIndex();
 
-        let file = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)];
+        let file = Store.sheetfile[getSheetIndex(Store.currentSheetIndex)];
         let ruleArr = file["alternateformat_save"];
         
         if(ruleArr == null){
@@ -1034,7 +1034,7 @@ const alternateformat = {
 
         //获取选中样式模板的颜色
         let format = _this.getFormatByIndex();
-        let file = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)];
+        let file = Store.sheetfile[getSheetIndex(Store.currentSheetIndex)];
         
         let ruleArr = file["alternateformat_save"];
         if(ruleArr == null){
@@ -1076,7 +1076,7 @@ const alternateformat = {
         }
     },
     getComputeMap: function(){
-        let file = Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)];
+        let file = Store.sheetfile[getSheetIndex(Store.currentSheetIndex)];
         let ruleArr = file["alternateformat_save"];
 
         let computeMap = this.compute(ruleArr);
@@ -1215,10 +1215,10 @@ const alternateformat = {
         }
 
         let index = getSheetIndex(Store.currentSheetIndex);
-        Store.luckysheetfile[index]["alternateformat_save"] = currentRules;
+        Store.sheetfile[index]["alternateformat_save"] = currentRules;
 
         setTimeout(function () {
-            luckysheetrefreshgrid();
+            sheetrefreshgrid();
         }, 1);
     }
 }

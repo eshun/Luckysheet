@@ -32,14 +32,14 @@ options.data示例如下：
         },
         "scrollLeft": 0, //左右滚动条位置
         "scrollTop": 315, //上下滚动条位置
-        "luckysheet_select_save": [], //选中的区域
+        "sheet_select_save": [], //选中的区域
         "calcChain": [],//公式链
         "isPivotTable":false,//是否数据透视表
         "pivotTable":{},//数据透视表设置
         "filter_select": {},//筛选范围
         "filter": null,//筛选配置
         "alternateformat_save": [], //交替颜色
-        "luckysheet_alternateformat_save_modelCustom": [], //自定义交替颜色	
+        "sheet_alternateformat_save_modelCustom": [], //自定义交替颜色	
         "conditionformat_save": {},//条件格式
         "frozen": {}, //冻结行列配置
         "chart": [], //图表配置
@@ -136,9 +136,9 @@ options.data示例如下：
 
     r代表行，c代表列，v代表该单元格的值，值可以是字符、数字或者对象。
 
-    Luckysheet在建立的时候会根据 `options.data[i].row` 和 `options.data[i].column` 的行列数量大小新建一个表格data，然后再使用 `data[r][c]=v` 的方式填充表格数据，空数据单元格以null表示。
+    sheet在建立的时候会根据 `options.data[i].row` 和 `options.data[i].column` 的行列数量大小新建一个表格data，然后再使用 `data[r][c]=v` 的方式填充表格数据，空数据单元格以null表示。
 
-    使用celldata初始化完表格后，数据转换为luckysheetfile中的字段[data](#data)，如`luckysheetfile[i].data`,后续操作表格的数据更新，会更新到这个data字段中，celldata不再使用。 
+    使用celldata初始化完表格后，数据转换为sheetfile中的字段[data](#data)，如`sheetfile[i].data`,后续操作表格的数据更新，会更新到这个data字段中，celldata不再使用。 
 
 - 示例：
     ```js
@@ -411,7 +411,7 @@ options.data示例如下：
 - 作用： 上下滚动条位置
 
 ------------
-### luckysheet_select_save
+### sheet_select_save
 - 类型：Array
 - 默认值：[]
 - 作用： 选中的区域，支持多选，是一个包含多个选区对象的一维数组
@@ -437,9 +437,9 @@ options.data示例如下：
 ### calcChain
 - 类型：Array
 - 默认值：[]
-- 作用： 公式链是一个由用户指定顺序排列的公式信息数组，Luckysheet会根据此顺序来决定公式执行的顺序。
+- 作用： 公式链是一个由用户指定顺序排列的公式信息数组，sheet会根据此顺序来决定公式执行的顺序。
 
-    注意，在初始化工作簿的时候，如果有单元格包含公式，请务必添加对应单元格位置的公式链，否则Luckysheet无法识别公式。
+    注意，在初始化工作簿的时候，如果有单元格包含公式，请务必添加对应单元格位置的公式链，否则sheet无法识别公式。
     
 - 示例：
     ```js
@@ -518,7 +518,7 @@ options.data示例如下：
 ### filter_select
 - 类型：Object
 - 默认值：{}
-- 作用： 筛选范围。一个选区，一个sheet只有一个筛选范围，类似`luckysheet_select_save`。如果仅仅只是创建一个选区打开筛选功能，则配置这个范围即可，如果还需要进一步设置详细的筛选条件，则需要另外配置同级的 [filter](#filter) 属性。
+- 作用： 筛选范围。一个选区，一个sheet只有一个筛选范围，类似`sheet_select_save`。如果仅仅只是创建一个选区打开筛选功能，则配置这个范围即可，如果还需要进一步设置详细的筛选条件，则需要另外配置同级的 [filter](#filter) 属性。
 - 示例：
     ```js
     {
@@ -532,7 +532,7 @@ options.data示例如下：
 ### filter
 - 类型：Object
 - 默认值：{}
-- 作用： 筛选的具体设置，跟`filter_select`筛选范围是互相搭配的。当你在第一个sheet页创建了一个筛选区域，通过`sheet.getLuckysheetfile()[0].filter`也可以看到第一个sheet的筛选配置信息。
+- 作用： 筛选的具体设置，跟`filter_select`筛选范围是互相搭配的。当你在第一个sheet页创建了一个筛选区域，通过`sheet.getsheetfile()[0].filter`也可以看到第一个sheet的筛选配置信息。
 
     以下是一个完整的筛选配置案例
     ```js
@@ -652,7 +652,7 @@ options.data示例如下：
     ```
 
 ------------
-### luckysheet_alternateformat_save_modelCustom
+### sheet_alternateformat_save_modelCustom
 - 类型：Array
 - 默认值：[]
 - 作用：自定义交替颜色，包含多个自定义交替颜色的配置
@@ -783,7 +783,7 @@ options.data示例如下：
 
     sheet新的配置属性，存储更语义化的配置，用于初始化和传给后端。
     
-    注意一点，luckysheetfile中还有一个配置freezen，其中的freezenhorizontaldata仍然用作本地数据，但是不发给后台存储，只做本地调试。
+    注意一点，sheetfile中还有一个配置freezen，其中的freezenhorizontaldata仍然用作本地数据，但是不发给后台存储，只做本地调试。
 
 - 示例：
     - 冻结首行
@@ -1385,15 +1385,15 @@ options.data示例如下：
   + {String} [hintText]: 提示语文本；`hintShow`为`true`时需配置；
   + {Boolean} [checked]: 是否勾选中复选框；`type`为`checkbox`时需配置；
 
-    一个完整的配置案例请参考源码DEMO示例 [/src/demoData/sheetDataVerification.js](https://github.com/mengshukeji/Luckysheet/blob/master/src/demoData/sheetDataVerification.js)
+    一个完整的配置案例请参考源码DEMO示例 [/src/demoData/sheetDataVerification.js](https://github.com/mengshukeji/sheet/blob/master/src/demoData/sheetDataVerification.js)
 ------------
 ## 调试信息
 
 初始化所需要的参数，会从简洁的角度出发来考虑设计，但是本地存储的参数则不同。
 
-Luckysheet在初始化完成之后进行的一系列操作，会将更多本地参数存储在luckysheetfile中，作为本地使用的参数，实现一些类似Store数据中心的作用。比如，freezen的参数格式也会变化。
+sheet在初始化完成之后进行的一系列操作，会将更多本地参数存储在sheetfile中，作为本地使用的参数，实现一些类似Store数据中心的作用。比如，freezen的参数格式也会变化。
 
-此时的luckysheetfile包含很多非初始化使用的本地参数，可用于调试代码、本地状态分析。如下展示了更丰富luckysheetfile信息，可通过方法 `sheet.getluckysheetfile()`获得：
+此时的sheetfile包含很多非初始化使用的本地参数，可用于调试代码、本地状态分析。如下展示了更丰富sheetfile信息，可通过方法 `sheet.getsheetfile()`获得：
 
 ::: details
 ```json
@@ -1419,14 +1419,14 @@ Luckysheet在初始化完成之后进行的一系列操作，会将更多本地�
         },
         "scrollLeft": 0, //左右滚动条位置
         "scrollTop": 315, //上下滚动条位置
-        "luckysheet_select_save": [], //选中的区域
+        "sheet_select_save": [], //选中的区域
         "calcChain": [],//公式链
         "isPivotTable":false,//是否数据透视表
         "pivotTable":{},//数据透视表设置
         "filter_select": {},//筛选范围
         "filter": null,//筛选配置
         "alternateformat_save": [], //交替颜色
-        "luckysheet_alternateformat_save_modelCustom": [], //自定义交替颜色	
+        "sheet_alternateformat_save_modelCustom": [], //自定义交替颜色	
         "conditionformat_save": {},//条件格式
         "frozen": {}, //冻结行列配置
         "freezen": {}, //冻结行列的渲染数据存储

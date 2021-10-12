@@ -8,7 +8,7 @@ import Store from '../store';
 import locale from '../locale/locale';
 
 //更多格式
-const luckysheetMoreFormat = {
+const sheetMoreFormat = {
     moneyFmtList: [
         {
             "name": "人民币",
@@ -1214,4 +1214,4 @@ const luckysheetMoreFormat = {
     }
 }
 
-export default luckysheetMoreFormat;
+export default sheetMoreFormat;

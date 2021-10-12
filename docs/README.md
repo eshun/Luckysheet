@@ -1,6 +1,6 @@
 ---
 home: true
-heroText: Luckysheet
+heroText: sheet
 tagline: Configuration Document · API · Tutorial
 actionText: Get Started →
 actionLink: /guide/

@@ -28,7 +28,7 @@ export default function cleargridelement(event) {
         }
     }
     //格式刷
-    if(menuButton.luckysheetPaintModelOn && !event){
+    if(menuButton.sheetPaintModelOn && !event){
         menuButton.cancelPaintModel();
     }
 }

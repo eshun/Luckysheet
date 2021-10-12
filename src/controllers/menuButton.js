@@ -1,29 +1,29 @@
 import { selectionCopyShow, selectIsOverlap } from './select';
 import { sheetColor, iconfontObjects } from './constant';
 import sheetConfigSetting from './sheetConfigSetting';
-import luckysheetMoreFormat from './moreFormat';
+import sheetMoreFormat from './moreFormat';
 import alternateformat from './alternateformat';
 import conditionformat from './conditionformat';
 import server from './server';
 import { printLineAndNumber } from './print';
-import { luckysheet_searcharray } from './sheetSearch';
-import luckysheetFreezen from './freezen';
-import luckysheetsizeauto from './resize';
+import { sheet_searcharray } from './sheetSearch';
+import sheetFreezen from './freezen';
+import sheetsizeauto from './resize';
 import { createFilter } from './filter';
-import luckysheetSearchReplace from './searchReplace';
-import luckysheetLocationCell from './locationCell';
+import sheetSearchReplace from './searchReplace';
+import sheetLocationCell from './locationCell';
 import ifFormulaGenerator from './ifFormulaGenerator';
-import {luckysheetupdateCell} from './updateCell';
+import {sheetupdateCell} from './updateCell';
 import insertFormula from './insertFormula';
 import sheetmanage from './sheetmanage';
-import luckysheetPostil from './postil';
+import sheetPostil from './postil';
 import { isRealNum, isRealNull, isEditMode, hasPartMC } from '../global/validate';
 import tooltip from '../global/tooltip';
 import editor from '../global/editor';
 import { genarate, update, is_date } from '../global/format';
-import { jfrefreshgrid, luckysheetrefreshgrid } from '../global/refresh';
+import { jfrefreshgrid, sheetrefreshgrid } from '../global/refresh';
 import { sortSelection } from '../global/sort';
-import luckysheetformula from '../global/formula';
+import sheetformula from '../global/formula';
 import { rowLocationByIndex, colLocationByIndex } from '../global/location';
 import { isdatatypemulti } from '../global/datecontroll';
 import { rowlenByRange, getCellTextSplitArr } from '../global/getRowlen';
@@ -31,14 +31,14 @@ import { setcellvalue } from '../global/setdata';
 import { getFontStyleByCell, checkstatusByCell} from '../global/getdata';
 import { countfunc } from '../global/count';
 import { hideMenuByCancel } from '../global/cursorPos';
-import { getSheetIndex, getRangetxt, getluckysheetfile } from '../methods/get';
-import { setluckysheetfile } from '../methods/set';
+import { getSheetIndex, getRangetxt, getsheet_file } from '../methods/get';
+import { setsheetfile } from '../methods/set';
 import {isInlineStringCell,updateInlineStringFormat,convertCssToStyleList,inlineStyleAffectAttribute,updateInlineStringFormatOutside} from './inlineString';
-import { replaceHtml, getObjType, rgbTohex, mouseclickposition, luckysheetfontformat,luckysheetContainerFocus } from '../utils/util';
+import { replaceHtml, getObjType, rgbTohex, mouseclickposition, sheetfontformat,sheetContainerFocus } from '../utils/util';
 import {openProtectionModal,checkProtectionFormatCells,checkProtectionNotEnable} from './protection';
 import Store from '../store';
 import locale from '../locale/locale';
-import { luckysheetDrawMain, sheetDrawFistBorder } from '../global/draw';
+import { sheetDrawMain, sheetDrawFistBorder } from '../global/draw';
 import {checkTheStatusOfTheSelectedCells,getRangeHtml,getPrintPages} from '../global/api';
 
 import {printRange,printPages} from '../expendPlugins/print/plugin';
@@ -102,25 +102,25 @@ const menuButton = {
     cancelPaintModel: function(){
         let _this = this;
 
-        $("#sheettable_0").removeClass("luckysheetPaintCursor");
+        $("#sheettable_0").removeClass("sheetPaintCursor");
 
-        if(Store.luckysheet_copy_save["dataSheetIndex"] == Store.currentSheetIndex){
-            Store.luckysheet_selection_range = [];
+        if(Store.sheet_copy_save["dataSheetIndex"] == Store.currentSheetIndex){
+            Store.sheet_selection_range = [];
             selectionCopyShow();
         }
         else{
-            Store.luckysheetfile[getSheetIndex(Store.luckysheet_copy_save["dataSheetIndex"])].luckysheet_selection_range = [];
+            Store.sheetfile[getSheetIndex(Store.sheet_copy_save["dataSheetIndex"])].sheet_selection_range = [];
         }
         
-        Store.luckysheet_copy_save = {};
+        Store.sheet_copy_save = {};
 
-        _this.luckysheetPaintModelOn = false;
-        $("#luckysheetpopover").fadeOut(200,function(){
-            $("#luckysheetpopover").remove();
+        _this.sheetPaintModelOn = false;
+        $("#sheetpopover").fadeOut(200,function(){
+            $("#sheetpopover").remove();
         });
     },
-    luckysheetPaintModelOn:false,
-    luckysheetPaintSingle: false,
+    sheetPaintModelOn:false,
+    sheetPaintSingle: false,
     initialMenuButton: function(){
         let _this = this;
 
@@ -130,7 +130,7 @@ const menuButton = {
             let _locale = locale();
             let locale_paint = _locale.paint;
 
-            if(Store.luckysheet_select_save == null || Store.luckysheet_select_save.length == 0){
+            if(Store.sheet_select_save == null || Store.sheet_select_save.length == 0){
                 if(isEditMode()){
                     alert(locale_paint.tipSelectRange);
                 }
@@ -139,7 +139,7 @@ const menuButton = {
                 }
                 return;
             }
-            else if(Store.luckysheet_select_save.length > 1){
+            else if(Store.sheet_select_save.length > 1){
                 if(isEditMode()){
                     alert(locale_paint.tipNotMulti);
                 }
@@ -152,13 +152,13 @@ const menuButton = {
             tooltip.popover("<i class='fa fa-paint-brush'></i> "+locale_paint.start+"", "topCenter", true, null, locale_paint.end,function(){
                 _this.cancelPaintModel();
             });
-            $("#sheettable_0").addClass("luckysheetPaintCursor");
+            $("#sheettable_0").addClass("sheetPaintCursor");
 
-            Store.luckysheet_selection_range = [{ "row": Store.luckysheet_select_save[0].row, "column": Store.luckysheet_select_save[0].column }];
+            Store.sheet_selection_range = [{ "row": Store.sheet_select_save[0].row, "column": Store.sheet_select_save[0].column }];
             selectionCopyShow();
 
             let RowlChange = false, HasMC = false;
-            for(let r = Store.luckysheet_select_save[0].row[0]; r <= Store.luckysheet_select_save[0].row[1]; r++){
+            for(let r = Store.sheet_select_save[0].row[0]; r <= Store.sheet_select_save[0].row[1]; r++){
                 if (Store.config["rowhidden"] != null && Store.config["rowhidden"][r] != null) {
                     continue;
                 }
@@ -167,7 +167,7 @@ const menuButton = {
                     RowlChange = true;
                 }
 
-                for(let c = Store.luckysheet_select_save[0].column[0]; c <= Store.luckysheet_select_save[0].column[1]; c++){
+                for(let c = Store.sheet_select_save[0].column[0]; c <= Store.sheet_select_save[0].column[1]; c++){
                     let cell = Store.flowdata[r][c];
                     
                     if(getObjType(cell) == "object" && ("mc" in cell) && cell.mc.rs != null){
@@ -175,15 +175,15 @@ const menuButton = {
                     }
                 }
             }
-            Store.luckysheet_copy_save = { "dataSheetIndex": Store.currentSheetIndex, "copyRange": [{ "row": Store.luckysheet_select_save[0].row, "column": Store.luckysheet_select_save[0].column }], "RowlChange": RowlChange, "HasMC": HasMC };
+            Store.sheet_copy_save = { "dataSheetIndex": Store.currentSheetIndex, "copyRange": [{ "row": Store.sheet_select_save[0].row, "column": Store.sheet_select_save[0].column }], "RowlChange": RowlChange, "HasMC": HasMC };
 
-            _this.luckysheetPaintModelOn = true;
-            _this.luckysheetPaintSingle = true;
+            _this.sheetPaintModelOn = true;
+            _this.sheetPaintSingle = true;
         });
         $("#sheet-icon-paintformat").dblclick(function(){
             let _locale = locale();
             let locale_paint = _locale.paint;
-            if(Store.luckysheet_select_save == null || Store.luckysheet_select_save.length == 0){
+            if(Store.sheet_select_save == null || Store.sheet_select_save.length == 0){
                 if(isEditMode()){
                     alert(locale_paint.tipSelectRange);
                 }
@@ -192,7 +192,7 @@ const menuButton = {
                 }
                 return;
             }
-            else if(Store.luckysheet_select_save.length > 1){
+            else if(Store.sheet_select_save.length > 1){
                 if(isEditMode()){
                     alert(locale_paint.tipNotMulti);
                 }
@@ -205,13 +205,13 @@ const menuButton = {
             tooltip.popover("<i class='fa fa-paint-brush'></i> "+locale_paint.start, "topCenter", true, null, locale_paint.end,function(){
                 _this.cancelPaintModel();
             });
-            $("#sheettable_0").addClass("luckysheetPaintCursor");
+            $("#sheettable_0").addClass("sheetPaintCursor");
 
-            Store.luckysheet_selection_range = [{ "row": Store.luckysheet_select_save[0].row, "column": Store.luckysheet_select_save[0].column }];
+            Store.sheet_selection_range = [{ "row": Store.sheet_select_save[0].row, "column": Store.sheet_select_save[0].column }];
             selectionCopyShow();
 
             let RowlChange = false, HasMC = false;
-            for(let r = Store.luckysheet_select_save[0].row[0]; r <= Store.luckysheet_select_save[0].row[1]; r++){
+            for(let r = Store.sheet_select_save[0].row[0]; r <= Store.sheet_select_save[0].row[1]; r++){
                 if (Store.config["rowhidden"] != null && Store.config["rowhidden"][r] != null) {
                     continue;
                 }
@@ -220,7 +220,7 @@ const menuButton = {
                     RowlChange = true;
                 }
 
-                for(let c = Store.luckysheet_select_save[0].column[0]; c <= Store.luckysheet_select_save[0].column[1]; c++){
+                for(let c = Store.sheet_select_save[0].column[0]; c <= Store.sheet_select_save[0].column[1]; c++){
                     let cell = Store.flowdata[r][c];
                     
                     if(getObjType(cell) == "object" && ("mc" in cell) && cell.mc.rs != null){
@@ -228,10 +228,10 @@ const menuButton = {
                     }
                 }
             }
-            Store.luckysheet_copy_save = { "dataSheetIndex": Store.currentSheetIndex, "copyRange": [{ "row": Store.luckysheet_select_save[0].row, "column": Store.luckysheet_select_save[0].column }], "RowlChange": RowlChange, "HasMC": HasMC };
+            Store.sheet_copy_save = { "dataSheetIndex": Store.currentSheetIndex, "copyRange": [{ "row": Store.sheet_select_save[0].row, "column": Store.sheet_select_save[0].column }], "RowlChange": RowlChange, "HasMC": HasMC };
             
-            _this.luckysheetPaintModelOn = true;
-            _this.luckysheetPaintSingle = false;
+            _this.sheetPaintModelOn = true;
+            _this.sheetPaintSingle = false;
         });
 
         //货币格式
@@ -251,8 +251,8 @@ const menuButton = {
         //减少小数位数
         $("#sheet-icon-fmt-decimal-decrease").click(function(){
             let d = editor.deepCopyFlowData(Store.flowdata);//取数据
-            let row_index = Store.luckysheet_select_save[0]["row_focus"], 
-                col_index = Store.luckysheet_select_save[0]["column_focus"];
+            let row_index = Store.sheet_select_save[0]["row_focus"], 
+                col_index = Store.sheet_select_save[0]["column_focus"];
             let foucsStatus = _this.checkstatus(d, row_index, col_index, "ct");
             let cell = d[row_index][col_index];
 
@@ -328,8 +328,8 @@ const menuButton = {
         //增加小数位数
         $("#sheet-icon-fmt-decimal-increase").click(function(){
             let d = editor.deepCopyFlowData(Store.flowdata);//取数据
-            let row_index = Store.luckysheet_select_save[0]["row_focus"], 
-                col_index = Store.luckysheet_select_save[0]["column_focus"];
+            let row_index = Store.sheet_select_save[0]["row_focus"], 
+                col_index = Store.sheet_select_save[0]["column_focus"];
             let foucsStatus = _this.checkstatus(d, row_index, col_index, "ct");
             let cell = d[row_index][col_index];
 
@@ -445,7 +445,7 @@ const menuButton = {
 
                 _menuButton.find(".sheet-cols-menuitem").click(function(){
                     _menuButton.hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
                     let _t = $(this), itemvalue = _t.attr("itemvalue"),itemname = _t.attr("itemname");
                     $("#sheet-icon-fmt-other").find(".sheet-toolbar-menu-button-caption").html(" "+ itemname +" ");
@@ -464,12 +464,12 @@ const menuButton = {
                 $("#sheet-icon-fmtOtherSelf-menuButton").find(".sheet-cols-menuitem").click(function(){
                     _menuButton.hide();
                     $("#sheet-icon-fmtOtherSelf-menuButton").hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
                     let itemvalue = $(this).attr("itemvalue");
 
-                    luckysheetMoreFormat.createDialog(itemvalue);
-                    luckysheetMoreFormat.init();
+                    sheetMoreFormat.createDialog(itemvalue);
+                    sheetMoreFormat.init();
                 })
             } else {
                 const text =$(this).find(".sheet-toolbar-menu-button-caption").text().trim();
@@ -519,7 +519,7 @@ const menuButton = {
 
                 _menuButton.on("click", ".sheet-cols-menuitem", function(){
                     _menuButton.hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
                     let _t = $(this), itemvalue = _t.attr("itemvalue"), itemname = _t.attr("itemname");
                     _this.focus(_menuButton, itemvalue);
@@ -626,13 +626,13 @@ const menuButton = {
                         _this.updateFormat(d, "fc", color);
 
                         _menuButton.hide();
-                        luckysheetContainerFocus();
+                        sheetContainerFocus();
                     },
                 });
 
                 _menuButton.find(".sheet-color-reset").click(function(){
                     _menuButton.hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
                     let _input = $("#"+ menuButtonId).find(".sheet-color-selected");
                     _input.val("#000000");
@@ -647,9 +647,9 @@ const menuButton = {
                 //交替颜色
                 _menuButton.find(".sheet-icon-alternateformat").click(function(){
                     _menuButton.hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
-                    if(Store.luckysheet_select_save.length > 1){
+                    if(Store.sheet_select_save.length > 1){
                         if(isEditMode()){
                             alert(locale_alternatingColors.errorInfo);
                         }
@@ -659,7 +659,7 @@ const menuButton = {
                         return;
                     }
 
-                    let range = $.extend(true, {}, Store.luckysheet_select_save[0]);
+                    let range = $.extend(true, {}, Store.sheet_select_save[0]);
 
                     let isExists = alternateformat.rangeIsExists(range)[0];
                     if(!isExists){
@@ -766,13 +766,13 @@ const menuButton = {
                         _this.updateFormat(d, "bg", color);
 
                         _menuButton.hide();
-                        luckysheetContainerFocus();
+                        sheetContainerFocus();
                     }
                 });
 
                 _menuButton.find(".sheet-color-reset").click(function(){
                     _menuButton.hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
                     let _input = $("#" + menuButtonId).find(".sheet-color-selected");
                     _input.val("#ffffff");
@@ -787,9 +787,9 @@ const menuButton = {
                 //交替颜色
                 _menuButton.find(".sheet-icon-alternateformat").click(function(){
                     _menuButton.hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
-                    if(Store.luckysheet_select_save.length > 1){
+                    if(Store.sheet_select_save.length > 1){
                         if(isEditMode()){
                             alert(locale_alternatingColors.errorInfo);
                         }
@@ -799,7 +799,7 @@ const menuButton = {
                         return;
                     }
 
-                    let range = $.extend(true, {}, Store.luckysheet_select_save[0]);
+                    let range = $.extend(true, {}, Store.sheet_select_save[0]);
 
                     let isExists = alternateformat.rangeIsExists(range)[0];
                     if(!isExists){
@@ -832,7 +832,7 @@ const menuButton = {
 
 
         //字体大小
-        let luckysheet_fs_setTimeout = null;
+        let sheet_fs_setTimeout = null;
         $("#sheet-icon-font-size").mousedown(function(e){
             if (parseInt($("#sheet-input-box").css("top")) > 0){
                 let w = window.getSelection();
@@ -878,7 +878,7 @@ const menuButton = {
 
                 _menuButton.find(".sheet-cols-menuitem").click(function(){
                     _menuButton.hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
                     let _t = $(this), itemvalue = _t.attr("itemvalue"), _input = $("#sheet-icon-font-size input");
                     $("#sheet-icon-font-size").attr("itemvalue", itemvalue);
@@ -888,7 +888,7 @@ const menuButton = {
                     let d = editor.deepCopyFlowData(Store.flowdata);
                     _this.updateFormat(d, "fs", itemvalue);
                     
-                    clearTimeout(luckysheet_fs_setTimeout);
+                    clearTimeout(sheet_fs_setTimeout);
                 });
             }
 
@@ -926,7 +926,7 @@ const menuButton = {
             let d = editor.deepCopyFlowData(Store.flowdata);
             _this.updateFormat(d, "fs", itemvalue);
             
-            luckysheet_fs_setTimeout = setTimeout(function(){
+            sheet_fs_setTimeout = setTimeout(function(){
                 _menuButton.hide();
                 _this.blur();
             }, 200);
@@ -948,7 +948,7 @@ const menuButton = {
 
             let subcolormenuid = "sheet-icon-borderColor-menuButton";
             let color = $("#" + subcolormenuid).find(".sheet-color-selected").val();
-            let style = $("#luckysheetborderSizepreview").attr("itemvalue");
+            let style = $("#sheetborderSizepreview").attr("itemvalue");
 
             if(color == null || color == ""){
                 color = "#000";
@@ -968,7 +968,7 @@ const menuButton = {
                 "borderType": type,
                 "color": color,
                 "style": style,
-                "range": $.extend(true, [], Store.luckysheet_select_save)
+                "range": $.extend(true, [], Store.sheet_select_save)
             }
 
             cfg["borderInfo"].push(borderInfo);
@@ -991,10 +991,10 @@ const menuButton = {
             server.saveParam("cg", Store.currentSheetIndex, cfg["borderInfo"], { "k": "borderInfo" });
 
             Store.config = cfg;
-            Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].config = Store.config;
+            Store.sheetfile[getSheetIndex(Store.currentSheetIndex)].config = Store.config;
 
             setTimeout(function () {
-                luckysheetrefreshgrid();
+                sheetrefreshgrid();
             }, 1);
         });
 
@@ -1023,7 +1023,7 @@ const menuButton = {
                     {"text": locale_border.borderVertical, "value": "border-vertical", "example": '<div class="sheet-icon sheet-inline-block sheet-material-icon sheet-mousedown-cancel" style="user-select: none;opacity:1;"> <div aria-hidden="true" class="sheet-icon-img-container sheet-icon-img sheet-icon-border-vertical iconfont sheet-iconfont-neikuangshuxian" style="user-select: none;"> </div> </div>'},
                     {"text": "", "value": "split", "example": ""},
                     {"text": "<span id='sheet-icon-borderColor-linecolor' class='sheet-mousedown-cancel' style='border-bottom:3px solid #000;'>"+ locale_border.borderColor +"</span>", "value":"borderColor", "example":"more"},
-                    {"text": ""+ locale_border.borderSize +"<img id='luckysheetborderSizepreview' width=100 height=10 src='data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==' style='position:absolute;bottom:-5px;right:0px;width:100px;height:10px;'>", "value":"borderSize", "example":"more"}
+                    {"text": ""+ locale_border.borderSize +"<img id='sheetborderSizepreview' width=100 height=10 src='data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==' style='position:absolute;bottom:-5px;right:0px;width:100px;height:10px;'>", "value":"borderSize", "example":"more"}
                 ];
 
                 // itemvalue to iconfont
@@ -1080,11 +1080,11 @@ const menuButton = {
                         itemvalue = _t.attr("itemvalue");
                     
                     if(itemvalue == 0){
-                        $("#luckysheetborderSizepreview").attr("src", "data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==").attr("itemvalue", null);
+                        $("#sheetborderSizepreview").attr("src", "data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==").attr("itemvalue", null);
                     }
                     else{
                         let bg = _t.find("canvas").get(0).toDataURL("image/png");
-                        $("#luckysheetborderSizepreview").attr("src", bg).attr("itemvalue", itemvalue);
+                        $("#sheetborderSizepreview").attr("src", bg).attr("itemvalue", itemvalue);
                     }
                     
                     _this.focus($("#" + submenuid), itemvalue);
@@ -1093,7 +1093,7 @@ const menuButton = {
                 // border choose menu
                 _menuButton.find(".sheet-cols-menuitem").click(function(){
                     _menuButton.hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
                     let _t = $(this), itemvalue = _t.attr("itemvalue");
                     if(itemvalue == "borderColor" || itemvalue == "borderSize"){
@@ -1107,7 +1107,7 @@ const menuButton = {
                     let d = editor.deepCopyFlowData(Store.flowdata);
 
                     let color = $("#"+ subcolormenuid).find(".sheet-color-selected").val();
-                    let style = $("#luckysheetborderSizepreview").attr("itemvalue");
+                    let style = $("#sheetborderSizepreview").attr("itemvalue");
 
                     if(color == null || color == ""){
                         color = "#000";
@@ -1127,7 +1127,7 @@ const menuButton = {
                         "borderType": itemvalue,
                         "color": color,
                         "style": style,
-                        "range": $.extend(true, [], Store.luckysheet_select_save)
+                        "range": $.extend(true, [], Store.sheet_select_save)
                     }
 
                     cfg["borderInfo"].push(borderInfo);
@@ -1150,10 +1150,10 @@ const menuButton = {
                     server.saveParam("cg", Store.currentSheetIndex, cfg["borderInfo"], { "k": "borderInfo" });
 
                     Store.config = cfg;
-                    Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].config = Store.config;
+                    Store.sheetfile[getSheetIndex(Store.currentSheetIndex)].config = Store.config;
 
                     setTimeout(function () {
-                        luckysheetrefreshgrid();
+                        sheetrefreshgrid();
                     }, 1);
 
                     $("#sheet-icon-border-all").attr("type", itemvalue);
@@ -1251,11 +1251,11 @@ const menuButton = {
             if(Store.config["merge"] != null){
                 let has_PartMC = false;
 
-                for(let s = 0; s < Store.luckysheet_select_save.length; s++){
-                    let r1 = Store.luckysheet_select_save[s].row[0], 
-                        r2 = Store.luckysheet_select_save[s].row[1];
-                    let c1 = Store.luckysheet_select_save[s].column[0], 
-                        c2 = Store.luckysheet_select_save[s].column[1];
+                for(let s = 0; s < Store.sheet_select_save.length; s++){
+                    let r1 = Store.sheet_select_save[s].row[0], 
+                        r2 = Store.sheet_select_save[s].row[1];
+                    let c1 = Store.sheet_select_save[s].column[0], 
+                        c2 = Store.sheet_select_save[s].column[1];
 
                     has_PartMC = hasPartMC(Store.config, r1, r2, c1, c2);
 
@@ -1304,7 +1304,7 @@ const menuButton = {
 
                 _menuButton.find(".sheet-cols-menuitem").click(function(){
                     _menuButton.hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
                     if(selectIsOverlap()){
                         if(isEditMode()){
@@ -1319,11 +1319,11 @@ const menuButton = {
                     if(Store.config["merge"] != null){
                         let has_PartMC = false;
 
-                        for(let s = 0; s < Store.luckysheet_select_save.length; s++){
-                            let r1 = Store.luckysheet_select_save[s].row[0], 
-                                r2 = Store.luckysheet_select_save[s].row[1];
-                            let c1 = Store.luckysheet_select_save[s].column[0], 
-                                c2 = Store.luckysheet_select_save[s].column[1];
+                        for(let s = 0; s < Store.sheet_select_save.length; s++){
+                            let r1 = Store.sheet_select_save[s].row[0], 
+                                r2 = Store.sheet_select_save[s].row[1];
+                            let c1 = Store.sheet_select_save[s].column[0], 
+                                c2 = Store.sheet_select_save[s].column[1];
 
                             has_PartMC = hasPartMC(Store.config, r1, r2, c1, c2);
 
@@ -1398,7 +1398,7 @@ const menuButton = {
 
                 _menuButton.find(".sheet-cols-menuitem").click(function(){
                     _menuButton.hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
                     let _t = $(this), itemvalue = _t.attr("itemvalue");
                     _this.focus(_menuButton, itemvalue);
@@ -1459,7 +1459,7 @@ const menuButton = {
 
                 _menuButton.find(".sheet-cols-menuitem").click(function(){
                     _menuButton.hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
                     let _t = $(this), itemvalue = _t.attr("itemvalue");
                     _this.focus(_menuButton, itemvalue);
@@ -1511,7 +1511,7 @@ const menuButton = {
 
                 _menuButton.find(".sheet-cols-menuitem").click(function(){
                     _menuButton.hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
                     let _t = $(this), itemvalue = _t.attr("itemvalue");
                     _this.focus(_menuButton, itemvalue);
@@ -1568,7 +1568,7 @@ const menuButton = {
 
                 _menuButton.find(".sheet-cols-menuitem").click(function(){
                     _menuButton.hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
                     let _t = $(this), itemvalue = _t.attr("itemvalue");
                     _this.focus(_menuButton, itemvalue);
@@ -1622,82 +1622,82 @@ const menuButton = {
 
                 _menuButton.find(".sheet-cols-menuitem").click(function(){
                     _menuButton.hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
                     let _t = $(this), itemvalue = _t.attr("itemvalue");
                     _this.focus(_menuButton, itemvalue);
 
                     // store frozen
-                    luckysheetFreezen.saveFrozen(itemvalue);
+                    sheetFreezen.saveFrozen(itemvalue);
 
                     if(itemvalue == "freezenRow"){ //首行冻结
                         let scrollTop = $("#sheet-cell-main").scrollTop();
-                        let row_st = luckysheet_searcharray(Store.visibledatarow, scrollTop);
+                        let row_st = sheet_searcharray(Store.visibledatarow, scrollTop);
                         if(row_st == -1){
                             row_st = 0;
                         }
                         let top = Store.visibledatarow[row_st] - 2 - scrollTop + Store.columnHeaderHeight;
-                        let freezenhorizontaldata = [Store.visibledatarow[row_st], row_st + 1, scrollTop, luckysheetFreezen.cutVolumn(Store.visibledatarow, row_st + 1), top];
-                        luckysheetFreezen.saveFreezen(freezenhorizontaldata, top, null, null);
+                        let freezenhorizontaldata = [Store.visibledatarow[row_st], row_st + 1, scrollTop, sheetFreezen.cutVolumn(Store.visibledatarow, row_st + 1), top];
+                        sheetFreezen.saveFreezen(freezenhorizontaldata, top, null, null);
 
-                        if (luckysheetFreezen.freezenverticaldata != null) {
-                            luckysheetFreezen.cancelFreezenVertical();
-                            luckysheetFreezen.createAssistCanvas();
-                            luckysheetrefreshgrid();
+                        if (sheetFreezen.freezenverticaldata != null) {
+                            sheetFreezen.cancelFreezenVertical();
+                            sheetFreezen.createAssistCanvas();
+                            sheetrefreshgrid();
                         }
 
-                        luckysheetFreezen.createFreezenHorizontal(freezenhorizontaldata, top);
-                        luckysheetFreezen.createAssistCanvas();
-                        luckysheetrefreshgrid();
+                        sheetFreezen.createFreezenHorizontal(freezenhorizontaldata, top);
+                        sheetFreezen.createAssistCanvas();
+                        sheetrefreshgrid();
                     }
                     else if(itemvalue == "freezenColumn"){ //首列冻结
                         let scrollLeft = $("#sheet-cell-main").scrollLeft();
-                        let col_st = luckysheet_searcharray(Store.visibledatacolumn, scrollLeft);
+                        let col_st = sheet_searcharray(Store.visibledatacolumn, scrollLeft);
                         if(col_st == -1){
                             col_st = 0;
                         }
                         let left = Store.visibledatacolumn[col_st] - 2 - scrollLeft + Store.rowHeaderWidth;
-                        let freezenverticaldata = [Store.visibledatacolumn[col_st], col_st + 1, scrollLeft, luckysheetFreezen.cutVolumn(Store.visibledatacolumn, col_st + 1), left];
-                        luckysheetFreezen.saveFreezen(null, null, freezenverticaldata, left);
+                        let freezenverticaldata = [Store.visibledatacolumn[col_st], col_st + 1, scrollLeft, sheetFreezen.cutVolumn(Store.visibledatacolumn, col_st + 1), left];
+                        sheetFreezen.saveFreezen(null, null, freezenverticaldata, left);
 
-                        if (luckysheetFreezen.freezenhorizontaldata != null) {
-                            luckysheetFreezen.cancelFreezenHorizontal();
-                            luckysheetFreezen.createAssistCanvas();
-                            luckysheetrefreshgrid();
+                        if (sheetFreezen.freezenhorizontaldata != null) {
+                            sheetFreezen.cancelFreezenHorizontal();
+                            sheetFreezen.createAssistCanvas();
+                            sheetrefreshgrid();
                         }
 
-                        luckysheetFreezen.createFreezenVertical(freezenverticaldata, left);
-                        luckysheetFreezen.createAssistCanvas();
-                        luckysheetrefreshgrid();
+                        sheetFreezen.createFreezenVertical(freezenverticaldata, left);
+                        sheetFreezen.createAssistCanvas();
+                        sheetrefreshgrid();
                     }
                     else if(itemvalue == "freezenRC"){ //首行列冻结
                         let scrollTop = $("#sheet-cell-main").scrollTop();
-                        let row_st = luckysheet_searcharray(Store.visibledatarow, scrollTop);
+                        let row_st = sheet_searcharray(Store.visibledatarow, scrollTop);
                         if(row_st == -1){
                             row_st = 0;
                         }
                         let top = Store.visibledatarow[row_st] - 2 - scrollTop + Store.columnHeaderHeight;
-                        let freezenhorizontaldata = [Store.visibledatarow[row_st], row_st + 1, scrollTop, luckysheetFreezen.cutVolumn(Store.visibledatarow, row_st + 1), top];
-                        luckysheetFreezen.saveFreezen(freezenhorizontaldata, top, null, null);
+                        let freezenhorizontaldata = [Store.visibledatarow[row_st], row_st + 1, scrollTop, sheetFreezen.cutVolumn(Store.visibledatarow, row_st + 1), top];
+                        sheetFreezen.saveFreezen(freezenhorizontaldata, top, null, null);
 
-                        luckysheetFreezen.createFreezenHorizontal(freezenhorizontaldata, top);
+                        sheetFreezen.createFreezenHorizontal(freezenhorizontaldata, top);
 
                         let scrollLeft = $("#sheet-cell-main").scrollLeft();
-                        let col_st = luckysheet_searcharray(Store.visibledatacolumn, scrollLeft);
+                        let col_st = sheet_searcharray(Store.visibledatacolumn, scrollLeft);
                         if(col_st == -1){
                             col_st = 0;
                         }
                         let left = Store.visibledatacolumn[col_st] - 2 - scrollLeft + Store.rowHeaderWidth;
-                        let freezenverticaldata = [Store.visibledatacolumn[col_st], col_st + 1, scrollLeft, luckysheetFreezen.cutVolumn(Store.visibledatacolumn, col_st + 1), left];
-                        luckysheetFreezen.saveFreezen(null, null, freezenverticaldata, left);
+                        let freezenverticaldata = [Store.visibledatacolumn[col_st], col_st + 1, scrollLeft, sheetFreezen.cutVolumn(Store.visibledatacolumn, col_st + 1), left];
+                        sheetFreezen.saveFreezen(null, null, freezenverticaldata, left);
 
-                        luckysheetFreezen.createFreezenVertical(freezenverticaldata, left);
+                        sheetFreezen.createFreezenVertical(freezenverticaldata, left);
 
-                        luckysheetFreezen.createAssistCanvas();
-                        luckysheetrefreshgrid();
+                        sheetFreezen.createAssistCanvas();
+                        sheetrefreshgrid();
                     }
                     else if(itemvalue == "freezenRowRange"){ //选区行冻结
-                        if(Store.luckysheet_select_save == null || Store.luckysheet_select_save.length == 0){
+                        if(Store.sheet_select_save == null || Store.sheet_select_save.length == 0){
                             if(isEditMode()){
                                 alert(locale_freezen.noSeletionError);
                             }
@@ -1709,9 +1709,9 @@ const menuButton = {
                         }
                         
                         let scrollTop = $("#sheet-cell-main").scrollTop();
-                        let row_st = luckysheet_searcharray(Store.visibledatarow, scrollTop);
+                        let row_st = sheet_searcharray(Store.visibledatarow, scrollTop);
 
-                        let last = Store.luckysheet_select_save[Store.luckysheet_select_save.length - 1];
+                        let last = Store.sheet_select_save[Store.sheet_select_save.length - 1];
                         let row_focus = last["row_focus"] == null ? last["row"][0] : last["row_focus"];
 
                         if(row_focus > row_st){
@@ -1723,21 +1723,21 @@ const menuButton = {
                         }
 
                         let top = Store.visibledatarow[row_st] - 2 - scrollTop + Store.columnHeaderHeight;
-                        let freezenhorizontaldata = [Store.visibledatarow[row_st], row_st + 1, scrollTop, luckysheetFreezen.cutVolumn(Store.visibledatarow, row_st + 1), top];
-                        luckysheetFreezen.saveFreezen(freezenhorizontaldata, top, null, null);
+                        let freezenhorizontaldata = [Store.visibledatarow[row_st], row_st + 1, scrollTop, sheetFreezen.cutVolumn(Store.visibledatarow, row_st + 1), top];
+                        sheetFreezen.saveFreezen(freezenhorizontaldata, top, null, null);
 
-                        if (luckysheetFreezen.freezenverticaldata != null) {
-                            luckysheetFreezen.cancelFreezenVertical();
-                            luckysheetFreezen.createAssistCanvas();
-                            luckysheetrefreshgrid();
+                        if (sheetFreezen.freezenverticaldata != null) {
+                            sheetFreezen.cancelFreezenVertical();
+                            sheetFreezen.createAssistCanvas();
+                            sheetrefreshgrid();
                         }
 
-                        luckysheetFreezen.createFreezenHorizontal(freezenhorizontaldata, top);
-                        luckysheetFreezen.createAssistCanvas();
-                        luckysheetrefreshgrid();
+                        sheetFreezen.createFreezenHorizontal(freezenhorizontaldata, top);
+                        sheetFreezen.createAssistCanvas();
+                        sheetrefreshgrid();
                     }
                     else if(itemvalue == "freezenColumnRange"){ //选区列冻结
-                        if(Store.luckysheet_select_save == null || Store.luckysheet_select_save.length == 0){
+                        if(Store.sheet_select_save == null || Store.sheet_select_save.length == 0){
                             if(isEditMode()){
                                 alert(locale_freezen.noSeletionError);
                             }
@@ -1749,9 +1749,9 @@ const menuButton = {
                         }
                         
                         let scrollLeft = $("#sheet-cell-main").scrollLeft();
-                        let col_st = luckysheet_searcharray(Store.visibledatacolumn, scrollLeft);
+                        let col_st = sheet_searcharray(Store.visibledatacolumn, scrollLeft);
 
-                        let last = Store.luckysheet_select_save[Store.luckysheet_select_save.length - 1];
+                        let last = Store.sheet_select_save[Store.sheet_select_save.length - 1];
                         let column_focus = last["column_focus"] == null ? last["column"][0] : last["column_focus"];
 
                         if(column_focus > col_st){
@@ -1763,21 +1763,21 @@ const menuButton = {
                         }
 
                         let left = Store.visibledatacolumn[col_st] - 2 - scrollLeft + Store.rowHeaderWidth;
-                        let freezenverticaldata = [Store.visibledatacolumn[col_st], col_st + 1, scrollLeft, luckysheetFreezen.cutVolumn(Store.visibledatacolumn, col_st + 1), left];
-                        luckysheetFreezen.saveFreezen(null, null, freezenverticaldata, left);
+                        let freezenverticaldata = [Store.visibledatacolumn[col_st], col_st + 1, scrollLeft, sheetFreezen.cutVolumn(Store.visibledatacolumn, col_st + 1), left];
+                        sheetFreezen.saveFreezen(null, null, freezenverticaldata, left);
 
-                        if (luckysheetFreezen.freezenhorizontaldata != null) {
-                            luckysheetFreezen.cancelFreezenHorizontal();
-                            luckysheetFreezen.createAssistCanvas();
-                            luckysheetrefreshgrid();
+                        if (sheetFreezen.freezenhorizontaldata != null) {
+                            sheetFreezen.cancelFreezenHorizontal();
+                            sheetFreezen.createAssistCanvas();
+                            sheetrefreshgrid();
                         }
 
-                        luckysheetFreezen.createFreezenVertical(freezenverticaldata, left);
-                        luckysheetFreezen.createAssistCanvas();
-                        luckysheetrefreshgrid();
+                        sheetFreezen.createFreezenVertical(freezenverticaldata, left);
+                        sheetFreezen.createAssistCanvas();
+                        sheetrefreshgrid();
                     }
                     else if(itemvalue == "freezenRCRange"){ //选区行列冻结
-                        if(Store.luckysheet_select_save == null || Store.luckysheet_select_save.length == 0){
+                        if(Store.sheet_select_save == null || Store.sheet_select_save.length == 0){
                             if(isEditMode()){
                                 alert(locale_freezen.noSeletionError);
                             }
@@ -1789,9 +1789,9 @@ const menuButton = {
                         }
                         
                         let scrollTop = $("#sheet-cell-main").scrollTop();
-                        let row_st = luckysheet_searcharray(Store.visibledatarow, scrollTop);
+                        let row_st = sheet_searcharray(Store.visibledatarow, scrollTop);
 
-                        let last = Store.luckysheet_select_save[Store.luckysheet_select_save.length - 1];
+                        let last = Store.sheet_select_save[Store.sheet_select_save.length - 1];
                         let row_focus = last["row_focus"] == null ? last["row"][0] : last["row_focus"];
 
                         if(row_focus > row_st){
@@ -1803,13 +1803,13 @@ const menuButton = {
                         }
 
                         let top = Store.visibledatarow[row_st] - 2 - scrollTop + Store.columnHeaderHeight;
-                        let freezenhorizontaldata = [Store.visibledatarow[row_st], row_st + 1, scrollTop, luckysheetFreezen.cutVolumn(Store.visibledatarow, row_st + 1), top];
-                        luckysheetFreezen.saveFreezen(freezenhorizontaldata, top, null, null);
+                        let freezenhorizontaldata = [Store.visibledatarow[row_st], row_st + 1, scrollTop, sheetFreezen.cutVolumn(Store.visibledatarow, row_st + 1), top];
+                        sheetFreezen.saveFreezen(freezenhorizontaldata, top, null, null);
 
-                        luckysheetFreezen.createFreezenHorizontal(freezenhorizontaldata, top);
+                        sheetFreezen.createFreezenHorizontal(freezenhorizontaldata, top);
 
                         let scrollLeft = $("#sheet-cell-main").scrollLeft();
-                        let col_st = luckysheet_searcharray(Store.visibledatacolumn, scrollLeft);
+                        let col_st = sheet_searcharray(Store.visibledatacolumn, scrollLeft);
 
                         let column_focus = last["column_focus"] == null ? last["column"][0] : last["column_focus"];
 
@@ -1822,32 +1822,32 @@ const menuButton = {
                         }
                         
                         let left = Store.visibledatacolumn[col_st] - 2 - scrollLeft + Store.rowHeaderWidth;
-                        let freezenverticaldata = [Store.visibledatacolumn[col_st], col_st + 1, scrollLeft, luckysheetFreezen.cutVolumn(Store.visibledatacolumn, col_st + 1), left];
-                        luckysheetFreezen.saveFreezen(null, null, freezenverticaldata, left);
+                        let freezenverticaldata = [Store.visibledatacolumn[col_st], col_st + 1, scrollLeft, sheetFreezen.cutVolumn(Store.visibledatacolumn, col_st + 1), left];
+                        sheetFreezen.saveFreezen(null, null, freezenverticaldata, left);
 
-                        luckysheetFreezen.createFreezenVertical(freezenverticaldata, left);
+                        sheetFreezen.createFreezenVertical(freezenverticaldata, left);
                         
-                        luckysheetFreezen.createAssistCanvas();
-                        luckysheetrefreshgrid();
+                        sheetFreezen.createAssistCanvas();
+                        sheetrefreshgrid();
                     }
                     else if(itemvalue == "freezenCancel"){ //Cancel freezen
-                        if (luckysheetFreezen.freezenverticaldata != null) {
-                            luckysheetFreezen.cancelFreezenVertical();
-                            luckysheetFreezen.createAssistCanvas();
-                            luckysheetrefreshgrid();
+                        if (sheetFreezen.freezenverticaldata != null) {
+                            sheetFreezen.cancelFreezenVertical();
+                            sheetFreezen.createAssistCanvas();
+                            sheetrefreshgrid();
                         }
 
-                        if (luckysheetFreezen.freezenhorizontaldata != null) {
-                            luckysheetFreezen.cancelFreezenHorizontal();
-                            luckysheetFreezen.createAssistCanvas();
-                            luckysheetrefreshgrid();
+                        if (sheetFreezen.freezenhorizontaldata != null) {
+                            sheetFreezen.cancelFreezenHorizontal();
+                            sheetFreezen.createAssistCanvas();
+                            sheetrefreshgrid();
                         }
 
-                        luckysheetFreezen.scrollAdapt();
+                        sheetFreezen.scrollAdapt();
                     }
 
                     setTimeout(function(){
-                        luckysheetsizeauto();
+                        sheetsizeauto();
                     },0);
                 });
             }
@@ -1889,12 +1889,12 @@ const menuButton = {
 
                 _menuButton.find(".sheet-cols-menuitem").click(function(){
                     _menuButton.hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
                     let _t = $(this), itemvalue = _t.attr("itemvalue");
 
                     if(itemvalue == "diysort"){
-                        $("#luckysheetorderby").click();
+                        $("#sheetorderby").click();
                     }
                     else if(itemvalue == "asc"){
                         sortSelection(true);
@@ -1958,59 +1958,59 @@ const menuButton = {
 
                 _menuButton.find(".sheet-cols-menuitem").click(function(){
                     _menuButton.hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
                     let _t = $(this), itemvalue = _t.attr("itemvalue");
 
                     if(itemvalue == "search" || itemvalue == "replace"){ //查找替换
                         if(itemvalue == "search"){
-                            luckysheetSearchReplace.createDialog(0);
+                            sheetSearchReplace.createDialog(0);
                         }
                         else if(itemvalue == "replace"){
-                            luckysheetSearchReplace.createDialog(1);    
+                            sheetSearchReplace.createDialog(1);    
                         }
                         
-                        luckysheetSearchReplace.init();
+                        sheetSearchReplace.init();
 
                         $("#sheet-search-replace #searchInput input").focus();
                     }
                     else if(itemvalue == "location"){ //定位条件
-                        luckysheetLocationCell.createDialog();
-                        luckysheetLocationCell.init();
+                        sheetLocationCell.createDialog();
+                        sheetLocationCell.init();
                     }
                     else if(itemvalue == "locationFormula" || itemvalue == "locationConstantDate" || itemvalue == "locationConstantNumber" || itemvalue == "locationConstantString" || itemvalue == "locationConstantError" || itemvalue == "locationCF"){ 
-                        let last = Store.luckysheet_select_save[0];
+                        let last = Store.sheet_select_save[0];
                         
                         let range;
-                        if(Store.luckysheet_select_save.length == 0 || (Store.luckysheet_select_save.length == 1 && last.row[0] == last.row[1] && last.column[0] == last.column[1])){
+                        if(Store.sheet_select_save.length == 0 || (Store.sheet_select_save.length == 1 && last.row[0] == last.row[1] && last.column[0] == last.column[1])){
                             //单个单元格
                             range = [{"row": [0, Store.flowdata.length - 1], "column": [0, Store.flowdata[0].length - 1]}];
                         }
                         else{
-                            range = $.extend(true, [], Store.luckysheet_select_save);
+                            range = $.extend(true, [], Store.sheet_select_save);
                         }
 
                         if(itemvalue == "locationFormula"){               //公式
-                            luckysheetLocationCell.apply(range, "locationFormula", "all");
+                            sheetLocationCell.apply(range, "locationFormula", "all");
                         }
                         else if(itemvalue == "locationConstantDate"){     //日期
-                            luckysheetLocationCell.apply(range, "locationConstant", "d");
+                            sheetLocationCell.apply(range, "locationConstant", "d");
                         }
                         else if(itemvalue == "locationConstantNumber"){   //数字
-                            luckysheetLocationCell.apply(range, "locationConstant", "n");
+                            sheetLocationCell.apply(range, "locationConstant", "n");
                         }
                         else if(itemvalue == "locationConstantString"){   //字符
-                            luckysheetLocationCell.apply(range, "locationConstant", "s,g");
+                            sheetLocationCell.apply(range, "locationConstant", "s,g");
                         }
                         else if(itemvalue == "locationConstantError"){    //错误
-                            luckysheetLocationCell.apply(range, "locationConstant", "e");
+                            sheetLocationCell.apply(range, "locationConstant", "e");
                         }
                         else if(itemvalue == "locationCF"){               //条件格式
-                            luckysheetLocationCell.apply(range, "locationCF");
+                            sheetLocationCell.apply(range, "locationCF");
                         }
                     }
                     else if(itemvalue == "locationStepRow"){ //间隔行
-                        if(Store.luckysheet_select_save.length == 0 || (Store.luckysheet_select_save.length == 1 && Store.luckysheet_select_save[0].row[0] == Store.luckysheet_select_save[0].row[1])){
+                        if(Store.sheet_select_save.length == 0 || (Store.sheet_select_save.length == 1 && Store.sheet_select_save[0].row[0] == Store.sheet_select_save[0].row[1])){
                             if(isEditMode()){
                                 alert(locale_findAndReplace.lessTwoRowTip);
                             }
@@ -2020,12 +2020,12 @@ const menuButton = {
                             return;                            
                         }
 
-                        let range = $.extend(true, [], Store.luckysheet_select_save);
+                        let range = $.extend(true, [], Store.sheet_select_save);
 
-                        luckysheetLocationCell.apply(range, "locationStepRow");
+                        sheetLocationCell.apply(range, "locationStepRow");
                     }
                     else if(itemvalue == "locationStepColumn"){ //间隔列
-                        if(Store.luckysheet_select_save.length == 0 || (Store.luckysheet_select_save.length == 1 && Store.luckysheet_select_save[0].column[0] == Store.luckysheet_select_save[0].column[1])){
+                        if(Store.sheet_select_save.length == 0 || (Store.sheet_select_save.length == 1 && Store.sheet_select_save[0].column[0] == Store.sheet_select_save[0].column[1])){
                             if(isEditMode()){
                                 alert(locale_findAndReplace.lessTwoColumnTip);
                             }
@@ -2035,9 +2035,9 @@ const menuButton = {
                             return;                            
                         }
 
-                        let range = $.extend(true, [], Store.luckysheet_select_save);
+                        let range = $.extend(true, [], Store.sheet_select_save);
 
-                        luckysheetLocationCell.apply(range, "locationStepColumn");
+                        sheetLocationCell.apply(range, "locationStepColumn");
                     }
                 });
             }
@@ -2086,12 +2086,12 @@ const menuButton = {
 
                 _menuButton.find(".sheet-cols-menuitem").click(function(){
                     _menuButton.hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
                     let _t = $(this), itemvalue = _t.attr("itemvalue");
 
                     if(itemvalue == "if"){
-                        let last = Store.luckysheet_select_save[Store.luckysheet_select_save.length - 1];
+                        let last = Store.sheet_select_save[Store.sheet_select_save.length - 1];
                         let r = last["row_focus"] == null ? last["row"][0] : last["row_focus"];
                         let c = last["column_focus"] == null ? last["column"][0] : last["column_focus"];
 
@@ -2119,7 +2119,7 @@ const menuButton = {
                     }
                     else if(itemvalue == "formula"){
                         //点击函数查找弹出框
-                        if(Store.luckysheet_select_save.length == 0){
+                        if(Store.sheet_select_save.length == 0){
                             if(isEditMode()){
                                 alert(locale_formula.tipSelectCell);
                             }
@@ -2130,16 +2130,16 @@ const menuButton = {
                             return;
                         }
 
-                        let last = Store.luckysheet_select_save[Store.luckysheet_select_save.length - 1];
+                        let last = Store.sheet_select_save[Store.sheet_select_save.length - 1];
 
                         let row_index = last["row_focus"], col_index = last["column_focus"];
 
-                        luckysheetupdateCell(row_index, col_index, Store.flowdata);
+                        sheetupdateCell(row_index, col_index, Store.flowdata);
                         
                         let cell = Store.flowdata[row_index][col_index];
                         if(cell != null && cell.f != null){
                             //单元格有计算
-                            let functionStr = luckysheetformula.getfunctionParam(cell.f);
+                            let functionStr = sheetformula.getfunctionParam(cell.f);
                             if(functionStr.fn != null){
                                 //有函数公式
                                 insertFormula.formulaParmDialog(functionStr.fn, functionStr.param);
@@ -2365,12 +2365,12 @@ const menuButton = {
 
                 _menuButton.find(".sheet-cols-menuitem").click(function(){
                     _menuButton.hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
                     let _t = $(this), itemvalue = _t.attr("itemvalue");
 
                     if(itemvalue == "icons"){
-                        if(Store.luckysheet_select_save.length == 0){
+                        if(Store.sheet_select_save.length == 0){
                             if(isEditMode()){
                                 alert(conditionformat_text.pleaseSelectRange);
                             }
@@ -2384,7 +2384,7 @@ const menuButton = {
                         conditionformat.init();
                     }
                     else if(itemvalue == "newRule"){
-                        if(Store.luckysheet_select_save.length == 0){
+                        if(Store.sheet_select_save.length == 0){
                             if(isEditMode()){
                                 alert(conditionformat_text.pleaseSelectRange);
                             }
@@ -2399,7 +2399,7 @@ const menuButton = {
                     }
                     else if(itemvalue == "administerRule"){
                         let loadSheetUrl = server.loadSheetUrl;
-                        let file = getluckysheetfile();
+                        let file = getsheet_file();
 
                         if(loadSheetUrl != "" && loadSheetUrl != null){
                             let sheetindex = [];
@@ -2425,7 +2425,7 @@ const menuButton = {
                                     otherfile["data"] = sheetmanage.buildGridData(otherfile);
                                 }
 
-                                setluckysheetfile(file);
+                                setsheetfile(file);
 
                                 conditionformat.fileClone =  $.extend(true, [], file);
                                 conditionformat.administerRuleDialog();
@@ -2444,11 +2444,11 @@ const menuButton = {
                 $(document).off("click.CFhighlightCellRule").on("click.CFhighlightCellRule", "#sheet-icon-highlightCellRule-menuButton .sheet-cols-menuitem", function(){
                     _menuButton.hide();
                     $("#sheet-icon-highlightCellRule-menuButton").hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
                     let _t = $(this), itemvalue = _t.attr("itemvalue");
 
-                    if(Store.luckysheet_select_save.length == 0){
+                    if(Store.sheet_select_save.length == 0){
                         if(isEditMode()){
                             alert(conditionformat_text.pleaseSelectRange);
                         }
@@ -2562,11 +2562,11 @@ const menuButton = {
                 $(document).off("click.CFprojectSelectRule").on("click.CFprojectSelectRule", "#sheet-icon-projectSelectRule-menuButton .sheet-cols-menuitem", function(){
                     _menuButton.hide();
                     $("#sheet-icon-projectSelectRule-menuButton").hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
                     let _t = $(this), itemvalue = _t.attr("itemvalue");
 
-                    if(Store.luckysheet_select_save.length == 0){
+                    if(Store.sheet_select_save.length == 0){
                         if(isEditMode()){
                             alert(conditionformat_text.pleaseSelectRange);
                         }
@@ -2666,12 +2666,12 @@ const menuButton = {
                 $(document).off("click.CFdataBar").on("click.CFdataBar", "#sheet-icon-dataBar-menuButton .sheet-cols-menuitem", function(){
                     _menuButton.hide();
                     $("#sheet-icon-dataBar-menuButton").hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
                     let _t = $(this), itemvalue = _t.attr("itemvalue");
 
-                    if(Store.luckysheet_select_save.length > 0){
-                        let cellrange = $.extend(true, [], Store.luckysheet_select_save);
+                    if(Store.sheet_select_save.length > 0){
+                        let cellrange = $.extend(true, [], Store.sheet_select_save);
                         let format = conditionformat.dataBarList[itemvalue]["format"];
 
                         conditionformat.updateItem("dataBar", cellrange, format);
@@ -2682,12 +2682,12 @@ const menuButton = {
                 $(document).off("click.CFcolorGradation").on("click.CFcolorGradation", "#sheet-icon-colorGradation-menuButton .sheet-cols-menuitem", function(){
                     _menuButton.hide();
                     $("#sheet-icon-colorGradation-menuButton").hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
                     let _t = $(this), itemvalue = _t.attr("itemvalue");
 
-                    if(Store.luckysheet_select_save.length > 0){
-                        let cellrange = $.extend(true, [], Store.luckysheet_select_save);
+                    if(Store.sheet_select_save.length > 0){
+                        let cellrange = $.extend(true, [], Store.sheet_select_save);
                         let format = conditionformat.colorGradationList[itemvalue]["format"];
 
                         conditionformat.updateItem("colorGradation", cellrange, format);
@@ -2698,7 +2698,7 @@ const menuButton = {
                 $(document).off("click.CFdeleteRule").on("click.CFdeleteRule", "#sheet-icon-deleteRule-menuButton .sheet-cols-menuitem", function(){
                     _menuButton.hide();
                     $("#sheet-icon-deleteRule-menuButton").hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
                     let _t = $(this), itemvalue = _t.attr("itemvalue");
 
@@ -2728,9 +2728,9 @@ const menuButton = {
             _menuButton.remove();
 
             // if(_menuButton.length == 0){
-                luckysheetPostil.removeActivePs();
+                sheetPostil.removeActivePs();
 
-                let last = Store.luckysheet_select_save[Store.luckysheet_select_save.length - 1];
+                let last = Store.sheet_select_save[Store.sheet_select_save.length - 1];
                 
                 let row_index = last["row_focus"];
                 if(row_index == null){
@@ -2768,24 +2768,24 @@ const menuButton = {
 
                 _menuButton.find(".sheet-cols-menuitem").click(function(){
                     _menuButton.hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
                     let _t = $(this), itemvalue = _t.attr("itemvalue");
                     
                     if(itemvalue == "newPs"){
-                        luckysheetPostil.newPs(row_index, col_index);
+                        sheetPostil.newPs(row_index, col_index);
                     }
                     else if(itemvalue == "editPs"){
-                        luckysheetPostil.editPs(row_index, col_index);
+                        sheetPostil.editPs(row_index, col_index);
                     }
                     else if(itemvalue == "delPs"){
-                        luckysheetPostil.delPs(row_index, col_index);
+                        sheetPostil.delPs(row_index, col_index);
                     }
                     else if(itemvalue == "showHidePs"){
-                        luckysheetPostil.showHidePs(row_index, col_index);
+                        sheetPostil.showHidePs(row_index, col_index);
                     }
                     else if(itemvalue == "showHideAllPs"){
-                        luckysheetPostil.showHideAllPs();
+                        sheetPostil.showHideAllPs();
                     }
                 });
             // }
@@ -2831,7 +2831,7 @@ const menuButton = {
 
                 _menuButton.find(".sheet-cols-menuitem").click(function(){
                     _menuButton.hide();
-                    luckysheetContainerFocus();
+                    sheetContainerFocus();
 
                     let _t = $(this), itemvalue = _t.attr("itemvalue");
 
@@ -3121,8 +3121,8 @@ const menuButton = {
             if (parseInt($("#sheet-input-box").css("top")) > 0 ) {
                 let value = $("#sheet-input-box").text();
                 if(value.substr(0,1)!="="){
-                    let cell = d[Store.luckysheetCellUpdate[0]][Store.luckysheetCellUpdate[1]];
-                    updateInlineStringFormat(cell, attr, foucsStatus, luckysheetformula.rangeResizeTo);
+                    let cell = d[Store.sheetCellUpdate[0]][Store.sheetCellUpdate[1]];
+                    updateInlineStringFormat(cell, attr, foucsStatus, sheetformula.rangeResizeTo);
                     // return;
                 }
             }
@@ -3133,11 +3133,11 @@ const menuButton = {
             cfg["rowlen"] = {};
         }
 
-        for(let s = 0; s < Store.luckysheet_select_save.length; s++){
-            let row_st = Store.luckysheet_select_save[s]["row"][0], 
-                row_ed = Store.luckysheet_select_save[s]["row"][1];
-            let col_st = Store.luckysheet_select_save[s]["column"][0], 
-                col_ed = Store.luckysheet_select_save[s]["column"][1];
+        for(let s = 0; s < Store.sheet_select_save.length; s++){
+            let row_st = Store.sheet_select_save[s]["row"][0], 
+                row_ed = Store.sheet_select_save[s]["row"][1];
+            let col_st = Store.sheet_select_save[s]["column"][0], 
+                col_ed = Store.sheet_select_save[s]["column"][1];
 
             this.updateFormatCell(d, attr, foucsStatus, row_st, row_ed, col_st, col_ed);
 
@@ -3154,7 +3154,7 @@ const menuButton = {
             }
         }
 
-        jfrefreshgrid(d, Store.luckysheet_select_save, allParam, false);
+        jfrefreshgrid(d, Store.sheet_select_save, allParam, false);
     },
     updateFormat_mc: function(d, foucsStatus){
         let cfg = $.extend(true, {}, Store.config);
@@ -3167,8 +3167,8 @@ const menuButton = {
         }
 
         if(foucsStatus == "mergeCancel"){
-            for(let i = 0; i < Store.luckysheet_select_save.length; i++){
-                let range = Store.luckysheet_select_save[i];
+            for(let i = 0; i < Store.sheet_select_save.length; i++){
+                let range = Store.sheet_select_save[i];
                 let r1 = range["row"][0], r2 = range["row"][1];
                 let c1 = range["column"][0], c2 = range["column"][1];
 
@@ -3211,8 +3211,8 @@ const menuButton = {
         else{
             let isHasMc = false; //选区是否含有 合并的单元格
 
-            for(let i = 0; i < Store.luckysheet_select_save.length; i++){
-                let range = Store.luckysheet_select_save[i];
+            for(let i = 0; i < Store.sheet_select_save.length; i++){
+                let range = Store.sheet_select_save[i];
                 let r1 = range["row"][0], r2 = range["row"][1];
                 let c1 = range["column"][0], c2 = range["column"][1];
 
@@ -3229,8 +3229,8 @@ const menuButton = {
             }
 
             if(isHasMc){//选区有合并单元格（选区都执行 取消合并）
-                for(let i = 0; i < Store.luckysheet_select_save.length; i++){
-                    let range = Store.luckysheet_select_save[i];
+                for(let i = 0; i < Store.sheet_select_save.length; i++){
+                    let range = Store.sheet_select_save[i];
                     let r1 = range["row"][0], r2 = range["row"][1];
                     let c1 = range["column"][0], c2 = range["column"][1];
 
@@ -3271,8 +3271,8 @@ const menuButton = {
                 }
             }
             else{
-                for(let i = 0; i < Store.luckysheet_select_save.length; i++){
-                    let range = Store.luckysheet_select_save[i];
+                for(let i = 0; i < Store.sheet_select_save.length; i++){
+                    let range = Store.sheet_select_save[i];
                     let r1 = range["row"][0], r2 = range["row"][1];
                     let c1 = range["column"][0], c2 = range["column"][1];
 
@@ -3354,14 +3354,14 @@ const menuButton = {
                 "sheetIndex": Store.currentSheetIndex,
                 "data": Store.flowdata,
                 "curData": d,
-                "range": $.extend(true, [], Store.luckysheet_select_save),
+                "range": $.extend(true, [], Store.sheet_select_save),
                 "config": $.extend(true, {}, Store.config),
                 "curConfig": cfg
             });
         }
 
         Store.clearjfundo = false;
-        jfrefreshgrid(d, Store.luckysheet_select_save, {"cfg": cfg});
+        jfrefreshgrid(d, Store.sheet_select_save, {"cfg": cfg});
         Store.clearjfundo = true;
     },
     borderfix: function(d, r, c){
@@ -3964,7 +3964,7 @@ const menuButton = {
             }
         }
         else{
-            let config = getluckysheetfile()[getSheetIndex(Store.currentSheetIndex)]["config"];
+            let config = getsheet_file()[getSheetIndex(Store.currentSheetIndex)]["config"];
             
             if (config["columnlen"] != null && config["columnlen"][cell_c] != null) {
                 width = config["columnlen"][cell_c];
@@ -3988,11 +3988,11 @@ const menuButton = {
             return _this.getTextHeightCache[f];
         }
 
-        if($("#luckysheetTextSizeTest").length == 0){
-            $('<span id="luckysheetTextSizeTest" style="float:left;white-space:nowrap;visibility:hidden;margin:0;padding:0;">' + text + '</span>').appendTo($('body'));
+        if($("#sheetTextSizeTest").length == 0){
+            $('<span id="sheetTextSizeTest" style="float:left;white-space:nowrap;visibility:hidden;margin:0;padding:0;">' + text + '</span>').appendTo($('body'));
         }
 
-        let o = $("#luckysheetTextSizeTest").text(text).css({'font': f}),
+        let o = $("#sheetTextSizeTest").text(text).css({'font': f}),
             w = o.innerWidth(), 
             h = o.innerHeight();
 
@@ -4007,7 +4007,7 @@ const menuButton = {
             isnull = false;
         }
 
-        luckysheetupdateCell(row_index, col_index, Store.flowdata, true);
+        sheetupdateCell(row_index, col_index, Store.flowdata, true);
 
         if(isnull){
             let formulaTxt = '<span dir="auto" class="sheet-formula-text-color">=</span><span dir="auto" class="sheet-formula-text-color">'+ formula.toUpperCase() +'</span><span dir="auto" class="sheet-formula-text-color">(</span><span dir="auto" class="sheet-formula-text-color">)</span>';
@@ -4016,7 +4016,7 @@ const menuButton = {
 
             let currSelection = window.getSelection();
             let _span = $("#sheet-rich-text-editor").find("span");
-            luckysheetformula.setCaretPosition(_span.get(_span.length-2), 0, 1);
+            sheetformula.setCaretPosition(_span.get(_span.length-2), 0, 1);
 
             return;
         }
@@ -4029,13 +4029,13 @@ const menuButton = {
         let formulaTxt = '<span dir="auto" class="sheet-formula-text-color">=</span><span dir="auto" class="sheet-formula-text-color">'+ formula.toUpperCase() +'</span><span dir="auto" class="sheet-formula-text-color">(</span><span class="sheet-formula-functionrange-cell" rangeindex="0" dir="auto" style="color:'+ sheetColor[0] +';">'+ getRangetxt(Store.currentSheetIndex, {"row":rowh, "column":columnh }, Store.currentSheetIndex) +'</span><span dir="auto" class="sheet-formula-text-color">)</span>';
         $("#sheet-rich-text-editor").html(formulaTxt);
 
-        luckysheetformula.israngeseleciton();
-        luckysheetformula.rangestart = true;
-        luckysheetformula.rangedrag_column_start = false;
-        luckysheetformula.rangedrag_row_start = false;
-        luckysheetformula.rangechangeindex = 0;
-        luckysheetformula.rangeSetValue({ "row": rowh, "column": columnh });
-        luckysheetformula.func_selectedrange = { 
+        sheetformula.israngeseleciton();
+        sheetformula.rangestart = true;
+        sheetformula.rangedrag_column_start = false;
+        sheetformula.rangedrag_row_start = false;
+        sheetformula.rangechangeindex = 0;
+        sheetformula.rangeSetValue({ "row": rowh, "column": columnh });
+        sheetformula.func_selectedrange = { 
             "left": col_pre, 
             "width": col - col_pre - 1, 
             "top": row_pre, 
@@ -4056,10 +4056,10 @@ const menuButton = {
         let _this = this;
 
         let f = '='+ formula.toUpperCase() +'('+ getRangetxt(Store.currentSheetIndex, {"row":rowh, "column":columnh }, Store.currentSheetIndex) +')';
-        let v = luckysheetformula.execfunction(f, r, c);
+        let v = sheetformula.execfunction(f, r, c);
         let value = { "v": v[1], "f": v[2] };
         setcellvalue(r, c, d, value);
-        luckysheetformula.execFunctionExist.push({ "r": r, "c": c, "i": Store.currentSheetIndex });
+        sheetformula.execFunctionExist.push({ "r": r, "c": c, "i": Store.currentSheetIndex });
 
         server.historyParam(d, Store.currentSheetIndex, {"row": [r, r], "column": [c, c]});
     },
@@ -4278,7 +4278,7 @@ const menuButton = {
         let d = editor.deepCopyFlowData(Store.flowdata);
         let nullfindnum = 40;
         let isfalse = true;
-        luckysheetformula.execFunctionExist = [];
+        sheetformula.execFunctionExist = [];
 
         let execFormulaInput_c = function(d, st_r, ed_r, st_c, ed_c, formula){
             let st_c_c = _this.getNoNullValue(d, st_r, ed_c, "c");
@@ -4302,13 +4302,13 @@ const menuButton = {
             }
         }
 
-        for(let s = 0; s < Store.luckysheet_select_save.length; s++){
-            let st_r = Store.luckysheet_select_save[s].row[0], 
-                ed_r = Store.luckysheet_select_save[s].row[1];
-            let st_c = Store.luckysheet_select_save[s].column[0], 
-                ed_c = Store.luckysheet_select_save[s].column[1];
-            let row_index = Store.luckysheet_select_save[s].row_focus, 
-                col_index = Store.luckysheet_select_save[s].column_focus;
+        for(let s = 0; s < Store.sheet_select_save.length; s++){
+            let st_r = Store.sheet_select_save[s].row[0], 
+                ed_r = Store.sheet_select_save[s].row[1];
+            let st_c = Store.sheet_select_save[s].column[0], 
+                ed_c = Store.sheet_select_save[s].column[1];
+            let row_index = Store.sheet_select_save[s].row_focus, 
+                col_index = Store.sheet_select_save[s].column_focus;
 
             if(st_r == ed_r && st_c == ed_c){
                 if(ed_r - 1 < 0 && ed_c - 1 < 0){
@@ -4350,9 +4350,9 @@ const menuButton = {
         }
 
         if(!isfalse){
-            luckysheetformula.execFunctionExist.reverse();
-            luckysheetformula.execFunctionGroup(null, null, null, null, d);
-            jfrefreshgrid(d, Store.luckysheet_select_save);
+            sheetformula.execFunctionExist.reverse();
+            sheetformula.execFunctionGroup(null, null, null, null, d);
+            jfrefreshgrid(d, Store.sheet_select_save);
 
             clearTimeout(Store.jfcountfuncTimeout);
             Store.jfcountfuncTimeout = setTimeout(function () { countfunc() }, 500);
@@ -4547,7 +4547,7 @@ const menuButton = {
 
         let range={...options};
         if(!(options&&options.row)){
-            if (Store.luckysheet_select_save.length == 0) {
+            if (Store.sheet_select_save.length == 0) {
                 if (isEditMode()) {
                     alert(locale_screenshot.screenshotTipNoSelection);
                 }
@@ -4557,7 +4557,7 @@ const menuButton = {
                 return;
             }
     
-            if (Store.luckysheet_select_save.length > 1) {
+            if (Store.sheet_select_save.length > 1) {
                 if (isEditMode()) {
                     alert(locale_screenshot.screenshotTipHasMulti);
                 }
@@ -4566,7 +4566,7 @@ const menuButton = {
                 }
                 return;
             }
-            range=Store.luckysheet_select_save[0];
+            range=Store.sheet_select_save[0];
         }
         // if(getObjType(range) == 'string'){
         //     if(!formula.iscelldata(range)){
@@ -4609,11 +4609,11 @@ const menuButton = {
         // if (Store.config["merge"] != null) {
         //     let has_PartMC = false;
 
-        //     for (let s = 0; s < Store.luckysheet_select_save.length; s++) {
-        //         let r1 = Store.luckysheet_select_save[s].row[0],
-        //             r2 = Store.luckysheet_select_save[s].row[1];
-        //         let c1 = Store.luckysheet_select_save[s].column[0],
-        //             c2 = Store.luckysheet_select_save[s].column[1];
+        //     for (let s = 0; s < Store.sheet_select_save.length; s++) {
+        //         let r1 = Store.sheet_select_save[s].row[0],
+        //             r2 = Store.sheet_select_save[s].row[1];
+        //         let c1 = Store.sheet_select_save[s].column[0],
+        //             c2 = Store.sheet_select_save[s].column[1];
 
         //         has_PartMC = hasPartMC(Store.config, r1, r2, c1, c2);
 
@@ -4700,7 +4700,7 @@ const menuButton = {
         // ctx_newCanvas.stroke();
         // ctx_newCanvas.closePath();
 
-        luckysheetDrawMain(scrollWidth, scrollHeight, ch_width, rh_height, 1, 1, null, null, newCanvas, true);
+        sheetDrawMain(scrollWidth, scrollHeight, ch_width, rh_height, 1, 1, null, null, newCanvas, true);
 
 
         let url = newCanvas.get(0).toDataURL("image/png");

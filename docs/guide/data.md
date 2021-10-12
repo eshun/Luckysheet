@@ -4,12 +4,12 @@
 
 - **Configuration**：
 
-    Configure the address of `updateUrl`, Luckysheet will request the table data through ajax. By default, all `data` in the sheet data with status 1 is loaded, and the rest of the sheet loads all fields except the `data` field.
+    Configure the address of `updateUrl`, sheet will request the table data through ajax. By default, all `data` in the sheet data with status 1 is loaded, and the rest of the sheet loads all fields except the `data` field.
 
 - **Format**：
-    Through the global method `sheet.getluckysheetfile()`, the configuration information of all worksheets can be obtained.
+    Through the global method `sheet.getsheetfile()`, the configuration information of all worksheets can be obtained.
 
-    The luckysheetfile example is as follows:
+    The sheetfile example is as follows:
     ```json
     [
         {
@@ -33,7 +33,7 @@
             "data": [], //Update and store the cell data 
             "scrollLeft": 0, //Left and right scroll bar position
             "scrollTop": 315, //Up and down scroll bar position
-            "luckysheet_select_save": [], //selected area
+            "sheet_select_save": [], //selected area
             "conditionformat_save": {},//Conditional format
             "calcChain": [],//Formula chain
             "isPivotTable":false,//Whether to pivot table
@@ -41,7 +41,7 @@
             "filter_select": null,//Filter range
             "filter": null,//Filter configuration
             "alternateformat_save": [], //Alternate colors
-            "luckysheet_alternateformat_save_modelCustom": [], //Customize alternate colors
+            "sheet_alternateformat_save_modelCustom": [], //Customize alternate colors
             "chart": [], //Chart configuration
             "visibledatarow": [], //The position of all rows
             "visibledatacolumn": [], //The position of all columns
@@ -327,7 +327,7 @@
     ## celldata
     - Type：Array
     - Default：[]
-    - Usage： The original cell data set is a set containing `{r:0,c:0,v:{m:"value",v:"value",ct: {fa: "General", t: "g"}} }`The one-dimensional array of format cell information is only used during initialization. After the table is initialized with celldata, the data is converted to the same level field data in the luckysheetfile, such as `luckysheetfile[0].data`, the subsequent operation of the table Data update will be updated to this data field, and celldata is no longer used. Example:
+    - Usage： The original cell data set is a set containing `{r:0,c:0,v:{m:"value",v:"value",ct: {fa: "General", t: "g"}} }`The one-dimensional array of format cell information is only used during initialization. After the table is initialized with celldata, the data is converted to the same level field data in the sheetfile, such as `sheetfile[0].data`, the subsequent operation of the table Data update will be updated to this data field, and celldata is no longer used. Example:
     ```js
     [{
 		"r": 0,
@@ -349,7 +349,7 @@
     ```
 
     ------------
-    ## luckysheet_select_save
+    ## sheet_select_save
     - Type：Array
     - Default：[]
     - Usage： The selected area supports multiple selections and is a one-dimensional array containing multiple selection objects. Example:
@@ -587,7 +587,7 @@
     ## filter_select
     - Type：Object
     - Default：{}
-    - Usage：Filter range, a selection area, a sheet has only one filter range, similar to the `luckysheet_select_save` example:
+    - Usage：Filter range, a selection area, a sheet has only one filter range, similar to the `sheet_select_save` example:
     ```js
     {
         "left": 74,
@@ -706,7 +706,7 @@
     ```
     
     ------------
-    ## luckysheet_alternateformat_save_modelCustom
+    ## sheet_alternateformat_save_modelCustom
     - Type：Array
     - Default：[]
     - Usage：Custom alternate colors, including multiple custom alternate colors configuration, example:
@@ -804,6 +804,6 @@
 
     | Parameter | Explanation | Example |
     | ------------ | ------------ | ------------ |
-    |  compress | Luckysheet uses client pako for zlib parameter compression, which is true if the browser supports compression, otherwise false. The backend can decide whether to decompress the data content based on this parameter  | The process of obtaining parameters on the server side: 1. Serialize json string 2. Decode the data field if the compress field is TRUE 3. Decode the data string URLDecoder.decode(utf-8) |
-    |  gridKey | Luckysheet file identifier | none |
+    |  compress | sheet uses client pako for zlib parameter compression, which is true if the browser supports compression, otherwise false. The backend can decide whether to decompress the data content based on this parameter  | The process of obtaining parameters on the server side: 1. Serialize json string 2. Decode the data field if the compress field is TRUE 3. Decode the data string URLDecoder.decode(utf-8) |
+    |  gridKey | sheet file identifier | none |
     |  data | An array containing updated data. For the parameter format in the array, please see the introduction below. In the example: `t` indicates the update type, `i` is the index of the sheet, `c` is the row number, `r` is the column number, and `v` is the value  | `data: [{ t : 'cell', i:0, c : 0,  r : 0 , v: 2 }]` |

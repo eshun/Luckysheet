@@ -2,9 +2,9 @@ import Store from '../store';
 import locale from '../locale/locale';
 import { modelHTML } from './constant';
 import { getSheetIndex } from '../methods/get';
-import { setluckysheet_scroll_status } from '../methods/set';
+import { setsheet_scroll_status } from '../methods/set';
 import sheetmanage from './sheetmanage';
-import luckysheetsizeauto from './resize';
+import sheetsizeauto from './resize';
 import dataVerificationCtrl from './dataVerificationCtrl';
 import { replaceHtml,transformRangeToAbsolute,openSelfModel } from '../utils/util';
 import { selectionCopyShow } from './select';
@@ -153,7 +153,7 @@ function initialEvent(file){
     });
 
     //update allow edit range
-    $(document).off("click.luckysheetProtection.rangeItemUpdate").on("click.luckysheetProtection.rangeItemUpdate","#sheet-protection-rangeItem-container .sheet-protection-rangeItem-update", function(e){
+    $(document).off("click.sheetProtection.rangeItemUpdate").on("click.sheetProtection.rangeItemUpdate","#sheet-protection-rangeItem-container .sheet-protection-rangeItem-update", function(e){
         initialProtectionRangeModal();
 
         isAddRangeItemState = false;
@@ -183,7 +183,7 @@ function initialEvent(file){
     });
 
     //delete allow edit range
-    $(document).off("click.luckysheetProtection.rangeItemDelete").on("click.luckysheetProtection.rangeItemDelete","#sheet-protection-rangeItem-container .sheet-protection-rangeItem-del", function(e){
+    $(document).off("click.sheetProtection.rangeItemDelete").on("click.sheetProtection.rangeItemDelete","#sheet-protection-rangeItem-container .sheet-protection-rangeItem-del", function(e){
         let _rangeItem = $(e.target).closest(".sheet-protection-rangeItem");
 
         let _rangeItemContainer =  $("#sheet-protection-rangeItem-container");
@@ -197,7 +197,7 @@ function initialEvent(file){
     });
 
     //confirm allow edit range
-    $(document).off("click.luckysheetProtection.rangeItemConfirm").on("click.luckysheetProtection.rangeItemConfirm","#sheet-protection-rangeItem-confirm", function(){
+    $(document).off("click.sheetProtection.rangeItemConfirm").on("click.sheetProtection.rangeItemConfirm","#sheet-protection-rangeItem-confirm", function(){
         let name = $("#protection-allowRangeAdd-title").val(),
         rangeText = $("#protection-allowRangeAdd-range input").val(),
         password = $("#protection-allowRangeAdd-password").val(),
@@ -277,7 +277,7 @@ function initialEvent(file){
 
 
     //sheet validation check passWord
-    $(document).off("click.luckysheetProtection.validationConfirm").on("click.luckysheetProtection.validationConfirm","#sheet-protection-sheet-validation-confirm", function(e){
+    $(document).off("click.sheetProtection.validationConfirm").on("click.sheetProtection.validationConfirm","#sheet-protection-sheet-validation-confirm", function(e){
         let _validation = $("#sheet-protection-sheet-validation");
         let aut = validationAuthority;
 
@@ -286,7 +286,7 @@ function initialEvent(file){
             _validation.hide();
             $("#sheet-modal-dialog-mask").hide();
             $("#sheet-modal-dialog-slider-protection").show();
-            luckysheetsizeauto();
+            sheetsizeauto();
             return;
         }
         
@@ -314,7 +314,7 @@ function initialEvent(file){
             _validation.hide();
             $("#sheet-modal-dialog-mask").hide();
             $("#sheet-modal-dialog-slider-protection").show();
-            luckysheetsizeauto();
+            sheetsizeauto();
             firstInputSheetProtectionPassword = false;
         }
         else{
@@ -345,7 +345,7 @@ function initialEvent(file){
 
 
     //Cell range select controll
-    $(document).off("click.luckysheetProtection.dvRange").on("click.luckysheetProtection.dvRange", "#protection-allowRangeAdd-range .fa-table", function(e) {
+    $(document).off("click.sheetProtection.dvRange").on("click.sheetProtection.dvRange", "#protection-allowRangeAdd-range .fa-table", function(e) {
         $("#sheet-protection-rangeItem-dialog").hide();
 
         let dataSource = "0";
@@ -385,7 +385,7 @@ function initialEvent(file){
         
         selectionCopyShow(dataVerificationCtrl.selectRange);
     }); 
-    $(document).off("click.luckysheetProtection.dvRange2").on("click.luckysheetProtection.dvRange2", "#sheet-protection-rangeItem-dialog .show-box-item-dropdown .range .fa-table", function(e) {
+    $(document).off("click.sheetProtection.dvRange2").on("click.sheetProtection.dvRange2", "#sheet-protection-rangeItem-dialog .show-box-item-dropdown .range .fa-table", function(e) {
         $("#sheet-protection-rangeItem-dialog").hide();
 
         let dataSource = "1";
@@ -425,7 +425,7 @@ function initialEvent(file){
         
         selectionCopyShow(dataVerificationCtrl.selectRange);
     });
-    $(document).off("click.luckysheetProtection.dvRangeConfirm").on("click.luckysheetProtection.dvRangeConfirm", "#sheet-dataVerificationRange-dialog-confirm", function(e) {
+    $(document).off("click.sheetProtection.dvRangeConfirm").on("click.sheetProtection.dvRangeConfirm", "#sheet-dataVerificationRange-dialog-confirm", function(e) {
         let txt = $(this).parents("#sheet-dataVerificationRange-dialog").find("input").val();
 
         let _input = $("#protection-allowRangeAdd-range input"), inputValue = _input.val();
@@ -442,7 +442,7 @@ function initialEvent(file){
         let range = [];
         selectionCopyShow(range);
     });
-    $(document).off("click.luckysheetProtection.dvRangeClose").on("click.dvRangeClose", "#sheet-dataVerificationRange-dialog-close", function(e) {
+    $(document).off("click.sheetProtection.dvRangeClose").on("click.dvRangeClose", "#sheet-dataVerificationRange-dialog-close", function(e) {
         $("#sheet-dataVerificationRange-dialog").hide();
         $("#sheet-modal-dialog-mask").show();
         $("#sheet-protection-rangeItem-dialog").show();
@@ -450,7 +450,7 @@ function initialEvent(file){
         let range = [];
         selectionCopyShow(range);
     });
-    $(document).on("click.luckysheetProtection.luckysheetProtection", "#sheet-dataVerificationRange-dialog .sheet-modal-dialog-title-close", function(e) {
+    $(document).on("click.sheetProtection.sheetProtection", "#sheet-dataVerificationRange-dialog .sheet-modal-dialog-title-close", function(e) {
         $("#sheet-dataVerificationRange-dialog").hide();
         $("#sheet-modal-dialog-mask").show();
         $("#sheet-protection-rangeItem-dialog").show();
@@ -710,14 +710,14 @@ export function openProtectionModal(file){
     }
 
     $("#sheet-modal-dialog-slider-protection").show();
-    luckysheetsizeauto();
+    sheetsizeauto();
 
 }
 
 export function closeProtectionModal(){
     $("#sheet-protection-rangeItem-dialog").hide();
     $("#sheet-modal-dialog-slider-protection").hide();
-    luckysheetsizeauto();
+    sheetsizeauto();
 }
 
 

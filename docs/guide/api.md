@@ -1,11 +1,11 @@
 # API
 
-Luckysheet has opened up the main function API for common data operation requirements, and developers can do any docking development according to their needs.
+sheet has opened up the main function API for common data operation requirements, and developers can do any docking development according to their needs.
 
 Use note:
 1. When script is introduced globally, all APIs are mounted under the window.sheet object, which can be printed and seen in the browser console; when npm is introduced, all APIs are also mounted under the sheet object
 2. The first parameter of the `success` callback function is the return value of the API method
-3. If you need a new API, please submit it to github [Issues](https://github.com/mengshukeji/Luckysheet/issues/new/choose), and decide whether to open the new API according to the number of likes
+3. If you need a new API, please submit it to github [Issues](https://github.com/mengshukeji/sheet/issues/new/choose), and decide whether to open the new API according to the number of likes
 4. The required `order` parameter in the API method is the value of `order` in the worksheet object, not `index`
 
 ## Cell operation
@@ -45,7 +45,7 @@ Use note:
 
 	- {Number} [row]: The row number of the cell; an integer starting from 0, 0 means the first row
 	- {Number} [column]: The number of the column where the cell is located; an integer starting from 0, 0 means the first column
-	- {Object| String| Number} [value]: The value to be set; it can be a string or a number, or an object conforming to the Luckysheet cell format, refer to [cell attribute table](/zh/guide/cell.html )
+	- {Object| String| Number} [value]: The value to be set; it can be a string or a number, or an object conforming to the sheet cell format, refer to [cell attribute table](/zh/guide/cell.html )
 	- {PlainObject} [setting]: Optional parameters
     	+ {Number} [order]: Worksheet subscript; the default value is the current worksheet subscript
     	+ {Boolean} [isRefresh]: Whether to refresh the interface; the default is `true`; used to control throttling when multiple cells are assigned, the previous cell should be set to `false`, and the last cell is set Is `true`.
@@ -55,7 +55,7 @@ Use note:
 
 	Set the value of a cell, you can also set the entire cell object, which is used to set multiple cell properties at the same time.
 
-	If you need to update the formula, you can also assign a value here. Luckysheet will actively calculate this formula internally and add it to the formula chain, and finally refresh the interface.
+	If you need to update the formula, you can also assign a value here. sheet will actively calculate this formula internally and add it to the formula chain, and finally refresh the interface.
 
 - **Usage**:
 
@@ -65,7 +65,7 @@ Use note:
   - Set the current worksheet "B1" cell value to the formula "=sum(A1)"
   `sheet.setCellValue(0, 1, "=sum(A1)");`
 
-  - Set the cell "C1" of the current worksheet to the formula "=sum(A1:B1" with a red background. The cell object can have no `v` and `m` values. Luckysheet will automatically calculate the result according to the formula information. With `v` and `m` values ​​that have not been updated or are non-formula results, Luckysheet will still calculate the prepared results based on the data actually associated with the formula.
+  - Set the cell "C1" of the current worksheet to the formula "=sum(A1:B1" with a red background. The cell object can have no `v` and `m` values. sheet will automatically calculate the result according to the formula information. With `v` and `m` values ​​that have not been updated or are non-formula results, sheet will still calculate the prepared results based on the data actually associated with the formula.
   	`sheet.setCellValue(0, 2, {f: "=sum(A1:B1)", bg:"#FF0000"})`
 
 	Set the "C1" cell again and the new formula can still take effect
@@ -1010,7 +1010,7 @@ Use note:
 		
 		The returned result is:
 		```html
-		<table data-type="luckysheet_copy_action_table">
+		<table data-type="sheet_copy_action_table">
 			<colgroup width="72px">
 			</colgroup>
 			<colgroup width="72px">
@@ -1300,7 +1300,7 @@ Use note:
 	
 	Specify one or more selection areas in the worksheet to be selected and choose whether to highlight or not. Multiple format settings are supported.
 
-	Special reminder, the selection range setting involved in Luckysheet can refer to this setting
+	Special reminder, the selection range setting involved in sheet can refer to this setting
 
 - **Usage**:
 
@@ -1329,7 +1329,7 @@ Use note:
 
 - **Parameter**：
 
-	- {Array} [data]: The data of a two-dimensional array of cells to be assigned. The value of each cell can be a string or a number, or an object conforming to the Luckysheet format. Refer to [cell attribute table](/zh /guide/cell.html)
+	- {Array} [data]: The data of a two-dimensional array of cells to be assigned. The value of each cell can be a string or a number, or an object conforming to the sheet format. Refer to [cell attribute table](/zh /guide/cell.html)
 	- {PlainObject} [setting]: optional parameters
     	+ {Array | Object | String} [range]: The range of the selection, the format of the supported selection is `"A1:B2"`, `"sheetName!A1:B2"` or `{row:[0,1],column: [0,1]}`, can only be a single selection; the default is the current selection
     	+ {Number} [order]: Worksheet subscript; the default value is the current worksheet subscript
@@ -1340,7 +1340,7 @@ Use note:
 	
 	Assign a cell array data to the specified area, the data format is the same as the data obtained by the `getRangeValue` method.
 
-	Note that usually the `getRangeValue` method only obtains the selection data, but does not include the border and merged cell information. When the `setRangeValue` is executed, it will dynamically determine whether the previous step has executed the `getRangeValue`, if executed, the border will be Obtained from Luckysheet configuration together with the merged cell information.
+	Note that usually the `getRangeValue` method only obtains the selection data, but does not include the border and merged cell information. When the `setRangeValue` is executed, it will dynamically determine whether the previous step has executed the `getRangeValue`, if executed, the border will be Obtained from sheet configuration together with the merged cell information.
 
 - **Usage**:
 
@@ -2012,7 +2012,7 @@ Use note:
 
 	Return all worksheet configurations, the format is the same as the worksheet configuration, and the results obtained can be used as options.data when the form is initialized.
 
-	Therefore, this API is suitable for manually operating and configuring a table, and then taking out all the worksheet information to save it, and then use it for table creation in other places. If you want to get all the workbook data including the workbook configuration, it is recommended to use [toJson](#toJson()), and it can be directly used to initialize Luckysheet.
+	Therefore, this API is suitable for manually operating and configuring a table, and then taking out all the worksheet information to save it, and then use it for table creation in other places. If you want to get all the workbook data including the workbook configuration, it is recommended to use [toJson](#toJson()), and it can be directly used to initialize sheet.
 
 - **Usage**:
 
@@ -2021,13 +2021,13 @@ Use note:
 	
 ------------
 
-### getLuckysheetfile()
+### getsheetfile()
 
 - **Explanation**：
 
-	Returns a one-dimensional array `luckysheetfile` of all table data structures. Unlike the `getAllSheets` method, the worksheet parameters obtained by this method will contain many internal variables. The most obvious difference is that the table data operation will maintain `luckysheetfile[i]. data`, and the initialization data uses `options.data[i].celldata`, so `luckysheetfile` can be used for debugging, but the initialization table is not applicable.
+	Returns a one-dimensional array `sheetfile` of all table data structures. Unlike the `getAllSheets` method, the worksheet parameters obtained by this method will contain many internal variables. The most obvious difference is that the table data operation will maintain `sheetfile[i]. data`, and the initialization data uses `options.data[i].celldata`, so `sheetfile` can be used for debugging, but the initialization table is not applicable.
 
-	In addition, a `load = 1` will be added to the loaded worksheet parameters, this parameter needs to be set to 0 when initializing the data. Therefore, to initialize the workbook with the data obtained by `getLuckysheetfile()`, two tasks need to be done:
+	In addition, a `load = 1` will be added to the loaded worksheet parameters, this parameter needs to be set to 0 when initializing the data. Therefore, to initialize the workbook with the data obtained by `getsheetfile()`, two tasks need to be done:
 
     - Convert celldata to data, refer to: [transToData](/zh/guide/api.html#transtodata-celldata-setting)
     - Load reset to 0 or delete this field
@@ -2037,7 +2037,7 @@ Use note:
 - **Usage**:
 
 	- Get all the debugging information of the first worksheet
-	`sheet.getLuckysheetfile()[0]`
+	`sheet.getsheetfile()[0]`
 	
 ------------
 
@@ -2054,7 +2054,7 @@ Use note:
 
 - **Explanation**：
 
-	According to index/order/name, quickly return the configuration of the specified worksheet, same as `luckysheetfile[i]`. If multiple parameters are set, the priority is: index> order> name.
+	According to index/order/name, quickly return the configuration of the specified worksheet, same as `sheetfile[i]`. If multiple parameters are set, the priority is: index> order> name.
 	
 ------------
 
@@ -2070,7 +2070,7 @@ Use note:
 
 - **Explanation**：
 
-	Quickly return the data of the specified worksheet, same as `luckysheetfile[i].data`
+	Quickly return the data of the specified worksheet, same as `sheetfile[i].data`
 	
 ------------
 
@@ -2083,7 +2083,7 @@ Use note:
 
 - **Explanation**：
 
-	Quickly return to the config configuration of the specified worksheet, same as `luckysheetfile[i].config`
+	Quickly return to the config configuration of the specified worksheet, same as `sheetfile[i].config`
 
 ------------
 
@@ -2438,7 +2438,7 @@ Use note:
 
 - **Explanation**：
 	
-	Initialize a Luckysheet, which can contain multiple worksheets, refer to [Configuration List](/zh/guide/config.html)
+	Initialize a sheet, which can contain multiple worksheets, refer to [Configuration List](/zh/guide/config.html)
 
 ------------
 
@@ -2828,13 +2828,13 @@ To maintain compatibility, the old version of the API is still supported, but it
 
 ------------
 
-### getluckysheetfile()
+### getsheetfile()
 
 - **Explanation**：
 
-	Returns a one-dimensional array `luckysheetfile` of all table data structures
+	Returns a one-dimensional array `sheetfile` of all table data structures
 
-	> Recommend to use new API: [getLuckysheetfile](#getLuckysheetfile())
+	> Recommend to use new API: [getsheetfile](#getsheetfile())
 
 ------------
 
@@ -2842,13 +2842,13 @@ To maintain compatibility, the old version of the API is still supported, but it
 
 - **Explanation**：
 
-	Quickly return to the current sheet config configuration, the config information of each worksheet is still contained in the luckysheetfile.
+	Quickly return to the current sheet config configuration, the config information of each worksheet is still contained in the sheetfile.
 	 
 	> Recommend to use new API: [getConfig](#getConfig([setting]))
 
 ------------
 
-### getluckysheet_select_save()
+### getsheet_select_save()
 
 - **Explanation**：
 
@@ -2875,7 +2875,7 @@ To maintain compatibility, the old version of the API is still supported, but it
 
 ------------
 
-### luckysheetrefreshgrid(scrollWidth, scrollHeight)
+### sheetrefreshgrid(scrollWidth, scrollHeight)
 
 - **Parameter**：
 	
@@ -2918,7 +2918,7 @@ To maintain compatibility, the old version of the API is still supported, but it
 		
 ------------
 
-### setluckysheet_select_save(v)
+### setsheet_select_save(v)
 
 - **Parameter**：
 	
@@ -2928,7 +2928,7 @@ To maintain compatibility, the old version of the API is still supported, but it
 	
 	Set the value of the current table selection area. With `sheet.selectHightlightShow()`, you can view the selection changes in the interface.
 	```js
-	sheet.setluckysheet_select_save([{ row: [0, 1], column: [0, 1] }]);
+	sheet.setsheet_select_save([{ row: [0, 1], column: [0, 1] }]);
 	sheet.selectHightlightShow();
 	```
 
@@ -2960,7 +2960,7 @@ To maintain compatibility, the old version of the API is still supported, but it
 
 - **Parameter**：
 	
-	- {Object} [file]：[luckysheetfile](/zh/guide/sheet.html)
+	- {Object} [file]：[sheetfile](/zh/guide/sheet.html)
 
 - **Explanation**：
 	

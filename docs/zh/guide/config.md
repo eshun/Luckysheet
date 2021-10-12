@@ -2,7 +2,7 @@
 
 ## 基础结构
 
-初始化表格时，可以设置一个对象配置串`options`来自定义配置Luckysheet表格。
+初始化表格时，可以设置一个对象配置串`options`来自定义配置sheet表格。
 
 如下是一个简洁的配置案例：
 
@@ -10,7 +10,7 @@
 // 配置项
 const options = {
     container: 'sheet', // 设定DOM容器的id
-    title: 'Luckysheet Demo', // 设定表格名称
+    title: 'sheet Demo', // 设定表格名称
     lang: 'zh' // 设定表格语言
 
     // 更多其他设置...
@@ -23,7 +23,7 @@ sheet.create(options)
 这里的`options`配置项会作用于整个表格，特别的，单个sheet的配置则需要在`options.data`数组中，分别设置对应更详细的参数，参考[工作表配置](/zh/guide/sheet.html)
 
 针对个性化的需求，除了允许配置信息栏（[showinfobar](#showinfobar)）、工具栏（[showtoolbar](#showtoolbar)）、底部sheet页（[showsheetbar](#showsheetbar)）、底部计数栏（[showstatisticBar](#showstatisticBar)）之外，
-Luckysheet开放了更细致的自定义配置选项，分别有
+sheet开放了更细致的自定义配置选项，分别有
 
 - 自定义工具栏（[showtoolbarConfig](#showtoolbarConfig)）
 - 自定义底部sheet页（[showsheetbarConfig](#showsheetbarConfig)）
@@ -86,7 +86,7 @@ Luckysheet开放了更细致的自定义配置选项，分别有
 ------------
 ### title
 - 类型：String
-- 默认值："Luckysheet Demo"
+- 默认值："sheet Demo"
 - 作用：工作簿名称
 
 ------------
@@ -111,9 +111,9 @@ Luckysheet开放了更细致的自定义配置选项，分别有
 	```js
 	$.post(loadurl, {"gridKey" : server.gridKey}, function (d) {})
 	```
-	> 参见源码 [`src/core.js`](https://github.com/mengshukeji/Luckysheet/blob/master/src/core.js)
+	> 参见源码 [`src/core.js`](https://github.com/mengshukeji/sheet/blob/master/src/core.js)
 
-	Luckysheet会通过ajax请求（POST）整个表格的数据，默认载入status为1的sheet数据中的`celldata`，其余的sheet载入除`celldata`字段外的所有配置字段。特别是在数据量大的时候，`loadUrl`只负责当前页单元格数据，配置`loadSheetUrl`作为其它工作表异步加载单元格数据的接口，可以提高性能。
+	sheet会通过ajax请求（POST）整个表格的数据，默认载入status为1的sheet数据中的`celldata`，其余的sheet载入除`celldata`字段外的所有配置字段。特别是在数据量大的时候，`loadUrl`只负责当前页单元格数据，配置`loadSheetUrl`作为其它工作表异步加载单元格数据的接口，可以提高性能。
 	
 	一个合格的接口返回的json字符串数据为：
 
@@ -146,7 +146,7 @@ Luckysheet开放了更细致的自定义配置选项，分别有
 	+ 这是一个字符串，类似于JSON.stringify()处理后的json数据，压缩后的数据便于传输
 	+ loadUrl是一个post请求，也是为了支持大数据量
 	+ 考虑到一些公式、图表及数据透视表会引用其他sheet的数据，所以前台会加一个判断，如果该当前sheet引用了其他sheet的数据则会通过`loadSheetUrl`配置的接口地址请求数据，把引用到的sheet的数据一并补全，而不用等切换到其它页的时候再请求
-	+ 当数据量小的时候，也可以不用Luckysheet提供的此接口，直接使用[data](#data)参数可以提前准备好所有表格数据用于初始化
+	+ 当数据量小的时候，也可以不用sheet提供的此接口，直接使用[data](#data)参数可以提前准备好所有表格数据用于初始化
 
 ------------
 ### loadSheetUrl
@@ -158,7 +158,7 @@ Luckysheet开放了更细致的自定义配置选项，分别有
 	```js
 	$.post(loadSheetUrl, {"gridKey" : server.gridKey, "index": sheetindex.join(",")}, function (d) {})
 	```
-	> 参见源码 [`src/controllers/sheetmanage.js`](https://github.com/mengshukeji/Luckysheet/blob/master/src/controllers/sheetmanage.js)
+	> 参见源码 [`src/controllers/sheetmanage.js`](https://github.com/mengshukeji/sheet/blob/master/src/controllers/sheetmanage.js)
 
 	返回的数据为sheet的`celldata`字段数据集合。
 
@@ -213,7 +213,7 @@ Luckysheet开放了更细致的自定义配置选项，分别有
 
 	注意，发送给后端的数据默认是经过pako压缩过后的。后台拿到数据需要先解压。
 
-	通过共享编辑功能，可以实现Luckysheet实时保存数据和多人同步数据，每一次操作都会发送不同的参数到后台，具体的操作类型和参数参见[表格操作](/zh/guide/operate.html)
+	通过共享编辑功能，可以实现sheet实时保存数据和多人同步数据，每一次操作都会发送不同的参数到后台，具体的操作类型和参数参见[表格操作](/zh/guide/operate.html)
 
 ------------
 ### updateImageUrl
@@ -712,11 +712,11 @@ Luckysheet开放了更细致的自定义配置选项，分别有
 
 ## 钩子函数
 
-钩子函数应用于二次开发时，会在各个常用鼠标或者键盘操作时植入钩子，调用开发者传入的函数，起到扩展Luckysheet功能的作用。
+钩子函数应用于二次开发时，会在各个常用鼠标或者键盘操作时植入钩子，调用开发者传入的函数，起到扩展sheet功能的作用。
 
 钩子函数统一配置在`options.hook`下，可以分别针对单元格、sheet页、表格创建配置hook。
 
-> 使用案例可参考源码 [src/index.html](https://github.com/mengshukeji/Luckysheet/blob/master/src/index.html)
+> 使用案例可参考源码 [src/index.html](https://github.com/mengshukeji/sheet/blob/master/src/index.html)
 
 ## 单元格
 
@@ -867,7 +867,7 @@ Luckysheet开放了更细致的自定义配置选项，分别有
 
 - 类型：Function
 - 默认值：null
-- 作用：所有单元格渲染之前执行的方法。在内部，这个方法加在了`luckysheetDrawMain`渲染表格之前。
+- 作用：所有单元格渲染之前执行的方法。在内部，这个方法加在了`sheetDrawMain`渲染表格之前。
 - 参数：
 	- {Object} [data]: 当前工作表二维数组数据
 	- {Object} [sheet]:当前sheet对象
@@ -1066,7 +1066,7 @@ Luckysheet开放了更细致的自定义配置选项，分别有
 
 - 类型：Function
 - 默认值：null
-- 作用：鼠标拖拽文件到Luckysheet内部的结束事件
+- 作用：鼠标拖拽文件到sheet内部的结束事件
 - 参数：
 	- {Object} [cell]:单元格对象
 	- {Object} [position]:
@@ -1446,9 +1446,9 @@ Luckysheet开放了更细致的自定义配置选项，分别有
 
 - 类型：Function
 - 默认值：null
-- 作用：协同编辑中的每次操作后执行的方法，监听表格内容变化，即客户端每执行一次表格操作，Luckysheet将这次操作存到历史记录中后触发，撤销重做时因为也算一次操作，也会触发此钩子函数。
+- 作用：协同编辑中的每次操作后执行的方法，监听表格内容变化，即客户端每执行一次表格操作，sheet将这次操作存到历史记录中后触发，撤销重做时因为也算一次操作，也会触发此钩子函数。
 - 参数：
-	- {Object} [operate]: 本次操作的历史记录信息，根据不同的操作，会有不同的历史记录，参考源码 [历史记录](https://github.com/mengshukeji/Luckysheet/blob/master/src/controllers/controlHistory.js)
+	- {Object} [operate]: 本次操作的历史记录信息，根据不同的操作，会有不同的历史记录，参考源码 [历史记录](https://github.com/mengshukeji/sheet/blob/master/src/controllers/controlHistory.js)
     
 ------------
 ### resized

@@ -250,8 +250,8 @@ const func_methods = {
                 }
             }
             else{
-                let cell_r = window.luckysheetCurrentRow;
-                let cell_c = window.luckysheetCurrentColumn;
+                let cell_r = window.sheetCurrentRow;
+                let cell_c = window.sheetCurrentColumn;
 
                 if(data.rowl == 1 && data.coll == 1){
                     value = data.data;

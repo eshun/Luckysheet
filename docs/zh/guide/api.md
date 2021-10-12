@@ -1,11 +1,11 @@
 # API
 
-Luckysheet针对常用的数据操作需求，开放了主要功能的API，开发者可以根据需要进行任意对接开发。
+sheet针对常用的数据操作需求，开放了主要功能的API，开发者可以根据需要进行任意对接开发。
 
 使用注意：
-1. script全局引入时，所有API均挂载到window.luckysheet对象下面，可以在浏览器控制台打印看到；npm引入时，API也全部挂载在luckysheet对象下
+1. script全局引入时，所有API均挂载到window.sheet对象下面，可以在浏览器控制台打印看到；npm引入时，API也全部挂载在sheet对象下
 2. `success`回调函数第一个参数为API方法的返回值
-3. 需要新的API请到github [Issues](https://github.com/mengshukeji/Luckysheet/issues/new/choose)中提交，根据点赞数决定是否开放新API
+3. 需要新的API请到github [Issues](https://github.com/mengshukeji/sheet/issues/new/choose)中提交，根据点赞数决定是否开放新API
 4. API方法中所需的`order`参数为工作表对象中的`order`的值，而不是`index`
 
 ## 单元格操作
@@ -46,7 +46,7 @@ Luckysheet针对常用的数据操作需求，开放了主要功能的API，开�
 
 	- {Number} [row]: 单元格所在行数；从0开始的整数，0表示第一行
 	- {Number} [column]: 单元格所在列数；从0开始的整数，0表示第一列
-	- {Object | String | Number} [value]: 要设置的值；可以为字符串或数字，或为符合Luckysheet单元格格式的对象，参考 [单元格属性表](/zh/guide/cell.html)
+	- {Object | String | Number} [value]: 要设置的值；可以为字符串或数字，或为符合sheet单元格格式的对象，参考 [单元格属性表](/zh/guide/cell.html)
 	- {PlainObject} [setting]: 可选参数
 		+ {Number} [order]: 工作表下标；默认值为当前工作表下标
 		+ {Boolean} [isRefresh]: 是否刷新界面；默认为`true`；用于多个单元格赋值时候控制节流，前面单元格赋值的时候应设置为	`false`，最后一个单元格赋值时设置为`true`。
@@ -56,7 +56,7 @@ Luckysheet针对常用的数据操作需求，开放了主要功能的API，开�
 
 	设置某个单元格的值，也可以设置整个单元格对象，用于同时设置多个单元格属性。
 	
-	如果需要更新公式，也可以在这里赋值，Luckysheet在内部会主动把这个公式做计算并加入到公式链中，最后重刷界面。
+	如果需要更新公式，也可以在这里赋值，sheet在内部会主动把这个公式做计算并加入到公式链中，最后重刷界面。
 
 - **示例**:
 
@@ -66,7 +66,7 @@ Luckysheet针对常用的数据操作需求，开放了主要功能的API，开�
 	- 设置当前工作表"B1"单元格的值为公式"=sum(A1)"
     	`sheet.setCellValue(0, 1, "=sum(A1)");`
 	
-	- 设置当前工作表"C1"单元格的值为公式"=sum(A1:B1"，并带有红色背景，单元格对象可以不带`v`和`m`值，Luckysheet会根据公式信息自动计算结果，如果带了未更新或者是非公式结果的`v`和`m`值，Luckysheet也仍然会根据公式实际关联的数据计算出准备的结果。
+	- 设置当前工作表"C1"单元格的值为公式"=sum(A1:B1"，并带有红色背景，单元格对象可以不带`v`和`m`值，sheet会根据公式信息自动计算结果，如果带了未更新或者是非公式结果的`v`和`m`值，sheet也仍然会根据公式实际关联的数据计算出准备的结果。
     	`sheet.setCellValue(0, 2, {f: "=sum(A1:B1)", bg:"#FF0000"})`
 
 		再次设置"C1"单元格新的公式仍然可以生效
@@ -997,7 +997,7 @@ Luckysheet针对常用的数据操作需求，开放了主要功能的API，开�
 		
 		则返回结果为：
 		```html
-		<table data-type="luckysheet_copy_action_table">
+		<table data-type="sheet_copy_action_table">
 			<colgroup width="72px">
 			</colgroup>
 			<colgroup width="72px">
@@ -1285,7 +1285,7 @@ Luckysheet针对常用的数据操作需求，开放了主要功能的API，开�
 	
 	指定工作表选中一个或多个选区为选中状态并选择是否高亮，支持多种格式设置。
 
-	特别提醒，Luckysheet中涉及到的选区范围设置都可以参考这个设置
+	特别提醒，sheet中涉及到的选区范围设置都可以参考这个设置
 
 - **示例**:
 
@@ -1314,7 +1314,7 @@ Luckysheet针对常用的数据操作需求，开放了主要功能的API，开�
  
 - **参数**：
 
-	- {Array} [data]: 要赋值的单元格二维数组数据，每个单元格的值，可以为字符串或数字，或为符合Luckysheet格式的对象，参考 [单元格属性表](/zh/guide/cell.html)
+	- {Array} [data]: 要赋值的单元格二维数组数据，每个单元格的值，可以为字符串或数字，或为符合sheet格式的对象，参考 [单元格属性表](/zh/guide/cell.html)
 	- {PlainObject} [setting]: 可选参数
 		+ {Array | Object | String} [range]: 选区范围,支持选区的格式为`"A1:B2"`、`"sheetName!A1:B2"`或者`{row:[0,1],column:[0,1]}`，只能为单个选区；默认为当前选区
 		+ {Number} [order]: 工作表下标；默认值为当前工作表下标
@@ -1325,7 +1325,7 @@ Luckysheet针对常用的数据操作需求，开放了主要功能的API，开�
 	
 	将一个单元格数组数据赋值到指定的区域，数据格式同`getRangeValue`方法取到的数据。
 
-	注意一点，通常`getRangeValue`方法只是取得选区数据，但是不包含边框和合并单元格信息，当执行`setRangeValue`的时候，会动态判断上一步是否执行过`getRangeValue`，如果执行过，会将边框和合并单元格信息一并从Luckysheet配置中取得。
+	注意一点，通常`getRangeValue`方法只是取得选区数据，但是不包含边框和合并单元格信息，当执行`setRangeValue`的时候，会动态判断上一步是否执行过`getRangeValue`，如果执行过，会将边框和合并单元格信息一并从sheet配置中取得。
 
 - **示例**:
 
@@ -1979,7 +1979,7 @@ Luckysheet针对常用的数据操作需求，开放了主要功能的API，开�
 
 	返回所有工作表配置，格式同工作表配置，得到的结果可用于表格初始化时作为options.data使用。
 
-	所以此API适用于，手动操作配置完一个表格后，将所有工作表信息取出来自行保存，再用于其他地方的表格创建。如果想得到包括工作簿配置在内的所有工作簿数据，推荐使用 [toJson](#toJson())，并且可以直接用于初始化Luckysheet。
+	所以此API适用于，手动操作配置完一个表格后，将所有工作表信息取出来自行保存，再用于其他地方的表格创建。如果想得到包括工作簿配置在内的所有工作簿数据，推荐使用 [toJson](#toJson())，并且可以直接用于初始化sheet。
 
 - **示例**:
 
@@ -1988,13 +1988,13 @@ Luckysheet针对常用的数据操作需求，开放了主要功能的API，开�
 	
 ------------
 
-### getLuckysheetfile()
+### getsheetfile()
 
 - **说明**：
 
-	返回所有表格数据结构的一维数组`luckysheetfile`，不同于`getAllSheets`方法，此方法得到的工作表参数会包含很多内部使用变量，最明显的区别是表格数据操作会维护`luckysheetfile[i].data`，而初始化数据采用的是`options.data[i].celldata`，所以`luckysheetfile`可用于调试使用，但是不适用初始化表格。
+	返回所有表格数据结构的一维数组`sheetfile`，不同于`getAllSheets`方法，此方法得到的工作表参数会包含很多内部使用变量，最明显的区别是表格数据操作会维护`sheetfile[i].data`，而初始化数据采用的是`options.data[i].celldata`，所以`sheetfile`可用于调试使用，但是不适用初始化表格。
 
-	除此之外，加载过的工作表参数中会增加一个`load = 1`，这个参数在初始化数据的时候需要置为0才行。所以，将`getLuckysheetfile()`得到的数据拿来初始化工作簿，需要做两个工作：
+	除此之外，加载过的工作表参数中会增加一个`load = 1`，这个参数在初始化数据的时候需要置为0才行。所以，将`getsheetfile()`得到的数据拿来初始化工作簿，需要做两个工作：
 	
 	- celldata转为data，参考:[transToData](/zh/guide/api.html#transtodata-celldata-setting)
 	- load重置为0或者删除此字段
@@ -2004,7 +2004,7 @@ Luckysheet针对常用的数据操作需求，开放了主要功能的API，开�
 - **示例**:
 
 	- 取得第一个工作表的所有调试信息
-	`sheet.getLuckysheetfile()[0]`
+	`sheet.getsheetfile()[0]`
 	
 ------------
 
@@ -2019,7 +2019,7 @@ Luckysheet针对常用的数据操作需求，开放了主要功能的API，开�
 
 - **说明**：
 
-	根据index/order/name，快捷返回指定工作表的配置，同 `luckysheetfile[i]`。如果设置多个参数，优先级为：index > order > name。
+	根据index/order/name，快捷返回指定工作表的配置，同 `sheetfile[i]`。如果设置多个参数，优先级为：index > order > name。
 	
 ------------
 
@@ -2032,7 +2032,7 @@ Luckysheet针对常用的数据操作需求，开放了主要功能的API，开�
 
 - **说明**：
 
-	快捷返回指定工作表的数据，同 `luckysheetfile[i].data`
+	快捷返回指定工作表的数据，同 `sheetfile[i].data`
 	
 ------------
 
@@ -2045,7 +2045,7 @@ Luckysheet针对常用的数据操作需求，开放了主要功能的API，开�
 
 - **说明**：
 
-	快捷返回指定工作表的config配置，同 `luckysheetfile[i].config`
+	快捷返回指定工作表的config配置，同 `sheetfile[i].config`
 
 ------------
 
@@ -2374,7 +2374,7 @@ Luckysheet针对常用的数据操作需求，开放了主要功能的API，开�
 
 - **说明**：
 	
-	初始化一个Luckysheet，可包含多个工作表，参考 [配置列表](/zh/guide/config.html)
+	初始化一个sheet，可包含多个工作表，参考 [配置列表](/zh/guide/config.html)
 
 ------------
 
@@ -2777,7 +2777,7 @@ Luckysheet针对常用的数据操作需求，开放了主要功能的API，开�
 
 - **说明**：
 	
-	导出的json字符串可以直接当作`sheet.create(options)`初始化工作簿时的参数`options`使用，使用场景在用户自己操作表格后想要手动保存全部的参数，再去别处初始化这个表格使用，类似一个luckysheet专有格式的导入导出。
+	导出的json字符串可以直接当作`sheet.create(options)`初始化工作簿时的参数`options`使用，使用场景在用户自己操作表格后想要手动保存全部的参数，再去别处初始化这个表格使用，类似一个sheet专有格式的导入导出。
 
 ------------
 
@@ -2866,13 +2866,13 @@ Luckysheet针对常用的数据操作需求，开放了主要功能的API，开�
 
 ------------
 
-### getluckysheetfile()
+### getsheetfile()
 
 - **说明**：
 
-	返回所有表格数据结构的一维数组`luckysheetfile`
+	返回所有表格数据结构的一维数组`sheetfile`
 
-	> 推荐使用新API： [getLuckysheetfile](#getLuckysheetfile())
+	> 推荐使用新API： [getsheetfile](#getsheetfile())
 
 ------------
 
@@ -2880,13 +2880,13 @@ Luckysheet针对常用的数据操作需求，开放了主要功能的API，开�
 
 - **说明**：
 
-	快捷返回当前表格config配置，每个工作表的config信息仍然包含在luckysheetfile。
+	快捷返回当前表格config配置，每个工作表的config信息仍然包含在sheetfile。
 	
 	> 推荐使用新API： [getConfig](#getConfig([setting]))
 
 ------------
 
-### getluckysheet_select_save()
+### getsheet_select_save()
 
 - **说明**：
 
@@ -2913,7 +2913,7 @@ Luckysheet针对常用的数据操作需求，开放了主要功能的API，开�
 
 ------------
 
-### luckysheetrefreshgrid(scrollWidth, scrollHeight)
+### sheetrefreshgrid(scrollWidth, scrollHeight)
 
 - **参数**：
 	
@@ -2957,7 +2957,7 @@ Luckysheet针对常用的数据操作需求，开放了主要功能的API，开�
 	
 ------------
 
-### setluckysheet_select_save(v)
+### setsheet_select_save(v)
 
 - **参数**：
 	
@@ -2967,7 +2967,7 @@ Luckysheet针对常用的数据操作需求，开放了主要功能的API，开�
 	
 	设置当前表格选区的值。配合`sheet.selectHightlightShow()`可在界面查看选区改变。
 	```js
-	sheet.setluckysheet_select_save([{ row: [0, 1], column: [0, 1] }]);
+	sheet.setsheet_select_save([{ row: [0, 1], column: [0, 1] }]);
 	sheet.selectHightlightShow();
 	```
 
@@ -2999,7 +2999,7 @@ Luckysheet针对常用的数据操作需求，开放了主要功能的API，开�
 
 - **参数**：
 	
-	- {Object} [file]：[luckysheetfile](/zh/guide/sheet.html)
+	- {Object} [file]：[sheetfile](/zh/guide/sheet.html)
 
 - **说明**：
 	

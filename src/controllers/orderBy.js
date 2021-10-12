@@ -25,21 +25,21 @@ import locale from '../locale/locale';
 export function orderByInitial(){
     const _locale = locale();
     //菜单栏 排序按钮
-    $("#luckysheetorderbyasc, #luckysheetorderbyasc_t").mousedown(function (event) {
+    $("#sheetorderbyasc, #sheetorderbyasc_t").mousedown(function (event) {
         cleargridelement(event);
         sortColumnSeletion(Store.orderbyindex, true);
         selectHightlightShow();
     });
 
-    $("#luckysheetorderbydesc, #luckysheetorderbydesc_t").click(function (event) {
+    $("#sheetorderbydesc, #sheetorderbydesc_t").click(function (event) {
         cleargridelement(event);
         sortColumnSeletion(Store.orderbyindex, false);
         selectHightlightShow();
     }); 
 
     //排序事件
-    let luckysheet_sort_initial = true;
-    $("#luckysheetorderby").click(function () {
+    let sheet_sort_initial = true;
+    $("#sheetorderby").click(function () {
 
         if(!checkProtectionAuthorityNormal(Store.currentSheetIndex, "sort")){
             return;
@@ -47,7 +47,7 @@ export function orderByInitial(){
 
         $("body .sheet-cols-menu").hide();
         const locale_sort = _locale.sort;
-        if(Store.luckysheet_select_save.length > 1){
+        if(Store.sheet_select_save.length > 1){
             if(isEditMode()){
                 alert(locale_sort.noRangeError);
             }
@@ -57,19 +57,19 @@ export function orderByInitial(){
             return;
         }
 
-        let last = Store.luckysheet_select_save[0];
+        let last = Store.sheet_select_save[0];
         let r1 = last["row"][0], r2 = last["row"][1];
         let c1 = last["column"][0], c2 = last["column"][1];
 
-        if (luckysheet_sort_initial) {
-            luckysheet_sort_initial = false;
+        if (sheet_sort_initial) {
+            sheet_sort_initial = false;
             
             let content = `<div style="overflow: hidden;" class="sheet-sort-modal"><div><label><input type="checkbox" id="sheet-sort-haveheader"/><span>${locale_sort.hasTitle}</span></label></div><div style="overflow-y:auto;" id="sheet-sort-dialog-tablec"><table data-itemcount="0" cellspacing="0"> <tr><td>${locale_sort.hasTitle} <select name="sort_0"> <option value="1">1</option> <option value="2">2</option> <option value="3">3</option> <option value="4">4</option> </select> </td> <td> <div><label><input value="asc" type="radio" checked="checked" name="sort_0"><span>${locale_sort.asc}A-Z</span></label></div> <div><label><input value="desc" type="radio" name="sort_0"><span>${locale_sort.desc}Z-A</span></label></div></td></tr></table></div><div style="background: #e5e5e5;border-top: 1px solid #f5f5f5; height: 1px; width: 100%;margin:2px 0px;margin-bottom:10px;"></div> <div> <span style="font-weight: bold; text-decoration: underline;text-align:center;color: blue;cursor: pointer;" class="sheet-sort-dialog-additem">+ ${locale_sort.addOthers}</span> </div> </div>`;
 
             $("body").append(replaceHtml(modelHTML, { "id": "sheet-sort-dialog", "addclass": "", "title": _locale.sort.sortTitle, "content": content, "botton": `<button id="sheet-sort-modal-confirm" class="btn btn-primary">${locale_sort.confirm}</button><button class="btn btn-default sheet-model-close-btn">${locale_sort.close}</button>`}));
 
             $("#sheet-sort-dialog .sheet-sort-dialog-additem").click(function () {
-                let last = Store.luckysheet_select_save[0];
+                let last = Store.sheet_select_save[0];
                 let r1 = last["row"][0], r2 = last["row"][1];
                 let c1 = last["column"][0], c2 = last["column"][1];
 
@@ -108,7 +108,7 @@ export function orderByInitial(){
             });
 
             $("#sheet-sort-haveheader").change(function () {
-                let last = Store.luckysheet_select_save[0];
+                let last = Store.sheet_select_save[0];
                 let r1 = last["row"][0], r2 = last["row"][1];
                 let c1 = last["column"][0], c2 = last["column"][1];
 
@@ -137,7 +137,7 @@ export function orderByInitial(){
 
             //Custom sort
             $("#sheet-sort-modal-confirm").click(function () {
-                if(Store.luckysheet_select_save.length > 1){
+                if(Store.sheet_select_save.length > 1){
                     if(isEditMode()){
                         alert(locale_sort.noRangeError);
                     }
@@ -150,7 +150,7 @@ export function orderByInitial(){
 
                 let d = editor.deepCopyFlowData(Store.flowdata);
 
-                let last = Store.luckysheet_select_save[0];
+                let last = Store.sheet_select_save[0];
                 let r1 = last["row"][0], r2 = last["row"][1];
                 let c1 = last["column"][0], c2 = last["column"][1];
 

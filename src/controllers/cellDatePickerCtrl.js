@@ -103,7 +103,7 @@ const cellDatePickerCtrl = {
                 setCellValue(r, c, currentVal, { isRefresh: false })
                 setCellFormat(r, c, 'ct', cell.ct)
                 if (!enableTime) {
-                    formula.updatecell(Store.luckysheetCellUpdate[0], Store.luckysheetCellUpdate[1]);
+                    formula.updatecell(Store.sheetCellUpdate[0], Store.sheetCellUpdate[1]);
                 }
             }
         });

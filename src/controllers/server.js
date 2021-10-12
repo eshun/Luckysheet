@@ -1,13 +1,13 @@
 import pako from 'pako'
 import { showloading, hideloading } from '../global/loading';
-import { luckysheetrefreshgrid, jfrefreshgrid_rhcw } from '../global/refresh';
+import { sheetrefreshgrid, jfrefreshgrid_rhcw } from '../global/refresh';
 import editor from '../global/editor'
 import { sheetHTML, sheetColor } from './constant';
 import sheetmanage from './sheetmanage';
 import menuButton from './menuButton';
 import { createFilterOptions } from './filter';
-import luckysheetFreezen from './freezen';
-import luckysheetPostil from './postil';
+import sheetFreezen from './freezen';
+import sheetPostil from './postil';
 import imageCtrl from './imageCtrl';
 import dataVerificationCtrl from './dataVerificationCtrl';
 import hyperlinkCtrl from './hyperlinkCtrl';
@@ -222,7 +222,7 @@ const server = {
 				}
 	            if(type == 1){ //send 成功或失败
                 const oldIndex = data.data.v.index;
-                const sheetToUpdate = Store.luckysheetfile.filter((sheet)=> sheet.index === oldIndex)[0];
+                const sheetToUpdate = Store.sheetfile.filter((sheet)=> sheet.index === oldIndex)[0];
                 if (sheetToUpdate !== null) {
                   setTimeout(() => {
                     const index = data.data.i;
@@ -392,7 +392,7 @@ const server = {
 	        index = item.i,
 	        value = item.v;
 
-	    let file = Store.luckysheetfile[getSheetIndex(index)];
+	    let file = Store.sheetfile[getSheetIndex(index)];
 
 	    if(["v","rv","cg","all","fc","drc","arc","f","fsc","fsr","sh","c"].includes(type) && file == null){
 	        return;
@@ -412,14 +412,14 @@ const server = {
 
 	            //如果更新的单元格有批注
 	            if(value != null && value.ps != null){
-	                luckysheetPostil.buildPs(r, c, value.ps);
+	                sheetPostil.buildPs(r, c, value.ps);
 	            }
 	            else{
-	                luckysheetPostil.buildPs(r, c, null);
+	                sheetPostil.buildPs(r, c, null);
 	            }
 
 	            setTimeout(function () {
-	                luckysheetrefreshgrid();
+	                sheetrefreshgrid();
 	            }, 1);
 	        }
 	    }
@@ -450,16 +450,16 @@ const server = {
 	            for(let r = r1; r <= r2; r++){
 	                for(let c = c1; c <= c2; c++){
 	                    if(value[r - r1][c - c1] != null && value[r - r1][c - c1].ps != null){
-	                        luckysheetPostil.buildPs(r, c, value[r - r1][c - c1].ps);
+	                        sheetPostil.buildPs(r, c, value[r - r1][c - c1].ps);
 	                    }
 	                    else{
-	                        luckysheetPostil.buildPs(r, c, null);
+	                        sheetPostil.buildPs(r, c, null);
 	                    }
 	                }
 	            }
 
 	            setTimeout(function () {
-	                luckysheetrefreshgrid();
+	                sheetrefreshgrid();
 	            }, 1);
 			}
 	    }
@@ -499,7 +499,7 @@ const server = {
 	            }
 
 	            setTimeout(function () {
-	                luckysheetrefreshgrid();
+	                sheetrefreshgrid();
 	            }, 1);
 	        }
 	    }
@@ -524,30 +524,30 @@ const server = {
 			else if(k == "frozen"){ //freezen row and column
 
 				// tranform frozen
-				luckysheetFreezen.frozenTofreezen();
+				sheetFreezen.frozenTofreezen();
 
 	            if(index == Store.currentSheetIndex){
 					const _locale = locale();
 					const locale_freezen = _locale.freezen;
 	                if(file["freezen"].horizontal == null){
 	                    $("#sheet-freezen-btn-horizontal").html('<i class="fa fa-list-alt"></i> '+locale_freezen.freezenRow);
-	                    luckysheetFreezen.freezenhorizontaldata = null;
+	                    sheetFreezen.freezenhorizontaldata = null;
 	                    $("#sheet-freezebar-horizontal").hide();
 	                }
 	                else{
-	                    luckysheetFreezen.createFreezenHorizontal(file["freezen"].horizontal.freezenhorizontaldata, file["freezen"].horizontal.top);
+	                    sheetFreezen.createFreezenHorizontal(file["freezen"].horizontal.freezenhorizontaldata, file["freezen"].horizontal.top);
 	                }
 
 	                if(file["freezen"].vertical == null){
 	                    $("#sheet-freezen-btn-vertical").html('<i class="fa fa-indent"></i> '+locale_freezen.freezenColumn);
-	                    luckysheetFreezen.freezenverticaldata = null;
+	                    sheetFreezen.freezenverticaldata = null;
 	                    $("#sheet-freezebar-vertical").hide();
 	                }
 	                else{
-	                    luckysheetFreezen.createFreezenVertical(file["freezen"].vertical.freezenverticaldata, file["freezen"].vertical.left);
+	                    sheetFreezen.createFreezenVertical(file["freezen"].vertical.freezenverticaldata, file["freezen"].vertical.left);
 	                }
 
-	                luckysheetFreezen.createAssistCanvas();
+	                sheetFreezen.createAssistCanvas();
 	            }
 	        }
 	        else if(k == "filter_select"){ //筛选范围
@@ -563,14 +563,14 @@ const server = {
 	        else if(k == "conditionformat_save"){ //条件格式
 	            if(index == Store.currentSheetIndex){
 	                setTimeout(function () {
-	                    luckysheetrefreshgrid();
+	                    sheetrefreshgrid();
 	                }, 1);
 	            }
 	        }
 	        else if(k == "alternateformat_save"){ //交替颜色
 	            if(index == Store.currentSheetIndex){
 	                setTimeout(function () {
-	                    luckysheetrefreshgrid();
+	                    sheetrefreshgrid();
 	                }, 1);
 	            }
 	        }
@@ -583,7 +583,7 @@ const server = {
 	        else if(k == "dynamicArray"){ //动态数组
 	            if(index == Store.currentSheetIndex){
 	                setTimeout(function () {
-	                    luckysheetrefreshgrid();
+	                    sheetrefreshgrid();
 	                }, 1);
 	            }
 			}
@@ -637,7 +637,7 @@ const server = {
 	        // }
 
 	        setTimeout(function () {
-	            luckysheetrefreshgrid();
+	            sheetrefreshgrid();
 	        }, 1);
 	    }
 	    else if(type == "drc"){ //删除行列
@@ -700,7 +700,7 @@ const server = {
 	            Store.config["borderInfo"] = borderInfo;
 
 	            setTimeout(function () {
-	                luckysheetrefreshgrid();
+	                sheetrefreshgrid();
 	            }, 1);
 	        }
 	    }
@@ -781,7 +781,7 @@ const server = {
 	            Store.config["borderInfo"] = borderInfo;
 
 	            setTimeout(function () {
-	                luckysheetrefreshgrid();
+	                sheetrefreshgrid();
 	            }, 1);
 	        }
 	    }
@@ -823,7 +823,7 @@ const server = {
 	        }
 	    }
 	    else if(type == "sha"){ //新建sheet
-	        Store.luckysheetfile.push(value);
+	        Store.sheetfile.push(value);
 
 	        let colorset = '';
 	        if(value.color != null){
@@ -837,12 +837,12 @@ const server = {
 	        let copyindex = value.copyindex, name = value.name;
 
 	        let copyarrindex = getSheetIndex(copyindex);
-	        let copyjson = $.extend(true, {}, Store.luckysheetfile[copyarrindex]);
+	        let copyjson = $.extend(true, {}, Store.sheetfile[copyarrindex]);
 
 	        copyjson.index = index;
 	        copyjson.name = name;
 
-	        Store.luckysheetfile.splice(copyarrindex + 1, 0, copyjson);
+	        Store.sheetfile.splice(copyarrindex + 1, 0, copyjson);
 
 	        let copyobject = $("#sheets-item" + copyindex);
 	        $("#sheet-container-c").append(replaceHtml(sheetHTML, { "index": copyjson.index, "active": "", "name": copyjson.name, "style": "", "colorset": "" }));
@@ -850,35 +850,35 @@ const server = {
 	        $("#sheet-cell-main").append('<div id="sheet-datavisual-selection-set-' + copyjson.index + '" class="sheet-datavisual-selection-set"></div>');
 	    }
 	    else if(type == "shd"){ //删除sheet
-	        for(let i = 0; i < Store.luckysheetfile.length; i++){
-	            if(Store.luckysheetfile[i].index == value.deleIndex){
+	        for(let i = 0; i < Store.sheetfile.length; i++){
+	            if(Store.sheetfile[i].index == value.deleIndex){
 
 					// 如果删除的是当前sheet，则切换到前一个sheet页
 					if(Store.currentSheetIndex === value.deleIndex){
 						const index = value.deleIndex;
 
-						Store.luckysheetfile[sheetmanage.getSheetIndex(index)].hide = 1;
+						Store.sheetfile[sheetmanage.getSheetIndex(index)].hide = 1;
 
-						let luckysheetcurrentSheetitem = $("#sheets-item" + index);
-						luckysheetcurrentSheetitem.hide();
+						let sheetcurrentSheetitem = $("#sheets-item" + index);
+						sheetcurrentSheetitem.hide();
 
 						$("#sheet-area div.sheets-item").removeClass("sheets-item-active");
 
-						let indicator = luckysheetcurrentSheetitem.nextAll(":visible");
-						if (luckysheetcurrentSheetitem.nextAll(":visible").length > 0) {
+						let indicator = sheetcurrentSheetitem.nextAll(":visible");
+						if (sheetcurrentSheetitem.nextAll(":visible").length > 0) {
 							indicator = indicator.eq(0).data("index");
 						}
 						else {
-							indicator = luckysheetcurrentSheetitem.prevAll(":visible").eq(0).data("index");
+							indicator = sheetcurrentSheetitem.prevAll(":visible").eq(0).data("index");
 						}
 						$("#sheets-item" + indicator).addClass("sheets-item-active");
 
 						sheetmanage.changeSheetExec(indicator);
 					}
 
-					server.sheetDeleSave.push(Store.luckysheetfile[i]);
+					server.sheetDeleSave.push(Store.sheetfile[i]);
 
-					Store.luckysheetfile.splice(i, 1);
+					Store.sheetfile.splice(i, 1);
 
 	                break;
 	            }
@@ -890,7 +890,7 @@ const server = {
 	    }
 	    else if(type == "shr"){ //sheet位置
 	        for(let x in value){
-	            Store.luckysheetfile[getSheetIndex(x)].order = value[x];
+	            Store.sheetfile[getSheetIndex(x)].order = value[x];
 	        }
 	    }
 	    else if(type == "shre"){ //删除sheet恢复操作
@@ -898,7 +898,7 @@ const server = {
 	            if(server.sheetDeleSave[i].index == value.reIndex){
 	                let datav = server.sheetDeleSave[i];
 
-	                Store.luckysheetfile.push(datav);
+	                Store.sheetfile.push(datav);
 
 	                let colorset = '';
 	                if(value.color != null){
@@ -971,7 +971,7 @@ const server = {
 	        }
 	    }
 	    else if(type == "na"){ //表格名称
-	        $("#luckysheet_info_detail_input").val(value).css("width", getByteLen(value) * 10);
+	        $("#sheet_info_detail_input").val(value).css("width", getByteLen(value) * 10);
 	    }
 	},
 	wsSend:function(msg) {
@@ -1127,12 +1127,12 @@ const server = {
                 $.post(_this.updateUrl, { compress: iscommpress, g: _this.gridKey, data: params }, function (data) {
 					let re = new Function("return " + data)();
                     if(re.status){
-                        $("#luckysheet_info_detail_update").html("最近存档时间:"+ dayjs().format("M-D H:m:s"));
-                        $("#luckysheet_info_detail_save").html("同步成功");
+                        $("#sheet_info_detail_update").html("最近存档时间:"+ dayjs().format("M-D H:m:s"));
+                        $("#sheet_info_detail_save").html("同步成功");
                         _this.clearcachelocaldata();
                     }
                     else{
-                        $("#luckysheet_info_detail_save").html("<span style='color:#ff2121'>同步失败</span>");
+                        $("#sheet_info_detail_save").html("<span style='color:#ff2121'>同步失败</span>");
                         _this.restorecachelocaldata();
                     }
                     _this.requestlast = dayjs();
@@ -1190,7 +1190,7 @@ const server = {
                         imageRequestLast = dayjs();
                     }
                     else{
-                        $("#luckysheet_info_detail_save").html("<span style='color:#ff2121'>网络不稳定</span>");
+                        $("#sheet_info_detail_save").html("<span style='color:#ff2121'>网络不稳定</span>");
                     }
                     _this.imageRequestLock =true;
                 });

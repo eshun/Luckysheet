@@ -2,7 +2,7 @@ import sheetmanage from './sheetmanage';
 import server from './server';
 import pivotTable from './pivotTable';
 import conditionformat from './conditionformat';
-import luckysheetPostil from './postil';
+import sheetPostil from './postil';
 import imageCtrl from './imageCtrl';
 import dataVerificationCtrl from './dataVerificationCtrl';
 import hyperlinkCtrl from './hyperlinkCtrl';
@@ -19,7 +19,7 @@ import {
     jfrefreshgrid_adRC,
     jfrefreshgrid_deleteCell,
     jfrefreshgrid_pastcut,
-    luckysheetrefreshgrid 
+    sheetrefreshgrid 
 } from '../global/refresh';
 import { getSheetIndex } from '../methods/get';
 import Store from '../store';
@@ -128,7 +128,7 @@ const controlHistory = {
         }
         else if (ctr.type == "resize") {
             Store.config = ctr.config;
-            Store.luckysheetfile[getSheetIndex(ctr.sheetIndex)].config = Store.config;
+            Store.sheetfile[getSheetIndex(ctr.sheetIndex)].config = Store.config;
 
             if(ctr.ctrlType == "resizeR"){
                 server.saveParam("cg", ctr.sheetIndex, ctr.config["rowlen"], { "k": "rowlen" });
@@ -138,7 +138,7 @@ const controlHistory = {
             }
 
             let images = $.extend(true, {}, ctr.images);
-            Store.luckysheetfile[getSheetIndex(ctr.sheetIndex)].images = images;
+            Store.sheetfile[getSheetIndex(ctr.sheetIndex)].images = images;
             server.saveParam("all", ctr.sheetIndex, images, { "k": "images" });
             imageCtrl.images = images;
             imageCtrl.allImagesShow();
@@ -210,7 +210,7 @@ const controlHistory = {
         else if (ctr.type == "showHidRows") { // 隐藏、显示行 撤销操作
             //config
             Store.config = ctr.config;
-            Store.luckysheetfile[getSheetIndex(ctr.sheetIndex)].config = ctr.config;
+            Store.sheetfile[getSheetIndex(ctr.sheetIndex)].config = ctr.config;
         
             server.saveParam("cg", ctr.sheetIndex, ctr.config["rowhidden"], { "k": "rowhidden" });
         
@@ -220,7 +220,7 @@ const controlHistory = {
         else if (ctr.type == "showHidCols") { // 隐藏、显示列 撤销操作
             //config
             Store.config = ctr.config;
-            Store.luckysheetfile[getSheetIndex(ctr.sheetIndex)].config = ctr.config;
+            Store.sheetfile[getSheetIndex(ctr.sheetIndex)].config = ctr.config;
         
             server.saveParam("cg", ctr.sheetIndex, ctr.config["colhidden"], { "k": "colhidden" });
         
@@ -244,7 +244,7 @@ const controlHistory = {
 
             //config
             Store.config = ctr.config;
-            Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].config = Store.config;
+            Store.sheetfile[getSheetIndex(Store.currentSheetIndex)].config = Store.config;
 
             if(Store.config["rowhidden"] == null){
                 Store.config["rowhidden"] = {};
@@ -269,7 +269,7 @@ const controlHistory = {
 
             //config
             Store.config = ctr.config;
-            Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].config = Store.config;
+            Store.sheetfile[getSheetIndex(Store.currentSheetIndex)].config = Store.config;
 
             if(Store.config["rowhidden"] == null){
                 Store.config["rowhidden"] = {};
@@ -290,7 +290,7 @@ const controlHistory = {
             }
         }
         else if(ctr.type == "pivotTable_change"){
-            Store.luckysheetfile[getSheetIndex(ctr.sheetIndex)].pivotTable = ctr.pivotTable;
+            Store.sheetfile[getSheetIndex(ctr.sheetIndex)].pivotTable = ctr.pivotTable;
 
             pivotTable.getCellData(ctr.sheetIndex);
             pivotTable.initialPivotManage(true);
@@ -310,8 +310,8 @@ const controlHistory = {
         else if (ctr.type == "deleteSheet") {
             let isDupName = false;
 
-            for(let i = 0; i < Store.luckysheetfile.length; i++){
-                if(Store.luckysheetfile[i].name == ctr.name){
+            for(let i = 0; i < Store.sheetfile.length; i++){
+                if(Store.sheetfile[i].name == ctr.name){
                     isDupName = true;
                 }
             }
@@ -323,19 +323,19 @@ const controlHistory = {
             }
         }
         else if (ctr.type == "sheetName") {
-            Store.luckysheetfile[getSheetIndex(ctr.sheetIndex)].name = ctr.oldtxt;
+            Store.sheetfile[getSheetIndex(ctr.sheetIndex)].name = ctr.oldtxt;
             $("#sheets-item" + ctr.sheetIndex).find(".sheets-item-name").html(ctr.oldtxt);
 
             server.saveParam("all", ctr.sheetIndex, ctr.oldtxt, { "k": "name" });
         }
         else if (ctr.type == "sheetColor") {
-            Store.luckysheetfile[getSheetIndex(ctr.sheetIndex)].color = ctr.oldcolor;
+            Store.sheetfile[getSheetIndex(ctr.sheetIndex)].color = ctr.oldcolor;
             
-            let luckysheetcurrentSheetitem = $("#sheets-item" + ctr.sheetIndex);
-            luckysheetcurrentSheetitem.find(".sheets-item-color").remove();
+            let sheetcurrentSheetitem = $("#sheets-item" + ctr.sheetIndex);
+            sheetcurrentSheetitem.find(".sheets-item-color").remove();
 
             if(ctr.oldcolor != null){
-                luckysheetcurrentSheetitem.append('<div class="sheets-item-color" style=" position: absolute; width: 100%; height: 3px; bottom: 0px; left: 0px; background-color: ' + ctr.oldcolor + ';"></div>');
+                sheetcurrentSheetitem.append('<div class="sheets-item-color" style=" position: absolute; width: 100%; height: 3px; bottom: 0px; left: 0px; background-color: ' + ctr.oldcolor + ';"></div>');
             }
 
             server.saveParam("all", ctr.sheetIndex, ctr.oldcolor, { "k": "color" });
@@ -362,7 +362,7 @@ const controlHistory = {
             for(let i = 0; i < historyRules.length; i++){
                 //条件规则
                 let sheetIndex = historyRules[i]["sheetIndex"];
-                Store.luckysheetfile[getSheetIndex(sheetIndex)]["conditionformat_save"] = historyRules[i]["conditionformat_save"];
+                Store.sheetfile[getSheetIndex(sheetIndex)]["conditionformat_save"] = historyRules[i]["conditionformat_save"];
             
                 if(server.allowUpdate){
                     server.saveParam("all", sheetIndex, historyRules[i]["conditionformat_save"], { "k": "conditionformat_save" });
@@ -377,10 +377,10 @@ const controlHistory = {
 
             let index = getSheetIndex(ctr["sheetIndex"]);
 
-            Store.luckysheetfile[index]["alternateformat_save"] = $.extend(true, [], historyRules);
+            Store.sheetfile[index]["alternateformat_save"] = $.extend(true, [], historyRules);
 
             setTimeout(function () {
-                luckysheetrefreshgrid();
+                sheetrefreshgrid();
             }, 1);
         }
         else if (ctr.type == "borderChange"){
@@ -392,24 +392,24 @@ const controlHistory = {
             }
 
             Store.config = ctr.config;
-            Store.luckysheetfile[getSheetIndex(ctr.sheetIndex)].config = Store.config;
+            Store.sheetfile[getSheetIndex(ctr.sheetIndex)].config = Store.config;
 
             setTimeout(function () {
-                luckysheetrefreshgrid();
+                sheetrefreshgrid();
             }, 1);
         }
         else if (ctr.type == "postil"){
-            luckysheetPostil.ref(ctr.data, ctr.rc);
+            sheetPostil.ref(ctr.data, ctr.rc);
 
             for(let i = 0; i < ctr.rc.length; i++){
                 let r = ctr.rc[i].split("_")[0];
                 let c = ctr.rc[i].split("_")[1];
 
                 if(ctr.data[r][c] != null && ctr.data[r][c].ps != null){
-                    luckysheetPostil.buildPs(r, c, ctr.data[r][c].ps);
+                    sheetPostil.buildPs(r, c, ctr.data[r][c].ps);
                 }
                 else{
-                    luckysheetPostil.buildPs(r, c, null);
+                    sheetPostil.buildPs(r, c, null);
                 }
             }
         }
@@ -427,7 +427,7 @@ const controlHistory = {
         
         cleargridelement(e);
         if (ctr.range) {
-            Store.luckysheet_select_save = ctr.range;
+            Store.sheet_select_save = ctr.range;
             selectHightlightShow();
         }
         Store.clearjfundo = true;
@@ -476,7 +476,7 @@ const controlHistory = {
         }
         else if (ctr.type == "resize") {
             Store.config = ctr.curconfig;
-            Store.luckysheetfile[getSheetIndex(ctr.sheetIndex)].config = Store.config;
+            Store.sheetfile[getSheetIndex(ctr.sheetIndex)].config = Store.config;
 
             if(ctr.ctrlType == "resizeR"){
                 server.saveParam("cg", ctr.sheetIndex, ctr.curconfig["rowlen"], { "k": "rowlen" });
@@ -486,7 +486,7 @@ const controlHistory = {
             }
 
             let images = $.extend(true, {}, ctr.curImages);
-            Store.luckysheetfile[getSheetIndex(ctr.sheetIndex)].images = images;
+            Store.sheetfile[getSheetIndex(ctr.sheetIndex)].images = images;
             server.saveParam("all", ctr.sheetIndex, images, { "k": "images" });
             imageCtrl.images = images;
             imageCtrl.allImagesShow();
@@ -549,7 +549,7 @@ const controlHistory = {
         else if (ctr.type == "showHidRows") { // 隐藏、显示行 重做操作
             //config
             Store.config = ctr.curconfig;
-            Store.luckysheetfile[getSheetIndex(ctr.sheetIndex)].config = ctr.curconfig;
+            Store.sheetfile[getSheetIndex(ctr.sheetIndex)].config = ctr.curconfig;
         
             server.saveParam("cg", ctr.sheetIndex, ctr.curconfig["rowhidden"], { "k": "rowhidden" });
         
@@ -559,7 +559,7 @@ const controlHistory = {
         else if (ctr.type == "showHidCols") { // 隐藏、显示列 重做操作
             //config
             Store.config = ctr.curconfig;
-            Store.luckysheetfile[getSheetIndex(ctr.sheetIndex)].config = ctr.curconfig;
+            Store.sheetfile[getSheetIndex(ctr.sheetIndex)].config = ctr.curconfig;
         
             server.saveParam("cg", ctr.sheetIndex, ctr.curconfig["colhidden"], { "k": "colhidden" });
         
@@ -575,7 +575,7 @@ const controlHistory = {
             
             //config
             Store.config = ctr.curconfig;
-            Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].config = Store.config;
+            Store.sheetfile[getSheetIndex(Store.currentSheetIndex)].config = Store.config;
 
             server.saveParam("cg", Store.currentSheetIndex, {}, { "k": "rowhidden" });
 
@@ -601,7 +601,7 @@ const controlHistory = {
 
             //config
             Store.config = ctr.curconfig;
-            Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].config = Store.config;
+            Store.sheetfile[getSheetIndex(Store.currentSheetIndex)].config = Store.config;
 
             server.saveParam("cg", Store.currentSheetIndex, Store.config["rowhidden"], { "k": "rowhidden" });
 
@@ -611,14 +611,14 @@ const controlHistory = {
             $("#sheet-filter-menu, #sheet-filter-submenu").hide();
         }
         else if (ctr.type == "filtershow") {
-            Store.luckysheet_select_save = [ctr.filter_save];
+            Store.sheet_select_save = [ctr.filter_save];
             Store.filterchage = false;
             createFilter();
             Store.filterchage = true;
             server.saveParam("all", ctr.sheetIndex, ctr.filter_save, { "k": "filter_select" });
         }
         else if (ctr.type == "pivotTable_change") {
-            Store.luckysheetfile[getSheetIndex(ctr.sheetIndex)].pivotTable = ctr.pivotTablecur;
+            Store.sheetfile[getSheetIndex(ctr.sheetIndex)].pivotTable = ctr.pivotTablecur;
             pivotTable.getCellData(ctr.sheetIndex);
             pivotTable.initialPivotManage(true);
             pivotTable.refreshPivotTable();
@@ -635,29 +635,29 @@ const controlHistory = {
             sheetmanage.deleteSheet(ctr.index);
 
             if (ctr.order == 0) {
-                sheetmanage.changeSheetExec(Store.luckysheetfile[0].index);
+                sheetmanage.changeSheetExec(Store.sheetfile[0].index);
             }
             else {
-                sheetmanage.changeSheetExec(Store.luckysheetfile[ctr.order - 1].index);
+                sheetmanage.changeSheetExec(Store.sheetfile[ctr.order - 1].index);
             }
             
             $("#sheet-input-box").removeAttr("style");
             $("#sheet-list, #sheet-rightclick-sheet-menu").hide();
         }
         else if (ctr.type == "sheetName") {
-            Store.luckysheetfile[getSheetIndex(ctr.sheetIndex)].name = ctr.txt;
+            Store.sheetfile[getSheetIndex(ctr.sheetIndex)].name = ctr.txt;
             $("#sheets-item" + ctr.sheetIndex).find(".sheets-item-name").html(ctr.txt);
             
             server.saveParam("all", ctr.sheetIndex, ctr.txt, { "k": "name" });
         }
         else if (ctr.type == "sheetColor") {
-            Store.luckysheetfile[getSheetIndex(ctr.sheetIndex)].color = ctr.color;
+            Store.sheetfile[getSheetIndex(ctr.sheetIndex)].color = ctr.color;
 
-            let luckysheetcurrentSheetitem = $("#sheets-item" + ctr.sheetIndex);
-            luckysheetcurrentSheetitem.find(".sheets-item-color").remove();
+            let sheetcurrentSheetitem = $("#sheets-item" + ctr.sheetIndex);
+            sheetcurrentSheetitem.find(".sheets-item-color").remove();
             
             if(ctr.color != null){
-                luckysheetcurrentSheetitem.append('<div class="sheets-item-color" style=" position: absolute; width: 100%; height: 3px; bottom: 0px; left: 0px; background-color: ' + ctr.color + ';"></div>');
+                sheetcurrentSheetitem.append('<div class="sheets-item-color" style=" position: absolute; width: 100%; height: 3px; bottom: 0px; left: 0px; background-color: ' + ctr.color + ';"></div>');
             }
             
             server.saveParam("all", ctr.sheetIndex, ctr.color, { "k": "color" });
@@ -684,7 +684,7 @@ const controlHistory = {
             for(let i = 0; i < currentRules.length; i++){
                 //条件规则
                 let sheetIndex = currentRules[i]["sheetIndex"];
-                Store.luckysheetfile[getSheetIndex(sheetIndex)]["conditionformat_save"] = currentRules[i]["conditionformat_save"];
+                Store.sheetfile[getSheetIndex(sheetIndex)]["conditionformat_save"] = currentRules[i]["conditionformat_save"];
                 
                 if(server.allowUpdate){
                     server.saveParam("all", sheetIndex, currentRules[i]["conditionformat_save"], { "k": "conditionformat_save" });
@@ -699,34 +699,34 @@ const controlHistory = {
 
             let index = getSheetIndex(ctr["sheetIndex"]);
 
-            Store.luckysheetfile[index]["alternateformat_save"] = $.extend(true, [], currentRules);
+            Store.sheetfile[index]["alternateformat_save"] = $.extend(true, [], currentRules);
 
             setTimeout(function () {
-                luckysheetrefreshgrid();
+                sheetrefreshgrid();
             }, 1);
         }
         else if (ctr.type == "borderChange"){
             server.saveParam("cg", ctr.sheetIndex, ctr.curconfig["borderInfo"], { "k": "borderInfo" });
 
             Store.config = ctr.curconfig;
-            Store.luckysheetfile[getSheetIndex(ctr.sheetIndex)].config = Store.config;
+            Store.sheetfile[getSheetIndex(ctr.sheetIndex)].config = Store.config;
 
             setTimeout(function () {
-                luckysheetrefreshgrid();
+                sheetrefreshgrid();
             }, 1);
         }
         else if (ctr.type == "postil"){
-            luckysheetPostil.ref(ctr.curdata, ctr.rc);
+            sheetPostil.ref(ctr.curdata, ctr.rc);
 
             for(let i = 0; i < ctr.rc.length; i++){
                 let r = ctr.rc[i].split("_")[0];
                 let c = ctr.rc[i].split("_")[1];
 
                 if(ctr.curdata[r][c] != null && ctr.curdata[r][c].ps != null){
-                    luckysheetPostil.buildPs(r, c, ctr.curdata[r][c].ps);
+                    sheetPostil.buildPs(r, c, ctr.curdata[r][c].ps);
                 }
                 else{
-                    luckysheetPostil.buildPs(r, c, null);
+                    sheetPostil.buildPs(r, c, null);
                 }
             }
         }
@@ -743,7 +743,7 @@ const controlHistory = {
         }
 
         if (ctr.range) {
-            Store.luckysheet_select_save = ctr.range;
+            Store.sheet_select_save = ctr.range;
             selectHightlightShow();
         }
         Store.clearjfundo = true;

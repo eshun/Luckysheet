@@ -10063,7 +10063,7 @@ export default {
         Engineering: "工程計算",
         Filter     : "篩檢程式",
         Financial  : "財務",
-        sheet : "Luckysheet內寘",
+        sheet : "sheet內寘",
         other      : "其它",
         Logical    : "邏輯",
         Lookup     : "查找",

@@ -8,7 +8,7 @@
 简体中文 | [English](./README.md)
 
 ## 介绍
-🚀Luckysheet ，一款纯前端类似excel的在线表格，功能强大、配置简单、完全开源。
+🚀sheet ，一款纯前端类似excel的在线表格，功能强大、配置简单、完全开源。
 
 ## 招聘
 字节跳动靠谱内推 - 前端工程师（上海 · 飞书）
@@ -25,10 +25,10 @@
 ## 相关链接
  | 源码   | 文档 | Demo | 插件Demo | 论坛 |
  | ------ | -------- | ------ | ------ | ------ |
- | [Github](https://github.com/mengshukeji/Luckysheet)| [在线文档](https://mengshukeji.github.io/LuckysheetDocs/zh/) | [在线Demo](https://mengshukeji.github.io/LuckysheetDemo) / [协同编辑Demo](http://sheet.lashuju.com/demo/) | [导入Excel Demo](https://mengshukeji.github.io/LuckyexcelDemo/) | [中文论坛](https://support.qq.com/product/288322) |
- | [Gitee镜像](https://gitee.com/mengshukeji/Luckysheet)| [Gitee在线文档](https://mengshukeji.gitee.io/LuckysheetDocs/zh/) | [Gitee在线Demo](https://mengshukeji.gitee.io/luckysheetdemo/) | [Gitee导入Excel Demo](https://mengshukeji.gitee.io/luckyexceldemo/) | [Google Group](https://groups.google.com/g/sheet) |
+ | [Github](https://github.com/mengshukeji/sheet)| [在线文档](https://mengshukeji.github.io/sheetDocs/zh/) | [在线Demo](https://mengshukeji.github.io/sheetDemo) / [协同编辑Demo](http://sheet.lashuju.com/demo/) | [导入Excel Demo](https://mengshukeji.github.io/LuckyexcelDemo/) | [中文论坛](https://support.qq.com/product/288322) |
+ | [Gitee镜像](https://gitee.com/mengshukeji/sheet)| [Gitee在线文档](https://mengshukeji.gitee.io/sheetDocs/zh/) | [Gitee在线Demo](https://mengshukeji.gitee.io/sheetdemo/) | [Gitee导入Excel Demo](https://mengshukeji.gitee.io/luckyexceldemo/) | [Google Group](https://groups.google.com/g/sheet) |
 
-![演示](/docs/.vuepress/public/img/LuckysheetDemo.gif)
+![演示](/docs/.vuepress/public/img/sheetDemo.gif)
 
 ## 插件
 - [Luckyexcel](https://gitee.com/mengshukeji/Luckyexcel)：excel导入导出库 
@@ -38,17 +38,17 @@
 
 | 工程 | 描述 |
 |---------|-------------|
-| [Luckysheet Vue]          | 在vue cli 3项目中使用Luckysheet和Luckyexcel|
-| [Luckysheet React]          | 在React项目中使用Luckysheet |
+| [sheet Vue]          | 在vue cli 3项目中使用sheet和Luckyexcel|
+| [sheet React]          | 在React项目中使用sheet |
 | [Luckyexcel Node]          | 在koa2中使用Luckyexcel |
-| [Luckysheet Server]          | Java后台Luckysheet Server |
-| [Luckysheet Server Starter]          | LuckysheetServer 一键docker部署 |
+| [sheet Server]          | Java后台sheet Server |
+| [sheet Server Starter]          | sheetServer 一键docker部署 |
 
-[Luckysheet Vue]: https://gitee.com/mengshukeji/sheet-vue
-[Luckysheet React]: https://gitee.com/mengshukeji/sheet-react
+[sheet Vue]: https://gitee.com/mengshukeji/sheet-vue
+[sheet React]: https://gitee.com/mengshukeji/sheet-react
 [Luckyexcel Node]: https://gitee.com/mengshukeji/Luckyexcel-node
-[Luckysheet Server]: https://gitee.com/mengshukeji/LuckysheetServer
-[Luckysheet Server Starter]: https://gitee.com/mengshukeji/LuckysheetServerStarter
+[sheet Server]: https://gitee.com/mengshukeji/sheetServer
+[sheet Server Starter]: https://gitee.com/mengshukeji/sheetServerStarter
 
 ## 特性
 
@@ -60,12 +60,12 @@
 - **表格操作**：筛选，排序
 - **增强功能**：数据透视表，图表，评论，共享编辑，插入图片，矩阵计算，截图，复制到其他格式，EXCEL导入及导出等
 
-更详细的功能列表，请查阅：[特性](https://mengshukeji.github.io/LuckysheetDocs/zh/guide/#%E7%89%B9%E6%80%A7)
+更详细的功能列表，请查阅：[特性](https://mengshukeji.github.io/sheetDocs/zh/guide/#%E7%89%B9%E6%80%A7)
 
 ## 📖 学习资源
 
-- 新用户优先阅读：[用户指引](https://github.com/mengshukeji/Luckysheet/wiki/User-Guide)
-- 社区提供的教程、学习资料及配套解决方案请查阅：[教程与资源](https://mengshukeji.github.io/LuckysheetDocs/zh/guide/resource.html)
+- 新用户优先阅读：[用户指引](https://github.com/mengshukeji/sheet/wiki/User-Guide)
+- 社区提供的教程、学习资料及配套解决方案请查阅：[教程与资源](https://mengshukeji.github.io/sheetDocs/zh/guide/resource.html)
 
 ## 📜 更新日志
 
@@ -73,15 +73,15 @@
 
 ## ❗️ 问题反馈
 
-在反馈问题之前，请确保仔细阅读 [如何提交问题](https://mengshukeji.github.io/LuckysheetDocs/zh/guide/contribute.html#如何提交问题)。 不符合准则的问题可能会立即被移除。
+在反馈问题之前，请确保仔细阅读 [如何提交问题](https://mengshukeji.github.io/sheetDocs/zh/guide/contribute.html#如何提交问题)。 不符合准则的问题可能会立即被移除。
 
 ## ✅ 开发计划
 
-通过 [GitHub Projects](https://github.com/mengshukeji/Luckysheet/projects/1) 管理
+通过 [GitHub Projects](https://github.com/mengshukeji/sheet/projects/1) 管理
 
 ## 💪 贡献
 
-在提交PR之前，请确保仔细阅读 [贡献指南](https://mengshukeji.github.io/LuckysheetDocs/zh/guide/contribute.html)。
+在提交PR之前，请确保仔细阅读 [贡献指南](https://mengshukeji.github.io/sheetDocs/zh/guide/contribute.html)。
 
 ## 用法
 
@@ -108,7 +108,7 @@
     $(function () {
         //配置项
         var options = {
-            container: 'sheet' //luckysheet为容器id
+            container: 'sheet' //sheet为容器id
         }
         sheet.create(options)
     })
@@ -141,19 +141,19 @@ npm run build
 
 ## 交流
 
-- [Github 论坛](https://github.com/mengshukeji/Luckysheet/discussions)
+- [Github 论坛](https://github.com/mengshukeji/sheet/discussions)
 - 以下扫码加入官方微信群或者QQ群
 
 | 官方微信群 |  群满则加小编微信，备注:加群  | QQ群 |
 |---|---|---|
-| <img src="https://minio.cnbabylon.com/public/sheet/luckysheet_wechat_group.png" width="200" /> | <img src="https://minio.cnbabylon.com/public/sheet/dushusir_wechat.jpg" width="200" />| <img src="https://minio.cnbabylon.com/public/sheet/luckysheet_qq_group.jpg" width="200" /> |
+| <img src="https://minio.cnbabylon.com/public/sheet/sheet_wechat_group.png" width="200" /> | <img src="https://minio.cnbabylon.com/public/sheet/dushusir_wechat.jpg" width="200" />| <img src="https://minio.cnbabylon.com/public/sheet/sheet_qq_group.jpg" width="200" /> |
 
 
 [英文社群](./README.md)
 
 ## 赞助
 
-Luckysheet是MIT许可的开源项目，其持续稳定的开发离不开这些优秀的 [**支持者**](https://mengshukeji.github.io/LuckysheetDocs/zh/about/sponsor.html#%E8%B5%9E%E5%8A%A9%E8%80%85%E5%88%97%E8%A1%A8)。 如果您想加入他们，请考虑：
+sheet是MIT许可的开源项目，其持续稳定的开发离不开这些优秀的 [**支持者**](https://mengshukeji.github.io/sheetDocs/zh/about/sponsor.html#%E8%B5%9E%E5%8A%A9%E8%80%85%E5%88%97%E8%A1%A8)。 如果您想加入他们，请考虑：
 
 - [成为Patreon的支持者或赞助商](https://www.patreon.com/mengshukeji)
 - [成为Open Collective的支持者或赞助商](https://opencollective.com/sheet)
@@ -165,7 +165,7 @@ Luckysheet是MIT许可的开源项目，其持续稳定的开发离不开这些�
 
 ### Patreon和OpenCollective有什么区别？
 
-通过Patreon捐赠的资金将直接用于支持menshshukeji在Luckysheet上的工作。 通过OpenCollective捐赠的资金由透明费用管理，将用于补偿核心团队成员的工作和费用或赞助社区活动。 通过在任一平台上捐款，您的姓名/徽标将得到适当的认可和曝光。
+通过Patreon捐赠的资金将直接用于支持menshshukeji在sheet上的工作。 通过OpenCollective捐赠的资金由透明费用管理，将用于补偿核心团队成员的工作和费用或赞助社区活动。 通过在任一平台上捐款，您的姓名/徽标将得到适当的认可和曝光。
 
 ## 赞助者列表
 

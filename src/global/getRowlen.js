@@ -1,4 +1,4 @@
-import {luckysheetfontformat} from '../utils/util';
+import {sheetfontformat} from '../utils/util';
 import menuButton from '../controllers/menuButton';
 import {checkstatusByCell} from './getdata';
 import {colLocationByIndex,colSpanLocationByIndex} from './location';
@@ -424,7 +424,7 @@ function getCellTextInfo(cell , ctx, option){
         let sharedStrings = cell.ct.s, similarIndex = 0;
         for(let i=0;i<sharedStrings.length;i++){
             let shareCell = sharedStrings[i];
-            let scfontset = luckysheetfontformat(shareCell);
+            let scfontset = sheetfontformat(shareCell);
             let fc = shareCell.fc, cl=shareCell.cl,un = shareCell.un, v = shareCell.v, fs=shareCell.fs;
             v = v.replace(/\r\n/g, "_x000D_").replace(/&#13;&#10;/g, "_x000D_").replace(/\r/g, "_x000D_").replace(/\n/g, "_x000D_");
             let splitArr = v.split("_x000D_");
@@ -479,7 +479,7 @@ function getCellTextInfo(cell , ctx, option){
         isInline = true;
     }
     else{
-        fontset = luckysheetfontformat(cell);
+        fontset = sheetfontformat(cell);
         ctx.font = fontset;
 
         cancelLine = checkstatusByCell(cell ,"cl");//cancelLine

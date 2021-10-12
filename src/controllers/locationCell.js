@@ -10,7 +10,7 @@ import Store from '../store';
 import locale from '../locale/locale';
 
 //定位
-const luckysheetLocationCell = {
+const sheetLocationCell = {
     createDialog: function(){
         $("#sheet-modal-dialog-mask").show();
         $("#sheet-locationCell-dialog").remove();
@@ -160,18 +160,18 @@ const luckysheetLocationCell = {
                 }
 
                 let range;
-                if(Store.luckysheet_select_save.length == 0 || (Store.luckysheet_select_save.length == 1 && Store.luckysheet_select_save[0].row[0] == Store.luckysheet_select_save[0].row[1] && Store.luckysheet_select_save[0].column[0] == Store.luckysheet_select_save[0].column[1])){
+                if(Store.sheet_select_save.length == 0 || (Store.sheet_select_save.length == 1 && Store.sheet_select_save[0].row[0] == Store.sheet_select_save[0].row[1] && Store.sheet_select_save[0].column[0] == Store.sheet_select_save[0].column[1])){
                     //单个单元格
                     range = [{"row": [0, Store.flowdata.length - 1], "column": [0, Store.flowdata[0].length - 1]}];
                 }
                 else{
-                    range = $.extend(true, [], Store.luckysheet_select_save);
+                    range = $.extend(true, [], Store.sheet_select_save);
                 }
 
                 _this.apply(range, id, value);
             }
             else if(id == "locationStepRow"){
-                if(Store.luckysheet_select_save.length == 0 || (Store.luckysheet_select_save.length == 1 && Store.luckysheet_select_save[0].row[0] == Store.luckysheet_select_save[0].row[1])){
+                if(Store.sheet_select_save.length == 0 || (Store.sheet_select_save.length == 1 && Store.sheet_select_save[0].row[0] == Store.sheet_select_save[0].row[1])){
                     if(isEditMode()){
                         alert(locale_location.locationTiplessTwoRow);
                     }
@@ -181,12 +181,12 @@ const luckysheetLocationCell = {
                     return;                            
                 }
 
-                let range = $.extend(true, [], Store.luckysheet_select_save);
+                let range = $.extend(true, [], Store.sheet_select_save);
 
                 _this.apply(range, "locationStepRow");
             }
             else if(id == "locationStepColumn"){
-                if(Store.luckysheet_select_save.length == 0 || (Store.luckysheet_select_save.length == 1 && Store.luckysheet_select_save[0].column[0] == Store.luckysheet_select_save[0].column[1])){
+                if(Store.sheet_select_save.length == 0 || (Store.sheet_select_save.length == 1 && Store.sheet_select_save[0].column[0] == Store.sheet_select_save[0].column[1])){
                     if(isEditMode()){
                         alert(locale_location.locationTiplessTwoColumn);
                     }
@@ -196,18 +196,18 @@ const luckysheetLocationCell = {
                     return;                            
                 }
 
-                let range = $.extend(true, [], Store.luckysheet_select_save);
+                let range = $.extend(true, [], Store.sheet_select_save);
 
                 _this.apply(range, "locationStepColumn");
             }
             else{
                 let range;
-                if(Store.luckysheet_select_save.length == 0 || (Store.luckysheet_select_save.length == 1 && Store.luckysheet_select_save[0].row[0] == Store.luckysheet_select_save[0].row[1] && Store.luckysheet_select_save[0].column[0] == Store.luckysheet_select_save[0].column[1])){
+                if(Store.sheet_select_save.length == 0 || (Store.sheet_select_save.length == 1 && Store.sheet_select_save[0].row[0] == Store.sheet_select_save[0].row[1] && Store.sheet_select_save[0].column[0] == Store.sheet_select_save[0].column[1])){
                     //单个单元格
                     range = [{"row": [0, Store.flowdata.length - 1], "column": [0, Store.flowdata[0].length - 1]}];
                 }
                 else{
-                    range = $.extend(true, [], Store.luckysheet_select_save);
+                    range = $.extend(true, [], Store.sheet_select_save);
                 }
 
                 _this.apply(range, id);
@@ -265,8 +265,8 @@ const luckysheetLocationCell = {
         }
         else if(type == "locationCF"){ //条件格式
             let index = getSheetIndex(Store.currentSheetIndex);
-            let ruleArr = Store.luckysheetfile[index]["conditionformat_save"];
-            let data = Store.luckysheetfile[index]["data"];
+            let ruleArr = Store.sheetfile[index]["conditionformat_save"];
+            let data = Store.sheetfile[index]["data"];
 
             if(ruleArr == null || ruleArr.length == 0){
                 if(isEditMode()){
@@ -366,7 +366,7 @@ const luckysheetLocationCell = {
             }
         }
         else{
-            Store.luckysheet_select_save = rangeArr;
+            Store.sheet_select_save = rangeArr;
             selectHightlightShow(); 
 
             let scrollLeft = $("#sheet-cell-main").scrollLeft(), 
@@ -374,10 +374,10 @@ const luckysheetLocationCell = {
             let winH = $("#sheet-cell-main").height(), 
                 winW = $("#sheet-cell-main").width();
 
-            let r1 = Store.luckysheet_select_save[0]["row"][0],
-                r2 = Store.luckysheet_select_save[0]["row"][1],
-                c1 = Store.luckysheet_select_save[0]["column"][0],
-                c2 = Store.luckysheet_select_save[0]["column"][1];
+            let r1 = Store.sheet_select_save[0]["row"][0],
+                r2 = Store.sheet_select_save[0]["row"][1],
+                c1 = Store.sheet_select_save[0]["column"][0],
+                c2 = Store.sheet_select_save[0]["column"][1];
 
             let row = Store.visibledatarow[r2], 
                 row_pre = r1 - 1 == -1 ? 0 : Store.visibledatarow[r1 - 1];
@@ -494,4 +494,4 @@ const luckysheetLocationCell = {
     }
 }
 
-export default luckysheetLocationCell;
+export default sheetLocationCell;

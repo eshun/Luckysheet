@@ -1,12 +1,12 @@
 import { rowLocation, colLocation, mouseposition } from '../global/location';
 import editor from '../global/editor';
 import formula from '../global/formula';
-import { luckysheetRangeLast } from '../global/cursorPos';
-import { luckysheetrefreshgrid } from '../global/refresh';
-import { setluckysheet_scroll_status } from '../methods/set';
+import { sheetRangeLast } from '../global/cursorPos';
+import { sheetrefreshgrid } from '../global/refresh';
+import { setsheet_scroll_status } from '../methods/set';
 import { getSheetIndex } from '../methods/get';
 import { getObjType } from '../utils/util';
-import luckysheetFreezen from './freezen';
+import sheetFreezen from './freezen';
 import menuButton from './menuButton';
 import {checkProtectionAuthorityNormal} from './protection';
 import server from './server';
@@ -14,7 +14,7 @@ import Store from '../store';
 import method from '../global/method';
 
 //批注
-const luckysheetPostil = {
+const sheetPostil = {
     defaultWidth: 144,
     defaultHeight: 84,
     currentObj: null,
@@ -88,7 +88,7 @@ const luckysheetPostil = {
                 scrollTop
             ];
 
-            setluckysheet_scroll_status(true);
+            setsheet_scroll_status(true);
 
             if($(this).closest(".sheet-postil-show").hasClass("sheet-postil-show-active")){
                 event.stopPropagation();
@@ -132,7 +132,7 @@ const luckysheetPostil = {
                 scrollTop
             ];
 
-            setluckysheet_scroll_status(true);
+            setsheet_scroll_status(true);
 
             if($(this).closest(".sheet-postil-show").hasClass("sheet-postil-show-active")){
                 event.stopPropagation();
@@ -166,13 +166,13 @@ const luckysheetPostil = {
         let offsetX = 0;
         let offsetY = 0;
 
-        if(luckysheetFreezen.freezenverticaldata != null && mouse[0] < (luckysheetFreezen.freezenverticaldata[0] - luckysheetFreezen.freezenverticaldata[2])){
+        if(sheetFreezen.freezenverticaldata != null && mouse[0] < (sheetFreezen.freezenverticaldata[0] - sheetFreezen.freezenverticaldata[2])){
             offsetX = scrollLeft;
         } else {
             x += scrollLeft;
         }
 
-        if(luckysheetFreezen.freezenhorizontaldata != null && mouse[1] < (luckysheetFreezen.freezenhorizontaldata[0] - luckysheetFreezen.freezenhorizontaldata[2])){
+        if(sheetFreezen.freezenhorizontaldata != null && mouse[1] < (sheetFreezen.freezenhorizontaldata[0] - sheetFreezen.freezenhorizontaldata[2])){
             offsetY = scrollTop;
         } else {
             y += scrollTop;
@@ -596,7 +596,7 @@ const luckysheetPostil = {
         }
 
         $("#sheet-postil-show_"+ r +"_"+ c +" .formulaInputFocus").focus();
-        luckysheetRangeLast($("#sheet-postil-show_"+ r +"_"+ c +" .formulaInputFocus").get(0));
+        sheetRangeLast($("#sheet-postil-show_"+ r +"_"+ c +" .formulaInputFocus").get(0));
 
         _this.init();
     },
@@ -664,10 +664,10 @@ const luckysheetPostil = {
             let toX = col;
             let toY = row_pre;
 
-            if(luckysheetFreezen.freezenverticaldata != null && toX < (luckysheetFreezen.freezenverticaldata[0] - luckysheetFreezen.freezenverticaldata[2])){
+            if(sheetFreezen.freezenverticaldata != null && toX < (sheetFreezen.freezenverticaldata[0] - sheetFreezen.freezenverticaldata[2])){
                 toX += scrollLeft;
             }
-            if(luckysheetFreezen.freezenhorizontaldata != null && toY < (luckysheetFreezen.freezenhorizontaldata[0] - luckysheetFreezen.freezenhorizontaldata[2])){
+            if(sheetFreezen.freezenhorizontaldata != null && toY < (sheetFreezen.freezenhorizontaldata[0] - sheetFreezen.freezenhorizontaldata[2])){
                 toY += scrollTop;
             }
 
@@ -792,10 +792,10 @@ const luckysheetPostil = {
                         let toX = col;
                         let toY = row_pre;
             
-                        if(luckysheetFreezen.freezenverticaldata != null && toX < (luckysheetFreezen.freezenverticaldata[0] - luckysheetFreezen.freezenverticaldata[2])){
+                        if(sheetFreezen.freezenverticaldata != null && toX < (sheetFreezen.freezenverticaldata[0] - sheetFreezen.freezenverticaldata[2])){
                             toX += scrollLeft;
                         }
-                        if(luckysheetFreezen.freezenhorizontaldata != null && toY < (luckysheetFreezen.freezenhorizontaldata[0] - luckysheetFreezen.freezenhorizontaldata[2])){
+                        if(sheetFreezen.freezenhorizontaldata != null && toY < (sheetFreezen.freezenhorizontaldata[0] - sheetFreezen.freezenhorizontaldata[2])){
                             toY += scrollTop;
                         }
 
@@ -916,7 +916,7 @@ const luckysheetPostil = {
         Store.flowdata = data;
         editor.webWorkerFlowDataCache(Store.flowdata);//worker存数据
 
-        Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].data = Store.flowdata;
+        Store.sheetfile[getSheetIndex(Store.currentSheetIndex)].data = Store.flowdata;
         // formula.execFunctionGroupData = Store.flowdata;
 
         //共享编辑模式
@@ -931,7 +931,7 @@ const luckysheetPostil = {
         
         //刷新表格
         setTimeout(function () {
-            luckysheetrefreshgrid();
+            sheetrefreshgrid();
         }, 1);
     },
     positionSync: function(){
@@ -974,4 +974,4 @@ const luckysheetPostil = {
     }
 }
 
-export default luckysheetPostil;
+export default sheetPostil;

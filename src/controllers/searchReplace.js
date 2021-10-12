@@ -16,7 +16,7 @@ import {checkProtectionLockedRangeList,checkProtectionAllSelected,checkProtectio
 
 
 //查找替换
-const luckysheetSearchReplace = {
+const sheetSearchReplace = {
     createDialog: function(source){
         $("#sheet-modal-dialog-mask").hide();
         $("#sheet-search-replace").remove();
@@ -135,7 +135,7 @@ const luckysheetSearchReplace = {
                 sheetmanage.changeSheetExec(sheetIndex);
             }
 
-            Store.luckysheet_select_save = [
+            Store.sheet_select_save = [
                 { "row": [r, r], "column": [c, c] }
             ];
 
@@ -186,14 +186,14 @@ const luckysheetSearchReplace = {
         const _locale = locale();
         const locale_findAndReplace = _locale.findAndReplace;
         let range;
-        if(Store.luckysheet_select_save.length == 0 || (Store.luckysheet_select_save.length == 1 && Store.luckysheet_select_save[0].row[0] == Store.luckysheet_select_save[0].row[1] && Store.luckysheet_select_save[0].column[0] == Store.luckysheet_select_save[0].column[1])){
+        if(Store.sheet_select_save.length == 0 || (Store.sheet_select_save.length == 1 && Store.sheet_select_save[0].row[0] == Store.sheet_select_save[0].row[1] && Store.sheet_select_save[0].column[0] == Store.sheet_select_save[0].column[1])){
             range = [{ 
                 "row": [0, Store.flowdata.length - 1], 
                 "column": [0, Store.flowdata[0].length - 1] 
             }];
         }
         else{
-            range = $.extend(true, [], Store.luckysheet_select_save);                
+            range = $.extend(true, [], Store.sheet_select_save);                
         }
 
         let searchIndexArr = _this.getSearchIndexArr(searchText, range);
@@ -211,13 +211,13 @@ const luckysheetSearchReplace = {
 
         let count = 0;
 
-        if(Store.luckysheet_select_save.length == 0 || (Store.luckysheet_select_save.length == 1 && Store.luckysheet_select_save[0].row[0] == Store.luckysheet_select_save[0].row[1] && Store.luckysheet_select_save[0].column[0] == Store.luckysheet_select_save[0].column[1])){
-            if(Store.luckysheet_select_save.length == 0){
+        if(Store.sheet_select_save.length == 0 || (Store.sheet_select_save.length == 1 && Store.sheet_select_save[0].row[0] == Store.sheet_select_save[0].row[1] && Store.sheet_select_save[0].column[0] == Store.sheet_select_save[0].column[1])){
+            if(Store.sheet_select_save.length == 0){
                 count = 0;
             }
             else{
                 for(let i = 0; i < searchIndexArr.length; i++){
-                    if(searchIndexArr[i].r == Store.luckysheet_select_save[0].row[0] && searchIndexArr[i].c == Store.luckysheet_select_save[0].column[0]){
+                    if(searchIndexArr[i].r == Store.sheet_select_save[0].row[0] && searchIndexArr[i].c == Store.sheet_select_save[0].column[0]){
                         if(i == searchIndexArr.length - 1){
                             count = 0;
                         }
@@ -230,7 +230,7 @@ const luckysheetSearchReplace = {
                 }
             }
 
-            Store.luckysheet_select_save = [{ 
+            Store.sheet_select_save = [{ 
                 "row": [searchIndexArr[count].r, searchIndexArr[count].r], 
                 "column": [searchIndexArr[count].c, searchIndexArr[count].c] 
             }];
@@ -267,7 +267,7 @@ const luckysheetSearchReplace = {
                 }
             }
 
-            Store.luckysheet_select_save = range;
+            Store.sheet_select_save = range;
         }
 
         selectHightlightShow();
@@ -314,14 +314,14 @@ const luckysheetSearchReplace = {
         }
 
         let range;
-        if(Store.luckysheet_select_save.length == 0 || (Store.luckysheet_select_save.length == 1 && Store.luckysheet_select_save[0].row[0] == Store.luckysheet_select_save[0].row[1] && Store.luckysheet_select_save[0].column[0] == Store.luckysheet_select_save[0].column[1])){
+        if(Store.sheet_select_save.length == 0 || (Store.sheet_select_save.length == 1 && Store.sheet_select_save[0].row[0] == Store.sheet_select_save[0].row[1] && Store.sheet_select_save[0].column[0] == Store.sheet_select_save[0].column[1])){
             range = [{ 
                 "row": [0, Store.flowdata.length - 1], 
                 "column": [0, Store.flowdata[0].length - 1] 
             }];
         }
         else{
-            range = $.extend(true, [], Store.luckysheet_select_save);                
+            range = $.extend(true, [], Store.sheet_select_save);                
         }
 
         let searchIndexArr = _this.getSearchIndexArr(searchText, range);
@@ -344,14 +344,14 @@ const luckysheetSearchReplace = {
 
             if(value_ShowEs.indexOf("</") > -1 && value_ShowEs.indexOf(">") > -1){
                 searchAllHtml += '<div class="boxItem" data-row="' + searchIndexArr[i].r + '" data-col="' + searchIndexArr[i].c + '" data-sheetIndex="' + Store.currentSheetIndex + '">' +
-                                    '<span>' + Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].name + '</span>' +
+                                    '<span>' + Store.sheetfile[getSheetIndex(Store.currentSheetIndex)].name + '</span>' +
                                     '<span>' + chatatABC(searchIndexArr[i].c) + (searchIndexArr[i].r + 1) + '</span>' +
                                     '<span>' + value_ShowEs + '</span>' +
                                  '</div>';
             }
             else{
                 searchAllHtml += '<div class="boxItem" data-row="' + searchIndexArr[i].r + '" data-col="' + searchIndexArr[i].c + '" data-sheetIndex="' + Store.currentSheetIndex + '">' +
-                                    '<span>' + Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].name + '</span>' +
+                                    '<span>' + Store.sheetfile[getSheetIndex(Store.currentSheetIndex)].name + '</span>' +
                                     '<span>' + chatatABC(searchIndexArr[i].c) + (searchIndexArr[i].r + 1) + '</span>' +
                                     '<span title="' + value_ShowEs + '">' + value_ShowEs + '</span>' +
                                  '</div>';
@@ -362,7 +362,7 @@ const luckysheetSearchReplace = {
         
         $("#sheet-search-replace #searchAllbox .boxItem").eq(0).addClass("on").siblings().removeClass("on");
 
-        Store.luckysheet_select_save = [{ 
+        Store.sheet_select_save = [{ 
             "row": [searchIndexArr[0].r, searchIndexArr[0].r], 
             "column": [searchIndexArr[0].c, searchIndexArr[0].c] 
         }];
@@ -496,14 +496,14 @@ const luckysheetSearchReplace = {
         }
 
         let range;
-        if(Store.luckysheet_select_save.length == 0 || (Store.luckysheet_select_save.length == 1 && Store.luckysheet_select_save[0].row[0] == Store.luckysheet_select_save[0].row[1] && Store.luckysheet_select_save[0].column[0] == Store.luckysheet_select_save[0].column[1])){
+        if(Store.sheet_select_save.length == 0 || (Store.sheet_select_save.length == 1 && Store.sheet_select_save[0].row[0] == Store.sheet_select_save[0].row[1] && Store.sheet_select_save[0].column[0] == Store.sheet_select_save[0].column[1])){
             range = [{ 
                 "row": [0, Store.flowdata.length - 1], 
                 "column": [0, Store.flowdata[0].length - 1] 
             }];
         }
         else{
-            range = $.extend(true, [], Store.luckysheet_select_save);                
+            range = $.extend(true, [], Store.sheet_select_save);                
         }
 
         let searchIndexArr = _this.getSearchIndexArr(searchText, range);
@@ -521,7 +521,7 @@ const luckysheetSearchReplace = {
 
         let count = null;
 
-        let last = Store.luckysheet_select_save[Store.luckysheet_select_save.length - 1];
+        let last = Store.sheet_select_save[Store.sheet_select_save.length - 1];
         let rf = last.row_focus;
         let cf = last.column_focus;
 
@@ -604,13 +604,13 @@ const luckysheetSearchReplace = {
             setcellvalue(r, c, d, v);
         }
 
-        Store.luckysheet_select_save = [{ "row": [r, r], "column": [c, c] }];
+        Store.sheet_select_save = [{ "row": [r, r], "column": [c, c] }];
 
         if($("#sheet-search-replace #searchAllbox").is(":visible")){
             $("#sheet-search-replace #searchAllbox").hide();
         }
 
-        jfrefreshgrid(d, Store.luckysheet_select_save);
+        jfrefreshgrid(d, Store.sheet_select_save);
         selectHightlightShow();
 
         let scrollLeft = $("#sheet-cell-main").scrollLeft(), 
@@ -661,14 +661,14 @@ const luckysheetSearchReplace = {
         }
 
         let range;
-        if(Store.luckysheet_select_save.length == 0 || (Store.luckysheet_select_save.length == 1 && Store.luckysheet_select_save[0].row[0] == Store.luckysheet_select_save[0].row[1] && Store.luckysheet_select_save[0].column[0] == Store.luckysheet_select_save[0].column[1])){
+        if(Store.sheet_select_save.length == 0 || (Store.sheet_select_save.length == 1 && Store.sheet_select_save[0].row[0] == Store.sheet_select_save[0].row[1] && Store.sheet_select_save[0].column[0] == Store.sheet_select_save[0].column[1])){
             range = [{ 
                 "row": [0, Store.flowdata.length - 1], 
                 "column": [0, Store.flowdata[0].length - 1] 
             }];
         }
         else{
-            range = $.extend(true, [], Store.luckysheet_select_save);                
+            range = $.extend(true, [], Store.sheet_select_save);                
         }
 
         let searchIndexArr = _this.getSearchIndexArr(searchText, range);
@@ -755,7 +755,7 @@ const luckysheetSearchReplace = {
 
         jfrefreshgrid(d, range);
 
-        Store.luckysheet_select_save = $.extend(true, [], range);
+        Store.sheet_select_save = $.extend(true, [], range);
         selectHightlightShow();
 
         let succeedInfo = replaceHtml(locale_findAndReplace.successTip, { 
@@ -770,4 +770,4 @@ const luckysheetSearchReplace = {
     }
 }
 
-export default luckysheetSearchReplace;
+export default sheetSearchReplace;

@@ -9842,7 +9842,7 @@ export default {
         "Engineering":"Engineering",
         "Filter":"Filter",
         "Financial":"Financial",
-        "sheet":"Luckysheet",
+        "sheet":"sheet",
         "other":"Other",
         "Logical":"Logical",
         "Lookup":"Lookup",

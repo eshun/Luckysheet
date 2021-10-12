@@ -1,12 +1,12 @@
 # 快速上手
 
 ## 基本介绍
-Luckysheet ，一款纯前端类似excel的在线表格，功能强大、配置简单、完全开源。
+sheet ，一款纯前端类似excel的在线表格，功能强大、配置简单、完全开源。
 
 ## Demo
-[在线demo](https://mengshukeji.github.io/LuckysheetDemo/)
+[在线demo](https://mengshukeji.github.io/sheetDemo/)
 
-![演示](/LuckysheetDocs/img/LuckysheetDemo.gif)
+![演示](/sheetDocs/img/sheetDemo.gif)
 
 ## 在线案例
 
@@ -41,7 +41,7 @@ Luckysheet ，一款纯前端类似excel的在线表格，功能强大、配置�
 
 ### 🔨操作体验
 + **撤销/重做**
-+ **复制/粘贴/剪切操作** (支持Luckysheet到excel和excel到Luckysheet带格式的互相拷贝)
++ **复制/粘贴/剪切操作** (支持sheet到excel和excel到sheet带格式的互相拷贝)
 + **快捷键支持** (快捷键操作保持与excel一致，如果有不同或者缺失请反馈给我们)
 + **格式刷** (与google sheet类似)
 + **任意选区拖拽** (选择单元格，输入公式，插入图表，会与选区相关，可以通过任意拖动和放大缩小选区来改变与之关联的参数)
@@ -82,17 +82,17 @@ Luckysheet ，一款纯前端类似excel的在线表格，功能强大、配置�
 ### 📚插入对象
 + **插入图片** (支持JPG,PNG,SVG的插入、修改和删除，并且随表格的变动而产生变化)
 
-### ⚡Luckysheet专有
+### ⚡sheet专有
 + **矩阵计算** (通过右键菜单进行支持：对选区内的数据进行转置、旋转、数值计算)
 + **截图** (把选区的内容进行截图展示)
 + **复制到其他格式** (右键菜单的"复制为", 支持复制为json、array、对角线数据、去重等)
-+ **EXCEL导入及导出** (专为Luckysheet打造的导入导出插件，支持密码、水印、公式等的本地导入导出，导出正在开发)
++ **EXCEL导入及导出** (专为sheet打造的导入导出插件，支持密码、水印、公式等的本地导入导出，导出正在开发)
 
 ### ⏱️未来开发计划
 + **打印及设置** (像excel一样进行打印设置，并导出为图片或者PDF)
 + **树形菜单** (类似excel中的分级显示（分组）)
 + **表格新功能** (类似excel中表格的筛选器和切片器)
-+ **CSV,TXT导入及导出** (专为Luckysheet打造的导入导出插件，支持密码、水印、公式等的本地导入导出)
++ **CSV,TXT导入及导出** (专为sheet打造的导入导出插件，支持密码、水印、公式等的本地导入导出)
 + **插入svg形状** (支持[Pen tool](https://github.com/mengshukeji/Pentool)的插入、修改和删除，并且随表格的变动而产生变化)
 + **文档** (完善文档和API)
 + **敬请期待...** (可以提出好的建议给我们)
@@ -133,11 +133,11 @@ npm run build
 <script src="https://cdn.jsdelivr.net/npm/sheet@latest/dist/sheet.umd.js"></script>
 ```
 
-注意，`https://cdn.jsdelivr.net/npm/sheet@latest/dist/sheet.umd.js`这个路径意思是会拉取到最新的luckysheet代码，但是如果Luckysheet刚刚发布，jsdelivr网站可能还没来得及从npm上同步过去，故而使用这个路径还是会拉到上一个版本，我们推荐您直接指定最新版本。
+注意，`https://cdn.jsdelivr.net/npm/sheet@latest/dist/sheet.umd.js`这个路径意思是会拉取到最新的sheet代码，但是如果sheet刚刚发布，jsdelivr网站可能还没来得及从npm上同步过去，故而使用这个路径还是会拉到上一个版本，我们推荐您直接指定最新版本。
 
-想要指定Luckysheet版本，请在所有的CDN依赖文件后面加上版本号，如：`https://cdn.jsdelivr.net/npm/sheet@2.1.12/dist/sheet.umd.js`。
+想要指定sheet版本，请在所有的CDN依赖文件后面加上版本号，如：`https://cdn.jsdelivr.net/npm/sheet@2.1.12/dist/sheet.umd.js`。
 
-> 如何知道最新版本是哪一版？查看最新 [release记录](https://github.com/mengshukeji/Luckysheet/releases) 或者 [package.json](https://github.com/mengshukeji/Luckysheet/blob/master/package.json) 的`version`字段。
+> 如何知道最新版本是哪一版？查看最新 [release记录](https://github.com/mengshukeji/sheet/releases) 或者 [package.json](https://github.com/mengshukeji/sheet/blob/master/package.json) 的`version`字段。
 
 如果不方便访问 jsdelivr.net，还可以采用本地方式引入
 
@@ -165,7 +165,7 @@ npm run build
     $(function () {
         //配置项
         var options = {
-            container: 'sheet' //luckysheet为容器id
+            container: 'sheet' //sheet为容器id
         }
         sheet.create(options)
     })
@@ -176,15 +176,15 @@ npm run build
 
 ### 格式
 
-一个完整的Luckysheet表格文件的数据格式为：luckysheetfile，一个表格文件包含若干个sheet文件，对应excel的sheet0、sheet1等。
+一个完整的sheet表格文件的数据格式为：sheetfile，一个表格文件包含若干个sheet文件，对应excel的sheet0、sheet1等。
 
-一个Luckysheet文件的示例如下，该表格包含3个sheet：`
-luckysheetfile = [ {sheet1设置},  {sheet2设置},  {sheet3设置} ]`
+一个sheet文件的示例如下，该表格包含3个sheet：`
+sheetfile = [ {sheet1设置},  {sheet2设置},  {sheet3设置} ]`
 相当于excel的3个sheet
 
-![excel sheet](/LuckysheetDocs/img/excel.png)
+![excel sheet](/sheetDocs/img/excel.png)
 
-文件中的一个sheet的数据`luckysheetfile[0]`的结构如下：
+文件中的一个sheet的数据`sheetfile[0]`的结构如下：
 ```json
 {
 	"name": "Cell", //工作表名称
@@ -207,7 +207,7 @@ luckysheetfile = [ {sheet1设置},  {sheet2设置},  {sheet3设置} ]`
 	"data": [], //更新和存储使用的单元格数据
 	"scrollLeft": 0, //左右滚动条位置
 	"scrollTop": 315, //上下滚动条位置
-	"luckysheet_select_save": [], //选中的区域
+	"sheet_select_save": [], //选中的区域
 	"conditionformat_save": {},//条件格式
 	"calcChain": [],//公式链
 	"isPivotTable":false,//是否数据透视表
@@ -215,7 +215,7 @@ luckysheetfile = [ {sheet1设置},  {sheet2设置},  {sheet3设置} ]`
 	"filter_select": {},//筛选范围
 	"filter": null,//筛选配置
 	"alternateformat_save": [], //交替颜色
-	"luckysheet_alternateformat_save_modelCustom": [], //自定义交替颜色	
+	"sheet_alternateformat_save_modelCustom": [], //自定义交替颜色	
 	"freezen": {}, //冻结行列
 	"chart": [], //图表配置
 	"visibledatarow": [], //所有行的位置
@@ -227,7 +227,7 @@ luckysheetfile = [ {sheet1设置},  {sheet2设置},  {sheet3设置} ]`
 ```
 ### 查看方式
 在chrome的console中查看
-`sheet.getluckysheetfile()`
+`sheet.getsheetfile()`
 可以看到完整设置
 `[{shee1}, {sheet2}, {sheet3}]`
 
@@ -256,11 +256,11 @@ luckysheetfile = [ {sheet1设置},  {sheet2设置},  {sheet3设置} ]`
 
 ## 指引
 
-如果您使用Luckysheet遇到了问题，按以下步骤来寻找答案
+如果您使用sheet遇到了问题，按以下步骤来寻找答案
 
 1. 使用多吉或者Google搜索常见技术问题
-2. Luckysheet相关的问题优先查看[Luckysheet官方文档](https://mengshukeji.github.io/LuckysheetDocs/zh/)（注意标注TODO的功能暂未实现）
-3. 搜索[常见问题列表](https://mengshukeji.github.io/LuckysheetDocs/zh/guide/FAQ.html)
+2. sheet相关的问题优先查看[sheet官方文档](https://mengshukeji.github.io/sheetDocs/zh/)（注意标注TODO的功能暂未实现）
+3. 搜索[常见问题列表](https://mengshukeji.github.io/sheetDocs/zh/guide/FAQ.html)
 4. 搜索[官方论坛](https://support.qq.com/product/288322)，看看有没有人已经遇到过
 5. 尝试自己检查或试验以找到答案
 6. 请尝试阅读源代码以找到答案，
@@ -268,12 +268,12 @@ luckysheetfile = [ {sheet1设置},  {sheet2设置},  {sheet3设置} ]`
 如果以上方法都没有解决您的问题，可以考虑：
 
 - 去[官方论坛](https://support.qq.com/product/288322)提问
-- 去Luckysheet官方微信群或者QQ群提问
-- 发现有明显问题的或者需求无法满足的，直接提交[issues](https://github.com/mengshukeji/Luckysheet/issues)
+- 去sheet官方微信群或者QQ群提问
+- 发现有明显问题的或者需求无法满足的，直接提交[issues](https://github.com/mengshukeji/sheet/issues)
 
 > 推荐阅读 [提问的智慧](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md)
 
-同时，我们强烈推荐您帮助我们丰富Luckysheet社区
+同时，我们强烈推荐您帮助我们丰富sheet社区
 
 - 如果您发现文档或者代码有问题，您可以通过提交PR来贡献。所有合理的改动、优化、修正，或者文档的修正、更新相关的提交都会被接受
-- 当您有了一部分使用或者二次开发Luckysheet的经验，我们鼓励您通过博文分享出来
+- 当您有了一部分使用或者二次开发sheet的经验，我们鼓励您通过博文分享出来

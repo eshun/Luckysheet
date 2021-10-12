@@ -9810,7 +9810,7 @@ export default {
         "Engineering":"Ingeniería",
         "Filter":"Filtro",
         "Financial":"Financiero",
-        "sheet":"Luckysheet",
+        "sheet":"sheet",
         "other":"Otro",
         "Logical":"Lógica",
         "Lookup":"Búsqueda",

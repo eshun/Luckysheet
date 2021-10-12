@@ -4,15 +4,15 @@ import { jfrefreshgrid_adRC, jfrefreshgrid_deleteCell, jfrefreshgrid_rhcw } from
 import { datagridgrowth, getcellFormula } from './getdata';
 import { setcellvalue } from './setdata';
 import conditionformat from '../controllers/conditionformat';
-import luckysheetFreezen from '../controllers/freezen';
+import sheetFreezen from '../controllers/freezen';
 import { selectHightlightShow } from '../controllers/select';
-import { luckysheet_searcharray } from '../controllers/sheetSearch';
+import { sheet_searcharray } from '../controllers/sheetSearch';
 import {checkProtectionAuthorityNormal,checkProtectionNotEnable} from '../controllers/protection';
 import { getSheetIndex } from '../methods/get';
 import Store from '../store';
 
 //增加行列
-function luckysheetextendtable(type, index, value, direction, sheetIndex) {
+function sheetextendtable(type, index, value, direction, sheetIndex) {
     sheetIndex = sheetIndex || Store.currentSheetIndex;
 
     if(type=='row' && !checkProtectionAuthorityNormal(sheetIndex, "insertRows")){
@@ -23,7 +23,7 @@ function luckysheetextendtable(type, index, value, direction, sheetIndex) {
     }
 
     let curOrder = getSheetIndex(sheetIndex);
-    let file = Store.luckysheetfile[curOrder];
+    let file = Store.sheetfile[curOrder];
     let d = $.extend(true, [], file.data);
 
     value = Math.floor(value);
@@ -416,9 +416,9 @@ function luckysheetextendtable(type, index, value, direction, sheetIndex) {
 
     //冻结配置变动
     let newFreezen = { "freezenhorizontaldata": null, "freezenverticaldata": null };
-    if(luckysheetFreezen.freezenhorizontaldata != null && type == "row"){
-        let freezen_scrollTop = luckysheetFreezen.freezenhorizontaldata[2];
-        let freezen_row_st = luckysheetFreezen.freezenhorizontaldata[1] - 1;
+    if(sheetFreezen.freezenhorizontaldata != null && type == "row"){
+        let freezen_scrollTop = sheetFreezen.freezenhorizontaldata[2];
+        let freezen_row_st = sheetFreezen.freezenhorizontaldata[1] - 1;
 
         if(freezen_row_st == index && direction == "lefttop"){
             freezen_row_st += value;
@@ -433,17 +433,17 @@ function luckysheetextendtable(type, index, value, direction, sheetIndex) {
             Store.visibledatarow[freezen_row_st], 
             freezen_row_st + 1, 
             freezen_scrollTop, 
-            luckysheetFreezen.cutVolumn(Store.visibledatarow, freezen_row_st + 1), 
+            sheetFreezen.cutVolumn(Store.visibledatarow, freezen_row_st + 1), 
             freezen_top
         ];
     }
     else{
-        newFreezen.freezenhorizontaldata = luckysheetFreezen.freezenhorizontaldata;
+        newFreezen.freezenhorizontaldata = sheetFreezen.freezenhorizontaldata;
     }
 
-    if(luckysheetFreezen.freezenverticaldata != null && type == "column"){
-        let freezen_scrollLeft = luckysheetFreezen.freezenverticaldata[2];
-        let freezen_col_st = luckysheetFreezen.freezenverticaldata[1] - 1;
+    if(sheetFreezen.freezenverticaldata != null && type == "column"){
+        let freezen_scrollLeft = sheetFreezen.freezenverticaldata[2];
+        let freezen_col_st = sheetFreezen.freezenverticaldata[1] - 1;
 
         if(freezen_col_st == index && direction == "lefttop"){
             freezen_col_st += value;
@@ -458,12 +458,12 @@ function luckysheetextendtable(type, index, value, direction, sheetIndex) {
             Store.visibledatacolumn[freezen_col_st], 
             freezen_col_st + 1, 
             freezen_scrollLeft, 
-            luckysheetFreezen.cutVolumn(Store.visibledatacolumn, freezen_col_st + 1), 
+            sheetFreezen.cutVolumn(Store.visibledatacolumn, freezen_col_st + 1), 
             freezen_left
         ];
     }
     else{
-        newFreezen.freezenverticaldata = luckysheetFreezen.freezenverticaldata;
+        newFreezen.freezenverticaldata = sheetFreezen.freezenverticaldata;
     }
 
     //数据验证配置变动
@@ -930,9 +930,9 @@ function luckysheetextendtable(type, index, value, direction, sheetIndex) {
         }
     }
     
-    file.luckysheet_select_save = range;
+    file.sheet_select_save = range;
     if (file.index == Store.currentSheetIndex) {
-        Store.luckysheet_select_save = range;
+        Store.sheet_select_save = range;
         selectHightlightShow();
     }
 
@@ -959,7 +959,7 @@ function luckysheetextendtable(type, index, value, direction, sheetIndex) {
     }
 }
 
-function luckysheetextendData(rowlen, newData) {
+function sheetextendData(rowlen, newData) {
     let d = editor.deepCopyFlowData(Store.flowdata);
 
     let cfg = $.extend(true, {}, Store.config);
@@ -987,18 +987,18 @@ function luckysheetextendData(rowlen, newData) {
     //sheet.flowdata
     Store.flowdata = d;
     editor.webWorkerFlowDataCache(Store.flowdata);//worker存数据
-    Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].data = d;           
+    Store.sheetfile[getSheetIndex(Store.currentSheetIndex)].data = d;           
 
     //config
     Store.config = cfg;
-    Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].config = Store.config;
+    Store.sheetfile[getSheetIndex(Store.currentSheetIndex)].config = Store.config;
 
     //行高、列宽刷新
     jfrefreshgrid_rhcw(Store.flowdata.length, Store.flowdata[0].length);
 }
 
 //删除行列
-function luckysheetdeletetable(type, st, ed, sheetIndex) {
+function sheetdeletetable(type, st, ed, sheetIndex) {
 
     sheetIndex = sheetIndex || Store.currentSheetIndex;
     
@@ -1011,7 +1011,7 @@ function luckysheetdeletetable(type, st, ed, sheetIndex) {
 
     let curOrder = getSheetIndex(sheetIndex);
 
-    let file = Store.luckysheetfile[curOrder];
+    let file = Store.sheetfile[curOrder];
     let d = $.extend(true, [], file.data);
 
     if(st < 0){
@@ -1434,14 +1434,14 @@ function luckysheetdeletetable(type, st, ed, sheetIndex) {
 
     //冻结配置变动
     let newFreezen = { "freezenhorizontaldata": null, "freezenverticaldata": null };
-    if(luckysheetFreezen.freezenhorizontaldata != null && type == "row"){
-        let freezen_scrollTop = luckysheetFreezen.freezenhorizontaldata[2];
-        let freezen_st = luckysheet_searcharray(Store.visibledatarow, freezen_scrollTop);
+    if(sheetFreezen.freezenhorizontaldata != null && type == "row"){
+        let freezen_scrollTop = sheetFreezen.freezenhorizontaldata[2];
+        let freezen_st = sheet_searcharray(Store.visibledatarow, freezen_scrollTop);
         if(freezen_st == -1){
             freezen_st = 0;
         }
 
-        let freezen_row_st = luckysheetFreezen.freezenhorizontaldata[1] - 1;
+        let freezen_row_st = sheetFreezen.freezenhorizontaldata[1] - 1;
 
         if(freezen_row_st >= st){
             if(freezen_row_st < ed){
@@ -1462,22 +1462,22 @@ function luckysheetdeletetable(type, st, ed, sheetIndex) {
             Store.visibledatarow[freezen_row_st], 
             freezen_row_st + 1, 
             freezen_scrollTop, 
-            luckysheetFreezen.cutVolumn(Store.visibledatarow, freezen_row_st + 1), 
+            sheetFreezen.cutVolumn(Store.visibledatarow, freezen_row_st + 1), 
             freezen_top
         ];
     }
     else{
-        newFreezen.freezenhorizontaldata = luckysheetFreezen.freezenhorizontaldata;
+        newFreezen.freezenhorizontaldata = sheetFreezen.freezenhorizontaldata;
     }
 
-    if(luckysheetFreezen.freezenverticaldata != null && type == "column"){
-        let freezen_scrollLeft = luckysheetFreezen.freezenverticaldata[2];
-        let freezen_st2 = luckysheet_searcharray(Store.visibledatacolumn, freezen_scrollLeft);
+    if(sheetFreezen.freezenverticaldata != null && type == "column"){
+        let freezen_scrollLeft = sheetFreezen.freezenverticaldata[2];
+        let freezen_st2 = sheet_searcharray(Store.visibledatacolumn, freezen_scrollLeft);
         if(freezen_st2 == -1){
             freezen_st2 = 0;
         }
 
-        let freezen_col_st = luckysheetFreezen.freezenverticaldata[1] - 1;
+        let freezen_col_st = sheetFreezen.freezenverticaldata[1] - 1;
 
         if(freezen_col_st >= st){
             if(freezen_col_st < ed){
@@ -1498,12 +1498,12 @@ function luckysheetdeletetable(type, st, ed, sheetIndex) {
             Store.visibledatacolumn[freezen_col_st], 
             freezen_col_st + 1, 
             freezen_scrollLeft, 
-            luckysheetFreezen.cutVolumn(Store.visibledatacolumn, freezen_col_st + 1), 
+            sheetFreezen.cutVolumn(Store.visibledatacolumn, freezen_col_st + 1), 
             freezen_left
         ];
     }
     else{
-        newFreezen.freezenverticaldata = luckysheetFreezen.freezenverticaldata;
+        newFreezen.freezenverticaldata = sheetFreezen.freezenverticaldata;
     }
 
     //数据验证配置变动
@@ -1830,14 +1830,14 @@ function luckysheetdeletetable(type, st, ed, sheetIndex) {
 }
 
 //删除单元格
-function luckysheetDeleteCell(type, str, edr, stc, edc, sheetIndex) {
+function sheetDeleteCell(type, str, edr, stc, edc, sheetIndex) {
     sheetIndex = sheetIndex || Store.currentSheetIndex;
     if(!checkProtectionNotEnable(sheetIndex)){
         return;
     }
 
     let curOrder = getSheetIndex(sheetIndex);
-    let file = Store.luckysheetfile[curOrder];
+    let file = Store.sheetfile[curOrder];
 
     let d = $.extend(true, [], file.data);
 
@@ -2684,8 +2684,8 @@ function getMoveRange(type, str, edr, stc, edc, r1, r2, c1, c2, rlen, clen) {
 }
 
 export {
-    luckysheetextendtable,
-    luckysheetextendData,
-    luckysheetdeletetable,
-    luckysheetDeleteCell,
+    sheetextendtable,
+    sheetextendData,
+    sheetdeletetable,
+    sheetDeleteCell,
 }

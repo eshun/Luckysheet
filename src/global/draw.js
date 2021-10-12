@@ -1,11 +1,11 @@
 import pivotTable from '../controllers/pivotTable';
 import conditionformat from '../controllers/conditionformat';
 import alternateformat from '../controllers/alternateformat';
-import luckysheetSparkline from '../controllers/sparkline';
+import sheetSparkline from '../controllers/sparkline';
 import menuButton from '../controllers/menuButton';
 import dataVerificationCtrl from '../controllers/dataVerificationCtrl';
-import { sheetdefaultstyle, luckysheet_CFiconsImg,sheetdefaultFont } from '../controllers/constant';
-import { luckysheet_searcharray } from '../controllers/sheetSearch';
+import { sheetdefaultstyle, sheet_CFiconsImg,sheetdefaultFont } from '../controllers/constant';
+import { sheet_searcharray } from '../controllers/sheetSearch';
 import { dynamicArrayCompute } from './dynamicArray';
 import browser from './browser';
 import { isRealNull, isRealNum } from './validate';
@@ -13,14 +13,14 @@ import { getMeasureText,getCellTextInfo } from './getRowlen';
 import { getRealCellValue } from './getdata';
 import { getBorderInfoComputeRange } from './border';
 import { getSheetIndex } from '../methods/get';
-import { getObjType, chatatABC, luckysheetfontformat } from '../utils/util';
+import { getObjType, chatatABC, sheetfontformat } from '../utils/util';
 import { isInlineStringCell } from '../controllers/inlineString';
 import method from './method';
 import Store from '../store';
 import locale from '../locale/locale';
 import sheetmanage from '../controllers/sheetmanage';
 
-function luckysheetDrawgridRowTitle(scrollHeight, drawHeight, offsetTop) {
+function sheetDrawgridRowTitle(scrollHeight, drawHeight, offsetTop) {
     if (scrollHeight == null) {
         scrollHeight = $("#sheet-cell-main").scrollTop();
     }
@@ -49,8 +49,8 @@ function luckysheetDrawgridRowTitle(scrollHeight, drawHeight, offsetTop) {
     sheetTableContent.fillStyle = sheetdefaultstyle.fillStyle;
 
     let dataset_row_st, dataset_row_ed;
-    dataset_row_st = luckysheet_searcharray(Store.visibledatarow, scrollHeight);
-    dataset_row_ed = luckysheet_searcharray(Store.visibledatarow, scrollHeight + drawHeight);
+    dataset_row_st = sheet_searcharray(Store.visibledatarow, scrollHeight);
+    dataset_row_ed = sheet_searcharray(Store.visibledatarow, scrollHeight + drawHeight);
 
     if (dataset_row_st == -1) {
         dataset_row_st = 0;
@@ -218,7 +218,7 @@ function luckysheetDrawgridRowTitle(scrollHeight, drawHeight, offsetTop) {
     
 }
 
-function luckysheetDrawgridColumnTitle(scrollWidth, drawWidth, offsetLeft) {
+function sheetDrawgridColumnTitle(scrollWidth, drawWidth, offsetLeft) {
     if (scrollWidth == null) {
         scrollWidth = $("#sheet-cell-main").scrollLeft();
     }
@@ -247,8 +247,8 @@ function luckysheetDrawgridColumnTitle(scrollWidth, drawWidth, offsetLeft) {
     sheetTableContent.fillStyle = sheetdefaultstyle.fillStyle;
 
     let dataset_col_st, dataset_col_ed;
-    dataset_col_st = luckysheet_searcharray(Store.visibledatacolumn, scrollWidth);
-    dataset_col_ed = luckysheet_searcharray(Store.visibledatacolumn, scrollWidth + drawWidth);
+    dataset_col_st = sheet_searcharray(Store.visibledatacolumn, scrollWidth);
+    dataset_col_ed = sheet_searcharray(Store.visibledatacolumn, scrollWidth + drawWidth);
 
     if (dataset_col_st == -1) {
         dataset_col_st = 0;
@@ -416,7 +416,7 @@ function luckysheetDrawgridColumnTitle(scrollWidth, drawWidth, offsetLeft) {
 
 }
 
-function luckysheetDrawMain(scrollWidth, scrollHeight, drawWidth, drawHeight, offsetLeft, offsetTop, columnOffsetCell, rowOffsetCell, mycanvas, screenshot) {
+function sheetDrawMain(scrollWidth, scrollHeight, drawWidth, drawHeight, offsetLeft, offsetTop, columnOffsetCell, rowOffsetCell, mycanvas, screenshot) {
 
     if(Store.flowdata == null){
         return;
@@ -491,8 +491,8 @@ function luckysheetDrawMain(scrollWidth, scrollHeight, drawWidth, drawHeight, of
         dataset_col_st, 
         dataset_col_ed;
 
-    dataset_row_st = luckysheet_searcharray(Store.visibledatarow, scrollHeight);
-    dataset_row_ed = luckysheet_searcharray(Store.visibledatarow, scrollHeight + drawHeight);
+    dataset_row_st = sheet_searcharray(Store.visibledatarow, scrollHeight);
+    dataset_row_ed = sheet_searcharray(Store.visibledatarow, scrollHeight + drawHeight);
 
     if (dataset_row_st == -1) {
         dataset_row_st = 0;
@@ -510,8 +510,8 @@ function luckysheetDrawMain(scrollWidth, scrollHeight, drawWidth, drawHeight, of
         dataset_row_ed = Store.visibledatarow.length - 1;
     }
 
-    dataset_col_st = luckysheet_searcharray(Store.visibledatacolumn, scrollWidth);
-    dataset_col_ed = luckysheet_searcharray(Store.visibledatacolumn, scrollWidth + drawWidth);
+    dataset_col_st = sheet_searcharray(Store.visibledatacolumn, scrollWidth);
+    dataset_col_ed = sheet_searcharray(Store.visibledatacolumn, scrollWidth + drawWidth);
     
     if (dataset_col_st == -1) {
         dataset_col_st = 0;
@@ -690,7 +690,7 @@ function luckysheetDrawMain(scrollWidth, scrollHeight, drawWidth, drawHeight, of
     }
 
     //动态数组公式计算
-    let dynamicArray_compute = dynamicArrayCompute(Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)]["dynamicArray"]);
+    let dynamicArray_compute = dynamicArrayCompute(Store.sheetfile[getSheetIndex(Store.currentSheetIndex)]["dynamicArray"]);
 
     //交替颜色计算
     let af_compute = alternateformat.getComputeMap();
@@ -860,7 +860,7 @@ function luckysheetDrawMain(scrollWidth, scrollHeight, drawWidth, drawHeight, of
 
 
             //数据透视表
-            if (!!Store.luckysheetcurrentisPivotTable && pivotTable.drawPivotTable) {
+            if (!!Store.sheetcurrentisPivotTable && pivotTable.drawPivotTable) {
                 if ((c == 0 || c == 5) && r <= 11) {
                     sheetTableContent.beginPath();
                     sheetTableContent.moveTo(
@@ -906,7 +906,7 @@ function luckysheetDrawMain(scrollWidth, scrollHeight, drawWidth, drawHeight, of
                     sheetTableContent.restore();
                 }
             }
-            else if (!!Store.luckysheetcurrentisPivotTable) {
+            else if (!!Store.sheetcurrentisPivotTable) {
                 if (c < pivotTable.pivotTableBoundary[1] && r < pivotTable.pivotTableBoundary[0]) {
                     sheetTableContent.beginPath();
                     sheetTableContent.moveTo(
@@ -1134,8 +1134,8 @@ function sheetDrawFistBorder(drawWidth, drawHeight, offsetLeft, offsetTop,mycanv
     sheetTableContent.save();
     
     let bodrder05 = 0.5;//Default 0.5
-    let st_r = Store.luckysheet_select_save[0].row[0];
-    let st_c = Store.luckysheet_select_save[0].column[0];
+    let st_r = Store.sheet_select_save[0].row[0];
+    let st_c = Store.sheet_select_save[0].column[0];
 
     if(Store.config["borderInfo"] != null && Store.config["borderInfo"].length > 0){
         //边框渲染
@@ -1239,7 +1239,7 @@ let sparklinesRender = function(r, c, offsetX, offsetY, canvasid, ctx){
             let y = temp1.offsetY;
             x = x == null ? 0 : x;
             y = y == null ? 0 : y;
-            luckysheetSparkline.render(
+            sheetSparkline.render(
                 temp1.shapeseq, 
                 temp1.shapes, 
                 offsetX + x, 
@@ -1257,7 +1257,7 @@ let sparklinesRender = function(r, c, offsetX, offsetY, canvasid, ctx){
                 let y = temp1.offsetY;
                 x = x == null ? 0 : x;
                 y = y == null ? 0 : y;
-                luckysheetSparkline.render(
+                sheetSparkline.render(
                     temp1.shapeseq, 
                     temp1.shapes, 
                     offsetX + x, 
@@ -1333,7 +1333,7 @@ let nullCellRender = function(r, c, start_r, start_c, end_r, end_c,sheetTableCon
         let horizonAlignPos = (start_c + 4 + offsetLeft) ;
 
         //垂直对齐 (默认为2，下对齐)
-        let verticalFixed = browser.luckysheetrefreshfixed();
+        let verticalFixed = browser.sheetrefreshfixed();
         let verticalAlignPos = (end_r + offsetTop - 2) ; 
         sheetTableContent.textBaseline = 'bottom';
         
@@ -1372,7 +1372,7 @@ let nullCellRender = function(r, c, start_r, start_c, end_r, end_c,sheetTableCon
     //即溢出单元格跨此单元格，此单元格不绘制右边框
     if(!cellOverflow_colInObj.colIn || cellOverflow_colInObj.colLast){
         //右边框
-        if(!Store.luckysheetcurrentisPivotTable && !fillStyle && Store.showGridLines){
+        if(!Store.sheetcurrentisPivotTable && !fillStyle && Store.showGridLines){
             sheetTableContent.beginPath();
             sheetTableContent.moveTo(
                  (end_c + offsetLeft - 2 + bodrder05), 
@@ -1391,7 +1391,7 @@ let nullCellRender = function(r, c, start_r, start_c, end_r, end_c,sheetTableCon
     }
 
     //下边框
-    if(!Store.luckysheetcurrentisPivotTable && !fillStyle && Store.showGridLines){
+    if(!Store.sheetcurrentisPivotTable && !fillStyle && Store.showGridLines){
         sheetTableContent.beginPath();
         sheetTableContent.moveTo(
              (start_c + offsetLeft - 1), 
@@ -1858,7 +1858,7 @@ let cellRender = function(r, c, start_r, start_c, end_r, end_c, value, sheetTabl
             horizonAlignPos = horizonAlignPos/Store.zoomRatio;
 
             sheetTableContent.drawImage(
-                luckysheet_CFiconsImg, 
+                sheet_CFiconsImg, 
                 l * 42, 
                 t * 32, 
                 32, 
@@ -1906,7 +1906,7 @@ let cellRender = function(r, c, start_r, start_c, end_r, end_c, value, sheetTabl
 
     if(cellOverflow_bd_r_render){
         //右边框
-        if(!Store.luckysheetcurrentisPivotTable && !fillStyle && Store.showGridLines){
+        if(!Store.sheetcurrentisPivotTable && !fillStyle && Store.showGridLines){
             sheetTableContent.beginPath();
             sheetTableContent.moveTo(
                  (end_c + offsetLeft - 2 + bodrder05), 
@@ -1924,7 +1924,7 @@ let cellRender = function(r, c, start_r, start_c, end_r, end_c, value, sheetTabl
     }
 
     //下边框
-    if(!Store.luckysheetcurrentisPivotTable && !fillStyle && Store.showGridLines){
+    if(!Store.sheetcurrentisPivotTable && !fillStyle && Store.showGridLines){
         sheetTableContent.beginPath();
         sheetTableContent.moveTo(
              (start_c + offsetLeft - 1), 
@@ -1983,7 +1983,7 @@ let cellOverflowRender = function(r, c, stc, edc,sheetTableContent,scrollHeight,
     let pos_x = start_c + offsetLeft;
     let pos_y = start_r + offsetTop + 1;
 
-    let fontset = luckysheetfontformat(cell);
+    let fontset = sheetfontformat(cell);
     sheetTableContent.font = fontset;
 
     sheetTableContent.save();
@@ -2387,8 +2387,8 @@ function cellTextRender(textInfo, ctx, option){
 
 
 export {
-    luckysheetDrawgridRowTitle,
-    luckysheetDrawgridColumnTitle,
-    luckysheetDrawMain,
+    sheetDrawgridRowTitle,
+    sheetDrawgridColumnTitle,
+    sheetDrawMain,
     sheetDrawFistBorder
 }

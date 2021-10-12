@@ -1,6 +1,6 @@
 import formula from '../global/formula';
 import editor from '../global/editor';
-import {luckysheetupdateCell} from './updateCell';
+import {sheetupdateCell} from './updateCell';
 import { modelHTML } from './constant';
 import { replaceHtml } from '../utils/util';
 import Store from '../store';
@@ -257,11 +257,11 @@ const ifFormulaGenerator = {
             $("#sheet-modal-dialog-mask").hide();
             $("#sheet-ifFormulaGenerator-dialog").hide();
 
-            let last = Store.luckysheet_select_save[Store.luckysheet_select_save.length - 1];
+            let last = Store.sheet_select_save[Store.sheet_select_save.length - 1];
             let row_index = last["row_focus"], 
                 col_index = last["column_focus"];
             
-            luckysheetupdateCell(row_index, col_index, Store.flowdata);
+            sheetupdateCell(row_index, col_index, Store.flowdata);
 
             $("#sheet-rich-text-editor").html("=" + str);
             $("#sheet-functionbox-cell").html($("#sheet-rich-text-editor").html());

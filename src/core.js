@@ -5,8 +5,8 @@ import Store from './store';
 import server from './controllers/server';
 import sheetConfigSetting from './controllers/sheetConfigSetting';
 import sheetmanage from './controllers/sheetmanage';
-import luckysheetsizeauto from './controllers/resize';
-import luckysheetHandler from './controllers/handler';
+import sheetsizeauto from './controllers/resize';
+import sheetHandler from './controllers/handler';
 import {initialFilterHandler} from './controllers/filter';
 import {initialMatrixOperation} from './controllers/matrixOperation';
 import {initialSheetBar} from './controllers/sheetBar';
@@ -16,14 +16,14 @@ import {keyboardInitial} from './controllers/keyboard';
 import {orderByInitial} from './controllers/orderBy';
 import {initPlugins} from './controllers/expendPlugins';
 import {
-    getluckysheetfile,
-    getluckysheet_select_save,
+    getsheet_file,
+    getsheet_select_save,
     getconfig,
 } from './methods/get';
 import {
-    setluckysheet_select_save
+    setsheet_select_save
 } from './methods/set';
-import { luckysheetrefreshgrid, jfrefreshgrid } from './global/refresh';
+import { sheetrefreshgrid, jfrefreshgrid } from './global/refresh';
 import functionlist from './function/functionlist';
 import { sheetlodingHTML } from './controllers/constant';
 import { getcellvalue, getdatabyselection } from './global/getdata';
@@ -39,7 +39,7 @@ import flatpickr from 'flatpickr'
 import Mandarin from 'flatpickr/dist/l10n/zh.js'
 import { initListener } from './controllers/listener';
 import { hideloading, showloading } from './global/loading.js';
-import { luckysheetextendData } from './global/extend.js';
+import { sheetextendData } from './global/extend.js';
 
 let sheet = {};
 
@@ -51,7 +51,7 @@ sheet = common_extend(api,sheet);
 
 
 
-//创建luckysheet表格
+//创建sheet表格
 sheet.create = function (setting) {
     method.destroy()
     // Store original parameters for api: toJson
@@ -70,7 +70,7 @@ sheet.create = function (setting) {
 
     let container = extendsetting.container;
     Store.container = container;
-    Store.luckysheetfile = extendsetting.data;
+    Store.sheetfile = extendsetting.data;
     Store.defaultcolumnNum = extendsetting.column;
     Store.defaultrowNum = extendsetting.row;
     Store.defaultFontSize = extendsetting.defaultFontSize;
@@ -173,7 +173,7 @@ sheet.create = function (setting) {
 
     if (loadurl == "") {
         sheetmanage.initialjfFile(menu, title);
-        // luckysheetsizeauto();
+        // sheetsizeauto();
         initialWorkBook();
     }
     else {
@@ -182,7 +182,7 @@ sheet.create = function (setting) {
                 if(!!data){
                     //let data = new Function("return " + d)();
                     if(data && data.length>0){
-                        Store.luckysheetfile = data;
+                        Store.sheetfile = data;
                     }
                 }
             }catch(e){
@@ -190,7 +190,7 @@ sheet.create = function (setting) {
             }
     
             sheetmanage.initialjfFile(menu, title);
-            // luckysheetsizeauto();
+            // sheetsizeauto();
             initialWorkBook();
 
             //需要更新数据给后台时，建立WebSocket连接
@@ -199,7 +199,7 @@ sheet.create = function (setting) {
             }
         }).fail(function() {
             sheetmanage.initialjfFile(menu, title);
-            // luckysheetsizeauto();
+            // sheetsizeauto();
             initialWorkBook();
             //需要更新数据给后台时，建立WebSocket连接
             if(server.allowUpdate){
@@ -210,7 +210,7 @@ sheet.create = function (setting) {
 }
 
 function initialWorkBook(){
-    luckysheetHandler();//Overall dom initialization
+    sheetHandler();//Overall dom initialization
     initialFilterHandler();//Filter initialization
     initialMatrixOperation();//Right click matrix initialization
     initialSheetBar();//bottom sheet bar initialization
@@ -224,13 +224,13 @@ function initialWorkBook(){
 }
 
 //获取所有表格数据
-sheet.getluckysheetfile = getluckysheetfile;
+sheet.getsheet_file = getsheet_file;
 
 //获取当前表格 选区
-sheet.getluckysheet_select_save = getluckysheet_select_save;
+sheet.getsheet_select_save = getsheet_select_save;
 
 //设置当前表格 选区
-sheet.setluckysheet_select_save = setluckysheet_select_save;
+sheet.setsheet_select_save = setsheet_select_save;
 
 //获取当前表格 config配置
 sheet.getconfig = getconfig;
@@ -242,7 +242,7 @@ sheet.getGridData = sheetmanage.getGridData;
 sheet.buildGridData = sheetmanage.buildGridData;
 
 // Refresh the canvas display data according to scrollHeight and scrollWidth
-sheet.luckysheetrefreshgrid = luckysheetrefreshgrid;
+sheet.sheetrefreshgrid = sheetrefreshgrid;
 
 // Refresh canvas
 sheet.jfrefreshgrid = jfrefreshgrid;
@@ -271,7 +271,7 @@ sheet.destroy = method.destroy;
 
 sheet.showLoadingProgress = showloading;
 sheet.hideLoadingProgress = hideloading;
-sheet.luckysheetextendData = luckysheetextendData;
+sheet.sheetextendData = sheetextendData;
 
 export {
     sheet

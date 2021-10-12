@@ -1,5 +1,5 @@
 import pivotTable from './pivotTable';
-import luckysheetFreezen from './freezen';
+import sheetFreezen from './freezen';
 import menuButton from './menuButton';
 import conditionformat from './conditionformat';
 import alternateformat from './alternateformat';
@@ -11,14 +11,14 @@ import { isEditMode } from '../global/validate';
 import { getcellvalue,getInlineStringStyle } from '../global/getdata';
 import { valueShowEs } from '../global/format';
 import formula from '../global/formula';
-import { luckysheetRangeLast } from '../global/cursorPos';
+import { sheetRangeLast } from '../global/cursorPos';
 import cleargridelement from '../global/cleargridelement';
 import {isInlineStringCell} from './inlineString';
 import Store from '../store';
 import server from './server';
 import method from '../global/method';
 
-export function luckysheetupdateCell(row_index1, col_index1, d, cover, isnotfocus) {
+export function sheetupdateCell(row_index1, col_index1, d, cover, isnotfocus) {
     if(!checkProtectionLocked(row_index1, col_index1, Store.currentSheetIndex)){
         $("#sheet-functionbox-cell").blur();
         return;
@@ -29,10 +29,10 @@ export function luckysheetupdateCell(row_index1, col_index1, d, cover, isnotfocu
     }
 
     // 钩子函数
-    if(!method.createHookFunction('cellEditBefore',Store.luckysheet_select_save)){return;}
+    if(!method.createHookFunction('cellEditBefore',Store.sheet_select_save)){return;}
 
     // 编辑单元格时发送指令到后台，通知其他单元格更新为“正在输入”状态
-    server.saveParam("mv", Store.currentSheetIndex,  {op:"enterEdit",range:Store.luckysheet_select_save});
+    server.saveParam("mv", Store.currentSheetIndex,  {op:"enterEdit",range:Store.sheet_select_save});
 
     //数据验证
     if(dataVerificationCtrl.dataVerification != null && dataVerificationCtrl.dataVerification[row_index1 + '_' + col_index1] != null){
@@ -67,12 +67,12 @@ export function luckysheetupdateCell(row_index1, col_index1, d, cover, isnotfocu
     }
 
     let left = col_pre + container_offset.left + Store.rowHeaderWidth - scrollLeft - 2;
-    if(luckysheetFreezen.freezenverticaldata != null && col_index1 <= luckysheetFreezen.freezenverticaldata[1]){
+    if(sheetFreezen.freezenverticaldata != null && col_index1 <= sheetFreezen.freezenverticaldata[1]){
         left = col_pre + container_offset.left + Store.rowHeaderWidth - 2;
     }
 
     let top = row_pre + container_offset.top + Store.infobarHeight + Store.toolbarHeight + Store.calculatebarHeight + Store.columnHeaderHeight - scrollTop - 2;
-    if(luckysheetFreezen.freezenhorizontaldata != null && row_index1 <= luckysheetFreezen.freezenhorizontaldata[1]){
+    if(sheetFreezen.freezenhorizontaldata != null && row_index1 <= sheetFreezen.freezenhorizontaldata[1]){
         top = row_pre + container_offset.top + Store.infobarHeight + Store.toolbarHeight + Store.calculatebarHeight + Store.columnHeaderHeight - 2;
     }
 
@@ -93,7 +93,7 @@ export function luckysheetupdateCell(row_index1, col_index1, d, cover, isnotfocu
         "height":(100 / Store.zoomRatio) + "%",
     }
 
-    Store.luckysheetCellUpdate = [row_index, col_index];
+    Store.sheetCellUpdate = [row_index, col_index];
     if (!isnotfocus) {
         $("#sheet-rich-text-editor").focus().select();
     }
@@ -108,7 +108,7 @@ export function luckysheetupdateCell(row_index1, col_index1, d, cover, isnotfocu
         "display":"flex",
     });
 
-    if(luckysheetFreezen.freezenverticaldata != null || luckysheetFreezen.freezenhorizontaldata != null){
+    if(sheetFreezen.freezenverticaldata != null || sheetFreezen.freezenhorizontaldata != null){
         $("#sheet-input-box").css("z-index", 10002);
     }
     
@@ -224,7 +224,7 @@ export function luckysheetupdateCell(row_index1, col_index1, d, cover, isnotfocu
     else{
         $("#sheet-rich-text-editor").html(value);
         if (!isnotfocus) {
-            luckysheetRangeLast($("#sheet-rich-text-editor")[0]);
+            sheetRangeLast($("#sheet-rich-text-editor")[0]);
         }
     }
 

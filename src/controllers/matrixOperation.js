@@ -3,7 +3,7 @@ import {
     getObjType,
     chatatABC,
     numFormat,
-    luckysheetContainerFocus,
+    sheetContainerFocus,
 } from '../utils/util';
 import { hasPartMC, isEditMode } from '../global/validate';
 import { getdatabyselection, getcellvalue } from '../global/getdata';
@@ -19,9 +19,9 @@ export function initialMatrixOperation(){
     //复制为json格式字符串，首行为标题
     $("#sheet-copy-json-head").click(function (event) {
         $("body .sheet-cols-menu").hide();
-        luckysheetContainerFocus();
+        sheetContainerFocus();
 
-        if(Store.luckysheet_select_save.length > 1){
+        if(Store.sheet_select_save.length > 1){
             if(isEditMode()){
                 alert(locale_drag.noMulti);
             }
@@ -35,11 +35,11 @@ export function initialMatrixOperation(){
         if(Store.config["merge"] != null){
             let has_PartMC = false;
 
-            for(let s = 0; s < Store.luckysheet_select_save.length; s++){
-                let r1 = Store.luckysheet_select_save[s].row[0], 
-                    r2 = Store.luckysheet_select_save[s].row[1];
-                let c1 = Store.luckysheet_select_save[s].column[0], 
-                    c2 = Store.luckysheet_select_save[s].column[1];
+            for(let s = 0; s < Store.sheet_select_save.length; s++){
+                let r1 = Store.sheet_select_save[s].row[0], 
+                    r2 = Store.sheet_select_save[s].row[1];
+                let c1 = Store.sheet_select_save[s].column[0], 
+                    c2 = Store.sheet_select_save[s].column[1];
 
                 has_PartMC = hasPartMC(Store.config, r1, r2, c1, c2);
 
@@ -59,7 +59,7 @@ export function initialMatrixOperation(){
             }
         }
 
-        let getdata = getdatabyselection(Store.luckysheet_select_save[0]);
+        let getdata = getdatabyselection(Store.sheet_select_save[0]);
         let arr = [];
         if (getdata.length == 0) {
             return;
@@ -92,10 +92,10 @@ export function initialMatrixOperation(){
     //复制为json格式字符串，无标题，采用ABCD作为标题
     $("#sheet-copy-json-nohead").click(function (event) {
         $("body .sheet-cols-menu").hide();
-        luckysheetContainerFocus();
+        sheetContainerFocus();
 
 
-        if(Store.luckysheet_select_save.length > 1){
+        if(Store.sheet_select_save.length > 1){
             if(isEditMode()){
                 alert(locale_drag.noMulti);
             }
@@ -109,11 +109,11 @@ export function initialMatrixOperation(){
         if(Store.config["merge"] != null){
             let has_PartMC = false;
 
-            for(let s = 0; s < Store.luckysheet_select_save.length; s++){
-                let r1 = Store.luckysheet_select_save[s].row[0], 
-                    r2 = Store.luckysheet_select_save[s].row[1];
-                let c1 = Store.luckysheet_select_save[s].column[0], 
-                    c2 = Store.luckysheet_select_save[s].column[1];
+            for(let s = 0; s < Store.sheet_select_save.length; s++){
+                let r1 = Store.sheet_select_save[s].row[0], 
+                    r2 = Store.sheet_select_save[s].row[1];
+                let c1 = Store.sheet_select_save[s].column[0], 
+                    c2 = Store.sheet_select_save[s].column[1];
 
                 has_PartMC = hasPartMC(Store.config, r1, r2, c1, c2);
 
@@ -133,12 +133,12 @@ export function initialMatrixOperation(){
             }
         }
 
-        let getdata = getdatabyselection(Store.luckysheet_select_save[0]);
+        let getdata = getdatabyselection(Store.sheet_select_save[0]);
         let arr = [];
         if (getdata.length == 0) {
             return;
         }
-        let st = Store.luckysheet_select_save[0]["column"][0];
+        let st = Store.sheet_select_save[0]["column"][0];
         for (let r = 0; r < getdata.length; r++) {
             let obj = {};
             for (let c = 0; c < getdata[0].length; c++) {
@@ -153,9 +153,9 @@ export function initialMatrixOperation(){
     //复制为一维数组
     $("#sheet-copy-array1").click(function (event) {
         $("body .sheet-cols-menu").hide();
-        luckysheetContainerFocus();
+        sheetContainerFocus();
 
-        if(Store.luckysheet_select_save.length > 1){
+        if(Store.sheet_select_save.length > 1){
             if(isEditMode()){
                 alert(locale_drag.noMulti);
             }
@@ -169,11 +169,11 @@ export function initialMatrixOperation(){
         if(Store.config["merge"] != null){
             let has_PartMC = false;
 
-            for(let s = 0; s < Store.luckysheet_select_save.length; s++){
-                let r1 = Store.luckysheet_select_save[s].row[0], 
-                    r2 = Store.luckysheet_select_save[s].row[1];
-                let c1 = Store.luckysheet_select_save[s].column[0], 
-                    c2 = Store.luckysheet_select_save[s].column[1];
+            for(let s = 0; s < Store.sheet_select_save.length; s++){
+                let r1 = Store.sheet_select_save[s].row[0], 
+                    r2 = Store.sheet_select_save[s].row[1];
+                let c1 = Store.sheet_select_save[s].column[0], 
+                    c2 = Store.sheet_select_save[s].column[1];
 
                 has_PartMC = hasPartMC(Store.config, r1, r2, c1, c2);
 
@@ -193,7 +193,7 @@ export function initialMatrixOperation(){
             }
         }
 
-        let getdata = getdatabyselection(Store.luckysheet_select_save[0]);
+        let getdata = getdatabyselection(Store.sheet_select_save[0]);
         let arr = [];
         if (getdata.length == 0) {
             return;
@@ -210,10 +210,10 @@ export function initialMatrixOperation(){
     //复制为二维数组
     $("#sheet-copy-array2").click(function (event) {
         $("body .sheet-cols-menu").hide();
-        luckysheetContainerFocus();
+        sheetContainerFocus();
 
 
-        if(Store.luckysheet_select_save.length > 1){
+        if(Store.sheet_select_save.length > 1){
             if(isEditMode()){
                 alert(locale_drag.noMulti);
             }
@@ -227,11 +227,11 @@ export function initialMatrixOperation(){
         if(Store.config["merge"] != null){
             let has_PartMC = false;
 
-            for(let s = 0; s < Store.luckysheet_select_save.length; s++){
-                let r1 = Store.luckysheet_select_save[s].row[0], 
-                    r2 = Store.luckysheet_select_save[s].row[1];
-                let c1 = Store.luckysheet_select_save[s].column[0], 
-                    c2 = Store.luckysheet_select_save[s].column[1];
+            for(let s = 0; s < Store.sheet_select_save.length; s++){
+                let r1 = Store.sheet_select_save[s].row[0], 
+                    r2 = Store.sheet_select_save[s].row[1];
+                let c1 = Store.sheet_select_save[s].column[0], 
+                    c2 = Store.sheet_select_save[s].column[1];
 
                 has_PartMC = hasPartMC(Store.config, r1, r2, c1, c2);
 
@@ -251,7 +251,7 @@ export function initialMatrixOperation(){
             }
         }
 
-        let getdata = getdatabyselection(Store.luckysheet_select_save[0]);
+        let getdata = getdatabyselection(Store.sheet_select_save[0]);
         let arr = [];
         if (getdata.length == 0) {
             return;
@@ -277,7 +277,7 @@ export function initialMatrixOperation(){
 
         $("body .sheet-cols-menu").hide();
 
-        if(Store.luckysheet_select_save.length > 1){
+        if(Store.sheet_select_save.length > 1){
             if(isEditMode()){
                 alert(locale_drag.noMulti);
             }
@@ -291,11 +291,11 @@ export function initialMatrixOperation(){
         if(Store.config["merge"] != null){
             let has_PartMC = false;
 
-            for(let s = 0; s < Store.luckysheet_select_save.length; s++){
-                let r1 = Store.luckysheet_select_save[s].row[0], 
-                    r2 = Store.luckysheet_select_save[s].row[1];
-                let c1 = Store.luckysheet_select_save[s].column[0], 
-                    c2 = Store.luckysheet_select_save[s].column[1];
+            for(let s = 0; s < Store.sheet_select_save.length; s++){
+                let r1 = Store.sheet_select_save[s].row[0], 
+                    r2 = Store.sheet_select_save[s].row[1];
+                let c1 = Store.sheet_select_save[s].column[0], 
+                    c2 = Store.sheet_select_save[s].column[1];
 
                 has_PartMC = hasPartMC(Store.config, r1, r2, c1, c2);
 
@@ -315,7 +315,7 @@ export function initialMatrixOperation(){
             }
         }
 
-        let getdata = getdatabyselection(Store.luckysheet_select_save[0]);
+        let getdata = getdatabyselection(Store.sheet_select_save[0]);
         let arr = [];
         if (getdata.length == 0) {
             return;
@@ -395,9 +395,9 @@ export function initialMatrixOperation(){
     //复制为对角线
     $("#sheet-copy-diagonal").click(function (event) {
         $("body .sheet-cols-menu").hide();
-        luckysheetContainerFocus();
+        sheetContainerFocus();
 
-        if(Store.luckysheet_select_save.length > 1){
+        if(Store.sheet_select_save.length > 1){
             if(isEditMode()){
                 alert(locale_drag.noMulti);
             }
@@ -411,11 +411,11 @@ export function initialMatrixOperation(){
         if(Store.config["merge"] != null){
             let has_PartMC = false;
 
-            for(let s = 0; s < Store.luckysheet_select_save.length; s++){
-                let r1 = Store.luckysheet_select_save[s].row[0], 
-                    r2 = Store.luckysheet_select_save[s].row[1];
-                let c1 = Store.luckysheet_select_save[s].column[0], 
-                    c2 = Store.luckysheet_select_save[s].column[1];
+            for(let s = 0; s < Store.sheet_select_save.length; s++){
+                let r1 = Store.sheet_select_save[s].row[0], 
+                    r2 = Store.sheet_select_save[s].row[1];
+                let c1 = Store.sheet_select_save[s].column[0], 
+                    c2 = Store.sheet_select_save[s].column[1];
 
                 has_PartMC = hasPartMC(Store.config, r1, r2, c1, c2);
 
@@ -435,7 +435,7 @@ export function initialMatrixOperation(){
             }
         }
 
-        let getdata = getdatabyselection(Store.luckysheet_select_save[0]);
+        let getdata = getdatabyselection(Store.sheet_select_save[0]);
         let arr = [];
         if (getdata.length == 0) {
             return;
@@ -455,10 +455,10 @@ export function initialMatrixOperation(){
     //复制为反对角线
     $("#sheet-copy-antidiagonal").click(function (event) {
         $("body .sheet-cols-menu").hide();
-        luckysheetContainerFocus();
+        sheetContainerFocus();
 
 
-        if(Store.luckysheet_select_save.length > 1){
+        if(Store.sheet_select_save.length > 1){
             if(isEditMode()){
                 alert(locale_drag.noMulti);
             }
@@ -472,11 +472,11 @@ export function initialMatrixOperation(){
         if(Store.config["merge"] != null){
             let has_PartMC = false;
 
-            for(let s = 0; s < Store.luckysheet_select_save.length; s++){
-                let r1 = Store.luckysheet_select_save[s].row[0], 
-                    r2 = Store.luckysheet_select_save[s].row[1];
-                let c1 = Store.luckysheet_select_save[s].column[0], 
-                    c2 = Store.luckysheet_select_save[s].column[1];
+            for(let s = 0; s < Store.sheet_select_save.length; s++){
+                let r1 = Store.sheet_select_save[s].row[0], 
+                    r2 = Store.sheet_select_save[s].row[1];
+                let c1 = Store.sheet_select_save[s].column[0], 
+                    c2 = Store.sheet_select_save[s].column[1];
 
                 has_PartMC = hasPartMC(Store.config, r1, r2, c1, c2);
 
@@ -496,7 +496,7 @@ export function initialMatrixOperation(){
             }
         }
 
-        let getdata = getdatabyselection(Store.luckysheet_select_save[0]);
+        let getdata = getdatabyselection(Store.sheet_select_save[0]);
         let arr = [];
         if (getdata.length == 0) {
             return;
@@ -522,9 +522,9 @@ export function initialMatrixOperation(){
         }
         
         $("body .sheet-cols-menu").hide();
-        luckysheetContainerFocus();
+        sheetContainerFocus();
 
-        if(Store.luckysheet_select_save.length > 1){
+        if(Store.sheet_select_save.length > 1){
             if(isEditMode()){
                 alert(locale_drag.noMulti);
             }
@@ -538,11 +538,11 @@ export function initialMatrixOperation(){
         if(Store.config["merge"] != null){
             let has_PartMC = false;
 
-            for(let s = 0; s < Store.luckysheet_select_save.length; s++){
-                let r1 = Store.luckysheet_select_save[s].row[0], 
-                    r2 = Store.luckysheet_select_save[s].row[1];
-                let c1 = Store.luckysheet_select_save[s].column[0], 
-                    c2 = Store.luckysheet_select_save[s].column[1];
+            for(let s = 0; s < Store.sheet_select_save.length; s++){
+                let r1 = Store.sheet_select_save[s].row[0], 
+                    r2 = Store.sheet_select_save[s].row[1];
+                let c1 = Store.sheet_select_save[s].column[0], 
+                    c2 = Store.sheet_select_save[s].column[1];
 
                 has_PartMC = hasPartMC(Store.config, r1, r2, c1, c2);
 
@@ -562,7 +562,7 @@ export function initialMatrixOperation(){
             }
         }
 
-        let getdata = getdatabyselection(Store.luckysheet_select_save[0]);
+        let getdata = getdatabyselection(Store.sheet_select_save[0]);
         let arr = [];
         if (getdata.length == 0) {
             return;
@@ -608,10 +608,10 @@ export function initialMatrixOperation(){
     //复制为布尔值
     $("#sheet-copy-boolvalue").click(function (event) {
         $("body .sheet-cols-menu").hide();
-        luckysheetContainerFocus();
+        sheetContainerFocus();
 
 
-        if(Store.luckysheet_select_save.length > 1){
+        if(Store.sheet_select_save.length > 1){
             if(isEditMode()){
                 alert(locale_drag.noMulti);
             }
@@ -625,11 +625,11 @@ export function initialMatrixOperation(){
         if(Store.config["merge"] != null){
             let has_PartMC = false;
 
-            for(let s = 0; s < Store.luckysheet_select_save.length; s++){
-                let r1 = Store.luckysheet_select_save[s].row[0], 
-                    r2 = Store.luckysheet_select_save[s].row[1];
-                let c1 = Store.luckysheet_select_save[s].column[0], 
-                    c2 = Store.luckysheet_select_save[s].column[1];
+            for(let s = 0; s < Store.sheet_select_save.length; s++){
+                let r1 = Store.sheet_select_save[s].row[0], 
+                    r2 = Store.sheet_select_save[s].row[1];
+                let c1 = Store.sheet_select_save[s].column[0], 
+                    c2 = Store.sheet_select_save[s].column[1];
 
                 has_PartMC = hasPartMC(Store.config, r1, r2, c1, c2);
 
@@ -649,7 +649,7 @@ export function initialMatrixOperation(){
             }
         }
 
-        let getdata = getdatabyselection(Store.luckysheet_select_save[0]);
+        let getdata = getdatabyselection(Store.sheet_select_save[0]);
         let arr = [];
         if (getdata.length == 0) {
             return;
@@ -690,9 +690,9 @@ export function initialMatrixOperation(){
     //矩阵操作选区 翻转 上下
     $("#sheet-matrix-turn-up").click(function (event) {
         $("body .sheet-cols-menu").hide();
-        luckysheetContainerFocus();
+        sheetContainerFocus();
 
-        if(Store.luckysheet_select_save.length > 1){
+        if(Store.sheet_select_save.length > 1){
             if(isEditMode()){
                 alert(locale_drag.noMulti);
             }
@@ -702,7 +702,7 @@ export function initialMatrixOperation(){
             return;
         }
 
-        let getdata = getdatabyselection(Store.luckysheet_select_save[0]);
+        let getdata = getdatabyselection(Store.sheet_select_save[0]);
         if (getdata.length == 0) {
             return;
         }
@@ -726,9 +726,9 @@ export function initialMatrixOperation(){
     //矩阵操作选区 翻转 左右
     $("#sheet-matrix-turn-left").click(function (event) {
         $("body .sheet-cols-menu").hide();
-        luckysheetContainerFocus();
+        sheetContainerFocus();
 
-        if(Store.luckysheet_select_save.length > 1){
+        if(Store.sheet_select_save.length > 1){
             if(isEditMode()){
                 alert(locale_drag.noMulti);
             }
@@ -738,7 +738,7 @@ export function initialMatrixOperation(){
             return;
         }
 
-        let getdata = getdatabyselection(Store.luckysheet_select_save[0]);
+        let getdata = getdatabyselection(Store.sheet_select_save[0]);
         if (getdata.length == 0) {
             return;
         }
@@ -762,9 +762,9 @@ export function initialMatrixOperation(){
     //矩阵操作选区 翻转 顺时针
     $("#sheet-matrix-turn-cw").click(function (event) {
         $("body .sheet-cols-menu").hide();
-        luckysheetContainerFocus();
+        sheetContainerFocus();
 
-        if(Store.luckysheet_select_save.length > 1){
+        if(Store.sheet_select_save.length > 1){
             if(isEditMode()){
                 alert(locale_drag.noMulti);
             }
@@ -774,7 +774,7 @@ export function initialMatrixOperation(){
             return;
         }
 
-        let getdata = getdatabyselection(Store.luckysheet_select_save[0]);
+        let getdata = getdatabyselection(Store.sheet_select_save[0]);
         if (getdata.length == 0) {
             return;
         }
@@ -798,9 +798,9 @@ export function initialMatrixOperation(){
     //矩阵操作选区 翻转 逆时针
     $("#sheet-matrix-turn-anticw").click(function (event) {
         $("body .sheet-cols-menu").hide();
-        luckysheetContainerFocus();
+        sheetContainerFocus();
 
-        if(Store.luckysheet_select_save.length > 1){
+        if(Store.sheet_select_save.length > 1){
             if(isEditMode()){
                 alert(locale_drag.noMulti);
             }
@@ -810,7 +810,7 @@ export function initialMatrixOperation(){
             return;
         }
 
-        let getdata = getdatabyselection(Store.luckysheet_select_save[0]);
+        let getdata = getdatabyselection(Store.sheet_select_save[0]);
         if (getdata.length == 0) {
             return;
         }
@@ -834,9 +834,9 @@ export function initialMatrixOperation(){
     //矩阵操作选区 转置
     $("#sheet-matrix-turn-trans").click(function (event) {
         $("body .sheet-cols-menu").hide();
-        luckysheetContainerFocus();
+        sheetContainerFocus();
 
-        if(Store.luckysheet_select_save.length > 1){
+        if(Store.sheet_select_save.length > 1){
             if(isEditMode()){
                 alert(locale_drag.noMulti);
             }
@@ -846,7 +846,7 @@ export function initialMatrixOperation(){
             return;
         }
 
-        let getdata = getdatabyselection(Store.luckysheet_select_save[0]);
+        let getdata = getdatabyselection(Store.sheet_select_save[0]);
         if (getdata.length == 0) {
             return;
         }
@@ -889,9 +889,9 @@ export function initialMatrixOperation(){
         }
 
         $("body .sheet-cols-menu").hide();
-        luckysheetContainerFocus();
+        sheetContainerFocus();
 
-        if(Store.luckysheet_select_save.length > 1){
+        if(Store.sheet_select_save.length > 1){
             if(isEditMode()){
                 alert(locale_drag.noMulti);
             }
@@ -901,7 +901,7 @@ export function initialMatrixOperation(){
             return;
         }
 
-        let getdata = getdatabyselection(Store.luckysheet_select_save[0]);
+        let getdata = getdatabyselection(Store.sheet_select_save[0]);
         if (getdata.length == 0) {
             return;
         }
@@ -982,9 +982,9 @@ export function initialMatrixOperation(){
     //矩阵操作选区 删除两端0值 按行
     $("#sheet-matrix-delezero-row").click(function (event) {
         $("body .sheet-cols-menu").hide();
-        luckysheetContainerFocus();
+        sheetContainerFocus();
 
-        if(Store.luckysheet_select_save.length > 1){
+        if(Store.sheet_select_save.length > 1){
             if(isEditMode()){
                 alert(locale_drag.noMulti);
             }
@@ -994,7 +994,7 @@ export function initialMatrixOperation(){
             return;
         }
 
-        let getdata = getdatabyselection(Store.luckysheet_select_save[0]);
+        let getdata = getdatabyselection(Store.sheet_select_save[0]);
         if (getdata.length == 0) {
             return;
         }
@@ -1050,9 +1050,9 @@ export function initialMatrixOperation(){
     //矩阵操作选区 删除两端0值 按列
     $("#sheet-matrix-delezero-column").click(function (event) {
         $("body .sheet-cols-menu").hide();
-        luckysheetContainerFocus();
+        sheetContainerFocus();
 
-        if(Store.luckysheet_select_save.length > 1){
+        if(Store.sheet_select_save.length > 1){
             if(isEditMode()){
                 alert(locale_drag.noMulti);
             }
@@ -1062,7 +1062,7 @@ export function initialMatrixOperation(){
             return;
         }
 
-        let getdata = getdatabyselection(Store.luckysheet_select_save[0]);
+        let getdata = getdatabyselection(Store.sheet_select_save[0]);
         if (getdata.length == 0) {
             return;
         }
@@ -1131,9 +1131,9 @@ export function initialMatrixOperation(){
     //矩阵操作选区 删除重复值 按行
     $("#sheet-matrix-delerpt-row").click(function (event) {
         $("body .sheet-cols-menu").hide();
-        luckysheetContainerFocus();
+        sheetContainerFocus();
 
-        if(Store.luckysheet_select_save.length > 1){
+        if(Store.sheet_select_save.length > 1){
             if(isEditMode()){
                 alert(locale_drag.noMulti);
             }
@@ -1143,7 +1143,7 @@ export function initialMatrixOperation(){
             return;
         }
 
-        let getdata = getdatabyselection(Store.luckysheet_select_save[0]);
+        let getdata = getdatabyselection(Store.sheet_select_save[0]);
         if (getdata.length == 0) {
             return;
         }
@@ -1192,9 +1192,9 @@ export function initialMatrixOperation(){
     //矩阵操作选区 删除重复值 按列
     $("#sheet-matrix-delerpt-column").click(function (event) {
         $("body .sheet-cols-menu").hide();
-        luckysheetContainerFocus();
+        sheetContainerFocus();
 
-        if(Store.luckysheet_select_save.length > 1){
+        if(Store.sheet_select_save.length > 1){
             if(isEditMode()){
                 alert(locale_drag.noMulti);
             }
@@ -1204,7 +1204,7 @@ export function initialMatrixOperation(){
             return;
         }
 
-        let getdata = getdatabyselection(Store.luckysheet_select_save[0]);
+        let getdata = getdatabyselection(Store.sheet_select_save[0]);
         if (getdata.length == 0) {
             return;
         }

@@ -1,8 +1,8 @@
 import menuButton from './menuButton';
-import {luckysheetupdateCell} from './updateCell';
+import {sheetupdateCell} from './updateCell';
 import { keycode } from './constant';
 import { 
-    luckysheetMoveHighlightCell,
+    sheetMoveHighlightCell,
 } from './sheetMove';
 
 import insertFormula from './insertFormula';
@@ -32,8 +32,8 @@ export function formulaBarInitial(){
             return;
         }
 
-        if(Store.luckysheet_select_save.length > 0){
-            let last = Store.luckysheet_select_save[Store.luckysheet_select_save.length - 1];
+        if(Store.sheet_select_save.length > 0){
+            let last = Store.sheet_select_save[Store.sheet_select_save.length - 1];
 
             let row_index = last["row_focus"], col_index = last["column_focus"];
             
@@ -41,7 +41,7 @@ export function formulaBarInitial(){
             // if(value) {
             //     formula.updatecell(row_index, col_index);
             // }
-            luckysheetupdateCell(row_index, col_index, Store.flowdata, null, true);
+            sheetupdateCell(row_index, col_index, Store.flowdata, null, true);
             formula.rangeResizeTo = $("#sheet-functionbox-cell");
         }
     }).keydown(function (event) {
@@ -60,9 +60,9 @@ export function formulaBarInitial(){
                 formula.searchFunctionEnter($("#sheet-formula-search-c").find(".sheet-formula-search-item-active"));
             }
             else {
-                formula.updatecell(Store.luckysheetCellUpdate[0], Store.luckysheetCellUpdate[1]);
-                Store.luckysheet_select_save = [{ "row": [Store.luckysheetCellUpdate[0], Store.luckysheetCellUpdate[0]], "column": [Store.luckysheetCellUpdate[1], Store.luckysheetCellUpdate[1]], "row_focus": Store.luckysheetCellUpdate[0], "column_focus": Store.luckysheetCellUpdate[1] }];
-                luckysheetMoveHighlightCell("down", 1, "rangeOfSelect");
+                formula.updatecell(Store.sheetCellUpdate[0], Store.sheetCellUpdate[1]);
+                Store.sheet_select_save = [{ "row": [Store.sheetCellUpdate[0], Store.sheetCellUpdate[0]], "column": [Store.sheetCellUpdate[1], Store.sheetCellUpdate[1]], "row_focus": Store.sheetCellUpdate[0], "column_focus": Store.sheetCellUpdate[1] }];
+                sheetMoveHighlightCell("down", 1, "rangeOfSelect");
                 //$("#sheet-functionbox-cell").blur();
                 $("#sheet-rich-text-editor").focus();
             }
@@ -70,7 +70,7 @@ export function formulaBarInitial(){
         }
         else if (kcode == keycode.ESC && parseInt(_input.css("top")) > 0) {
             formula.dontupdate();
-            luckysheetMoveHighlightCell("down", 0, "rangeOfSelect");
+            sheetMoveHighlightCell("down", 0, "rangeOfSelect");
             //$("#sheet-functionbox-cell").blur();
             $("#sheet-rich-text-editor").focus();
             event.preventDefault();
@@ -133,7 +133,7 @@ export function formulaBarInitial(){
         }
 
         formula.dontupdate();
-        luckysheetMoveHighlightCell("down", 0, "rangeOfSelect");
+        sheetMoveHighlightCell("down", 0, "rangeOfSelect");
     });
 
     //公式栏 确认（）按钮
@@ -150,8 +150,8 @@ export function formulaBarInitial(){
             $("#sheet-search-formula-parm-select").hide();
         }
 
-        formula.updatecell(Store.luckysheetCellUpdate[0], Store.luckysheetCellUpdate[1]);
-        luckysheetMoveHighlightCell("down", 0, "rangeOfSelect");
+        formula.updatecell(Store.sheetCellUpdate[0], Store.sheetCellUpdate[1]);
+        sheetMoveHighlightCell("down", 0, "rangeOfSelect");
     });
 
     //公式栏 fx按钮
@@ -160,7 +160,7 @@ export function formulaBarInitial(){
             return;
         }
         //点击函数查找弹出框
-        if(Store.luckysheet_select_save.length == 0){
+        if(Store.sheet_select_save.length == 0){
             if(isEditMode()){
                 alert(locale_formula.tipSelectCell);
             }
@@ -171,11 +171,11 @@ export function formulaBarInitial(){
             return;
         }
 
-        let last = Store.luckysheet_select_save[Store.luckysheet_select_save.length - 1];
+        let last = Store.sheet_select_save[Store.sheet_select_save.length - 1];
 
         let row_index = last["row_focus"], col_index = last["column_focus"];
 
-        luckysheetupdateCell(row_index, col_index, Store.flowdata);
+        sheetupdateCell(row_index, col_index, Store.flowdata);
         
         let cell = Store.flowdata[row_index][col_index];
         if(cell != null && cell.f != null){
@@ -203,7 +203,7 @@ export function formulaBarInitial(){
     //公式选区操作
     $("#sheet-formula-functionrange").on("mousedown", ".sheet-copy", function (event) {
         formula.rangeMove = true;
-        Store.luckysheet_scroll_status = true;
+        Store.sheet_scroll_status = true;
         formula.rangeMoveObj = $(this).parent();
         formula.rangeMoveIndex = $(this).parent().attr("rangeindex");
         
@@ -283,7 +283,7 @@ export function formulaBarInitial(){
         ];
         formula.rangeResizeWinH = $("#sheet-cell-main")[0].scrollHeight;
         formula.rangeResizeWinW = $("#sheet-cell-main")[0].scrollWidth;
-        Store.luckysheet_scroll_status = true;
+        Store.sheet_scroll_status = true;
         event.stopPropagation();
     });
 }

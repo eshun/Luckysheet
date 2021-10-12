@@ -10070,7 +10070,7 @@ export default {
         "Engineering":"工程计算",
         "Filter":"过滤器",
         "Financial":"财务",
-        "sheet":"Luckysheet内置",
+        "sheet":"sheet内置",
         "other":"其它",
         "Logical":"逻辑",
         "Lookup":"查找",

@@ -1,6 +1,6 @@
 import { getcellvalue } from './getdata';
 
-const luckysheetArray = {
+const sheetArray = {
     transpose: function (getdata, useGetcellValue=true) {
         let arr = [];
         if (getdata.length == 0) {
@@ -69,4 +69,4 @@ const luckysheetArray = {
     }
 }
 
-export default luckysheetArray;
+export default sheetArray;

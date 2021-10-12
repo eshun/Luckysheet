@@ -1,6 +1,6 @@
 import sheetConfigSetting from './sheetConfigSetting';
-import luckysheetFreezen from './freezen';
-import { luckysheetrefreshgrid } from '../global/refresh';
+import sheetFreezen from './freezen';
+import { sheetrefreshgrid } from '../global/refresh';
 import Store from '../store';
 import locale from '../locale/locale';
 import sheetmanage from './sheetmanage';
@@ -11,7 +11,7 @@ import { defaultToolbar, toolbarIdMap } from './toolbar';
 let gridW = 0,
     gridH = 0;
 
-export default function luckysheetsizeauto(isRefreshCanvas=true) {
+export default function sheetsizeauto(isRefreshCanvas=true) {
     if (!sheetConfigSetting.showinfobar) {
         Store.infobarHeight = 0;
         $("#sheet_info_detail").hide();
@@ -257,7 +257,7 @@ export default function luckysheetsizeauto(isRefreshCanvas=true) {
     changeSheetContainerSize(gridW, gridH)
 
     if(isRefreshCanvas){
-        luckysheetrefreshgrid($("#sheet-cell-main").scrollLeft(), $("#sheet-cell-main").scrollTop());
+        sheetrefreshgrid($("#sheet-cell-main").scrollLeft(), $("#sheet-cell-main").scrollTop());
     }
 
     sheetmanage.sheetArrowShowAndHide();
@@ -325,7 +325,7 @@ export function changeSheetContainerSize(gridW, gridH){
     .find(".sheet-freezebar-vertical-drop")
     .css({ "height": gridheight - 10 });
 
-    luckysheetFreezen.createAssistCanvas();
+    sheetFreezen.createAssistCanvas();
 }
 
 /**

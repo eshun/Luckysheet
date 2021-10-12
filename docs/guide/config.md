@@ -2,7 +2,7 @@
 
 ## Basic Structure
 
-When initializing the workbook, you can set an object configuration string ʻoptions` to customize the configuration of Luckysheet.
+When initializing the workbook, you can set an object configuration string ʻoptions` to customize the configuration of sheet.
 
 The following is a simple configuration example:
 
@@ -10,7 +10,7 @@ The following is a simple configuration example:
 // Configuration item
 const options = {
      container:'sheet', // set the id of the DOM container
-     title:'Luckysheet Demo', // set the name of the table
+     title:'sheet Demo', // set the name of the table
      lang:'zh' // set language
 
      // More other settings...
@@ -23,7 +23,7 @@ sheet.create(options)
 The `options` configuration item here will affect the entire workbook. In particular, the configuration of a single worksheet needs to be set in the `options.data` array to set corresponding more detailed parameters. Refer to [Worksheet Configuration](/zh/guide/sheet.html)
 
 For personalized needs, in addition to allowing configuration information bar ([showinfobar](#showinfobar)), toolbar ([showtoolbar](#showtoolbar)), bottom sheet bar ([showsheetbar](#showsheetbar)), bottom count bar ([ShowstatisticBar](#showstatisticBar)),
-Luckysheet has opened more detailed custom configuration options, which are as follows:
+sheet has opened more detailed custom configuration options, which are as follows:
 
 - Customize the toolbar ([showtoolbarConfig](#showtoolbarConfig))
 - Customize the bottom sheet bar ([showsheetbarConfig](#showsheetbarConfig))
@@ -83,7 +83,7 @@ The following are all supported setting parameters
 ------------
 ### title
 - Type: String
-- Default: "Luckysheet Demo"
+- Default: "sheet Demo"
 - Usage：Workbook name
 
 ------------
@@ -102,9 +102,9 @@ The following are all supported setting parameters
 ### loadUrl
 - Type: String
 - Default: ""
-- Usage: Configure the address of `loadUrl` and use it in conjunction with `loadSheetUrl`, which is generally used when the amount of data is large. You can also not use the interface parameters provided by Luckysheet, and use the [data](#data) parameter to prepare all table data for initialization in advance.
+- Usage: Configure the address of `loadUrl` and use it in conjunction with `loadSheetUrl`, which is generally used when the amount of data is large. You can also not use the interface parameters provided by sheet, and use the [data](#data) parameter to prepare all table data for initialization in advance.
 
-    Luckysheet will request the entire workbook data through ajax, and load all `celldata` in the worksheet data with status 1 by default, and load all the fields except the `celldata` field in the rest of the worksheets. However, considering that some formulas, charts and pivot tables will reference data from other worksheets, the front end will add a judgment. If the current worksheet references data from other worksheets, it will request data through the interface address configured by `loadSheetUrl` , And load the data of the related worksheets. Because `loadUrl` is only responsible for the current worksheet data, it is also necessary to configure `loadSheetUrl` as an interface for asynchronously loading data.
+    sheet will request the entire workbook data through ajax, and load all `celldata` in the worksheet data with status 1 by default, and load all the fields except the `celldata` field in the rest of the worksheets. However, considering that some formulas, charts and pivot tables will reference data from other worksheets, the front end will add a judgment. If the current worksheet references data from other worksheets, it will request data through the interface address configured by `loadSheetUrl` , And load the data of the related worksheets. Because `loadUrl` is only responsible for the current worksheet data, it is also necessary to configure `loadSheetUrl` as an interface for asynchronously loading data.
 
 ------------
 ### loadSheetUrl
@@ -586,7 +586,7 @@ Note that you also need to configure `loadUrl` and `loadSheetUrl` to take effect
 
 ## Hook Function (TODO)
 
-When the hook function is used in secondary development, hooks will be implanted in each common mouse or keyboard operation, and the function passed in by the developer will be called to expand the function of Luckysheet.
+When the hook function is used in secondary development, hooks will be implanted in each common mouse or keyboard operation, and the function passed in by the developer will be called to expand the function of sheet.
 
 The hook functions are uniformly configured under ʻoptions.hook`, and configuration hooks can be created separately for cells, sheet pages, and tables.
 
@@ -737,7 +737,7 @@ The hook functions are uniformly configured under ʻoptions.hook`, and configura
 
 - Type: Function
 - Default: null
-- Usage:The method executed before all cells are rendered. Internally, this method is added before `luckysheetDrawMain` renders the table.
+- Usage:The method executed before all cells are rendered. Internally, this method is added before `sheetDrawMain` renders the table.
 - Parameter: 
 	- {Object} [data]: Two-dimensional array data of the current worksheet
 	- {Object} [sheet]: Current worksheet object
@@ -1155,9 +1155,9 @@ The hook functions are uniformly configured under ʻoptions.hook`, and configura
 ### updated
 - Type: Function
 - Default: null
-- Usage: The method executed after each operation is updated is executed after the canvas rendering, monitor changes in worksheet content, that is, every time the client performs a workbook operation, Luckysheet saves the operation in the history and triggers it. When undoing and redoing, it is also an operation, of course, the hook function will be triggered.
+- Usage: The method executed after each operation is updated is executed after the canvas rendering, monitor changes in worksheet content, that is, every time the client performs a workbook operation, sheet saves the operation in the history and triggers it. When undoing and redoing, it is also an operation, of course, the hook function will be triggered.
 - Parameter: 
-	- {Object} [operate]: The history information of this operation will have different history records according to different operations. Refer to the source code [History](https://github.com/mengshukeji/Luckysheet/blob/master/src/controllers/controlHistory.js )
+	- {Object} [operate]: The history information of this operation will have different history records according to different operations. Refer to the source code [History](https://github.com/mengshukeji/sheet/blob/master/src/controllers/controlHistory.js )
     
 ------------
 ### resized

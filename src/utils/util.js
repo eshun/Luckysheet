@@ -382,7 +382,7 @@ function ArrayUnique(dataArr) {
 }
 
 //获取字体配置
-function luckysheetfontformat(format) {
+function sheetfontformat(format) {
     let fontarray = locale().fontarray;
     if (getObjType(format) == "object") {
         let font = "";
@@ -476,7 +476,7 @@ function showrightclickmenu(_menu, x, y) {
 }
 
 //单元格编辑聚焦
-function luckysheetactiveCell() {
+function sheetactiveCell() {
     if (!!Store.fullscreenmode) {
         setTimeout(function () {
             $("#sheet-rich-text-editor").focus().select();
@@ -485,7 +485,7 @@ function luckysheetactiveCell() {
 }
 
 //单元格编辑聚焦
-function luckysheetContainerFocus() {
+function sheetContainerFocus() {
     // $("#" + Store.container).focus({ 
     //     preventScroll: true 
     // });
@@ -896,9 +896,9 @@ export {
     createABCdim,
     getByteLen,
     ArrayUnique,
-    luckysheetfontformat,
+    sheetfontformat,
     showrightclickmenu,
-    luckysheetactiveCell,
+    sheetactiveCell,
     numFormat,
     numfloatlen,
     mouseclickposition,
@@ -906,7 +906,7 @@ export {
     seriesLoadScripts,
     parallelLoadScripts,
     loadLinks,
-    luckysheetContainerFocus,
+    sheetContainerFocus,
     transformRangeToAbsolute,
     openSelfModel,
     createProxy,

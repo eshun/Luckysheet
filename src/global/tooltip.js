@@ -227,13 +227,13 @@ const tooltip = {
             btntxt = locale_button.close;
         }
 
-        let htmldiv = '<div id="luckysheetpopover" class="luckysheetpopover"><div class="luckysheetpopover-content">'+locale_paint.start+'</div><div class="luckysheetpopover-btn">'+ btntxt +'</div></div>';
-        $("#luckysheetpopover").remove();
+        let htmldiv = '<div id="sheetpopover" class="sheetpopover"><div class="sheetpopover-content">'+locale_paint.start+'</div><div class="sheetpopover-btn">'+ btntxt +'</div></div>';
+        $("#sheetpopover").remove();
         $("body").append(htmldiv);
-        $("#luckysheetpopover .luckysheetpopover-content").html(content);
+        $("#sheetpopover .sheetpopover-content").html(content);
 
-        let w = $("#luckysheetpopover").outerWidth(),
-            h = $("#luckysheetpopover").outerHeight();
+        let w = $("#sheetpopover").outerWidth(),
+            h = $("#sheetpopover").outerHeight();
         let pcss = {};
 
         if(position == 'topLeft'){
@@ -287,14 +287,14 @@ const tooltip = {
         if(style == "white"){
             pcss.background = "rgba(255, 255, 255, 0.65)";
             pcss.color = "#000";
-            $("#luckysheetpopover .luckysheetpopover-btn").css({"border": "1px solid #000"});
+            $("#sheetpopover .sheetpopover-btn").css({"border": "1px solid #000"});
         }
 
         setTimeout(function(){
-            $("#luckysheetpopover .luckysheetpopover-content").css({"margin-left": -$("#luckysheetpopover .luckysheetpopover-btn").outerWidth()/2});
+            $("#sheetpopover .sheetpopover-content").css({"margin-left": -$("#sheetpopover .sheetpopover-btn").outerWidth()/2});
         }, 1);
-        $("#luckysheetpopover").css(pcss).fadeIn();
-        $("#luckysheetpopover .luckysheetpopover-btn").click(function(){
+        $("#sheetpopover").css(pcss).fadeIn();
+        $("#sheetpopover .sheetpopover-btn").click(function(){
             if(typeof(exitsFuc) == "function"){
                 exitsFuc();
             }
@@ -302,7 +302,7 @@ const tooltip = {
 
         if(close != null && typeof(close) == "number"){
             setTimeout(function(){
-                $("#luckysheetpopover").fadeOut().remove();
+                $("#sheetpopover").fadeOut().remove();
                 if(typeof(exitsFuc) == "function"){
                     exitsFuc();
                 }
