@@ -204,23 +204,26 @@ const server = {
 
 	        //客户端接收服务端数据时触发
 
-	        _this.websocket.onmessage = function(result){
-				Store.result = result
-				let data = new Function("return " + result.data)();
-        		
-				method.createHookFunction('cooperativeMessage', data)
-				console.info(data);
-				let {message,success} = data;
-				if(!success){
-					//失败 回退
-
-					controlHistory.redo(new Event('custom'));
-					sheetactiveCell();
-
-					Store.showMessage(message||'保存失败！');
+	        _this.websocket.onmessage = function(result) {
+				Store.result = result;
+				if(!result || !result.data){
 					return;
 				}
 				try{
+					let data = new Function("return " + result.data)();
+					
+					method.createHookFunction('cooperativeMessage', data)
+					console.info(data);
+					let {message,success} = data;
+					if(!success){
+						//失败 回退
+
+						controlHistory.redo(new Event('custom'));
+						sheetactiveCell();
+
+						Store.showMessage(message||'保存失败！');
+						return;
+					}
 					let item = JSON.parse(data.data);
 					_this.wsUpdateMsg(item);
 				}catch(e){
