@@ -88,6 +88,8 @@ sheet.create = function (setting) {
     server.loadSheetUrl = extendsetting.loadSheetUrl;
     server.allowUpdate = extendsetting.allowUpdate;
 
+    Store.showMessage=extendsetting.showMessage;
+
     //sheetConfigSetting=common_extend(sheetConfigSetting, extendsetting);
 
     sheetConfigSetting.defaultAddNum = extendsetting.defaultAddNum;

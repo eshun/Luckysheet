@@ -69,4 +69,5 @@ export default {
     imageUpdateMethodConfig:{}, //自定义图片同步方式
     defaultAddNum:1,//默认添加行数
     scrollBottomAutoAddRow: false,//滚动到底部自动添加新行
+    showMessage:(message)=>{},
 }
