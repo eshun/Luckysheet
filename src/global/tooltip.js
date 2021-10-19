@@ -85,12 +85,14 @@ const tooltip = {
             "content": content, 
             "botton": btn || '<a style="text-decoration:none;color:#fff;" class="download btn btn-primary sheet-model-conform-btn">&nbsp;&nbsp;'+ locale_screenshot.downLoadBtn +'&nbsp;&nbsp;</a>&nbsp;&nbsp;<button class="btn btn-primary sheet-model-copy-btn">&nbsp;&nbsp;'+ locale_screenshot.downLoadCopy +'&nbsp;&nbsp;</button><button class="btn btn-default sheet-model-cancel-btn">&nbsp;&nbsp;'+ locale_screenshot.downLoadClose +'&nbsp;&nbsp;</button>' 
         }));
-        let _t = $("#sheet-confirm").find(".sheet-modal-dialog-content").css("min-width", 300).end(), 
-            myh = _t.outerHeight(), 
-            myw = _t.outerWidth();
-        let winw = $(window).width(), winh = $(window).height();
-        let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
-        $("#sheet-confirm").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 3 }).show();
+        let _t = $("#sheet-confirm").find(".sheet-modal-dialog-content").css("min-width", 300).end();
+        setTimeout(()=>{                
+            let myh = _t.outerHeight(), 
+                myw = _t.outerWidth();
+            let winw = $(window).width(), winh = $(window).height();
+            let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
+            $("#sheet-confirm").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 3 }).show();
+        },0);
         _t.find(".sheet-model-conform-btn").click(function () {
             if(browser.isIE() == "1"){
                 alert(locale_screenshot.browserNotTip);

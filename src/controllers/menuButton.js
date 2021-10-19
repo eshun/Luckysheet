@@ -4568,6 +4568,7 @@ const menuButton = {
             }
             range=Store.sheet_select_save[0];
         }
+
         // if(getObjType(range) == 'string'){
         //     if(!formula.iscelldata(range)){
         //         return tooltip.info("The range parameter is invalid.", "");
@@ -4593,6 +4594,13 @@ const menuButton = {
             ed_r = range.row[1];
         let st_c = range.column[0],
             ed_c = range.column[1];
+        if(ed_r-st_r===0&&ed_c-st_c===0){
+            //只有一个单元格时 全部
+            st_r=0;
+            ed_r=Store.visibledatarow.length-1;
+            st_c=0;
+            ed_c=Store.visibledatacolumn.length-1;
+        }
 
         let has_PartMC = hasPartMC(Store.config, st_r, ed_r, st_c, ed_c);
         //截图范围内包含部分合并单元格，提示
