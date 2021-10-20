@@ -272,6 +272,37 @@ const sheetmanage = {
 
         _this.changeSheetExec(index, isPivotTable, true);
     },
+    updateSheetIndex: function(oldindex,index) {
+        if(isEditMode() || Store.allowEdit===false){
+            // alert("非编辑模式下不允许该操作！");
+            return;
+        }
+
+        let _this = this;
+        
+        let arrindex = _this.getSheetIndex(oldindex);
+        Store.sheetfile[arrindex].index = index;
+        if(Store.currentSheetIndex===oldindex){
+            Store.currentSheetIndex = index;
+        }
+
+        $("#sheets-item" + oldindex).removeAttr('data-index');
+        $("#sheets-item" + oldindex).attr('id',"sheets-item" +index);
+        $("#sheet-cols-h-cells_" + oldindex).attr('id',"sheet-cols-h-cells_" +index);
+        $("#sheet-btn" + oldindex).removeAttr('data-index');
+        $("#sheet-btn" + oldindex).attr('id',"sheet-btn" +index);
+
+        $("#sheet-datavisual-selection-set-" + oldindex).attr('id',"sheet-datavisual-selection-set-" +index);
+
+        setTimeout(function () {
+            $("#sheets-item" + index).data('index',index);
+            $("#sheet-btn" + index).data('index',index);
+            
+            _this.changeSheetExec(index);
+            _this.reOrderAllSheet();
+        }, 0);
+        
+    },
     setSheetHide: function(index) {
         let _this = this;
         let currentIdx = _this.getSheetIndex(index);
@@ -449,7 +480,6 @@ const sheetmanage = {
             // alert("非编辑模式下不允许该操作！");
             return;
         }
-        console.log('copySheet',copyindex, Store.sheetfile);
 
         let _this = this;
 
@@ -959,6 +989,10 @@ const sheetmanage = {
     storeSheetParam: function() {
         let index = this.getSheetIndex(Store.currentSheetIndex);
         let file = Store.sheetfile[index];
+        if(!file){
+            console.log('err storeSheetParam:'+Store.currentSheetIndex+"-"+index);
+            return;
+        }
         file["config"] = Store.config;
         file["visibledatarow"] = Store.visibledatarow;
         file["visibledatacolumn"] = Store.visibledatacolumn;
@@ -981,6 +1015,9 @@ const sheetmanage = {
         let index = this.getSheetIndex(Store.currentSheetIndex);
         let file = Store.sheetfile[index];
 
+        if(!file){
+            return;
+        }
         Store.flowdata = file["data"];
         editor.webWorkerFlowDataCache(Store.flowdata);//worker存数据
 
@@ -1026,6 +1063,9 @@ const sheetmanage = {
         let index = this.getSheetIndex(Store.currentSheetIndex);
         let file = Store.sheetfile[index];
 
+        if(!file){
+            return;
+        }
         //选区
         selectHightlightShow(true);
 
@@ -1051,6 +1091,9 @@ const sheetmanage = {
 
         _this.storeSheetParam();
         let index = _this.getSheetIndex(Store.currentSheetIndex);
+        if(!Store.sheetfile[index]){
+            return;
+        }
         Store.sheetfile[index]["data"] = Store.flowdata;
         Store.sheetfile[index]["config"] = $.extend(true, {}, Store.config);
     },
@@ -1162,7 +1205,11 @@ const sheetmanage = {
         _this.storeSheetParamALL();
         _this.setCurSheet(index);
 
-        let file = Store.sheetfile[_this.getSheetIndex(index)]
+        let file = Store.sheetfile[_this.getSheetIndex(index)];
+
+        if(!file){
+            return;
+        }
   
         if (!!file.isPivotTable) {
             Store.sheetcurrentisPivotTable = true;
@@ -1427,6 +1474,9 @@ const sheetmanage = {
         //等待滚动条dom宽高计算完成后 初始化该表格滚动位置
         let index = this.getSheetIndex(Store.currentSheetIndex);
         let file = Store.sheetfile[index];
+        if(!file){
+            return;
+        }
 
 
         Store.scrollRefreshSwitch = false;
@@ -1539,6 +1589,9 @@ const sheetmanage = {
     delChart: function(chart_id, sheetIndex) {
         let index = this.getSheetIndex(sheetIndex);
         let file = Store.sheetfile[index];
+        if(!file){
+            return;
+        }
 
         if (file.chart == null) {
             file.chart = [];
@@ -1575,6 +1628,9 @@ const sheetmanage = {
     getChart: function(sheetIndex, chart_id) {
         let index = this.getSheetIndex(sheetIndex);
         let file = Store.sheetfile[index];
+        if(!file){
+            return;
+        }
 
         if (file.chart == null) {
             return null;
@@ -1724,6 +1780,9 @@ const sheetmanage = {
         let index = this.getSheetIndex(sheetIndex);
         let file = Store.sheetfile[index];
 
+        if(!file){
+            return;
+        }
         if (!file.isPivotTable) {
             return;
         }

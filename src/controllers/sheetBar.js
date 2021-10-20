@@ -148,7 +148,9 @@ let sheetsheetrightclick = function (_t, _cur, e) {
     $("#sheet-area div.sheets-item").removeClass("sheets-item-active");
     _t.addClass("sheets-item-active");
     cleargridelement(e);
-    sheetmanage.changeSheet(_t.data("index"));
+    setTimeout(function () {
+        sheetmanage.changeSheet(_t.data("index"));
+    },0);
 
     $("#sheet-list, #sheet-rightclick-sheet-menu").hide();
 
@@ -213,7 +215,9 @@ export function initialSheetBar(){
         }
 
         let _t = $(this), _cur = $(e.target);
-        sheetsheetrightclick(_t, _cur, e);
+        setTimeout(function () {
+            sheetsheetrightclick(_t, _cur, e);
+        }, 0);
         server.keepHighLightBox()
     });
 

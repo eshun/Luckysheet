@@ -215,7 +215,7 @@ const server = {
 					method.createHookFunction('cooperativeMessage', data)
 					console.info(data);
 					let {message,success} = data;
-					if(!success){
+					if(success===false){
 						//失败 回退
 
 						controlHistory.redo(new Event('custom'));
@@ -224,8 +224,29 @@ const server = {
 						Store.showMessage(message||'保存失败！');
 						return;
 					}
-					let item = JSON.parse(data.data);
-					_this.wsUpdateMsg(item);
+					if(!!data.data){
+						try{
+							let item = JSON.parse(data.data);
+							console.info(item);
+
+							if(!item){
+								result;
+							}
+							//_this.wsUpdateMsg(item);
+							
+							let {t,i,v} = item;
+
+							if(!t || !i){
+								result;
+							}
+
+							if(t == "usi"){
+								sheetmanage.updateSheetIndex(i,v);
+							}
+						}catch(e){
+							console.error(e);
+						}
+					}
 				}catch(e){
 					console.error(e);
 				}
