@@ -4684,9 +4684,11 @@ export default function sheetHandler() {
         let {url,image} = menuButton.rangeScreenshot();
         //Store.showGridLines=showGridLines;
 
-        let maxHeight = $(window).height() - 200;
-        tooltip.screenshot(locale_screenshot.screenshotTipSuccess, '<div id="sheet-confirm-screenshot-save" style="height:' + maxHeight + 'px;overflow:auto;"></div>', url);
-        $("#sheet-confirm-screenshot-save").append(image);
+        if(url && image){
+            let maxHeight = $(window).height() - 200;
+            tooltip.screenshot(locale_screenshot.screenshotTipSuccess, '<div id="sheet-confirm-screenshot-save" style="height:' + maxHeight + 'px;overflow:auto;"></div>', url);
+            $("#sheet-confirm-screenshot-save").append(image);
+        }
     });
 
     //截图下载

@@ -4554,7 +4554,7 @@ const menuButton = {
                 else {
                     tooltip.info(locale_screenshot.screenshotTipTitle, locale_screenshot.screenshotTipNoSelection);
                 }
-                return;
+                return {};
             }
     
             if (Store.sheet_select_save.length > 1) {
@@ -4564,7 +4564,7 @@ const menuButton = {
                 else {
                     tooltip.info(locale_screenshot.screenshotTipTitle, locale_screenshot.screenshotTipHasMulti);
                 }
-                return;
+                return {};
             }
             range=Store.sheet_select_save[0];
         }
@@ -4587,7 +4587,7 @@ const menuButton = {
             else {
                 tooltip.info("The range parameter is invalid.", "");
             }
-            return;
+            return {};
         }
 
         let st_r = range.row[0],
@@ -4611,7 +4611,7 @@ const menuButton = {
             else {
                 tooltip.info(locale_screenshot.screenshotTipTitle, locale_screenshot.screenshotTipHasMerge);
             }
-            return;
+            return {};
         }
         //截图范围内包含部分合并单元格，提示
         // if (Store.config["merge"] != null) {

@@ -775,6 +775,7 @@ export function rowColumnOperationInitial(){
         }
         event.stopPropagation();
     }).mousemove(function (event) {
+
         if (Store.sheet_cols_selected_status || Store.sheet_select_status) {
             $("#sheet-cols-h-hover").hide();
             $("#sheet-cols-menu-btn").hide();
@@ -794,7 +795,10 @@ export function rowColumnOperationInitial(){
             col_index = col_location[2];
 
         $("#sheet-cols-h-hover").css({ "left": col_pre, "width": col - col_pre - 1, "display": "block" });
-        $("#sheet-cols-menu-btn").css({ "left": col - 19, "display": "block" });
+        
+        if(!isEditMode()){
+            $("#sheet-cols-menu-btn").css({ "left": col - 19, "display": "block" });
+        }
 
         $("#sheet-cols-change-size").css({ "left": col - 5 });
         if (x < col && x >= col - 5) {
@@ -996,6 +1000,12 @@ export function rowColumnOperationInitial(){
 
     // 列标题的下拉箭头
     $("#sheet-cols-menu-btn").click(function (event) {
+        
+        if(isEditMode()){
+            // alert("非编辑模式下不允许该操作！");
+            return;
+        }
+
         let _menu = $("#sheet-rightclick-menu");
         let offset = $(this).offset();
         $("#sheet-cols-rows-shift").show();

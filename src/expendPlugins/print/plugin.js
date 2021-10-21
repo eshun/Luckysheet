@@ -102,7 +102,9 @@ function printRange() {
     let {url,image} = menuButton.rangeScreenshot();
     Store.showGridLines=showGridLines;
 
-    renderPdf([image]);
+    if(url && image){
+        renderPdf([image]);
+    }
 }
 
 function printPage(page=1) {
@@ -116,32 +118,44 @@ function printPage(page=1) {
     const {url,image}=menuButton.rangeScreenshot({...range});
 
     Store.showGridLines=showGridLines;
-    renderPdf([image]);
+    
+    if(url && image){
+        renderPdf([image]);
+    }
 }
 
 /**
  * 
  */
 function printPages() {
-    let imgs=[];
     const pages=getPrintPages();
-    const showGridLines=Store.showGridLines;
-    Store.showGridLines=false;
-    for(let i=0;i<pages;i++){
-        const range=Store.pageRange[i];
-        if(i===0){
-            const {url,image}=menuButton.rangeScreenshot({...range});
-            imgs.push(image);
-        }else{
-            const oo=RangeIsNoEmpty({range});
-            if(oo===true){
+    setTimeout(function() {
+        let imgs=[];
+
+        const showGridLines=Store.showGridLines;
+        Store.showGridLines=false;
+        for(let i=0;i<pages;i++){
+            const range=Store.pageRange[i];
+            if(i===0){
                 const {url,image}=menuButton.rangeScreenshot({...range});
-                imgs.push(image);
+                
+                if(url && image){
+                    imgs.push(image);
+                }
+            }else{
+                const oo=RangeIsNoEmpty({range});
+                if(oo===true){
+                    const {url,image}=menuButton.rangeScreenshot({...range});
+                    
+                    if(url && image){
+                        imgs.push(image);
+                    }
+                }
             }
         }
-    }
-    Store.showGridLines=showGridLines;
-    renderPdf(imgs);
+        Store.showGridLines=showGridLines;
+        renderPdf(imgs);
+    },0)
 }
 
 export { print,printRange,printPage,printPages }

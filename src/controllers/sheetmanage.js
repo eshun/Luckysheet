@@ -1180,10 +1180,10 @@ const sheetmanage = {
         }
     },
     changeSheet: function(index, isPivotInitial, isNewSheet) {
-        if(isEditMode()){
-            // alert("非编辑模式下不允许该操作！");
-            return;
-        }
+        // if(isEditMode()){
+        //     // alert("非编辑模式下不允许该操作！");
+        //     return;
+        // }
 
         let _this = this;        
         

@@ -1,7 +1,7 @@
 import { columeHeader_word, columeHeader_word_index, sheetdefaultFont } from '../controllers/constant';
 import menuButton from '../controllers/menuButton';
 import { isdatatype, isdatatypemulti } from '../global/datecontroll';
-import { hasChinaword,isRealNum } from '../global/validate';
+import { hasChinaword,isRealNum,isEditMode } from '../global/validate';
 import Store from '../store';
 import locale from '../locale/locale';
 import numeral from 'numeral';
@@ -456,6 +456,7 @@ function sheetfontformat(format) {
 
 //右键菜单
 function showrightclickmenu(_menu, x, y) {
+
     let winH = $(window).height(), winW = $(window).width();
     let menuW = _menu.width(), menuH = _menu.height();
     let top = y, left = x;

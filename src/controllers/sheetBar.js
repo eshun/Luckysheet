@@ -209,10 +209,10 @@ export function initialSheetBar(){
         }
     }).on("click", "div.sheets-item", function (e) {
 
-        if(isEditMode()){
-            // alert("非编辑模式下不允许该操作！");
-            return;
-        }
+        // if(isEditMode()){
+        //     // alert("非编辑模式下不允许该操作！");
+        //     return;
+        // }
 
         let _t = $(this), _cur = $(e.target);
         setTimeout(function () {
